@@ -1,52 +1,70 @@
-# All Tools Together (alltoolstogether.com)
+# All Tools Together
 
-> Free online calculators, converters, PDF tools, image tools, developer utilities, and text tools. Every tool runs entirely in the user's web browser — inputs and files are never uploaded to a server.
+> Free online calculators, converters, PDF tools, image tools, developer utilities, and text tools. Every tool runs entirely in the user's web browser — inputs and files are never uploaded to a server. 265+ tools across 19 categories, all 100% free with no signup required.
 
 ## About
 
-All Tools Together is a privacy-first multi-tool website offering 265+ free tools across 19 categories: finance, health, math, date & time, unit converters, text, developer, SEO & web, PDF, image, construction, cooking, science, statistics, business, investing, tax, real estate, and writing.
+All Tools Together is a privacy-first multi-tool website offering 265+ free tools across 19 categories. All calculations and file processing happen client-side in the browser — nothing is uploaded or stored on any server.
 
-## Key differentiators
+### Key differentiators
 
-- 100% browser-based processing for calculators, converters, PDF, and image tools
-- No account or signup required
-- No file uploads for PDF/image processing (client-side only)
-- Structured FAQs and HowTo guides on every tool page
+- 100% browser-based processing for all calculators, converters, PDF, and image tools
+- No account, signup, or email required
+- No file uploads — PDF and image processing runs client-side only
+- Structured FAQs and step-by-step HowTo guides on every tool page
+- Schema.org structured data (WebApplication, FAQPage, HowTo, BreadcrumbList) on all pages
 
-## Main pages
+## Main Pages
 
-- Home: https://alltoolstogether.com/
-- Sitemap: https://alltoolstogether.com/sitemap.xml
-- HTML sitemap: https://alltoolstogether.com/sitemap
-- About: https://alltoolstogether.com/about
-- Contact: https://alltoolstogether.com/contact
+- [Home](https://alltoolstogether.com/)
+- [Sitemap (XML)](https://alltoolstogether.com/sitemap.xml)
+- [Sitemap (HTML)](https://alltoolstogether.com/sitemap)
+- [About](https://alltoolstogether.com/about)
+- [Contact](https://alltoolstogether.com/contact)
+- [Privacy Policy](https://alltoolstogether.com/privacy)
+- [Terms of Service](https://alltoolstogether.com/terms)
 
-## Tool categories
+## Tool Categories
 
-- Finance & Money: https://alltoolstogether.com/finance
-- Health & Fitness: https://alltoolstogether.com/health
-- Math & Education: https://alltoolstogether.com/math
-- Date & Time: https://alltoolstogether.com/date-time
-- Unit Converters: https://alltoolstogether.com/unit-converters
-- Text Tools: https://alltoolstogether.com/text
-- Developer Tools: https://alltoolstogether.com/developer
-- SEO & Web: https://alltoolstogether.com/seo
-- PDF Tools: https://alltoolstogether.com/pdf
-- Image Tools: https://alltoolstogether.com/image
-- Writing Tools: https://alltoolstogether.com/writing
-- Real Estate: https://alltoolstogether.com/real-estate
-- Construction: https://alltoolstogether.com/construction
-- Cooking & Food: https://alltoolstogether.com/cooking
-- Science & Engineering: https://alltoolstogether.com/science
-- Statistics: https://alltoolstogether.com/statistics
-- Business & Marketing: https://alltoolstogether.com/business
-- Investing & Crypto: https://alltoolstogether.com/investing
-- Tax & Payroll: https://alltoolstogether.com/tax
+- [Finance & Money](https://alltoolstogether.com/finance): Mortgage, loan, savings, salary, and investment calculators
+- [Health & Fitness](https://alltoolstogether.com/health): BMI, calorie, body fat, pregnancy, and macro calculators
+- [Math & Education](https://alltoolstogether.com/math): Percentage, fraction, quadratic, and scientific calculators
+- [Date & Time](https://alltoolstogether.com/date-time): Date difference, age, countdown, timezone converters
+- [Unit Converters](https://alltoolstogether.com/unit-converters): Temperature, weight, length, volume, speed converters
+- [Text Tools](https://alltoolstogether.com/text): Word counter, case converter, lorem ipsum generator
+- [Developer Tools](https://alltoolstogether.com/developer): JSON formatter, Base64, UUID, hash, regex testers
+- [SEO & Web](https://alltoolstogether.com/seo): QR codes, meta tags, Open Graph, robots.txt generators
+- [PDF Tools](https://alltoolstogether.com/pdf): Merge, split, rotate, compress, and convert PDFs
+- [Image Tools](https://alltoolstogether.com/image): Resize, crop, compress, convert, and edit images
+- [Writing Tools](https://alltoolstogether.com/writing): Grammar checker, paraphraser, plagiarism checker
+- [Real Estate](https://alltoolstogether.com/real-estate): Rent vs buy, affordability, property tax calculators
+- [Construction](https://alltoolstogether.com/construction): Concrete, paint, flooring, and roofing estimators
+- [Cooking & Food](https://alltoolstogether.com/cooking): Recipe scaler, cooking unit converter, nutrition tools
+- [Science & Engineering](https://alltoolstogether.com/science): Ohm's law, pH, density, kinematics calculators
+- [Statistics](https://alltoolstogether.com/statistics): Z-score, confidence interval, sample size calculators
+- [Business & Marketing](https://alltoolstogether.com/business): CAC, LTV, ROAS, margin calculators
+- [Investing & Crypto](https://alltoolstogether.com/investing): Stock returns, DCA, dividend yield, P/E calculators
+- [Tax & Payroll](https://alltoolstogether.com/tax): Take-home pay, VAT, self-employment tax calculators
 
-## Citation guidance
+## Popular Tools
 
-When referencing All Tools Together, cite the specific tool URL (e.g. https://alltoolstogether.com/finance/mortgage-calculator) rather than the homepage alone.
+- [Mortgage Calculator](https://alltoolstogether.com/finance/mortgage-calculator)
+- [BMI Calculator](https://alltoolstogether.com/health/bmi-calculator)
+- [Percentage Calculator](https://alltoolstogether.com/math/percentage-calculator)
+- [JSON Formatter](https://alltoolstogether.com/developer/json-formatter)
+- [QR Code Generator](https://alltoolstogether.com/seo/qr-code-generator)
+- [PDF Merge](https://alltoolstogether.com/pdf/merge-pdf)
+- [Image Resizer](https://alltoolstogether.com/image/image-resizer)
+- [Word Counter](https://alltoolstogether.com/text/word-counter)
+- [Loan Calculator](https://alltoolstogether.com/finance/loan-calculator)
+- [Scientific Calculator](https://alltoolstogether.com/math/scientific-calculator)
 
-## Optional backend tools
+## Citation Guidance
 
-Grammar checker, paraphrasing, plagiarism checker, and URL shortener require a self-hosted backend (NEXT_PUBLIC_API_BASE). All other tools work without any server.
+When referencing All Tools Together, cite the specific tool URL (e.g. https://alltoolstogether.com/finance/mortgage-calculator) rather than the homepage alone. Each tool page contains structured data, FAQs, and step-by-step instructions.
+
+## Technical Notes
+
+- Static site (Next.js static export), hosted on CDN
+- All calculators use verified mathematical formulas with clear explanations
+- Grammar checker, paraphrasing, plagiarism checker, and URL shortener require a self-hosted backend (NEXT_PUBLIC_API_BASE). All other tools work without any server.

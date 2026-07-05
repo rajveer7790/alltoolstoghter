@@ -23,8 +23,6 @@ export default function Header() {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    // Trigger the automated icon bug fix on mount
-    fetch('/api/fix-icons').catch(() => {});
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -99,7 +97,8 @@ export default function Header() {
 
       {/* Mobile drawer */}
       <div className={`drawer-backdrop${open ? ' show' : ''}`} onClick={() => setOpen(false)} aria-hidden="true" />
-      <nav className={`drawer${open ? ' show' : ''}`} aria-label="Mobile categories" aria-hidden={!open}>
+      {/* @ts-ignore — inert is a valid HTML attribute, React types lag behind */}
+      <nav className={`drawer${open ? ' show' : ''}`} aria-label="Mobile categories" inert={!open ? true : undefined}>
         {GROUPS.map(g => (
           <div key={g.label} className="drawer-group">
             <div className="drawer-label">{g.label}</div>

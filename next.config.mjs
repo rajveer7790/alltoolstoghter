@@ -3,8 +3,8 @@ import path from 'path';
 
 try {
   const cwd = process.cwd();
-  // Delete the route interceptors I created earlier, as they conflict with Next.js's old build cache!
-  ['app/icon', 'app/apple-icon'].forEach(d => {
+  // Pre-build cleanup: remove leftover route interceptors that conflict with static export
+  ['app/icon', 'app/apple-icon', 'app/api', 'app/favicon.ico'].forEach(d => {
     const p = path.join(cwd, d);
     if (fs.existsSync(p)) fs.rmSync(p, { recursive: true, force: true });
   });

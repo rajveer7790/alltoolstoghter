@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: SITE.description,
   robots: { index: true, follow: true },
   manifest: '/manifest.json',
+  verification: {
+    google: 'vVZtwVZMlikBJTc-hYkUOpJ9mu7eOvqIGtpVGPOcV6Q',
+  },
   openGraph: {
     siteName: SITE.name,
     type: 'website',

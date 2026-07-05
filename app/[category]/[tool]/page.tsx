@@ -20,7 +20,6 @@ export function generateMetadata({ params }: { params: { category: string; tool:
   return {
     title: t.name,
     description: t.metaDescription || `${t.short.replace(/\.$/, '')}. Free, instant, and private — runs in your browser.`,
-    keywords: t.keywords,
     alternates: { canonical: `/${t.category}/${t.slug}` },
     openGraph: {
       title: `${t.name} | ${SITE.name}`,

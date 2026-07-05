@@ -1,0 +1,18 @@
+{
+  "name": "toolsworld-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent API service for ToolsWorld tools that genuinely require a server (URL shortener, grammar, paraphrase, plagiarism). The static frontend calls these endpoints; everything else stays client-side.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nanoid": "^5.0.7"
+  },
+  "engines": { "node": ">=18" }
+}

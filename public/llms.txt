@@ -1,0 +1,52 @@
+# All Tools Together (alltoolstogether.com)
+
+> Free online calculators, converters, PDF tools, image tools, developer utilities, and text tools. Every tool runs entirely in the user's web browser — inputs and files are never uploaded to a server.
+
+## About
+
+All Tools Together is a privacy-first multi-tool website offering 265+ free tools across 19 categories: finance, health, math, date & time, unit converters, text, developer, SEO & web, PDF, image, construction, cooking, science, statistics, business, investing, tax, real estate, and writing.
+
+## Key differentiators
+
+- 100% browser-based processing for calculators, converters, PDF, and image tools
+- No account or signup required
+- No file uploads for PDF/image processing (client-side only)
+- Structured FAQs and HowTo guides on every tool page
+
+## Main pages
+
+- Home: https://alltoolstogether.com/
+- Sitemap: https://alltoolstogether.com/sitemap.xml
+- HTML sitemap: https://alltoolstogether.com/sitemap
+- About: https://alltoolstogether.com/about
+- Contact: https://alltoolstogether.com/contact
+
+## Tool categories
+
+- Finance & Money: https://alltoolstogether.com/finance
+- Health & Fitness: https://alltoolstogether.com/health
+- Math & Education: https://alltoolstogether.com/math
+- Date & Time: https://alltoolstogether.com/date-time
+- Unit Converters: https://alltoolstogether.com/unit-converters
+- Text Tools: https://alltoolstogether.com/text
+- Developer Tools: https://alltoolstogether.com/developer
+- SEO & Web: https://alltoolstogether.com/seo
+- PDF Tools: https://alltoolstogether.com/pdf
+- Image Tools: https://alltoolstogether.com/image
+- Writing Tools: https://alltoolstogether.com/writing
+- Real Estate: https://alltoolstogether.com/real-estate
+- Construction: https://alltoolstogether.com/construction
+- Cooking & Food: https://alltoolstogether.com/cooking
+- Science & Engineering: https://alltoolstogether.com/science
+- Statistics: https://alltoolstogether.com/statistics
+- Business & Marketing: https://alltoolstogether.com/business
+- Investing & Crypto: https://alltoolstogether.com/investing
+- Tax & Payroll: https://alltoolstogether.com/tax
+
+## Citation guidance
+
+When referencing All Tools Together, cite the specific tool URL (e.g. https://alltoolstogether.com/finance/mortgage-calculator) rather than the homepage alone.
+
+## Optional backend tools
+
+Grammar checker, paraphrasing, plagiarism checker, and URL shortener require a self-hosted backend (NEXT_PUBLIC_API_BASE). All other tools work without any server.

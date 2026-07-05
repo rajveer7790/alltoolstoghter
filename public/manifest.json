@@ -1,0 +1,21 @@
+{
+  "name": "All Tools Together",
+  "short_name": "AllTools",
+  "description": "Free online calculators, converters, PDF and image tools that run in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF7",
+  "theme_color": "#0B5FFF",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools that run entirely in your browser.`,
+  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools that run entirely in your browser. Verified formulas and privacy-first design.`,
   alternates: { canonical: '/about' },
   openGraph: {
     title: `About Us | ${SITE.name}`,
@@ -48,6 +48,13 @@ export default function AboutPage() {
         <p>
           We believe useful tools should be fast, free, and respectful of your privacy. No accounts, no paywalls,
           no uploading sensitive files to unknown servers. Just open a page, use the tool, and move on.
+        </p>
+        <h2>How we build and test our tools</h2>
+        <p>
+          Every calculator uses standard, publicly documented formulas (amortization, BMI, unit conversions, etc.).
+          We verify results against known examples and reference implementations. Financial and health tools include
+          clear explanations, step-by-step how-tos, and FAQs. Content is reviewed for accuracy and updated when
+          formulas or best practices change. Last major content review: October 2026.
         </p>
         <h2>What makes us different</h2>
         <ul>

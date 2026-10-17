@@ -10,6 +10,28 @@ import AdSlot from '@/components/AdSlot';
 
 export const dynamic = 'force-static';
 
+const CATEGORY_MAP: Record<string, string> = {
+  finance: 'FinanceApplication',
+  'real-estate': 'FinanceApplication',
+  investing: 'FinanceApplication',
+  tax: 'FinanceApplication',
+  business: 'BusinessApplication',
+  health: 'HealthApplication',
+  cooking: 'LifestyleApplication',
+  math: 'EducationalApplication',
+  statistics: 'EducationalApplication',
+  science: 'EducationalApplication',
+  'unit-converters': 'UtilitiesApplication',
+  'date-time': 'UtilitiesApplication',
+  construction: 'UtilitiesApplication',
+  developer: 'DeveloperApplication',
+  seo: 'DeveloperApplication',
+  text: 'UtilitiesApplication',
+  writing: 'UtilitiesApplication',
+  pdf: 'UtilitiesApplication',
+  image: 'MultimediaApplication',
+};
+
 export function generateStaticParams() {
   return ALL_TOOLS.map(t => ({ category: t.category, tool: t.slug }));
 }
@@ -42,15 +64,23 @@ export default function ToolPage({ params }: { params: { category: string; tool:
   const t = bySlug.get(params.tool);
   if (!t || t.category !== params.category) notFound();
   const cat = getCategory(t.category)!;
+  const appCategory = CATEGORY_MAP[t.category] || 'UtilitiesApplication';
+
   return (
     <div className="content">
       <JsonLd data={{
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'WebApplication', name: t.name, url: `${SITE.url}/${t.category}/${t.slug}`,
-            applicationCategory: 'UtilityApplication', operatingSystem: 'Any (web browser)',
-            description: t.short, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            '@type': 'WebApplication',
+            name: t.name,
+            url: `${SITE.url}/${t.category}/${t.slug}`,
+            applicationCategory: appCategory,
+            operatingSystem: 'Web',
+            description: t.short,
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            dateModified: '2026-10-17',
+            author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
           },
           {
             '@type': 'FAQPage',

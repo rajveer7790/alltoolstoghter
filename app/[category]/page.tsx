@@ -69,6 +69,13 @@ export default function CategoryPage({ params }: { params: { category: string } 
       </nav>
       <h1 className="tool-h1" style={{ color: cat.accent }}>{cat.name}</h1>
       <p className="tool-sub">{cat.tagline}</p>
+      <div className="prose" style={{ maxWidth: '720px', margin: '1.5rem 0 2rem' }}>
+        <p>
+          Browse {tools.length} free {cat.name.toLowerCase()} tools that run entirely in your browser. 
+          No signup, no uploads, and no data stored — everything calculates or processes locally on your device. 
+          Use these tools for quick calculations, conversions, and everyday tasks with clear explanations and FAQs on every page.
+        </p>
+      </div>
       <div className="grid grid-tools">
         {tools.map(t => <ToolCard key={t.slug} tool={t} />)}
       </div>

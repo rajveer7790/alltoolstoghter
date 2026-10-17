@@ -58,7 +58,7 @@ export default function Home() {
       {/* Centered hero */}
       <section className="ilp-hero">
         <div className="wrap">
-          <h1>Every tool you need to calculate, convert<br className="ilp-br" /> and create, in one place</h1>
+          <h1>Free Online Calculators, Converters & Tools<br className="ilp-br" /> for Everyday Tasks</h1>
           <p>All {ALL_TOOLS.length} tools are 100% FREE and easy to use! Calculate, convert, edit PDFs and images with just a few clicks — everything runs privately in your browser.</p>
         </div>
       </section>

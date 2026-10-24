@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools that run entirely in your browser. Verified formulas and privacy-first design.`,
+  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools that run entirely in your browser. Verified formulas, privacy-first design, and clear explanations.`,
   alternates: { canonical: '/about' },
   openGraph: {
     title: `About Us | ${SITE.name}`,
@@ -36,40 +36,42 @@ export default function AboutPage() {
       }} />
       <StaticPage
         title="About Us"
-        subtitle="Every tool you need — calculators, converters, PDFs, images — in one private, browser-based place."
+        subtitle="Free, private, browser-based tools for everyday calculations and file tasks."
       >
         <p>
-          <strong>{SITE.name}</strong> ({SITE.url.replace('https://', '')}) is a free online toolkit with{' '}
-          <strong>{ALL_TOOLS.length} tools</strong> across {CATEGORIES.length} categories. Whether you are
-          calculating a mortgage, converting units, merging PDFs, or formatting JSON, everything runs on your
-          device — your data never leaves your browser.
+          <strong>{SITE.name}</strong> is a free online toolkit with <strong>{ALL_TOOLS.length} tools</strong> across {CATEGORIES.length} categories.
+          We focus on practical calculators and utilities that run entirely in your browser — no accounts, no uploads, and no tracking of your inputs.
         </p>
+
         <h2>Our mission</h2>
         <p>
-          We believe useful tools should be fast, free, and respectful of your privacy. No accounts, no paywalls,
-          no uploading sensitive files to unknown servers. Just open a page, use the tool, and move on.
+          Useful tools should be fast, free, and respectful of privacy. Most of our calculators, converters, PDF tools, and image tools process everything on your device.
+          You can use them instantly without signing up or sending sensitive data to a server.
         </p>
-        <h2>How we build and test our tools</h2>
+
+        <h2>How we build and verify tools</h2>
         <p>
-          Every calculator uses standard, publicly documented formulas (amortization, BMI, unit conversions, etc.).
-          We verify results against known examples and reference implementations. Financial and health tools include
-          clear explanations, step-by-step how-tos, and FAQs. Content is reviewed for accuracy and updated when
-          formulas or best practices change. Last major content review: October 2026.
+          Every calculator uses standard, publicly documented formulas (loan amortization, BMI / Mifflin-St Jeor, unit conversions based on international definitions, etc.).
+          We check results against known examples and reference implementations. Financial and health tools include clear explanations, step-by-step how-tos, and FAQs.
+          Content is reviewed for accuracy and updated when formulas or best practices change. Last major content review: October 2026.
         </p>
+
         <h2>What makes us different</h2>
         <ul>
-          <li><strong>Browser-first:</strong> Calculators, converters, PDF, and image tools process locally on your device.</li>
-          <li><strong>No signup:</strong> Every tool is instant and free.</li>
-          <li><strong>Verified formulas:</strong> Each tool includes explanations, how-to steps, and FAQs.</li>
-          <li><strong>Built for the web:</strong> Fast static pages, accessible design, structured data for search engines.</li>
+          <li><strong>Browser-first:</strong> Most tools process data locally on your device.</li>
+          <li><strong>No signup required:</strong> Every tool is free and instant.</li>
+          <li><strong>Clear explanations:</strong> Each tool page includes how-to steps and FAQs.</li>
+          <li><strong>Search-friendly:</strong> Structured data (FAQ, HowTo, Breadcrumb) on tool pages.</li>
         </ul>
-        <h2>Disclaimer</h2>
+
+        <h2>Important disclaimer</h2>
         <p>
-          Results from financial, health, tax, and legal calculators are estimates for informational purposes only.
-          They are not professional advice. Always consult qualified professionals for important decisions.
+          Results from financial, health, tax, legal, and construction calculators are estimates for informational purposes only.
+          They are not professional advice. Always consult qualified professionals (financial advisors, doctors, tax professionals, etc.) for important decisions.
         </p>
+
         <p>
-          <Link href="/contact">Contact us</Link> with questions, corrections, or feedback.
+          Questions or corrections? <Link href="/contact">Contact us</Link>.
         </p>
       </StaticPage>
     </>

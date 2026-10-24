@@ -32,6 +32,13 @@ const CATEGORY_MAP: Record<string, string> = {
   image: 'MultimediaApplication',
 };
 
+const BACKEND_REQUIRED = new Set([
+  'grammar-checker',
+  'paraphrasing-tool',
+  'plagiarism-checker',
+  'url-shortener',
+]);
+
 export function generateStaticParams() {
   return ALL_TOOLS.map(t => ({ category: t.category, tool: t.slug }));
 }
@@ -39,23 +46,25 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { category: string; tool: string } }): Metadata {
   const t = bySlug.get(params.tool);
   if (!t || t.category !== params.category) return {};
+  const noindex = BACKEND_REQUIRED.has(t.slug);
   return {
     title: t.name,
     description: t.metaDescription || `${t.short.replace(/\.$/, '')}. Free, instant, and private — runs in your browser.`,
     alternates: { canonical: `/${t.category}/${t.slug}` },
+    robots: noindex ? { index: false, follow: false } : undefined,
     openGraph: {
       title: `${t.name} | ${SITE.name}`,
       description: t.metaDescription || t.short,
       url: `/${t.category}/${t.slug}`,
       siteName: SITE.name,
       type: 'website',
-      images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: `${t.name} — ${SITE.name}` }],
+      images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: `${t.name} — ${SITE.name}` }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${t.name} | ${SITE.name}`,
       description: t.metaDescription || t.short,
-      images: ['/opengraph-image'],
+      images: ['/opengraph-image.png'],
     },
   };
 }
@@ -79,7 +88,7 @@ export default function ToolPage({ params }: { params: { category: string; tool:
             operatingSystem: 'Web',
             description: t.short,
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-            dateModified: '2026-10-17',
+            dateModified: '2026-10-24',
             author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
           },
           {

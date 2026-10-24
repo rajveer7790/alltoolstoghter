@@ -47,7 +47,7 @@ export default function Home() {
             '@id': `${SITE.url}/#organization`,
             name: SITE.name,
             url: SITE.url,
-            logo: `${SITE.url}/opengraph-image`,
+            logo: `${SITE.url}/opengraph-image.png`,
             description: SITE.description,
             email: SITE.email,
             sameAs: [],
@@ -66,6 +66,16 @@ export default function Home() {
       <CategoryQuickLinks />
       <section className="wrap">
         <PopularTools title="Most used tools" limit={12} />
+      </section>
+
+      <section className="wrap" style={{marginTop: '2rem', marginBottom: '1.5rem'}}>
+        <h2 style={{fontSize: '1.4rem', marginBottom: '0.75rem'}}>Why use All Tools Together?</h2>
+        <p style={{maxWidth: '720px', lineHeight: 1.6}}>
+          All Tools Together gives you {ALL_TOOLS.length} free calculators and utilities that run entirely in your browser.
+          No uploads, no accounts, and no tracking of your inputs. From mortgage and BMI calculators to unit converters,
+          PDF tools, and developer utilities, every tool includes clear explanations, formulas, and FAQs so you get accurate
+          results with full privacy.
+        </p>
       </section>
 
       {/* the grid */}

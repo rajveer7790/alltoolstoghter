@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-  const updated = 'July 5, 2026';
+  const updated = 'October 24, 2026';
   return (
     <StaticPage title="Terms of Service" subtitle={`Last updated: ${updated}`}>
       <p>
@@ -34,7 +34,7 @@ export default function TermsPage() {
       </p>
       <h2>Disclaimer of warranties</h2>
       <p>
-        The site and tools are provided &quot;as is&quot; without warranties of any kind, express or implied,
+        The site and tools are provided "as is" without warranties of any kind, express or implied,
         including fitness for a particular purpose or accuracy of results.
       </p>
       <h2>Limitation of liability</h2>

@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const updated = 'July 5, 2026';
+  const updated = 'October 24, 2026';
   return (
     <StaticPage title="Privacy Policy" subtitle={`Last updated: ${updated}`}>
       <p>
-        {SITE.name} (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates {SITE.url}. This policy explains
+        {SITE.name} ("we", "us", "our") operates {SITE.url}. This policy explains
         what information we collect and how we use it.
       </p>
       <h2>Browser-based tools (default)</h2>
@@ -32,7 +32,8 @@ export default function PrivacyPage() {
       <p>
         A small number of tools (grammar checker, paraphrasing, plagiarism checker, URL shortener) may send data
         to a backend service when configured. If deployed, that service is operated by us or you (self-hosted).
-        Text submitted to these tools is transmitted only when you actively use them.
+        Text submitted to these tools is transmitted only when you actively use them. These tools are currently
+        marked noindex until a backend is fully configured.
       </p>
       <h2>Information we may collect automatically</h2>
       <ul>
@@ -45,7 +46,7 @@ export default function PrivacyPage() {
         Some tools connect to third-party APIs from your browser (e.g. currency exchange rates). Those requests
         go directly from your device to the third party subject to their privacy policies.
       </p>
-      <h2>Children&apos;s privacy</h2>
+      <h2>Children's privacy</h2>
       <p>
         Our services are not directed at children under 13. We do not knowingly collect personal information from children.
       </p>
@@ -55,7 +56,7 @@ export default function PrivacyPage() {
         Contact us at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
       </p>
       <h2>Changes</h2>
-      <p>We may update this policy. The &quot;Last updated&quot; date at the top reflects the latest revision.</p>
+      <p>We may update this policy. The "Last updated" date at the top reflects the latest revision.</p>
       <h2>Contact</h2>
       <p>
         Questions about this policy: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or our{' '}

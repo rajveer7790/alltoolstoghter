@@ -8,10 +8,10 @@ export const SCIENCE: ToolDef[] = [
   short: 'Solve for voltage, current, or resistance given any two values.',
   metaDescription: 'Free online Ohm\'s Law Calculator. Solve for voltage, current, and resistance easily in your browser without tracking.',
   keywords: ["ohm's law calculator",'voltage current resistance calculator','v ir calculator','electrical calculator'],
-  fields: [BLANK('voltage','Voltage (V — leave blank to solve','V'), BLANK('current','Current (I — leave blank to solve','A'), BLANK('resistance','Resistance (R — leave blank to solve','Ω')],
+  fields: [$('voltage','Voltage (V)',120,'V'), $('current','Current (I — leave blank to solve', '', 'A'), $('resistance','Resistance (R)',10,'Ω')],
   content: {
     intro: "Solve Ohm's Law for any unknown — voltage, current, or resistance — by entering any two known values. The tool also calculates power (P = V×I).",
-    how: "Ohm's Law: V = I × R. Enter any two values and leave the third blank. Power P = V × I is always calculated from the result.",
+    how: "Ohm's Law: V = I × R. Enter any two values and leave the third blank. Power P = V × I is always calculated from the result. Default example: 120 V across 10 Ω draws 12 A and 1,440 W.",
     howSteps: [
       'Provide any two of the three variables: Voltage, Current, or Resistance.',
       'Leave the third variable blank to identify it as the target for calculation.',

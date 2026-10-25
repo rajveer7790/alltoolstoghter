@@ -18,6 +18,7 @@ import { STATISTICS } from './statistics';
 import { BUSINESS } from './business';
 import { INVESTING } from './investing';
 import { TAX } from './tax';
+import { EXTRA } from './extra';
 
 export const CATEGORIES: Category[] = [
   { key: 'finance', name: 'Finance & Money', tagline: 'Loans, savings, salaries — the numbers behind big decisions.', accent: '#9A6700' },
@@ -41,7 +42,7 @@ export const CATEGORIES: Category[] = [
   { key: 'writing', name: 'Writing Tools', tagline: 'Grammar, paraphrasing, and plagiarism checks — powered by your own backend.', accent: '#0891B2' },
 ];
 
-export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX];
+export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA];
 
 export const bySlug = new Map(ALL_TOOLS.map(t => [t.slug, t]));
 export const byCategory = (key: CatKey) => ALL_TOOLS.filter(t => t.category === key);

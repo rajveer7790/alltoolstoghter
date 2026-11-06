@@ -1,8 +1,9 @@
+import { isIndexableTool } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CATEGORIES, byCategory, getCategory, SITE } from '@/lib/registry';
-import { CatKey } from '@/lib/types';
+
 import ToolCard from '@/components/ToolCard';
 import CategoryCrossLinks from '@/components/CategoryCrossLinks';
 import PopularTools from '@/components/PopularTools';
@@ -18,8 +19,10 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { category: string } }): Metadata {
   const cat = getCategory(params.category);
   if (!cat) return {};
-  const n = byCategory(cat.key).length;
-  const desc = `${cat.tagline} ${n} free ${cat.name.toLowerCase()} tools with instructions and FAQs.`;
+  const tools = byCategory(cat.key).filter(isIndexableTool);
+  const n = tools.length;
+  const examples = tools.slice(0, 3).map(tool => tool.name).join(', ');
+  const desc = `Explore ${cat.name} on All Tools Together. Find ${examples}, with usage instructions and FAQs.`;
   return {
     title: `${cat.name} — ${n} Free Online Tools`,
     description: desc,
@@ -39,7 +42,7 @@ export function generateMetadata({ params }: { params: { category: string } }): 
 export default function CategoryPage({ params }: { params: { category: string } }) {
   const cat = getCategory(params.category);
   if (!cat) notFound();
-  const tools = byCategory(cat.key as CatKey);
+  const tools = byCategory(cat.key).filter(isIndexableTool);
   return (
     <div className="wrap">
       <JsonLd data={{
@@ -72,9 +75,12 @@ export default function CategoryPage({ params }: { params: { category: string } 
       <p className="tool-sub">{cat.tagline}</p>
       <div className="prose" style={{ maxWidth: '720px', margin: '1.5rem 0 2rem' }}>
         <p>
-          Browse {tools.length} free {cat.name.toLowerCase()} tools with instructions and FAQs.
-          Most tools process inputs on your device. Online services explain when they send data to a provider.
-          Use these tools for quick calculations, conversions, and everyday tasks with clear explanations and FAQs on every page.
+          Browse {tools.length} tools and guides in {cat.name}. Start with{' '}
+          {tools.slice(0, 3).map((tool, index) => (
+            <span key={tool.slug}>{index > 0 && (index === 2 ? ' or ' : ', ')}
+              <Link href={`/${tool.category}/${tool.slug}`}>{tool.name}</Link>
+            </span>
+          ))}. Each page explains the inputs and how to interpret the output.
         </p>
       </div>
       <div className="grid grid-tools">

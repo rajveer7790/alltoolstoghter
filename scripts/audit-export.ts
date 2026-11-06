@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'parse5';
 import { ALL_TOOLS, CATEGORIES, SITE } from '../lib/registry';
-import { canonicalToolPath, isIndexableTool, BACKEND_REQUIRED } from '../lib/toolPolicy';
+import { canonicalToolPath, isIndexableTool } from '../lib/toolPolicy';
 
 const root = 'out';
 const origin = new URL(SITE.url);
@@ -11,6 +11,8 @@ const exists = (path: string) => [path, `${path}.html`, `${path}/index.html`].so
 const files = (dir: string): string[] => readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? files(join(dir,e.name)) : [join(dir,e.name)]);
 const htmlFiles = files(root).filter(f => f.endsWith('.html'));
 const titles = new Map<string,string>();
+const descriptions = new Map<string,string>();
+const pageAudit: { path: string; title: string; description: string; canonical: string; robots: string; inSitemap?: boolean }[] = [];
 let links = 0, schemas = 0;
 for (const file of htmlFiles) {
   const path = '/' + file.slice(root.length+1).replace(/\.html$/, '').replace(/^index$/, '');
@@ -22,7 +24,10 @@ for (const file of htmlFiles) {
   const title = text(nodes.find(n=>n.tagName==='title') || {});
   assert.ok(title, `Missing title: ${path}`);
   if (path !== '/404') {
-    assert.ok(meta('description') && attrs(meta('description')).content, `Missing description: ${path}`);
+    const description = meta('description') && attrs(meta('description')).content;
+    const robots = meta('robots') ? attrs(meta('robots')).content : '';
+    assert.ok(description, `Missing description: ${path}`);
+    assert.match(path, /^(?:\/[a-z0-9]+(?:-[a-z0-9]+)*)*\/?$/, `Non-descriptive URL format: ${path}`);
     assert.equal(nodes.filter(n=>n.tagName==='h1').length,1,`Expected one h1: ${path}`);
     const canonical = nodes.find(n=>n.tagName==='link'&&attrs(n).rel==='canonical');
     assert.ok(canonical,`Missing canonical: ${path}`);
@@ -31,8 +36,13 @@ for (const file of htmlFiles) {
     if (!tool || isIndexableTool(tool)) {
       assert.ok(!titles.has(title), `Duplicate indexable title: ${path} and ${titles.get(title)}`);
       titles.set(title,path);
+      assert.ok(!descriptions.has(description), `Duplicate indexable description: ${path} and ${descriptions.get(description)}`);
+      descriptions.set(description, path);
+      assert.doesNotMatch(robots, /\bnoindex\b/i, `Indexable page is blocked: ${path}`);
+      assert.equal(url.pathname, path, `Indexable page must be self-canonical: ${path}`);
     }
-    if(tool){ assert.equal(url.pathname,canonicalToolPath(tool)); if(BACKEND_REQUIRED.has(tool.slug))assert.match(attrs(meta('robots')).content,/noindex/); }
+    if (tool) assert.equal(url.pathname, canonicalToolPath(tool));
+    pageAudit.push({ path, title, description, canonical: url.href, robots });
   }
   for (const n of nodes) {
     const a=attrs(n);
@@ -50,6 +60,11 @@ const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 assert.equal(new Set(urls).size,urls.length,'Duplicate sitemap URLs');
 assert.equal(urls.length,6+CATEGORIES.length+ALL_TOOLS.filter(isIndexableTool).length);
 for(const url of urls){const u=new URL(url);assert.equal(u.origin,origin.origin);assert.ok(exists(u.pathname));}
+for (const row of pageAudit) {
+  row.inSitemap = urls.some(url => new URL(url).pathname === row.path);
+  assert.equal(row.inSitemap, new URL(row.canonical).pathname === row.path, `Sitemap and canonical mismatch: ${row.path}`);
+}
+if (process.env.SEO_AUDIT_REPORT) writeFileSync(process.env.SEO_AUDIT_REPORT, JSON.stringify(pageAudit, null, 2) + '\n');
 for(const t of ALL_TOOLS) assert.equal(urls.includes(SITE.url+`/${t.category}/${t.slug}`),isIndexableTool(t),`Sitemap policy mismatch: ${t.slug}`);
 assert.ok(exists('/opengraph-image.png'));assert.match(readFileSync('out/robots.txt','utf8'),/Sitemap: https:\/\/alltoolstogether.com\/sitemap.xml/);
 console.log(JSON.stringify({pages:htmlFiles.length,internalLinksAndAssets:links,jsonLdBlocks:schemas,sitemapUrls:urls.length,tools:ALL_TOOLS.length},null,2));

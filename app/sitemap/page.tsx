@@ -1,11 +1,14 @@
+import { isIndexableTool } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ALL_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
 import JsonLd from '@/components/JsonLd';
 
+const canonicalTools = ALL_TOOLS.filter(isIndexableTool);
+
 export const metadata: Metadata = {
   title: 'Sitemap',
-  description: `Browse all ${ALL_TOOLS.length} free tools on ${SITE.name} — calculators, converters, PDF, image, developer, and more.`,
+  description: `Browse all ${canonicalTools.length} tool pages on ${SITE.name} — calculators, converters, PDF, image, developer, and more.`,
   alternates: { canonical: '/sitemap' },
   openGraph: {
     images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
 export default function HtmlSitemapPage() {
   const byCat = CATEGORIES.map(c => ({
     ...c,
-    tools: ALL_TOOLS.filter(t => t.category === c.key),
+    tools: canonicalTools.filter(t => t.category === c.key),
   }));
 
   return (
@@ -36,7 +39,7 @@ export default function HtmlSitemapPage() {
       </nav>
       <h1 className="tool-h1">Sitemap</h1>
       <p className="tool-sub">
-        All {ALL_TOOLS.length} tools across {CATEGORIES.length} categories. Machine-readable XML:{' '}
+        All {canonicalTools.length} tools across {CATEGORIES.length} categories. Machine-readable XML:{' '}
         <Link href="/sitemap.xml">sitemap.xml</Link>
       </p>
 

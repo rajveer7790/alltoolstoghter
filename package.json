@@ -9,7 +9,8 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "check": "npm run test && npm run typecheck",
-    "audit:export": "node --import tsx scripts/audit-export.ts"
+    "audit:export": "node --import tsx scripts/audit-export.ts",
+    "prebuild": "node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\""
   },
   "dependencies": {
     "css-tree": "^3.2.1",

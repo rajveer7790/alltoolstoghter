@@ -1,11 +1,11 @@
 /** Safe Markdown → HTML for live previews (escape first, no raw HTML). */
 export function mdToHtml(s: string): string {
-  const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   const inline = (t: string) => esc(t)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, a, b) => `<a href="${esc(b)}" rel="nofollow noopener">${a}</a>`);
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, a, b) => (/^(https?:\/\/|mailto:|\/(?!\/)|#)/i.test(b) && !/[\x00-\x20]/.test(b)) ? `<a href="${b}" rel="nofollow noopener noreferrer">${a}</a>` : a);
   const lines = s.split('\n'); const out: string[] = [];
   let inList = false, inOl = false, inCode = false, inQuote = false;
   const closeAll = () => { if (inList) { out.push('</ul>'); inList = false; } if (inOl) { out.push('</ol>'); inOl = false; } if (inQuote) { out.push('</blockquote>'); inQuote = false; } };

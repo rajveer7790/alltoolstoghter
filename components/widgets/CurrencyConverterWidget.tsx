@@ -29,7 +29,7 @@ function fmt(n: number, code: string): string {
   try {
     return new Intl.NumberFormat('en-US', {
       style: 'currency', currency: code,
-      minimumFractionDigits: 2, maximumFractionDigits: code === 'JPY' || code === 'KRW' || code === 'IDR' || code === 'VND' ? 0 : 4,
+      minimumFractionDigits: 0, maximumFractionDigits: code === 'JPY' || code === 'KRW' || code === 'IDR' || code === 'VND' ? 0 : 4,
     }).format(n);
   } catch {
     return n.toFixed(4);
@@ -45,43 +45,54 @@ export default function CurrencyConverterWidget() {
   const [date, setDate] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const requestId = useRef(0);
+  const [currencies, setCurrencies] = useState<Record<string, string>>({ USD: 'US Dollar', EUR: 'Euro' });
   const cache = useRef<Record<string, { rates: Rates; date: string }>>({});
 
   const fetchRates = useCallback(async (b: string) => {
-    if (cache.current[b]) { setRates(cache.current[b].rates); setDate(cache.current[b].date); setBase(b); return; }
-    setLoading(true); setError('');
+    const id = ++requestId.current;
+    setError('');
+    if (cache.current[b]) { setRates(cache.current[b].rates); setDate(cache.current[b].date); setBase(b); setLoading(false); return; }
+    setLoading(true); setRates(null);
     try {
       const res = await fetch(`https://api.frankfurter.dev/v1/latest?base=${b}`);
       if (!res.ok) throw new Error(`Rate service responded ${res.status}.`);
       const data = await res.json();
       const r: Rates = { ...data.rates, [b]: 1 };
       cache.current[b] = { rates: r, date: data.date };
-      setRates(r); setDate(data.date); setBase(b);
+      if (id === requestId.current) { setRates(r); setDate(data.date); setBase(b); }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not fetch exchange rates.');
+      if (id === requestId.current) setError(e instanceof Error ? e.message : 'Could not fetch exchange rates.');
     }
-    setLoading(false);
+    if (id === requestId.current) setLoading(false);
   }, []);
 
-  useEffect(() => { fetchRates(from); }, [from, fetchRates]);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch('https://api.frankfurter.dev/v1/currencies', { signal: controller.signal })
+      .then(r => { if (!r.ok) throw new Error('Currency list unavailable'); return r.json(); })
+      .then(data => setCurrencies(data)).catch(() => {});
+    return () => controller.abort();
+  }, []);
+  useEffect(() => { fetchRates(from); return () => { requestId.current++; }; }, [from, fetchRates]);
 
   const swap = () => { setFrom(to); setTo(from); };
   const n = parseFloat(amount);
-  const result = rates && Number.isFinite(n) && rates[to] ? n * rates[to] : null;
-  const rate = rates && rates[to] ? rates[to] : null;
+  const result = rates && base === from && !error && Number.isFinite(n) && rates[to] ? n * rates[to] : null;
+  const rate = rates && base === from && rates[to] ? rates[to] : null;
 
   // All popular comparisons when amount is valid
-  const comparisons = rates && Number.isFinite(n)
-    ? POPULAR.filter(c => c !== from).map(c => ({ code: c, name: CURRENCIES[c] ?? c, value: n * (rates[c] ?? 0) }))
+  const comparisons = rates && base === from && !error && Number.isFinite(n)
+    ? POPULAR.filter(c => c !== from && rates[c]).map(c => ({ code: c, name: CURRENCIES[c] ?? c, value: n * (rates[c] ?? 0) }))
     : [];
 
   const CurrencySelect = ({ id, val, onChange }: { id: string; val: string; onChange: (v: string) => void }) => (
     <select id={id} value={val} onChange={e => onChange(e.target.value)}>
       <optgroup label="Popular">
-        {POPULAR.map(c => <option key={c} value={c}>{c} — {CURRENCIES[c]}</option>)}
+        {POPULAR.filter(c => currencies[c]).map(c => <option key={c} value={c}>{c} — {CURRENCIES[c]}</option>)}
       </optgroup>
       <optgroup label="All currencies">
-        {Object.entries(CURRENCIES).filter(([c]) => !POPULAR.includes(c)).sort((a, b) => a[0].localeCompare(b[0]))
+        {Object.entries(currencies).filter(([c]) => !POPULAR.includes(c)).sort((a, b) => a[0].localeCompare(b[0]))
           .map(([c, name]) => <option key={c} value={c}>{c} — {name}</option>)}
       </optgroup>
     </select>

@@ -1,14 +1,18 @@
 import { CalcResult } from '../types';
 import { num, pct, safe } from '../format';
+const UNKNOWN = -1e15;
+const optional = (value: unknown): number => value == null || String(value).trim() === '' ? UNKNOWN : Number(value);
+const invalid = (message: string): CalcResult[] => [{ label: 'Check inputs', value: message, main: true }];
 
 export function ohmsLaw(v: Record<string, any>): CalcResult[] {
-  const V = safe(v.voltage, -1e15), I = safe(v.current, -1e15), R = safe(v.resistance, -1e15);
+  const V = optional(v.voltage), I = optional(v.current), R = optional(v.resistance);
   const known = [V, I, R].filter(x => x !== -1e15).length;
-  if (known < 2) return [{ label: 'Enter any two values', value: '—', main: true }];
+  if (known !== 2) return invalid('Enter exactly two values and leave the unknown value blank.');
   let voltage = V, current = I, resistance = R;
   if (V === -1e15) voltage = I * R;
   else if (I === -1e15) current = V / R;
   else resistance = V / I;
+  if (![voltage, current, resistance].every(Number.isFinite) || resistance < 0) return invalid('These values do not give a finite nonnegative resistance.');
   const power = voltage * current;
   return [
     { label: 'Voltage (V)', value: num(voltage, 4) + ' V', main: true },
@@ -20,18 +24,19 @@ export function ohmsLaw(v: Record<string, any>): CalcResult[] {
 
 export function resistorColorCode(v: Record<string, any>): CalcResult[] {
   const COLORS = ['black','brown','red','orange','yellow','green','blue','violet','grey','white'];
-  const MULT = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 0.01, 0.1];
+  const MULT: Record<string, number> = Object.fromEntries(COLORS.map((c, i) => [c, 10 ** i]));
+  MULT.gold = 0.1; MULT.silver = 0.01;
   const TOL: Record<string, string> = { gold: '±5%', silver: '±10%', brown: '±1%', red: '±2%', green: '±0.5%', blue: '±0.25%', violet: '±0.1%', grey: '±0.05%' };
   const b1 = String(v.band1 || 'brown'), b2 = String(v.band2 || 'black'), b3 = String(v.band3 || 'red'), bt = String(v.tolerance || 'gold');
-  const d1 = COLORS.indexOf(b1), d2 = COLORS.indexOf(b2), mult = MULT[COLORS.indexOf(b3)] ?? 1;
-  if (d1 < 0 || d2 < 0) return [{ label: 'Invalid band color', value: '—', main: true }];
+  const d1 = COLORS.indexOf(b1), d2 = COLORS.indexOf(b2), mult = MULT[b3];
+  if (d1 < 0 || d2 < 0 || mult === undefined) return [{ label: 'Invalid band color', value: '—', main: true }];
   const ohms = (d1 * 10 + d2) * mult;
   const tol = TOL[bt] || '±5%';
   const display = ohms >= 1e6 ? num(ohms/1e6,3)+' MΩ' : ohms >= 1000 ? num(ohms/1000,3)+' kΩ' : num(ohms,2)+' Ω';
   return [
     { label: 'Resistance', value: display, main: true },
     { label: 'Tolerance', value: tol },
-    { label: 'Range', value: `${num(ohms*(1-parseFloat(tol)/100),1)} – ${num(ohms*(1+parseFloat(tol)/100),1)} Ω` },
+    { label: 'Range', value: `${num(ohms*(1-parseFloat(tol.slice(1))/100),1)} – ${num(ohms*(1+parseFloat(tol.slice(1))/100),1)} Ω` },
     { label: 'Exact value', value: num(ohms,0)+' Ω' },
   ];
 }
@@ -62,13 +67,14 @@ export function torque(v: Record<string, any>): CalcResult[] {
 }
 
 export function newtonsSecondLaw(v: Record<string, any>): CalcResult[] {
-  const F = safe(v.force, -1e15), m = safe(v.mass, -1e15), a = safe(v.acceleration, -1e15);
+  const F = optional(v.force), m = optional(v.mass), a = optional(v.acceleration);
   const known = [F, m, a].filter(x => x !== -1e15).length;
-  if (known < 2) return [{ label: 'Enter any two values', value: '—', main: true }];
+  if (known !== 2) return invalid('Enter exactly two values and leave the unknown value blank.');
   let force = F, mass = m, accel = a;
   if (F === -1e15) force = mass * accel;
   else if (m === -1e15) mass = F / a;
   else accel = F / m;
+  if (![force, mass, accel].every(Number.isFinite) || mass <= 0) return invalid('Mass must be positive and the solution must be finite.');
   return [
     { label: 'Force (F)', value: num(force, 4) + ' N', main: true },
     { label: 'Mass (m)', value: num(mass, 4) + ' kg' },
@@ -78,13 +84,14 @@ export function newtonsSecondLaw(v: Record<string, any>): CalcResult[] {
 }
 
 export function densityCalc(v: Record<string, any>): CalcResult[] {
-  const mass = safe(v.mass, -1e15), vol = safe(v.volume, -1e15), dens = safe(v.density, -1e15);
+  const mass = optional(v.mass), vol = optional(v.volume), dens = optional(v.density);
   const known = [mass, vol, dens].filter(x => x !== -1e15).length;
-  if (known < 2) return [{ label: 'Enter any two values', value: '—', main: true }];
+  if (known !== 2) return invalid('Enter exactly two values and leave the unknown value blank.');
   let m = mass, V = vol, d = dens;
   if (mass === -1e15) m = dens * vol;
   else if (vol === -1e15) V = mass / dens;
   else d = mass / vol;
+  if (![m, V, d].every(Number.isFinite) || m < 0 || V <= 0 || d < 0) return invalid('Use nonnegative mass and density and a positive volume.');
   const vs_water = d / 1000; // relative to water density 1000 kg/m³
   return [
     { label: 'Density (ρ)', value: num(d, 4) + ' kg/m³', main: true },
@@ -103,8 +110,8 @@ export function phCalc(v: Record<string, any>): CalcResult[] {
   const rounded = Math.round(ph);
   return [
     { label: 'Classification', value: type, main: true },
-    { label: 'H⁺ concentration', value: num(hConc, 3) + ' mol/L' },
-    { label: 'OH⁻ concentration', value: num(ohConc, 3) + ' mol/L' },
+    { label: 'H⁺ concentration', value: hConc.toExponential(3) + ' mol/L' },
+    { label: 'OH⁻ concentration', value: ohConc.toExponential(3) + ' mol/L' },
     { label: 'pOH', value: num(14 - ph, 2) },
     { label: 'Example at this pH', value: examples[rounded] || '—' },
   ];
@@ -119,13 +126,14 @@ export function halfLife(v: Record<string, any>): CalcResult[] {
   return [
     { label: 'Remaining amount', value: num(remaining, 4), main: true },
     { label: 'Decayed amount', value: num(decayed, 4) },
-    { label: 'Percent remaining', value: pct((remaining / initial) * 100, 2) },
+    { label: 'Percent remaining', value: pct(initial === 0 ? 0 : (remaining / initial) * 100, 2) },
     { label: 'Half-lives elapsed', value: num(halfLivesElapsed, 3) },
   ];
 }
 
 export function kinematicCalc(v: Record<string, any>): CalcResult[] {
-  const u = safe(v.initial, -1e15), a = safe(v.acceleration, -1e15), t = safe(v.time, -1e15), s = safe(v.displacement, -1e15);
+  const u = optional(v.initial), a = optional(v.acceleration), t = optional(v.time), s = optional(v.displacement);
+  if ([u, a, t, s].some(x => !Number.isFinite(x))) return invalid('Enter finite numbers.');
   // Solve using SUVAT: s=ut+½at², v=u+at, v²=u²+2as
   let vi = u === -1e15 ? null : u;
   let acc = a === -1e15 ? null : a;
@@ -141,7 +149,7 @@ export function kinematicCalc(v: Record<string, any>): CalcResult[] {
     vf = disc >= 0 ? Math.sqrt(disc) : null;
     if (time === null && acc !== 0 && vf !== null) time = (vf - vi) / acc;
   }
-  if (vi === null && vf === null) return [{ label: 'Enter at least 3 known values', value: '—', main: true }];
+  if (vf === null) return [{ label: 'Enter at least 3 known values', value: '—', main: true }];
   return [
     { label: 'Initial velocity (u)', value: vi !== null ? num(vi, 4) + ' m/s' : '—', main: true },
     { label: 'Final velocity (v)', value: vf !== null ? num(vf, 4) + ' m/s' : '—' },

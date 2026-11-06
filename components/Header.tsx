@@ -56,17 +56,17 @@ export default function Header() {
             <div key={g.label} className="nav-group"
               onMouseEnter={() => setActiveGroup(g.label)}>
               <button type="button" className="nav-trigger" aria-expanded={activeGroup === g.label}
-                aria-haspopup="true" onClick={() => setActiveGroup(activeGroup === g.label ? null : g.label)}>
+                onClick={() => setActiveGroup(activeGroup === g.label ? null : g.label)}>
                 {g.label}
                 <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" className="chev"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" /></svg>
               </button>
-              <div className={`mega${activeGroup === g.label ? ' show' : ''}`} role="menu">
+              <div className={`mega${activeGroup === g.label ? ' show' : ''}`}>
                 <div className="mega-inner">
                   {g.keys.map(k => {
                     const c = catMap[k]; if (!c) return null;
                     const count = ALL_TOOLS.filter(t => t.category === k).length;
                     return (
-                      <Link key={k} href={`/${k}`} role="menuitem" className="mega-item"
+                      <Link key={k} href={`/${k}`} className="mega-item"
                         onClick={() => setActiveGroup(null)}>
                         <span className="mega-dot" style={{ background: c.accent }} aria-hidden="true" />
                         <span>
@@ -98,7 +98,7 @@ export default function Header() {
       {/* Mobile drawer */}
       <div className={`drawer-backdrop${open ? ' show' : ''}`} onClick={() => setOpen(false)} aria-hidden="true" />
       {/* @ts-ignore — inert is a valid HTML attribute, React types lag behind */}
-      <nav className={`drawer${open ? ' show' : ''}`} aria-label="Mobile categories" inert={!open ? true : undefined}>
+      <nav className={`drawer${open ? ' show' : ''}`} aria-label="Mobile categories" inert={!open ? "" : undefined}>
         {GROUPS.map(g => (
           <div key={g.label} className="drawer-group">
             <div className="drawer-label">{g.label}</div>

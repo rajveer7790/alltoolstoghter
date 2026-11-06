@@ -1,34 +1,36 @@
+import { parseCalendarDate, calendarDay } from '../calendar';
 import { CalcResult } from '../types';
 import { int, num, money, safe } from '../format';
 
 const DAY = 86400000;
-const parse = (s: unknown): Date | null => {
-  const d = new Date(String(s || ''));
-  return isNaN(d.getTime()) ? null : d;
-};
+const parse = parseCalendarDate;
 
 export function age(v: Record<string, any>): CalcResult[] {
   const dob = parse(v.dob); const asOf = parse(v.asof) || new Date();
   if (!dob) return [{ label: 'Enter a birth date', value: 'Pick your date of birth to compute age.', main: true }];
   if (dob > asOf) return [{ label: 'Check dates', value: 'Birth date is in the future.', main: true }];
   let y = asOf.getFullYear() - dob.getFullYear();
-  let m = asOf.getMonth() - dob.getMonth();
-  let d = asOf.getDate() - dob.getDate();
-  if (d < 0) { m--; d += new Date(asOf.getFullYear(), asOf.getMonth(), 0).getDate(); }
-  if (m < 0) { y--; m += 12; }
-  const totalDays = Math.floor((asOf.getTime() - dob.getTime()) / DAY);
+  const anniversary = (years: number, months = 0) => {
+    const d = new Date(dob); d.setDate(1); d.setFullYear(dob.getFullYear() + years); d.setMonth(dob.getMonth() + months);
+    d.setDate(Math.min(dob.getDate(), new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate())); return d;
+  };
+  if (calendarDay(anniversary(y)) > calendarDay(asOf)) y--;
+  let m = 0;
+  while (m < 11 && calendarDay(anniversary(y, m + 1)) <= calendarDay(asOf)) m++;
+  const d = calendarDay(asOf) - calendarDay(anniversary(y, m));
+  const totalDays = Math.floor(calendarDay(asOf) - calendarDay(dob));
   const next = new Date(dob); next.setFullYear(asOf.getFullYear() + (new Date(asOf.getFullYear(), dob.getMonth(), dob.getDate()) < asOf ? 1 : 0));
   return [
     { label: 'Age', value: `${y} years, ${m} months, ${d} days`, main: true },
     { label: 'Total days lived', value: int(totalDays) },
-    { label: 'Days to next birthday', value: int(Math.ceil((next.getTime() - asOf.getTime()) / DAY)) },
+    { label: 'Days to next birthday', value: int(Math.ceil(calendarDay(next) - calendarDay(asOf))) },
   ];
 }
 
 export function daysBetween(v: Record<string, any>): CalcResult[] {
   const a = parse(v.start), b = parse(v.end);
   if (!a || !b) return [{ label: 'Pick both dates', value: 'A start and end date are required.', main: true }];
-  const days = Math.round(Math.abs(b.getTime() - a.getTime()) / DAY);
+  const days = Math.round(Math.abs(calendarDay(b) - calendarDay(a)));
   return [
     { label: 'Days between', value: int(days), main: true },
     { label: 'Weeks', value: int(Math.floor(days / 7)) + ' wk ' + (days % 7) + ' d' },
@@ -43,8 +45,13 @@ export function addDays(v: Record<string, any>): CalcResult[] {
   const d = new Date(start);
   if (unit === 'days') d.setDate(d.getDate() + amount);
   else if (unit === 'weeks') d.setDate(d.getDate() + amount * 7);
-  else if (unit === 'months') d.setMonth(d.getMonth() + amount);
-  else d.setFullYear(d.getFullYear() + amount);
+  else {
+    const day = d.getDate(); d.setDate(1);
+    if (unit === 'months') d.setMonth(d.getMonth() + amount);
+    else d.setFullYear(d.getFullYear() + amount);
+    const last = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    d.setDate(Math.min(day, last));
+  }
   return [
     { label: 'Resulting date', value: d.toDateString(), main: true },
     { label: 'Day of week', value: d.toLocaleDateString('en-US', { weekday: 'long' }) },
@@ -55,7 +62,7 @@ export function daysUntil(v: Record<string, any>): CalcResult[] {
   const target = parse(v.target);
   if (!target) return [{ label: 'Pick a date', value: 'Choose a future date to count down to.', main: true }];
   const today = new Date(); today.setHours(0, 0, 0, 0); target.setHours(0, 0, 0, 0);
-  const days = Math.round((target.getTime() - today.getTime()) / DAY);
+  const days = Math.round(calendarDay(target) - calendarDay(today));
   if (days < 0) return [{ label: 'That date has passed', value: int(-days) + ' days ago', main: true }];
   return [
     { label: 'Days until', value: int(days), main: true },
@@ -87,16 +94,17 @@ export function hoursWorked(v: Record<string, any>): CalcResult[] {
 }
 
 export function businessDays(v: Record<string, any>): CalcResult[] {
-  const a = new Date(String(v.start || '')), b = new Date(String(v.end || ''));
-  if (isNaN(a.getTime()) || isNaN(b.getTime())) return [{ label: 'Pick both dates', value: 'A start and end date are required.', main: true }];
+  const a = parse(v.start), b = parse(v.end);
+  if (!a || !b) return [{ label: 'Pick both dates', value: 'A start and end date are required.', main: true }];
   const [start, end] = a <= b ? [a, b] : [b, a];
-  let count = 0, weekends = 0;
-  const cur = new Date(start);
-  while (cur <= end) {
-    const day = cur.getDay();
-    if (day === 0 || day === 6) weekends++; else count++;
-    cur.setDate(cur.getDate() + 1);
+  const total = calendarDay(end) - calendarDay(start) + 1;
+  const weeks = Math.floor(total / 7);
+  let count = weeks * 5;
+  for (let i = 0; i < total % 7; i++) {
+    const day = (start.getDay() + i) % 7;
+    if (day !== 0 && day !== 6) count++;
   }
+  const weekends = total - count;
   return [
     { label: 'Business days', value: int(count), main: true },
     { label: 'Weekend days', value: int(weekends) },
@@ -106,8 +114,8 @@ export function businessDays(v: Record<string, any>): CalcResult[] {
 }
 
 export function weekNumber(v: Record<string, any>): CalcResult[] {
-  const d = new Date(String(v.date || ''));
-  if (isNaN(d.getTime())) return [{ label: 'Pick a date', value: '—', main: true }];
+  const d = parse(v.date);
+  if (!d) return [{ label: 'Pick a date', value: '—', main: true }];
   const target = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
   const dayNum = (target.getUTCDay() + 6) % 7;
   target.setUTCDate(target.getUTCDate() - dayNum + 3);
@@ -116,7 +124,7 @@ export function weekNumber(v: Record<string, any>): CalcResult[] {
   return [
     { label: 'ISO week number', value: `Week ${week}`, main: true },
     { label: 'Year', value: String(target.getUTCFullYear()) },
-    { label: 'Day of year', value: String(Math.ceil((d.getTime() - new Date(d.getFullYear(), 0, 0).getTime()) / 86400000)) },
+    { label: 'Day of year', value: String(Math.ceil(calendarDay(d) - calendarDay(new Date(d.getFullYear(), 0, 0)))) },
   ];
 }
 
@@ -155,22 +163,21 @@ export function timeDuration(v: Record<string, any>): CalcResult[] {
 
 // ---------- Wave 3 date/time ----------
 export function dayOfWeek(v: Record<string, any>): CalcResult[] {
-  const d = new Date(String(v.date || ''));
-  if (isNaN(d.getTime())) return [{ label: 'Pick a date', value: '—', main: true }];
+  const d = parse(v.date);
+  if (!d) return [{ label: 'Pick a date', value: '—', main: true }];
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const isLeap = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
   return [
     { label: 'Day of the week', value: days[d.getDay()], main: true },
-    { label: 'Day of year', value: String(Math.ceil((d.getTime() - new Date(d.getFullYear(), 0, 0).getTime()) / 86400000)) },
+    { label: 'Day of year', value: String(Math.ceil(calendarDay(d) - calendarDay(new Date(d.getFullYear(), 0, 0)))) },
     { label: 'Leap year?', value: isLeap(d.getFullYear()) ? 'Yes' : 'No' },
   ];
 }
 
 export function ageDifference(v: Record<string, any>): CalcResult[] {
-  const a = new Date(String(v.date1 || '')), b = new Date(String(v.date2 || ''));
-  if (isNaN(a.getTime()) || isNaN(b.getTime())) return [{ label: 'Pick both dates', value: 'Two birth dates are required.', main: true }];
-  const diffMs = Math.abs(a.getTime() - b.getTime());
-  const days = Math.floor(diffMs / 86400000);
+  const a = parse(v.date1), b = parse(v.date2);
+  if (!a || !b) return [{ label: 'Pick both dates', value: 'Two birth dates are required.', main: true }];
+  const days = Math.abs(calendarDay(b) - calendarDay(a));
   const years = Math.floor(days / 365.25);
   const months = Math.floor((days - years * 365.25) / 30.44);
   return [
@@ -181,8 +188,8 @@ export function ageDifference(v: Record<string, any>): CalcResult[] {
 }
 
 export function addBusinessDays(v: Record<string, any>): CalcResult[] {
-  const start = new Date(String(v.date || ''));
-  if (isNaN(start.getTime())) return [{ label: 'Pick a date', value: '—', main: true }];
+  const start = parse(v.date);
+  if (!start) return [{ label: 'Pick a date', value: '—', main: true }];
   let n = Math.round(safe(v.days, -1000, 1000));
   const dir = n >= 0 ? 1 : -1; n = Math.abs(n);
   const cur = new Date(start); let added = 0;
@@ -199,9 +206,9 @@ export function addBusinessDays(v: Record<string, any>): CalcResult[] {
 }
 
 export function weeksBetween(v: Record<string, any>): CalcResult[] {
-  const a = new Date(String(v.start || '')), b = new Date(String(v.end || ''));
-  if (isNaN(a.getTime()) || isNaN(b.getTime())) return [{ label: 'Pick both dates', value: 'A start and end date are required.', main: true }];
-  const days = Math.abs(b.getTime() - a.getTime()) / 86400000;
+  const a = parse(v.start), b = parse(v.end);
+  if (!a || !b) return [{ label: 'Pick both dates', value: 'A start and end date are required.', main: true }];
+  const days = Math.abs(calendarDay(b) - calendarDay(a));
   return [
     { label: 'Weeks between', value: num(days / 7, 2), main: true },
     { label: 'Full weeks', value: int(Math.floor(days / 7)) },

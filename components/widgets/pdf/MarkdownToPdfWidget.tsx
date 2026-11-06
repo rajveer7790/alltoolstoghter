@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { StatusLine, PreviewModal, type PreviewData } from '../pdfShared';
 import { mdToHtml } from '@/lib/mdPreview';
 
-const SAMPLE = `# Project Report
+const SAMPLE = `## Project Report
 
 ## Summary
 This document was generated **entirely in your browser** from Markdown.

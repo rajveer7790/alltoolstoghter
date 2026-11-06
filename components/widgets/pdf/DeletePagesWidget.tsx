@@ -1,16 +1,7 @@
 'use client';
+import { parsePageRange } from '@/lib/pdfPages';
 import { useState } from 'react';
 import { FileDrop, StatusLine, PreviewModal, type PreviewData } from '../pdfShared';
-
-function parsePages(spec: string, max: number): Set<number> {
-  const set = new Set<number>();
-  for (const part of spec.split(',').map(s => s.trim()).filter(Boolean)) {
-    const m = part.match(/^(\d+)\s*-\s*(\d+)$/);
-    if (m) { const lo = Math.min(+m[1], +m[2]), hi = Math.max(+m[1], +m[2]); for (let p = lo; p <= hi; p++) if (p >= 1 && p <= max) set.add(p - 1); }
-    else { const p = parseInt(part, 10); if (p >= 1 && p <= max) set.add(p - 1); }
-  }
-  return set;
-}
 
 export default function DeletePagesWidget() {
   const [file, setFile] = useState<File | null>(null);
@@ -32,7 +23,7 @@ export default function DeletePagesWidget() {
     try {
       const { PDFDocument } = await import('pdf-lib');
       const doc = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
-      const drop = parsePages(spec, doc.getPageCount());
+      const drop = new Set(parsePageRange(spec, doc.getPageCount()));
       if (!drop.size) { setError('No valid pages to delete. Try e.g. 2, 5-6.'); setBusy(false); return; }
       if (drop.size >= doc.getPageCount()) { setError('You cannot delete every page.'); setBusy(false); return; }
       [...drop].sort((a, b) => b - a).forEach(i => doc.removePage(i)); // remove high→low

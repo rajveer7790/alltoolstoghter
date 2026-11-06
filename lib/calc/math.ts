@@ -235,7 +235,8 @@ export function rounding(v: Record<string, any>): CalcResult[] {
 }
 
 export function scientificNotation(v: Record<string, any>): CalcResult[] {
-  const n = safe(v.number);
+  const n = Number(v.number);
+  if (!Number.isFinite(n) || String(v.number).trim() === '') return [{ label: 'Check input', value: 'Enter a finite number.', main: true }];
   if (n === 0) return [{ label: 'Scientific notation', value: '0 × 10⁰', main: true }];
   const exp = Math.floor(Math.log10(Math.abs(n)));
   const mantissa = n / Math.pow(10, exp);

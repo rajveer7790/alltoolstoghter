@@ -1,16 +1,7 @@
 'use client';
+import { parsePageRange } from '@/lib/pdfPages';
 import { useState } from 'react';
 import { FileDrop, StatusLine, PreviewModal, type PreviewData } from '../pdfShared';
-
-function parsePages(spec: string, max: number): number[] {
-  const out: number[] = [];
-  for (const part of spec.split(',').map(s => s.trim()).filter(Boolean)) {
-    const m = part.match(/^(\d+)\s*-\s*(\d+)$/);
-    if (m) { const lo = Math.min(+m[1], +m[2]), hi = Math.max(+m[1], +m[2]); for (let p = lo; p <= hi; p++) if (p >= 1 && p <= max) out.push(p - 1); }
-    else { const p = parseInt(part, 10); if (p >= 1 && p <= max) out.push(p - 1); }
-  }
-  return out;
-}
 
 export default function ExtractPagesWidget() {
   const [file, setFile] = useState<File | null>(null);
@@ -32,7 +23,7 @@ export default function ExtractPagesWidget() {
     try {
       const { PDFDocument } = await import('pdf-lib');
       const src = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
-      const idx = parsePages(spec, src.getPageCount());
+      const idx = parsePageRange(spec, src.getPageCount());
       if (!idx.length) { setError('No valid pages to extract. Try e.g. 1, 3-4.'); setBusy(false); return; }
       const out = await PDFDocument.create();
       const pages = await out.copyPages(src, idx);

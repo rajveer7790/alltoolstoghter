@@ -1,5 +1,6 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { wallTimeToInstant } from '@/lib/timezone';
+import { useEffect, useMemo, useState } from 'react';
 
 const ZONES = [
   'UTC', 'America/Los_Angeles', 'America/Denver', 'America/Chicago', 'America/New_York',
@@ -8,34 +9,18 @@ const ZONES = [
 ];
 
 export default function TimeZoneWidget() {
-  const [dt, setDt] = useState(() => {
-    const now = new Date();
-    return new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
-  });
+  const [dt, setDt] = useState('');
+  useEffect(() => { const now = new Date(); setDt(new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16)); }, []);
   const [from, setFrom] = useState('America/New_York');
   const [to, setTo] = useState('Asia/Kolkata');
 
   const result = useMemo(() => {
     if (!dt) return null;
     try {
-      // Interpret the entered wall-clock time as being in the "from" zone.
-      const [datePart, timePart] = dt.split('T');
-      const [y, mo, d] = datePart.split('-').map(Number);
-      const [h, mi] = timePart.split(':').map(Number);
-      // Find UTC instant such that, formatted in `from` zone, it shows the entered time.
-      let guess = Date.UTC(y, mo - 1, d, h, mi);
-      for (let i = 0; i < 3; i++) {
-        const shown = new Date(guess).toLocaleString('en-US', { timeZone: from, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-        const m = shown.match(/(\d+)\/(\d+)\/(\d+),?\s+(\d+):(\d+)/);
-        if (!m) break;
-        const shownUTC = Date.UTC(+m[3], +m[1] - 1, +m[2], +m[4], +m[5]);
-        const diff = Date.UTC(y, mo - 1, d, h, mi) - shownUTC;
-        if (diff === 0) break;
-        guess += diff;
-      }
+      const guess = wallTimeToInstant(dt, from);
       const fmt = (z: string) => new Date(guess).toLocaleString('en-US', { timeZone: z, dateStyle: 'medium', timeStyle: 'short' });
-      return { fromStr: fmt(from), toStr: fmt(to) };
-    } catch { return null; }
+      return { fromStr: fmt(from), toStr: fmt(to), error: '' };
+    } catch (e) { return { fromStr: '', toStr: '', error: e instanceof Error ? e.message : 'Check the time.' }; }
   }, [dt, from, to]);
 
   const Sel = ({ id, val, set, label }: any) => (
@@ -55,7 +40,8 @@ export default function TimeZoneWidget() {
         <Sel id="tz-from" val={from} set={setFrom} label="From zone" />
         <Sel id="tz-to" val={to} set={setTo} label="To zone" />
       </div>
-      {result && (
+      {result?.error && <p role="alert">{result.error}</p>}
+      {result && !result.error && (
         <div className="readout" style={{ marginTop: 14 }} aria-live="polite">
           <div className="readout-main" style={{ fontSize: 18 }}><span className="rlabel">{to.replace(/_/g, ' ')}</span>{result.toStr}</div>
           <div className="readout-rows">

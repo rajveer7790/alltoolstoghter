@@ -1,4 +1,5 @@
 import { CalcResult } from '../types';
+import * as EXTRA from './extra';
 import * as F from './finance';
 import * as H from './health';
 import * as M from './math';
@@ -11,6 +12,18 @@ import * as BIZ from './business';
 import * as INV from './investing';
 import * as TX from './tax';
 export const COMPUTES: Record<string, (v: Record<string, any>) => CalcResult[]> = {
+  'fuel-cost-calculator': EXTRA.fuelCost,
+  'circle-area-calculator': EXTRA.circleArea,
+  'rectangle-area-calculator': EXTRA.rectangleArea,
+  'concrete-volume-calculator': EXTRA.concreteVolume,
+  'electricity-bill-calculator': EXTRA.electricityBill,
+  'calorie-deficit-calculator': EXTRA.calorieDeficit,
+  'waist-to-height-ratio-calculator': EXTRA.waistHeight,
+  'military-time-converter': EXTRA.militaryTime,
+  'pregnancy-week-calculator': EXTRA.pregnancyWeek,
+  'scientific-notation-calculator': M.scientificNotation,
+  'logarithm-calculator': M.logarithm,
+  'permutation-combination-calculator': M.nCrnPr,
   // Wave 1 finance
   'mortgage-calculator': F.mortgage, 'loan-calculator': F.loan, 'auto-loan-calculator': F.autoLoan,
   'compound-interest-calculator': F.compound, 'simple-interest-calculator': F.simpleInterest,

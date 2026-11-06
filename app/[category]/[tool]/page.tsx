@@ -1,10 +1,10 @@
+import { BACKEND_REQUIRED, canonicalToolPath } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ALL_TOOLS, bySlug, getCategory, SITE } from '@/lib/registry';
 import ToolWidget from '@/components/widgets';
 import RelatedTools from '@/components/RelatedTools';
-import ToolCard from '@/components/ToolCard';
 import JsonLd from '@/components/JsonLd';
 import AdSlot from '@/components/AdSlot';
 
@@ -32,13 +32,6 @@ const CATEGORY_MAP: Record<string, string> = {
   image: 'MultimediaApplication',
 };
 
-const BACKEND_REQUIRED = new Set([
-  'grammar-checker',
-  'paraphrasing-tool',
-  'plagiarism-checker',
-  'url-shortener',
-]);
-
 export function generateStaticParams() {
   return ALL_TOOLS.map(t => ({ category: t.category, tool: t.slug }));
 }
@@ -50,8 +43,8 @@ export function generateMetadata({ params }: { params: { category: string; tool:
   return {
     title: t.name,
     description: t.metaDescription || `${t.short.replace(/\.$/, '')}. Free, instant, and private — runs in your browser.`,
-    alternates: { canonical: `/${t.category}/${t.slug}` },
-    robots: noindex ? { index: false, follow: false } : undefined,
+    alternates: { canonical: canonicalToolPath(t) },
+    robots: noindex ? { index: false, follow: true } : undefined,
     openGraph: {
       title: `${t.name} | ${SITE.name}`,
       description: t.metaDescription || t.short,
@@ -88,7 +81,6 @@ export default function ToolPage({ params }: { params: { category: string; tool:
             operatingSystem: 'Web',
             description: t.short,
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-            dateModified: '2026-10-24',
             author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
           },
           {
@@ -127,6 +119,7 @@ export default function ToolPage({ params }: { params: { category: string; tool:
         <strong>Quick answer:</strong> {t.metaDescription || t.short}
       </p>
 
+      {BACKEND_REQUIRED.has(t.slug) && <p className="availability-note" role="note">This online service may be unavailable. When enabled, submitted text or URLs are sent to a server and its provider. <Link href="/privacy">Read the privacy details</Link>.</p>}
       <ToolWidget tool={t} />
 
       <AdSlot id={`${t.slug}-1`} />
@@ -152,6 +145,7 @@ export default function ToolPage({ params }: { params: { category: string; tool:
 
       <AdSlot id={`${t.slug}-2`} />
 
+      {t.sources && <section className="prose" aria-labelledby="sources-title"><h2 id="sources-title">Sources and assumptions</h2><ul>{t.sources.map(source => <li key={source.url}><a href={source.url} rel="noopener noreferrer">{source.label}</a></li>)}</ul></section>}
       <RelatedTools tool={t} />
     </div>
   );

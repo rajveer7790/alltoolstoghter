@@ -1,14 +1,12 @@
 'use client';
 import { useMemo, useState } from 'react';
+import { parseIntegerBase } from '@/lib/calc/numberbase';
 import Readout from './Readout';
 
 export default function NumberBaseWidget() {
   const [value, setValue] = useState('255');
   const [base, setBase] = useState(10);
-  const parsed = useMemo(() => {
-    const n = parseInt(value.trim(), base);
-    return Number.isFinite(n) && !isNaN(n) ? n : null;
-  }, [value, base]);
+  const parsed = useMemo(() => parseIntegerBase(value, base), [value, base]);
 
   return (
     <div className="tool-card">

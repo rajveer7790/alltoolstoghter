@@ -2,72 +2,6 @@ import { ToolDef } from '../types';
 
 export const EXTRA: ToolDef[] = [
 {
-  slug: 'sleep-calculator', name: 'Sleep Calculator', prio: 'P1', category: 'health', widget: 'calc',
-  short: 'Best bedtimes and wake times based on 90-minute sleep cycles.',
-  metaDescription: 'Free Sleep Calculator. Find the best bedtime or wake-up time using 90-minute sleep cycles for better rest.',
-  keywords: ['sleep calculator', 'sleep cycle calculator', 'best bedtime calculator', 'when to wake up'],
-  fields: [{ key: 'wake', label: 'Desired wake time (24h)', type: 'text', def: '07:00' }],
-  content: {
-    intro: 'Calculate ideal bedtimes based on 90-minute sleep cycles so you wake up at the end of a cycle instead of in the middle of deep sleep.',
-    how: 'A full sleep cycle is roughly 90 minutes. The tool subtracts 4–6 cycles (6–9 hours) from your wake time, plus ~15 minutes to fall asleep.',
-    howSteps: [
-      'Enter the time you need to wake up.',
-      'The calculator lists bedtimes for 4, 5, and 6 full sleep cycles.',
-      'Choose the bedtime that gives you enough sleep without waking mid-cycle.'
-    ],
-    faqs: [
-      ['Why 90-minute cycles?', 'Sleep progresses through light, deep, and REM stages in roughly 90-minute cycles. Waking at the end of a cycle feels more refreshed.'],
-      ['How much sleep do I need?', 'Most adults need 7–9 hours. The tool shows options in that range.'],
-      ['Does this replace a sleep study?', 'No. It is a practical guide based on average cycle length. Individual sleep varies.'],
-    ],
-  },
-  related: ['bmi-calculator', 'tdee-calculator', 'pace-calculator', 'water-intake-calculator'],
-},
-{
-  slug: 'water-intake-calculator', name: 'Water Intake Calculator', prio: 'P2', category: 'health', widget: 'calc',
-  short: 'Daily water recommendation based on weight and activity.',
-  metaDescription: 'Calculate how much water you should drink daily. Free water intake calculator based on weight and activity level.',
-  keywords: ['water intake calculator', 'how much water should I drink', 'daily water calculator'],
-  fields: [{ key: 'weight', label: 'Weight (kg)', type: 'number', def: 70, min: 30, max: 300 }, { key: 'activity', label: 'Activity', type: 'select', def: 'moderate', options: [{ value: 'sedentary', label: 'Sedentary' }, { value: 'moderate', label: 'Moderate' }, { value: 'active', label: 'Active' }] }],
-  content: {
-    intro: 'Estimate your daily water needs. A common starting point is 30–35 ml per kg of body weight, adjusted for activity.',
-    how: 'Base = weight(kg) × 33 ml. Active people may need more. This is a general guide, not medical advice.',
-    howSteps: [
-      'Enter your weight in kilograms.',
-      'Select your typical activity level.',
-      'See the suggested daily water intake in liters and ounces.'
-    ],
-    faqs: [
-      ['Is 8 glasses enough?', '8 glasses (~2 L) is a rough average. Needs vary by weight, climate, and exercise.'],
-      ['Does coffee count?', 'Yes, most beverages contribute to fluid intake, though water is best for pure hydration.'],
-      ['When should I drink more?', 'Hot weather, intense exercise, or illness increases needs.'],
-    ],
-  },
-  related: ['bmi-calculator', 'tdee-calculator', 'calorie-calculator', 'sleep-calculator'],
-},
-{
-  slug: 'heart-rate-zone-calculator', name: 'Heart Rate Zone Calculator', prio: 'P2', category: 'health', widget: 'calc',
-  short: 'Training heart rate zones from your age and resting HR.',
-  metaDescription: 'Calculate your heart rate training zones. Free calculator for fat burn, cardio, and peak zones.',
-  keywords: ['heart rate zone calculator', 'target heart rate', 'cardio zones'],
-  fields: [{ key: 'age', label: 'Age', type: 'number', def: 30, min: 10, max: 100 }, { key: 'resting', label: 'Resting heart rate (optional)', type: 'number', def: 60, min: 40, max: 120 }],
-  content: {
-    intro: 'Find your heart rate zones for different training goals using the Karvonen formula or simple percentage of max heart rate.',
-    how: 'Estimated max HR = 220 − age. Zones are typically 50–60% (warm-up), 60–70% (fat burn), 70–80% (cardio), 80–90% (peak).',
-    howSteps: [
-      'Enter your age.',
-      'Optionally enter your resting heart rate for the Karvonen method.',
-      'Review the BPM ranges for each training zone.'
-    ],
-    faqs: [
-      ['What is the Karvonen method?', 'It uses heart rate reserve (max − resting) for more personalized zones.'],
-      ['Is 220 − age accurate?', 'It is a rough estimate. A lab test or field test is more precise.'],
-      ['Which zone for weight loss?', 'The fat-burn zone (60–70%) is often recommended, but total calorie burn matters more.'],
-    ],
-  },
-  related: ['pace-calculator', 'tdee-calculator', 'one-rep-max-calculator', 'bmi-calculator'],
-},
-{
   slug: 'fuel-cost-calculator', name: 'Fuel Cost Calculator', prio: 'P1', category: 'finance', widget: 'calc',
   short: 'Estimate trip fuel cost from distance, MPG/L/100km, and fuel price.',
   metaDescription: 'Calculate trip fuel cost. Free fuel cost calculator for US MPG or metric fuel economy.',
@@ -90,30 +24,8 @@ export const EXTRA: ToolDef[] = [
   related: ['auto-loan-calculator', 'salary-calculator', 'tip-calculator', 'discount-calculator'],
 },
 {
-  slug: 'triangle-area-calculator', name: 'Triangle Area Calculator', prio: 'P2', category: 'math', widget: 'calc',
-  short: 'Area of a triangle from base and height, or three sides (Heron\'s formula).',
-  metaDescription: 'Calculate triangle area. Free calculator using base×height or Heron\'s formula from three sides.',
-  keywords: ['triangle area calculator', 'herons formula', 'area of triangle'],
-  fields: [{ key: 'base', label: 'Base', type: 'number', def: 10, min: 0 }, { key: 'height', label: 'Height', type: 'number', def: 5, min: 0 }],
-  content: {
-    intro: 'Calculate the area of a triangle. The simplest method is (base × height) ÷ 2. For three sides, use Heron\'s formula.',
-    how: 'Area = (b × h) / 2. Heron\'s formula: s = (a+b+c)/2, Area = √[s(s−a)(s−b)(s−c)].',
-    howSteps: [
-      'Enter the base and height of the triangle.',
-      'The calculator applies the standard area formula.',
-      'View the area in the same units squared.'
-    ],
-    faqs: [
-      ['What if I only know the three sides?', 'Use Heron\'s formula. Many geometry calculators support both methods.'],
-      ['Does the height have to be inside the triangle?', 'No. For obtuse triangles the height may fall outside, but the formula still works.'],
-      ['Units?', 'The result is in square units of whatever you entered (cm², in², etc.).'],
-    ],
-  },
-  related: ['percentage-calculator', 'circle-area-calculator', 'slope-calculator', 'quadratic-formula-calculator'],
-},
-{
   slug: 'circle-area-calculator', name: 'Circle Area Calculator', prio: 'P2', category: 'math', widget: 'calc',
-  short: 'Area and circumference of a circle from radius or diameter.',
+  short: 'Area and circumference of a circle from its radius.',
   metaDescription: 'Calculate circle area and circumference. Free online circle calculator using radius or diameter.',
   keywords: ['circle area calculator', 'circumference calculator', 'area of circle'],
   fields: [{ key: 'radius', label: 'Radius', type: 'number', def: 5, min: 0 }],
@@ -123,7 +35,7 @@ export const EXTRA: ToolDef[] = [
     howSteps: [
       'Enter the radius of the circle.',
       'The tool computes area and circumference.',
-      'Optionally convert between radius and diameter.'
+      'The diameter is also shown as twice the radius.'
     ],
     faqs: [
       ['What is π?', 'Pi is the ratio of a circle\'s circumference to its diameter, approximately 3.14159.'],
@@ -204,7 +116,7 @@ export const EXTRA: ToolDef[] = [
   short: 'Calculate concrete volume for slabs, footings, and columns.',
   metaDescription: 'Free concrete calculator. Estimate volume in cubic yards or cubic meters for slabs and footings.',
   keywords: ['concrete calculator', 'concrete volume calculator', 'how much concrete do I need'],
-  fields: [{ key: 'length', label: 'Length (ft or m)', type: 'number', def: 10, min: 0 }, { key: 'width', label: 'Width', type: 'number', def: 10, min: 0 }, { key: 'thickness', label: 'Thickness', type: 'number', def: 0.33, min: 0 }],
+  fields: [{ key: 'length', label: 'Length (ft)', type: 'number', def: 10, min: 0 }, { key: 'width', label: 'Width (ft)', type: 'number', def: 10, min: 0 }, { key: 'thickness', label: 'Thickness (ft)', type: 'number', def: 0.33, min: 0 }],
   content: {
     intro: 'Estimate the volume of concrete needed for a slab, footing, or similar rectangular pour. Results in cubic feet, cubic yards, and cubic meters.',
     how: 'Volume = length × width × thickness. Convert cubic feet to cubic yards by dividing by 27.',
@@ -220,28 +132,6 @@ export const EXTRA: ToolDef[] = [
     ],
   },
   related: ['paint-calculator', 'flooring-calculator', 'roof-pitch-calculator', 'percentage-calculator'],
-},
-{
-  slug: 'smoking-cost-calculator', name: 'Smoking Cost Calculator', prio: 'P2', category: 'finance', widget: 'calc',
-  short: 'How much smoking costs per year and over time.',
-  metaDescription: 'Calculate the cost of smoking. See how much money you spend on cigarettes per year and over 10 or 20 years.',
-  keywords: ['smoking cost calculator', 'cigarette cost calculator', 'how much does smoking cost'],
-  fields: [{ key: 'packs', label: 'Packs per day', type: 'number', def: 1, min: 0.1, step: 0.1 }, { key: 'price', label: 'Price per pack', type: 'number', def: 8, min: 0 }],
-  content: {
-    intro: 'See the real financial cost of smoking. Calculate daily, monthly, yearly, and long-term expenses based on packs per day and price.',
-    how: 'Yearly cost = packs/day × price × 365. The tool also shows 5-year and 10-year totals.',
-    howSteps: [
-      'Enter how many packs you smoke per day.',
-      'Enter the price of one pack.',
-      'Review the annual and long-term cost.'
-    ],
-    faqs: [
-      ['Does this include health costs?', 'No — this is only the direct cost of cigarettes. Health costs are much higher.'],
-      ['What if I smoke less than a pack?', 'Enter a decimal (e.g. 0.5 for half a pack).'],
-      ['How can I use this?', 'Many people use the number as motivation to quit or to calculate savings after quitting.'],
-    ],
-  },
-  related: ['savings-calculator', 'compound-interest-calculator', 'salary-calculator', 'fuel-cost-calculator'],
 },
 {
   slug: 'electricity-bill-calculator', name: 'Electricity Bill Calculator', prio: 'P2', category: 'finance', widget: 'calc',
@@ -264,28 +154,6 @@ export const EXTRA: ToolDef[] = [
     ],
   },
   related: ['fuel-cost-calculator', 'savings-calculator', 'salary-calculator', 'tip-calculator'],
-},
-{
-  slug: 'protein-intake-calculator', name: 'Protein Intake Calculator', prio: 'P2', category: 'health', widget: 'calc',
-  short: 'Daily protein recommendation based on weight and goal.',
-  metaDescription: 'Calculate daily protein needs. Free protein intake calculator for muscle gain, maintenance, or fat loss.',
-  keywords: ['protein calculator', 'how much protein do I need', 'daily protein intake'],
-  fields: [{ key: 'weight', label: 'Weight (kg)', type: 'number', def: 70, min: 30, max: 300 }, { key: 'goal', label: 'Goal', type: 'select', def: 'maintain', options: [{ value: 'maintain', label: 'Maintain' }, { value: 'gain', label: 'Muscle gain' }, { value: 'loss', label: 'Fat loss' }] }],
-  content: {
-    intro: 'Estimate daily protein needs. Evidence-based ranges are typically 1.6–2.2 g per kg for active people, higher when in a calorie deficit.',
-    how: 'Maintain ≈ 1.6 g/kg, muscle gain ≈ 1.8–2.2 g/kg, fat loss ≈ 2.0–2.4 g/kg to preserve muscle.',
-    howSteps: [
-      'Enter your body weight.',
-      'Select your goal.',
-      'See the recommended daily protein in grams.'
-    ],
-    faqs: [
-      ['Is more protein always better?', 'Beyond ~2.2 g/kg the benefit plateaus for most people. Excess is mostly converted or excreted.'],
-      ['Does this include plant protein?', 'Yes. The calculator is source-agnostic. Complete proteins or combinations work.'],
-      ['Should I spread it out?', 'Yes — 20–40 g per meal is commonly recommended for muscle protein synthesis.'],
-    ],
-  },
-  related: ['macro-calculator', 'calorie-calculator', 'tdee-calculator', 'bmi-calculator'],
 },
 {
   slug: 'calorie-deficit-calculator', name: 'Calorie Deficit Calculator', prio: 'P2', category: 'health', widget: 'calc',
@@ -358,7 +226,7 @@ export const EXTRA: ToolDef[] = [
   short: 'Current pregnancy week and trimester from last period.',
   metaDescription: 'Calculate how many weeks pregnant you are. Free pregnancy week calculator from LMP.',
   keywords: ['pregnancy week calculator', 'how many weeks pregnant', 'gestational age calculator'],
-  fields: [{ key: 'lmp', label: 'First day of last period', type: 'date', def: '2026-01-15' }],
+  fields: [{ key: 'lmp', label: 'First day of last period', type: 'date', def: '' }],
   content: {
     intro: 'Calculate your current gestational age in weeks and days from the first day of your last menstrual period. Also shows trimester.',
     how: 'Gestational age starts from LMP. A full term pregnancy is about 40 weeks. Trimesters are roughly weeks 1–12, 13–26, and 27–40.',
@@ -396,49 +264,5 @@ export const EXTRA: ToolDef[] = [
     ],
   },
   related: ['triangle-area-calculator', 'circle-area-calculator', 'percentage-calculator', 'slope-calculator'],
-},
-{
-  slug: 'pythagorean-theorem-calculator', name: 'Pythagorean Theorem Calculator', prio: 'P2', category: 'math', widget: 'calc',
-  short: 'Find the missing side of a right triangle (a² + b² = c²).',
-  metaDescription: 'Pythagorean theorem calculator. Find the missing side of a right triangle.',
-  keywords: ['pythagorean theorem calculator', 'right triangle calculator', 'a2 b2 c2'],
-  fields: [{ key: 'a', label: 'Side a', type: 'number', def: 3, min: 0 }, { key: 'b', label: 'Side b', type: 'number', def: 4, min: 0 }, { key: 'c', label: 'Hypotenuse c (leave blank to solve)', type: 'number', def: 0, min: 0 }],
-  content: {
-    intro: 'Solve for the missing side of a right triangle using the Pythagorean theorem: a² + b² = c², where c is the hypotenuse.',
-    how: 'If you know a and b, c = √(a² + b²). If you know c and one leg, the other leg = √(c² − leg²).',
-    howSteps: [
-      'Enter the two known sides.',
-      'Leave the unknown side blank or zero.',
-      'The calculator solves for the missing side.'
-    ],
-    faqs: [
-      ['What is the hypotenuse?', 'The longest side, opposite the right angle.'],
-      ['Does this work for any triangle?', 'No — only right triangles (one 90° angle).'],
-      ['Can sides be zero?', 'No. All sides of a real triangle must be greater than zero.'],
-    ],
-  },
-  related: ['triangle-area-calculator', 'slope-calculator', 'quadratic-formula-calculator', 'square-root-calculator'],
-},
-{
-  slug: 'time-zone-converter', name: 'Time Zone Converter', prio: 'P2', category: 'date-time', widget: 'calc',
-  short: 'Convert time between major time zones.',
-  metaDescription: 'Convert time between time zones. Free online time zone converter for meetings and travel.',
-  keywords: ['time zone converter', 'world clock converter', 'convert time zones'],
-  fields: [{ key: 'time', label: 'Time (24h)', type: 'text', def: '14:00' }, { key: 'from', label: 'From zone', type: 'select', def: 'UTC', options: [{ value: 'UTC', label: 'UTC' }, { value: 'EST', label: 'US Eastern' }, { value: 'PST', label: 'US Pacific' }, { value: 'IST', label: 'India (IST)' }, { value: 'GMT', label: 'GMT' }] }, { key: 'to', label: 'To zone', type: 'select', def: 'IST', options: [{ value: 'UTC', label: 'UTC' }, { value: 'EST', label: 'US Eastern' }, { value: 'PST', label: 'US Pacific' }, { value: 'IST', label: 'India (IST)' }, { value: 'GMT', label: 'GMT' }] }],
-  content: {
-    intro: 'Convert a time from one time zone to another. Useful for scheduling calls, flights, and international meetings.',
-    how: 'Uses fixed offsets from UTC for common zones. Daylight saving is not automatically applied in this simple version.',
-    howSteps: [
-      'Enter the time you want to convert.',
-      'Select the source time zone and the target time zone.',
-      'See the equivalent time in the other zone.'
-    ],
-    faqs: [
-      ['Does this handle daylight saving?', 'This version uses standard offsets. Check current DST rules for accuracy during transitions.'],
-      ['What is UTC?', 'Coordinated Universal Time — the primary time standard by which the world regulates clocks.'],
-      ['Can I convert any city?', 'This tool covers major zones. For precise city-level conversion, use a full world clock.'],
-    ],
-  },
-  related: ['military-time-converter', 'hours-calculator', 'days-between-dates', 'age-calculator'],
 },
 ];

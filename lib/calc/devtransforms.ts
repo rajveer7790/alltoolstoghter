@@ -1,37 +1,35 @@
+import { mdToHtml } from '../mdPreview';
+import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
+import { parse as parseCss, generate as generateCss } from 'css-tree';
 /** Pure string transforms for developer tools. Each returns { output } or throws for invalid input. */
 
 export interface DevTransform {
   label: string;
-  fn: (input: string) => string;
+  fn: (input: string) => string | Promise<string>;
   placeholder?: string;
 }
 
 // --- minifiers (conservative, comment + whitespace stripping) ---
 function minifyCss(s: string): string {
-  return s
-    .replace(/\/\*[\s\S]*?\*\//g, '')       // comments
-    .replace(/\s+/g, ' ')                    // collapse ws
-    .replace(/\s*([{}:;,>~+])\s*/g, '$1')    // around tokens
-    .replace(/;}/g, '}')                     // trailing semicolons
-    .trim();
+  return generateCss(parseCss(s));
 }
-function minifyJs(s: string): string {
-  // Conservative: strip line comments and block comments and collapse leading/trailing ws per line.
-  // Note: this is a lightweight minifier, not a full parser — safe for most snippets.
-  return s
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .split('\n')
-    .map(l => l.replace(/\/\/(?:[^"'`]|"[^"]*"|'[^']*')*$/, '').trimEnd())
-    .filter(l => l.trim().length)
-    .join('\n')
-    .replace(/\n\s*/g, '\n');
+async function minifyJs(s: string): Promise<string> {
+  const { minify } = await import('terser');
+  const result = await minify(s, { compress: false, mangle: false, format: { comments: false } });
+  return result.code || '';
 }
-function minifyHtml(s: string): string {
-  return s
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/>\s+</g, '><')
-    .replace(/\s{2,}/g, ' ')
-    .trim();
+async function minifyHtml(s: string): Promise<string> {
+  const { parse, parseFragment, serialize } = await import('parse5');
+  const root = /<!doctype|<html[\s>]/i.test(s) ? parse(s) : parseFragment(s);
+  const stripComments = (node: any) => {
+    if (node.childNodes) {
+      node.childNodes = node.childNodes.filter((child: any) => child.nodeName !== '#comment' || /^\[if/i.test(child.data || ''));
+      node.childNodes.forEach(stripComments);
+    }
+    if (node.content) stripComments(node.content);
+  };
+  stripComments(root);
+  return serialize(root);
 }
 
 // --- HTML entities ---
@@ -44,7 +42,7 @@ function htmlDecode(s: string): string {
 
 // --- JSON string escape/unescape ---
 function jsonEscape(s: string): string { return JSON.stringify(s).slice(1, -1); }
-function jsonUnescape(s: string): string { return JSON.parse('"' + s.replace(/"/g, '\\"') + '"'); }
+function jsonUnescape(s: string): string { return JSON.parse('"' + s + '"'); }
 
 // --- SQL formatter (lightweight keyword newlining) ---
 function formatSql(s: string): string {
@@ -55,74 +53,9 @@ function formatSql(s: string): string {
 }
 
 // --- YAML <-> JSON (minimal: flat & nested objects, arrays, scalars) ---
-function jsonToYaml(s: string): string {
-  const obj = JSON.parse(s);
-  const dump = (val: any, indent: number): string => {
-    const pad = '  '.repeat(indent);
-    if (Array.isArray(val)) {
-      if (!val.length) return '[]';
-      return val.map(v => {
-        if (v !== null && typeof v === 'object') return `${pad}-\n${dump(v, indent + 1)}`;
-        return `${pad}- ${fmtScalar(v)}`;
-      }).join('\n');
-    }
-    if (val !== null && typeof val === 'object') {
-      const keys = Object.keys(val);
-      if (!keys.length) return '{}';
-      return keys.map(k => {
-        const v = val[k];
-        if (v !== null && typeof v === 'object' && Object.keys(v).length)
-          return `${pad}${k}:\n${dump(v, indent + 1)}`;
-        return `${pad}${k}: ${fmtScalar(v)}`;
-      }).join('\n');
-    }
-    return pad + fmtScalar(val);
-  };
-  const fmtScalar = (v: any): string => {
-    if (v === null) return 'null';
-    if (typeof v === 'string') return /[:#\-?\[\]{}&*!|>'"%@`]/.test(v) || v === '' ? JSON.stringify(v) : v;
-    return String(v);
-  };
-  return dump(obj, 0);
-}
+function jsonToYaml(s: string): string { return stringifyYaml(JSON.parse(s)); }
 function yamlToJson(s: string): string {
-  // Minimal YAML: 2-space indents, key: value, lists with "- ". Good for simple configs.
-  const lines = s.split('\n').filter(l => l.trim() && !l.trim().startsWith('#'));
-  const parseScalar = (v: string): any => {
-    v = v.trim();
-    if (v === 'null' || v === '~' || v === '') return null;
-    if (v === 'true') return true; if (v === 'false') return false;
-    if (/^-?\d+(\.\d+)?$/.test(v)) return Number(v);
-    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) return v.slice(1, -1);
-    return v;
-  };
-  const root: any = {};
-  const stack: { indent: number; container: any }[] = [{ indent: -1, container: root }];
-  for (const line of lines) {
-    const indent = line.match(/^\s*/)![0].length;
-    const content = line.trim();
-    while (stack.length > 1 && indent <= stack[stack.length - 1].indent) stack.pop();
-    const parent = stack[stack.length - 1].container;
-    if (content.startsWith('- ')) {
-      const val = parseScalar(content.slice(2));
-      if (!Array.isArray(parent.__arr)) parent.__arr = [];
-      parent.__arr.push(val);
-    } else {
-      const idx = content.indexOf(':');
-      const key = content.slice(0, idx).trim();
-      const rest = content.slice(idx + 1).trim();
-      if (rest === '') { parent[key] = {}; stack.push({ indent, container: parent[key] }); }
-      else parent[key] = parseScalar(rest);
-    }
-  }
-  const clean = (o: any): any => {
-    if (o && typeof o === 'object') {
-      if (Array.isArray(o.__arr)) return o.__arr;
-      Object.keys(o).forEach(k => o[k] = clean(o[k]));
-    }
-    return o;
-  };
-  return JSON.stringify(clean(root), null, 2);
+  return JSON.stringify(parseYaml(s, { maxAliasCount: 100, uniqueKeys: true }), null, 2);
 }
 
 // --- XML formatter (indent by tag depth) ---
@@ -141,31 +74,7 @@ function formatXml(s: string): string {
 }
 
 // --- Markdown → HTML (common subset) ---
-function markdownToHtml(s: string): string {
-  const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  const lines = s.split('\n');
-  const out: string[] = [];
-  let inList = false, inCode = false;
-  const inline = (t: string) => esc(t)
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-  for (const raw of lines) {
-    if (raw.trim().startsWith('```')) { if (inCode) { out.push('</code></pre>'); inCode = false; } else { out.push('<pre><code>'); inCode = true; } continue; }
-    if (inCode) { out.push(esc(raw)); continue; }
-    const h = raw.match(/^(#{1,6})\s+(.*)$/);
-    if (h) { if (inList) { out.push('</ul>'); inList = false; } out.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`); continue; }
-    if (/^[-*]\s+/.test(raw)) { if (!inList) { out.push('<ul>'); inList = true; } out.push(`<li>${inline(raw.replace(/^[-*]\s+/, ''))}</li>`); continue; }
-    if (inList) { out.push('</ul>'); inList = false; }
-    if (raw.trim() === '') { out.push(''); continue; }
-    out.push(`<p>${inline(raw)}</p>`);
-  }
-  if (inList) out.push('</ul>');
-  if (inCode) out.push('</code></pre>');
-  return out.join('\n');
-}
-
+function markdownToHtml(s: string): string { return mdToHtml(s); }
 
 function htmlToMarkdown(s: string): string {
   let t = s;

@@ -28,9 +28,9 @@ export default function ConverterWidget({ kind, preset }: { kind: string; preset
   return (
     <div className="tool-card">
       {!preset && (
-        <div className="pills" role="tablist" aria-label="Unit category" style={{ marginBottom: 14 }}>
+        <div className="pills" role="group" aria-label="Unit category" style={{ marginBottom: 14 }}>
           {Object.entries(UNIT_KINDS).map(([key, uk]) => (
-            <button key={key} type="button" className="pill" role="tab"
+            <button key={key} type="button" className="pill"
               aria-pressed={key === kindKey} onClick={() => switchKind(key)}>{uk.name}</button>
           ))}
         </div>

@@ -1,15 +1,11 @@
 'use client';
+import { parsePageRange } from '@/lib/pdfPages';
 import { useState } from 'react';
 import { FileDrop, StatusLine, PreviewModal, type PreviewData } from '../pdfShared';
 
 function parseRanges(spec: string, max: number): number[][] {
-  const groups: number[][] = [];
-  for (const part of spec.split(',').map(s => s.trim()).filter(Boolean)) {
-    const m = part.match(/^(\d+)\s*-\s*(\d+)$/);
-    if (m) { const a = +m[1], b = +m[2]; const lo = Math.min(a, b), hi = Math.max(a, b); const g: number[] = []; for (let p = lo; p <= hi; p++) if (p >= 1 && p <= max) g.push(p - 1); if (g.length) groups.push(g); }
-    else { const p = parseInt(part, 10); if (p >= 1 && p <= max) groups.push([p - 1]); }
-  }
-  return groups;
+  parsePageRange(spec, max); // validate total output size before creating any document
+  return spec.split(',').map(part => parsePageRange(part, max));
 }
 
 export default function SplitPdfWidget() {

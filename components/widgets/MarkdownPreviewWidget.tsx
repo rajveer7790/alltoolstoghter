@@ -29,7 +29,7 @@ function mdToHtml(s: string): string {
   return out.join('\n');
 }
 
-const SAMPLE = `# Markdown Previewer
+const SAMPLE = `## Markdown Previewer
 
 Type on the left, see the result instantly.
 

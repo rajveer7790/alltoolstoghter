@@ -13,9 +13,22 @@ export default function CalcWidget({ slug, fields }: { slug: string; fields: Fie
   const results: CalcResult[] = useMemo(() => {
     const fn = COMPUTES[slug];
     if (!fn) return [{ label: 'Unavailable', value: 'This tool failed to load.', main: true }];
-    try { return fn(values); }
+    for (const field of fields.filter(f => f.type === 'number')) {
+      const input = values[field.key]?.trim();
+      if (!input && field.def === '') continue; // explicitly optional solver input
+      const n = Number(input);
+      if (!input || !Number.isFinite(n) || (field.min !== undefined && n < field.min) || (field.max !== undefined && n > field.max)) {
+        return [{ label: 'Check inputs', value: `Enter a valid value for ${field.label}${field.min !== undefined ? ` (minimum ${field.min})` : ''}${field.max !== undefined ? ` (maximum ${field.max})` : ''}.`, main: true }];
+      }
+    }
+    try {
+      const output = fn(values);
+      return output.some(row => /NaN|Infinity|∞/.test(row.value))
+        ? [{ label: 'Check inputs', value: 'These inputs do not produce a finite result. Check zero divisors and supported ranges.', main: true }]
+        : output;
+    }
     catch { return [{ label: 'Check inputs', value: 'Something in the inputs could not be computed.', main: true }]; }
-  }, [slug, values]);
+  }, [slug, values, fields]);
 
   const set = (k: string, v: string) => setValues(prev => ({ ...prev, [k]: v }));
 

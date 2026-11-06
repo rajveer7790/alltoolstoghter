@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description: `Browse all ${ALL_TOOLS.length} free tools on ${SITE.name} — calculators, converters, PDF, image, developer, and more.`,
   alternates: { canonical: '/sitemap' },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `Sitemap | ${SITE.name}`,
     url: '/sitemap',
     siteName: SITE.name,

@@ -21,7 +21,7 @@ export default function ParaphraseWidget() {
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Something went wrong.';
       setError(msg === 'BACKEND_NOT_CONFIGURED'
-        ? 'Paraphrasing needs the All Tools Together backend with an LLM provider configured (LLM_API_URL + LLM_API_KEY). Until then this tool stays inactive — by design, there is no fake offline paraphraser.'
+        ? 'This online service is currently unavailable. Please try again later.'
         : msg);
     }
     setBusy(false);
@@ -32,7 +32,7 @@ export default function ParaphraseWidget() {
     <div className="tool-card">
       {!hasBackend && (
         <p style={{ fontSize: 13, color: 'var(--ink-2)', background: 'rgba(180,83,9,0.08)', border: '1px solid rgba(180,83,9,0.25)', borderRadius: 8, padding: '10px 12px', marginBottom: 14 }}>
-          This tool needs the All Tools Together backend with an LLM provider. See <code>/backend</code> — set <code>LLM_API_URL</code> and <code>LLM_API_KEY</code>, then point <code>NEXT_PUBLIC_API_BASE</code> here.
+          This online service is currently unavailable. Please try another tool or check back later.
         </p>
       )}
       <div className="field"><label htmlFor="pp-in">Original text</label>
@@ -41,7 +41,7 @@ export default function ParaphraseWidget() {
         <div className="field"><label htmlFor="pp-tone">Style</label>
           <select id="pp-tone" value={tone} onChange={e => setTone(e.target.value)}>{TONES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></div>
         <div className="field" style={{ justifyContent: 'flex-end' }}>
-          <button type="button" className="btn btn-primary" onClick={run} disabled={busy || !text.trim()}>{busy ? 'Rewriting…' : 'Paraphrase →'}</button>
+          <button type="button" className="btn btn-primary" onClick={run} disabled={!hasBackend || busy || !text.trim()}>{busy ? 'Rewriting…' : 'Paraphrase →'}</button>
         </div>
       </div>
       {error && <p style={{ fontSize: 13.5, color: '#DC2626', marginTop: 10 }} aria-live="polite">✗ {error}</p>}

@@ -19,19 +19,20 @@ export function generateMetadata({ params }: { params: { category: string } }): 
   const cat = getCategory(params.category);
   if (!cat) return {};
   const n = byCategory(cat.key).length;
-  const desc = `${cat.tagline} ${n} free ${cat.name.toLowerCase()} tools that run entirely in your browser.`;
+  const desc = `${cat.tagline} ${n} free ${cat.name.toLowerCase()} tools with instructions and FAQs.`;
   return {
     title: `${cat.name} — ${n} Free Online Tools`,
     description: desc,
     alternates: { canonical: `/${cat.key}` },
     openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
       title: `${cat.name} | ${SITE.name}`,
       description: desc,
       url: `/${cat.key}`,
       siteName: SITE.name,
       type: 'website',
     },
-    twitter: { card: 'summary_large_image', title: `${cat.name} | ${SITE.name}`, description: desc },
+    twitter: { images: ['/opengraph-image.png'], card: 'summary_large_image', title: `${cat.name} | ${SITE.name}`, description: desc },
   };
 }
 
@@ -71,8 +72,8 @@ export default function CategoryPage({ params }: { params: { category: string } 
       <p className="tool-sub">{cat.tagline}</p>
       <div className="prose" style={{ maxWidth: '720px', margin: '1.5rem 0 2rem' }}>
         <p>
-          Browse {tools.length} free {cat.name.toLowerCase()} tools that run entirely in your browser. 
-          No signup, no uploads, and no data stored — everything calculates or processes locally on your device. 
+          Browse {tools.length} free {cat.name.toLowerCase()} tools with instructions and FAQs.
+          Most tools process inputs on your device. Online services explain when they send data to a provider.
           Use these tools for quick calculations, conversions, and everyday tasks with clear explanations and FAQs on every page.
         </p>
       </div>

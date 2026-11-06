@@ -6,9 +6,10 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools that run entirely in your browser. Verified formulas, privacy-first design, and clear explanations.`,
+  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools with local file processing, clear explanations, and documented limitations.`,
   alternates: { canonical: '/about' },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `About Us | ${SITE.name}`,
     description: `${ALL_TOOLS.length} free tools. Private, browser-based, no signup.`,
     url: '/about',
@@ -40,7 +41,7 @@ export default function AboutPage() {
       >
         <p>
           <strong>{SITE.name}</strong> is a free online toolkit with <strong>{ALL_TOOLS.length} tools</strong> across {CATEGORIES.length} categories.
-          We focus on practical calculators and utilities that run entirely in your browser — no accounts, no uploads, and no tracking of your inputs.
+          We focus on practical browser-based calculators and utilities. Some online tools require external services; their pages explain availability and data handling.
         </p>
 
         <h2>Our mission</h2>
@@ -51,9 +52,9 @@ export default function AboutPage() {
 
         <h2>How we build and verify tools</h2>
         <p>
-          Every calculator uses standard, publicly documented formulas (loan amortization, BMI / Mifflin-St Jeor, unit conversions based on international definitions, etc.).
-          We check results against known examples and reference implementations. Financial and health tools include clear explanations, step-by-step how-tos, and FAQs.
-          Content is reviewed for accuracy and updated when formulas or best practices change. Last major content review: October 2026.
+          Calculators use mathematical models (loan amortization, BMI / Mifflin-St Jeor, unit conversions based on international definitions, etc.).
+          Automated regression checks cover selected known examples and catalog consistency. Financial and health tools include clear explanations, step-by-step how-tos, and FAQs.
+          These checks do not certify every formula or input combination. Please report corrections through the contact page.
         </p>
 
         <h2>What makes us different</h2>

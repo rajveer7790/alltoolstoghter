@@ -5,22 +5,32 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run test && npm run typecheck",
+    "audit:export": "node --import tsx scripts/audit-export.ts"
   },
   "dependencies": {
+    "css-tree": "^3.2.1",
     "jsbarcode": "^3.12.3",
     "jszip": "^3.10.1",
-    "next": "14.2.5",
+    "next": "^14.2.35",
+    "parse5": "^8.1.0",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^4.8.69",
     "qrcode": "^1.5.4",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "terser": "^5.51.2",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
+    "@types/css-tree": "^3.2.0",
     "@types/node": "20.14.0",
     "@types/qrcode": "^1.5.6",
     "@types/react": "18.3.3",
+    "tsx": "^4.23.15",
     "typescript": "5.5.3"
   }
 }

@@ -81,17 +81,17 @@ const REGISTRY: Record<string, ComponentType<any>> = {
 export default function ToolWidget({ tool }: { tool: ToolDef }) {
   const W = REGISTRY[tool.widget];
   if (!W) return null;
-  if (tool.widget === 'calc') return <W slug={tool.slug} fields={tool.fields ?? []} />;
+  if (tool.widget === 'calc') return <W key={tool.slug} slug={tool.slug} fields={tool.fields ?? []} />;
   if (tool.widget === 'converter') {
     let preset;
     const p = tool.fields?.find(f => f.key === '_preset')?.def;
     if (typeof p === 'string' && p) { try { preset = JSON.parse(p); } catch {} }
-    return <W kind={tool.converterKind ?? 'length'} preset={preset} />;
+    return <W key={tool.slug} kind={tool.converterKind ?? 'length'} preset={preset} />;
   }
-  if (tool.widget === 'text') return <W kind={tool.textKind ?? ''} />;
-  if (tool.widget === 'devtransform') return <W transformKey={tool.transformKey ?? ''} />;
-  if (tool.widget === 'reference') return <W dataset={tool.dataset ?? 'http'} />;
-  if (tool.widget === 'pdftoimages') return <W format={tool.dataset === 'jpeg' ? 'jpeg' : 'png'} />;
-  if (tool.widget === 'imageconverter') return <W to={tool.dataset} />;
-  return <W />;
+  if (tool.widget === 'text') return <W key={tool.slug} kind={tool.textKind ?? ''} />;
+  if (tool.widget === 'devtransform') return <W key={tool.slug} transformKey={tool.transformKey ?? ''} />;
+  if (tool.widget === 'reference') return <W key={tool.slug} dataset={tool.dataset ?? 'http'} />;
+  if (tool.widget === 'pdftoimages') return <W key={tool.slug} format={tool.dataset === 'jpeg' ? 'jpeg' : 'png'} />;
+  if (tool.widget === 'imageconverter') return <W key={tool.slug} to={tool.dataset} />;
+  return <W key={tool.slug} />;
 }

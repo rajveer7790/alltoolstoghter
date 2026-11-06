@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: `Privacy policy for ${SITE.name}. Learn how we handle data — most tools run entirely in your browser with no uploads.`,
   alternates: { canonical: '/privacy' },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `Privacy Policy | ${SITE.name}`,
     url: '/privacy',
     siteName: SITE.name,

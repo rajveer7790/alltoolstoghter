@@ -68,8 +68,8 @@ export default function CalcWidget({ slug, fields }: { slug: string; fields: Fie
             ) : (
               <span className="inwrap">
                 <input
-                  id={`f-${f.key}`} type={f.type === 'date' ? 'date' : 'number'}
-                  inputMode={f.type === 'date' ? undefined : 'decimal'}
+                  id={`f-${f.key}`} type={f.type}
+                  inputMode={f.type === 'number' ? 'decimal' : undefined}
                   value={values[f.key]} min={f.min} max={f.max} step={f.step ?? 'any'}
                   data-unit={f.unit ? '1' : undefined}
                   onChange={e => set(f.key, e.target.value)}

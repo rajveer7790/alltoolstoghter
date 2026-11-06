@@ -94,26 +94,29 @@ export const DATETIME: ToolDef[] = [
   related: ['days-between-dates', 'add-days-to-date', 'age-calculator', 'percentage-calculator'],
 },
 {
-  slug: 'hours-calculator', name: 'Hours Calculator (Time Card)', prio: 'P1', category: 'date-time', widget: 'calc',
-  short: 'Total worked hours from clock-in/out times, with optional pay.',
-  metaDescription: 'Free online hours calculator for time cards. Add up work hours, deduct unpaid breaks, and calculate total pay easily.',
-  keywords: ['hours calculator', 'time card calculator', 'work hours calculator', 'payroll hours'],
-  fields: [{ key: 'in1', label: 'Clock in (24h, e.g. 09:00)', type: 'text', def: '09:00' }, { key: 'out1', label: 'Clock out', type: 'text', def: '17:30' }, { key: 'in2', label: 'Day 2 in (optional)', type: 'text', def: '' }, { key: 'out2', label: 'Day 2 out', type: 'text', def: '' }, { key: 'breakMin', label: 'Unpaid break (minutes)', type: 'number', def: 30, unit: 'min', min: 0, max: 1440 }, { key: 'rate', label: 'Hourly pay (optional)', type: 'number', def: 0, unit: '$' }],
+  slug: 'hours-calculator', name: 'Weekly Time Card Calculator', prio: 'P1', category: 'date-time', widget: 'calc',
+  short: 'Add up seven days of work hours with a separate unpaid lunch break for each shift.',
+  metaDescription: 'Free weekly time card calculator with lunch breaks. Add up seven shifts, including overnight shifts, and see hours, decimal time, and optional gross pay.',
+  keywords: ['time card calculator', 'hours calculator with lunch break', 'weekly time sheet', 'work hours calculator', 'decimal payroll hours'],
+  fields: [
+    ...Array.from({ length: 7 }, (_, i) => [
+      { key: `in${i + 1}`, label: `Day ${i + 1} clock in`, type: 'time' as const, def: i === 0 ? '09:00' : '' },
+      { key: `out${i + 1}`, label: `Day ${i + 1} clock out`, type: 'time' as const, def: i === 0 ? '17:30' : '' },
+      { key: `break${i + 1}`, label: `Day ${i + 1} unpaid break`, type: 'number' as const, def: i === 0 ? 30 : 0, unit: 'min', min: 0, max: 1439, step: 1 },
+    ]).flat(),
+    { key: 'rate', label: 'Hourly pay (optional)', type: 'number', def: 0, min: 0, unit: '$/hr' },
+  ],
   content: {
-    intro: 'Add up worked hours from clock-in and clock-out times, subtract unpaid breaks, and optionally calculate gross pay, handling overnight shifts correctly.',
-    how: 'Each shift\'s minutes are summed (rolling past midnight when the clock-out is earlier than the clock-in), the break is deducted, and the total converts to decimal hours, then multiplied by your rate if provided.',
-    howSteps: [
-      'Enter your shift\'s clock-in time.',
-      'Enter your shift\'s clock-out time.',
-      'Provide your unpaid break time in minutes to see your total hours (and optionally provide pay rate to see gross pay).'
-    ],
+    intro: 'Enter up to seven shifts to calculate weekly hours worked after unpaid lunch breaks. The result shows hours and minutes and decimal hours.',
+    how: 'Subtract clock-in from clock-out for each shift, roll across midnight when necessary, then subtract that day’s unpaid break. Add the paid minutes and divide by 60 for decimal hours.',
+    example: 'A 9:00 AM to 5:30 PM shift with a 30-minute unpaid lunch counts as 8 hours. Repeat that shift on five days for a 40-hour week.',
     faqs: [
-      ['Does it handle overnight shifts?', 'Yes — if clock-out is earlier than clock-in, the tool assumes the shift crossed midnight and adds 24 hours.'],
-      ['What are decimal hours?', 'Hours expressed as a decimal (8h 30m = 8.5), the format payroll systems use.'],
-      ['Can I add more days?', 'Two shift rows are provided; sum multiple time cards by running each and adding the decimal totals.'],
+      ['Can I enter an overnight shift?', 'Yes. When the end is earlier than the start, the shift ends the following day. Equal start and end times count as zero hours.'],
+      ['Can I leave days blank?', 'Yes. Leave both clock fields blank for days off. Each row supports one shift shorter than 24 hours.'],
+      ['Does the pay estimate include overtime?', 'The optional estimate multiplies all paid hours by one rate. It excludes overtime premiums, payroll deductions and daylight-saving adjustments.'],
     ],
   },
-  related: ['days-between-dates', 'business-days-calculator', 'salary-calculator', 'hourly-to-salary-calculator'],
+  related: ['days-between-dates', 'business-days-calculator', 'salary-calculator', 'hourly-to-salary-calculator', 'overtime-calculator'],
 },
 {
   slug: 'business-days-calculator', name: 'Business Days Calculator', prio: 'P2', category: 'date-time', widget: 'calc',

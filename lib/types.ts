@@ -4,7 +4,7 @@ export interface Category { key: CatKey; name: string; tagline: string; accent: 
 
 export interface Field {
   key: string; label: string;
-  type: 'number' | 'select' | 'text' | 'date';
+  type: 'number' | 'select' | 'text' | 'date' | 'time';
   def?: number | string;
   min?: number; max?: number; step?: number;
   unit?: string;

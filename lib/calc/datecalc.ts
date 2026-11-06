@@ -72,17 +72,27 @@ export function daysUntil(v: Record<string, any>): CalcResult[] {
 
 // ---------- Wave 2 date/time ----------
 export function hoursWorked(v: Record<string, any>): CalcResult[] {
-  const parseT = (s: string) => { const [h, m] = String(s || '').split(':').map(Number); return (h || 0) * 60 + (m || 0); };
+  const parseTime = (value: string) => {
+    if (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value)) return null;
+    const [hours, minutes] = value.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
   let totalMin = 0;
-  for (let i = 1; i <= 7; i++) {
-    const inT = v[`in${i}`], outT = v[`out${i}`];
-    if (!inT || !outT) continue;
-    let diff = parseT(outT) - parseT(inT);
-    if (diff < 0) diff += 1440; // overnight
-    totalMin += diff;
+  for (let day = 1; day <= 7; day++) {
+    const startText = String(v[`in${day}`] ?? '').trim();
+    const endText = String(v[`out${day}`] ?? '').trim();
+    if (!startText && !endText) continue;
+    const start = parseTime(startText), end = parseTime(endText);
+    if (start === null || end === null) {
+      return [{ label: 'Check inputs', value: `Enter both valid times for day ${day}.`, main: true }];
+    }
+    const elapsed = (end - start + 1440) % 1440;
+    const breakMinutes = Number(v[`break${day}`] ?? (day === 1 ? v.breakMin : 0) ?? 0);
+    if (!Number.isInteger(breakMinutes) || breakMinutes < 0 || breakMinutes > elapsed) {
+      return [{ label: 'Check inputs', value: `Day ${day} needs whole break minutes that fit within the shift.`, main: true }];
+    }
+    totalMin += elapsed - breakMinutes;
   }
-  const brk = safe(v.breakMin, 0, 1440) * (v.in1 ? 1 : 0);
-  totalMin = Math.max(0, totalMin - safe(v.breakMin, 0, 1440));
   const hours = totalMin / 60;
   const rate = safe(v.rate, 0);
   const out: CalcResult[] = [

@@ -29,14 +29,14 @@ export default function UrlShortenerWidget() {
     <div className="tool-card">
       {!hasBackend && (
         <p style={{ fontSize: 13, color: 'var(--ink-2)', background: 'rgba(180,83,9,0.08)', border: '1px solid rgba(180,83,9,0.25)', borderRadius: 8, padding: '10px 12px', marginBottom: 14 }}>
-          This tool needs the All Tools Together backend. It is included in the project under <code>/backend</code> — deploy it and set <code>NEXT_PUBLIC_API_BASE</code> to activate.
+          This online service is currently unavailable. Please try another tool or check back later.
         </p>
       )}
       <div className="field"><label htmlFor="us-url">Long URL</label>
         <input id="us-url" type="url" value={url} onChange={e => setUrl(e.target.value)} placeholder="https://example.com/a/very/long/path" spellCheck={false} /></div>
       <div className="field"><label htmlFor="us-custom">Custom alias (optional)</label>
         <input id="us-custom" type="text" value={custom} onChange={e => setCustom(e.target.value)} placeholder="my-link" spellCheck={false} /></div>
-      <div className="btn-row"><button type="button" className="btn btn-primary" onClick={run} disabled={busy || !url.trim()}>{busy ? 'Shortening…' : 'Shorten URL →'}</button></div>
+      <div className="btn-row"><button type="button" className="btn btn-primary" onClick={run} disabled={!hasBackend || busy || !url.trim()}>{busy ? 'Shortening…' : 'Shorten URL →'}</button></div>
       {error && <p style={{ color: '#DC2626', fontSize: 13.5, marginTop: 10 }} aria-live="polite">✗ {error}</p>}
       {result && (
         <div className="readout" style={{ marginTop: 14 }} aria-live="polite">

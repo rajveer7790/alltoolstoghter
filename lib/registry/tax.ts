@@ -9,19 +9,20 @@ export const TAX: ToolDef[] = [
   keywords: ['paycheck calculator','take home pay calculator','net pay calculator','salary after tax calculator'],
   fields: [$('gross','Gross pay per paycheck',2500,'$'),{key:'frequency',label:'Pay frequency',type:'select',def:'26',options:[{value:'52',label:'Weekly'},{value:'26',label:'Bi-weekly'},{value:'24',label:'Semi-monthly'},{value:'12',label:'Monthly'}]},{key:'filing',label:'Filing status',type:'select',def:'single',options:[{value:'single',label:'Single'},{value:'married',label:'Married filing jointly'}]},$('stateRate','State tax rate (%)',5,'%'),$('k401','401(k) contribution (%)',5,'%')],
   content: {
-    intro: 'Estimate your take-home pay after federal income tax, Social Security, Medicare, state tax, and 401(k) contributions — using 2025 federal tax brackets.',
-    how: 'Federal tax uses 2025 bracket tables and the standard deduction. FICA is 6.2% Social Security (up to the wage base) plus 1.45% Medicare. State tax and 401(k) use the rates you enter.',
+    intro: 'Estimate your take-home pay after federal income tax, Social Security, Medicare, state tax, and 401(k) contributions — using 2026 federal tax brackets.',
+    how: 'Federal tax uses 2026 bracket tables and the standard deduction. FICA is 6.2% Social Security (up to the wage base) plus 1.45% Medicare. State tax and 401(k) use the rates you enter.',
     howSteps: [
       'Enter your gross pay per paycheck and select the pay frequency.',
       'Provide your filing status to apply the correct IRS standard deduction.',
       'Include your estimated state tax rate and 401(k) percentage to review your net take-home pay.'
     ],
     faqs: [
-      ['How accurate is this estimate?','It is a close approximation using 2025 federal brackets and the standard deduction. Actual pay depends on your W-4, local taxes, and benefit deductions.'],
+      ['How accurate is this estimate?','It estimates annual tax spread over paychecks using 2026 federal brackets and the standard deduction; it does not model W-4 withholding. Actual pay depends on your W-4, local taxes, and benefit deductions.'],
       ['Why is my take-home less than expected?','Combined federal tax, FICA (7.65%), state tax, and pre-tax deductions typically reduce gross pay by 25–35% for middle incomes.'],
       ['Does a 401(k) reduce my taxes?','Yes — traditional 401(k) contributions are pre-tax, lowering your taxable income now. You pay tax when you withdraw in retirement.'],
     ],
   },
+  sources: [{ label: 'IRS: 2026 brackets and standard deductions', url: 'https://www.irs.gov/irb/2025-45_IRB' }, { label: 'SSA: Social Security wage base', url: 'https://www.ssa.gov/OACT/COLA/cbb.html' }],
   related: ['salary-calculator','self-employment-tax-calculator','hourly-to-salary-calculator','401k-calculator'],
 },
 {
@@ -53,7 +54,7 @@ export const TAX: ToolDef[] = [
   keywords: ['self employment tax calculator','seca tax calculator','1099 tax calculator','freelancer tax calculator'],
   fields: [$('netProfit','Net self-employment profit',80000,'$')],
   content: {
-    intro: 'Estimate your US self-employment tax (Social Security and Medicare for the self-employed) on your net business profit, including the deductible employer-equivalent portion.',
+    intro: 'Estimate your 2026 US self-employment tax (Social Security and Medicare for the self-employed) on your net business profit, including the deductible employer-equivalent portion.',
     how: 'SE tax is 15.3% on 92.35% of net profit — 12.4% Social Security (up to the wage base) plus 2.9% Medicare. Half of the SE tax is deductible against your income tax.',
     howSteps: [
       'Input your final net self-employment profit for the year.',
@@ -63,9 +64,10 @@ export const TAX: ToolDef[] = [
     faqs: [
       ['Why is self-employment tax 15.3%?','Employees split FICA with their employer (7.65% each). The self-employed pay both halves — but can deduct the employer-equivalent half from taxable income.'],
       ['Is this on top of income tax?','Yes — SE tax is separate from and in addition to federal and state income tax. Budget for both when setting aside money.'],
-      ['When do I pay it?','Through quarterly estimated tax payments to the IRS. The calculator shows a quarterly figure. Missing payments can trigger penalties.'],
+      ['When do I pay it?','Through quarterly estimated tax payments to the IRS. The calculator shows only a quarterly SE-tax share, excluding income tax and Additional Medicare Tax. Missing payments can trigger penalties.'],
     ],
   },
+  sources: [{ label: 'IRS: Self-employment tax', url: 'https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes' }, { label: 'SSA: Social Security wage base', url: 'https://www.ssa.gov/OACT/COLA/cbb.html' }],
   related: ['paycheck-calculator','salary-calculator','capital-gains-tax-calculator','vat-calculator'],
 },
 ];

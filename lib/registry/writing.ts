@@ -11,7 +11,7 @@ export const WRITING: ToolDef[] = [
     how: 'Your text is sent to the LanguageTool engine, which returns each issue with its location, an explanation, and replacement suggestions. Click a suggestion to apply it, and the text is re-checked automatically.',
     howSteps: [
       'Paste or type your text into the editor window.',
-      'The engine automatically communicates with your chosen LanguageTool endpoint to highlight errors.',
+      'Click Check grammar to request suggestions when the service is available.',
       'Click the highlighted errors to read explanations and apply instant fixes.'
     ],
     faqs: [
@@ -46,7 +46,7 @@ export const WRITING: ToolDef[] = [
 {
   slug: 'plagiarism-checker', name: 'Plagiarism Checker', prio: 'P1', category: 'writing', widget: 'plagiarism',
   short: 'Check whether passages of text appear elsewhere on the web.',
-  metaDescription: 'Free Plagiarism Checker. Ensure your writing is 100% unique. Checks text securely via search APIs managed by your own private backend.',
+  metaDescription: 'Free Plagiarism Checker. Find possible matching passages online; results do not prove originality. Checks text securely via search APIs managed by your own private backend.',
   keywords: ['plagiarism checker', 'plagiarism detector', 'check plagiarism free', 'duplicate content checker'],
   content: {
     intro: 'Check whether sentences in your text already appear online by searching the web for matching passages and listing the sources found — powered by a search provider on your own backend.',

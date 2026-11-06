@@ -35,7 +35,7 @@ export function FileDrop({ accept, multiple, onFiles, label }: {
       onDrop={e => { e.preventDefault(); setOver(false); handle(e.dataTransfer.files); }}
       onClick={() => inputRef.current?.click()}
       role="button" tabIndex={0}
-      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') inputRef.current?.click(); }}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inputRef.current?.click(); } }}
       style={{
         border: `2px dashed ${over ? 'var(--signal)' : 'var(--line)'}`,
         background: over ? 'rgba(11,95,255,0.05)' : 'var(--paper)',
@@ -43,7 +43,7 @@ export function FileDrop({ accept, multiple, onFiles, label }: {
         transition: 'all .15s ease', color: 'var(--ink-2)',
       }}
     >
-      <input ref={inputRef} type="file" accept={accept} multiple={multiple} hidden
+      <input ref={inputRef} type="file" accept={accept} multiple={multiple} hidden onClick={e => e.stopPropagation()}
         onChange={e => { handle(e.target.files); e.target.value = ''; }} />
       <div style={{ fontSize: 26, marginBottom: 8 }} aria-hidden="true">⬆</div>
       <div style={{ fontWeight: 600, color: 'var(--ink)' }}>{label}</div>

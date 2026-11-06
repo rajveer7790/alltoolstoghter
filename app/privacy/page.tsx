@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: `Privacy policy for ${SITE.name}. Learn how we handle data — most tools run entirely in your browser with no uploads.`,
   alternates: { canonical: '/privacy' },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `Privacy Policy | ${SITE.name}`,
     url: '/privacy',
     siteName: SITE.name,
@@ -32,8 +33,7 @@ export default function PrivacyPage() {
       <p>
         A small number of tools (grammar checker, paraphrasing, plagiarism checker, URL shortener) may send data
         to a backend service when configured. If deployed, that service is operated by us or you (self-hosted).
-        Text submitted to these tools is transmitted only when you actively use them. These tools are currently
-        marked noindex until a backend is fully configured.
+        Text submitted to these tools is transmitted only when you actively use them. Their pages include public instructions you can use while a service is unavailable.
       </p>
       <h2>Information we may collect automatically</h2>
       <ul>

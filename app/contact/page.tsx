@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description: `Get in touch with ${SITE.name}. Report bugs, suggest tools, or ask questions about our free online calculators and converters.`,
   alternates: { canonical: '/contact' },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `Contact Us | ${SITE.name}`,
     description: `Reach ${SITE.name} for support, feedback, and tool requests.`,
     url: '/contact',

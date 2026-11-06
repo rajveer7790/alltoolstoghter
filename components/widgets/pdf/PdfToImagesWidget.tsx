@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FileDrop, StatusLine } from '../pdfShared';
 import PreviewModal, { type PreviewData } from '../PreviewModal';
 import { loadPdfjs } from './pdfjsLoader';
@@ -10,6 +10,8 @@ async function dataUrlToBlob(dataUrl: string): Promise<Blob> {
 }
 
 export default function PdfToImagesWidget({ format = 'png' }: { format?: 'png' | 'jpeg' }) {
+  const renderId = useRef(0);
+  useEffect(() => () => { renderId.current++; }, []);
   const [file, setFile] = useState<File | null>(null);
   const [scale, setScale] = useState(2);
   const [busy, setBusy] = useState(false);
@@ -17,7 +19,8 @@ export default function PdfToImagesWidget({ format = 'png' }: { format?: 'png' |
   const [pages, setPages] = useState<{ url: string; n: number }[]>([]);
   const [preview, setPreview] = useState<PreviewData | null>(null);
 
-  const render = async (f: File) => {
+  const render = async (f: File, requestedScale = scale) => {
+    const id = ++renderId.current;
     setBusy(true); setError(''); setPages([]); setPreview(null);
     try {
       const pdfjs = await loadPdfjs();
@@ -25,8 +28,9 @@ export default function PdfToImagesWidget({ format = 'png' }: { format?: 'png' |
       const doc = await pdfjs.getDocument({ data }).promise;
       const out: { url: string; n: number }[] = [];
       for (let i = 1; i <= doc.numPages; i++) {
+        if (id !== renderId.current) { await doc.destroy(); return; }
         const page = await doc.getPage(i);
-        const viewport = page.getViewport({ scale });
+        const viewport = page.getViewport({ scale: requestedScale });
         const canvas = document.createElement('canvas');
         canvas.width = viewport.width; canvas.height = viewport.height;
         const ctx = canvas.getContext('2d')!;
@@ -34,9 +38,10 @@ export default function PdfToImagesWidget({ format = 'png' }: { format?: 'png' |
         await page.render({ canvasContext: ctx, viewport }).promise;
         out.push({ url: canvas.toDataURL(format === 'jpeg' ? 'image/jpeg' : 'image/png', 0.92), n: i });
       }
-      setPages(out);
-    } catch (e) { setError(e instanceof Error ? e.message : 'Could not render this PDF.'); }
-    setBusy(false);
+      await doc.destroy();
+      if (id === renderId.current) setPages(out);
+    } catch (e) { if (id === renderId.current) setError(e instanceof Error ? e.message : 'Could not render this PDF.'); }
+    if (id === renderId.current) setBusy(false);
   };
 
   const pick = (fs: File[]) => { const f = fs[0]; if (!f) return; setFile(f); render(f); };
@@ -62,7 +67,7 @@ export default function PdfToImagesWidget({ format = 'png' }: { format?: 'png' |
       <FileDrop accept="application/pdf" label="Choose a PDF to convert" onFiles={pick} />
       <div className="field-grid" style={{ marginTop: 12 }}>
         <div className="field"><label htmlFor="pi-scale">Quality: {scale}× ({scale === 1 ? 'screen' : scale >= 3 ? 'print' : 'high'})</label>
-          <input id="pi-scale" type="range" min={1} max={4} step={0.5} value={scale} onChange={e => { setScale(parseFloat(e.target.value)); if (file) render(file); }} /></div>
+          <input id="pi-scale" type="range" min={1} max={4} step={0.5} value={scale} onChange={e => { const nextScale = parseFloat(e.target.value); setScale(nextScale); if (file) render(file, nextScale); }} /></div>
         {pages.length > 0 && (
           <div className="field" style={{ justifyContent: 'flex-end' }}>
             <button type="button" className="btn btn-primary" onClick={() => openPreview(pages)}>

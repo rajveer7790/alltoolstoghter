@@ -19,7 +19,7 @@ export default function PlagiarismWidget() {
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Something went wrong.';
       setError(msg === 'BACKEND_NOT_CONFIGURED'
-        ? 'Plagiarism checking needs the All Tools Together backend with a web-search provider (SEARCH_API_URL + SEARCH_API_KEY). Real detection requires searching the web — there is no honest offline version.'
+        ? 'This online service is currently unavailable. Please try again later.'
         : msg);
     }
     setBusy(false);
@@ -30,12 +30,12 @@ export default function PlagiarismWidget() {
     <div className="tool-card">
       {!hasBackend && (
         <p style={{ fontSize: 13, color: 'var(--ink-2)', background: 'rgba(180,83,9,0.08)', border: '1px solid rgba(180,83,9,0.25)', borderRadius: 8, padding: '10px 12px', marginBottom: 14 }}>
-          This tool needs the All Tools Together backend with a search provider. See <code>/backend</code> — set <code>SEARCH_API_URL</code> and <code>SEARCH_API_KEY</code>, then point <code>NEXT_PUBLIC_API_BASE</code> here.
+          This online service is currently unavailable. Please try another tool or check back later.
         </p>
       )}
       <div className="field"><label htmlFor="pg-in">Text to check ({words} words)</label>
         <textarea id="pg-in" value={text} onChange={e => setText(e.target.value)} placeholder="Paste text to check against the web…" style={{ minHeight: 170 }} /></div>
-      <div className="btn-row"><button type="button" className="btn btn-primary" onClick={run} disabled={busy || !text.trim()}>{busy ? 'Searching the web…' : 'Check for plagiarism →'}</button></div>
+      <div className="btn-row"><button type="button" className="btn btn-primary" onClick={run} disabled={!hasBackend || busy || !text.trim()}>{busy ? 'Searching the web…' : 'Check for plagiarism →'}</button></div>
       {error && <p style={{ fontSize: 13.5, color: '#DC2626', marginTop: 10 }} aria-live="polite">✗ {error}</p>}
       {data && (
         <div style={{ marginTop: 16 }} aria-live="polite">

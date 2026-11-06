@@ -1,4 +1,5 @@
 'use client';
+import { canonicalToolPath } from '@/lib/toolPolicy';
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 
@@ -29,7 +30,7 @@ export default function SearchBox({ items }: { items: SearchItem[] }) {
       {open && results.length > 0 && (
         <div className="search-results" role="listbox">
           {results.map(t => (
-            <Link key={t.slug} href={`/${t.category}/${t.slug}`} role="option" aria-selected="false">
+            <Link key={t.slug} href={canonicalToolPath(t)} role="option" aria-selected="false">
               {t.name}<span className="sr-cat">{t.catName}</span>
             </Link>
           ))}

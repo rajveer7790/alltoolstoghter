@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     google: 'vVZtwVZMlikBJTc-hYkUOpJ9mu7eOvqIGtpVGPOcV6Q',
   },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     siteName: SITE.name,
     type: 'website',
     locale: 'en_US',
@@ -28,9 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Header />
         <hr className="ruler" aria-hidden="true" />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>

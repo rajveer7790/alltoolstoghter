@@ -16,13 +16,15 @@ export default function DevTransformWidget({ transformKey }: { transformKey: str
   const [input, setInput] = useState(DEV_TRANSFORMS[transformKey]?.placeholder ?? '');
   const [output, setOutput] = useState('');
   const [err, setErr] = useState('');
+  const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
   if (!t) return null;
 
-  const run = () => {
-    setErr('');
-    try { setOutput(t.fn(input)); }
+  const run = async () => {
+    setErr(''); setBusy(true);
+    try { setOutput(await t.fn(input)); }
     catch (e) { setOutput(''); setErr(e instanceof Error ? e.message : 'Could not process this input.'); }
+    finally { setBusy(false); }
   };
   const copy = async () => { try { await navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); } catch {} };
 
@@ -30,16 +32,16 @@ export default function DevTransformWidget({ transformKey }: { transformKey: str
     <div className="tool-card">
       {pair && (
         <div className="pills" style={{ marginBottom: 14 }}>
-          <button type="button" className="pill" aria-pressed={dir === 'a'} onClick={() => { setDir('a'); setOutput(''); setErr(''); }}>{pair.aLabel}</button>
-          <button type="button" className="pill" aria-pressed={dir === 'b'} onClick={() => { setDir('b'); setOutput(''); setErr(''); }}>{pair.bLabel}</button>
+          <button type="button" className="pill" aria-pressed={dir === 'a'} disabled={busy} onClick={() => { setDir('a'); setOutput(''); setErr(''); }}>{pair.aLabel}</button>
+          <button type="button" className="pill" aria-pressed={dir === 'b'} disabled={busy} onClick={() => { setDir('b'); setOutput(''); setErr(''); }}>{pair.bLabel}</button>
         </div>
       )}
       <div className="field">
         <label htmlFor="dt-in">Input</label>
-        <textarea id="dt-in" value={input} onChange={e => setInput(e.target.value)} spellCheck={false} style={{ minHeight: 130 }} />
+        <textarea id="dt-in" value={input} disabled={busy} onChange={e => setInput(e.target.value)} spellCheck={false} style={{ minHeight: 130 }} />
       </div>
       <div className="btn-row">
-        <button type="button" className="btn btn-primary" onClick={run}>{t.label} →</button>
+        <button type="button" className="btn btn-primary" onClick={run} disabled={busy}>{busy ? 'Processing…' : t.label} →</button>
         <button type="button" className="btn" onClick={copy} disabled={!output}>{copied ? 'Copied ✓' : 'Copy output'}</button>
       </div>
       {err && <p style={{ color: '#DC2626', fontSize: 13.5, marginTop: 10 }} aria-live="polite">✗ {err}</p>}

@@ -27,15 +27,15 @@ export default function HomeToolGrid({ tools, cats }: { tools: GridTool[]; cats:
           onChange={e => setQ(e.target.value)} aria-label="Search tools" />
       </div>
 
-      <div className="ilp-tabs" role="tablist" aria-label="Filter by category">
-        <button type="button" role="tab" aria-selected={active === 'all'}
+      <div className="ilp-tabs" role="group" aria-label="Filter by category">
+        <button type="button" aria-pressed={active === 'all'}
           className={`ilp-tab${active === 'all' ? ' on' : ''}`} onClick={() => setActive('all')}>
           All <span className="ilp-tab-n">{tools.length}</span>
         </button>
         {cats.map(c => {
           const n = tools.filter(t => t.category === c.key).length;
           return (
-            <button key={c.key} type="button" role="tab" aria-selected={active === c.key}
+            <button key={c.key} type="button" aria-pressed={active === c.key}
               className={`ilp-tab${active === c.key ? ' on' : ''}`}
               style={active === c.key ? { borderColor: c.accent, color: c.accent } : undefined}
               onClick={() => setActive(c.key)}>

@@ -1,10 +1,10 @@
 # All Tools Together
 
-> Free online calculators, converters, PDF tools, image tools, developer utilities, and text tools. Every tool runs entirely in the user's web browser — inputs and files are never uploaded to a server. 265+ tools across 19 categories, all 100% free with no signup required.
+> Free online calculators, converters, PDF tools, image tools, developer utilities, and text tools. Most tools process inputs locally. Optional writing services and URL shortening send data to a backend; currency conversion fetches external rates. Tools across 19 categories, all 100% free with no signup required.
 
 ## About
 
-All Tools Together is a privacy-first multi-tool website offering 265+ free tools across 19 categories. All calculations and file processing happen client-side in the browser — nothing is uploaded or stored on any server.
+All Tools Together is a privacy-first multi-tool website offering free tools across 19 categories. PDF and image processing happens on the device. See each tool and the privacy policy for online service exceptions.
 
 ### Key differentiators
 

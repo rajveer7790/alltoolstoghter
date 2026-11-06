@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: `Terms of service for ${SITE.name}. Rules and disclaimers for using our free online tools.`,
   alternates: { canonical: '/terms' },
   openGraph: {
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `Terms of Service | ${SITE.name}`,
     url: '/terms',
     siteName: SITE.name,

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 export { default as PreviewModal, type PreviewData } from '../PreviewModal';
 
 /** Load an image File into a fully-decoded HTMLImageElement. */
@@ -7,7 +7,7 @@ export function loadImageFile(file: File): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const url = URL.createObjectURL(file);
     const img = new Image();
-    img.onload = () => { resolve(img); };
+    img.onload = () => { URL.revokeObjectURL(url); resolve(img); };
     img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Could not read this image.')); };
     img.src = url;
   });
@@ -46,8 +46,9 @@ export function rgbToHsl(r: number, g: number, b: number): string {
 /** Drag-and-drop image picker. */
 export function ImageDrop({ multiple, onFiles, label = 'Choose an image' }: { multiple?: boolean; onFiles: (f: File[]) => void; label?: string }) {
   const [over, setOver] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <label
+    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inputRef.current?.click(); } }}
       onDragOver={e => { e.preventDefault(); setOver(true); }}
       onDragLeave={() => setOver(false)}
       onDrop={e => { e.preventDefault(); setOver(false); onFiles(Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'))); }}
@@ -57,7 +58,7 @@ export function ImageDrop({ multiple, onFiles, label = 'Choose an image' }: { mu
         padding: '34px 20px', textAlign: 'center', cursor: 'pointer', color: 'var(--ink-2)',
       }}
     >
-      <input type="file" accept="image/*" multiple={multiple} hidden
+      <input ref={inputRef} type="file" accept="image/*" multiple={multiple} hidden
         onChange={e => { onFiles(Array.from(e.target.files || []).filter(f => f.type.startsWith('image/'))); e.target.value = ''; }} />
       <div style={{ fontSize: 26, marginBottom: 8 }} aria-hidden="true">🖼</div>
       <div style={{ fontWeight: 600, color: 'var(--ink)' }}>{label}</div>

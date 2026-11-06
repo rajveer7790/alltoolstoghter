@@ -29,5 +29,6 @@ export interface ToolDef {
   dataset?: string;
   metaDescription?: string;
   content: { intro: string; how: string; howSteps?: string[]; faqs: [string, string][] };
+  sources?: { label: string; url: string }[];
   related: string[];
 }

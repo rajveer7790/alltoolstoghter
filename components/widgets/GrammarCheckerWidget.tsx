@@ -20,7 +20,7 @@ export default function GrammarCheckerWidget() {
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Something went wrong.';
       setError(msg === 'BACKEND_NOT_CONFIGURED'
-        ? 'The grammar backend is not connected yet. Deploy the All Tools Together backend (it uses LanguageTool) and set NEXT_PUBLIC_API_BASE to activate this tool.'
+        ? 'This online service is currently unavailable. Please try again later.'
         : msg);
     }
     setBusy(false);
@@ -36,19 +36,19 @@ export default function GrammarCheckerWidget() {
     <div className="tool-card">
       {!hasBackend && (
         <p style={{ fontSize: 13, color: 'var(--ink-2)', background: 'rgba(180,83,9,0.08)', border: '1px solid rgba(180,83,9,0.25)', borderRadius: 8, padding: '10px 12px', marginBottom: 14 }}>
-          This tool needs the All Tools Together backend (included under <code>/backend</code>, powered by LanguageTool). Deploy it and set <code>NEXT_PUBLIC_API_BASE</code> to activate.
+          This online service is currently unavailable. Please try another tool or check back later.
         </p>
       )}
       <div className="field"><label htmlFor="gc-in">Your text</label>
-        <textarea id="gc-in" value={text} onChange={e => setText(e.target.value)} placeholder="Paste text to check for grammar and spelling…" style={{ minHeight: 160 }} /></div>
+        <textarea id="gc-in" value={text} disabled={busy} onChange={e => { setText(e.target.value); setMatches(null); }} placeholder="Paste text to check for grammar and spelling…" style={{ minHeight: 160 }} /></div>
       <div className="field-grid">
         <div className="field"><label htmlFor="gc-lang">Language</label>
-          <select id="gc-lang" value={language} onChange={e => setLanguage(e.target.value)}>
+          <select id="gc-lang" value={language} disabled={busy} onChange={e => setLanguage(e.target.value)}>
             <option value="en-US">English (US)</option><option value="en-GB">English (UK)</option>
             <option value="es">Spanish</option><option value="fr">French</option><option value="de">German</option><option value="pt">Portuguese</option>
           </select></div>
         <div className="field" style={{ justifyContent: 'flex-end' }}>
-          <button type="button" className="btn btn-primary" onClick={() => check()} disabled={busy || !text.trim()}>{busy ? 'Checking…' : 'Check grammar →'}</button>
+          <button type="button" className="btn btn-primary" onClick={() => check()} disabled={!hasBackend || busy || !text.trim()}>{busy ? 'Checking…' : 'Check grammar →'}</button>
         </div>
       </div>
       {error && <p style={{ fontSize: 13.5, color: '#DC2626', marginTop: 10 }} aria-live="polite">✗ {error}</p>}
@@ -66,7 +66,7 @@ export default function GrammarCheckerWidget() {
                   {m.suggestions.length > 0 && (
                     <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
                       {m.suggestions.map((s, j) => (
-                        <button key={j} type="button" className="pill" onClick={() => apply(m, s)} title="Apply this fix">{s || '(remove)'}</button>
+                        <button key={j} type="button" className="pill" disabled={busy} onClick={() => apply(m, s)} title="Apply this fix">{s || '(remove)'}</button>
                       ))}
                     </div>
                   )}

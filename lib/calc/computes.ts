@@ -1,5 +1,6 @@
 import { CalcResult } from '../types';
 import * as EXTRA from './extra';
+import { batteryRuntime, downloadTime, pixelDensity } from './practical';
 import * as F from './finance';
 import * as H from './health';
 import * as M from './math';
@@ -12,6 +13,9 @@ import * as BIZ from './business';
 import * as INV from './investing';
 import * as TX from './tax';
 export const COMPUTES: Record<string, (v: Record<string, any>) => CalcResult[]> = {
+  'battery-life-calculator': batteryRuntime,
+  'download-time-calculator': downloadTime,
+  'ppi-calculator': pixelDensity,
   'fuel-cost-calculator': EXTRA.fuelCost,
   'circle-area-calculator': EXTRA.circleArea,
   'rectangle-area-calculator': EXTRA.rectangleArea,

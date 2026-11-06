@@ -7,6 +7,7 @@ export const UNITS: ToolDef[] = [
   metaDescription: 'Free online Unit Converter. Convert length, weight, temperature, speed, area, volume, and data sizes instantly with exact international definitions.',
   keywords: ['unit converter', 'unit conversion', 'measurement converter', 'metric to imperial'],
   content: {
+    example: 'To convert 2.5 kilometers to meters, multiply by 1,000. The result is 2,500 meters.',
     intro: 'One converter for every common measurement: pick a category, choose your units, and the conversion updates as you type — using exact international definitions.',
     how: 'All conversions normalize through a base unit with exact factors (1 in = 0.0254 m, 1 lb = 0.45359237 kg). Temperature converts by formula because its scales have different zero points.',
     howSteps: [

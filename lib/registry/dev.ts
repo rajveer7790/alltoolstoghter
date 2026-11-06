@@ -647,6 +647,7 @@ export const DEV: ToolDef[] = [
     { key: 'newHeight', label: 'New height (optional — solves width)', type: 'number', def: '' },
   ],
   content: {
+    example: 'A 1920 × 1080 image simplifies to 16:9 by dividing both dimensions by 120. At 1280 pixels wide, the same ratio gives a height of 720 pixels.',
     intro: 'Reduce any width and height to their simplest aspect ratio, and proportionally scale to a new width or height while keeping the ratio intact — ideal for images, video, and responsive design.',
     how: 'The ratio is found by dividing both dimensions by their greatest common divisor (GCD). To scale, the tool multiplies by the decimal ratio so the new dimensions keep the same proportions.',
     howSteps: [

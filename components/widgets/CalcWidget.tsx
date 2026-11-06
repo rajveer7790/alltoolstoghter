@@ -7,8 +7,10 @@ import Readout from './Readout';
 /** Schema-driven calculator island. Receives serializable fields from the server page;
  *  looks its compute function up by slug on the client (functions can't cross the boundary). */
 export default function CalcWidget({ slug, fields }: { slug: string; fields: Field[] }) {
-  const [values, setValues] = useState<Record<string, string>>(() =>
-    Object.fromEntries(fields.map(f => [f.key, String(f.def ?? '')])));
+  const defaults = useMemo(() => Object.fromEntries(fields.map(f => [f.key, String(f.def ?? '')])), [fields]);
+  const [values, setValues] = useState(defaults);
+  const [copyStatus, setCopyStatus] = useState('');
+  const [showResultText, setShowResultText] = useState(false);
 
   const results: CalcResult[] = useMemo(() => {
     const fn = COMPUTES[slug];
@@ -30,7 +32,26 @@ export default function CalcWidget({ slug, fields }: { slug: string; fields: Fie
     catch { return [{ label: 'Check inputs', value: 'Something in the inputs could not be computed.', main: true }]; }
   }, [slug, values, fields]);
 
-  const set = (k: string, v: string) => setValues(prev => ({ ...prev, [k]: v }));
+  const resultText = results.map(row => `${row.label}: ${row.value}`).join('\n');
+  const set = (k: string, v: string) => {
+    setValues(prev => ({ ...prev, [k]: v }));
+    setCopyStatus('');
+  };
+  const reset = () => {
+    setValues(defaults);
+    setCopyStatus('');
+    setShowResultText(false);
+  };
+  const copyResult = async () => {
+    try {
+      await navigator.clipboard.writeText(resultText);
+      setCopyStatus('Result copied.');
+      setShowResultText(false);
+    } catch {
+      setCopyStatus('Select and copy the result below.');
+      setShowResultText(true);
+    }
+  };
 
   return (
     <div className="tool-card">
@@ -60,6 +81,15 @@ export default function CalcWidget({ slug, fields }: { slug: string; fields: Fie
         ))}
       </div>
       <Readout results={results} />
+      <div className="btn-row">
+        <button className="btn" type="button" onClick={copyResult} disabled={!results.length}>Copy result</button>
+        <button className="btn" type="button" onClick={reset}>Reset inputs</button>
+        <span role="status">{copyStatus}</span>
+      </div>
+      {showResultText && <div className="field">
+        <label htmlFor="calc-result-copy">Result text</label>
+        <textarea id="calc-result-copy" readOnly value={resultText} onFocus={event => event.currentTarget.select()} />
+      </div>}
       <p className="privacy-note"><span className="dot" />computed locally — nothing leaves your browser</p>
     </div>
   );

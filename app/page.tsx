@@ -5,6 +5,8 @@ import HomeToolGrid from '@/components/HomeToolGrid';
 import PopularTools from '@/components/PopularTools';
 import CategoryQuickLinks from '@/components/CategoryQuickLinks';
 import JsonLd from '@/components/JsonLd';
+import ToolCard from '@/components/ToolCard';
+import { PRACTICAL } from '@/lib/registry/practical';
 
 const canonicalTools = ALL_TOOLS.filter(isIndexableTool);
 
@@ -70,6 +72,13 @@ export default function Home() {
       <CategoryQuickLinks />
       <section className="wrap">
         <PopularTools title="Most used tools" limit={12} />
+      </section>
+
+      <section className="wrap" aria-labelledby="new-calculators">
+        <div className="cat-band"><h2 id="new-calculators">New calculators</h2></div>
+        <div className="grid grid-tools">
+          {PRACTICAL.map(tool => <ToolCard key={tool.slug} tool={tool} showCat />)}
+        </div>
       </section>
 
       <section className="wrap" style={{marginTop: '2rem', marginBottom: '1.5rem'}}>

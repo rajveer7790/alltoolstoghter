@@ -6,18 +6,29 @@ import CatIcon from './CatIcon';
 export type GridTool = { slug: string; name: string; short: string; category: string; kw: string };
 export type GridCat = { key: string; name: string; accent: string };
 
+const normalizeSearch = (value: string) => value
+  .normalize('NFKD')
+  .toLowerCase()
+  .replace(/\p{M}/gu, '')
+  .replace(/[^\p{L}\p{N}]+/gu, ' ')
+  .trim();
+
 export default function HomeToolGrid({ tools, cats }: { tools: GridTool[]; cats: GridCat[] }) {
   const [active, setActive] = useState('all');
   const [q, setQ] = useState('');
   const catMap = useMemo(() => Object.fromEntries(cats.map(c => [c.key, c])), [cats]);
 
+  const searchIndex = useMemo(() => tools.map(tool => ({
+    tool,
+    text: normalizeSearch(`${tool.name} ${tool.slug} ${tool.short} ${tool.kw}`),
+  })), [tools]);
+
   const shown = useMemo(() => {
-    let list = tools;
-    if (active !== 'all') list = list.filter(t => t.category === active);
-    const s = q.trim().toLowerCase();
-    if (s) list = list.filter(t => t.name.toLowerCase().includes(s) || t.kw.includes(s));
-    return list;
-  }, [tools, active, q]);
+    const tokens = normalizeSearch(q).split(' ').filter(Boolean);
+    return searchIndex
+      .filter(({tool, text}) => (active === 'all' || tool.category === active) && tokens.every(token => text.includes(token)))
+      .map(({tool}) => tool);
+  }, [searchIndex, active, q]);
 
   return (
     <div className="ilp-wrap">
@@ -45,6 +56,7 @@ export default function HomeToolGrid({ tools, cats }: { tools: GridTool[]; cats:
         })}
       </div>
 
+      <p className="privacy-note" role="status">{shown.length} {shown.length === 1 ? 'tool' : 'tools'} found</p>
       <div className="ilp-grid">
         {shown.map(t => {
           const c = catMap[t.category];

@@ -11,6 +11,7 @@ export const MATH: ToolDef[] = [
       { value: 'of', label: 'What is A% of B?' }, { value: 'is', label: 'A is what % of B?' }, { value: 'change', label: '% change from A to B' }] },
     n('a', 'A', 25), n('b', 'B', 200)],
   content: {
+    example: 'To find 15% of 240, convert 15% to 0.15 and multiply by 240. The result is 36.',
     intro: 'The three percentage questions everyone needs, in one tool: a percent of a number, what percent one number is of another, and the percent change between two values.',
     how: 'X% of Y = (X÷100)·Y. "A is what % of B" = (A÷B)·100. Percent change = (new − old) ÷ |old| × 100, which is why a fall from 200 to 150 is −25%.',
     howSteps: [

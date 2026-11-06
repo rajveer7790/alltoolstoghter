@@ -7,6 +7,7 @@ import CategoryQuickLinks from '@/components/CategoryQuickLinks';
 import JsonLd from '@/components/JsonLd';
 import ToolCard from '@/components/ToolCard';
 import { PRACTICAL } from '@/lib/registry/practical';
+import { NORTH_AMERICA } from '@/lib/registry/northAmerica';
 
 const canonicalTools = ALL_TOOLS.filter(isIndexableTool);
 
@@ -77,7 +78,7 @@ export default function Home() {
       <section className="wrap" aria-labelledby="new-calculators">
         <div className="cat-band"><h2 id="new-calculators">New calculators</h2></div>
         <div className="grid grid-tools">
-          {PRACTICAL.map(tool => <ToolCard key={tool.slug} tool={tool} showCat />)}
+          {[...NORTH_AMERICA, ...PRACTICAL].map(tool => <ToolCard key={tool.slug} tool={tool} showCat />)}
         </div>
       </section>
 

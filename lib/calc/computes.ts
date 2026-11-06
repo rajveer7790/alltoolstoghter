@@ -1,4 +1,5 @@
 import { CalcResult } from '../types';
+import { canadaGstHst, usMileage2026 } from './northAmerica';
 import * as EXTRA from './extra';
 import { batteryRuntime, downloadTime, pixelDensity } from './practical';
 import * as F from './finance';
@@ -13,6 +14,8 @@ import * as BIZ from './business';
 import * as INV from './investing';
 import * as TX from './tax';
 export const COMPUTES: Record<string, (v: Record<string, any>) => CalcResult[]> = {
+  'canada-gst-hst-calculator': canadaGstHst,
+  'us-mileage-calculator-2026': usMileage2026,
   'battery-life-calculator': batteryRuntime,
   'download-time-calculator': downloadTime,
   'ppi-calculator': pixelDensity,

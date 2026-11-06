@@ -1,12 +1,22 @@
 import Link from 'next/link';
-import { bySlug, getCategory } from '@/lib/registry';
+import { ALL_TOOLS, bySlug, getCategory } from '@/lib/registry';
 import { moreInCategory } from '@/lib/linking';
 import { ToolDef } from '@/lib/types';
 import ToolCard from './ToolCard';
+import { canonicalToolPath, isIndexableTool } from '@/lib/toolPolicy';
 
 export default function RelatedTools({ tool }: { tool: ToolDef }) {
-  const related = tool.related.map(s => bySlug.get(s)).filter((t): t is ToolDef => !!t);
-  const more = moreInCategory(tool, 6);
+  const used = new Set([canonicalToolPath(tool)]);
+  const related = [
+    ...tool.related.map(slug => bySlug.get(slug)).filter((item): item is ToolDef => !!item),
+    ...ALL_TOOLS.filter(item => isIndexableTool(item) && item.related.includes(tool.slug)),
+  ].filter(item => {
+    const path = canonicalToolPath(item);
+    if (used.has(path)) return false;
+    used.add(path);
+    return true;
+  }).slice(0, Math.max(6, tool.related.length));
+  const more = moreInCategory(tool, 12).filter(item => isIndexableTool(item) && !related.includes(item)).slice(0, 6);
   const cat = getCategory(tool.category);
 
   return (

@@ -99,7 +99,7 @@ export default function ToolPage({ params }: { params: { category: string; tool:
             description: t.metaDescription || t.short,
             step: t.content.howSteps.map((step, i) => ({
               '@type': 'HowToStep',
-              url: `${SITE.url}/${t.category}/${t.slug}#step${i + 1}`,
+              url: `${canonicalUrl}#step${i + 1}`,
               name: `Step ${i + 1}`,
               itemListElement: [{ '@type': 'HowToDirection', text: step }]
             }))
@@ -144,6 +144,10 @@ export default function ToolPage({ params }: { params: { category: string; tool:
             {t.content.howSteps.map((step, i) => <li key={i} id={`step${i + 1}`}>{step}</li>)}
           </ol>
         )}
+        {t.content.example && <>
+          <h2>Worked example</h2>
+          <p>{t.content.example}</p>
+        </>}
         <h2>Frequently asked questions</h2>
         {t.content.faqs.map(([q, a], i) => (
           <div className="faq-item" key={i}>

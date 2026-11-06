@@ -10,6 +10,7 @@ export const SCIENCE: ToolDef[] = [
   keywords: ["ohm's law calculator",'voltage current resistance calculator','v ir calculator','electrical calculator'],
   fields: [$('voltage','Voltage (V)',120,'V'), BLANK('current','Current (I — leave blank to solve','A'), $('resistance','Resistance (R)',10,'Ω')],
   content: {
+    example: 'If a 6 Ω load draws 2 A, voltage is 2 × 6 = 12 V. At that operating point, power is 12 × 2 = 24 W.',
     intro: "Solve Ohm's Law for any unknown — voltage, current, or resistance — by entering any two known values. The tool also calculates power (P = V×I).",
     how: "Ohm's Law: V = I × R. Enter any two values and leave the third blank. Power P = V × I is always calculated from the result. Default example: 120 V across 10 Ω draws 12 A and 1,440 W.",
     howSteps: [
@@ -54,6 +55,7 @@ export const SCIENCE: ToolDef[] = [
   keywords: ['voltage divider calculator','resistor divider calculator','vout calculator','voltage divider formula'],
   fields: [$('vin','Input voltage (Vin)',12,'V'),$('r1','R1 (top resistor)',10000,'Ω'),$('r2','R2 (bottom resistor)',10000,'Ω')],
   content: {
+    example: 'With a 12 V input, a 10 kΩ top resistor and a 20 kΩ bottom resistor, the unloaded output is 12 × 20 ÷ (10 + 20) = 8 V. A load connected to the output can lower that voltage.',
     intro: 'Calculate the output voltage, divider current, and power dissipation of a simple resistor voltage divider — one of the most common circuits in electronics.',
     how: 'Vout = Vin × R2 / (R1 + R2). Current = Vin / (R1 + R2). Power = Vin × I. The output is taken across R2.',
     howSteps: [

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import DiscoveryLinks from '@/components/DiscoveryLinks';
 import { isIndexableTool } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import { ALL_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
@@ -71,6 +73,7 @@ export default function Home() {
         <div className="wrap">
           <h1>Free Online Calculators, Converters & Tools<br className="ilp-br" /> for Everyday Tasks</h1>
           <p>All {canonicalTools.length} tools are 100% FREE and easy to use! Calculate, convert, edit PDFs and images with just a few clicks — PDFs, images, and calculations are processed on your device. Online services disclose when a server is needed.</p>
+          <div className="btn-row hero-actions"><Link href="/tools" className="btn btn-primary">Browse all {canonicalTools.length} tools</Link><Link href="#tool-search" className="btn">Search tools</Link></div>
         </div>
       </section>
 
@@ -96,9 +99,11 @@ export default function Home() {
       </section>
 
       {/* the grid */}
-      <section className="wrap">
+      <section className="wrap" id="tool-search">
         <HomeToolGrid tools={tools.slice(0, 36)} totalTools={canonicalTools.length} catalogUrl="/tool-catalog.json" cats={cats} />
       </section>
+
+      <DiscoveryLinks />
 
       {/* trust band (kept) */}
       <section className="trust-band">

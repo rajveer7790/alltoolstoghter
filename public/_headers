@@ -13,3 +13,6 @@
 
 /llms-full.txt
   X-Robots-Tag: noindex
+
+/internal-link-audit.json
+  X-Robots-Tag: noindex

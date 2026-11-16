@@ -42,6 +42,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-legal">
+          <Link href="/tools">All tools</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>

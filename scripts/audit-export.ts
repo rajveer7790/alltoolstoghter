@@ -17,12 +17,22 @@ const titles = new Map<string,string>();
 const descriptions = new Map<string,string>();
 const pageAudit: { path: string; title: string; description: string; canonical: string; robots: string; inSitemap?: boolean }[] = [];
 const manifest: Record<string,string> = {};
+const renderedLinks = new Map<string, Set<string>>();
 let links = 0, schemas = 0;
 for (const file of htmlFiles) {
   const path = '/' + file.slice(root.length+1).replace(/\.html$/, '').replace(/^index$/, '');
   const document = parse(readFileSync(file,'utf8'));
   const nodes:any[] = []; const walk=(n:any)=>{nodes.push(n);(n.childNodes||[]).forEach(walk);};walk(document);
+  assert.ok(!nodes.some(n => (n.attrs || []).some((a:any) => a.name === 'class' && a.value.split(/\s+/).includes('drawer'))), `Closed mobile drawer must not render in page HTML: ${path}`);
   const attrs = (n:any) => Object.fromEntries((n.attrs||[]).map((a:any)=>[a.name,a.value]));
+  const outgoing = new Set<string>();
+  for (const node of nodes.filter(n => n.tagName === 'a')) {
+    const href = attrs(node).href;
+    if (!href || /^(mailto:|tel:|data:|blob:)/.test(href)) continue;
+    const target = new URL(href, origin.origin + path);
+    if (target.origin === origin.origin) outgoing.add(target.pathname);
+  }
+  renderedLinks.set(path, outgoing);
   const meta = (name:string) => nodes.find(n=>n.tagName==='meta' && attrs(n).name===name);
   const text=(n:any):string => n.nodeName==='#text'?n.value:(n.childNodes||[]).map(text).join('');
   const title = text(nodes.find(n=>n.tagName==='title') || {});
@@ -75,6 +85,40 @@ for (const row of pageAudit) {
   row.inSitemap = urls.some(url => new URL(url).pathname === row.path);
   assert.equal(row.inSitemap, new URL(row.canonical).pathname === row.path, `Sitemap and canonical mismatch: ${row.path}`);
 }
+// Audit actual exported anchors: discovery must work before JavaScript runs.
+const canonicalToolPaths = new Map(ALL_TOOLS.filter(isIndexableTool).map(tool => [canonicalToolPath(tool), tool]));
+const incoming = new Map([...canonicalToolPaths.keys()].map(path => [path, new Set<string>()]));
+const peerIncoming = new Map([...canonicalToolPaths.keys()].map(path => [path, new Set<string>()]));
+for (const [source, targets] of renderedLinks) {
+  for (const target of targets) {
+    if (source === target || !incoming.has(target)) continue;
+    incoming.get(target)!.add(source);
+    if (canonicalToolPaths.has(source)) peerIncoming.get(target)!.add(source);
+  }
+}
+const depths = new Map<string, number>([['/', 0]]);
+const queue = ['/'];
+for (let index = 0; index < queue.length; index++) {
+  const source = queue[index];
+  for (const target of renderedLinks.get(source) || []) {
+    if (depths.has(target) || !renderedLinks.has(target)) continue;
+    depths.set(target, depths.get(source)! + 1);
+    queue.push(target);
+  }
+}
+const linkCoverage = [...canonicalToolPaths].map(([path, tool]) => {
+  const refs = incoming.get(path)!;
+  const peers = peerIncoming.get(path)!;
+  const minimumPeers = Math.min(2, ALL_TOOLS.filter(t => isIndexableTool(t) && t.category === tool.category).length - 1);
+  assert.ok(refs.has('/tools'), `Tool missing from rendered directory: ${path}`);
+  assert.ok(refs.has('/' + tool.category), `Tool missing from category hub: ${path}`);
+  assert.ok(peers.size >= minimumPeers, `Too few rendered peer links: ${path}`);
+  assert.ok(depths.has(path) && depths.get(path)! <= 2, `Tool deeper than two crawl steps: ${path}`);
+  return { path, depth: depths.get(path), incomingPages: refs.size, peerIncomingPages: peers.size, exampleReferrers: [...refs].sort().slice(0, 8) };
+});
+writeFileSync('out/internal-link-audit.json', JSON.stringify({ scope: 'Rendered link coverage, not Google index status', tools: linkCoverage }, null, 2) + '\n');
+console.log(JSON.stringify({ canonicalToolsWithVerifiedLinks: linkCoverage.length, maximumToolDepth: Math.max(...linkCoverage.map(row => row.depth!)), minimumPeerReferrers: Math.min(...linkCoverage.map(row => row.peerIncomingPages)) }, null, 2));
+
 if (process.env.SEO_AUDIT_REPORT) writeFileSync(process.env.SEO_AUDIT_REPORT, JSON.stringify(pageAudit, null, 2) + '\n');
 for(const t of ALL_TOOLS) assert.equal(urls.includes(SITE.url+`/${t.category}/${t.slug}`),isIndexableTool(t),`Sitemap policy mismatch: ${t.slug}`);
 assert.ok(exists('/opengraph-image.png'));assert.match(readFileSync('out/robots.txt','utf8'),/Sitemap: https:\/\/alltoolstogether.com\/sitemap.xml/);

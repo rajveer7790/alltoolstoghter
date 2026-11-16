@@ -86,6 +86,8 @@ See the page-by-page validation JSON alongside this file for the exported URL/ti
 
 ### Recorded local results
 
-Production build succeeded on Next.js 15.5.29 / React 19. Both frontend and backend production dependency audits returned zero advisories. Export validation passed for 337 HTML pages, 333 sitemap URLs and 34,591 internal link/asset references. There are 327 frontend/catalog/model tests and 4 backend/notification tests; all passed.
+Production build succeeded on Next.js 15.5.29 / React 19. Both frontend and backend production dependency audits returned zero advisories. Export validation passed for 337 HTML pages, 333 sitemap URLs and 34,591 internal link/asset references. There are 326 frontend/catalog/model tests and 5 backend/notification tests; all passed.
 
 The final local homepage HTML was **93,026 bytes**, versus **279,687 bytes** fetched from the original live page: about **66.7% less uncompressed HTML**. Initial tool-card links fell from 295 to 53. This is a payload/DOM measurement, not a measured improvement in LCP, INP, CLS or rankings. The shared framework JS changed with the security upgrade.
+
+Netlify preview validation caught `.d.mts` discovery as a separate function. Removed the declaration from the function directory and moved its test to the backend JavaScript suite; the real function remains `tool-embed.mjs`. Route type generation now runs before typechecking clean checkouts.

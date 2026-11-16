@@ -14,5 +14,10 @@
     "express": "^4.19.2",
     "nanoid": "^5.0.7"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  },
+  "overrides": {
+    "qs": "^6.16.1"
+  }
 }

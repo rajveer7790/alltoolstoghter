@@ -57,7 +57,7 @@ export default function ContactPage() {
           <li><strong>Privacy questions:</strong> See our <a href="/privacy">Privacy Policy</a>.</li>
         </ul>
         <p>We aim to respond within 3–5 business days.</p>
-      </StaticPage>
+      <h2>Report a harmful short link</h2><p>Email hello@alltoolstogether.com with the short URL and reason. Do not open a suspicious destination. Reports help the maintainer investigate and disable harmful links.</p></StaticPage>
     </>
   );
 }

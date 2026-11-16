@@ -8,3 +8,7 @@
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # Static export: never rewrite unknown URLs to a 200 homepage (soft 404).
+
+# Notify only after a successful production deploy; previews never submit.
+[[plugins]]
+  package = "./netlify/plugins/indexnow"

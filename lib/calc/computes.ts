@@ -1,3 +1,4 @@
+import * as INDIA from './india';
 import { CalcResult } from '../types';
 import { canadaGstHst, usMileage2026 } from './northAmerica';
 import * as EXTRA from './extra';
@@ -14,6 +15,17 @@ import * as BIZ from './business';
 import * as INV from './investing';
 import * as TX from './tax';
 export const COMPUTES: Record<string, (v: Record<string, any>) => CalcResult[]> = {
+  'emi-calculator': INDIA.emi,
+  'sip-calculator': INDIA.sip,
+  'india-gst-calculator': INDIA.indiaGst,
+  'ppf-calculator': INDIA.ppf,
+  'fd-calculator': INDIA.fd,
+  'rd-calculator': INDIA.rd,
+  'epf-calculator': INDIA.epf,
+  'gratuity-calculator': INDIA.gratuity,
+  'hra-calculator': INDIA.hra,
+  'india-income-tax-calculator': INDIA.incomeTax,
+
   'canada-gst-hst-calculator': canadaGstHst,
   'us-mileage-calculator-2026': usMileage2026,
   'battery-life-calculator': batteryRuntime,

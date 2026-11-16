@@ -5,7 +5,7 @@ import { getCategory } from '@/lib/registry';
 
 export default function ToolCard({ tool, showCat = false }: { tool: ToolDef; showCat?: boolean }) {
   return (
-    <Link href={canonicalToolPath(tool)} className="tcard">
+    <Link prefetch={false} href={canonicalToolPath(tool)} className="tcard">
       {showCat && <span className="t-cat">{getCategory(tool.category)?.name}</span>}
       <p className="t-name">{tool.name}</p>
       <p className="t-short">{tool.short}</p>

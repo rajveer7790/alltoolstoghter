@@ -15,8 +15,8 @@ export const PDF: ToolDef[] = [
       'Click "Merge PDF" to securely generate and preview your combined document instantly.'
     ],
     faqs: [
-      ['Are my files uploaded anywhere?', 'No. Merging happens entirely in your web browser using your local device resources. The files never leave your computer, ensuring total privacy.'],
-      ['Is there a file size or count limit?', 'The practical limit depends entirely on your device memory. Very large files (hundreds of MB) may be slightly slower but typically process without issues.'],
+      ['Are my files uploaded anywhere?', 'No. Merging happens entirely in your web browser using your local device resources. No file upload is needed. Review the output and protect files on your own device.'],
+      ['Is there a file size or count limit?', 'The practical limit depends entirely on your device memory. Very large files can exceed browser memory or fail, especially on phones. Use smaller batches and save your output.'],
       ['Can I reorder the files before combining them?', 'Yes. Once you add files, you can use the up and down arrows to perfectly sequence them before merging.']
     ],
   },

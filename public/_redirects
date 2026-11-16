@@ -1,4 +1,9 @@
 /icon /icon.svg 301
 /icon/icon* /icon.svg 301
-/apple-icon /apple-icon.svg 301
+/apple-icon /apple-icon.png 301
 /finance/smoking-cost-calculator /health/smoking-cost-calculator 301
+
+/seo/password-strength-checker /developer/password-strength-checker 301
+/blog /guides 301
+
+/security.txt /.well-known/security.txt 301

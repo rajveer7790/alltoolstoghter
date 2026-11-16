@@ -1,0 +1,4 @@
+Contact: mailto:hello@alltoolstogether.com
+Expires: 2027-11-16T00:00:00Z
+Preferred-Languages: en
+Canonical: https://alltoolstogether.com/.well-known/security.txt

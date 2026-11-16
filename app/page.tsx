@@ -7,6 +7,7 @@ import CategoryQuickLinks from '@/components/CategoryQuickLinks';
 import JsonLd from '@/components/JsonLd';
 import ToolCard from '@/components/ToolCard';
 import { PRACTICAL } from '@/lib/registry/practical';
+import { AUTHOR } from '@/lib/contentDates';
 import { NORTH_AMERICA } from '@/lib/registry/northAmerica';
 
 const canonicalTools = ALL_TOOLS.filter(isIndexableTool);
@@ -35,7 +36,7 @@ export default function Home() {
     slug: t.slug, name: t.name, short: t.short, category: t.category,
     kw: (t.keywords.join(' ') + ' ' + t.name).toLowerCase(),
   }));
-  const cats = CATEGORIES.map(c => ({ key: c.key, name: c.name, accent: c.accent }));
+  const cats = CATEGORIES.map(c => ({ key: c.key, name: c.name, accent: c.accent, count: canonicalTools.filter(t => t.category === c.key).length }));
 
   return (
     <>
@@ -47,6 +48,7 @@ export default function Home() {
             name: SITE.name,
             url: SITE.url,
             description: SITE.description,
+            potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${SITE.url}/?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
             publisher: { '@id': `${SITE.url}/#organization` },
           },
           {
@@ -57,7 +59,9 @@ export default function Home() {
             logo: `${SITE.url}/icon.svg`,
             description: SITE.description,
             email: SITE.email,
-            sameAs: [],
+            sameAs: [AUTHOR.github + '/alltoolstoghter'],
+            founder: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path, sameAs: [AUTHOR.github] },
+            contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: SITE.email, url: SITE.url + '/contact' },
           },
         ],
       }} />
@@ -72,13 +76,13 @@ export default function Home() {
 
       <CategoryQuickLinks />
       <section className="wrap">
-        <PopularTools title="Most used tools" limit={12} />
+        <PopularTools title="Featured tools" limit={12} />
       </section>
 
       <section className="wrap" aria-labelledby="new-calculators">
         <div className="cat-band"><h2 id="new-calculators">New calculators</h2></div>
         <div className="grid grid-tools">
-          {[...NORTH_AMERICA, ...PRACTICAL].map(tool => <ToolCard key={tool.slug} tool={tool} showCat />)}
+          {[...NORTH_AMERICA, ...PRACTICAL].slice(0, 5).map(tool => <ToolCard key={tool.slug} tool={tool} showCat />)}
         </div>
       </section>
 
@@ -93,7 +97,7 @@ export default function Home() {
 
       {/* the grid */}
       <section className="wrap">
-        <HomeToolGrid tools={tools} cats={cats} />
+        <HomeToolGrid tools={tools.slice(0, 36)} totalTools={canonicalTools.length} catalogUrl="/tool-catalog.json" cats={cats} />
       </section>
 
       {/* trust band (kept) */}

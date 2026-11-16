@@ -16,7 +16,8 @@ export function generateStaticParams() {
   return CATEGORIES.map(c => ({ category: c.key }));
 }
 
-export function generateMetadata({ params }: { params: { category: string } }): Metadata {
+export async function generateMetadata({ params: pendingParams }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const params = await pendingParams;
   const cat = getCategory(params.category);
   if (!cat) return {};
   const tools = byCategory(cat.key).filter(isIndexableTool);
@@ -28,18 +29,19 @@ export function generateMetadata({ params }: { params: { category: string } }): 
     description: desc,
     alternates: { canonical: `/${cat.key}` },
     openGraph: {
-    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
+    images: [{ url: `/og/${cat.key}.png`, width: 1200, height: 630, alt: 'All Tools Together' }],
       title: `${cat.name} | ${SITE.name}`,
       description: desc,
       url: `/${cat.key}`,
       siteName: SITE.name,
       type: 'website',
     },
-    twitter: { images: ['/opengraph-image.png'], card: 'summary_large_image', title: `${cat.name} | ${SITE.name}`, description: desc },
+    twitter: { images: [`/og/${cat.key}.png`], card: 'summary_large_image', title: `${cat.name} | ${SITE.name}`, description: desc },
   };
 }
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
+export default async function CategoryPage({ params: pendingParams }: { params: Promise<{ category: string }> }) {
+  const params = await pendingParams;
   const cat = getCategory(params.category);
   if (!cat) notFound();
   const tools = byCategory(cat.key).filter(isIndexableTool);

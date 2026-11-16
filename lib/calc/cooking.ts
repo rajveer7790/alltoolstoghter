@@ -2,7 +2,7 @@ import { CalcResult } from '../types';
 import { num, int, safe } from '../format';
 
 // Gram-to-volume factors for common ingredients (grams per cup)
-const INGREDIENTS: Record<string, { g_per_cup: number; label: string }> = {
+export const INGREDIENTS: Record<string, { g_per_cup: number; label: string }> = {
   flour_ap:       { g_per_cup: 125,  label: 'All-purpose flour' },
   flour_bread:    { g_per_cup: 127,  label: 'Bread flour' },
   flour_cake:     { g_per_cup: 100,  label: 'Cake flour' },

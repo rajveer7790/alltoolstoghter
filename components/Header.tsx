@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { CATEGORIES, ALL_TOOLS } from '@/lib/registry';
+import type { Category } from '@/lib/types';
 
 // Logical groupings for the mega-menu (keeps 19 categories navigable)
 const GROUPS: { label: string; keys: string[] }[] = [
@@ -13,7 +13,7 @@ const GROUPS: { label: string; keys: string[] }[] = [
   { label: 'Files', keys: ['pdf', 'image'] },
 ];
 
-export default function Header() {
+export default function Header({ categories: CATEGORIES }: { categories: (Category & { count: number })[] }) {
   const [open, setOpen] = useState(false);          // mobile drawer
   const [activeGroup, setActiveGroup] = useState<string | null>(null); // desktop mega-menu
   const [scrolled, setScrolled] = useState(false);
@@ -64,7 +64,7 @@ export default function Header() {
                 <div className="mega-inner">
                   {g.keys.map(k => {
                     const c = catMap[k]; if (!c) return null;
-                    const count = ALL_TOOLS.filter(t => t.category === k).length;
+                    const count = c.count;
                     return (
                       <Link key={k} href={`/${k}`} className="mega-item"
                         onClick={() => setActiveGroup(null)}>
@@ -104,7 +104,7 @@ export default function Header() {
             <div className="drawer-label">{g.label}</div>
             {g.keys.map(k => {
               const c = catMap[k]; if (!c) return null;
-              const count = ALL_TOOLS.filter(t => t.category === k).length;
+              const count = c.count;
               return (
                 <Link key={k} href={`/${k}`} className="drawer-link" onClick={() => setOpen(false)}>
                   <span className="mega-dot" style={{ background: c.accent }} aria-hidden="true" />

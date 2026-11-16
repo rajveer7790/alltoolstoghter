@@ -1,0 +1,196 @@
+[
+  {
+    "url": "https://www.irs.gov/irb/2025-45_IRB",
+    "status": 200,
+    "finalUrl": "https://www.irs.gov/irb/2025-45_IRB"
+  },
+  {
+    "url": "https://www.ssa.gov/OACT/COLA/cbb.html",
+    "status": 200,
+    "finalUrl": "https://www.ssa.gov/OACT/COLA/cbb.html"
+  },
+  {
+    "url": "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes",
+    "status": 200,
+    "finalUrl": "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes"
+  },
+  {
+    "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+    "status": 200,
+    "finalUrl": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html"
+  },
+  {
+    "url": "https://www.irs.gov/tax-professionals/standard-mileage-rates",
+    "status": 200,
+    "finalUrl": "https://www.irs.gov/tax-professionals/standard-mileage-rates"
+  },
+  {
+    "url": "https://www.rbi.org.in/FinancialEducation/",
+    "status": 200,
+    "finalUrl": "https://www.rbi.org.in/FinancialEducation/"
+  },
+  {
+    "url": "https://investor.sebi.gov.in/",
+    "status": 200,
+    "finalUrl": "https://investor.sebi.gov.in/"
+  },
+  {
+    "url": "https://cbic-gst.gov.in/gst-invoice-rules.html",
+    "status": 200,
+    "finalUrl": "https://cbic-gst.gov.in/gst-invoice-rules.html"
+  },
+  {
+    "url": "https://www.indiapost.gov.in/banking-services/savings",
+    "status": 200,
+    "finalUrl": "https://www.indiapost.gov.in/banking-services/savings"
+  },
+  {
+    "url": "https://www.epfindia.gov.in/",
+    "status": 403
+  },
+  {
+    "url": "https://www.labour.gov.in/static/uploads/2026/03/a4ccf4c6d97c4f1f36a6d83f8c64213d.pdf",
+    "status": 200,
+    "finalUrl": "https://www.labour.gov.in/static/uploads/2026/03/a4ccf4c6d97c4f1f36a6d83f8c64213d.pdf"
+  },
+  {
+    "url": "https://www.incometax.gov.in/iec/foportal/sites/default/files/2025-07/CBDT_e-filing_ITR-3_Validation%20Rules_V1.0_AY%2025-26.pdf",
+    "status": 200,
+    "finalUrl": "https://www.incometax.gov.in/iec/foportal/sites/default/files/2025-07/CBDT_e-filing_ITR-3_Validation%20Rules_V1.0_AY%2025-26.pdf"
+  },
+  {
+    "url": "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1",
+    "status": 200,
+    "finalUrl": "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1"
+  },
+  {
+    "url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/itr-2/itr-2-faqs",
+    "status": 200,
+    "finalUrl": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/itr-2/itr-2-faqs"
+  },
+  {
+    "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/answers/key-terms/",
+    "status": 200,
+    "finalUrl": "https://www.consumerfinance.gov/consumer-tools/mortgages/answers/key-terms/"
+  },
+  {
+    "url": "https://www.consumerfinance.gov/owning-a-home/loan-estimate/",
+    "status": 200,
+    "finalUrl": "https://www.consumerfinance.gov/owning-a-home/loan-estimate/"
+  },
+  {
+    "url": "https://www.nist.gov/pml/owm/si-units-length",
+    "status": 200,
+    "finalUrl": "https://www.nist.gov/pml/owm/si-units-length"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity",
+    "status": 200,
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity"
+  },
+  {
+    "url": "https://www.w3.org/TR/selectors-4/#specificity-rules",
+    "status": 200,
+    "finalUrl": "https://www.w3.org/TR/selectors-4/#specificity-rules"
+  },
+  {
+    "url": "https://github.github.com/gfm/#tables-extension-",
+    "status": 200,
+    "finalUrl": "https://github.github.com/gfm/#tables-extension-"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc7519",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/info/rfc7519/"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc8725",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/info/rfc8725/"
+  },
+  {
+    "url": "https://physics.nist.gov/cuu/Units/binary.html",
+    "status": 200,
+    "finalUrl": "https://physics.nist.gov/cuu/Units/binary.html"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio",
+    "status": 200,
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+    "status": 200,
+    "finalUrl": "https://man7.org/linux/man-pages/man5/crontab.5.html"
+  },
+  {
+    "url": "https://mozilla.github.io/pdf.js/",
+    "status": 200,
+    "finalUrl": "https://mozilla.github.io/pdf.js/"
+  },
+  {
+    "url": "https://spec.commonmark.org/",
+    "status": 200,
+    "finalUrl": "https://spec.commonmark.org/"
+  },
+  {
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+    "status": 200,
+    "finalUrl": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio",
+    "status": 200,
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/aspect-ratio"
+  },
+  {
+    "url": "https://www.nice.org.uk/guidance/ng246/chapter/Recommendations",
+    "status": 200,
+    "finalUrl": "https://www.nice.org.uk/guidance/ng246/chapter/Recommendations-for-research"
+  },
+  {
+    "url": "https://physics.nist.gov/cuu/Uncertainty/",
+    "status": 200,
+    "finalUrl": "https://physics.nist.gov/cuu/Uncertainty/"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc8259",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/info/rfc8259/"
+  },
+  {
+    "url": "https://pdf-lib.js.org/",
+    "status": 200,
+    "finalUrl": "https://pdf-lib.js.org/"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues",
+    "status": 200,
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues"
+  },
+  {
+    "url": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+    "status": 200,
+    "finalUrl": "https://pages.nist.gov/800-63-4/sp800-63b.html"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter",
+    "status": 200,
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter"
+  },
+  {
+    "url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight",
+    "status": 200,
+    "finalUrl": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight"
+  },
+  {
+    "url": "https://www.irs.gov/irb/2026-29_irb",
+    "status": 200,
+    "finalUrl": "https://www.irs.gov/irb/2026-29_irb"
+  },
+  {
+    "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-private-mortgage-insurance-en-122/",
+    "status": 200,
+    "finalUrl": "https://www.consumerfinance.gov/ask-cfpb/what-is-private-mortgage-insurance-en-122/"
+  }
+]

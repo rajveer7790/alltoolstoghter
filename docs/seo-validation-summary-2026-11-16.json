@@ -1,0 +1,29 @@
+{
+  "baselineCommit": "4a4a85c",
+  "before": {
+    "uncompressedBytes": 279687,
+    "elements": 2813,
+    "toolCards": 295
+  },
+  "after": {
+    "uncompressedBytes": 93026,
+    "elements": 893,
+    "toolCards": 53
+  },
+  "byteReductionPercent": 66.7,
+  "scope": "Raw HTML, not Core Web Vitals",
+  "tests": 326,
+  "backendTests": 5,
+  "exportedHtmlPages": 337,
+  "sitemapUrls": 333,
+  "linksAndAssetsChecked": 34591,
+  "productionDependencyAdvisories": 0,
+  "backendDependencyAdvisories": 0,
+  "browserQa": "Netlify preview deployed; homepage count, lazy search, query URL and converter navigation verified. File conversion test interrupted; mobile/Core Web Vitals unverified.",
+  "sourceLinks": {
+    "checked": 39,
+    "http200": 38,
+    "http403": 1,
+    "http404": 0
+  }
+}

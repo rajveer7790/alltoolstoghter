@@ -3,6 +3,12 @@ import type { ComponentType } from 'react';
 import type { ToolDef } from '@/lib/types';
 
 const REGISTRY: Record<string, ComponentType<any>> = {
+  pdfcompress: dynamic(() => import('./pdf/CompressPdfWidget')),
+  heic: dynamic(() => import('./image/HeicWidget')),
+  randomnumber: dynamic(() => import('./RandomWidget')),
+  coinflip: dynamic(() => import('./RandomWidget')),
+  randomnames: dynamic(() => import('./RandomWidget')),
+  typing: dynamic(() => import('./TypingWidget')),
   calc: dynamic(() => import('./CalcWidget')),
   converter: dynamic(() => import('./ConverterWidget')),
   text: dynamic(() => import('./TextWidget')),
@@ -81,6 +87,7 @@ const REGISTRY: Record<string, ComponentType<any>> = {
 export default function ToolWidget({ tool }: { tool: ToolDef }) {
   const W = REGISTRY[tool.widget];
   if (!W) return null;
+  if (['randomnumber','coinflip','randomnames'].includes(tool.widget)) return <W key={tool.slug} kind={tool.widget === 'coinflip' ? 'coin' : tool.widget === 'randomnames' ? 'names' : 'number'} />;
   if (tool.widget === 'calc') return <W key={tool.slug} slug={tool.slug} fields={tool.fields ?? []} />;
   if (tool.widget === 'converter') {
     let preset;

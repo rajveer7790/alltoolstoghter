@@ -7,22 +7,25 @@
     "build": "next build",
     "start": "next start",
     "test": "node --import tsx --test tests/*.test.ts",
-    "typecheck": "tsc --noEmit",
-    "check": "npm run test && npm run typecheck",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "npm run test && npm run test:backend && npm run typecheck",
     "audit:export": "node --import tsx scripts/audit-export.ts",
-    "prebuild": "node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\""
+    "prebuild": "node --import tsx scripts/generate-discovery.ts && node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\"",
+    "test:backend": "node --test backend/tests/*.test.js"
   },
   "dependencies": {
     "css-tree": "^3.2.1",
+    "heic2any": "^0.0.4",
     "jsbarcode": "^3.12.3",
     "jszip": "^3.10.1",
-    "next": "^14.2.35",
+    "next": "^15.5.29",
     "parse5": "^8.1.0",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^4.8.69",
     "qrcode": "^1.5.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "specificity": "^1.0.0",
     "terser": "^5.51.2",
     "yaml": "^2.9.1"
   },
@@ -30,8 +33,12 @@
     "@types/css-tree": "^3.2.0",
     "@types/node": "20.14.0",
     "@types/qrcode": "^1.5.6",
-    "@types/react": "18.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "tsx": "^4.23.15",
     "typescript": "5.5.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.23"
   }
 }

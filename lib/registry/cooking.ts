@@ -4,17 +4,17 @@ const $ = (k: string, l: string, d: number, u?: string): any => ({ key: k, label
 export const COOKING: ToolDef[] = [
 {
   slug: 'grams-to-cups-converter', name: 'Grams to Cups Converter', prio: 'P1', category: 'cooking', widget: 'calc',
-  short: 'Convert grams to cups for flour, sugar, butter, and 20+ ingredients.',
+  short: 'Convert grams to cups for flour, sugar, butter, and other ingredients.',
   metaDescription: 'Convert grams to cups instantly. Free baking conversion calculator for flour, sugar, butter, and more using ingredient-specific weight densities.',
   keywords: ['grams to cups','grams to cups converter','how many cups is 100 grams','cooking measurements'],
   fields: [$('grams','Grams',250,'g'),{key:'ingredient',label:'Ingredient',type:'select',def:'flour_ap',options:[{value:'flour_ap',label:'All-purpose flour'},{value:'flour_bread',label:'Bread flour'},{value:'flour_cake',label:'Cake flour'},{value:'flour_whole',label:'Whole-wheat flour'},{value:'sugar_white',label:'White sugar'},{value:'sugar_brown',label:'Brown sugar (packed)'},{value:'sugar_powder',label:'Powdered sugar'},{value:'butter',label:'Butter'},{value:'cocoa',label:'Cocoa powder'},{value:'honey',label:'Honey'},{value:'milk',label:'Milk'},{value:'water',label:'Water'},{value:'salt',label:'Table salt'},{value:'oats',label:'Rolled oats'},{value:'rice',label:'Uncooked white rice'},{value:'cornstarch',label:'Cornstarch'},{value:'olive_oil',label:'Olive oil'},{value:'vegetable_oil',label:'Vegetable oil'}]}],
   content: {
-    intro: 'Convert grams to cups for 20+ common baking and cooking ingredients, using the exact weight-per-cup for each ingredient rather than a generic conversion.',
+    intro: 'Convert grams to cups for common baking and cooking ingredients, using an approximate weight-per-cup assumption for each ingredient rather than a generic conversion.',
     how: 'Each ingredient has a specific density. Flour weighs about 125 g/cup, while sugar weighs 200 g/cup. Using weight (grams) in recipes is more accurate than volume because packing varies.',
     howSteps: [
       'Enter the weight amount in grams.',
       'Select the exact ingredient you are converting from the dropdown list.',
-      'The calculator outputs the precise measurement in cups and smaller fractions.'
+      'Review the estimated cups; packing and ingredient variation affect the result.'
     ],
     faqs: [
       ['Why do I need different conversions for different ingredients?','Because density varies — a cup of flour weighs about 125 g while a cup of sugar weighs 200 g. A single "grams per cup" figure is only valid for water.'],

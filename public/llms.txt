@@ -1,70 +1,193 @@
 # All Tools Together
 
-> Free online calculators, converters, PDF tools, image tools, developer utilities, and text tools. Most tools process inputs locally. Optional writing services and URL shortening send data to a backend; currency conversion fetches external rates. Tools across 19 categories, all 100% free with no signup required.
+Updated: 2026-11-16 (maintained content revision)
 
-## About
+> 294 free tools across 19 categories. Calculators, text utilities and file processing run locally; writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
 
-All Tools Together is a privacy-first multi-tool website offering free tools across 19 categories. PDF and image processing happens on the device. See each tool and the privacy policy for online service exceptions.
+## Main pages
 
-### Key differentiators
+- [about](https://alltoolstogether.com/about)
+- [contact](https://alltoolstogether.com/contact)
+- [privacy](https://alltoolstogether.com/privacy)
+- [terms](https://alltoolstogether.com/terms)
+- [sitemap](https://alltoolstogether.com/sitemap)
+- [tools](https://alltoolstogether.com/tools)
+- [embed](https://alltoolstogether.com/embed)
+- [guides](https://alltoolstogether.com/guides)
+- [editorial-policy](https://alltoolstogether.com/editorial-policy)
+- [methodology](https://alltoolstogether.com/methodology)
+- [author / rajveer-choudhary](https://alltoolstogether.com/author/rajveer-choudhary)
+- [XML sitemap](https://alltoolstogether.com/sitemap.xml)
+- [Full catalog](https://alltoolstogether.com/llms-full.txt)
 
-- 100% browser-based processing for all calculators, converters, PDF, and image tools
-- No account, signup, or email required
-- No file uploads — PDF and image processing runs client-side only
-- Structured FAQs and step-by-step HowTo guides on every tool page
-- Schema.org structured data (WebApplication, FAQPage, HowTo, BreadcrumbList) on all pages
+## Finance & Money
 
-## Main Pages
+- [Category](https://alltoolstogether.com/finance)
+- [Mortgage Calculator](https://alltoolstogether.com/finance/mortgage-calculator): See your monthly payment, total interest, and PMI risk for any home loan.
+- [Loan Calculator](https://alltoolstogether.com/finance/loan-calculator): Monthly payment, total interest, and total cost for any fixed-rate loan.
+- [Auto Loan Calculator](https://alltoolstogether.com/finance/auto-loan-calculator): Car payment including sales tax, trade-in value, and dealer fees.
+- [Compound Interest Calculator](https://alltoolstogether.com/finance/compound-interest-calculator): Project how savings grow with compounding and regular contributions.
+- [Simple Interest Calculator](https://alltoolstogether.com/finance/simple-interest-calculator): I = P × R × T, computed instantly with the total repayment amount.
 
-- [Home](https://alltoolstogether.com/)
-- [Sitemap (XML)](https://alltoolstogether.com/sitemap.xml)
-- [Sitemap (HTML)](https://alltoolstogether.com/sitemap)
-- [About](https://alltoolstogether.com/about)
-- [Contact](https://alltoolstogether.com/contact)
-- [Privacy Policy](https://alltoolstogether.com/privacy)
-- [Terms of Service](https://alltoolstogether.com/terms)
+## Health & Fitness
 
-## Tool Categories
+- [Category](https://alltoolstogether.com/health)
+- [BMI Calculator](https://alltoolstogether.com/health/bmi-calculator): Body mass index, WHO category, and your healthy weight range.
+- [BMR Calculator](https://alltoolstogether.com/health/bmr-calculator): Calories your body burns at complete rest (Mifflin-St Jeor).
+- [TDEE Calculator](https://alltoolstogether.com/health/tdee-calculator): Total daily energy expenditure: BMR scaled by real activity.
+- [Calorie Calculator](https://alltoolstogether.com/health/calorie-calculator): Daily calories to maintain, lose, or gain weight at a healthy pace.
+- [Macro Calculator](https://alltoolstogether.com/health/macro-calculator): Grams of protein, carbs, and fat from your calorie target and split.
 
-- [Finance & Money](https://alltoolstogether.com/finance): Mortgage, loan, savings, salary, and investment calculators
-- [Health & Fitness](https://alltoolstogether.com/health): BMI, calorie, body fat, pregnancy, and macro calculators
-- [Math & Education](https://alltoolstogether.com/math): Percentage, fraction, quadratic, and scientific calculators
-- [Date & Time](https://alltoolstogether.com/date-time): Date difference, age, countdown, timezone converters
-- [Unit Converters](https://alltoolstogether.com/unit-converters): Temperature, weight, length, volume, speed converters
-- [Text Tools](https://alltoolstogether.com/text): Word counter, case converter, lorem ipsum generator
-- [Developer Tools](https://alltoolstogether.com/developer): JSON formatter, Base64, UUID, hash, regex testers
-- [SEO & Web](https://alltoolstogether.com/seo): QR codes, meta tags, Open Graph, robots.txt generators
-- [PDF Tools](https://alltoolstogether.com/pdf): Merge, split, rotate, compress, and convert PDFs
-- [Image Tools](https://alltoolstogether.com/image): Resize, crop, compress, convert, and edit images
-- [Writing Tools](https://alltoolstogether.com/writing): Grammar checker, paraphraser, plagiarism checker
-- [Real Estate](https://alltoolstogether.com/real-estate): Rent vs buy, affordability, property tax calculators
-- [Construction](https://alltoolstogether.com/construction): Concrete, paint, flooring, and roofing estimators
-- [Cooking & Food](https://alltoolstogether.com/cooking): Recipe scaler, cooking unit converter, nutrition tools
-- [Science & Engineering](https://alltoolstogether.com/science): Ohm's law, pH, density, kinematics calculators
-- [Statistics](https://alltoolstogether.com/statistics): Z-score, confidence interval, sample size calculators
-- [Business & Marketing](https://alltoolstogether.com/business): CAC, LTV, ROAS, margin calculators
-- [Investing & Crypto](https://alltoolstogether.com/investing): Stock returns, DCA, dividend yield, P/E calculators
-- [Tax & Payroll](https://alltoolstogether.com/tax): Take-home pay, VAT, self-employment tax calculators
+## Math & Education
 
-## Popular Tools
+- [Category](https://alltoolstogether.com/math)
+- [Percentage Calculator](https://alltoolstogether.com/math/percentage-calculator): Percent of a number, percent one number is of another, and percent change.
+- [Fraction Calculator](https://alltoolstogether.com/math/fraction-calculator): Add, subtract, multiply, or divide fractions — auto-simplified.
+- [Average Calculator](https://alltoolstogether.com/math/average-calculator): Mean, median, mode, standard deviation, sum and count from any list.
+- [GPA Calculator](https://alltoolstogether.com/math/gpa-calculator): Weighted GPA on the 4.0 scale from your grades and credit hours.
+- [Final Grade Calculator](https://alltoolstogether.com/math/final-grade-calculator): "What do I need on the final?" — answered in one calculation.
 
-- [Mortgage Calculator](https://alltoolstogether.com/finance/mortgage-calculator)
-- [BMI Calculator](https://alltoolstogether.com/health/bmi-calculator)
-- [Percentage Calculator](https://alltoolstogether.com/math/percentage-calculator)
-- [JSON Formatter](https://alltoolstogether.com/developer/json-formatter)
-- [QR Code Generator](https://alltoolstogether.com/seo/qr-code-generator)
-- [PDF Merge](https://alltoolstogether.com/pdf/merge-pdf)
-- [Image Resizer](https://alltoolstogether.com/image/image-resizer)
-- [Word Counter](https://alltoolstogether.com/text/word-counter)
-- [Loan Calculator](https://alltoolstogether.com/finance/loan-calculator)
-- [Scientific Calculator](https://alltoolstogether.com/math/scientific-calculator)
+## Date & Time
 
-## Citation Guidance
+- [Category](https://alltoolstogether.com/date-time)
+- [Age Calculator](https://alltoolstogether.com/date-time/age-calculator): Exact age in years, months, and days — plus days to your next birthday.
+- [Days Between Dates](https://alltoolstogether.com/date-time/days-between-dates): Count the days, weeks, and months separating any two dates.
+- [Add or Subtract Days From a Date](https://alltoolstogether.com/date-time/add-days-to-date): What date is 30, 90, or N days (or weeks, months, years) from any date?
+- [Days Until Calculator](https://alltoolstogether.com/date-time/days-until-calculator): A clean count of days remaining until any date.
+- [Weekly Time Card Calculator](https://alltoolstogether.com/date-time/hours-calculator): Add up seven days of work hours with a separate unpaid lunch break for each shift.
 
-When referencing All Tools Together, cite the specific tool URL (e.g. https://alltoolstogether.com/finance/mortgage-calculator) rather than the homepage alone. Each tool page contains structured data, FAQs, and step-by-step instructions.
+## Unit Converters
 
-## Technical Notes
+- [Category](https://alltoolstogether.com/unit-converters)
+- [Unit Converter](https://alltoolstogether.com/unit-converters/unit-converter): Convert length, weight, temperature, area, volume, speed, and data units.
+- [Length Converter](https://alltoolstogether.com/unit-converters/length-converter): Meters, feet, inches, kilometers, miles — converted exactly.
+- [Weight Converter](https://alltoolstogether.com/unit-converters/weight-converter): Kilograms, pounds, ounces, stone, and tons — converted exactly.
+- [Temperature Converter](https://alltoolstogether.com/unit-converters/temperature-converter): Celsius, Fahrenheit, and Kelvin with the exact formulas.
+- [Area Converter](https://alltoolstogether.com/unit-converters/area-converter): Square meters, square feet, acres, and hectares.
 
-- Static site (Next.js static export), hosted on CDN
-- All calculators use verified mathematical formulas with clear explanations
-- Grammar checker, paraphrasing, plagiarism checker, and URL shortener require a self-hosted backend (NEXT_PUBLIC_API_BASE). All other tools work without any server.
+## Text Tools
+
+- [Category](https://alltoolstogether.com/text)
+- [Word Counter](https://alltoolstogether.com/text/word-counter): Words, characters, sentences, paragraphs, and reading time — live.
+- [Character Counter](https://alltoolstogether.com/text/character-counter): Live character count with and without spaces, plus platform limits.
+- [Case Converter](https://alltoolstogether.com/text/case-converter): UPPERCASE, lowercase, Title Case, camelCase, snake_case, and more.
+- [Reverse Text](https://alltoolstogether.com/text/reverse-text): Flip text backwards — by characters or by word order.
+- [Remove Line Breaks](https://alltoolstogether.com/text/remove-line-breaks): Strip or replace line breaks — with a paragraph-preserving mode.
+
+## Developer Tools
+
+- [Category](https://alltoolstogether.com/developer)
+- [JSON Formatter & Validator](https://alltoolstogether.com/developer/json-formatter): Format, validate, and minify JSON with precise error messages.
+- [Base64 Encode / Decode](https://alltoolstogether.com/developer/base64-encode-decode): UTF-8-safe Base64 encoding and decoding in the browser.
+- [URL Encode / Decode](https://alltoolstogether.com/developer/url-encode-decode): Percent-encode text for URLs, or decode %20s back to readable text.
+- [UUID Generator](https://alltoolstogether.com/developer/uuid-generator): Cryptographically random UUID v4s, singly or in bulk.
+- [Hash Generator (SHA-256, SHA-512, SHA-1)](https://alltoolstogether.com/developer/hash-generator): SHA hashes of any text, computed locally with Web Crypto.
+
+## SEO & Web
+
+- [Category](https://alltoolstogether.com/seo)
+- [QR Code Generator](https://alltoolstogether.com/seo/qr-code-generator): Create custom QR codes for URLs, text, or contact details.
+- [Barcode Generator](https://alltoolstogether.com/seo/barcode-generator): Generate CODE128, EAN-13, UPC and more as downloadable SVG.
+- [UTM Link Builder](https://alltoolstogether.com/seo/utm-link-builder): Add UTM tracking parameters to campaign URLs.
+- [Robots.txt Generator](https://alltoolstogether.com/seo/robots-txt-generator): Create a valid robots.txt to guide search crawlers.
+- [XML Sitemap Generator](https://alltoolstogether.com/seo/xml-sitemap-generator): Turn a list of URLs into a valid XML sitemap.
+
+## PDF Tools
+
+- [Category](https://alltoolstogether.com/pdf)
+- [Merge PDF](https://alltoolstogether.com/pdf/merge-pdf): Combine several PDF files into one, in any order.
+- [Split PDF](https://alltoolstogether.com/pdf/split-pdf): Split a PDF into separate files by page ranges.
+- [Extract PDF Pages](https://alltoolstogether.com/pdf/extract-pdf-pages): Pull selected pages into a new PDF.
+- [Delete PDF Pages](https://alltoolstogether.com/pdf/delete-pdf-pages): Remove unwanted pages from a PDF.
+- [Reorder PDF Pages](https://alltoolstogether.com/pdf/reorder-pdf-pages): Rearrange the page order of a PDF.
+
+## Image Tools
+
+- [Category](https://alltoolstogether.com/image)
+- [Image Resizer](https://alltoolstogether.com/image/image-resizer): Resize images by pixels or percentage, keeping aspect ratio.
+- [Image Cropper](https://alltoolstogether.com/image/image-cropper): Crop images with a draggable selection and aspect presets.
+- [Image Compressor](https://alltoolstogether.com/image/image-compressor): Shrink image file size with a live quality preview.
+- [Image Converter](https://alltoolstogether.com/image/image-converter): Convert images between PNG, JPG, and WebP.
+- [PNG to JPG](https://alltoolstogether.com/image/png-to-jpg): Convert PNG images to JPG, with quality control.
+
+## Construction
+
+- [Category](https://alltoolstogether.com/construction)
+- [Concrete Calculator](https://alltoolstogether.com/construction/concrete-calculator): Cubic yards of concrete and number of bags for any slab or footing.
+- [Paint Calculator](https://alltoolstogether.com/construction/paint-calculator): Gallons of paint needed for a room, with door and window deductions.
+- [Flooring Calculator](https://alltoolstogether.com/construction/flooring-calculator): Square feet of flooring with waste allowance and box count.
+- [Gravel Calculator](https://alltoolstogether.com/construction/gravel-calculator): Cubic yards and tons of gravel for driveways, paths, and landscaping.
+- [Mulch Calculator](https://alltoolstogether.com/construction/mulch-calculator): Cubic yards and bags of mulch for garden beds and landscaping.
+
+## Cooking & Food
+
+- [Category](https://alltoolstogether.com/cooking)
+- [Grams to Cups Converter](https://alltoolstogether.com/cooking/grams-to-cups-converter): Convert grams to cups for flour, sugar, butter, and other ingredients.
+- [Recipe Scaling Calculator](https://alltoolstogether.com/cooking/recipe-scaling-calculator): Scale any recipe ingredient up or down to a new serving count.
+- [Cooking Unit Converter](https://alltoolstogether.com/cooking/cooking-unit-converter): Convert between teaspoons, tablespoons, cups, fluid ounces, and millilitres.
+- [Calories Burned Calculator](https://alltoolstogether.com/cooking/calories-burned-calculator): Calories burned during exercise by activity, weight, and duration.
+
+## Science & Engineering
+
+- [Category](https://alltoolstogether.com/science)
+- [Ohm's Law Calculator](https://alltoolstogether.com/science/ohms-law-calculator): Solve for voltage, current, or resistance given any two values.
+- [Resistor Color Code Calculator](https://alltoolstogether.com/science/resistor-color-code-calculator): Decode a 4-band resistor color code to its resistance value.
+- [Voltage Divider Calculator](https://alltoolstogether.com/science/voltage-divider-calculator): Output voltage, current, and power for a resistor voltage divider.
+- [Torque Calculator](https://alltoolstogether.com/science/torque-calculator): Calculate torque in N·m, ft·lb, and in·lb from force and moment arm.
+- [Newton's Second Law Calculator](https://alltoolstogether.com/science/newtons-second-law-calculator): Solve F = ma for force, mass, or acceleration.
+
+## Statistics
+
+- [Category](https://alltoolstogether.com/statistics)
+- [Z-Score Calculator](https://alltoolstogether.com/statistics/z-score-calculator): Z-score, percentile, and probability from a value, mean, and standard deviation.
+- [Confidence Interval Calculator](https://alltoolstogether.com/statistics/confidence-interval-calculator): Confidence interval and margin of error from sample statistics.
+- [Sample Size Calculator](https://alltoolstogether.com/statistics/sample-size-calculator): Required sample size for a survey at a given confidence and margin of error.
+- [Correlation Coefficient Calculator](https://alltoolstogether.com/statistics/correlation-coefficient-calculator): Pearson correlation coefficient (r) and R² from two data lists.
+- [P-Value Calculator](https://alltoolstogether.com/statistics/p-value-calculator): P-value and significance from a z-statistic (one- or two-tailed).
+
+## Business & Marketing
+
+- [Category](https://alltoolstogether.com/business)
+- [CAC Calculator](https://alltoolstogether.com/business/cac-calculator): Customer Acquisition Cost and LTV:CAC ratio for your marketing spend.
+- [Customer Lifetime Value Calculator](https://alltoolstogether.com/business/customer-lifetime-value-calculator): Customer lifetime value (LTV) from purchase value, frequency, and lifespan.
+- [ROAS Calculator](https://alltoolstogether.com/business/roas-calculator): Return on ad spend, net profit, and break-even ROAS.
+- [Email Marketing ROI Calculator](https://alltoolstogether.com/business/email-marketing-roi-calculator): Projected revenue and ROI from an email campaign funnel.
+- [Employee Turnover Calculator](https://alltoolstogether.com/business/employee-turnover-calculator): Turnover rate and estimated replacement cost for your team.
+
+## Investing & Crypto
+
+- [Category](https://alltoolstogether.com/investing)
+- [Dollar-Cost Averaging Calculator](https://alltoolstogether.com/investing/dollar-cost-averaging-calculator): Projected portfolio value from regular monthly investments.
+- [Crypto Profit/Loss Calculator](https://alltoolstogether.com/investing/crypto-profit-loss-calculator): Profit or loss on a crypto trade, including fees.
+- [Stock Return Calculator](https://alltoolstogether.com/investing/stock-return-calculator): Total and annualized return on a stock investment, including dividends.
+- [Dividend Yield Calculator](https://alltoolstogether.com/investing/dividend-yield-calculator): Dividend yield and annual income from a dividend stock.
+- [P/E Ratio Calculator](https://alltoolstogether.com/investing/pe-ratio-calculator): Price-to-earnings ratio and earnings yield for a stock.
+
+## Tax & Payroll
+
+- [Category](https://alltoolstogether.com/tax)
+- [Paycheck Calculator](https://alltoolstogether.com/tax/paycheck-calculator): Estimate take-home pay after federal tax, FICA, state tax, and 401(k).
+- [VAT Calculator](https://alltoolstogether.com/tax/vat-calculator): Add or remove VAT at any rate, with the tax amount broken out.
+- [Self-Employment Tax Calculator](https://alltoolstogether.com/tax/self-employment-tax-calculator): Estimate US self-employment (SECA) tax on your net business profit.
+- [Canada GST/HST Calculator](https://alltoolstogether.com/tax/canada-gst-hst-calculator): Add or reverse Canadian GST or HST using the province or territory of supply.
+- [US Business Mileage Calculator 2026](https://alltoolstogether.com/tax/us-mileage-calculator-2026): Estimate the 2026 IRS business mileage amount using separate rates for each half of the year.
+
+## Real Estate
+
+- [Category](https://alltoolstogether.com/real-estate)
+- [Rent vs Buy Calculator](https://alltoolstogether.com/real-estate/rent-vs-buy-calculator): Find out whether renting or buying makes better financial sense over your time horizon.
+- [Home Affordability Calculator](https://alltoolstogether.com/real-estate/home-affordability-calculator): How much house can you afford? Based on the 28/36 rule lenders use.
+- [Property Tax Calculator](https://alltoolstogether.com/real-estate/property-tax-calculator): Estimate annual and monthly property tax from home value and mill rate.
+- [Closing Costs Calculator](https://alltoolstogether.com/real-estate/closing-costs-calculator): Estimate buyer or seller closing costs as a percentage of the home price.
+- [Rental Yield Calculator](https://alltoolstogether.com/real-estate/rental-yield-calculator): Gross yield, net yield, cap rate, and payback period for a rental property.
+
+## Writing Tools
+
+- [Category](https://alltoolstogether.com/writing)
+- [Grammar Checker](https://alltoolstogether.com/writing/grammar-checker): Catch grammar, spelling, and style mistakes with one-click fixes.
+- [Paraphrasing Tool](https://alltoolstogether.com/writing/paraphrasing-tool): Rewrite text in a different style while keeping the meaning.
+- [Plagiarism Checker](https://alltoolstogether.com/writing/plagiarism-checker): Check whether passages of text appear elsewhere on the web.
+
+## Citation and processing notes
+
+Cite the specific tool URL, its stated assumptions and effective period. Decoding is not verification; health and financial estimates are not individual advice. Source links do not imply endorsement. Local file processing does not guarantee lossless conversion. llms.txt is informational, not an indexing or citation guarantee.

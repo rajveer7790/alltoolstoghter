@@ -19,5 +19,11 @@
   "linksAndAssetsChecked": 34591,
   "productionDependencyAdvisories": 0,
   "backendDependencyAdvisories": 0,
-  "browserQa": "Local Chromium socket restrictions; cloud browser cannot reach localhost. Deploy preview QA pending."
+  "browserQa": "Netlify preview deployed; homepage count, lazy search, query URL and converter navigation verified. File conversion test interrupted; mobile/Core Web Vitals unverified.",
+  "sourceLinks": {
+    "checked": 39,
+    "http200": 38,
+    "http403": 1,
+    "http404": 0
+  }
 }

@@ -91,3 +91,7 @@ Production build succeeded on Next.js 15.5.29 / React 19. Both frontend and back
 The final local homepage HTML was **93,026 bytes**, versus **279,687 bytes** fetched from the original live page: about **66.7% less uncompressed HTML**. Initial tool-card links fell from 295 to 53. This is a payload/DOM measurement, not a measured improvement in LCP, INP, CLS or rankings. The shared framework JS changed with the security upgrade.
 
 Netlify preview validation caught `.d.mts` discovery as a separate function. Removed the declaration from the function directory and moved its test to the backend JavaScript suite; the real function remains `tool-embed.mjs`. Route type generation now runs before typechecking clean checkouts.
+
+### Deploy preview checks
+
+Netlify successfully deployed source commit `e5096cfb7f480f3931fe55b20f0683d15fc1c921`. The rendered homepage showed consistent 294-tool counts. Searching for HEIC loaded the full catalog, returned the matching tool and updated the URL query; navigation to the converter also worked. The file-chooser/conversion test was interrupted, so HEIC/PDF browser conversions and mobile visual/Core Web Vitals checks remain unverified. Source-link checks returned HTTP 200 for 38 of 39 primary references; EPFO returned 403 in this environment, with no 404s observed.

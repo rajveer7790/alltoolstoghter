@@ -1,4 +1,7 @@
 import { Category, CatKey, ToolDef } from '../types';
+import { UTILITIES } from './utilities';
+import { INDIA } from './india';
+import { isIndexableTool } from '../toolPolicy';
 import { FINANCE } from './finance';
 import { HEALTH } from './health';
 import { MATH } from './math';
@@ -44,7 +47,10 @@ export const CATEGORIES: Category[] = [
   { key: 'writing', name: 'Writing Tools', tagline: 'Grammar, paraphrasing, and plagiarism checks — online services with availability shown on each page.', accent: '#0891B2' },
 ];
 
-export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA, ...PRACTICAL, ...NORTH_AMERICA];
+export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA, ...PRACTICAL, ...NORTH_AMERICA, ...INDIA, ...UTILITIES];
+
+export const INDEXABLE_TOOLS = ALL_TOOLS.filter(isIndexableTool);
+export const TOOL_COUNT = INDEXABLE_TOOLS.length;
 
 export const bySlug = new Map(ALL_TOOLS.map(t => [t.slug, t]));
 export const byCategory = (key: CatKey) => ALL_TOOLS.filter(t => t.category === key);

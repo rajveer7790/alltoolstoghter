@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const updated = 'October 24, 2026';
+  const updated = 'November 16, 2026';
   return (
     <StaticPage title="Privacy Policy" subtitle={`Last updated: ${updated}`}>
       <p>
@@ -35,6 +35,7 @@ export default function PrivacyPage() {
         to a backend service when configured. If deployed, that service is operated by us or you (self-hosted).
         Text submitted to these tools is transmitted only when you actively use them. Their pages include public instructions you can use while a service is unavailable.
       </p>
+      <p>When URL shortening is available, destinations may be sent to a configured reputation provider to check for harmful links. Short-link mappings, click counts and abuse reports are stored by the backend operator. Report reasons should not include sensitive personal information.</p>
       <h2>Information we may collect automatically</h2>
       <ul>
         <li>Standard web server logs (IP address, browser type, pages visited, timestamps)</li>

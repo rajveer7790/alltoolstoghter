@@ -1,50 +1,14 @@
 'use client';
 import { useState } from 'react';
 
-/** Compute CSS specificity as [a, b, c] (IDs, classes/attrs/pseudo-classes, elements/pseudo-elements). */
-function computeSpecificity(selector: string): { a: number; b: number; c: number; tokens: { type: string; value: string }[] } {
-  let a = 0, b = 0, c = 0;
-  const tokens: { type: string; value: string }[] = [];
-  // Remove the contents of :not(), :is(), :where() handled specially — but keep simple here.
-  // Strip strings and clean
-  let s = selector.trim();
-  if (!s) return { a, b, c, tokens };
-
-  // :where() contributes 0 — remove its contents entirely
-  s = s.replace(/:where\([^)]*\)/g, ' ');
-
-  // IDs: #foo
-  s = s.replace(/#[\w-]+/g, (m) => { a++; tokens.push({ type: 'id', value: m }); return ' '; });
-
-  // Pseudo-elements: ::before, ::after, :before (legacy) — count as element (c)
-  s = s.replace(/::?(?:before|after|first-line|first-letter|selection|placeholder|marker|backdrop)/g, (m) => { c++; tokens.push({ type: 'pseudo-element', value: m }); return ' '; });
-
-  // Classes: .foo
-  s = s.replace(/\.[\w-]+/g, (m) => { b++; tokens.push({ type: 'class', value: m }); return ' '; });
-
-  // Attributes: [type="text"]
-  s = s.replace(/\[[^\]]+\]/g, (m) => { b++; tokens.push({ type: 'attribute', value: m }); return ' '; });
-
-  // Pseudo-classes: :hover, :nth-child(2), :not(...)
-  s = s.replace(/:[\w-]+(\([^)]*\))?/g, (m) => { b++; tokens.push({ type: 'pseudo-class', value: m }); return ' '; });
-
-  // Elements / type selectors: div, span, a (word boundaries, not universal *)
-  s.replace(/[a-zA-Z][\w-]*/g, (m) => { c++; tokens.push({ type: 'element', value: m }); return ' '; });
-
-  return { a, b, c, tokens };
-}
+import { selectorSpecificity } from '@/lib/calc/specificity';
 
 const EXAMPLES = ['#nav .item a:hover', 'div.card > p::first-line', 'ul li.active', '[type="checkbox"]:checked', '.btn.btn-primary'];
 
 export default function CssSpecificityWidget() {
   const [selector, setSelector] = useState('#nav .item a:hover');
-  const { a, b, c, tokens } = computeSpecificity(selector);
-  const score = `${a},${b},${c}`;
-
-  const TYPE_COLORS: Record<string, string> = {
-    id: '#DC2626', class: '#0B5FFF', attribute: '#0B5FFF', 'pseudo-class': '#0B5FFF',
-    element: '#16A34A', 'pseudo-element': '#16A34A',
-  };
+  const { a, b, c, error } = selectorSpecificity(selector);
+  const score = error ? '—' : `${a},${b},${c}`;
 
   return (
     <div className="tool-card">
@@ -66,18 +30,7 @@ export default function CssSpecificityWidget() {
         </div>
       </div>
 
-      {tokens.length > 0 && (
-        <div style={{ marginTop: 16 }}>
-          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: 8 }}>Selector breakdown</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            {tokens.map((t, i) => (
-              <span key={i} style={{ fontFamily: 'var(--mono)', fontSize: 13, padding: '4px 9px', borderRadius: 6, background: 'rgba(11,95,255,0.05)', border: `1px solid ${TYPE_COLORS[t.type] ?? 'var(--line)'}33`, color: TYPE_COLORS[t.type] ?? 'var(--ink)' }}>
-                {t.value}<span style={{ color: 'var(--ink-3)', marginLeft: 6, fontSize: 11 }}>{t.type}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
+      {error && <p role="alert">{error}</p>}
 
       <div style={{ marginTop: 16 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: 8 }}>Try an example</p>

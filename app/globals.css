@@ -521,3 +521,15 @@ a:hover { text-decoration: underline; }
 .skip-link { position: fixed; top: -80px; left: 16px; z-index: 9999; padding: 12px 18px; background: white; color: #111; border: 2px solid #0b5fff; }
 .skip-link:focus { top: 12px; }
 .availability-note { padding: 12px; border: 1px solid #b45309; border-radius: 8px; }
+
+/* Content tables stay inside narrow screens without shifting the page. */
+.table-scroll { max-width:100%; overflow-x:auto; margin:1.5rem 0; border:1px solid var(--line); border-radius:8px; }
+.table-scroll:focus-visible { outline:2px solid var(--signal); outline-offset:3px; }
+.table-scroll table { width:100%; border-collapse:collapse; font-size:.94rem; }
+.table-scroll caption { text-align:left; padding:1rem; font-weight:600; color:var(--ink); }
+.table-scroll th,.table-scroll td { text-align:left; padding:.75rem 1rem; border-top:1px solid var(--line); vertical-align:top; min-width:100px; }
+.table-scroll th { background:var(--paper); }
+.content-byline { font-size:.85rem; line-height:1.7; color:var(--ink-2); margin:0 0 1rem; }
+.quick-answer { padding:1rem; border-left:3px solid var(--signal); background:var(--paper); line-height:1.7; margin-bottom:1.5rem; }
+.guide-takeaways { padding:1rem 1.25rem; border:1px solid var(--line); border-radius:10px; }
+@media(max-width:600px) { .content-byline { font-size:.8rem; } .table-scroll th,.table-scroll td { padding:.65rem; } }

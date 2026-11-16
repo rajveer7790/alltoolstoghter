@@ -1,0 +1,23 @@
+{
+  "baselineCommit": "4a4a85c",
+  "before": {
+    "uncompressedBytes": 279687,
+    "elements": 2813,
+    "toolCards": 295
+  },
+  "after": {
+    "uncompressedBytes": 93026,
+    "elements": 893,
+    "toolCards": 53
+  },
+  "byteReductionPercent": 66.7,
+  "scope": "Raw HTML, not Core Web Vitals",
+  "tests": 327,
+  "backendTests": 4,
+  "exportedHtmlPages": 337,
+  "sitemapUrls": 333,
+  "linksAndAssetsChecked": 34591,
+  "productionDependencyAdvisories": 0,
+  "backendDependencyAdvisories": 0,
+  "browserQa": "Local Chromium socket restrictions; cloud browser cannot reach localhost. Deploy preview QA pending."
+}

@@ -1,0 +1,2690 @@
+[
+  {
+    "path": "/about",
+    "title": "About Us | All Tools Together",
+    "description": "Learn about All Tools Together — 294 free online calculators, converters, and file tools with local file processing, clear explanations, and documented limitations.",
+    "canonical": "https://alltoolstogether.com/about",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/author/rajveer-choudhary",
+    "title": "Rajveer Choudhary — Site Maintainer | All Tools Together",
+    "description": "Meet Rajveer Choudhary, developer and maintainer of All Tools Together. Learn how to report a correction and read the site methodology.",
+    "canonical": "https://alltoolstogether.com/author/rajveer-choudhary",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business/cac-calculator",
+    "title": "CAC Calculator | All Tools Together",
+    "description": "Free online CAC Calculator. Calculate your Customer Acquisition Cost and LTV:CAC ratio securely to measure marketing sustainability.",
+    "canonical": "https://alltoolstogether.com/business/cac-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business/customer-lifetime-value-calculator",
+    "title": "Customer Lifetime Value Calculator | All Tools Together",
+    "description": "Calculate Customer Lifetime Value (LTV or CLV) online. Free business calculator projecting exactly how much revenue a customer generates over time.",
+    "canonical": "https://alltoolstogether.com/business/customer-lifetime-value-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business/email-marketing-roi-calculator",
+    "title": "Email Marketing ROI Calculator | All Tools Together",
+    "description": "Calculate Email Marketing ROI. Free online tool estimating revenue from list size, open rates, CTR, and conversion rates securely.",
+    "canonical": "https://alltoolstogether.com/business/email-marketing-roi-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business/employee-turnover-calculator",
+    "title": "Employee Turnover Calculator | All Tools Together",
+    "description": "Calculate employee turnover rate and replacement costs online securely. Free HR tool evaluating attrition impact directly in your browser.",
+    "canonical": "https://alltoolstogether.com/business/employee-turnover-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business/gross-margin-calculator",
+    "title": "Gross Margin Calculator — Revenue Minus COGS | All Tools Together",
+    "description": "Gross Margin Calculator online. Calculate gross profit, gross margin, and markup clearly with this free, private browser tool.",
+    "canonical": "https://alltoolstogether.com/business/gross-margin-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business/roas-calculator",
+    "title": "ROAS Calculator | All Tools Together",
+    "description": "Free online ROAS Calculator. Measure Return On Ad Spend and calculate your break-even ad cost privately without uploading your data.",
+    "canonical": "https://alltoolstogether.com/business/roas-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/business",
+    "title": "Business & Marketing — 6 Free Online Tools | All Tools Together",
+    "description": "Explore Business & Marketing on All Tools Together. Find CAC Calculator, Customer Lifetime Value Calculator, ROAS Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/business",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/concrete-calculator",
+    "title": "Concrete Calculator — Slab Volume & Bag Estimate | All Tools Together",
+    "description": "Calculate concrete needs online for free. Find out exactly how many cubic yards or bags of concrete you need for slabs and footings.",
+    "canonical": "https://alltoolstogether.com/construction/concrete-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/concrete-volume-calculator",
+    "title": "Concrete Volume Calculator — Rectangular Dimensions | All Tools Together",
+    "description": "Free concrete calculator. Estimate volume in cubic yards or cubic meters for slabs and footings.",
+    "canonical": "https://alltoolstogether.com/construction/concrete-volume-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/fence-calculator",
+    "title": "Fence Calculator | All Tools Together",
+    "description": "Free online Fence Calculator. Estimate exact material counts for posts, rails, and pickets to build any standard wooden fence easily.",
+    "canonical": "https://alltoolstogether.com/construction/fence-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/flooring-calculator",
+    "title": "Flooring Calculator | All Tools Together",
+    "description": "Flooring Calculator online. Calculate square footage and exact box counts safely including proper waste allowances for hardwood or tile.",
+    "canonical": "https://alltoolstogether.com/construction/flooring-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/gravel-calculator",
+    "title": "Gravel Calculator | All Tools Together",
+    "description": "Free Gravel Calculator. Determine exactly how many cubic yards and tons of gravel you need for driveways and landscaping easily.",
+    "canonical": "https://alltoolstogether.com/construction/gravel-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/mulch-calculator",
+    "title": "Mulch Calculator | All Tools Together",
+    "description": "Calculate mulch needs online. Discover exact cubic yards or standard bag counts required for your garden landscaping project. Completely free.",
+    "canonical": "https://alltoolstogether.com/construction/mulch-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/paint-calculator",
+    "title": "Paint Calculator | All Tools Together",
+    "description": "Free Paint Calculator online. Figure out exactly how many gallons of paint you need, accounting for doors, windows, and multiple coats.",
+    "canonical": "https://alltoolstogether.com/construction/paint-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/roof-pitch-calculator",
+    "title": "Roof Pitch Calculator | All Tools Together",
+    "description": "Roof Pitch Calculator online. Calculate roof angles in degrees and the area multiplier directly from simple rise and run measurements.",
+    "canonical": "https://alltoolstogether.com/construction/roof-pitch-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction/staircase-calculator",
+    "title": "Staircase Calculator | All Tools Together",
+    "description": "Free Staircase Calculator. Find exact step counts, riser heights, and total run for a code-compliant staircase automatically.",
+    "canonical": "https://alltoolstogether.com/construction/staircase-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/construction",
+    "title": "Construction — 9 Free Online Tools | All Tools Together",
+    "description": "Explore Construction on All Tools Together. Find Concrete Calculator, Paint Calculator, Flooring Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/construction",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/contact",
+    "title": "Contact Us | All Tools Together",
+    "description": "Get in touch with All Tools Together. Report bugs, suggest tools, or ask questions about our free online calculators and converters.",
+    "canonical": "https://alltoolstogether.com/contact",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/cooking/calories-burned-calculator",
+    "title": "Calories Burned Calculator | All Tools Together",
+    "description": "Calculate Calories Burned online for free. Find out exactly how many calories you burn during walking, running, or cycling based on your weight.",
+    "canonical": "https://alltoolstogether.com/cooking/calories-burned-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/cooking/cooking-unit-converter",
+    "title": "Cooking Unit Converter | All Tools Together",
+    "description": "Cooking Unit Converter online. Freely convert between teaspoons, tablespoons, cups, fluid ounces, and milliliters safely in your browser.",
+    "canonical": "https://alltoolstogether.com/cooking/cooking-unit-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/cooking/grams-to-cups-converter",
+    "title": "Grams to Cups Converter | All Tools Together",
+    "description": "Convert grams to cups instantly. Free baking conversion calculator for flour, sugar, butter, and more using ingredient-specific weight densities.",
+    "canonical": "https://alltoolstogether.com/cooking/grams-to-cups-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/cooking/recipe-scaling-calculator",
+    "title": "Recipe Scaling Calculator | All Tools Together",
+    "description": "Free Recipe Scaling Calculator online. Instantly adjust recipe serving sizes and calculate exact ingredient multipliers for cooking or baking.",
+    "canonical": "https://alltoolstogether.com/cooking/recipe-scaling-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/cooking",
+    "title": "Cooking & Food — 4 Free Online Tools | All Tools Together",
+    "description": "Explore Cooking & Food on All Tools Together. Find Grams to Cups Converter, Recipe Scaling Calculator, Cooking Unit Converter, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/cooking",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/add-business-days-calculator",
+    "title": "Add Business Days Calculator | All Tools Together",
+    "description": "Calculate dates by adding business days online. Avoid weekends and calculate exact delivery times and SLA deadlines securely.",
+    "canonical": "https://alltoolstogether.com/date-time/add-business-days-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/add-days-to-date",
+    "title": "Add or Subtract Days From a Date | All Tools Together",
+    "description": "Add or subtract days from a date online. Free calculator to find what date is a certain number of days, weeks, or months away.",
+    "canonical": "https://alltoolstogether.com/date-time/add-days-to-date",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/age-calculator",
+    "title": "Age Calculator | All Tools Together",
+    "description": "Free online age calculator. Calculate your exact age in years, months, and days, and see the precise countdown to your next birthday.",
+    "canonical": "https://alltoolstogether.com/date-time/age-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/age-difference-calculator",
+    "title": "Age Difference Calculator | All Tools Together",
+    "description": "Calculate the exact age difference between two dates. Free age gap calculator showing exact years, months, and days separating birthdates.",
+    "canonical": "https://alltoolstogether.com/date-time/age-difference-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/business-days-calculator",
+    "title": "Business Days Calculator | All Tools Together",
+    "description": "Calculate the number of business days between two dates. Free tool to find working days excluding weekends for projects and SLAs.",
+    "canonical": "https://alltoolstogether.com/date-time/business-days-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/day-of-week-calculator",
+    "title": "Day of the Week Calculator | All Tools Together",
+    "description": "Find what day of the week a date falls on. Free weekday calculator to determine if a past or future date is a Monday, Tuesday, etc.",
+    "canonical": "https://alltoolstogether.com/date-time/day-of-week-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/days-between-dates",
+    "title": "Days Between Dates | All Tools Together",
+    "description": "Calculate the days between dates online for free. Instantly find out how many days, weeks, and months separate two calendar dates.",
+    "canonical": "https://alltoolstogether.com/date-time/days-between-dates",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/days-until-calculator",
+    "title": "Days Until Calculator | All Tools Together",
+    "description": "Countdown calculator to find out how many days until a specific date. Track days remaining until your event, holiday, or deadline.",
+    "canonical": "https://alltoolstogether.com/date-time/days-until-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/hours-calculator",
+    "title": "Weekly Time Card Calculator | All Tools Together",
+    "description": "Free weekly time card calculator with lunch breaks. Add up seven shifts, including overnight shifts, and see hours, decimal time, and optional gross pay.",
+    "canonical": "https://alltoolstogether.com/date-time/hours-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/military-time-converter",
+    "title": "Military Time Converter | All Tools Together",
+    "description": "Convert military time to standard time and vice versa. Free 24-hour clock converter.",
+    "canonical": "https://alltoolstogether.com/date-time/military-time-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/roman-numeral-converter",
+    "title": "Roman Numeral Converter | All Tools Together",
+    "description": "Convert Arabic numbers to Roman Numerals or vice versa online for free. Support for all numerals between 1 and 3999.",
+    "canonical": "https://alltoolstogether.com/date-time/roman-numeral-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/time-duration-calculator",
+    "title": "Time Duration Calculator | All Tools Together",
+    "description": "Calculate the time duration between two hours. Free online time clock calculator to find hours and minutes between start and end times.",
+    "canonical": "https://alltoolstogether.com/date-time/time-duration-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/time-zone-converter",
+    "title": "Time Zone Converter | All Tools Together",
+    "description": "Convert times across world time zones instantly. Free DST-aware time zone calculator and meeting planner running fully in-browser.",
+    "canonical": "https://alltoolstogether.com/date-time/time-zone-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/week-number-calculator",
+    "title": "Week Number Calculator | All Tools Together",
+    "description": "Find the ISO 8601 week number for any date. Free online calculator providing calendar week numbers for European and business systems.",
+    "canonical": "https://alltoolstogether.com/date-time/week-number-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time/weeks-between-dates-calculator",
+    "title": "Weeks Between Dates Calculator | All Tools Together",
+    "description": "Calculate the exact amount of weeks between two dates online. Find out how many weeks apart your events or milestones are.",
+    "canonical": "https://alltoolstogether.com/date-time/weeks-between-dates-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/date-time",
+    "title": "Date & Time — 15 Free Online Tools | All Tools Together",
+    "description": "Explore Date & Time on All Tools Together. Find Age Calculator, Days Between Dates, Add or Subtract Days From a Date, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/date-time",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/aspect-ratio-calculator",
+    "title": "Aspect Ratio Calculator — Resize Without Stretching | All Tools Together",
+    "description": "Calculate aspect ratios and scale dimensions proportionally online. Ensure images and videos maintain correct proportions when resized.",
+    "canonical": "https://alltoolstogether.com/developer/aspect-ratio-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/base64-encode-decode",
+    "title": "Base64 Encode / Decode | All Tools Together",
+    "description": "Encode and decode Base64 strings online safely. Fully supports UTF-8, Emoji, and international characters. Local, private, and fast Base64 converter.",
+    "canonical": "https://alltoolstogether.com/developer/base64-encode-decode",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/box-shadow-generator",
+    "title": "CSS Box Shadow Generator | All Tools Together",
+    "description": "Create perfect CSS Box Shadows visually online. Adjust offset, blur, and spread with a live preview, then copy the CSS code instantly.",
+    "canonical": "https://alltoolstogether.com/developer/box-shadow-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/color-converter",
+    "title": "Color Converter (HEX ⇄ RGB ⇄ HSL) | All Tools Together",
+    "description": "Convert CSS colors between HEX, RGB, and HSL instantly. Free online color converter for web developers and designers with live preview swatches.",
+    "canonical": "https://alltoolstogether.com/developer/color-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/color-palette-generator",
+    "title": "Color Palette Generator | All Tools Together",
+    "description": "Generate beautiful, mathematically harmonious color palettes online. Create complementary, triadic, and analogous schemes for web design instantly.",
+    "canonical": "https://alltoolstogether.com/developer/color-palette-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/cron-expression-generator",
+    "title": "Cron Expression Parser — Five-Field Schedules | All Tools Together",
+    "description": "Decode complex Cron expressions into plain English instantly online. Parse and validate cron syntax safely in your browser for free.",
+    "canonical": "https://alltoolstogether.com/developer/cron-expression-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/css-gradient-generator",
+    "title": "CSS Gradient Generator | All Tools Together",
+    "description": "Generate beautiful CSS linear gradients online. Visually design color transitions, adjust angles, and copy the CSS code instantly.",
+    "canonical": "https://alltoolstogether.com/developer/css-gradient-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/css-minifier",
+    "title": "CSS Minifier | All Tools Together",
+    "description": "Minify CSS code online for free. Compress stylesheets by safely removing comments and whitespace to improve website page load speeds.",
+    "canonical": "https://alltoolstogether.com/developer/css-minifier",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/css-specificity-calculator",
+    "title": "CSS Specificity Calculator — Selector Weights | All Tools Together",
+    "description": "Calculate CSS selector specificity scores online. Debug why styles aren't applying with a visual breakdown of ID, Class, and Element weights.",
+    "canonical": "https://alltoolstogether.com/developer/css-specificity-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/csv-to-json",
+    "title": "CSV to JSON Converter | All Tools Together",
+    "description": "Convert CSV to JSON or JSON to CSV online for free. Fast, accurate parsing that correctly handles internal commas and quotes in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/csv-to-json",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/diff-checker",
+    "title": "Diff Checker — Inspect Code & Text Changes | All Tools Together",
+    "description": "Compare text and code online. Free Diff Checker highlights added and removed lines visually, just like Git. Runs safely in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/diff-checker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/download-time-calculator",
+    "title": "Download Time Calculator — GB, Mbps & Uploads | All Tools Together",
+    "description": "Estimate download or upload time from file size and measured transfer speed. Convert between GB, GiB, Mbps, and MB/s without uploading a file.",
+    "canonical": "https://alltoolstogether.com/developer/download-time-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/hash-generator",
+    "title": "Hash Generator (SHA-256, SHA-512, SHA-1) | All Tools Together",
+    "description": "Generate secure SHA-256, SHA-512, and SHA-1 hashes online. Compute cryptographic text hashes securely in your browser without data uploads.",
+    "canonical": "https://alltoolstogether.com/developer/hash-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/html-encode-decode",
+    "title": "HTML Encode / Decode | All Tools Together",
+    "description": "Encode and decode HTML entities safely online. Convert brackets to &lt; and &gt; to prevent XSS attacks. Free browser-based developer tool.",
+    "canonical": "https://alltoolstogether.com/developer/html-encode-decode",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/html-minifier",
+    "title": "HTML Minifier | All Tools Together",
+    "description": "Compress HTML online instantly. Minify HTML code by stripping comments and empty spaces between tags to optimize page performance.",
+    "canonical": "https://alltoolstogether.com/developer/html-minifier",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/html-to-markdown",
+    "title": "HTML to Markdown Converter | All Tools Together",
+    "description": "Convert HTML into clean Markdown instantly online. Strip out scripts and transform markup into pure Markdown syntax securely in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/html-to-markdown",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/http-status-codes",
+    "title": "HTTP Status Codes Reference | All Tools Together",
+    "description": "Searchable reference guide for all HTTP Status Codes. Quickly look up the meaning of 404, 500, 301, and every other server response code.",
+    "canonical": "https://alltoolstogether.com/developer/http-status-codes",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/ip-subnet-calculator",
+    "title": "IP Subnet Calculator | All Tools Together",
+    "description": "Free IPv4 Subnet Calculator online. Calculate network addresses, broadcast ranges, and subnet masks from any CIDR notation instantly.",
+    "canonical": "https://alltoolstogether.com/developer/ip-subnet-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/javascript-minifier",
+    "title": "JavaScript Minifier | All Tools Together",
+    "description": "Minify Javascript online instantly. Safely strip comments and whitespace from JS code to reduce file size without breaking functionality.",
+    "canonical": "https://alltoolstogether.com/developer/javascript-minifier",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/json-escape",
+    "title": "JSON String Escape / Unescape | All Tools Together",
+    "description": "Escape and unescape JSON strings online. Safely embed quotes and newlines within JSON values. A free utility for backend developers.",
+    "canonical": "https://alltoolstogether.com/developer/json-escape",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/json-formatter",
+    "title": "JSON Formatter & Validator — Local, No Upload | All Tools Together",
+    "description": "Free online JSON formatter and validator. Beautify, parse, and minify JSON safely in your browser. Find syntax errors instantly with precise line numbers.",
+    "canonical": "https://alltoolstogether.com/developer/json-formatter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/json-to-yaml",
+    "title": "JSON to YAML Converter | All Tools Together",
+    "description": "Convert JSON to YAML online instantly. Generate clean, indentation-based YAML configuration files from strict JSON structures.",
+    "canonical": "https://alltoolstogether.com/developer/json-to-yaml",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/jwt-decoder",
+    "title": "JWT Decoder — Local Header & Payload Viewer | All Tools Together",
+    "description": "Decode JSON Web Tokens (JWT) online securely. Parse JWT headers, payloads, and check expiration dates locally without sending tokens to a server.",
+    "canonical": "https://alltoolstogether.com/developer/jwt-decoder",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/markdown-previewer",
+    "title": "Markdown Previewer | All Tools Together",
+    "description": "Live Markdown editor and previewer online. Write Markdown syntax securely with an instant HTML rendering engine right in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/markdown-previewer",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/markdown-table-generator",
+    "title": "Markdown Table Generator — GFM, No Signup | All Tools Together",
+    "description": "Generate Markdown tables visually online. Create, align, and copy perfectly formatted Markdown tables for GitHub or Notion instantly.",
+    "canonical": "https://alltoolstogether.com/developer/markdown-table-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/markdown-to-html",
+    "title": "Markdown to HTML Converter | All Tools Together",
+    "description": "Convert Markdown to HTML online. Parse markdown text into clean, valid HTML tags instantly in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/markdown-to-html",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/mime-types-lookup",
+    "title": "MIME Types Lookup | All Tools Together",
+    "description": "Lookup standardized MIME and Content-Type headers for any file extension instantly. Searchable developer reference guide.",
+    "canonical": "https://alltoolstogether.com/developer/mime-types-lookup",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/number-base-converter",
+    "title": "Number Base Converter | All Tools Together",
+    "description": "Convert numbers between Binary, Octal, Decimal, and Hexadecimal online. Free developer tool to translate numeric bases instantly.",
+    "canonical": "https://alltoolstogether.com/developer/number-base-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/password-generator",
+    "title": "Password Generator — Local Random Passwords | All Tools Together",
+    "description": "Generate secure, highly random passwords locally in your browser. Strong password generator using cryptographic APIs. 100% private and safe.",
+    "canonical": "https://alltoolstogether.com/developer/password-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/password-strength-checker",
+    "title": "Password Strength Checker | All Tools Together",
+    "description": "Password Strength Checker online. Securely evaluate password entropy and crack time locally in your browser. Passwords are never sent to a server.",
+    "canonical": "https://alltoolstogether.com/developer/password-strength-checker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/regex-tester",
+    "title": "Regex Tester | All Tools Together",
+    "description": "Test and debug regular expressions online. Live Regex matcher with syntax highlighting using your browser's native Javascript ECMAScript engine.",
+    "canonical": "https://alltoolstogether.com/developer/regex-tester",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/sql-formatter",
+    "title": "SQL Formatter | All Tools Together",
+    "description": "Format and beautify SQL queries online. Instantly structure complex SQL statements for maximum readability directly in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/sql-formatter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/unix-timestamp-converter",
+    "title": "Unix Timestamp Converter | All Tools Together",
+    "description": "Convert Unix timestamps to human readable dates instantly. Epoch converter supporting seconds and milliseconds in UTC, local time, and ISO 8601.",
+    "canonical": "https://alltoolstogether.com/developer/unix-timestamp-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/url-encode-decode",
+    "title": "URL Encode / Decode | All Tools Together",
+    "description": "URL Encode and Decode text instantly. Convert spaces to %20 and properly escape URL strings safely in your browser. Free percent-encoding tool.",
+    "canonical": "https://alltoolstogether.com/developer/url-encode-decode",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/uuid-generator",
+    "title": "UUID Generator | All Tools Together",
+    "description": "Generate secure, cryptographically random UUID v4 (GUID) strings instantly. Create one or bulk generate thousands locally in your browser.",
+    "canonical": "https://alltoolstogether.com/developer/uuid-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/xml-formatter",
+    "title": "XML Formatter | All Tools Together",
+    "description": "Format and beautify XML online for free. Indent complex XML tags properly for readability and easy debugging without server uploads.",
+    "canonical": "https://alltoolstogether.com/developer/xml-formatter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer/yaml-to-json",
+    "title": "YAML to JSON Converter | All Tools Together",
+    "description": "Convert YAML files to standard JSON format online. Ensure API compatibility by instantly converting YAML configs into strict JSON.",
+    "canonical": "https://alltoolstogether.com/developer/yaml-to-json",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/developer",
+    "title": "Developer Tools — 37 Free Online Tools | All Tools Together",
+    "description": "Explore Developer Tools on All Tools Together. Find JSON Formatter & Validator, Base64 Encode / Decode, URL Encode / Decode, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/developer",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/editorial-policy",
+    "title": "Editorial Policy — Sources, Review & Corrections | All Tools Together",
+    "description": "How All Tools Together attributes content, cites sources, handles corrections and distinguishes developer checks from independent expert review.",
+    "canonical": "https://alltoolstogether.com/editorial-policy",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/embed",
+    "title": "Embed Free Calculators on Your Website | All Tools Together",
+    "description": "Add an isolated mortgage payment or centimeter-to-inch calculator to your website. Calculations stay inside the visitor’s browser.",
+    "canonical": "https://alltoolstogether.com/embed",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/401k-calculator",
+    "title": "401(k) Calculator | All Tools Together",
+    "description": "Free online 401(k) Calculator. Project your retirement savings over time by factoring in employer matches, returns, and raises entirely in your browser.",
+    "canonical": "https://alltoolstogether.com/finance/401k-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/amortization-calculator",
+    "title": "Amortization Calculator | All Tools Together",
+    "description": "Calculate full loan amortization schedules online safely. Break down monthly payments to see exactly how much goes to principal versus interest.",
+    "canonical": "https://alltoolstogether.com/finance/amortization-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/annuity-calculator",
+    "title": "Annuity Calculator | All Tools Together",
+    "description": "Calculate annuity values online. Determine both the present and future value of regular periodic payments like pensions or loans safely.",
+    "canonical": "https://alltoolstogether.com/finance/annuity-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/apr-calculator",
+    "title": "APR Calculator | All Tools Together",
+    "description": "True APR Calculator online. Calculate the actual Annual Percentage Rate of a loan by factoring in hidden upfront fees safely in your browser.",
+    "canonical": "https://alltoolstogether.com/finance/apr-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/auto-loan-calculator",
+    "title": "Auto Loan Calculator — Tax, Trade-In & Fees | All Tools Together",
+    "description": "Free Auto Loan Calculator. Calculate your monthly car payments accurately by including sales tax, trade-ins, and dealer fees.",
+    "canonical": "https://alltoolstogether.com/finance/auto-loan-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/break-even-calculator",
+    "title": "Break-Even Calculator | All Tools Together",
+    "description": "Free online Break-Even Calculator. Discover exactly how many units your business must sell to cover fixed costs and become profitable.",
+    "canonical": "https://alltoolstogether.com/finance/break-even-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/budget-calculator",
+    "title": "Budget Calculator (50/30/20) | All Tools Together",
+    "description": "Free 50/30/20 Budget Calculator online. Quickly split your take-home pay into Needs, Wants, and Savings using this simple, private tool.",
+    "canonical": "https://alltoolstogether.com/finance/budget-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/car-lease-calculator",
+    "title": "Car Lease Calculator — Depreciation & Money Factor | All Tools Together",
+    "description": "Calculate car lease payments safely online. Demystify auto leases by factoring MSRP, negotiated price, and the money factor completely privately.",
+    "canonical": "https://alltoolstogether.com/finance/car-lease-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/car-payment-calculator",
+    "title": "Car Payment Calculator — Simple Loan Estimate | All Tools Together",
+    "description": "Car Payment Affordability Calculator. Start with a monthly payment you want and find out exactly what vehicle price you can afford.",
+    "canonical": "https://alltoolstogether.com/finance/car-payment-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/cd-calculator",
+    "title": "CD Calculator | All Tools Together",
+    "description": "Free online CD Calculator. Project the maturity value and effective APY for a Certificate of Deposit safely in your browser.",
+    "canonical": "https://alltoolstogether.com/finance/cd-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/commission-calculator",
+    "title": "Commission Calculator | All Tools Together",
+    "description": "Calculate sales commissions online. Combine your base pay, sales volume, and commission rate to accurately project total earnings.",
+    "canonical": "https://alltoolstogether.com/finance/commission-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/compound-interest-calculator",
+    "title": "Compound Interest Calculator | All Tools Together",
+    "description": "Calculate compound interest growth online. Free investment calculator showing how your savings multiply via regular contributions and compounding returns.",
+    "canonical": "https://alltoolstogether.com/finance/compound-interest-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/credit-card-payoff-calculator",
+    "title": "Credit Card Payoff Calculator | All Tools Together",
+    "description": "Credit Card Payoff Calculator. See exactly how many months and interest charges it will take to become debt-free. 100% private in-browser tool.",
+    "canonical": "https://alltoolstogether.com/finance/credit-card-payoff-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/debt-snowball-calculator",
+    "title": "Debt Snowball Calculator | All Tools Together",
+    "description": "Debt Snowball Calculator online. Compare the Debt Snowball and Debt Avalanche methods for free to find your exact debt-free date securely.",
+    "canonical": "https://alltoolstogether.com/finance/debt-snowball-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/discount-calculator",
+    "title": "Discount Calculator | All Tools Together",
+    "description": "Free online Discount Calculator. Calculate final sale prices securely. Supports percentage off and stacked coupons perfectly for shopping.",
+    "canonical": "https://alltoolstogether.com/finance/discount-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/down-payment-calculator",
+    "title": "Down Payment Calculator | All Tools Together",
+    "description": "Calculate your mortgage down payment online. See loan-to-value (LTV) ratios and exact dollar amounts instantly before buying a home.",
+    "canonical": "https://alltoolstogether.com/finance/down-payment-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/dti-calculator",
+    "title": "Debt-to-Income (DTI) Calculator | All Tools Together",
+    "description": "Calculate your Debt-to-Income (DTI) ratio online. Check your front-end and back-end DTI to see what mortgage lenders see. Completely private.",
+    "canonical": "https://alltoolstogether.com/finance/dti-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/electricity-bill-calculator",
+    "title": "Electricity Bill Calculator | All Tools Together",
+    "description": "Calculate your electricity bill. Free calculator for monthly cost based on kWh used and your rate.",
+    "canonical": "https://alltoolstogether.com/finance/electricity-bill-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/emi-calculator",
+    "title": "EMI Calculator (India) | All Tools Together",
+    "description": "Calculate a fixed-rate loan EMI in rupees with total interest and repayment. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/finance/emi-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/epf-calculator",
+    "title": "EPF Calculator — Balance Projection | All Tools Together",
+    "description": "Project an EPF balance from actual employee and employer EPF deposits, excluding EPS. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/finance/epf-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/fd-calculator",
+    "title": "FD Calculator — Deposit Maturity | All Tools Together",
+    "description": "Estimate fixed-deposit maturity and interest before tax using an assumed compounding frequency. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/finance/fd-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/fuel-cost-calculator",
+    "title": "Fuel Cost Calculator | All Tools Together",
+    "description": "Calculate trip fuel cost. Free fuel cost calculator for US MPG or metric fuel economy.",
+    "canonical": "https://alltoolstogether.com/finance/fuel-cost-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/future-value-calculator",
+    "title": "Future Value Calculator | All Tools Together",
+    "description": "Calculate the Future Value (FV) of an asset online. Project what a sum today will be worth at a specific growth rate securely.",
+    "canonical": "https://alltoolstogether.com/finance/future-value-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/gratuity-calculator",
+    "title": "Gratuity Calculator — Formula Estimate | All Tools Together",
+    "description": "Apply the 15/26 gratuity formula to eligible monthly wages and counted service years. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/finance/gratuity-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/hourly-to-salary-calculator",
+    "title": "Hourly to Salary Calculator | All Tools Together",
+    "description": "Hourly to Salary Calculator online. Find out exactly how much your hourly rate equals as an annual salary based on your working hours.",
+    "canonical": "https://alltoolstogether.com/finance/hourly-to-salary-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/inflation-calculator",
+    "title": "Inflation Calculator | All Tools Together",
+    "description": "Inflation Calculator online. Track how purchasing power shrinks over time using accurate consumer price indexing mathematics.",
+    "canonical": "https://alltoolstogether.com/finance/inflation-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/investment-calculator",
+    "title": "Investment Calculator | All Tools Together",
+    "description": "Investment calculator for stocks and assets. Free tool to calculate future values based on initial lump sums and periodic contributions.",
+    "canonical": "https://alltoolstogether.com/finance/investment-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/loan-calculator",
+    "title": "Loan Calculator — Fixed Principal, Rate & Term | All Tools Together",
+    "description": "Calculate fixed-rate loan payments online. Free calculator to determine your exact monthly cost and total interest for personal, auto, or business loans.",
+    "canonical": "https://alltoolstogether.com/finance/loan-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/markup-calculator",
+    "title": "Markup Calculator — Set a Cost-Plus Selling Price | All Tools Together",
+    "description": "Free online Markup Calculator. Enter your cost and desired markup percentage to easily generate the correct retail selling price.",
+    "canonical": "https://alltoolstogether.com/finance/markup-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/mortgage-calculator",
+    "title": "Mortgage Calculator — Payment, Taxes & Interest | All Tools Together",
+    "description": "Free online mortgage calculator. Calculate your monthly home loan payment, total interest, and PMI safely and privately in your browser.",
+    "canonical": "https://alltoolstogether.com/finance/mortgage-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/mortgage-payoff-calculator",
+    "title": "Mortgage Payoff Calculator | All Tools Together",
+    "description": "Mortgage Payoff Calculator online. Calculate how much time and interest you save by making extra principal payments on your home loan.",
+    "canonical": "https://alltoolstogether.com/finance/mortgage-payoff-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/net-worth-calculator",
+    "title": "Net Worth Calculator | All Tools Together",
+    "description": "Calculate your Net Worth online safely. An entirely private calculator tracking your assets and liabilities to show your true financial position.",
+    "canonical": "https://alltoolstogether.com/finance/net-worth-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/overtime-calculator",
+    "title": "Overtime Pay Calculator | All Tools Together",
+    "description": "Calculate Overtime Pay online safely. Estimate time-and-a-half or custom overtime multipliers to quickly tally your full paycheck.",
+    "canonical": "https://alltoolstogether.com/finance/overtime-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/ppf-calculator",
+    "title": "PPF Calculator — Annual Projection | All Tools Together",
+    "description": "Project a PPF-style annual savings balance using an assumed interest rate and annual contribution. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/finance/ppf-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/present-value-calculator",
+    "title": "Present Value Calculator | All Tools Together",
+    "description": "Free online Present Value Calculator. Discount future cash amounts to today's valuation instantly based on your required return rate.",
+    "canonical": "https://alltoolstogether.com/finance/present-value-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/profit-margin-calculator",
+    "title": "Profit Margin Calculator — Unit Cost vs Selling Price | All Tools Together",
+    "description": "Calculate Profit Margin safely online. Find your true gross profit margin and markup percentages based on cost and retail price instantly.",
+    "canonical": "https://alltoolstogether.com/finance/profit-margin-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/rd-calculator",
+    "title": "RD Calculator — Monthly Deposits | All Tools Together",
+    "description": "Estimate recurring-deposit maturity from equal monthly deposits and quarterly-compounding assumptions. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/finance/rd-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/refinance-calculator",
+    "title": "Refinance Calculator | All Tools Together",
+    "description": "Free online Refinance Calculator. Compare your current mortgage against new rates to see if refinancing will save you money and compute your break-even point.",
+    "canonical": "https://alltoolstogether.com/finance/refinance-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/retirement-calculator",
+    "title": "Retirement Calculator | All Tools Together",
+    "description": "Calculate if your retirement savings will last. Free online retirement calculator projecting your nest egg and a safe withdrawal rate.",
+    "canonical": "https://alltoolstogether.com/finance/retirement-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/roi-calculator",
+    "title": "ROI Calculator | All Tools Together",
+    "description": "Free ROI Calculator. Discover your Return on Investment percentage and annualized ROI for any financial asset or campaign securely.",
+    "canonical": "https://alltoolstogether.com/finance/roi-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/roth-ira-calculator",
+    "title": "Roth IRA Calculator | All Tools Together",
+    "description": "Free Roth IRA Calculator. Project your tax-free retirement growth securely online based on your age and contributions.",
+    "canonical": "https://alltoolstogether.com/finance/roth-ira-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/salary-calculator",
+    "title": "Salary Calculator | All Tools Together",
+    "description": "Convert salary and wages online for free. Instantly translate hourly, weekly, monthly, and annual pay securely in your browser.",
+    "canonical": "https://alltoolstogether.com/finance/salary-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/sales-tax-calculator",
+    "title": "Sales Tax Calculator | All Tools Together",
+    "description": "Sales Tax Calculator online. Easily add sales tax to a price or extract it from a total receipt. Perfect for quick bookkeeping.",
+    "canonical": "https://alltoolstogether.com/finance/sales-tax-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/savings-calculator",
+    "title": "Savings Calculator | All Tools Together",
+    "description": "Calculate savings growth online. Project how your bank balance expands with monthly deposits and a high-yield APY safely in your browser.",
+    "canonical": "https://alltoolstogether.com/finance/savings-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/simple-interest-calculator",
+    "title": "Simple Interest Calculator | All Tools Together",
+    "description": "Calculate simple interest online safely. Find interest earned or owed quickly using the classic I = P × R × T formula.",
+    "canonical": "https://alltoolstogether.com/finance/simple-interest-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance/tip-calculator",
+    "title": "Tip Calculator | All Tools Together",
+    "description": "Free online Tip Calculator. Calculate restaurant tips, full totals, and easily split the bill among your group without doing math in your head.",
+    "canonical": "https://alltoolstogether.com/finance/tip-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/finance",
+    "title": "Finance & Money — 46 Free Online Tools | All Tools Together",
+    "description": "Explore Finance & Money on All Tools Together. Find Mortgage Calculator, Loan Calculator, Auto Loan Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/finance",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/bmi-and-waist-ratio-explained",
+    "title": "BMI and Waist-to-Height Ratio: What Each Number Can Tell You | All Tools Together",
+    "description": "Compare two body-size screening measures, calculate an example and understand their limitations before interpreting a result.",
+    "canonical": "https://alltoolstogether.com/guides/bmi-and-waist-ratio-explained",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/calculate-mortgage-payment-by-hand",
+    "title": "How to Calculate a Mortgage Payment by Hand | All Tools Together",
+    "description": "Follow a fixed-rate loan example from principal and monthly interest to a complete housing budget, with common comparison mistakes explained.",
+    "canonical": "https://alltoolstogether.com/guides/calculate-mortgage-payment-by-hand",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/gst-hst-add-and-reverse-tax",
+    "title": "How to Add or Reverse Canadian GST/HST | All Tools Together",
+    "description": "Choose the place of supply, separate provincial taxes and reverse a tax-inclusive total using the correct base.",
+    "canonical": "https://alltoolstogether.com/guides/gst-hst-add-and-reverse-tax",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/irs-mileage-rates-2026",
+    "title": "2026 IRS Mileage Rates: Split the Year Before Calculating | All Tools Together",
+    "description": "Use the correct business mileage rate for each half of 2026 and understand why a mileage amount is different from a tax refund.",
+    "canonical": "https://alltoolstogether.com/guides/irs-mileage-rates-2026",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/json-validation-errors-and-fixes",
+    "title": "JSON Validation Errors: A Practical Debugging Checklist | All Tools Together",
+    "description": "Fix strict JSON syntax errors, protect large integer identifiers and separate parsing from application-schema validation.",
+    "canonical": "https://alltoolstogether.com/guides/json-validation-errors-and-fixes",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/markdown-tables-for-github-and-pdf",
+    "title": "Markdown Tables for GitHub and PDF: A Reliable Workflow | All Tools Together",
+    "description": "Build a small GFM comparison table, escape content and review the result when exporting to a different renderer.",
+    "canonical": "https://alltoolstogether.com/guides/markdown-tables-for-github-and-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/pmi-down-payment-and-mortgage-budget",
+    "title": "PMI and Down Payments: What Changes Your Mortgage Budget? | All Tools Together",
+    "description": "Understand the difference between a down payment, mortgage insurance, home insurance and closing cash before comparing monthly payments.",
+    "canonical": "https://alltoolstogether.com/guides/pmi-down-payment-and-mortgage-budget",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides/private-pdf-merge-checklist",
+    "title": "How to Merge PDFs Locally and Check the Result | All Tools Together",
+    "description": "Arrange documents, inspect the merged output and understand the limits of forms, bookmarks, encryption and digital signatures.",
+    "canonical": "https://alltoolstogether.com/guides/private-pdf-merge-checklist",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/guides",
+    "title": "Practical Guides — Calculations, Files & Developer Tools | All Tools Together",
+    "description": "Worked examples and practical checklists for mortgage payments, JSON debugging, PDF workflows, Markdown, BMI and tax calculations.",
+    "canonical": "https://alltoolstogether.com/guides",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/a1c-calculator",
+    "title": "A1C Calculator | All Tools Together",
+    "description": "A1C Calculator and converter. Safely translate A1C percentages to average glucose (eAG) metrics instantly in your browser.",
+    "canonical": "https://alltoolstogether.com/health/a1c-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/bac-calculator",
+    "title": "Blood Alcohol (BAC) Calculator | All Tools Together",
+    "description": "Free BAC Calculator online. Get a rough Blood Alcohol Concentration estimate based on your drinks, body weight, and time passed.",
+    "canonical": "https://alltoolstogether.com/health/bac-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/bmi-calculator",
+    "title": "BMI Calculator — Adult Formula & Category Table | All Tools Together",
+    "description": "Free online BMI Calculator. Calculate your Body Mass Index safely and privately in your browser to see your WHO health category.",
+    "canonical": "https://alltoolstogether.com/health/bmi-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/bmr-calculator",
+    "title": "BMR Calculator | All Tools Together",
+    "description": "Calculate Basal Metabolic Rate (BMR) online. Find out how many calories your body burns at rest using the Mifflin-St Jeor equation.",
+    "canonical": "https://alltoolstogether.com/health/bmr-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/body-fat-calculator",
+    "title": "Body Fat Calculator | All Tools Together",
+    "description": "Calculate your body fat percentage online. Free, private calculator using the reliable US Navy tape measurement method.",
+    "canonical": "https://alltoolstogether.com/health/body-fat-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/bsa-calculator",
+    "title": "Body Surface Area (BSA) Calculator | All Tools Together",
+    "description": "Calculate Body Surface Area (BSA) safely online. Instant and private clinical calculator using Mosteller and Du Bois equations.",
+    "canonical": "https://alltoolstogether.com/health/bsa-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/calorie-calculator",
+    "title": "Calorie Calculator | All Tools Together",
+    "description": "Calculate your daily calorie needs for weight loss, gain, or maintenance. Fast, private calorie calculator relying on metabolic science.",
+    "canonical": "https://alltoolstogether.com/health/calorie-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/calorie-deficit-calculator",
+    "title": "Calorie Deficit Calculator | All Tools Together",
+    "description": "Calculate calorie deficit for weight loss. See how many calories to eat to lose 0.5 kg or 1 lb per week.",
+    "canonical": "https://alltoolstogether.com/health/calorie-deficit-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/due-date-calculator",
+    "title": "Pregnancy Due Date Calculator | All Tools Together",
+    "description": "Pregnancy due date calculator. Find out your exact estimated due date based on your cycle and last period. 100% private.",
+    "canonical": "https://alltoolstogether.com/health/due-date-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/heart-rate-zone-calculator",
+    "title": "Heart Rate Zone Calculator | All Tools Together",
+    "description": "Calculate Heart Rate Zones online. Optimize your cardio training by finding your 5 precise heart rate zones for burning fat or building endurance.",
+    "canonical": "https://alltoolstogether.com/health/heart-rate-zone-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/ideal-weight-calculator",
+    "title": "Ideal Weight Calculator | All Tools Together",
+    "description": "Calculate ideal body weight (IBW) online safely. Uses Devine, Robinson, and Miller clinical formulas to present a healthy range.",
+    "canonical": "https://alltoolstogether.com/health/ideal-weight-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/macro-calculator",
+    "title": "Macro Calculator | All Tools Together",
+    "description": "Calculate dietary macros for free online. Discover exactly how many grams of protein, carbs, and fat you need to meet your diet goals.",
+    "canonical": "https://alltoolstogether.com/health/macro-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/one-rep-max-calculator",
+    "title": "One Rep Max Calculator | All Tools Together",
+    "description": "Calculate your One Rep Max (1RM) safely online. Use submaximal sets to find your lifting maxes for bench, squat, and deadlift.",
+    "canonical": "https://alltoolstogether.com/health/one-rep-max-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/ovulation-calculator",
+    "title": "Ovulation Calculator | All Tools Together",
+    "description": "Free online Ovulation Calculator. Estimate your most fertile days securely in your browser to help plan or prevent pregnancy.",
+    "canonical": "https://alltoolstogether.com/health/ovulation-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/pace-calculator",
+    "title": "Running Pace Calculator | All Tools Together",
+    "description": "Free Running Pace Calculator. Determine your pace per mile or km instantly to plan marathons, 5Ks, or track sessions securely.",
+    "canonical": "https://alltoolstogether.com/health/pace-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/pregnancy-week-calculator",
+    "title": "Pregnancy Week Calculator | All Tools Together",
+    "description": "Calculate how many weeks pregnant you are. Free pregnancy week calculator from LMP.",
+    "canonical": "https://alltoolstogether.com/health/pregnancy-week-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/protein-intake-calculator",
+    "title": "Protein Intake Calculator | All Tools Together",
+    "description": "Calculate how much protein you need. Free online protein calculator using body weight and fitness goals to map precise gram targets.",
+    "canonical": "https://alltoolstogether.com/health/protein-intake-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/sleep-calculator",
+    "title": "Sleep Calculator | All Tools Together",
+    "description": "Sleep Calculator online. Discover the best bedtimes and wake times by calculating optimal 90-minute REM sleep cycles.",
+    "canonical": "https://alltoolstogether.com/health/sleep-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/smoking-cost-calculator",
+    "title": "Smoking Cost Calculator | All Tools Together",
+    "description": "Calculate the cost of smoking cigarettes online. Free tool to uncover how much money you spend (and can save) by quitting smoking.",
+    "canonical": "https://alltoolstogether.com/health/smoking-cost-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/tdee-calculator",
+    "title": "TDEE Calculator | All Tools Together",
+    "description": "Free online TDEE Calculator. Calculate Total Daily Energy Expenditure to find the exact calories you need for maintenance, loss, or gain.",
+    "canonical": "https://alltoolstogether.com/health/tdee-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/waist-to-height-ratio-calculator",
+    "title": "Waist to Height Ratio Calculator — Units & Limits | All Tools Together",
+    "description": "Calculate waist-to-height ratio. A simple screening tool for central obesity and health risk.",
+    "canonical": "https://alltoolstogether.com/health/waist-to-height-ratio-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/waist-to-hip-ratio-calculator",
+    "title": "Waist-to-Hip Ratio Calculator | All Tools Together",
+    "description": "Calculate Waist-to-Hip Ratio online for free. Track fat distribution and cardiovascular risk securely from your browser.",
+    "canonical": "https://alltoolstogether.com/health/waist-to-hip-ratio-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health/water-intake-calculator",
+    "title": "Water Intake Calculator | All Tools Together",
+    "description": "Calculate your ideal water intake online. Free hydration calculator using your weight and activity levels to recommend daily water amounts.",
+    "canonical": "https://alltoolstogether.com/health/water-intake-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/health",
+    "title": "Health & Fitness — 23 Free Online Tools | All Tools Together",
+    "description": "Explore Health & Fitness on All Tools Together. Find BMI Calculator, BMR Calculator, TDEE Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/health",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/color-blindness-simulator",
+    "title": "Color Blindness Simulator — Local Image Preview | All Tools Together",
+    "description": "Simulate color blindness online. Test your images and designs against 8 types of color vision deficiencies to ensure accessibility.",
+    "canonical": "https://alltoolstogether.com/image/color-blindness-simulator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/favicon-generator",
+    "title": "Favicon Generator | All Tools Together",
+    "description": "Generate favicons and Apple touch icons from a single image. Instantly download a zip file with all standard sizes and HTML snippets.",
+    "canonical": "https://alltoolstogether.com/image/favicon-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/heic-to-jpg",
+    "title": "HEIC to JPG Converter | All Tools Together",
+    "description": "Convert supported HEIC or HEIF images to JPEG locally without uploading files. Read the method and limitations.",
+    "canonical": "https://alltoolstogether.com/image/heic-to-jpg",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-color-palette",
+    "title": "Image Color Palette Extractor | All Tools Together",
+    "description": "Extract the dominant color palette from any image online. Automatically generate harmonious HEX swatches for branding and design work.",
+    "canonical": "https://alltoolstogether.com/image/image-color-palette",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-color-picker",
+    "title": "Image Color Picker | All Tools Together",
+    "description": "Pick exact colors from any image online. Free eyedropper tool to extract HEX, RGB, and HSL codes directly from photos in your browser.",
+    "canonical": "https://alltoolstogether.com/image/image-color-picker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-compressor",
+    "title": "Image Compressor | All Tools Together",
+    "description": "Compress images online to shrink file sizes by up to 80%. Free, private image compressor with live size previews for JPG and WebP.",
+    "canonical": "https://alltoolstogether.com/image/image-compressor",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-converter",
+    "title": "Image Converter | All Tools Together",
+    "description": "Convert images between PNG, JPG, and WebP formats instantly. A 100% free and private browser-based image converter tool.",
+    "canonical": "https://alltoolstogether.com/image/image-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-cropper",
+    "title": "Image Cropper | All Tools Together",
+    "description": "Crop images online for free. Drag, resize, and apply aspect ratio presets (1:1, 16:9) directly in your browser without uploading.",
+    "canonical": "https://alltoolstogether.com/image/image-cropper",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-resizer",
+    "title": "Image Resizer | All Tools Together",
+    "description": "Free online image resizer. Resize photos by exact pixel dimensions or percentage while locking the aspect ratio. No uploads, works locally in your browser.",
+    "canonical": "https://alltoolstogether.com/image/image-resizer",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-rotator",
+    "title": "Image Rotator & Flipper | All Tools Together",
+    "description": "Rotate and flip images online instantly. Mirror photos horizontally or vertically securely in your browser with zero server uploads.",
+    "canonical": "https://alltoolstogether.com/image/image-rotator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-to-base64",
+    "title": "Image to Base64 | All Tools Together",
+    "description": "Convert images to Base64 data URIs online. Generate HTML <img> tags and CSS backgrounds instantly without server uploads.",
+    "canonical": "https://alltoolstogether.com/image/image-to-base64",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/image-watermark",
+    "title": "Add Watermark to Image | All Tools Together",
+    "description": "Add text watermarks to images online for free. Protect photos with copyright text securely in your browser with zero uploads.",
+    "canonical": "https://alltoolstogether.com/image/image-watermark",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/jpg-to-png",
+    "title": "JPG to PNG | All Tools Together",
+    "description": "Convert JPG to PNG online losslessly. Free and private image converter that processes files locally without server uploads.",
+    "canonical": "https://alltoolstogether.com/image/jpg-to-png",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/png-to-jpg",
+    "title": "PNG to JPG | All Tools Together",
+    "description": "Convert PNG to JPG online for free. Reduce file size instantly while maintaining quality. Fast, private, and runs locally in your browser.",
+    "canonical": "https://alltoolstogether.com/image/png-to-jpg",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/png-to-webp",
+    "title": "PNG to WebP | All Tools Together",
+    "description": "Convert PNG to WebP to drastically reduce file sizes while maintaining transparency. Free, fast, and private online converter.",
+    "canonical": "https://alltoolstogether.com/image/png-to-webp",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/ppi-calculator",
+    "title": "PPI Calculator — Screen Pixel Density & Pitch | All Tools Together",
+    "description": "Calculate screen pixel density in PPI from resolution and diagonal size. Compare display sharpness and find pixel pitch in millimeters.",
+    "canonical": "https://alltoolstogether.com/image/ppi-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image/webp-to-png",
+    "title": "WebP to PNG | All Tools Together",
+    "description": "Convert WebP to PNG online. Ensure image compatibility with older software by safely converting WebP files to PNG instantly.",
+    "canonical": "https://alltoolstogether.com/image/webp-to-png",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/image",
+    "title": "Image Tools — 17 Free Online Tools | All Tools Together",
+    "description": "Explore Image Tools on All Tools Together. Find Image Resizer, Image Cropper, Image Compressor, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/image",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/",
+    "title": "All Tools Together — Free Online Calculators & Converters",
+    "description": "Every tool you need to work with numbers, files, and text in one place. 294 free calculators, converters, PDF and image tools — with local file processing and clear instructions.",
+    "canonical": "https://alltoolstogether.com/",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing/crypto-profit-loss-calculator",
+    "title": "Crypto Profit/Loss Calculator | All Tools Together",
+    "description": "Free Crypto Profit & Loss Calculator. Quickly calculate your Bitcoin and crypto trading gains, losses, and net proceeds safely without logging into exchanges.",
+    "canonical": "https://alltoolstogether.com/investing/crypto-profit-loss-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing/dividend-yield-calculator",
+    "title": "Dividend Yield Calculator | All Tools Together",
+    "description": "Dividend Yield Calculator online. Calculate yield and total annual income from a dividend stock to judge passive income safely.",
+    "canonical": "https://alltoolstogether.com/investing/dividend-yield-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing/dollar-cost-averaging-calculator",
+    "title": "Dollar-Cost Averaging Calculator | All Tools Together",
+    "description": "Calculate Dollar-Cost Averaging (DCA) returns online. Free, private calculator tracking recurring investments over time to project future wealth.",
+    "canonical": "https://alltoolstogether.com/investing/dollar-cost-averaging-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing/pe-ratio-calculator",
+    "title": "P/E Ratio Calculator | All Tools Together",
+    "description": "Free online P/E Ratio Calculator. Calculate Price-to-Earnings (P/E) ratios and earnings yields privately to evaluate stock market values.",
+    "canonical": "https://alltoolstogether.com/investing/pe-ratio-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing/sip-calculator",
+    "title": "SIP Calculator (India) | All Tools Together",
+    "description": "Project monthly SIP contributions in rupees using an assumed return and contribution timing. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/investing/sip-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing/stock-return-calculator",
+    "title": "Stock Return Calculator | All Tools Together",
+    "description": "Calculate Stock Returns instantly. Find your total return and annualized rate (CAGR) on stock investments, including dividends. 100% private.",
+    "canonical": "https://alltoolstogether.com/investing/stock-return-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/investing",
+    "title": "Investing & Crypto — 6 Free Online Tools | All Tools Together",
+    "description": "Explore Investing & Crypto on All Tools Together. Find Dollar-Cost Averaging Calculator, Crypto Profit/Loss Calculator, Stock Return Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/investing",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/average-calculator",
+    "title": "Average Calculator — Mean of a Number List | All Tools Together",
+    "description": "Calculate average, mean, median, and mode from any list of numbers. Free statistical calculator with standard deviation and sum.",
+    "canonical": "https://alltoolstogether.com/math/average-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/circle-area-calculator",
+    "title": "Circle Area Calculator | All Tools Together",
+    "description": "Calculate circle area and circumference. Free online circle calculator using radius or diameter.",
+    "canonical": "https://alltoolstogether.com/math/circle-area-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/coin-flip",
+    "title": "Coin Flip | All Tools Together",
+    "description": "Flip a virtual coin with browser cryptographic randomness. Read the method and limitations.",
+    "canonical": "https://alltoolstogether.com/math/coin-flip",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/combination-calculator",
+    "title": "Combination & Permutation Calculator | All Tools Together",
+    "description": "Calculate combinations (nCr) and permutations (nPr) online. Fast, secure probability counter for statistical and combinatorial math.",
+    "canonical": "https://alltoolstogether.com/math/combination-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/exponent-calculator",
+    "title": "Exponent Calculator | All Tools Together",
+    "description": "Calculate mathematical exponents online safely. Raise numbers to any power including negative, zero, and fractional exponents.",
+    "canonical": "https://alltoolstogether.com/math/exponent-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/final-grade-calculator",
+    "title": "Final Grade Calculator | All Tools Together",
+    "description": "Calculate what grade you need on your final exam. Free final grade calculator to help you hit your target class average.",
+    "canonical": "https://alltoolstogether.com/math/final-grade-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/fraction-calculator",
+    "title": "Fraction Calculator | All Tools Together",
+    "description": "Add, subtract, multiply, and divide fractions online. Free fraction calculator that automatically simplifies results to their lowest terms.",
+    "canonical": "https://alltoolstogether.com/math/fraction-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/gpa-calculator",
+    "title": "GPA Calculator | All Tools Together",
+    "description": "Free college and high school GPA calculator. Calculate your weighted grade point average on the standard 4.0 scale instantly.",
+    "canonical": "https://alltoolstogether.com/math/gpa-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/lcm-calculator",
+    "title": "LCM & GCF Calculator | All Tools Together",
+    "description": "Calculate Least Common Multiple (LCM) and Greatest Common Factor (GCF) online. Math tool for reducing fractions and solving ratios.",
+    "canonical": "https://alltoolstogether.com/math/lcm-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/log-calculator",
+    "title": "Logarithm Calculator | All Tools Together",
+    "description": "Calculate Logarithms online. Free log calculator supporting natural logs (ln), base 10, and custom logarithmic bases.",
+    "canonical": "https://alltoolstogether.com/math/log-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/logarithm-calculator",
+    "title": "Logarithm Calculator | All Tools Together",
+    "description": "Free logarithm calculator. Calculate log, ln, and custom-base logarithms instantly.",
+    "canonical": "https://alltoolstogether.com/math/log-calculator",
+    "robots": "index, follow",
+    "inSitemap": false
+  },
+  {
+    "path": "/math/mean-median-mode-calculator",
+    "title": "Mean, Median & Mode Calculator — Compare Center | All Tools Together",
+    "description": "Calculate Mean, Median, and Mode online. Free statistical tool to find averages and range from any list of values.",
+    "canonical": "https://alltoolstogether.com/math/mean-median-mode-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/percentage-calculator",
+    "title": "Percentage Calculator — Percent of a Value | All Tools Together",
+    "description": "Free online percentage calculator. Calculate percent of a number, percent change, and percent differences instantly in your browser.",
+    "canonical": "https://alltoolstogether.com/math/percentage-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/percentage-change-calculator",
+    "title": "Percentage Change Calculator — Increase or Decrease | All Tools Together",
+    "description": "Calculate percentage change online for free. Find the exact percent increase or decrease between original and new numbers.",
+    "canonical": "https://alltoolstogether.com/math/percentage-change-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/permutation-combination-calculator",
+    "title": "Permutation & Combination Calculator | All Tools Together",
+    "description": "Calculate permutations and combinations. Free nPr and nCr calculator for probability and statistics.",
+    "canonical": "https://alltoolstogether.com/math/combination-calculator",
+    "robots": "index, follow",
+    "inSitemap": false
+  },
+  {
+    "path": "/math/prime-factorization-calculator",
+    "title": "Prime Factorization Calculator | All Tools Together",
+    "description": "Calculate prime factorization online safely. Break down any integer into its prime factors using our free math tool.",
+    "canonical": "https://alltoolstogether.com/math/prime-factorization-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/probability-calculator",
+    "title": "Probability Calculator | All Tools Together",
+    "description": "Calculate statistical probabilities online. Convert outcomes into precise decimals, percentages, and odds securely in your browser.",
+    "canonical": "https://alltoolstogether.com/math/probability-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/pythagorean-theorem-calculator",
+    "title": "Pythagorean Theorem Calculator | All Tools Together",
+    "description": "Pythagorean Theorem Calculator online. Solve for the hypotenuse or legs of any right triangle instantly.",
+    "canonical": "https://alltoolstogether.com/math/pythagorean-theorem-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/quadratic-formula-calculator",
+    "title": "Quadratic Formula Calculator | All Tools Together",
+    "description": "Solve quadratic equations instantly online. Free quadratic formula calculator finds real and complex roots with step-by-step discriminant math.",
+    "canonical": "https://alltoolstogether.com/math/quadratic-formula-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/random-name-picker",
+    "title": "Random Name Picker | All Tools Together",
+    "description": "Pick a random nonempty line from a locally entered list of names. Read the method and limitations.",
+    "canonical": "https://alltoolstogether.com/math/random-name-picker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/random-number-generator",
+    "title": "Random Number Generator | All Tools Together",
+    "description": "Generate a random integer between inclusive bounds using browser cryptographic randomness. Read the method and limitations.",
+    "canonical": "https://alltoolstogether.com/math/random-number-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/ratio-calculator",
+    "title": "Ratio Calculator | All Tools Together",
+    "description": "Free online ratio calculator. Simplify mathematical ratios to lowest terms or cross-multiply to solve proportion equations instantly.",
+    "canonical": "https://alltoolstogether.com/math/ratio-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/rectangle-area-calculator",
+    "title": "Rectangle Area Calculator | All Tools Together",
+    "description": "Calculate rectangle area and perimeter. Free online rectangle calculator.",
+    "canonical": "https://alltoolstogether.com/math/rectangle-area-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/rounding-calculator",
+    "title": "Rounding Calculator | All Tools Together",
+    "description": "Round numbers and decimals online. Round up (ceiling), round down (floor), and standard round to any decimal place.",
+    "canonical": "https://alltoolstogether.com/math/rounding-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/scientific-calculator",
+    "title": "Scientific Calculator | All Tools Together",
+    "description": "Free online scientific calculator. Perform trigonometry, logarithms, factorials, and complex math securely in your browser.",
+    "canonical": "https://alltoolstogether.com/math/scientific-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/scientific-notation-calculator",
+    "title": "Scientific Notation Calculator | All Tools Together",
+    "description": "Convert numbers to scientific notation and back. Free calculator for very large or small numbers.",
+    "canonical": "https://alltoolstogether.com/math/scientific-notation-converter",
+    "robots": "index, follow",
+    "inSitemap": false
+  },
+  {
+    "path": "/math/scientific-notation-converter",
+    "title": "Scientific Notation Converter | All Tools Together",
+    "description": "Convert numbers to Scientific Notation online. Instantly translate large and small decimals into standard E notation.",
+    "canonical": "https://alltoolstogether.com/math/scientific-notation-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/sig-fig-calculator",
+    "title": "Significant Figures Calculator — Rounding Rules | All Tools Together",
+    "description": "Free significant figures calculator. Round numbers to any number of sig figs with scientific notation — instant, accurate, runs in your browser.",
+    "canonical": "https://alltoolstogether.com/math/sig-fig-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/slope-calculator",
+    "title": "Slope Calculator | All Tools Together",
+    "description": "Calculate the slope of a line from two points. Free online slope calculator providing y-intercepts and full slope-intercept equations.",
+    "canonical": "https://alltoolstogether.com/math/slope-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/square-root-calculator",
+    "title": "Square Root Calculator | All Tools Together",
+    "description": "Calculate square roots online. Find principal roots for any number, complete with imaginary root support for negative numbers.",
+    "canonical": "https://alltoolstogether.com/math/square-root-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/standard-deviation-calculator",
+    "title": "Standard Deviation Calculator | All Tools Together",
+    "description": "Calculate standard deviation online safely. Compute population and sample standard deviations, variance, and means from any data set.",
+    "canonical": "https://alltoolstogether.com/math/standard-deviation-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math/triangle-area-calculator",
+    "title": "Triangle Area Calculator | All Tools Together",
+    "description": "Calculate the area of a triangle online. Solve via base and height, or use Heron's formula if you only know the three side lengths.",
+    "canonical": "https://alltoolstogether.com/math/triangle-area-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/math",
+    "title": "Math & Education — 29 Free Online Tools | All Tools Together",
+    "description": "Explore Math & Education on All Tools Together. Find Percentage Calculator, Fraction Calculator, Average Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/math",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/methodology",
+    "title": "Methodology — Calculator Assumptions & Testing | All Tools Together",
+    "description": "Understand the formulas, rounding, unit conversions, regression checks and processing limits behind All Tools Together.",
+    "canonical": "https://alltoolstogether.com/methodology",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/add-page-numbers-to-pdf",
+    "title": "Add Page Numbers to PDF | All Tools Together",
+    "description": "Add page numbers to your PDF documents online for free. Choose the position, starting number, and instantly stamp pages securely in your browser.",
+    "canonical": "https://alltoolstogether.com/pdf/add-page-numbers-to-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/compress-pdf",
+    "title": "Compress PDF — Local Optimization | All Tools Together",
+    "description": "Repack PDF objects locally and keep the smaller file without resampling images. Read the method and limitations.",
+    "canonical": "https://alltoolstogether.com/pdf/compress-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/delete-pdf-pages",
+    "title": "Delete PDF Pages | All Tools Together",
+    "description": "Remove unwanted pages from your PDF files online. Free, fast, and completely private PDF page remover tool. No uploads or installations required.",
+    "canonical": "https://alltoolstogether.com/pdf/delete-pdf-pages",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/edit-pdf-metadata",
+    "title": "Edit PDF Metadata | All Tools Together",
+    "description": "Edit PDF metadata properties easily. Change the title, author, subject, and keywords of any PDF file privately in your web browser.",
+    "canonical": "https://alltoolstogether.com/pdf/edit-pdf-metadata",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/extract-pdf-pages",
+    "title": "Extract PDF Pages | All Tools Together",
+    "description": "Extract specific pages from a PDF to create a new document. Free, secure, and private PDF page extractor that runs entirely in your web browser.",
+    "canonical": "https://alltoolstogether.com/pdf/extract-pdf-pages",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/jpg-to-pdf",
+    "title": "JPG to PDF | All Tools Together",
+    "description": "Convert JPG and JPEG images into a single PDF document for free. Combine pictures securely in your browser with zero uploads.",
+    "canonical": "https://alltoolstogether.com/pdf/jpg-to-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/markdown-to-pdf",
+    "title": "Markdown to PDF — Local Document Export | All Tools Together",
+    "description": "Convert Markdown to a beautifully formatted PDF online. Automatically styles code blocks, lists, and headings into a print-ready A4 document.",
+    "canonical": "https://alltoolstogether.com/pdf/markdown-to-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/merge-pdf",
+    "title": "Merge PDF — Combine Files Locally, No Upload | All Tools Together",
+    "description": "Merge PDF files online for free. Combine multiple PDFs into a single document instantly and securely directly in your browser. No server uploads required.",
+    "canonical": "https://alltoolstogether.com/pdf/merge-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/pdf-info-viewer",
+    "title": "PDF Info Viewer | All Tools Together",
+    "description": "View hidden PDF metadata, page counts, dimensions, and creation details instantly online. Free, safe, and entirely browser-based inspection tool.",
+    "canonical": "https://alltoolstogether.com/pdf/pdf-info-viewer",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/pdf-to-jpg",
+    "title": "PDF to JPG | All Tools Together",
+    "description": "Convert PDF files to high-quality JPG images online. Free, fast, and secure PDF to picture converter running strictly in your browser.",
+    "canonical": "https://alltoolstogether.com/pdf/pdf-to-jpg",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/pdf-to-markdown",
+    "title": "PDF to Markdown — Local Text Extraction | All Tools Together",
+    "description": "Convert PDF documents to clean Markdown (.md) automatically. Detects headings and lists securely within your browser. Perfect for Notion or Obsidian.",
+    "canonical": "https://alltoolstogether.com/pdf/pdf-to-markdown",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/pdf-to-png",
+    "title": "PDF to PNG | All Tools Together",
+    "description": "Convert PDF pages to lossless PNG images. Extract sharp text and graphics from PDFs securely online without losing quality.",
+    "canonical": "https://alltoolstogether.com/pdf/pdf-to-png",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/pdf-to-text",
+    "title": "PDF to Text | All Tools Together",
+    "description": "Extract plain text from any PDF document instantly. Free online PDF to Text converter that safely parses content in your browser.",
+    "canonical": "https://alltoolstogether.com/pdf/pdf-to-text",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/png-to-pdf",
+    "title": "PNG to PDF | All Tools Together",
+    "description": "Convert PNG images into a PDF document online. Preserve transparency and high quality locally in your browser. 100% free and private.",
+    "canonical": "https://alltoolstogether.com/pdf/png-to-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/reorder-pdf-pages",
+    "title": "Reorder PDF Pages | All Tools Together",
+    "description": "Reorder and rearrange pages in a PDF file easily. Free online tool to drag, drop, and reorganize PDF pages securely in your web browser.",
+    "canonical": "https://alltoolstogether.com/pdf/reorder-pdf-pages",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/rotate-pdf",
+    "title": "Rotate PDF | All Tools Together",
+    "description": "Rotate PDF pages permanently online. Fix upside-down or sideways PDFs instantly and securely. Rotate all, odd, or even pages without uploading.",
+    "canonical": "https://alltoolstogether.com/pdf/rotate-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/split-pdf",
+    "title": "Split PDF | All Tools Together",
+    "description": "Split PDF files online for free. Extract specific page ranges or split every page into a separate document instantly. 100% private and runs in your browser.",
+    "canonical": "https://alltoolstogether.com/pdf/split-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf/watermark-pdf",
+    "title": "Watermark PDF | All Tools Together",
+    "description": "Add custom text watermarks to your PDF documents. Stamp \"CONFIDENTIAL\" or \"DRAFT\" across pages securely and privately in your browser.",
+    "canonical": "https://alltoolstogether.com/pdf/watermark-pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/pdf",
+    "title": "PDF Tools — 18 Free Online Tools | All Tools Together",
+    "description": "Explore PDF Tools on All Tools Together. Find Merge PDF, Split PDF, Extract PDF Pages, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/pdf",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/privacy",
+    "title": "Privacy Policy | All Tools Together",
+    "description": "Privacy policy for All Tools Together. Learn how we handle data — most tools run entirely in your browser with no uploads.",
+    "canonical": "https://alltoolstogether.com/privacy",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/capital-gains-tax-calculator",
+    "title": "Capital Gains Tax Calculator | All Tools Together",
+    "description": "Free Capital Gains Tax Calculator online. Safely estimate US federal capital gains taxes on real estate and investment sales directly in your browser.",
+    "canonical": "https://alltoolstogether.com/real-estate/capital-gains-tax-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/closing-costs-calculator",
+    "title": "Closing Costs Calculator | All Tools Together",
+    "description": "Closing Costs Calculator for buyers and sellers. Estimate final home sale closing costs privately without sharing your real estate data.",
+    "canonical": "https://alltoolstogether.com/real-estate/closing-costs-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/home-affordability-calculator",
+    "title": "Home Affordability Calculator | All Tools Together",
+    "description": "Calculate Home Affordability online. Find out exactly how much house you can afford based on lender qualifying standards and the 28/36 rule.",
+    "canonical": "https://alltoolstogether.com/real-estate/home-affordability-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/house-price-to-income-ratio",
+    "title": "House Price-to-Income Ratio | All Tools Together",
+    "description": "House Price to Income Ratio Calculator. Instantly assess if a house price is affordable based on your total household income ratio.",
+    "canonical": "https://alltoolstogether.com/real-estate/house-price-to-income-ratio",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/property-tax-calculator",
+    "title": "Property Tax Calculator | All Tools Together",
+    "description": "Free Property Tax Calculator. Estimate your annual real estate taxes based on home valuation, assessment ratio, and local mill rates safely.",
+    "canonical": "https://alltoolstogether.com/real-estate/property-tax-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/rent-vs-buy-calculator",
+    "title": "Rent vs Buy Calculator | All Tools Together",
+    "description": "Free Rent vs Buy Calculator. Make smart housing decisions by mathematically comparing mortgage costs against renting across your time horizon.",
+    "canonical": "https://alltoolstogether.com/real-estate/rent-vs-buy-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/rental-yield-calculator",
+    "title": "Rental Yield Calculator | All Tools Together",
+    "description": "Free Rental Yield Calculator online. Compare real estate investments by easily calculating gross yield, net yield, and cap rates directly.",
+    "canonical": "https://alltoolstogether.com/real-estate/rental-yield-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate/square-footage-calculator",
+    "title": "Square Footage Calculator | All Tools Together",
+    "description": "Free Square Footage Calculator. Calculate total area for rooms and properties in square feet, meters, and yards for flooring and listings.",
+    "canonical": "https://alltoolstogether.com/real-estate/square-footage-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/real-estate",
+    "title": "Real Estate — 8 Free Online Tools | All Tools Together",
+    "description": "Explore Real Estate on All Tools Together. Find Rent vs Buy Calculator, Home Affordability Calculator, Property Tax Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/real-estate",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/battery-life-calculator",
+    "title": "Battery Life Calculator | All Tools Together",
+    "description": "Estimate battery runtime from capacity in mAh, average battery-side current in mA, and usable charge. See the result in hours and days.",
+    "canonical": "https://alltoolstogether.com/science/battery-life-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/density-calculator",
+    "title": "Density Calculator | All Tools Together",
+    "description": "Calculate Density online. Solve for density, mass, or volume easily using the standard ρ = m/V physics equation securely.",
+    "canonical": "https://alltoolstogether.com/science/density-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/half-life-calculator",
+    "title": "Half-Life Calculator | All Tools Together",
+    "description": "Calculate Half-Life decay rates online. Free calculator to determine remaining quantities of radioactive isotopes securely.",
+    "canonical": "https://alltoolstogether.com/science/half-life-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/kinematic-calculator",
+    "title": "Kinematics Calculator | All Tools Together",
+    "description": "Kinematics Calculator online. Solve SUVAT physics equations instantly for velocity, displacement, and acceleration. Privacy first tool.",
+    "canonical": "https://alltoolstogether.com/science/kinematic-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/newtons-second-law-calculator",
+    "title": "Newton's Second Law Calculator | All Tools Together",
+    "description": "Newton's Second Law Calculator. Solve F = ma instantly for Force, Mass, or Acceleration. Completely free browser tool.",
+    "canonical": "https://alltoolstogether.com/science/newtons-second-law-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/ohms-law-calculator",
+    "title": "Ohm's Law Calculator | All Tools Together",
+    "description": "Free online Ohm's Law Calculator. Solve for voltage, current, and resistance easily in your browser without tracking.",
+    "canonical": "https://alltoolstogether.com/science/ohms-law-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/ph-calculator",
+    "title": "pH Calculator | All Tools Together",
+    "description": "Free online pH Calculator. Determine Hydrogen ion concentration and pOH values from simple pH numbers for chemistry tasks.",
+    "canonical": "https://alltoolstogether.com/science/ph-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/resistor-color-code-calculator",
+    "title": "Resistor Color Code Calculator | All Tools Together",
+    "description": "Resistor Color Code Calculator online. Decode 4-band resistor color patterns into resistance and tolerance values quickly.",
+    "canonical": "https://alltoolstogether.com/science/resistor-color-code-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/torque-calculator",
+    "title": "Torque Calculator | All Tools Together",
+    "description": "Calculate mechanical torque online safely. Find rotational force in N-m or ft-lb from applied force and moment arm length.",
+    "canonical": "https://alltoolstogether.com/science/torque-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science/voltage-divider-calculator",
+    "title": "Voltage Divider Calculator | All Tools Together",
+    "description": "Free Voltage Divider Calculator. Find the exact output voltage for resistor voltage divider circuits in electronics prototyping.",
+    "canonical": "https://alltoolstogether.com/science/voltage-divider-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/science",
+    "title": "Science & Engineering — 10 Free Online Tools | All Tools Together",
+    "description": "Explore Science & Engineering on All Tools Together. Find Ohm's Law Calculator, Resistor Color Code Calculator, Voltage Divider Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/science",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/barcode-generator",
+    "title": "Barcode Generator | All Tools Together",
+    "description": "Free Barcode Generator. Create scannable CODE128, EAN-13, and UPC barcodes online safely without uploading your data. Download crisp SVGs instantly.",
+    "canonical": "https://alltoolstogether.com/seo/barcode-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/htaccess-redirect-generator",
+    "title": "Htaccess Redirect Generator | All Tools Together",
+    "description": "Free Htaccess Redirect Generator. Securely generate Apache rewrite rules, 301 redirects, and HTTPS enforces directly from your browser.",
+    "canonical": "https://alltoolstogether.com/seo/htaccess-redirect-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/meta-tag-generator",
+    "title": "Meta Tag Generator | All Tools Together",
+    "description": "Free Meta Tag Generator. Produce perfectly sized SEO titles and descriptions. Get live character feedback locally in your browser.",
+    "canonical": "https://alltoolstogether.com/seo/meta-tag-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/open-graph-generator",
+    "title": "Open Graph Generator | All Tools Together",
+    "description": "Open Graph Generator online. Create valid OG tags and Twitter Cards for social media previews. Works entirely locally for your privacy.",
+    "canonical": "https://alltoolstogether.com/seo/open-graph-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/qr-code-generator",
+    "title": "QR Code Generator | All Tools Together",
+    "description": "Generate custom QR codes online for free. Convert URLs and text into scannable QR codes entirely in your browser with no tracking.",
+    "canonical": "https://alltoolstogether.com/seo/qr-code-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/robots-txt-generator",
+    "title": "Robots.txt Generator | All Tools Together",
+    "description": "Generate a robots.txt file online for free. Configure SEO crawler rules securely in-browser to guide Google and Bing efficiently.",
+    "canonical": "https://alltoolstogether.com/seo/robots-txt-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/url-shortener",
+    "title": "URL Shortener | All Tools Together",
+    "description": "Learn how short URLs redirect, how to choose a readable alias, and how to test destination links and campaign tracking before sharing.",
+    "canonical": "https://alltoolstogether.com/seo/url-shortener",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/utm-link-builder",
+    "title": "UTM Link Builder | All Tools Together",
+    "description": "Free UTM Link Builder online. Construct analytics-ready tracking URLs quickly and privately in your browser to monitor marketing campaigns.",
+    "canonical": "https://alltoolstogether.com/seo/utm-link-builder",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo/xml-sitemap-generator",
+    "title": "XML Sitemap Generator | All Tools Together",
+    "description": "Free XML Sitemap Generator. Convert URL lists into standard, search engine compliant XML sitemaps securely right in your browser.",
+    "canonical": "https://alltoolstogether.com/seo/xml-sitemap-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/seo",
+    "title": "SEO & Web — 9 Free Online Tools | All Tools Together",
+    "description": "Explore SEO & Web on All Tools Together. Find QR Code Generator, Barcode Generator, UTM Link Builder, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/seo",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/sitemap",
+    "title": "Sitemap | All Tools Together",
+    "description": "Browse all 294 tool pages on All Tools Together — calculators, converters, PDF, image, developer, and more.",
+    "canonical": "https://alltoolstogether.com/sitemap",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/statistics/confidence-interval-calculator",
+    "title": "Confidence Interval Calculator | All Tools Together",
+    "description": "Confidence Interval Calculator online. Calculate statistical margins of error and confidence levels (90%, 95%, 99%) quickly and privately.",
+    "canonical": "https://alltoolstogether.com/statistics/confidence-interval-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/statistics/correlation-coefficient-calculator",
+    "title": "Correlation Coefficient Calculator | All Tools Together",
+    "description": "Calculate Pearson Correlation Coefficients online. Free tool linking X and Y datasets to find r and R-squared safely within your browser.",
+    "canonical": "https://alltoolstogether.com/statistics/correlation-coefficient-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/statistics/p-value-calculator",
+    "title": "P-Value Calculator | All Tools Together",
+    "description": "Calculate P-Values from Z-scores. Free statistical significance calculator computing p-values for hypothesis testing instantly online.",
+    "canonical": "https://alltoolstogether.com/statistics/p-value-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/statistics/sample-size-calculator",
+    "title": "Sample Size Calculator | All Tools Together",
+    "description": "Free Sample Size Calculator. Determine exactly how many survey respondents you need to achieve statistically significant results with your target error margin.",
+    "canonical": "https://alltoolstogether.com/statistics/sample-size-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/statistics/z-score-calculator",
+    "title": "Z-Score Calculator | All Tools Together",
+    "description": "Free Z-Score Calculator. Calculate z-scores, percentiles, and normal distribution probabilities securely online without saving data.",
+    "canonical": "https://alltoolstogether.com/statistics/z-score-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/statistics",
+    "title": "Statistics — 5 Free Online Tools | All Tools Together",
+    "description": "Explore Statistics on All Tools Together. Find Z-Score Calculator, Confidence Interval Calculator, Sample Size Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/statistics",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/canada-gst-hst-calculator",
+    "title": "Canada GST/HST Calculator — Add or Reverse Tax | All Tools Together",
+    "description": "Calculate Canadian GST or HST by province or territory. Add tax to a price or find the pre-tax amount from a tax-inclusive total.",
+    "canonical": "https://alltoolstogether.com/tax/canada-gst-hst-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/hra-calculator",
+    "title": "HRA Calculator — Old-Regime Exemption | All Tools Together",
+    "description": "Estimate an eligible old-regime HRA exemption using matching-period salary, rent and HRA. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/tax/hra-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/india-gst-calculator",
+    "title": "GST Calculator (India) | All Tools Together",
+    "description": "Add or reverse Indian GST and split tax into IGST or CGST plus SGST/UTGST. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/tax/india-gst-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/india-income-tax-calculator",
+    "title": "India Income Tax Calculator — AY 2026–27 | All Tools Together",
+    "description": "Compare AY 2026–27 old and new regime tax on ordinary taxable income up to ₹50 lakh. See the formula, worked example and assumptions.",
+    "canonical": "https://alltoolstogether.com/tax/india-income-tax-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/paycheck-calculator",
+    "title": "Paycheck Calculator | All Tools Together",
+    "description": "Free Paycheck Calculator. Estimate your net take-home pay safely in your browser after deducting federal tax, FICA, state tax, and 401k.",
+    "canonical": "https://alltoolstogether.com/tax/paycheck-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/self-employment-tax-calculator",
+    "title": "Self-Employment Tax Calculator | All Tools Together",
+    "description": "Free Self-Employment Tax Calculator. Estimate your SECA tax liability accurately and entirely locally based on your freelance net profit.",
+    "canonical": "https://alltoolstogether.com/tax/self-employment-tax-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/us-mileage-calculator-2026",
+    "title": "2026 IRS Mileage Calculator — Split-Year Rates | All Tools Together",
+    "description": "Calculate the 2026 IRS business mileage amount. Apply 72.5 cents per mile for January–June and 76 cents for July–December.",
+    "canonical": "https://alltoolstogether.com/tax/us-mileage-calculator-2026",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax/vat-calculator",
+    "title": "VAT Calculator | All Tools Together",
+    "description": "Calculate VAT online. Free Value Added Tax calculator to instantly add or extract VAT from a gross price. No data is stored on our servers.",
+    "canonical": "https://alltoolstogether.com/tax/vat-calculator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tax",
+    "title": "Tax & Payroll — 8 Free Online Tools | All Tools Together",
+    "description": "Explore Tax & Payroll on All Tools Together. Find Paycheck Calculator, VAT Calculator, Self-Employment Tax Calculator, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/tax",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/terms",
+    "title": "Terms of Service | All Tools Together",
+    "description": "Terms of service for All Tools Together. Rules and disclaimers for using our free online tools.",
+    "canonical": "https://alltoolstogether.com/terms",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/case-converter",
+    "title": "Case Converter | All Tools Together",
+    "description": "Convert text case online instantly. Change between lowercase, UPPERCASE, Title Case, camelCase, and snake_case for free.",
+    "canonical": "https://alltoolstogether.com/text/case-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/character-counter",
+    "title": "Character Counter | All Tools Together",
+    "description": "Free online character counter. Count characters with and without spaces for Twitter, Instagram, and SMS. 100% private and runs locally.",
+    "canonical": "https://alltoolstogether.com/text/character-counter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/find-and-replace",
+    "title": "Find and Replace Text | All Tools Together",
+    "description": "Find and replace text online instantly. Swap words in bulk, use Regex matching, and process large text files privately in your browser.",
+    "canonical": "https://alltoolstogether.com/text/find-and-replace",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/keyword-density-checker",
+    "title": "Keyword Density Checker | All Tools Together",
+    "description": "Check keyword density online for free. Analyze word frequencies to optimize your SEO content without keyword stuffing.",
+    "canonical": "https://alltoolstogether.com/text/keyword-density-checker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/lorem-ipsum-generator",
+    "title": "Lorem Ipsum Generator | All Tools Together",
+    "description": "Generate Lorem Ipsum placeholder text online. Create any number of paragraphs of standard dummy text for web design and mockups.",
+    "canonical": "https://alltoolstogether.com/text/lorem-ipsum-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/readability-checker",
+    "title": "Readability Checker | All Tools Together",
+    "description": "Check text readability online. Calculate Flesch Reading Ease and Grade Level scores instantly to ensure your writing is clear and accessible.",
+    "canonical": "https://alltoolstogether.com/text/readability-checker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/remove-duplicate-lines",
+    "title": "Remove Duplicate Lines | All Tools Together",
+    "description": "Remove duplicate lines from text online. Clean lists by stripping repeated entries instantly. Free, private, and runs in the browser.",
+    "canonical": "https://alltoolstogether.com/text/remove-duplicate-lines",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/remove-extra-spaces",
+    "title": "Remove Extra Spaces | All Tools Together",
+    "description": "Remove extra spaces from text online. Collapse double spacing and trim whitespace seamlessly. Fix copy-paste errors instantly.",
+    "canonical": "https://alltoolstogether.com/text/remove-extra-spaces",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/remove-line-breaks",
+    "title": "Remove Line Breaks | All Tools Together",
+    "description": "Remove line breaks from text online. Clean up messy PDF copy-pastes by stripping hard returns or converting them to spaces automatically.",
+    "canonical": "https://alltoolstogether.com/text/remove-line-breaks",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/reverse-text",
+    "title": "Reverse Text | All Tools Together",
+    "description": "Reverse text online for free. Flip words backwards or reverse entire sentences character-by-character. Fun, private, and local tool.",
+    "canonical": "https://alltoolstogether.com/text/reverse-text",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/slug-generator",
+    "title": "Slug Generator | All Tools Together",
+    "description": "Generate clean URL slugs online. Convert titles into SEO-friendly, hyphen-separated slugs instantly in your browser.",
+    "canonical": "https://alltoolstogether.com/text/slug-generator",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/sort-text-lines",
+    "title": "Sort Text Lines | All Tools Together",
+    "description": "Alphabetize lists online instantly. Sort text lines A-Z, reverse alphabetical, or by string length. Fast and free tool.",
+    "canonical": "https://alltoolstogether.com/text/sort-text-lines",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/text-compare",
+    "title": "Text Compare — Review Changes in Prose | All Tools Together",
+    "description": "Compare two text files online to spot differences. Highlight added and removed lines instantly without uploading your private data.",
+    "canonical": "https://alltoolstogether.com/text/text-compare",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/text-repeater",
+    "title": "Text Repeater | All Tools Together",
+    "description": "Repeat text online instantly. Duplicate a word or phrase up to 100 times for testing, social media, or filler data.",
+    "canonical": "https://alltoolstogether.com/text/text-repeater",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/text-to-binary",
+    "title": "Text to Binary Converter | All Tools Together",
+    "description": "Convert text to binary online. Translate English words into 8-bit binary code (or decode binary to text) instantly in your browser.",
+    "canonical": "https://alltoolstogether.com/text/text-to-binary",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/title-case-converter",
+    "title": "Title Case Converter | All Tools Together",
+    "description": "Convert headlines to Title Case automatically. Applies standard AP-style capitalization rules for articles and blogs.",
+    "canonical": "https://alltoolstogether.com/text/title-case-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/typing-speed-test",
+    "title": "Typing Speed Test | All Tools Together",
+    "description": "Practice typing for up to 60 seconds and see correct WPM and current text accuracy. Read the method and limitations.",
+    "canonical": "https://alltoolstogether.com/text/typing-speed-test",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text/word-counter",
+    "title": "Word Counter — Words, Characters & Reading Time | All Tools Together",
+    "description": "Free online word counter. Count words, characters, sentences, and paragraphs in real-time. Calculate reading time securely in your browser.",
+    "canonical": "https://alltoolstogether.com/text/word-counter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/text",
+    "title": "Text Tools — 18 Free Online Tools | All Tools Together",
+    "description": "Explore Text Tools on All Tools Together. Find Word Counter, Character Counter, Case Converter, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/text",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/tools",
+    "title": "All Free Tools — Search the Full Directory | All Tools Together",
+    "description": "Browse every free calculator, converter, PDF, image and developer tool by category or search phrase. Read processing and privacy details on each tool page.",
+    "canonical": "https://alltoolstogether.com/tools",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/area-converter",
+    "title": "Area Converter | All Tools Together",
+    "description": "Convert area measurements online. Calculate square meters, square feet, acres, and hectares for real estate and construction.",
+    "canonical": "https://alltoolstogether.com/unit-converters/area-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/celsius-to-fahrenheit",
+    "title": "Celsius to Fahrenheit Converter | All Tools Together",
+    "description": "Convert Celsius to Fahrenheit online instantly. Accurate C to F temperature calculator for weather, travel, and cooking.",
+    "canonical": "https://alltoolstogether.com/unit-converters/celsius-to-fahrenheit",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/cm-to-inches",
+    "title": "CM to Inches Converter — Formula & Chart | All Tools Together",
+    "description": "Convert CM to Inches easily online. Fast, precise centimeter to inch calculator using the exact 2.54 international standard.",
+    "canonical": "https://alltoolstogether.com/unit-converters/cm-to-inches",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/currency-converter",
+    "title": "Currency Converter | All Tools Together",
+    "description": "Live Currency Converter online. Convert between 50+ global currencies using daily mid-market rates from the European Central Bank.",
+    "canonical": "https://alltoolstogether.com/unit-converters/currency-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/data-storage-converter",
+    "title": "Data Storage Converter | All Tools Together",
+    "description": "Convert computer data storage units online. Translate safely between Megabytes (MB), Gigabytes (GB), and binary (GiB) formats.",
+    "canonical": "https://alltoolstogether.com/unit-converters/data-storage-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/energy-converter",
+    "title": "Energy Converter | All Tools Together",
+    "description": "Convert energy units online. Free tool to calculate Joules, calories, and kilowatt-hours accurately for science and fitness.",
+    "canonical": "https://alltoolstogether.com/unit-converters/energy-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/eur-to-usd",
+    "title": "EUR to USD | All Tools Together",
+    "description": "Convert Euros (EUR) to US Dollars (USD) online. Fast, live currency calculator using official European Central Bank reference rates.",
+    "canonical": "https://alltoolstogether.com/unit-converters/eur-to-usd",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/fuel-economy-converter",
+    "title": "Fuel Economy Converter | All Tools Together",
+    "description": "Convert Fuel Economy ratings online instantly. Switch between US MPG, UK MPG, and liters per 100km (l/100km) to compare cars accurately.",
+    "canonical": "https://alltoolstogether.com/unit-converters/fuel-economy-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/kg-to-lbs",
+    "title": "KG to LBS Converter | All Tools Together",
+    "description": "Convert KG to LBS instantly. Accurate kilogram to pound mass calculator for fitness, shipping, and travel.",
+    "canonical": "https://alltoolstogether.com/unit-converters/kg-to-lbs",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/length-converter",
+    "title": "Length Converter | All Tools Together",
+    "description": "Convert length units online. Calculate meters, feet, inches, kilometers, and miles accurately using international measurement standards.",
+    "canonical": "https://alltoolstogether.com/unit-converters/length-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/liters-to-gallons",
+    "title": "Liters to Gallons Converter | All Tools Together",
+    "description": "Convert Liters to Gallons online. Fast volume calculator supporting both US and UK Imperial Gallons for precision liquid measuring.",
+    "canonical": "https://alltoolstogether.com/unit-converters/liters-to-gallons",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/power-converter",
+    "title": "Power Converter | All Tools Together",
+    "description": "Convert power metrics online instantly. Calculate watts, kilowatts, and horsepower (mechanical and metric) accurately.",
+    "canonical": "https://alltoolstogether.com/unit-converters/power-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/pressure-converter",
+    "title": "Pressure Converter | All Tools Together",
+    "description": "Convert pressure measurements online. Calculate Pascals, Bar, PSI, and Atmospheres securely with our engineering tool.",
+    "canonical": "https://alltoolstogether.com/unit-converters/pressure-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/speed-converter",
+    "title": "Speed Converter | All Tools Together",
+    "description": "Convert speed units online. Translate kilometers per hour (km/h), miles per hour (mph), meters per second, and knots instantly.",
+    "canonical": "https://alltoolstogether.com/unit-converters/speed-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/square-feet-to-square-meters",
+    "title": "Square Feet to Square Meters | All Tools Together",
+    "description": "Convert Square Feet to Square Meters (sqft to sqm) online quickly. Accurate area conversion calculator for homes and property.",
+    "canonical": "https://alltoolstogether.com/unit-converters/square-feet-to-square-meters",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/temperature-converter",
+    "title": "Temperature Converter | All Tools Together",
+    "description": "Convert temperatures online safely. Translate between Celsius, Fahrenheit, and Kelvin instantly using exact physics formulas.",
+    "canonical": "https://alltoolstogether.com/unit-converters/temperature-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/time-converter",
+    "title": "Time Unit Converter | All Tools Together",
+    "description": "Convert time units instantly online. Calculate milliseconds, seconds, minutes, hours, days, and weeks safely without server pinging.",
+    "canonical": "https://alltoolstogether.com/unit-converters/time-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/unit-converter",
+    "title": "Unit Converter | All Tools Together",
+    "description": "Free online Unit Converter. Convert length, weight, temperature, speed, area, volume, and data sizes instantly with exact international definitions.",
+    "canonical": "https://alltoolstogether.com/unit-converters/unit-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/usd-to-eur",
+    "title": "USD to EUR | All Tools Together",
+    "description": "Convert US Dollars (USD) to Euros (EUR) instantly. Check today's official mid-market exchange rate directly from the ECB.",
+    "canonical": "https://alltoolstogether.com/unit-converters/usd-to-eur",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/usd-to-gbp",
+    "title": "USD to GBP | All Tools Together",
+    "description": "Convert USD to GBP online instantly. Check the real-time Dollar to British Pound exchange rate using official daily fixes.",
+    "canonical": "https://alltoolstogether.com/unit-converters/usd-to-gbp",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/usd-to-inr",
+    "title": "USD to INR | All Tools Together",
+    "description": "Convert USD to INR online using live market rates. Check the US Dollar to Indian Rupee exchange securely for remittances or travel.",
+    "canonical": "https://alltoolstogether.com/unit-converters/usd-to-inr",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/volume-converter",
+    "title": "Volume Converter | All Tools Together",
+    "description": "Convert volume and liquid measurements online. Free calculator for liters, US/UK gallons, cups, pints, and fluid ounces.",
+    "canonical": "https://alltoolstogether.com/unit-converters/volume-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters/weight-converter",
+    "title": "Weight Converter | All Tools Together",
+    "description": "Convert weight and mass online. Free calculator for kilograms, pounds, ounces, stone, and tons with exact precision.",
+    "canonical": "https://alltoolstogether.com/unit-converters/weight-converter",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/unit-converters",
+    "title": "Unit Converters — 23 Free Online Tools | All Tools Together",
+    "description": "Explore Unit Converters on All Tools Together. Find Unit Converter, Length Converter, Weight Converter, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/unit-converters",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/writing/grammar-checker",
+    "title": "Grammar Checker | All Tools Together",
+    "description": "Check English grammar with a practical editing checklist, examples of common errors, and guidance on reviewing grammar suggestions.",
+    "canonical": "https://alltoolstogether.com/writing/grammar-checker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/writing/paraphrasing-tool",
+    "title": "Paraphrasing Tool | All Tools Together",
+    "description": "Learn how to paraphrase a sentence without changing its meaning. Follow a before-and-after example and check which facts and sources to preserve.",
+    "canonical": "https://alltoolstogether.com/writing/paraphrasing-tool",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/writing/plagiarism-checker",
+    "title": "Plagiarism Checker | All Tools Together",
+    "description": "Learn how to look for matching text online, review likely source matches, and check citations before submitting a draft.",
+    "canonical": "https://alltoolstogether.com/writing/plagiarism-checker",
+    "robots": "index, follow",
+    "inSitemap": true
+  },
+  {
+    "path": "/writing",
+    "title": "Writing Tools — 3 Free Online Tools | All Tools Together",
+    "description": "Explore Writing Tools on All Tools Together. Find Grammar Checker, Paraphrasing Tool, Plagiarism Checker, with usage instructions and FAQs.",
+    "canonical": "https://alltoolstogether.com/writing",
+    "robots": "index, follow",
+    "inSitemap": true
+  }
+]

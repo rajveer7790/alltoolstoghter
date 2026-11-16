@@ -1,3 +1,9 @@
+import { referenceTable } from '@/lib/referenceTables';
+import { INTENT_NOTES } from '@/lib/intentNotes';
+import { EDITORIAL } from '@/lib/toolEditorial';
+import { CONTENT_UPDATED, AUTHOR } from '@/lib/contentDates';
+import { guideLinksForTool } from '@/lib/guides';
+import { topicContext } from '@/lib/topicContext';
 import { canonicalToolPath } from '@/lib/toolPolicy';
 import { backendGuides } from '@/lib/backendGuides';
 import { hasBackend } from '@/lib/apiClient';
@@ -38,17 +44,18 @@ export function generateStaticParams() {
   return ALL_TOOLS.map(t => ({ category: t.category, tool: t.slug }));
 }
 
-export function generateMetadata({ params }: { params: { category: string; tool: string } }): Metadata {
+export async function generateMetadata({ params: pendingParams }: { params: Promise<{ category: string; tool: string }> }): Promise<Metadata> {
+  const params = await pendingParams;
   const t = bySlug.get(params.tool);
   if (!t || t.category !== params.category) return {};
   const description = backendGuides[t.slug]?.description || t.metaDescription || t.short;
   const canonical = canonicalToolPath(t);
   return {
-    title: t.name,
+    title: EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name,
     description,
     alternates: { canonical },
     openGraph: {
-      title: `${t.name} | ${SITE.name}`,
+      title: `${EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name} | ${SITE.name}`,
       description,
       url: canonical,
       siteName: SITE.name,
@@ -57,19 +64,26 @@ export function generateMetadata({ params }: { params: { category: string; tool:
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${t.name} | ${SITE.name}`,
+      title: `${EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name} | ${SITE.name}`,
       description,
       images: ['/opengraph-image.png'],
     },
   };
 }
 
-export default function ToolPage({ params }: { params: { category: string; tool: string } }) {
+export default async function ToolPage({ params: pendingParams }: { params: Promise<{ category: string; tool: string }> }) {
+  const params = await pendingParams;
   const t = bySlug.get(params.tool);
   if (!t || t.category !== params.category) notFound();
   const cat = getCategory(t.category)!;
   const appCategory = CATEGORY_MAP[t.category] || 'UtilitiesApplication';
   const guide = backendGuides[t.slug];
+  const editorial = EDITORIAL[t.slug];
+  const context = topicContext(t);
+  const table = editorial?.table || referenceTable(t);
+  const faqs = [...t.content.faqs, ...(editorial?.faqs || [])].filter(([q], i, list) => list.findIndex(([other]) => other === q) === i);
+  const sources = [...(t.sources || []), ...(editorial?.sources || [])].filter((item, i, list) => list.findIndex(other => other.url === item.url) === i);
+  const guides = guideLinksForTool(t.slug);
   const canonicalUrl = SITE.url + canonicalToolPath(t);
 
   return (
@@ -77,6 +91,10 @@ export default function ToolPage({ params }: { params: { category: string; tool:
       <JsonLd data={{
         '@context': 'https://schema.org',
         '@graph': [
+          { '@type': 'WebPage', '@id': `${canonicalUrl}#page`, url: canonicalUrl, name: t.name, description: editorial?.answer || t.short,
+            dateModified: CONTENT_UPDATED, inLanguage: 'en', author: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path },
+            publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+          },
           ...(!guide ? [{
             '@type': 'WebApplication',
             name: t.name,
@@ -85,11 +103,12 @@ export default function ToolPage({ params }: { params: { category: string; tool:
             operatingSystem: 'Web',
             description: t.short,
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-            author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
+            dateModified: CONTENT_UPDATED,
+            author: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path },
           }] : [{ '@type': 'WebPage', name: t.name, url: canonicalUrl, description: guide.description }]),
           {
             '@type': 'FAQPage',
-            mainEntity: t.content.faqs.map(([q, a]) => ({
+            mainEntity: faqs.map(([q, a]) => ({
               '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a },
             })),
           },
@@ -119,6 +138,9 @@ export default function ToolPage({ params }: { params: { category: string; tool:
       </nav>
       <h1 className="tool-h1">{t.name}</h1>
       <p className="tool-sub">{t.short}</p>
+      <p className="content-byline">Maintained by <Link href={AUTHOR.path}>{AUTHOR.name}</Link> · Content updated <time dateTime={CONTENT_UPDATED}>16 November 2026</time> · <Link href="/methodology">Methodology</Link></p>
+      {!guide && <p className="quick-answer">{editorial?.answer || t.content.intro}</p>}
+      {context && <p className="availability-note" role="note">{context.notice}</p>}
       {guide && <p className="quick-answer" role="note">{guide.description}</p>}
 
       {guide && <p className="availability-note" role="note">
@@ -137,6 +159,7 @@ export default function ToolPage({ params }: { params: { category: string; tool:
           <p><Link href={guide.alternative.href}>{guide.alternative.label}</Link></p>
         </>}
         <p>{t.content.intro}</p>
+        {INTENT_NOTES[t.slug] && <><h2>When to use this tool</h2><p>{INTENT_NOTES[t.slug].text}</p></>}
         <h2>How it works</h2>
         <p>{t.content.how}</p>
         {!guide && t.content.howSteps && (
@@ -144,12 +167,18 @@ export default function ToolPage({ params }: { params: { category: string; tool:
             {t.content.howSteps.map((step, i) => <li key={i} id={`step${i + 1}`}>{step}</li>)}
           </ol>
         )}
-        {t.content.example && <>
+        {(editorial?.example || t.content.example) && <>
           <h2>Worked example</h2>
-          <p>{t.content.example}</p>
+          <p>{editorial?.example || t.content.example}</p>
+        </>}
+        {table && <>
+          <div className="table-scroll" tabIndex={0} role="region" aria-label={table.caption}>
+            <table><caption>{table.caption}</caption><thead><tr>{table.headers.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{table.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody></table>
+          </div>
+          {editorial?.sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><p>{section.text}</p></section>)}
         </>}
         <h2>Frequently asked questions</h2>
-        {t.content.faqs.map(([q, a], i) => (
+        {faqs.map(([q, a], i) => (
           <div className="faq-item" key={i}>
             <h3>{q}</h3>
             <p>{a}</p>
@@ -159,8 +188,10 @@ export default function ToolPage({ params }: { params: { category: string; tool:
 
       <AdSlot id={`${t.slug}-2`} />
 
-      {t.sources && <section className="prose" aria-labelledby="sources-title"><h2 id="sources-title">Sources and assumptions</h2><ul>{t.sources.map(source => <li key={source.url}><a href={source.url} rel="noopener noreferrer">{source.label}</a></li>)}</ul></section>}
-      <RelatedTools tool={t} />
+      {sources.length > 0 && <section className="prose" aria-labelledby="sources-title"><h2 id="sources-title">Sources and assumptions</h2><ul>{sources.map(source => <li key={source.url}><a href={source.url} rel="noopener noreferrer">{source.label}</a></li>)}</ul></section>}
+      {context && <section className="prose"><h2>Further reading</h2><p>These official resources explain the wider topic. They do not certify this calculator or its assumptions.</p><a href={context.url} rel="noopener noreferrer">{context.label}</a></section>}
+      {guides.length > 0 && <section className="prose"><h2>Practical guides</h2><ul>{guides.map(g => <li key={g.slug}><Link href={`/guides/${g.slug}`}>{g.title}</Link></li>)}</ul></section>}
+      <RelatedTools tool={{ ...t, related: [...new Set([...(editorial?.related || []), ...t.related])] }} />
     </div>
   );
 }

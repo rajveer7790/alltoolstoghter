@@ -205,7 +205,7 @@ export const DEV: ToolDef[] = [
     ],
     faqs: [
       ['Is the cryptographic signature verified here?', 'No. Verifying a signature mathematically requires your private secret key. This tool merely decodes the base64 claims for inspection.'],
-      ['Is it safe to paste a production JWT here?', 'Yes, decoding executes entirely in your browser Javascript, so the token is never transmitted. However, you should generally treat live tokens with extreme caution.'],
+      ['Is it safe to paste a production JWT here?', 'Prefer a test or redacted token. Decoding is local, but a production access token remains a credential that can be exposed by extensions, clipboard history or screenshots.'],
       ['What does the exp claim represent?', 'It is a standard Unix timestamp indicating exactly when the token expires. The tool parses this and flags it for you visually.']
     ],
   },
@@ -699,7 +699,7 @@ export const DEV: ToolDef[] = [
     ],
     faqs: [
       ['Which core HTML elements are supported?', 'The parser reliably maps headings (h1–h6), bold (strong), italics (em), links (a), images (img), lists (ul/ol), quotes (blockquote), and code (pre).'],
-      ['Are potentially dangerous scripts removed?', 'Yes. The engine aggressively strips `<script>`, `<style>`, and HTML comments entirely, guaranteeing executable safety.'],
+      ['Are potentially dangerous scripts removed?', 'The converter removes script and style elements and comments, but conversion is not a security boundary. Review untrusted output and use appropriate sanitization in the destination renderer.'],
       ['Can I convert an entire web page layout?', 'While you can paste full source code, complex CSS layouts (grids, navbars) degrade into messy plain text. It works flawlessly on article body content.']
     ],
   },

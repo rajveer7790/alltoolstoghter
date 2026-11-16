@@ -44,7 +44,7 @@ export const SEO: ToolDef[] = [
   related: ['qr-code-generator', 'number-base-converter', 'hash-generator', 'uuid-generator'],
 },
 {
-  slug: 'password-strength-checker', name: 'Password Strength Checker', prio: 'P1', category: 'seo', widget: 'passwordstrength',
+  slug: 'password-strength-checker', name: 'Password Strength Checker', prio: 'P1', category: 'developer', widget: 'passwordstrength',
   short: 'Estimate password entropy, crack time, and weaknesses.',
   metaDescription: 'Password Strength Checker online. Securely evaluate password entropy and crack time locally in your browser. Passwords are never sent to a server.',
   keywords: ['password strength checker', 'password strength test', 'how strong is my password'],
@@ -206,7 +206,7 @@ export const SEO: ToolDef[] = [
     ],
     faqs: [
       ['Why does this tool need a backend?', 'Short links must be stored somewhere and resolve a redirect when visited — that requires a server and a database, unlike the browser-only tools here.'],
-      ['Can I use a custom alias?', 'Yes — choose your own memorable alias (3–32 letters, numbers, hyphens, or underscores), as long as it is not already taken.'],
+      ['Can I use a custom alias?', 'Custom aliases require moderator approval. Leave the field blank for a random alias when the service is configured.'],
       ['Who owns the links and click data?', 'You do — the backend runs on your own hosting, so nothing is shared with a third-party shortener.'],
     ],
   },

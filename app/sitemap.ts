@@ -1,29 +1,8 @@
-import { isIndexableTool } from '@/lib/toolPolicy';
 import type { MetadataRoute } from 'next';
-import { ALL_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
-
+import { INDEXABLE_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
+import { CONTENT_UPDATED, STATIC_PATHS } from '@/lib/contentDates';
+import { GUIDES } from '@/lib/guides';
 export const dynamic = 'force-static';
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = [
-    { path: '/about', priority: 0.6 },
-    { path: '/contact', priority: 0.6 },
-    { path: '/privacy', priority: 0.5 },
-    { path: '/terms', priority: 0.5 },
-    { path: '/sitemap', priority: 0.5 },
-  ];
-  return [
-    { url: SITE.url, changeFrequency: 'weekly', priority: 1 },
-    ...staticPages.map(p => ({
-      url: `${SITE.url}${p.path}`,
-      changeFrequency: 'monthly' as const,
-      priority: p.priority,
-    })),
-    ...CATEGORIES.map(c => ({ url: `${SITE.url}/${c.key}`, changeFrequency: 'weekly' as const, priority: 0.8 })),
-    ...ALL_TOOLS.filter(isIndexableTool).map(t => ({
-      url: `${SITE.url}/${t.category}/${t.slug}`,
-      changeFrequency: 'monthly' as const,
-      priority: t.prio === 'P1' ? 0.9 : t.prio === 'P2' ? 0.7 : 0.5,
-    })),
-  ];
+ return ['',...STATIC_PATHS,...CATEGORIES.map(c=>'/'+c.key),...INDEXABLE_TOOLS.map(t=>`/${t.category}/${t.slug}`),...GUIDES.map(g=>'/guides/'+g.slug)].map(path=>({url:SITE.url+path,lastModified:CONTENT_UPDATED}));
 }

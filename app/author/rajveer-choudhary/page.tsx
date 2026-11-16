@@ -1,0 +1,9 @@
+import { socialMetadata } from '@/lib/pageMetadata';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import StaticPage from '@/components/StaticPage';
+import JsonLd from '@/components/JsonLd';
+import { SITE } from '@/lib/registry';
+import { AUTHOR } from '@/lib/contentDates';
+export const metadata: Metadata = socialMetadata({ title:'Rajveer Choudhary — Site Maintainer', description:'Meet Rajveer Choudhary, developer and maintainer of All Tools Together. Learn how to report a correction and read the site methodology.',alternates:{canonical:AUTHOR.path} });
+export default function Author(){return <><JsonLd data={{'@context':'https://schema.org','@type':'ProfilePage',url:SITE.url+AUTHOR.path,mainEntity:{'@type':'Person','@id':SITE.url+AUTHOR.path+'#person',name:AUTHOR.name,url:SITE.url+AUTHOR.path,sameAs:[AUTHOR.github],description:'Developer and maintainer of All Tools Together.'}}}/><StaticPage title={AUTHOR.name} subtitle="Developer and site maintainer"><p>Rajveer develops and maintains All Tools Together, including its browser-based utilities, calculation interfaces and explanatory content.</p><p>This is a developer attribution. It does not imply qualifications as a financial adviser, accountant, physician or other regulated professional. No independent expert review is claimed unless a page explicitly identifies a real reviewer and the scope of that review.</p><h2>Work and corrections</h2><p><a href={AUTHOR.github}>GitHub profile</a> · <a href={AUTHOR.github+'/alltoolstoghter'}>Project repository</a></p><p>Read the <Link href="/methodology">methodology</Link> and <Link href="/editorial-policy">editorial policy</Link>. To report an issue, include the tool URL, inputs, expected result and source through <Link href="/contact">contact</Link>. Remove personal information before sending examples.</p></StaticPage></>;}

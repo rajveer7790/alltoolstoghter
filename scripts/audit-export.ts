@@ -1,8 +1,11 @@
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'parse5';
 import { ALL_TOOLS, CATEGORIES, SITE } from '../lib/registry';
+import { STATIC_PATHS, CONTENT_UPDATED } from '../lib/contentDates';
+import { GUIDES } from '../lib/guides';
 import { canonicalToolPath, isIndexableTool } from '../lib/toolPolicy';
 
 const root = 'out';
@@ -13,6 +16,7 @@ const htmlFiles = files(root).filter(f => f.endsWith('.html'));
 const titles = new Map<string,string>();
 const descriptions = new Map<string,string>();
 const pageAudit: { path: string; title: string; description: string; canonical: string; robots: string; inSitemap?: boolean }[] = [];
+const manifest: Record<string,string> = {};
 let links = 0, schemas = 0;
 for (const file of htmlFiles) {
   const path = '/' + file.slice(root.length+1).replace(/\.html$/, '').replace(/^index$/, '');
@@ -44,6 +48,11 @@ for (const file of htmlFiles) {
     if (tool) assert.equal(url.pathname, canonicalToolPath(tool));
     pageAudit.push({ path, title, description, canonical: url.href, robots });
   }
+  if(path !== '/404') {
+    const visible=(n:any):string => ['script','style'].includes(n.tagName) ? '' : n.nodeName==='#text' ? n.value : (n.childNodes||[]).map(visible).join(' ');
+    const payload={ title, description:meta('description') && attrs(meta('description')).content, text:visible(document).replace(/\s+/g,' ').trim(), schema:nodes.filter(n=>n.tagName==='script'&&attrs(n).type==='application/ld+json').map(text), links:nodes.filter(n=>n.tagName==='a').map(n=>attrs(n).href) };
+    manifest[origin.origin+path]=createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+  }
   for (const n of nodes) {
     const a=attrs(n);
     if(n.tagName==='script'&&a.type==='application/ld+json'){JSON.parse(text(n));schemas++;}
@@ -57,8 +66,10 @@ for (const file of htmlFiles) {
 }
 const xml=readFileSync('out/sitemap.xml','utf8');
 const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+assert.equal([...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].length, urls.length, 'Every sitemap entry needs a maintained modification date');
+assert.ok([...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].every(m=>m[1].startsWith(CONTENT_UPDATED)));
 assert.equal(new Set(urls).size,urls.length,'Duplicate sitemap URLs');
-assert.equal(urls.length,6+CATEGORIES.length+ALL_TOOLS.filter(isIndexableTool).length);
+assert.equal(urls.length,1+STATIC_PATHS.length+GUIDES.length+CATEGORIES.length+ALL_TOOLS.filter(isIndexableTool).length);
 for(const url of urls){const u=new URL(url);assert.equal(u.origin,origin.origin);assert.ok(exists(u.pathname));}
 for (const row of pageAudit) {
   row.inSitemap = urls.some(url => new URL(url).pathname === row.path);
@@ -68,3 +79,5 @@ if (process.env.SEO_AUDIT_REPORT) writeFileSync(process.env.SEO_AUDIT_REPORT, JS
 for(const t of ALL_TOOLS) assert.equal(urls.includes(SITE.url+`/${t.category}/${t.slug}`),isIndexableTool(t),`Sitemap policy mismatch: ${t.slug}`);
 assert.ok(exists('/opengraph-image.png'));assert.match(readFileSync('out/robots.txt','utf8'),/Sitemap: https:\/\/alltoolstogether.com\/sitemap.xml/);
 console.log(JSON.stringify({pages:htmlFiles.length,internalLinksAndAssets:links,jsonLdBlocks:schemas,sitemapUrls:urls.length,tools:ALL_TOOLS.length},null,2));
+
+writeFileSync('out/indexnow-manifest.json',JSON.stringify(Object.fromEntries(urls.map(url=>[url,manifest[url] || manifest[url+'/']]))));

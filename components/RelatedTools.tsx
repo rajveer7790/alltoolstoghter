@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ALL_TOOLS, bySlug, getCategory } from '@/lib/registry';
+import { WORKFLOWS } from '@/lib/workflows';
 import { moreInCategory } from '@/lib/linking';
 import { ToolDef } from '@/lib/types';
 import ToolCard from './ToolCard';
@@ -8,7 +9,7 @@ import { canonicalToolPath, isIndexableTool } from '@/lib/toolPolicy';
 export default function RelatedTools({ tool }: { tool: ToolDef }) {
   const used = new Set([canonicalToolPath(tool)]);
   const related = [
-    ...tool.related.map(slug => bySlug.get(slug)).filter((item): item is ToolDef => !!item),
+    ...[...(WORKFLOWS[tool.slug] || []), ...tool.related].map(slug => bySlug.get(slug)).filter((item): item is ToolDef => !!item),
     ...ALL_TOOLS.filter(item => isIndexableTool(item) && item.related.includes(tool.slug)),
   ].filter(item => {
     const path = canonicalToolPath(item);

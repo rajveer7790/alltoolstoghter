@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ALL_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
+import { TOOL_COUNT, CATEGORIES, SITE } from '@/lib/registry';
 import StaticPage from '@/components/StaticPage';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: `Learn about ${SITE.name} — ${ALL_TOOLS.length} free online calculators, converters, and file tools with local file processing, clear explanations, and documented limitations.`,
+  description: `Learn about ${SITE.name} — ${TOOL_COUNT} free online calculators, converters, and file tools with local file processing, clear explanations, and documented limitations.`,
   alternates: { canonical: '/about' },
   openGraph: {
     images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'All Tools Together' }],
     title: `About Us | ${SITE.name}`,
-    description: `${ALL_TOOLS.length} free tools. Private, browser-based, no signup.`,
+    description: `${TOOL_COUNT} free tools. Private, browser-based, no signup.`,
     url: '/about',
     siteName: SITE.name,
     type: 'website',
@@ -40,10 +40,11 @@ export default function AboutPage() {
         subtitle="Free, private, browser-based tools for everyday calculations and file tasks."
       >
         <p>
-          <strong>{SITE.name}</strong> is a free online toolkit with <strong>{ALL_TOOLS.length} tools</strong> across {CATEGORIES.length} categories.
+          <strong>{SITE.name}</strong> is a free online toolkit with <strong>{TOOL_COUNT} tools</strong> across {CATEGORIES.length} categories.
           We focus on practical browser-based calculators and utilities. Some online tools require external services; their pages explain availability and data handling.
         </p>
 
+        <p>Maintained by <Link href="/author/rajveer-choudhary">Rajveer Choudhary</Link>. Read our <Link href="/editorial-policy">editorial policy</Link> and <Link href="/methodology">calculation methodology</Link>.</p>
         <h2>Our mission</h2>
         <p>
           Useful tools should be fast, free, and respectful of privacy. Most of our calculators, converters, PDF tools, and image tools process everything on your device.

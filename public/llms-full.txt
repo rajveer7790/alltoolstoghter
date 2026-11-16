@@ -1,0 +1,2362 @@
+# All Tools Together
+
+Updated: 2026-11-16 (maintained content revision)
+
+> 294 free tools across 19 categories. Calculators, text utilities and file processing run locally; writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
+
+## Mortgage Calculator
+
+URL: https://alltoolstogether.com/finance/mortgage-calculator
+
+See your monthly payment, total interest, and PMI risk for any home loan.
+
+Method: The payment uses the standard amortization formula M = P·r(1+r)ⁿ / ((1+r)ⁿ − 1), where P is the loan amount, r the monthly rate, and n the number of monthly payments. If your loan-to-value ratio is above 80%, the tool flags that private mortgage insurance (PMI) is usually required.
+
+## Loan Calculator
+
+URL: https://alltoolstogether.com/finance/loan-calculator
+
+Monthly payment, total interest, and total cost for any fixed-rate loan.
+
+Method: It applies the amortization formula used by banks worldwide. Each payment covers that month's interest first; the remainder reduces principal, which is why early payments are interest-heavy.
+
+## Auto Loan Calculator
+
+URL: https://alltoolstogether.com/finance/auto-loan-calculator
+
+Car payment including sales tax, trade-in value, and dealer fees.
+
+Method: Amount financed = price + tax + fees − down payment − trade-in, then the standard amortization formula computes the payment. Tax is applied to the price minus trade-in, the rule in most US states (a few differ — check yours).
+
+## Compound Interest Calculator
+
+URL: https://alltoolstogether.com/finance/compound-interest-calculator
+
+Project how savings grow with compounding and regular contributions.
+
+Method: Future value = P(1+r/n)ⁿᵗ for the lump sum, plus PMT·((1+r/n)ⁿᵗ−1)/(r/n) for end-of-period contributions. Note the contribution is per compounding period — with monthly compounding, it is a monthly deposit.
+
+## Simple Interest Calculator
+
+URL: https://alltoolstogether.com/finance/simple-interest-calculator
+
+I = P × R × T, computed instantly with the total repayment amount.
+
+Method: Interest = Principal × annual rate × years. Unlike compound interest, the base never grows — simple interest is common for short-term loans and some bonds.
+
+## Savings Calculator
+
+URL: https://alltoolstogether.com/finance/savings-calculator
+
+How your balance grows with monthly deposits at a given APY.
+
+Method: It compounds the balance monthly and adds your deposit each month — the same future-value-of-a-series math banks use. The split between your deposits and earned interest is shown separately.
+
+## ROI Calculator
+
+URL: https://alltoolstogether.com/finance/roi-calculator
+
+Return on investment as a percentage, plus annualized ROI.
+
+Method: ROI = (returned − invested) / invested. Annualized ROI = (1 + ROI)^(1/years) − 1, which converts a multi-year gain into a per-year rate you can compare against other investments.
+
+## Inflation Calculator
+
+URL: https://alltoolstogether.com/finance/inflation-calculator
+
+What today's money will cost — and buy — years from now.
+
+Method: Future cost = amount × (1 + i)ʸᵉᵃʳˢ. The default 3% approximates long-run averages in many developed economies — adjust it to model different scenarios.
+
+## Credit Card Payoff Calculator
+
+URL: https://alltoolstogether.com/finance/credit-card-payoff-calculator
+
+How long to clear a card balance — and the interest it will cost.
+
+Method: Each month the simulator adds interest (balance × APR/12) and subtracts your payment, repeating until the balance reaches zero. If your payment doesn't even cover the monthly interest, it warns you the balance will never shrink.
+
+## Salary Calculator
+
+URL: https://alltoolstogether.com/finance/salary-calculator
+
+Convert pay between hourly, weekly, monthly, and annual instantly.
+
+Method: Everything converts through the annual figure: annual = hourly × hours/week × weeks/year. Part-time hours or unpaid weeks change the picture significantly, so both are adjustable.
+
+## Hourly to Salary Calculator
+
+URL: https://alltoolstogether.com/finance/hourly-to-salary-calculator
+
+Your annual salary from an hourly wage in one step.
+
+Method: Annual = hourly rate × hours per week × weeks per year. At the default 40 hours and 52 weeks, a quick mental shortcut is hourly × 2,080.
+
+## Tip Calculator
+
+URL: https://alltoolstogether.com/finance/tip-calculator
+
+Tip amount, total bill, and per-person split in one tap.
+
+Method: Tip = bill × tip%; the total is split evenly across the group. Adjust the percentage for service quality or local custom.
+
+## Debt-to-Income (DTI) Calculator
+
+URL: https://alltoolstogether.com/finance/dti-calculator
+
+Front-end and back-end DTI — the ratios lenders actually check.
+
+Method: Front-end DTI = housing ÷ gross income. Back-end DTI = (housing + other debts) ÷ gross income. Conventional guidelines favor back-end ratios at or below 36%, with 43% a common ceiling for qualified mortgages.
+
+## Down Payment Calculator
+
+URL: https://alltoolstogether.com/finance/down-payment-calculator
+
+Down payment amount, resulting loan size, and your LTV at a glance.
+
+Method: Down payment = price × percent. LTV = loan ÷ price. Above 80% LTV, conventional loans generally require private mortgage insurance until equity grows.
+
+## Sales Tax Calculator
+
+URL: https://alltoolstogether.com/finance/sales-tax-calculator
+
+Add tax to a price — or extract the pre-tax price from a total.
+
+Method: Adding: total = price × (1 + rate). Extracting: pre-tax = total ÷ (1 + rate) — the reverse operation, useful for expense reports and bookkeeping.
+
+## Refinance Calculator
+
+URL: https://alltoolstogether.com/finance/refinance-calculator
+
+Should you refinance? See the new payment, savings, and break-even point.
+
+Method: The tool amortizes both loans and subtracts the payments. Break-even = closing costs / monthly savings. If you sell or refinance again before break-even, the refi loses money even at a lower rate.
+
+## Amortization Calculator
+
+URL: https://alltoolstogether.com/finance/amortization-calculator
+
+Monthly payment plus how each year splits between principal and interest.
+
+Method: Each payment is fixed, but its makeup changes: interest = current balance x monthly rate, and the rest reduces principal. Early on the balance is large, so most of the payment is interest.
+
+## 401(k) Calculator
+
+URL: https://alltoolstogether.com/finance/401k-calculator
+
+Project your 401(k) balance, including the full employer match.
+
+Method: Each year your contribution plus the employer match (match rate up to the cap) are added and grown by the expected return; salary increases by your raise. The match is the highest-return part of any retirement plan.
+
+## Retirement Calculator
+
+URL: https://alltoolstogether.com/finance/retirement-calculator
+
+Will your savings last? Projected nest egg and the income it supports.
+
+Method: Your balance compounds monthly with your contributions added each month until retirement. The 4 percent rule then estimates a sustainable annual withdrawal, a rough planning benchmark, not a guarantee.
+
+## Roth IRA Calculator
+
+URL: https://alltoolstogether.com/finance/roth-ira-calculator
+
+Project tax-free Roth IRA growth to retirement.
+
+Method: Contributions are made with after-tax money and compound at your expected return. Because you already paid tax going in, qualified withdrawals (age 59 and a half plus, account 5 plus years) come out tax-free.
+
+## Investment Calculator
+
+URL: https://alltoolstogether.com/finance/investment-calculator
+
+Future value of a lump sum plus regular contributions.
+
+Method: The lump sum compounds at your expected return while each contribution compounds from the period it is added, the future-value-of-a-series calculation used across finance.
+
+## Debt Snowball Calculator
+
+URL: https://alltoolstogether.com/finance/debt-snowball-calculator
+
+A payoff plan and debt-free date, snowball or avalanche.
+
+Method: Every debt gets its minimum each month; the extra payment plus any freed-up minimums roll onto the target debt. Snowball targets the smallest balance first (quick wins); avalanche targets the highest rate first (least interest).
+
+## Car Lease Calculator
+
+URL: https://alltoolstogether.com/finance/car-lease-calculator
+
+Monthly lease payment from price, residual, and money factor.
+
+Method: Depreciation = (capitalized cost - residual) / term. Finance charge = (cap cost + residual) x money factor. The payment is their sum plus tax. Multiply the money factor by 2400 to see its APR equivalent.
+
+## Budget Calculator (50/30/20)
+
+URL: https://alltoolstogether.com/finance/budget-calculator
+
+Split your income into needs, wants, and savings with the 50/30/20 rule.
+
+Method: The rule allocates 50 percent of after-tax income to needs (housing, food, utilities), 30 percent to wants, and 20 percent to savings and extra debt payments. It is a starting template you can adjust to your costs.
+
+## Car Payment Calculator
+
+URL: https://alltoolstogether.com/finance/car-payment-calculator
+
+Find the vehicle price a target monthly payment can afford.
+
+Method: The tool reverses the loan formula: given a payment, rate, and term, it solves for the financed principal, then adds your down payment to get the affordable sticker price.
+
+## APR Calculator
+
+URL: https://alltoolstogether.com/finance/apr-calculator
+
+Find the true APR of a loan once fees are included.
+
+Method: The monthly payment is computed from the nominal rate, but the fees reduce the cash you actually receive. The tool solves for the rate that equates those payments to the net amount, giving the true APR.
+
+## Discount Calculator
+
+URL: https://alltoolstogether.com/finance/discount-calculator
+
+Final sale price and savings, including stacked discounts.
+
+Method: The first discount comes off the original price; any extra discount applies to that already-reduced amount, not the original — which is why stacked percentages never simply add up.
+
+## Net Worth Calculator
+
+URL: https://alltoolstogether.com/finance/net-worth-calculator
+
+Add up assets and subtract liabilities to find your net worth.
+
+Method: Net worth = total assets - total liabilities. Track it over time; a rising number means you are building wealth, regardless of income.
+
+## Mortgage Payoff Calculator
+
+URL: https://alltoolstogether.com/finance/mortgage-payoff-calculator
+
+See how extra payments cut years and interest off your mortgage.
+
+Method: The tool simulates your payoff month by month, applying the extra amount entirely to principal. Because interest is charged on the remaining balance, every extra dollar compounds into future savings.
+
+## CD Calculator
+
+URL: https://alltoolstogether.com/finance/cd-calculator
+
+Maturity value and APY for a certificate of deposit.
+
+Method: The deposit compounds at the stated rate and frequency. APY expresses the true yearly return including compounding, which is always slightly higher than the nominal rate.
+
+## Future Value Calculator
+
+URL: https://alltoolstogether.com/finance/future-value-calculator
+
+What a sum today will grow to at a given rate.
+
+Method: Future value = present value x (1 + rate)^years. It is the core of compound growth: time and rate together drive the result.
+
+## Present Value Calculator
+
+URL: https://alltoolstogether.com/finance/present-value-calculator
+
+What a future sum is worth in today's money.
+
+Method: Present value = future value / (1 + rate)^years. The discount rate reflects the return you could earn elsewhere, so future money is worth less today.
+
+## Annuity Calculator
+
+URL: https://alltoolstogether.com/finance/annuity-calculator
+
+Present and future value of a stream of regular payments.
+
+Method: Future value sums each payment compounded to the end; present value discounts each payment back to today. Both use the standard annuity formulas with monthly compounding.
+
+## Break-Even Calculator
+
+URL: https://alltoolstogether.com/finance/break-even-calculator
+
+Units and revenue needed to cover your costs.
+
+Method: Break-even units = fixed costs / (price - variable cost per unit). The denominator is the contribution margin: how much each sale contributes toward fixed costs and profit.
+
+## Profit Margin Calculator
+
+URL: https://alltoolstogether.com/finance/profit-margin-calculator
+
+Profit margin and markup from cost and selling price.
+
+Method: Margin = profit / selling price; markup = profit / cost. The same dollar profit gives a smaller margin percentage than markup percentage, since the denominators differ.
+
+## Markup Calculator
+
+URL: https://alltoolstogether.com/finance/markup-calculator
+
+Selling price and profit from cost and markup percentage.
+
+Method: Selling price = cost x (1 + markup%). The tool also converts the markup into the equivalent profit margin, which is always the smaller number.
+
+## Commission Calculator
+
+URL: https://alltoolstogether.com/finance/commission-calculator
+
+Total pay from a commission rate, sales, and base salary.
+
+Method: Commission = sales x rate. Total pay adds your base salary. The tool keeps the two separate so you can see each component.
+
+## Overtime Pay Calculator
+
+URL: https://alltoolstogether.com/finance/overtime-calculator
+
+Total pay including overtime at a chosen multiplier.
+
+Method: Regular pay = rate x regular hours. Overtime pay = overtime hours x rate x multiplier (1.5 for time-and-a-half). The total combines both.
+
+## BMI Calculator
+
+URL: https://alltoolstogether.com/health/bmi-calculator
+
+Body mass index, WHO category, and your healthy weight range.
+
+Method: BMI = weight(kg) ÷ height(m)². Categories: under 18.5 underweight, 18.5–24.9 normal, 25–29.9 overweight, 30+ obesity. BMI is a screening number, not a diagnosis — it doesn't distinguish muscle from fat.
+
+## BMR Calculator
+
+URL: https://alltoolstogether.com/health/bmr-calculator
+
+Calories your body burns at complete rest (Mifflin-St Jeor).
+
+Method: Uses the Mifflin-St Jeor equation, the formula most validated in research: men 10w + 6.25h − 5a + 5; women 10w + 6.25h − 5a − 161 (w in kg, h in cm, a in years).
+
+## TDEE Calculator
+
+URL: https://alltoolstogether.com/health/tdee-calculator
+
+Total daily energy expenditure: BMR scaled by real activity.
+
+Method: TDEE = BMR (Mifflin-St Jeor) × an activity factor from 1.2 (sedentary) to 1.9 (twice-daily training). Eat at TDEE to maintain, below to lose, above to gain.
+
+## Calorie Calculator
+
+URL: https://alltoolstogether.com/health/calorie-calculator
+
+Daily calories to maintain, lose, or gain weight at a healthy pace.
+
+Method: Maintenance = TDEE. A ~250 kcal daily deficit targets roughly 0.25 kg of loss per week; ~500 kcal targets 0.5 kg. Slow, steady deficits preserve muscle and are easier to sustain.
+
+## Macro Calculator
+
+URL: https://alltoolstogether.com/health/macro-calculator
+
+Grams of protein, carbs, and fat from your calorie target and split.
+
+Method: Protein and carbs provide 4 kcal per gram; fat provides 9. Grams = (calories × percent) ÷ kcal-per-gram. The three percentages must total 100 — the tool checks.
+
+## One Rep Max Calculator
+
+URL: https://alltoolstogether.com/health/one-rep-max-calculator
+
+Estimate your 1RM from any set, with training percentages.
+
+Method: Shows two validated estimates — Epley: w × (1 + reps/30); Brzycki: w × 36/(37 − reps) — plus 90% and 80% loads for strength and hypertrophy work.
+
+## Running Pace Calculator
+
+URL: https://alltoolstogether.com/health/pace-calculator
+
+Pace per km or mile from your distance and finish time.
+
+Method: Pace = total minutes ÷ distance, displayed as min:sec per unit. Speed (distance per hour) is shown alongside. Use the same unit for distance as you want for pace.
+
+## Ideal Weight Calculator
+
+URL: https://alltoolstogether.com/health/ideal-weight-calculator
+
+Ideal body weight by three clinical formulas, shown as a range.
+
+Method: Each formula is a base weight plus an increment per inch over 5 feet (e.g. Devine: 50 kg + 2.3 kg/inch for men). They were developed for clinical dosing, which is why results differ slightly.
+
+## Body Fat Calculator
+
+URL: https://alltoolstogether.com/health/body-fat-calculator
+
+Estimate body fat percentage with the US Navy tape method.
+
+Method: The US Navy formula uses log-based equations on neck, waist (and hip for women) relative to height. It is a quick estimate; methods like DEXA scans are more precise but far less accessible.
+
+## Pregnancy Due Date Calculator
+
+URL: https://alltoolstogether.com/health/due-date-calculator
+
+Your estimated due date and current pregnancy week from your last period.
+
+Method: Naegele's rule adds 280 days (40 weeks) to the first day of your last period, adjusted if your cycle differs from 28 days. It is an estimate; ultrasound dating from your provider is more accurate.
+
+## Ovulation Calculator
+
+URL: https://alltoolstogether.com/health/ovulation-calculator
+
+Estimate your fertile window and ovulation day.
+
+Method: Ovulation is estimated as the next period date minus the luteal phase length. The fertile window spans roughly the five days before ovulation through the day after, since sperm can survive several days.
+
+## Sleep Calculator
+
+URL: https://alltoolstogether.com/health/sleep-calculator
+
+Best bedtimes or wake times based on 90-minute sleep cycles.
+
+Method: Sleep runs in roughly 90-minute cycles. Working backward (or forward) in 90-minute blocks, plus about 15 minutes to fall asleep, lands your alarm at the lighter end of a cycle.
+
+## Blood Alcohol (BAC) Calculator
+
+URL: https://alltoolstogether.com/health/bac-calculator
+
+A rough blood alcohol estimate from drinks, weight, and time.
+
+Method: BAC = (alcohol grams / (body water grams)) x 100, minus roughly 0.015 per hour of metabolism. One US standard drink contains about 14 grams of alcohol. Many personal factors make this only an approximation.
+
+## A1C Calculator
+
+URL: https://alltoolstogether.com/health/a1c-calculator
+
+Convert between A1C and estimated average glucose.
+
+Method: The ADA formula relates them: eAG (mg/dL) = 28.7 x A1C - 46.7. A1C reflects average blood sugar over roughly the prior three months.
+
+## Heart Rate Zone Calculator
+
+URL: https://alltoolstogether.com/health/heart-rate-zone-calculator
+
+Your five training heart-rate zones from age and resting rate.
+
+Method: Maximum heart rate uses the Tanaka formula (208 - 0.7 x age), more accurate than the old 220 minus age. Zones are computed with the Karvonen method using your heart-rate reserve (max minus resting).
+
+## Water Intake Calculator
+
+URL: https://alltoolstogether.com/health/water-intake-calculator
+
+A daily hydration target from your weight and activity.
+
+Method: A common baseline is about 35 ml per kilogram of body weight, with extra added for exercise. Needs also rise with heat, altitude, illness, and pregnancy.
+
+## Protein Intake Calculator
+
+URL: https://alltoolstogether.com/health/protein-intake-calculator
+
+Daily protein grams matched to your weight and goal.
+
+Method: Targets scale with body weight: about 0.8 g/kg for sedentary up to 1.8 to 2.2 g/kg for muscle building, based on common sports-nutrition ranges. Spreading intake across meals aids absorption.
+
+## Body Surface Area (BSA) Calculator
+
+URL: https://alltoolstogether.com/health/bsa-calculator
+
+Body surface area by the Mosteller and Du Bois formulas.
+
+Method: Mosteller: BSA = sqrt(height_cm x weight_kg / 3600). Du Bois uses a power-law fit. BSA is used to normalize medication doses and physiological measurements across body sizes.
+
+## Waist-to-Hip Ratio Calculator
+
+URL: https://alltoolstogether.com/health/waist-to-hip-ratio-calculator
+
+Your waist-to-hip ratio and its health-risk category.
+
+Method: The ratio is simply waist circumference divided by hip circumference (use the same units for both). Risk thresholds differ for men and women, and the tool applies the appropriate category.
+
+## Smoking Cost Calculator
+
+URL: https://alltoolstogether.com/health/smoking-cost-calculator
+
+See what smoking costs per day, month, year, and decade.
+
+Method: Daily cost = (cigarettes per day / pack size) x price per pack. The tool then projects that across a month, a year, and ten years to show the cumulative total.
+
+## Percentage Calculator
+
+URL: https://alltoolstogether.com/math/percentage-calculator
+
+Percent of a number, percent one number is of another, and percent change.
+
+Method: X% of Y = (X÷100)·Y. "A is what % of B" = (A÷B)·100. Percent change = (new − old) ÷ |old| × 100, which is why a fall from 200 to 150 is −25%.
+
+## Fraction Calculator
+
+URL: https://alltoolstogether.com/math/fraction-calculator
+
+Add, subtract, multiply, or divide fractions — auto-simplified.
+
+Method: Addition and subtraction cross-multiply to a common denominator; multiplication multiplies straight across; division multiplies by the reciprocal. The result is simplified using the greatest common divisor.
+
+## Average Calculator
+
+URL: https://alltoolstogether.com/math/average-calculator
+
+Mean, median, mode, standard deviation, sum and count from any list.
+
+Method: Mean is the sum divided by count. Median is the middle of the sorted list (average of the two middles when even). Mode is the most frequent value. Standard deviation here is population (÷N).
+
+## GPA Calculator
+
+URL: https://alltoolstogether.com/math/gpa-calculator
+
+Weighted GPA on the 4.0 scale from your grades and credit hours.
+
+Method: Each grade maps to points (A=4.0, A−=3.7, B+=3.3 …). GPA = Σ(points × credits) ÷ Σ(credits) — a 4-credit course moves the average more than a 2-credit one.
+
+## Final Grade Calculator
+
+URL: https://alltoolstogether.com/math/final-grade-calculator
+
+"What do I need on the final?" — answered in one calculation.
+
+Method: Required = (desired − current × (1 − w)) ÷ w, where w is the final's weight as a decimal. If the answer exceeds 100%, the tool says so honestly instead of pretending it's possible.
+
+## Quadratic Formula Calculator
+
+URL: https://alltoolstogether.com/math/quadratic-formula-calculator
+
+Roots of ax² + bx + c = 0 — real or complex — with the discriminant.
+
+Method: x = (−b ± √(b² − 4ac)) ÷ 2a. The discriminant b² − 4ac decides everything: positive → two real roots, zero → one repeated root, negative → a complex conjugate pair.
+
+## LCM & GCF Calculator
+
+URL: https://alltoolstogether.com/math/lcm-calculator
+
+Least common multiple and greatest common factor of any numbers.
+
+Method: GCF uses Euclid's algorithm — repeatedly replacing the larger number with the remainder. LCM of a pair = a×b ÷ GCF(a,b), folded across the whole list.
+
+## Square Root Calculator
+
+URL: https://alltoolstogether.com/math/square-root-calculator
+
+The square root of any number — including negative inputs.
+
+Method: The principal square root of n is the non-negative value that squares back to n. For negative n, the result is imaginary: √(−n)·i — the tool labels it clearly.
+
+## Standard Deviation Calculator
+
+URL: https://alltoolstogether.com/math/standard-deviation-calculator
+
+Sample and population standard deviation, variance, and mean.
+
+Method: Variance is the average squared distance from the mean; standard deviation is its square root. Sample variance divides by n-1 (Bessel's correction), population by n.
+
+## Ratio Calculator
+
+URL: https://alltoolstogether.com/math/ratio-calculator
+
+Simplify ratios and solve for a missing term.
+
+Method: Ratios simplify by dividing both terms by their greatest common divisor. To solve A:B = C:?, the tool cross-multiplies: the missing term equals C x B / A.
+
+## Slope Calculator
+
+URL: https://alltoolstogether.com/math/slope-calculator
+
+Slope, y-intercept, and the line equation from two points.
+
+Method: Slope m = (y2 - y1) / (x2 - x1) — rise over run. The y-intercept b comes from y = mx + b, giving the complete equation. A vertical line (x1 = x2) has undefined slope.
+
+## Combination & Permutation Calculator
+
+URL: https://alltoolstogether.com/math/combination-calculator
+
+Compute nCr and nPr for counting problems.
+
+Method: Permutations nPr = n! / (n-r)!. Combinations nCr = n! / (r! (n-r)!). The difference: permutations count arrangements, combinations count selections.
+
+## Significant Figures Calculator
+
+URL: https://alltoolstogether.com/math/sig-fig-calculator
+
+Round numbers to a chosen number of significant figures.
+
+Method: Significant figures are the meaningful digits in a measurement. The calculator rounds your input to the requested number of sig figs using standard rounding rules and shows the result in scientific notation.
+
+## Probability Calculator
+
+URL: https://alltoolstogether.com/math/probability-calculator
+
+Probability as a decimal, percentage, and odds.
+
+Method: Probability = favorable outcomes / total outcomes. Odds compare favorable to unfavorable. The complement (1 minus probability) is the chance the event does not occur.
+
+## Exponent Calculator
+
+URL: https://alltoolstogether.com/math/exponent-calculator
+
+Raise any base to any power, including negative and fractional exponents.
+
+Method: Exponentiation multiplies the base by itself exponent times. A negative exponent gives the reciprocal; a fractional exponent gives a root (x^0.5 is the square root of x).
+
+## Logarithm Calculator
+
+URL: https://alltoolstogether.com/math/log-calculator
+
+Logarithm of a number in any base, plus ln and log base 10.
+
+Method: A logarithm answers "what power gives this number?" log base b of x equals ln(x) / ln(b) by the change-of-base formula. The number must be positive.
+
+## Rounding Calculator
+
+URL: https://alltoolstogether.com/math/rounding-calculator
+
+Round any number to a chosen number of decimal places.
+
+Method: Standard rounding goes to the nearest value, ties rounding up. Negative decimal places round to tens, hundreds, and so on. Ceiling always rounds toward positive infinity; floor toward negative.
+
+## Scientific Notation Converter
+
+URL: https://alltoolstogether.com/math/scientific-notation-converter
+
+Convert numbers to scientific notation, E notation, and back.
+
+Method: Scientific notation writes a number as a mantissa between 1 and 10 times a power of ten. The exponent is the number of places the decimal point moves; the tool computes it from the base-10 logarithm.
+
+## Percentage Change Calculator
+
+URL: https://alltoolstogether.com/math/percentage-change-calculator
+
+Percentage increase or decrease between two values.
+
+Method: Percentage change = (new - original) / |original| x 100. A positive result is an increase, negative a decrease. The tool shows direction and the raw difference too.
+
+## Mean, Median, Mode Calculator
+
+URL: https://alltoolstogether.com/math/mean-median-mode-calculator
+
+All three averages plus range from a list of numbers.
+
+Method: Mean is the arithmetic average; median is the middle value when sorted; mode is the most frequent value (or values); range is max minus min.
+
+## Prime Factorization Calculator
+
+URL: https://alltoolstogether.com/math/prime-factorization-calculator
+
+Break any integer into its prime factors.
+
+Method: The tool divides by successive primes (trial division up to the square root), which is efficient for the everyday range. Each prime is recorded until only 1 remains.
+
+## Pythagorean Theorem Calculator
+
+URL: https://alltoolstogether.com/math/pythagorean-theorem-calculator
+
+Solve for any side of a right triangle.
+
+Method: The theorem states a² + b² = c², where c is the hypotenuse. Enter two known sides and leave the unknown as 0; the tool rearranges the formula to solve for it.
+
+## Triangle Area Calculator
+
+URL: https://alltoolstogether.com/math/triangle-area-calculator
+
+Area from base and height, or from three sides (Heron's).
+
+Method: Base-and-height: area = ½ x base x height. Heron's: with semi-perimeter s = (a+b+c)/2, area = sqrt(s(s-a)(s-b)(s-c)). The tool validates that the three sides form a real triangle.
+
+## Scientific Calculator
+
+URL: https://alltoolstogether.com/math/scientific-calculator
+
+Full scientific calculator with trig, log, memory, and keyboard support.
+
+Method: The expression is parsed by a custom recursive-descent engine — no eval, no external libraries. Operator precedence (BODMAS), parentheses, and all standard functions are handled correctly. Switch between degree and radian mode with the DEG/RAD toggle before computing trig functions.
+
+## Age Calculator
+
+URL: https://alltoolstogether.com/date-time/age-calculator
+
+Exact age in years, months, and days — plus days to your next birthday.
+
+Method: Calendar-aware subtraction: days borrow from months and months from years, respecting each month's real length and leap years — which is why it beats dividing by 365.
+
+## Days Between Dates
+
+URL: https://alltoolstogether.com/date-time/days-between-dates
+
+Count the days, weeks, and months separating any two dates.
+
+Method: Difference in milliseconds divided by 86,400,000, rounded — order doesn't matter, the result is always positive. "Including end date" adds one for ranges where both endpoints count.
+
+## Add or Subtract Days From a Date
+
+URL: https://alltoolstogether.com/date-time/add-days-to-date
+
+What date is 30, 90, or N days (or weeks, months, years) from any date?
+
+Method: Date arithmetic on the real calendar. Month and year additions clamp sensibly (Jan 31 + 1 month lands at the end of February), matching how deadlines are interpreted in practice.
+
+## Days Until Calculator
+
+URL: https://alltoolstogether.com/date-time/days-until-calculator
+
+A clean count of days remaining until any date.
+
+Method: Both dates are normalized to midnight and subtracted, so the count means full calendar days remaining, not 24-hour blocks from this moment.
+
+## Weekly Time Card Calculator
+
+URL: https://alltoolstogether.com/date-time/hours-calculator
+
+Add up seven days of work hours with a separate unpaid lunch break for each shift.
+
+Method: Subtract clock-in from clock-out for each shift, roll across midnight when necessary, then subtract that day’s unpaid break. Add the paid minutes and divide by 60 for decimal hours.
+
+## Business Days Calculator
+
+URL: https://alltoolstogether.com/date-time/business-days-calculator
+
+Count working days (excluding weekends) between two dates.
+
+Method: The tool steps through each date in the range and tallies weekdays separately from weekends. Both endpoints are included in the count.
+
+## Week Number Calculator
+
+URL: https://alltoolstogether.com/date-time/week-number-calculator
+
+The ISO 8601 week number for any date.
+
+Method: ISO 8601 defines week 1 as the week containing the year's first Thursday, with weeks starting on Monday. The tool applies this rule precisely, including year-boundary edge cases.
+
+## Roman Numeral Converter
+
+URL: https://alltoolstogether.com/date-time/roman-numeral-converter
+
+Convert numbers to Roman numerals and back.
+
+Method: Number-to-Roman uses greedy subtraction over the standard symbol values (M, CM, D, CD, C ...). Roman-to-number sums symbols, subtracting when a smaller value precedes a larger one (as in IV = 4).
+
+## Time Duration Calculator
+
+URL: https://alltoolstogether.com/date-time/time-duration-calculator
+
+The length of time between two clock times.
+
+Method: Both times convert to minutes from midnight and subtract. If the end is earlier than the start, the tool assumes the span crosses midnight and adds 24 hours.
+
+## Day of the Week Calculator
+
+URL: https://alltoolstogether.com/date-time/day-of-week-calculator
+
+What day of the week any date falls on.
+
+Method: The tool reads the calendar date and returns its weekday directly from the date system, which accounts for leap years and the Gregorian calendar rules automatically.
+
+## Age Difference Calculator
+
+URL: https://alltoolstogether.com/date-time/age-difference-calculator
+
+The exact age gap between two birth dates.
+
+Method: The tool takes the absolute difference between the two dates and expresses it in years and months, using the average year length to keep the figure accurate over long spans.
+
+## Add Business Days Calculator
+
+URL: https://alltoolstogether.com/date-time/add-business-days-calculator
+
+Add or subtract working days from a date.
+
+Method: The tool steps forward (or backward) one day at a time, counting only Monday through Friday, until it has counted the requested number of business days.
+
+## Weeks Between Dates Calculator
+
+URL: https://alltoolstogether.com/date-time/weeks-between-dates-calculator
+
+Count the weeks (and days) between two dates.
+
+Method: The tool takes the day difference between the two dates and divides by seven. Both the exact decimal and the whole-weeks-plus-days breakdown are provided.
+
+## Time Zone Converter
+
+URL: https://alltoolstogether.com/date-time/time-zone-converter
+
+Convert a time between world time zones, DST-aware.
+
+Method: You enter a wall-clock time in a source zone; the tool finds the matching universal instant and reformats it for the target zone. Because it uses the IANA time-zone database, DST transitions are applied correctly for the chosen date.
+
+## Unit Converter
+
+URL: https://alltoolstogether.com/unit-converters/unit-converter
+
+Convert length, weight, temperature, area, volume, speed, and data units.
+
+Method: All conversions normalize through a base unit with exact factors (1 in = 0.0254 m, 1 lb = 0.45359237 kg). Temperature converts by formula because its scales have different zero points.
+
+## Length Converter
+
+URL: https://alltoolstogether.com/unit-converters/length-converter
+
+Meters, feet, inches, kilometers, miles — converted exactly.
+
+Method: Each unit has an exact meter factor (1 ft = 0.3048 m); the value converts through meters. No rounding is introduced beyond display precision.
+
+## Weight Converter
+
+URL: https://alltoolstogether.com/unit-converters/weight-converter
+
+Kilograms, pounds, ounces, stone, and tons — converted exactly.
+
+Method: Conversions pass through kilograms using exact definitions: 1 lb = 0.45359237 kg, 1 stone = 14 lb.
+
+## Temperature Converter
+
+URL: https://alltoolstogether.com/unit-converters/temperature-converter
+
+Celsius, Fahrenheit, and Kelvin with the exact formulas.
+
+Method: Temperature scales have different zero points, so factors don't work: °F = °C × 9/5 + 32; K = °C + 273.15. The tool applies the formulas exactly.
+
+## Area Converter
+
+URL: https://alltoolstogether.com/unit-converters/area-converter
+
+Square meters, square feet, acres, and hectares.
+
+Method: All areas convert through square meters: 1 ft² = 0.09290304 m² exactly; 1 acre = 4,046.856 m²; 1 hectare = 10,000 m².
+
+## Volume Converter
+
+URL: https://alltoolstogether.com/unit-converters/volume-converter
+
+Liters, gallons (US & UK), cups, pints, and fluid ounces.
+
+Method: Conversions pass through liters with exact factors: 1 US gal = 3.785411784 L, 1 UK gal = 4.54609 L, 1 US cup = 236.59 mL.
+
+## Speed Converter
+
+URL: https://alltoolstogether.com/unit-converters/speed-converter
+
+km/h, mph, m/s, and knots converted exactly.
+
+Method: Everything converts through meters per second: 1 mph = 0.44704 m/s exactly; 1 knot = 1 nautical mile per hour = 0.5144 m/s.
+
+## Data Storage Converter
+
+URL: https://alltoolstogether.com/unit-converters/data-storage-converter
+
+Bytes through terabytes, in both decimal (GB) and binary (GiB).
+
+Method: Decimal units step by 1000 (drive marketing); binary units step by 1024 (how operating systems often report). The converter holds both so you can see why a "1 TB" drive shows ~931 GiB.
+
+## CM to Inches Converter
+
+URL: https://alltoolstogether.com/unit-converters/cm-to-inches
+
+Centimeters to inches (and back) with the exact 2.54 definition.
+
+Method: Inches = cm ÷ 2.54 — exact by definition since 1959. Common anchors: 30 cm ≈ 11.8 in (a school ruler), 2.54 cm = 1 in.
+
+## KG to LBS Converter
+
+URL: https://alltoolstogether.com/unit-converters/kg-to-lbs
+
+Kilograms to pounds (and back) using the exact definition.
+
+Method: Pounds = kg × 2.20462 (the pound is defined as exactly 0.45359237 kg). Airline luggage example: a 23 kg allowance is 50.7 lb.
+
+## Celsius to Fahrenheit Converter
+
+URL: https://alltoolstogether.com/unit-converters/celsius-to-fahrenheit
+
+°C to °F (and back) with the exact formula.
+
+Method: °F = °C × 9/5 + 32. Anchors worth memorizing: 0 °C = 32 °F (freezing), 100 °C = 212 °F (boiling), 180 °C = 356 °F (common oven setting).
+
+## Liters to Gallons Converter
+
+URL: https://alltoolstogether.com/unit-converters/liters-to-gallons
+
+Liters to US gallons (and back), with the UK gallon one click away.
+
+Method: US gallons = liters ÷ 3.785411784. A 50 L fuel tank is 13.2 US gal; remember UK gallons are ~20% larger.
+
+## Pressure Converter
+
+URL: https://alltoolstogether.com/unit-converters/pressure-converter
+
+Pascals, bar, PSI, atmospheres, and mmHg converted exactly.
+
+Method: All pressures normalize through pascals using exact factors: 1 PSI = 6894.757 Pa, 1 bar = 100,000 Pa, 1 atm = 101,325 Pa.
+
+## Energy Converter
+
+URL: https://alltoolstogether.com/unit-converters/energy-converter
+
+Joules, calories, kilowatt-hours, and more converted exactly.
+
+Method: Everything normalizes through joules: 1 calorie = 4.184 J, 1 kWh = 3,600,000 J. Note the food Calorie is actually a kilocalorie.
+
+## Power Converter
+
+URL: https://alltoolstogether.com/unit-converters/power-converter
+
+Watts, kilowatts, and horsepower converted exactly.
+
+Method: Power normalizes through watts: 1 mechanical horsepower = 745.7 W, 1 metric horsepower (PS) = 735.5 W. The two horsepower definitions differ slightly.
+
+## Time Unit Converter
+
+URL: https://alltoolstogether.com/unit-converters/time-converter
+
+Milliseconds, seconds, minutes, hours, days, and weeks.
+
+Method: All durations normalize through seconds with exact factors: 1 hour = 3600 s, 1 day = 86,400 s, 1 week = 604,800 s.
+
+## Square Feet to Square Meters
+
+URL: https://alltoolstogether.com/unit-converters/square-feet-to-square-meters
+
+Convert sq ft to sq m (and back) with the exact factor.
+
+Method: Square meters = square feet x 0.092903 (exactly, since 1 ft = 0.3048 m and area scales by the square). A 1000 sq ft apartment is about 92.9 sq m.
+
+## Fuel Economy Converter
+
+URL: https://alltoolstogether.com/unit-converters/fuel-economy-converter
+
+Convert MPG (US & UK) to L/100km and back.
+
+Method: MPG and L/100km are inversely related: L/100km = 235.215 / US MPG (or 282.481 / UK MPG). The tool converts everything through L/100km, so all three figures stay in sync.
+
+## Currency Converter
+
+URL: https://alltoolstogether.com/unit-converters/currency-converter
+
+Convert between 50+ currencies with live ECB exchange rates.
+
+Method: Rates are fetched from Frankfurter (an ECB data mirror), which publishes official reference rates after the 4 PM CET fix each business day. The comparison grid lets you tap any currency to instantly make it your target.
+
+## USD to EUR
+
+URL: https://alltoolstogether.com/unit-converters/usd-to-eur
+
+Convert US Dollars to Euros at today's live rate.
+
+Method: The rate is the ECB official mid-market fix, published daily. Enter any dollar amount and see euros, plus the inverse rate and a full cross-currency comparison.
+
+## EUR to USD
+
+URL: https://alltoolstogether.com/unit-converters/eur-to-usd
+
+Convert Euros to US Dollars at today's live rate.
+
+Method: The ECB mid-market rate is fetched live and the inverse is shown automatically, so you can convert in either direction without swapping manually.
+
+## USD to GBP
+
+URL: https://alltoolstogether.com/unit-converters/usd-to-gbp
+
+Convert US Dollars to British Pounds at the live rate.
+
+Method: Rates are the ECB official fix from the latest business day. Swap the currencies with one click to convert GBP back to USD.
+
+## USD to INR
+
+URL: https://alltoolstogether.com/unit-converters/usd-to-inr
+
+Convert US Dollars to Indian Rupees at the live rate.
+
+Method: The ECB tracks INR as part of its global basket. Rates update each business day. The comparison grid shows your dollar amount in all major currencies simultaneously.
+
+## Word Counter
+
+URL: https://alltoolstogether.com/text/word-counter
+
+Words, characters, sentences, paragraphs, and reading time — live.
+
+Method: Words are matched as letter/number runs (Unicode-aware, so accented words and hyphenations count correctly). Reading time assumes 200 words per minute, the common adult average.
+
+## Character Counter
+
+URL: https://alltoolstogether.com/text/character-counter
+
+Live character count with and without spaces, plus platform limits.
+
+Method: Characters are counted as Unicode code points, so emoji and accents count correctly. Useful anchors: X/Twitter 280, Instagram bio 150, Google meta description ~155–160, SMS segment 160.
+
+## Case Converter
+
+URL: https://alltoolstogether.com/text/case-converter
+
+UPPERCASE, lowercase, Title Case, camelCase, snake_case, and more.
+
+Method: Writing cases transform character casing; programming cases also normalize separators: spaces and punctuation become the joiner (_ or -) or hump boundaries (camelCase).
+
+## Reverse Text
+
+URL: https://alltoolstogether.com/text/reverse-text
+
+Flip text backwards — by characters or by word order.
+
+Method: Character mode splits to an array, reverses, and rejoins (Unicode-aware so emoji don't corrupt). Word mode splits on spaces and reverses the sequence.
+
+## Remove Line Breaks
+
+URL: https://alltoolstogether.com/text/remove-line-breaks
+
+Strip or replace line breaks — with a paragraph-preserving mode.
+
+Method: "Replace with spaces" joins all lines. "Keep paragraphs" joins single breaks but preserves blank-line paragraph separations — usually what PDF cleanup needs.
+
+## Slug Generator
+
+URL: https://alltoolstogether.com/text/slug-generator
+
+Clean, SEO-friendly URL slugs from any title.
+
+Method: The text is Unicode-normalized (é → e), lowercased, and every non-alphanumeric run collapses to a single hyphen with edges trimmed — the convention every major CMS follows.
+
+## Text Repeater
+
+URL: https://alltoolstogether.com/text/text-repeater
+
+Repeat any text 5×, 10×, 25×, or 100× instantly.
+
+Method: The text is repeated the chosen number of times and joined with line breaks. A size guard caps output at 500k characters to keep your browser responsive.
+
+## Title Case Converter
+
+URL: https://alltoolstogether.com/text/title-case-converter
+
+Headline-style capitalization with AP-style small-word rules.
+
+Method: Implements the AP-style convention with a 20-word small-words list. First and last words always capitalize regardless of the list, per every major style guide.
+
+## Lorem Ipsum Generator
+
+URL: https://alltoolstogether.com/text/lorem-ipsum-generator
+
+Classic placeholder text — pick the number of paragraphs and copy.
+
+Method: Paragraphs are assembled from the canonical lorem word pool with varied sentence lengths, deterministic per page load so the layout you tested is the layout you saw.
+
+## Find and Replace Text
+
+URL: https://alltoolstogether.com/text/find-and-replace
+
+Bulk find and replace in any text, with regex and case options.
+
+Method: Plain mode escapes your search term and replaces all matches; regex mode treats it as a pattern. A live counter shows how many replacements were made before you copy the result.
+
+## Text Compare
+
+URL: https://alltoolstogether.com/text/text-compare
+
+Spot the differences between two blocks of text.
+
+Method: A longest-common-subsequence diff identifies the minimal additions and deletions between the two versions, marking added lines green and removed lines red.
+
+## Readability Checker
+
+URL: https://alltoolstogether.com/text/readability-checker
+
+Flesch reading ease and grade level for your writing.
+
+Method: The scores use sentence length and syllables per word: longer sentences and longer words lower the ease score and raise the grade level. Aim for ease above 60 (plain English) for general audiences.
+
+## Remove Duplicate Lines
+
+URL: https://alltoolstogether.com/text/remove-duplicate-lines
+
+Delete repeated lines from a list, keeping the first of each.
+
+Method: Each line is compared against the ones already seen; duplicates are dropped while original order is preserved. Case-insensitive mode treats "Apple" and "apple" as the same.
+
+## Sort Text Lines
+
+URL: https://alltoolstogether.com/text/sort-text-lines
+
+Alphabetize lines A→Z, Z→A, or by length.
+
+Method: Lines are sorted with locale-aware comparison so accented characters order naturally. Empty lines are removed before sorting.
+
+## Remove Extra Spaces
+
+URL: https://alltoolstogether.com/text/remove-extra-spaces
+
+Collapse double spaces, trim lines, or strip all whitespace.
+
+Method: "Collapse" reduces runs of spaces to one and trims trailing whitespace; "trim each line" removes leading and trailing spaces per line; "remove all" strips every whitespace character.
+
+## Text to Binary Converter
+
+URL: https://alltoolstogether.com/text/text-to-binary
+
+Convert text to 8-bit binary and back.
+
+Method: Each character becomes its 8-bit code (based on its character code), space-separated. Decoding reverses it: each binary byte maps back to a character.
+
+## Keyword Density Checker
+
+URL: https://alltoolstogether.com/text/keyword-density-checker
+
+Top keywords and their density percentage in your text.
+
+Method: The tool counts each word, divides by the total word count for density, and ranks the top terms. Common stop words (the, a, and…) can be filtered so meaningful keywords surface.
+
+## JSON Formatter & Validator
+
+URL: https://alltoolstogether.com/developer/json-formatter
+
+Format, validate, and minify JSON with precise error messages.
+
+Method: The native JSON.parse does the validation (the same parser your runtime uses), so what passes here passes in production. Formatting re-serializes with 2-space indentation; minify strips all insignificant whitespace.
+
+## Base64 Encode / Decode
+
+URL: https://alltoolstogether.com/developer/base64-encode-decode
+
+UTF-8-safe Base64 encoding and decoding in the browser.
+
+Method: Text is first encoded to UTF-8 bytes (TextEncoder), then Base64-encoded — the order that makes Unicode survive. Decoding reverses it: Base64 → bytes → UTF-8 text, with clear errors for invalid input.
+
+## URL Encode / Decode
+
+URL: https://alltoolstogether.com/developer/url-encode-decode
+
+Percent-encode text for URLs, or decode %20s back to readable text.
+
+Method: Uses encodeURIComponent/decodeURIComponent — the component-level functions that encode every reserved character, correct for query-string values. Invalid percent sequences produce a clear error instead of silent corruption.
+
+## UUID Generator
+
+URL: https://alltoolstogether.com/developer/uuid-generator
+
+Cryptographically random UUID v4s, singly or in bulk.
+
+Method: Uses crypto.randomUUID(), the platform implementation of RFC 4122 v4: 122 random bits from a CSPRNG, formatted as the familiar 8-4-4-4-12 hex string.
+
+## Hash Generator (SHA-256, SHA-512, SHA-1)
+
+URL: https://alltoolstogether.com/developer/hash-generator
+
+SHA hashes of any text, computed locally with Web Crypto.
+
+Method: The text is UTF-8 encoded and passed to crypto.subtle.digest; the result renders as lowercase hex. The same input always yields the same hash; even a one-character change produces a completely different digest.
+
+## Password Generator
+
+URL: https://alltoolstogether.com/developer/password-generator
+
+Strong random passwords from a cryptographic source — never sent anywhere.
+
+Method: Characters are drawn with crypto.getRandomValues using rejection sampling — the technique that avoids the subtle bias of the naive modulo approach. At 16 characters with all sets enabled, the space exceeds 10³¹ possibilities.
+
+## Color Converter (HEX ⇄ RGB ⇄ HSL)
+
+URL: https://alltoolstogether.com/developer/color-converter
+
+Convert colors between HEX, RGB, and HSL with a live swatch.
+
+Method: HEX pairs are parsed to 0–255 RGB channels. HSL derives from RGB via max/min channel math: hue is the angle on the color wheel, saturation the colorfulness, lightness the brightness.
+
+## Unix Timestamp Converter
+
+URL: https://alltoolstogether.com/developer/unix-timestamp-converter
+
+Epoch seconds/milliseconds to human dates and back — with live now.
+
+Method: Seconds × 1000 feed JavaScript's Date; the tool auto-detects milliseconds by magnitude (13-digit values). Output shows UTC, your local time, and ISO 8601 — the three formats that cover real work.
+
+## Regex Tester
+
+URL: https://alltoolstogether.com/developer/regex-tester
+
+Test regular expressions live with match highlighting and flags.
+
+Method: The tool builds a JavaScript RegExp from your pattern and flags and collects all matches. Flags: g (global), i (ignore case), m (multiline anchors), s (dot matches newlines). Invalid patterns show the engine's error.
+
+## JWT Decoder
+
+URL: https://alltoolstogether.com/developer/jwt-decoder
+
+Decode and inspect JWT header, payload, and expiry — locally.
+
+Method: A JWT is three base64url-encoded parts separated by dots: header.payload.signature. The tool decodes the first two to JSON and reads the exp claim to show the expiry. It does not verify the signature.
+
+## CSV to JSON Converter
+
+URL: https://alltoolstogether.com/developer/csv-to-json
+
+Convert CSV to JSON and JSON to CSV, both directions.
+
+Method: CSV parsing respects double-quoted fields (so commas and quotes inside values survive) and uses the first row as keys. JSON-to-CSV collects all object keys as the header row and escapes any value containing commas, quotes, or newlines.
+
+## Diff Checker
+
+URL: https://alltoolstogether.com/developer/diff-checker
+
+Compare two texts and highlight added and removed lines.
+
+Method: A longest-common-subsequence algorithm finds the minimal set of line additions and deletions that turns the original into the changed version — the same core technique behind version-control diffs.
+
+## HTML Encode / Decode
+
+URL: https://alltoolstogether.com/developer/html-encode-decode
+
+Escape HTML special characters, or decode entities back.
+
+Method: Encoding replaces the five reserved characters — & < > " ' — with entities like &amp; and &lt;. Decoding reverses it. This is what prevents user input from breaking or injecting into a page.
+
+## CSS Minifier
+
+URL: https://alltoolstogether.com/developer/css-minifier
+
+Strip comments and whitespace to shrink CSS.
+
+Method: The minifier strips comment blocks, collapses whitespace, and removes spaces around braces, colons, and semicolons, while preserving the meaning of every rule.
+
+## JavaScript Minifier
+
+URL: https://alltoolstogether.com/developer/javascript-minifier
+
+Remove comments and blank lines from JavaScript.
+
+Method: This conservative minifier removes block and line comments and collapses empty lines while leaving your code structure intact. It is deliberately cautious to avoid breaking logic.
+
+## HTML Minifier
+
+URL: https://alltoolstogether.com/developer/html-minifier
+
+Remove comments and whitespace between HTML tags.
+
+Method: The minifier strips HTML comments and collapses whitespace between elements and within runs of spaces, while keeping the document structure valid.
+
+## SQL Formatter
+
+URL: https://alltoolstogether.com/developer/sql-formatter
+
+Indent and line-break SQL for readability.
+
+Method: The formatter recognizes the common SQL keywords (SELECT, FROM, WHERE, JOIN, GROUP BY…) and starts a new line at each, then indents comma-separated items for clarity.
+
+## JSON String Escape / Unescape
+
+URL: https://alltoolstogether.com/developer/json-escape
+
+Escape text for a JSON string, or unescape it back.
+
+Method: Escaping uses the JSON string rules: " becomes \", newlines become \n, and so on. Unescaping parses those sequences back into the original characters.
+
+## JSON to YAML Converter
+
+URL: https://alltoolstogether.com/developer/json-to-yaml
+
+Convert JSON into clean, readable YAML.
+
+Method: The converter walks the JSON structure and emits equivalent YAML, using two-space indentation for nesting and list syntax for arrays, quoting strings only when needed.
+
+## YAML to JSON Converter
+
+URL: https://alltoolstogether.com/developer/yaml-to-json
+
+Convert YAML config into JSON.
+
+Method: The parser reads indentation-based YAML (keys, nested maps, and lists) and produces equivalent formatted JSON. It targets the common config subset of YAML.
+
+## XML Formatter
+
+URL: https://alltoolstogether.com/developer/xml-formatter
+
+Indent and pretty-print XML by tag depth.
+
+Method: The formatter inserts line breaks between elements and indents each level by its nesting depth, producing a readable hierarchy without altering the data.
+
+## Markdown to HTML Converter
+
+URL: https://alltoolstogether.com/developer/markdown-to-html
+
+Convert Markdown into clean HTML.
+
+Method: The converter parses common Markdown syntax line by line and emits the matching HTML tags, escaping characters inside code so they display literally.
+
+## Number Base Converter
+
+URL: https://alltoolstogether.com/developer/number-base-converter
+
+Convert between binary, octal, decimal, and hex.
+
+Method: The value is parsed from its input base into an integer, then re-rendered in base 2, 8, 10, and 16. Hexadecimal output is shown with the conventional 0x prefix.
+
+## CSS Gradient Generator
+
+URL: https://alltoolstogether.com/developer/css-gradient-generator
+
+Design a linear gradient and copy the CSS.
+
+Method: Pick two colors and an angle; the tool builds a linear-gradient() background value and previews it instantly. Copy the CSS straight into your stylesheet.
+
+## CSS Box Shadow Generator
+
+URL: https://alltoolstogether.com/developer/box-shadow-generator
+
+Dial in a box-shadow visually and copy the CSS.
+
+Method: Sliders control each box-shadow parameter and update the preview in real time. The chosen color and opacity combine into an rgba() value for soft, natural shadows.
+
+## Color Palette Generator
+
+URL: https://alltoolstogether.com/developer/color-palette-generator
+
+Generate shades, complementary, analogous, or triadic palettes.
+
+Method: The base color is converted to HSL so the tool can vary lightness for shades or rotate the hue for color-theory schemes, then convert each result back to hex.
+
+## Cron Expression Parser
+
+URL: https://alltoolstogether.com/developer/cron-expression-generator
+
+Decode a cron schedule into plain English.
+
+Method: A standard cron line has five fields — minute, hour, day of month, month, day of week. The tool validates the format and describes each field, including step (*/5) and range (1-5) syntax.
+
+## HTTP Status Codes Reference
+
+URL: https://alltoolstogether.com/developer/http-status-codes
+
+Searchable reference of HTTP status codes and meanings.
+
+Method: Type a number or keyword to filter the list instantly. Codes are grouped by class: 1xx informational, 2xx success, 3xx redirection, 4xx client errors, and 5xx server errors.
+
+## MIME Types Lookup
+
+URL: https://alltoolstogether.com/developer/mime-types-lookup
+
+Searchable reference of file extensions and MIME types.
+
+Method: Search by extension (.png) or keyword (image) to find the matching MIME type and a short description. These are the standard types used across the web.
+
+## IP Subnet Calculator
+
+URL: https://alltoolstogether.com/developer/ip-subnet-calculator
+
+Calculate network address, broadcast, host range, and mask from CIDR.
+
+Method: The CIDR prefix defines how many bits are the network portion. The tool applies the subnet mask with bitwise operations to derive the network and broadcast addresses, then counts the usable hosts between them.
+
+## Aspect Ratio Calculator
+
+URL: https://alltoolstogether.com/developer/aspect-ratio-calculator
+
+Simplify width:height to a ratio and scale dimensions proportionally.
+
+Method: The ratio is found by dividing both dimensions by their greatest common divisor (GCD). To scale, the tool multiplies by the decimal ratio so the new dimensions keep the same proportions.
+
+## CSS Specificity Calculator
+
+URL: https://alltoolstogether.com/developer/css-specificity-calculator
+
+Calculate the specificity of any CSS selector with a visual breakdown.
+
+Method: Specificity is counted in three groups: IDs (a), classes/attributes/pseudo-classes (b), and elements/pseudo-elements (c). Higher groups always win — a single ID beats any number of classes.
+
+## HTML to Markdown Converter
+
+URL: https://alltoolstogether.com/developer/html-to-markdown
+
+Convert HTML into clean Markdown — headings, lists, links, images, and code.
+
+Method: The converter maps each HTML element to its Markdown equivalent (h1→#, strong→**, a→[text](url)) then strips any remaining tags and decodes entities. Everything runs locally.
+
+## Markdown Previewer
+
+URL: https://alltoolstogether.com/developer/markdown-previewer
+
+Live side-by-side Markdown editor with instant preview.
+
+Method: A safe local parser escapes your input first, then converts Markdown syntax to HTML, so even pasted HTML cannot execute. Nothing you type leaves your browser.
+
+## Markdown Table Generator
+
+URL: https://alltoolstogether.com/developer/markdown-table-generator
+
+Build Markdown tables visually with an editable grid and alignment options.
+
+Method: The first row becomes the header. The generator pads every column to equal width so the raw Markdown stays readable, and writes the alignment row (:--- , :---: , ---:) based on your choice.
+
+## QR Code Generator
+
+URL: https://alltoolstogether.com/seo/qr-code-generator
+
+Create custom QR codes for URLs, text, or contact details.
+
+Method: The tool encodes your text into the QR matrix and renders it to a canvas. Higher error-correction levels add redundancy so the code still scans if part of it is covered or damaged, at the cost of density.
+
+## Barcode Generator
+
+URL: https://alltoolstogether.com/seo/barcode-generator
+
+Generate CODE128, EAN-13, UPC and more as downloadable SVG.
+
+Method: The tool encodes your value into the bar pattern for the chosen symbology and renders it as vector SVG, validating that the value matches each format's rules (for example, EAN-13 requires 12–13 digits).
+
+## Password Strength Checker
+
+URL: https://alltoolstogether.com/developer/password-strength-checker
+
+Estimate password entropy, crack time, and weaknesses.
+
+Method: The checker measures the character pool and length to estimate entropy in bits, then flags common patterns: short length, single character types, repeats, keyboard sequences, and known weak words. Crack time assumes a fast offline attack of about 10 billion guesses per second.
+
+## UTM Link Builder
+
+URL: https://alltoolstogether.com/seo/utm-link-builder
+
+Add UTM tracking parameters to campaign URLs.
+
+Method: The builder appends utm_source, utm_medium, and utm_campaign (plus optional term and content) as query parameters, URL-encoding each value. Analytics platforms read these to group and report your traffic.
+
+## Robots.txt Generator
+
+URL: https://alltoolstogether.com/seo/robots-txt-generator
+
+Create a valid robots.txt to guide search crawlers.
+
+Method: The file uses the Robots Exclusion Standard: a User-agent line followed by Allow/Disallow rules. The tool builds common policies — allow everything, block everything, or allow with specific exclusions — and appends your sitemap URL.
+
+## XML Sitemap Generator
+
+URL: https://alltoolstogether.com/seo/xml-sitemap-generator
+
+Turn a list of URLs into a valid XML sitemap.
+
+Method: Each URL becomes a <url> entry inside a <urlset>, following the sitemaps.org schema. Ampersands are escaped, and you can add a lastmod date and a changefreq hint to each entry.
+
+## Meta Tag Generator
+
+URL: https://alltoolstogether.com/seo/meta-tag-generator
+
+Generate SEO title, description, and meta tags.
+
+Method: The tool assembles valid <head> tags, escaping special characters, and shows live length feedback. It targets the practical limits search engines use when truncating titles (~60 characters) and descriptions (~160 characters).
+
+## Open Graph Generator
+
+URL: https://alltoolstogether.com/seo/open-graph-generator
+
+Generate Open Graph and Twitter Card meta tags.
+
+Method: The tool builds og: property tags and matching twitter: tags, escaping special characters. Platforms read these from your page head to render a rich link preview instead of a bare URL.
+
+## Htaccess Redirect Generator
+
+URL: https://alltoolstogether.com/seo/htaccess-redirect-generator
+
+Generate Apache 301 redirects and HTTPS/www rules.
+
+Method: The rules use Apache's mod_rewrite. A 301 status tells search engines the move is permanent so ranking signals transfer. The tool produces the RewriteEngine, RewriteCond, and RewriteRule lines for each common scenario.
+
+## URL Shortener
+
+URL: https://alltoolstogether.com/seo/url-shortener
+
+Create short, shareable links with optional custom aliases.
+
+Method: Unlike calculators on this site, a URL shortener must store the link-to-destination mapping on a server and redirect visitors. All Tools Together ships an independent backend service (in the project's /backend folder) that handles this; once deployed, this tool creates links and counts clicks through it.
+
+## Merge PDF
+
+URL: https://alltoolstogether.com/pdf/merge-pdf
+
+Combine several PDF files into one, in any order.
+
+Method: The tool copies every page from each file you add, in the order you arrange them, into one new PDF. Use the arrows to reorder files before merging.
+
+## Split PDF
+
+URL: https://alltoolstogether.com/pdf/split-pdf
+
+Split a PDF into separate files by page ranges.
+
+Method: Enter page ranges like 1-3, 5, 8-10 and each becomes its own downloaded PDF, or choose to split every page into a separate file. Pages are copied losslessly.
+
+## Extract PDF Pages
+
+URL: https://alltoolstogether.com/pdf/extract-pdf-pages
+
+Pull selected pages into a new PDF.
+
+Method: List the pages to keep (for example 1, 3-4) and the tool builds a fresh PDF containing only those, copied exactly from the original.
+
+## Delete PDF Pages
+
+URL: https://alltoolstogether.com/pdf/delete-pdf-pages
+
+Remove unwanted pages from a PDF.
+
+Method: List the pages to delete (for example 2, 5-6). The tool removes them and saves a new PDF with everything else intact.
+
+## Reorder PDF Pages
+
+URL: https://alltoolstogether.com/pdf/reorder-pdf-pages
+
+Rearrange the page order of a PDF.
+
+Method: After loading your PDF, each page appears in a list. Use the arrows to move pages into the order you want, then save a new PDF built in that sequence.
+
+## Rotate PDF
+
+URL: https://alltoolstogether.com/pdf/rotate-pdf
+
+Rotate PDF pages 90°, 180°, or 270°.
+
+Method: The chosen rotation is added to each selected page's existing orientation and saved into the PDF, so viewers display it the right way up.
+
+## Add Page Numbers to PDF
+
+URL: https://alltoolstogether.com/pdf/add-page-numbers-to-pdf
+
+Stamp page numbers onto a PDF.
+
+Method: The tool embeds a standard font and draws the page number at your chosen position on every page, starting from the number you set.
+
+## Watermark PDF
+
+URL: https://alltoolstogether.com/pdf/watermark-pdf
+
+Add a text watermark across every page.
+
+Method: The tool draws your text on each page using a bold font at the opacity and size you choose, optionally rotated 45° across the page center.
+
+## JPG to PDF
+
+URL: https://alltoolstogether.com/pdf/jpg-to-pdf
+
+Convert JPG (and PNG) images into a PDF.
+
+Method: Each image is embedded into a PDF page at full quality. Reorder images before converting, and pick whether pages match each image or use a uniform A4 layout.
+
+## PNG to PDF
+
+URL: https://alltoolstogether.com/pdf/png-to-pdf
+
+Convert PNG (and JPG) images into a PDF.
+
+Method: Each PNG is embedded into a PDF page at full quality. Arrange the images, then pick image-sized pages or a uniform A4 fit before creating the file.
+
+## Edit PDF Metadata
+
+URL: https://alltoolstogether.com/pdf/edit-pdf-metadata
+
+View and edit a PDF's title, author, and keywords.
+
+Method: The tool loads the existing metadata for editing, then writes your changes back into the PDF along with an updated modification date.
+
+## PDF to JPG
+
+URL: https://alltoolstogether.com/pdf/pdf-to-jpg
+
+Convert each PDF page into a JPG image.
+
+Method: The tool uses Mozilla's PDF.js engine to render each page to a canvas at your chosen resolution, then exports it as a JPG. Higher quality settings produce larger, sharper images suitable for print.
+
+## PDF to PNG
+
+URL: https://alltoolstogether.com/pdf/pdf-to-png
+
+Convert each PDF page into a PNG image.
+
+Method: Each page is rendered with PDF.js to a canvas at your selected resolution and exported as a lossless PNG. You can download pages one by one or all together.
+
+## PDF to Text
+
+URL: https://alltoolstogether.com/pdf/pdf-to-text
+
+Extract the selectable text from a PDF.
+
+Method: The tool reads the PDF's embedded text layer with PDF.js, page by page, and assembles it into clean plain text. It works on text-based PDFs; scanned image PDFs have no text layer to extract.
+
+## PDF Info Viewer
+
+URL: https://alltoolstogether.com/pdf/pdf-info-viewer
+
+Inspect a PDF's pages, size, and metadata.
+
+Method: The tool reads the document structure and metadata with PDF.js and presents it in a clear table, including the PDF version and whether the file is encrypted.
+
+## PDF to Markdown
+
+URL: https://alltoolstogether.com/pdf/pdf-to-markdown
+
+Convert a PDF into clean Markdown with headings detected automatically.
+
+Method: The tool reads the PDF text layer locally with PDF.js, measures the font size of every line, and treats lines significantly larger than the body text as # / ## / ### headings. Bullets and numbered lists are recognized by their markers.
+
+## Markdown to PDF
+
+URL: https://alltoolstogether.com/pdf/markdown-to-pdf
+
+Turn Markdown into a styled A4 PDF — headings, lists, quotes, and code.
+
+Method: The Markdown is parsed into blocks, then laid out with a real typesetting pass: text is measured and word-wrapped to the page width, headings get larger bold type with rules under H1/H2, and content flows across pages automatically.
+
+## Image Resizer
+
+URL: https://alltoolstogether.com/image/image-resizer
+
+Resize images by pixels or percentage, keeping aspect ratio.
+
+Method: The image is redrawn onto a canvas at your target dimensions using high-quality resampling, then exported as a PNG. Locking the aspect ratio keeps width and height proportional.
+
+## Image Cropper
+
+URL: https://alltoolstogether.com/image/image-cropper
+
+Crop images with a draggable selection and aspect presets.
+
+Method: You position and size a selection over a preview; the tool maps that selection back to the original image's full resolution and exports just that region as a PNG.
+
+## Image Compressor
+
+URL: https://alltoolstogether.com/image/image-compressor
+
+Shrink image file size with a live quality preview.
+
+Method: The image is re-encoded as JPG or WebP at your selected quality. Lower quality discards more detail for a smaller file; the tool shows the exact size saving versus the original.
+
+## Image Converter
+
+URL: https://alltoolstogether.com/image/image-converter
+
+Convert images between PNG, JPG, and WebP.
+
+Method: The image is decoded and re-drawn onto a canvas, then exported in your chosen format. Converting to JPG flattens transparency onto a white background, since JPG has no alpha channel.
+
+## PNG to JPG
+
+URL: https://alltoolstogether.com/image/png-to-jpg
+
+Convert PNG images to JPG, with quality control.
+
+Method: The PNG is redrawn onto a white background (JPG has no transparency) and exported as a JPG at your chosen quality.
+
+## JPG to PNG
+
+URL: https://alltoolstogether.com/image/jpg-to-png
+
+Convert JPG images to lossless PNG.
+
+Method: The JPG is decoded and re-exported as a lossless PNG. Note that PNG can't recover detail already lost to JPG compression, but it prevents any further quality loss.
+
+## WebP to PNG
+
+URL: https://alltoolstogether.com/image/webp-to-png
+
+Convert modern WebP images to PNG.
+
+Method: The WebP is decoded by your browser and re-exported as a lossless PNG, preserving transparency.
+
+## PNG to WebP
+
+URL: https://alltoolstogether.com/image/png-to-webp
+
+Convert PNG to smaller WebP images.
+
+Method: The PNG is re-encoded as WebP at your chosen quality. WebP typically produces much smaller files than PNG for the same image, with optional transparency.
+
+## Image Rotator & Flipper
+
+URL: https://alltoolstogether.com/image/image-rotator
+
+Rotate and flip images with a live preview.
+
+Method: Each rotation and flip is applied on a canvas using transforms, so the preview updates instantly and the export matches exactly what you see.
+
+## Image Color Picker
+
+URL: https://alltoolstogether.com/image/image-color-picker
+
+Pick exact colors from any image as HEX, RGB, HSL.
+
+Method: The image is drawn to a canvas; clicking reads the precise pixel value at that point and converts it into the common color formats, which you can copy with a tap.
+
+## Image Color Palette Extractor
+
+URL: https://alltoolstogether.com/image/image-color-palette
+
+Extract the dominant colors from any image.
+
+Method: The tool samples the image's pixels, groups similar colors into buckets, and ranks them by how often they appear, returning the most prominent colors as copyable swatches.
+
+## Add Watermark to Image
+
+URL: https://alltoolstogether.com/image/image-watermark
+
+Add a text watermark to an image with live preview.
+
+Method: Your text is drawn onto the image on a canvas at the chosen position and styling, with a subtle shadow for legibility, and exported as a PNG.
+
+## Favicon Generator
+
+URL: https://alltoolstogether.com/image/favicon-generator
+
+Generate favicon sizes + Apple touch icon from one image.
+
+Method: Your image is rendered to each required size on a canvas with high-quality scaling, packaged into a downloadable zip, and accompanied by the standard <link> tags to paste into your page head.
+
+## Image to Base64
+
+URL: https://alltoolstogether.com/image/image-to-base64
+
+Encode an image as a Base64 data URI for inline use.
+
+Method: The image bytes are read and encoded as a Base64 data URI. The tool also wraps it into copy-ready HTML and CSS, and warns that Base64 is about 33% larger than the binary file.
+
+## Color Blindness Simulator
+
+URL: https://alltoolstogether.com/image/color-blindness-simulator
+
+See how your image looks to people with 8 types of color vision deficiency.
+
+Method: Each deficiency type applies a scientifically derived color transformation matrix to every pixel, approximating how someone with that condition perceives the image. Everything runs locally on your device.
+
+## Grammar Checker
+
+URL: https://alltoolstogether.com/writing/grammar-checker
+
+Catch grammar, spelling, and style mistakes with one-click fixes.
+
+Method: Your text is sent to the LanguageTool engine, which returns each issue with its location, an explanation, and replacement suggestions. Click a suggestion to apply it, and the text is re-checked automatically.
+
+## Paraphrasing Tool
+
+URL: https://alltoolstogether.com/writing/paraphrasing-tool
+
+Rewrite text in a different style while keeping the meaning.
+
+Method: Your text and chosen style are sent to the language-model provider you configure; it returns a rewritten version. Because genuine paraphrasing requires an AI model, this tool activates once a provider is connected.
+
+## Plagiarism Checker
+
+URL: https://alltoolstogether.com/writing/plagiarism-checker
+
+Check whether passages of text appear elsewhere on the web.
+
+Method: The text is split into meaningful sentences, each searched as an exact phrase through the search provider you configure. Sentences with matches are flagged alongside links to the sources.
+
+## Rent vs Buy Calculator
+
+URL: https://alltoolstogether.com/real-estate/rent-vs-buy-calculator
+
+Find out whether renting or buying makes better financial sense over your time horizon.
+
+Method: Buying costs include P&I, estimated property tax, and insurance. The home's projected equity at sale is subtracted to give a net buy cost. That's compared to total rent paid over the same period.
+
+## Home Affordability Calculator
+
+URL: https://alltoolstogether.com/real-estate/home-affordability-calculator
+
+How much house can you afford? Based on the 28/36 rule lenders use.
+
+Method: The 28% rule caps housing costs (P&I, tax, insurance) at 28% of gross monthly income. The 36% rule caps total monthly debt at 36%. The tool applies both and uses the more restrictive result.
+
+## Property Tax Calculator
+
+URL: https://alltoolstogether.com/real-estate/property-tax-calculator
+
+Estimate annual and monthly property tax from home value and mill rate.
+
+Method: Property tax = assessed value × rate. Some jurisdictions assess at a percentage of market value (e.g. 85%). The effective rate field accepts what you'll find on your county assessor's website.
+
+## Closing Costs Calculator
+
+URL: https://alltoolstogether.com/real-estate/closing-costs-calculator
+
+Estimate buyer or seller closing costs as a percentage of the home price.
+
+Method: Buyer closing costs typically run 2–5% of the loan amount. Seller costs run 7–10% of the sale price, dominated by agent commission. This calculator uses national average percentages as starting estimates.
+
+## Rental Yield Calculator
+
+URL: https://alltoolstogether.com/real-estate/rental-yield-calculator
+
+Gross yield, net yield, cap rate, and payback period for a rental property.
+
+Method: Gross yield = annual rent / price. Net yield deducts operating expenses and vacancy. Cap rate uses NOI (net operating income) before financing, making it useful for comparing properties regardless of how they're funded.
+
+## House Price-to-Income Ratio
+
+URL: https://alltoolstogether.com/real-estate/house-price-to-income-ratio
+
+Is a home priced within your income range? Check the price-to-income ratio.
+
+Method: Divide the home price by gross annual income. Ratios below 3× are affordable; 3–5× is manageable; above 5× is stretched; above 7× is difficult to finance conventionally.
+
+## Square Footage Calculator
+
+URL: https://alltoolstogether.com/real-estate/square-footage-calculator
+
+Calculate area in square feet, square meters, and square yards.
+
+Method: For rectangles (most rooms): length × width. For triangles: base × height ÷ 2. For circles: π × radius². All results are shown in sq ft, sq m, sq yd, and acres.
+
+## Capital Gains Tax Calculator
+
+URL: https://alltoolstogether.com/real-estate/capital-gains-tax-calculator
+
+Estimate US federal capital gains tax on real estate or investment sales.
+
+Method: Capital gain = sale price − adjusted basis (purchase + improvements). Long-term (held 12+ months) uses the preferential 0/15/20% federal rate based on income; short-term uses ordinary income rates.
+
+## Concrete Calculator
+
+URL: https://alltoolstogether.com/construction/concrete-calculator
+
+Cubic yards of concrete and number of bags for any slab or footing.
+
+Method: Volume = length x width x (depth in feet). Convert to cubic yards by dividing by 27. A 60 lb bag covers ~0.45 cu ft; an 80 lb bag ~0.60 cu ft.
+
+## Paint Calculator
+
+URL: https://alltoolstogether.com/construction/paint-calculator
+
+Gallons of paint needed for a room, with door and window deductions.
+
+Method: Wall area = 2 x (length + width) x height, minus 20 sq ft per door and 15 sq ft per window. Divide by 350 sq ft per gallon, then multiply by coats.
+
+## Flooring Calculator
+
+URL: https://alltoolstogether.com/construction/flooring-calculator
+
+Square feet of flooring with waste allowance and box count.
+
+Method: Flooring needed = room area x (1 + waste%). Divide by box coverage to get box count. Use 10% waste for straight install, 15% for diagonal or herringbone.
+
+## Gravel Calculator
+
+URL: https://alltoolstogether.com/construction/gravel-calculator
+
+Cubic yards and tons of gravel for driveways, paths, and landscaping.
+
+Method: Volume (cu yd) = length x width x (depth / 12) / 27. Weight = cubic yards x 1.4 tons, typical for pea gravel or crushed stone.
+
+## Mulch Calculator
+
+URL: https://alltoolstogether.com/construction/mulch-calculator
+
+Cubic yards and bags of mulch for garden beds and landscaping.
+
+Method: Volume (cu yd) = length x width x (depth / 12) / 27. One cubic yard equals approximately 13.5 bags of 2 cu ft mulch.
+
+## Fence Calculator
+
+URL: https://alltoolstogether.com/construction/fence-calculator
+
+Posts, rails, and pickets needed for any wood fence.
+
+Method: Posts = perimeter / spacing + 1. Rails = posts x 2 (standard two-rail). Pickets = perimeter / (board width in feet). Add 10% for waste.
+
+## Roof Pitch Calculator
+
+URL: https://alltoolstogether.com/construction/roof-pitch-calculator
+
+Roof pitch in X:12, degrees, and area multiplier from rise and run.
+
+Method: Pitch = rise:12. Angle = arctan(rise/run) in degrees. Area multiplier = sqrt(1 + (rise/run)^2). Multiply your plan area by this factor for the true roof surface.
+
+## Staircase Calculator
+
+URL: https://alltoolstogether.com/construction/staircase-calculator
+
+Steps, riser height, and total run for building a staircase.
+
+Method: Steps = round(total rise / target riser). Actual riser = total rise / steps. Total run = steps x tread depth. Ideal angle is 30-45 degrees.
+
+## Grams to Cups Converter
+
+URL: https://alltoolstogether.com/cooking/grams-to-cups-converter
+
+Convert grams to cups for flour, sugar, butter, and other ingredients.
+
+Method: Each ingredient has a specific density. Flour weighs about 125 g/cup, while sugar weighs 200 g/cup. Using weight (grams) in recipes is more accurate than volume because packing varies.
+
+## Recipe Scaling Calculator
+
+URL: https://alltoolstogether.com/cooking/recipe-scaling-calculator
+
+Scale any recipe ingredient up or down to a new serving count.
+
+Method: Scale factor = target ÷ original servings. Multiply every ingredient amount by this factor. The calculator gives the factor so you can apply it to your whole recipe.
+
+## Cooking Unit Converter
+
+URL: https://alltoolstogether.com/cooking/cooking-unit-converter
+
+Convert between teaspoons, tablespoons, cups, fluid ounces, and millilitres.
+
+Method: All units convert through millilitres using exact US customary definitions (1 US tsp = 4.92892 ml, 1 US cup = 236.588 ml). Results include all common kitchen units.
+
+## Calories Burned Calculator
+
+URL: https://alltoolstogether.com/cooking/calories-burned-calculator
+
+Calories burned during exercise by activity, weight, and duration.
+
+Method: Calories = MET × body weight (kg) × duration (hours). MET values quantify the energy cost of physical activities relative to rest. Higher MET = more intense activity.
+
+## Ohm's Law Calculator
+
+URL: https://alltoolstogether.com/science/ohms-law-calculator
+
+Solve for voltage, current, or resistance given any two values.
+
+Method: Ohm's Law: V = I × R. Enter any two values and leave the third blank. Power P = V × I is always calculated from the result. Default example: 120 V across 10 Ω draws 12 A and 1,440 W.
+
+## Resistor Color Code Calculator
+
+URL: https://alltoolstogether.com/science/resistor-color-code-calculator
+
+Decode a 4-band resistor color code to its resistance value.
+
+Method: Bands 1 and 2 give the first two digits; band 3 is the multiplier (power of 10); band 4 is tolerance. Value = (10×d1 + d2) × 10^multiplier.
+
+## Voltage Divider Calculator
+
+URL: https://alltoolstogether.com/science/voltage-divider-calculator
+
+Output voltage, current, and power for a resistor voltage divider.
+
+Method: Vout = Vin × R2 / (R1 + R2). Current = Vin / (R1 + R2). Power = Vin × I. The output is taken across R2.
+
+## Torque Calculator
+
+URL: https://alltoolstogether.com/science/torque-calculator
+
+Calculate torque in N·m, ft·lb, and in·lb from force and moment arm.
+
+Method: Torque (τ) = Force (F) × Moment arm (r). SI unit is N·m. The moment arm is the perpendicular distance from the line of action of the force to the rotation axis.
+
+## Newton's Second Law Calculator
+
+URL: https://alltoolstogether.com/science/newtons-second-law-calculator
+
+Solve F = ma for force, mass, or acceleration.
+
+Method: F = m × a. Enter any two values and leave the third blank. The tool also shows the equivalent weight at Earth gravity (9.81 m/s²).
+
+## Density Calculator
+
+URL: https://alltoolstogether.com/science/density-calculator
+
+Solve for density, mass, or volume (ρ = m/V).
+
+Method: Enter any two values and leave the third blank. Density relative to water (1,000 kg/m³) determines whether an object floats (< 1.0) or sinks (> 1.0).
+
+## pH Calculator
+
+URL: https://alltoolstogether.com/science/ph-calculator
+
+H⁺ concentration, pOH, and classification from a pH value.
+
+Method: [H⁺] = 10^(-pH). pOH = 14 - pH. [OH⁻] = 10^(-pOH). pH below 7 is acidic; above 7 is alkaline; exactly 7 is neutral (pure water at 25°C).
+
+## Half-Life Calculator
+
+URL: https://alltoolstogether.com/science/half-life-calculator
+
+Remaining quantity after radioactive decay over any time period.
+
+Method: Remaining = initial × (0.5)^(time / half-life). The units of time and half-life must match (both in years, days, seconds, etc.).
+
+## Kinematics Calculator
+
+URL: https://alltoolstogether.com/science/kinematic-calculator
+
+Solve SUVAT equations for velocity, acceleration, time, and displacement.
+
+Method: Uses the equations v = u + at and s = ut + ½at² to solve for unknowns. Enter any two values and the tool calculates the rest.
+
+## Z-Score Calculator
+
+URL: https://alltoolstogether.com/statistics/z-score-calculator
+
+Z-score, percentile, and probability from a value, mean, and standard deviation.
+
+Method: Z = (x − μ) / σ. The z-score measures how many standard deviations a value is from the mean. The percentile is derived from the standard normal cumulative distribution.
+
+## Confidence Interval Calculator
+
+URL: https://alltoolstogether.com/statistics/confidence-interval-calculator
+
+Confidence interval and margin of error from sample statistics.
+
+Method: CI = mean ± (z × standard error), where standard error = sd / √n. The z-critical value depends on the confidence level (1.96 for 95%).
+
+## Sample Size Calculator
+
+URL: https://alltoolstogether.com/statistics/sample-size-calculator
+
+Required sample size for a survey at a given confidence and margin of error.
+
+Method: n = (z² × p × (1−p)) / margin². Use p = 50% for the most conservative (largest) sample size when you have no prior estimate of the proportion.
+
+## Correlation Coefficient Calculator
+
+URL: https://alltoolstogether.com/statistics/correlation-coefficient-calculator
+
+Pearson correlation coefficient (r) and R² from two data lists.
+
+Method: Pearson r measures the linear relationship between two variables, ranging from −1 (perfect negative) to +1 (perfect positive). R² is r squared — the proportion of variance explained.
+
+## P-Value Calculator
+
+URL: https://alltoolstogether.com/statistics/p-value-calculator
+
+P-value and significance from a z-statistic (one- or two-tailed).
+
+Method: The p-value is the probability of observing a result as extreme as yours if the null hypothesis were true. It is derived from the standard normal distribution based on your z-statistic and test direction.
+
+## CAC Calculator
+
+URL: https://alltoolstogether.com/business/cac-calculator
+
+Customer Acquisition Cost and LTV:CAC ratio for your marketing spend.
+
+Method: CAC = total sales and marketing spend ÷ new customers acquired. The LTV:CAC ratio divides lifetime value by CAC — a ratio of 3:1 or higher is generally considered healthy.
+
+## Customer Lifetime Value Calculator
+
+URL: https://alltoolstogether.com/business/customer-lifetime-value-calculator
+
+Customer lifetime value (LTV) from purchase value, frequency, and lifespan.
+
+Method: LTV = average purchase value × purchase frequency × customer lifespan. Applying your gross margin gives the profit-based LTV, which is more meaningful for unit economics.
+
+## ROAS Calculator
+
+URL: https://alltoolstogether.com/business/roas-calculator
+
+Return on ad spend, net profit, and break-even ROAS.
+
+Method: ROAS = revenue ÷ ad spend, expressed as a ratio. Break-even ROAS accounts for product cost (COGS): you need revenue to cover both ad spend and the cost of goods sold.
+
+## Email Marketing ROI Calculator
+
+URL: https://alltoolstogether.com/business/email-marketing-roi-calculator
+
+Projected revenue and ROI from an email campaign funnel.
+
+Method: Revenue = list × open rate × click rate × conversion rate × average order value. ROI = (revenue − cost) ÷ cost. Email consistently delivers one of the highest ROIs in marketing.
+
+## Employee Turnover Calculator
+
+URL: https://alltoolstogether.com/business/employee-turnover-calculator
+
+Turnover rate and estimated replacement cost for your team.
+
+Method: Turnover rate = (employees who left ÷ average headcount) × 100. Replacement cost is estimated at roughly 50% of annual salary, covering recruiting, onboarding, and lost productivity.
+
+## Gross Margin Calculator
+
+URL: https://alltoolstogether.com/business/gross-margin-calculator
+
+Gross margin, gross profit, and markup from revenue and cost.
+
+Method: Gross margin = (revenue − COGS) ÷ revenue. Markup = (revenue − COGS) ÷ COGS. They describe the same profit but from different bases, which is why they differ.
+
+## Dollar-Cost Averaging Calculator
+
+URL: https://alltoolstogether.com/investing/dollar-cost-averaging-calculator
+
+Projected portfolio value from regular monthly investments.
+
+Method: Each monthly contribution compounds at the monthly equivalent of your annual return. The future value uses the annuity formula, summing all contributions plus their compounded growth.
+
+## Crypto Profit/Loss Calculator
+
+URL: https://alltoolstogether.com/investing/crypto-profit-loss-calculator
+
+Profit or loss on a crypto trade, including fees.
+
+Method: Profit = (sell price × quantity) − fees − (buy price × quantity). Fees are applied to the gross sale proceeds. The result shows both dollar P&L and percentage return.
+
+## Stock Return Calculator
+
+URL: https://alltoolstogether.com/investing/stock-return-calculator
+
+Total and annualized return on a stock investment, including dividends.
+
+Method: Total return = capital gain + dividends, as a percent of cost. Annualized return (CAGR) converts the total return into an equivalent compounded yearly rate over your holding period.
+
+## Dividend Yield Calculator
+
+URL: https://alltoolstogether.com/investing/dividend-yield-calculator
+
+Dividend yield and annual income from a dividend stock.
+
+Method: Dividend yield = (annual dividend per share ÷ share price) × 100. As price rises, yield falls; as price falls, yield rises (assuming the dividend is held constant).
+
+## P/E Ratio Calculator
+
+URL: https://alltoolstogether.com/investing/pe-ratio-calculator
+
+Price-to-earnings ratio and earnings yield for a stock.
+
+Method: P/E = share price ÷ earnings per share. Earnings yield is the inverse (EPS ÷ price), showing earnings as a percentage of price — useful for comparing to bond yields.
+
+## Paycheck Calculator
+
+URL: https://alltoolstogether.com/tax/paycheck-calculator
+
+Estimate take-home pay after federal tax, FICA, state tax, and 401(k).
+
+Method: Federal tax uses 2026 bracket tables and the standard deduction. FICA is 6.2% Social Security (up to the wage base) plus 1.45% Medicare. State tax and 401(k) use the rates you enter.
+
+## VAT Calculator
+
+URL: https://alltoolstogether.com/tax/vat-calculator
+
+Add or remove VAT at any rate, with the tax amount broken out.
+
+Method: To add VAT: gross = net × (1 + rate). To remove VAT: net = gross ÷ (1 + rate). The VAT amount is the difference between gross and net.
+
+## Self-Employment Tax Calculator
+
+URL: https://alltoolstogether.com/tax/self-employment-tax-calculator
+
+Estimate US self-employment (SECA) tax on your net business profit.
+
+Method: SE tax is 15.3% on 92.35% of net profit — 12.4% Social Security (up to the wage base) plus 2.9% Medicare. Half of the SE tax is deductible against your income tax.
+
+## Fuel Cost Calculator
+
+URL: https://alltoolstogether.com/finance/fuel-cost-calculator
+
+Estimate trip fuel cost from distance, MPG/L/100km, and fuel price.
+
+Method: US: gallons = miles ÷ MPG; cost = gallons × price. Metric: liters = (km ÷ 100) × L/100km; cost = liters × price.
+
+## Circle Area Calculator
+
+URL: https://alltoolstogether.com/math/circle-area-calculator
+
+Area and circumference of a circle from its radius.
+
+Method: Uses the mathematical constant π ≈ 3.14159. Diameter = 2 × radius.
+
+## Concrete Volume Calculator
+
+URL: https://alltoolstogether.com/construction/concrete-volume-calculator
+
+Calculate concrete volume for slabs, footings, and columns.
+
+Method: Volume = length × width × thickness. Convert cubic feet to cubic yards by dividing by 27.
+
+## Electricity Bill Calculator
+
+URL: https://alltoolstogether.com/finance/electricity-bill-calculator
+
+Estimate monthly electricity cost from kWh usage and rate.
+
+Method: Bill = kWh × rate. Many utilities also add fixed fees — add those separately if needed.
+
+## Calorie Deficit Calculator
+
+URL: https://alltoolstogether.com/health/calorie-deficit-calculator
+
+How many calories to cut for a target weekly weight loss.
+
+Method: 1 kg of fat ≈ 7700 kcal. Daily deficit = (target kg × 7700) ÷ 7. Then calories to eat = TDEE − deficit.
+
+## Waist-to-Height Ratio Calculator
+
+URL: https://alltoolstogether.com/health/waist-to-height-ratio-calculator
+
+Waist-to-height ratio as a simple health risk indicator.
+
+Method: WHtR = waist ÷ height. Both measurements should be in the same unit.
+
+## Military Time Converter
+
+URL: https://alltoolstogether.com/date-time/military-time-converter
+
+Convert between 12-hour and 24-hour (military) time.
+
+Method: 24-hour time runs from 00:00 to 23:59. 00:00 is midnight, 12:00 is noon, 13:00 is 1 PM, etc.
+
+## Pregnancy Week Calculator
+
+URL: https://alltoolstogether.com/health/pregnancy-week-calculator
+
+Current pregnancy week and trimester from last period.
+
+Method: Gestational age starts from LMP. A full term pregnancy is about 40 weeks. Trimesters are roughly weeks 1–12, 13–26, and 27–40.
+
+## Rectangle Area Calculator
+
+URL: https://alltoolstogether.com/math/rectangle-area-calculator
+
+Area and perimeter of a rectangle from length and width.
+
+Method: Simple multiplication and addition. Works for any units as long as length and width use the same unit.
+
+## Download Time Calculator
+
+URL: https://alltoolstogether.com/developer/download-time-calculator
+
+Estimate how long a file takes to download or upload from its size and transfer speed.
+
+Method: Transfer time in seconds equals file size in bits divided by transfer speed in bits per second. A byte contains 8 bits, so 100 Mbps equals 12.5 MB/s. GB uses powers of 1,000 and GiB uses powers of 1,024.
+
+## Pixel Density (PPI) Calculator
+
+URL: https://alltoolstogether.com/image/ppi-calculator
+
+Calculate screen pixels per inch, pixel pitch, and physical dimensions from resolution and diagonal.
+
+Method: With square pixels, the pixel diagonal equals the square root of width² + height². Divide it by the physical diagonal in inches for PPI. Pixel pitch in millimeters equals 25.4 divided by PPI.
+
+## Battery Life Calculator
+
+URL: https://alltoolstogether.com/science/battery-life-calculator
+
+Estimate battery runtime in hours and days from capacity in mAh and average current in mA.
+
+Method: Estimated runtime in hours equals capacity in mAh × usable percentage ÷ 100 ÷ average battery-side current in mA. The result is a charge-budget estimate. Age, temperature, voltage cutoffs, and discharge rate affect usable capacity.
+
+## Canada GST/HST Calculator
+
+URL: https://alltoolstogether.com/tax/canada-gst-hst-calculator
+
+Add or reverse Canadian GST or HST using the province or territory of supply.
+
+Method: Multiply the pre-tax amount by the GST/HST rate to add tax. To reverse a tax-inclusive amount, divide it by one plus the rate. Only enter a total that includes GST/HST alone for the reverse calculation.
+
+## US Business Mileage Calculator 2026
+
+URL: https://alltoolstogether.com/tax/us-mileage-calculator-2026
+
+Estimate the 2026 IRS business mileage amount using separate rates for each half of the year.
+
+Method: Multiply January through June business miles by $0.725 and July through December business miles by $0.76, then add the two amounts.
+
+## EMI Calculator (India)
+
+URL: https://alltoolstogether.com/finance/emi-calculator
+
+Calculate a fixed-rate loan EMI in rupees with total interest and repayment.
+
+Method: EMI = P × r / (1 − (1+r)^−n), using monthly decimal rate r and number of months n. At 0%, EMI is principal divided by months. Fees and floating-rate resets are excluded.
+
+## SIP Calculator (India)
+
+URL: https://alltoolstogether.com/investing/sip-calculator
+
+Project monthly SIP contributions in rupees using an assumed return and contribution timing.
+
+Method: The future value of monthly deposits is C × ((1+r)^n − 1) / r. Beginning-of-month deposits multiply this by (1+r). Return is an assumption, not a mutual-fund forecast; taxes and charges are excluded.
+
+## GST Calculator (India)
+
+URL: https://alltoolstogether.com/tax/india-gst-calculator
+
+Add or reverse Indian GST and split tax into IGST or CGST plus SGST/UTGST.
+
+Method: Add GST as base × rate. Reverse an inclusive price by dividing by 1 + rate. Interstate mode shows IGST; intrastate mode splits the arithmetic equally. Select the rate applicable to the supply; this tool does not determine classification or place of supply.
+
+## PPF Calculator — Annual Projection
+
+URL: https://alltoolstogether.com/finance/ppf-calculator
+
+Project a PPF-style annual savings balance using an assumed interest rate and annual contribution.
+
+Method: The model deposits the annual contribution at the start of each modeled year and compounds yearly at a constant assumed rate. Actual PPF interest uses monthly qualifying balances, credited yearly, and rates can change quarterly. This is not an account statement or exact maturity-date calculation.
+
+## FD Calculator — Deposit Maturity
+
+URL: https://alltoolstogether.com/finance/fd-calculator
+
+Estimate fixed-deposit maturity and interest before tax using an assumed compounding frequency.
+
+Method: Maturity = principal × (1 + annual rate / compounding frequency)^(frequency × years). This models a cumulative deposit without withdrawals. Bank day counts, payout options, premature closure and TDS can differ.
+
+## RD Calculator — Monthly Deposits
+
+URL: https://alltoolstogether.com/finance/rd-calculator
+
+Estimate recurring-deposit maturity from equal monthly deposits and quarterly-compounding assumptions.
+
+Method: Each monthly installment is assumed to arrive at the beginning of the month. The equivalent monthly growth factor is (1 + annual rate/4)^(1/3). Bank day-count conventions, delays, tax and penalties are excluded.
+
+## EPF Calculator — Balance Projection
+
+URL: https://alltoolstogether.com/finance/epf-calculator
+
+Project an EPF balance from actual employee and employer EPF deposits, excluding EPS.
+
+Method: Monthly deposits are held constant. Estimated monthly interest accrues on the balance before that month’s contribution and is added annually. Enter only the employer amount credited to EPF, not its separate EPS allocation. Rates, wages and contributions are assumptions; compare the passbook for actual credits.
+
+## Gratuity Calculator — Formula Estimate
+
+URL: https://alltoolstogether.com/finance/gratuity-calculator
+
+Apply the 15/26 gratuity formula to eligible monthly wages and counted service years.
+
+Method: The illustration uses eligible monthly wages × 15 / 26 × counted service years. Extra service strictly greater than six months rounds up. This does not determine legal eligibility, wage components, statutory ceiling, fixed-term treatment or tax exemption. Current labour-code rules and employment terms require separate review.
+
+## HRA Calculator — Old-Regime Exemption
+
+URL: https://alltoolstogether.com/tax/hra-calculator
+
+Estimate an eligible old-regime HRA exemption using matching-period salary, rent and HRA.
+
+Method: Exemption is the nonnegative minimum of actual HRA, rent minus 10% of Rule 2A salary, and 50% of that salary in qualifying metro cities or 40% elsewhere. Use the same period for every input. Salary definitions, evidence and regime eligibility must be confirmed separately.
+
+## India Income Tax Calculator — AY 2026–27
+
+URL: https://alltoolstogether.com/tax/india-income-tax-calculator
+
+Compare AY 2026–27 old and new regime tax on ordinary taxable income up to ₹50 lakh.
+
+Method: For resident individuals below 60 only. Enter taxable income after deductions, not gross salary. The comparison applies each regime’s slab rates, 87A rebate, new-regime marginal relief near ₹12 lakh and 4% cess. Income and final tax are rounded to ₹10. Surcharge, capital gains, special rates, agricultural income and other relief are excluded. Run each regime separately with its own taxable income when deductions differ.
+
+## Compress PDF — Local Optimization
+
+URL: https://alltoolstogether.com/pdf/compress-pdf
+
+Repack PDF objects locally and keep the smaller file without resampling images.
+
+Method: The tool rewrites supported PDFs with compressed object streams, then compares byte sizes. If the output is not smaller, the original file is offered. This does not downsample scans or guarantee a reduction. Rewriting may invalidate signatures; inspect forms, bookmarks and structure.
+
+## HEIC to JPG Converter
+
+URL: https://alltoolstogether.com/image/heic-to-jpg
+
+Convert supported HEIC or HEIF images to JPEG locally without uploading files.
+
+Method: A browser decoder reads supported HEIC/HEIF frames and encodes JPEG at 90% quality. EXIF, HDR, depth and live-photo metadata are not preserved. Unsupported codec variants may fail. JPEG is lossy.
+
+## Random Number Generator
+
+URL: https://alltoolstogether.com/math/random-number-generator
+
+Generate a random integer between inclusive bounds using browser cryptographic randomness.
+
+Method: Rejection sampling maps 32-bit cryptographic values uniformly to the selected interval. Bounds must be safe integers and span at most 2³² possible values. This is not a certified gaming or lottery service.
+
+## Coin Flip
+
+URL: https://alltoolstogether.com/math/coin-flip
+
+Flip a virtual coin with browser cryptographic randomness.
+
+Method: An unbiased random integer selects heads or tails. Draws are independent; previous results do not make the next outcome more likely.
+
+## Random Name Picker
+
+URL: https://alltoolstogether.com/math/random-name-picker
+
+Pick a random nonempty line from a locally entered list of names.
+
+Method: Every nonempty trimmed line is one equally likely entry. Duplicate names receive multiple entries. The list remains in the browser; this is not a certified prize-drawing service.
+
+## Typing Speed Test
+
+URL: https://alltoolstogether.com/text/typing-speed-test
+
+Practice typing for up to 60 seconds and see correct WPM and current text accuracy.
+
+Method: The timer starts on the first input. Correctly matched characters divided by five and elapsed minutes gives correct WPM. Accuracy compares current text positions, so edits can correct earlier errors. Pasting is disabled for practice.
+
+
+## Citation and processing notes
+
+Cite the specific tool URL, its stated assumptions and effective period. Decoding is not verification; health and financial estimates are not individual advice. Source links do not imply endorsement. Local file processing does not guarantee lossless conversion. llms.txt is informational, not an indexing or citation guarantee.

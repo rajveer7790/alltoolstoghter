@@ -2,6 +2,8 @@ import { isIndexableTool } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ALL_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
+import { GUIDES } from '@/lib/guides';
+import { STATIC_PATHS } from '@/lib/contentDates';
 import JsonLd from '@/components/JsonLd';
 
 const canonicalTools = ALL_TOOLS.filter(isIndexableTool);
@@ -47,10 +49,11 @@ export default function HtmlSitemapPage() {
         <h2>Pages</h2>
         <ul>
           <li><Link href="/">Home</Link></li>
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
-          <li><Link href="/privacy">Privacy Policy</Link></li>
-          <li><Link href="/terms">Terms of Service</Link></li>
+          {STATIC_PATHS.filter(p=>p!=='/sitemap').map(p=><li key={p}><Link href={p}>{p.slice(1).replaceAll('-', ' ')}</Link></li>)}
+          {GUIDES.map(g=><li key={g.slug}><Link href={`/guides/${g.slug}`}>{g.title}</Link></li>)}
+
+
+
         </ul>
       </section>
 

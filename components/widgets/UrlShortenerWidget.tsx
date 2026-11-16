@@ -34,7 +34,7 @@ export default function UrlShortenerWidget() {
       )}
       <div className="field"><label htmlFor="us-url">Long URL</label>
         <input id="us-url" type="url" value={url} onChange={e => setUrl(e.target.value)} placeholder="https://example.com/a/very/long/path" spellCheck={false} /></div>
-      <div className="field"><label htmlFor="us-custom">Custom alias (optional)</label>
+      <div className="field"><label htmlFor="us-custom">Custom alias (optional, moderator approval required)</label>
         <input id="us-custom" type="text" value={custom} onChange={e => setCustom(e.target.value)} placeholder="my-link" spellCheck={false} /></div>
       <div className="btn-row"><button type="button" className="btn btn-primary" onClick={run} disabled={!hasBackend || busy || !url.trim()}>{busy ? 'Shortening…' : 'Shorten URL →'}</button></div>
       {error && <p style={{ color: '#DC2626', fontSize: 13.5, marginTop: 10 }} aria-live="polite">✗ {error}</p>}
@@ -44,7 +44,7 @@ export default function UrlShortenerWidget() {
           <div className="btn-row"><button type="button" className="btn" onClick={copy}>{copied ? 'Copied ✓' : 'Copy link'}</button></div>
         </div>
       )}
-      <p className="privacy-note"><span className="dot" />links are created by your own backend — you own the data</p>
+      <p className="privacy-note"><span className="dot" />links use an online backend and may be checked by a reputation provider</p>
     </div>
   );
 }

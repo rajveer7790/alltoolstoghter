@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CATEGORIES, ALL_TOOLS, SITE } from '@/lib/registry';
+import { CATEGORIES, TOOL_COUNT, SITE } from '@/lib/registry';
 
 const GROUPS: { label: string; keys: string[] }[] = [
   { label: 'Money', keys: ['finance', 'real-estate', 'investing', 'tax', 'business'] },
@@ -25,7 +25,7 @@ export default function Footer() {
             </svg>
             <span>all<span className="tw-dot">·</span>tools<span className="tw-dot">·</span>together</span>
           </Link>
-            <p>{ALL_TOOLS.length} free tools that run entirely in your browser. No signup, no uploads, no tracking of your inputs.</p>
+            <p>{TOOL_COUNT} free tools. Calculators and file tools run locally; online services disclose their data handling.</p>
           </div>
           <div className="footer-cols">
             {GROUPS.map(g => (
@@ -47,9 +47,13 @@ export default function Footer() {
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
           <Link href="/sitemap">Sitemap</Link>
+          <Link href="/guides">Guides</Link>
+          <Link href="/embed">Embed tools</Link>
+          <Link href="/editorial-policy">Editorial policy</Link>
+          <Link href="/methodology">Methodology</Link>
         </div>
         <div className="footer-bottom">
-          <p>© {year} {SITE.name}. Every tool runs locally in your browser — your data never leaves your device.</p>
+          <p>© {year} {SITE.name}. PDFs and images are processed on your device. Online services explain when data is sent to a provider.</p>
           <p className="disclaimer">Results are estimates for information only — not financial, medical, tax, or legal advice.</p>
         </div>
       </div>

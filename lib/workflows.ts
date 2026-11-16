@@ -1,0 +1,21 @@
+// Distinct tasks in a workflow, including adjacent categories.
+export const WORKFLOWS: Record<string, string[]> = {
+ 'mortgage-calculator': ['home-affordability-calculator','property-tax-calculator','closing-costs-calculator','dti-calculator'],
+ 'home-affordability-calculator': ['dti-calculator','mortgage-calculator','closing-costs-calculator'],
+ 'profit-margin-calculator': ['gross-margin-calculator','markup-calculator','roas-calculator'],
+ 'gross-margin-calculator': ['profit-margin-calculator','markup-calculator'],
+ 'markup-calculator': ['profit-margin-calculator','gross-margin-calculator'],
+ 'concrete-calculator': ['concrete-volume-calculator','square-footage-calculator'],
+ 'concrete-volume-calculator': ['concrete-calculator','square-footage-calculator'],
+ 'average-calculator': ['mean-median-mode-calculator','standard-deviation-calculator'],
+ 'mean-median-mode-calculator': ['average-calculator','standard-deviation-calculator'],
+ 'auto-loan-calculator': ['car-payment-calculator','car-lease-calculator','loan-calculator'],
+ 'car-payment-calculator': ['auto-loan-calculator','car-lease-calculator'],
+ 'car-lease-calculator': ['car-payment-calculator','auto-loan-calculator'],
+ 'text-compare': ['diff-checker','word-counter'], 'diff-checker': ['text-compare','json-formatter'],
+ 'percentage-calculator': ['percentage-change-calculator','discount-calculator'],
+ 'percentage-change-calculator': ['percentage-calculator','roi-calculator'],
+ 'bmi-calculator': ['waist-to-height-ratio-calculator','grams-to-cups-converter'],
+ 'pdf-to-markdown': ['markdown-previewer','markdown-table-generator'],
+ 'markdown-table-generator': ['markdown-to-pdf','pdf-to-markdown'],
+};

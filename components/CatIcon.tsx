@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 /** Colored rounded icon tile: category glyph in white on an accent tile. */
 export default function CatIcon({ cat, color, size = 46 }: { cat: string; color: string; size?: number }) {
   const P: Record<string, JSX.Element> = {

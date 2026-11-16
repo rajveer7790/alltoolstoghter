@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "node --import tsx --test tests/*.test.ts",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "check": "npm run test && npm run test:backend && npm run typecheck",
     "audit:export": "node --import tsx scripts/audit-export.ts",
     "prebuild": "node --import tsx scripts/generate-discovery.ts && node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\"",

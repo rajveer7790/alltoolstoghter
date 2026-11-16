@@ -34,7 +34,7 @@ export default function Header({ categories }: { categories: (Category & { count
   useEffect(() => { setOpen(false); setActiveGroup(null); }, [pathname]);
 
   useEffect(() => {
-    const desktop = window.matchMedia('(min-width: 921px)');
+    const desktop = window.matchMedia('(min-width: 1024px)');
     const sync = () => { if (desktop.matches) setOpen(false); else setActiveGroup(null); };
     sync();
     desktop.addEventListener('change', sync);

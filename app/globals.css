@@ -308,7 +308,7 @@ a:hover { text-decoration: underline; }
 @media (max-width: 1024px) {
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
 }
-@media (max-width: 920px) {
+@media (max-width: 1023px) {
   .site-nav, .header-cta { display: none; }
   .hamburger { display: block; }
 }
@@ -549,7 +549,7 @@ a:hover { text-decoration: underline; }
 .prose, .tcard, .ilp-card, .cross-cat-card, .crumbs { overflow-wrap: anywhere; }
 .prose pre { max-width: 100%; overflow-x: auto; }
 .nav-group:nth-last-child(-n+2) .mega { left: auto; right: 0; }
-@media (max-width: 920px) {
+@media (max-width: 1023px) {
   .header-inner { gap: 12px; }
   .header-inner .brand { min-width: 0; flex-shrink: 1; font-size: clamp(13px, 3.8vw, 17px); }
   .header-inner .brand > span { white-space: nowrap; }

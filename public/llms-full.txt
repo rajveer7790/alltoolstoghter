@@ -1,8 +1,8 @@
 # All Tools Together
 
-Updated: 2026-11-16 (maintained content revision)
+Updated: 2026-11-17 (maintained content revision)
 
-> 294 free tools across 19 categories. Calculators, text utilities and file processing run locally; writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
+> 307 free tools across 19 categories. Tools marked local process on the device; advanced document conversion, writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
 
 ## Mortgage Calculator
 
@@ -2355,6 +2355,110 @@ URL: https://alltoolstogether.com/text/typing-speed-test
 Practice typing for up to 60 seconds and see correct WPM and current text accuracy.
 
 Method: The timer starts on the first input. Correctly matched characters divided by five and elapsed minutes gives correct WPM. Accuracy compares current text positions, so edits can correct earlier errors. Pasting is disabled for practice.
+
+## PDF Editor & Viewer
+
+URL: https://alltoolstogether.com/pdf/pdf-editor
+
+Open the complete PdfCraft PDF workspace: view, annotate, organize, fill forms and recognize scanned text locally.
+
+Method: Open the independently hosted PdfCraft workspace on this website. Choose your PDF, use its editing or document tools, and save the result. The editor and its local OCR assets are loaded only when opened.
+
+## Reverse PDF Pages
+
+URL: https://alltoolstogether.com/pdf/reverse-pdf-pages
+
+Reverse the page order without rasterizing the document.
+
+Method: Reverse the page order without rasterizing the document. Choose a supported file, review the operation options, process the document, and download the result. Keep and review the original.
+
+## Add Blank PDF Page
+
+URL: https://alltoolstogether.com/pdf/add-blank-pdf-page
+
+Insert a blank page before or after a chosen page.
+
+Method: Insert a blank page before or after a chosen page. Choose a supported file, review the operation options, process the document, and download the result. Keep and review the original.
+
+## Flatten PDF Forms
+
+URL: https://alltoolstogether.com/pdf/flatten-pdf-forms
+
+Turn filled form appearances into fixed page content.
+
+Method: Turn filled form appearances into fixed page content. Choose a supported file, review the operation options, process the document, and download the result. Existing digital signatures become invalid after changes. This does not remove all annotations.
+
+## Fill PDF Forms
+
+URL: https://alltoolstogether.com/pdf/fill-pdf-forms
+
+Fill text, checkbox and choice fields using their field names.
+
+Method: Fill text, checkbox and choice fields using their field names. Choose a supported file, review the operation options, process the document, and download the result. Only supported AcroForm fields are filled. XFA forms are unsupported. Fonts outside the built-in Latin font may need an embedded font.
+
+## Remove PDF Metadata
+
+URL: https://alltoolstogether.com/pdf/remove-pdf-metadata
+
+Remove standard document information and XMP metadata.
+
+Method: Remove standard document information and XMP metadata. Choose a supported file, review the operation options, process the document, and download the result. This is metadata cleanup, not document redaction or removal of content inside pages.
+
+## Crop PDF
+
+URL: https://alltoolstogether.com/pdf/crop-pdf
+
+Set visible page margins in PDF points.
+
+Method: Set visible page margins in PDF points. Choose a supported file, review the operation options, process the document, and download the result. Cropping changes the visible page box. Hidden content remains in the file.
+
+## Resize PDF Pages
+
+URL: https://alltoolstogether.com/pdf/resize-pdf-pages
+
+Fit pages inside A4 or Letter sheets while preserving aspect ratio.
+
+Method: Fit pages inside A4 or Letter sheets while preserving aspect ratio. Choose a supported file, review the operation options, process the document, and download the result. Keep and review the original.
+
+## N-Up PDF
+
+URL: https://alltoolstogether.com/pdf/n-up-pdf
+
+Place two or four source pages on each landscape sheet.
+
+Method: Place two or four source pages on each landscape sheet. Choose a supported file, review the operation options, process the document, and download the result. Keep and review the original.
+
+## PDF Booklet
+
+URL: https://alltoolstogether.com/pdf/pdf-booklet
+
+Arrange pages for a folded, left-to-right booklet.
+
+Method: Arrange pages for a folded, left-to-right booklet. Choose a supported file, review the operation options, process the document, and download the result. Pads to a multiple of four pages. Print duplex, flip on the short edge; test a small batch first.
+
+## Alternate Merge PDF
+
+URL: https://alltoolstogether.com/pdf/alternate-merge-pdf
+
+Interleave two PDFs, then append any remaining pages.
+
+Method: Interleave two PDFs, then append any remaining pages. Choose a supported file, review the operation options, process the document, and download the result. Choose exactly two PDF files in front/back order.
+
+## Add Text to PDF
+
+URL: https://alltoolstogether.com/pdf/annotate-pdf
+
+Add a text annotation to selected pages at a chosen position.
+
+Method: Add a text annotation to selected pages at a chosen position. Choose a supported file, review the operation options, process the document, and download the result. Adds new text; it does not edit or replace existing page text. Built-in font supports Latin text.
+
+## PDF to JSON
+
+URL: https://alltoolstogether.com/pdf/pdf-to-json
+
+Export page text, coordinates and dimensions as JSON.
+
+Method: Export page text, coordinates and dimensions as JSON. Choose a supported file, review the operation options, process the document, and download the result. Uses the existing text layer. Scanned pages need OCR first.
 
 
 ## Citation and processing notes

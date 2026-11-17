@@ -12,7 +12,7 @@ const root = 'out';
 const origin = new URL(SITE.url);
 const exists = (path: string) => [path, `${path}.html`, `${path}/index.html`].some(p => existsSync(join(root, p)));
 const files = (dir: string): string[] => readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? files(join(dir,e.name)) : [join(dir,e.name)]);
-const htmlFiles = files(root).filter(f => f.endsWith('.html'));
+const htmlFiles = files(root).filter(f => f.endsWith('.html') && !f.startsWith(join(root, 'pdf-editor') + '/'));
 const titles = new Map<string,string>();
 const descriptions = new Map<string,string>();
 const pageAudit: { path: string; title: string; description: string; canonical: string; robots: string; inSitemap?: boolean }[] = [];
@@ -83,7 +83,7 @@ assert.equal(urls.length,1+STATIC_PATHS.length+GUIDES.length+CATEGORIES.length+A
 for(const url of urls){const u=new URL(url);assert.equal(u.origin,origin.origin);assert.ok(exists(u.pathname));}
 for (const row of pageAudit) {
   row.inSitemap = urls.some(url => new URL(url).pathname === row.path);
-  assert.equal(row.inSitemap, new URL(row.canonical).pathname === row.path, `Sitemap and canonical mismatch: ${row.path}`);
+  assert.equal(row.inSitemap, new URL(row.canonical).pathname === row.path && !/\bnoindex\b/i.test(row.robots), `Sitemap and canonical mismatch: ${row.path}`);
 }
 // Audit actual exported anchors: discovery must work before JavaScript runs.
 const canonicalToolPaths = new Map(ALL_TOOLS.filter(isIndexableTool).map(tool => [canonicalToolPath(tool), tool]));

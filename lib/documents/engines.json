@@ -1,0 +1,128 @@
+[
+  {
+    "name": "PaddleOCR",
+    "repository": "https://github.com/PaddlePaddle/PaddleOCR",
+    "license": "Apache-2.0 code; check model notices",
+    "integration": "Optional CPU model worker",
+    "scope": "Scanned PDF and image layout recognition with DOCX export. No hosted AI key."
+  },
+  {
+    "name": "MinerU",
+    "repository": "https://github.com/opendatalab/MinerU",
+    "license": "Custom Apache-based terms and model terms",
+    "integration": "Optional, license-gated worker",
+    "scope": "Complex-layout Markdown and JSON extraction. Attribution is shown in the UI; operator must review current thresholds and model terms."
+  },
+  {
+    "name": "Docling",
+    "repository": "https://github.com/docling-project/docling",
+    "license": "MIT code; model terms vary",
+    "integration": "Optional model worker",
+    "scope": "Reading order, tables, Markdown, HTML and JSON export."
+  },
+  {
+    "name": "Gotenberg",
+    "repository": "https://github.com/gotenberg/gotenberg",
+    "license": "MIT; bundled engines retain their licenses",
+    "integration": "Docker conversion service",
+    "scope": "Office to PDF, Chromium HTML printing and PDF/A remediation."
+  },
+  {
+    "name": "Stirling PDF",
+    "repository": "https://github.com/Stirling-Tools/Stirling-PDF",
+    "license": "Open-core; component licenses vary",
+    "integration": "Optional API discovery adapter",
+    "scope": "Discovers file-processing forms from the installed OpenAPI specification. Key-dependent, account/admin and unsupported structured forms are excluded; the full upstream app remains available separately."
+  },
+  {
+    "name": "BentoPDF",
+    "repository": "https://github.com/alam00000/bentopdf",
+    "license": "AGPL-3.0 or commercial; separate component terms",
+    "integration": "Isolated optional workspace",
+    "scope": "All 114 tools in the reviewed inventory are listed. The unmodified self-hosted workspace runs separately; it is not copied into or relicensed with this Next.js application. Paid Hyper Compress/Kura rights are not granted."
+  },
+  {
+    "name": "GenOffice",
+    "repository": "https://github.com/genspark-ai/genoffice",
+    "license": "Apache-2.0 core; enterprise code excluded",
+    "integration": "Optional installed CLI adapter",
+    "scope": "Local Office/PDF format conversion. AI image generation, hosted models and account-linked features are excluded."
+  },
+  {
+    "name": "Filee",
+    "repository": "https://github.com/KnifeLemon/Filee",
+    "license": "MIT; bundled engines have separate terms",
+    "integration": "Optional installed CLI adapter",
+    "scope": "Universal conversion through filee convert. Actual format support depends on the installed engine; no claim is made that every format pair converts."
+  },
+  {
+    "name": "Marker",
+    "repository": "https://github.com/datalab-to/marker",
+    "license": "Apache-2.0 code; conditional model-weight license",
+    "integration": "Optional, license-gated worker",
+    "scope": "Local Markdown, HTML and JSON extraction. Hosted LLM enhancement is excluded. Model-weight eligibility must be verified before enabling."
+  },
+  {
+    "name": "PdfCraft",
+    "repository": "https://github.com/storytold/pdfcraft",
+    "license": "MIT or Apache-2.0; bundled notices and model licenses retained",
+    "integration": "Included browser workspace, version 0.21.1",
+    "scope": "Full independent WebAssembly PDF editor at /pdf-editor/. The release is checksum verified and distributed without changing its app or branding."
+  },
+  {
+    "name": "ONLYOFFICE Docs",
+    "repository": "https://github.com/ONLYOFFICE/DocumentServer",
+    "license": "AGPL-3.0 Community Edition; edition limits apply",
+    "integration": "Optional isolated editor service",
+    "scope": "Editable DOCX, XLSX and PPTX sessions. No paid license or external API key is supplied. An internal JWT secret protects document callbacks."
+  },
+  {
+    "name": "PDF.js",
+    "repository": "https://github.com/mozilla/pdf.js",
+    "license": "Apache-2.0",
+    "integration": "Included browser library",
+    "scope": "First-page previews and PDF text/coordinate extraction. This does not verify digital signatures."
+  },
+  {
+    "name": "qpdf",
+    "repository": "https://github.com/qpdf/qpdf",
+    "license": "Apache-2.0",
+    "integration": "Native backend executable",
+    "scope": "Linearized PDFs for progressive loading."
+  },
+  {
+    "name": "pdfcpu",
+    "repository": "https://github.com/pdfcpu/pdfcpu",
+    "license": "Apache-2.0",
+    "integration": "Native backend executable",
+    "scope": "PDF structural validation and optimization."
+  },
+  {
+    "name": "OCRmyPDF",
+    "repository": "https://github.com/ocrmypdf/OCRmyPDF",
+    "license": "MPL-2.0; dependencies retain their licenses",
+    "integration": "Native backend executable",
+    "scope": "Searchable scanned PDFs using Tesseract. Included OCR languages: English, Hindi, German, French and Spanish."
+  },
+  {
+    "name": "pdf-lib",
+    "repository": "https://github.com/Hopding/pdf-lib",
+    "license": "MIT",
+    "integration": "Included browser library",
+    "scope": "Local page organization, form filling, annotations and standard metadata cleanup."
+  },
+  {
+    "name": "pypdf",
+    "repository": "https://github.com/py-pdf/pypdf",
+    "license": "BSD-3-Clause",
+    "integration": "Native Python backend library",
+    "scope": "PDF structure, password-based decryption/encryption, attachments and text-based conversion."
+  },
+  {
+    "name": "pdfplumber",
+    "repository": "https://github.com/jsvine/pdfplumber",
+    "license": "MIT",
+    "integration": "Native Python backend library",
+    "scope": "Text-layer tables used by editable Word, Excel and CSV extraction."
+  }
+]

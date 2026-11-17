@@ -4,7 +4,7 @@ import { EDITORIAL } from '@/lib/toolEditorial';
 import { CONTENT_UPDATED, AUTHOR } from '@/lib/contentDates';
 import { guideLinksForTool } from '@/lib/guides';
 import { topicContext } from '@/lib/topicContext';
-import { canonicalToolPath } from '@/lib/toolPolicy';
+import { canonicalToolPath, isIndexableTool } from '@/lib/toolPolicy';
 import { backendGuides } from '@/lib/backendGuides';
 import { hasBackend } from '@/lib/apiClient';
 import type { Metadata } from 'next';
@@ -53,6 +53,7 @@ export async function generateMetadata({ params: pendingParams }: { params: Prom
   return {
     title: EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name,
     description,
+    robots: t.widget === 'document' && !isIndexableTool(t) ? { index: false, follow: true } : undefined,
     alternates: { canonical },
     openGraph: {
       title: `${EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name} | ${SITE.name}`,
@@ -78,6 +79,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
   const cat = getCategory(t.category)!;
   const appCategory = CATEGORY_MAP[t.category] || 'UtilitiesApplication';
   const guide = backendGuides[t.slug];
+  const pendingDocument = t.widget === 'document' && !isIndexableTool(t);
   const editorial = EDITORIAL[t.slug];
   const context = topicContext(t);
   const table = editorial?.table || referenceTable(t);
@@ -95,7 +97,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
             dateModified: CONTENT_UPDATED, inLanguage: 'en', author: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path },
             publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
           },
-          ...(!guide ? [{
+          ...(!guide && !pendingDocument ? [{
             '@type': 'WebApplication',
             name: t.name,
             url: canonicalUrl,
@@ -105,7 +107,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
             dateModified: CONTENT_UPDATED,
             author: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path },
-          }] : [{ '@type': 'WebPage', name: t.name, url: canonicalUrl, description: guide.description }]),
+          }] : [{ '@type': 'WebPage', name: t.name, url: canonicalUrl, description: guide?.description || t.short }]),
           {
             '@type': 'FAQPage',
             mainEntity: faqs.map(([q, a]) => ({
@@ -138,7 +140,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
       </nav>
       <h1 className="tool-h1">{t.name}</h1>
       <p className="tool-sub">{t.short}</p>
-      <p className="content-byline">Maintained by <Link href={AUTHOR.path}>{AUTHOR.name}</Link> · Content updated <time dateTime={CONTENT_UPDATED}>16 November 2026</time> · <Link href="/methodology">Methodology</Link></p>
+      <p className="content-byline">Maintained by <Link href={AUTHOR.path}>{AUTHOR.name}</Link> · Content updated <time dateTime={CONTENT_UPDATED}>{new Date(CONTENT_UPDATED + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time> · <Link href="/methodology">Methodology</Link></p>
       {!guide && <p className="quick-answer">{editorial?.answer || t.content.intro}</p>}
       {context && <p className="availability-note" role="note">{context.notice}</p>}
       {guide && <p className="quick-answer" role="note">{guide.description}</p>}

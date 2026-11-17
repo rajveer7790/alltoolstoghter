@@ -1,0 +1,458 @@
+[
+  {
+    "id": "edit-pdf",
+    "name": "Edit Pdf"
+  },
+  {
+    "id": "bookmark",
+    "name": "Bookmark"
+  },
+  {
+    "id": "table-of-contents",
+    "name": "Table Of Contents"
+  },
+  {
+    "id": "page-numbers",
+    "name": "Page Numbers"
+  },
+  {
+    "id": "add-page-labels",
+    "name": "Add Page Labels"
+  },
+  {
+    "id": "bates-numbering",
+    "name": "Bates Numbering"
+  },
+  {
+    "id": "add-watermark",
+    "name": "Add Watermark"
+  },
+  {
+    "id": "header-footer",
+    "name": "Header Footer"
+  },
+  {
+    "id": "invert-colors",
+    "name": "Invert Colors"
+  },
+  {
+    "id": "scanner-effect",
+    "name": "Scanner Effect"
+  },
+  {
+    "id": "adjust-colors",
+    "name": "Adjust Colors"
+  },
+  {
+    "id": "background-color",
+    "name": "Background Color"
+  },
+  {
+    "id": "text-color",
+    "name": "Text Color"
+  },
+  {
+    "id": "sign-pdf",
+    "name": "Sign Pdf"
+  },
+  {
+    "id": "add-stamps",
+    "name": "Add Stamps"
+  },
+  {
+    "id": "remove-annotations",
+    "name": "Remove Annotations"
+  },
+  {
+    "id": "crop-pdf",
+    "name": "Crop Pdf"
+  },
+  {
+    "id": "form-filler",
+    "name": "Form Filler"
+  },
+  {
+    "id": "form-creator",
+    "name": "Form Creator"
+  },
+  {
+    "id": "remove-blank-pages",
+    "name": "Remove Blank Pages"
+  },
+  {
+    "id": "image-to-pdf",
+    "name": "Image To Pdf"
+  },
+  {
+    "id": "jpg-to-pdf",
+    "name": "Jpg To Pdf"
+  },
+  {
+    "id": "png-to-pdf",
+    "name": "Png To Pdf"
+  },
+  {
+    "id": "webp-to-pdf",
+    "name": "Webp To Pdf"
+  },
+  {
+    "id": "svg-to-pdf",
+    "name": "Svg To Pdf"
+  },
+  {
+    "id": "bmp-to-pdf",
+    "name": "Bmp To Pdf"
+  },
+  {
+    "id": "heic-to-pdf",
+    "name": "Heic To Pdf"
+  },
+  {
+    "id": "tiff-to-pdf",
+    "name": "Tiff To Pdf"
+  },
+  {
+    "id": "txt-to-pdf",
+    "name": "Txt To Pdf"
+  },
+  {
+    "id": "markdown-to-pdf",
+    "name": "Markdown To Pdf"
+  },
+  {
+    "id": "json-to-pdf",
+    "name": "Json To Pdf"
+  },
+  {
+    "id": "csv-to-pdf",
+    "name": "Csv To Pdf"
+  },
+  {
+    "id": "rtf-to-pdf",
+    "name": "Rtf To Pdf"
+  },
+  {
+    "id": "odt-to-pdf",
+    "name": "Odt To Pdf"
+  },
+  {
+    "id": "word-to-pdf",
+    "name": "Word To Pdf"
+  },
+  {
+    "id": "excel-to-pdf",
+    "name": "Excel To Pdf"
+  },
+  {
+    "id": "powerpoint-to-pdf",
+    "name": "Powerpoint To Pdf"
+  },
+  {
+    "id": "xps-to-pdf",
+    "name": "Xps To Pdf"
+  },
+  {
+    "id": "mobi-to-pdf",
+    "name": "Mobi To Pdf"
+  },
+  {
+    "id": "epub-to-pdf",
+    "name": "Epub To Pdf"
+  },
+  {
+    "id": "fb2-to-pdf",
+    "name": "Fb2 To Pdf"
+  },
+  {
+    "id": "cbz-to-pdf",
+    "name": "Cbz To Pdf"
+  },
+  {
+    "id": "wpd-to-pdf",
+    "name": "Wpd To Pdf"
+  },
+  {
+    "id": "wps-to-pdf",
+    "name": "Wps To Pdf"
+  },
+  {
+    "id": "xml-to-pdf",
+    "name": "Xml To Pdf"
+  },
+  {
+    "id": "pages-to-pdf",
+    "name": "Pages To Pdf"
+  },
+  {
+    "id": "odg-to-pdf",
+    "name": "Odg To Pdf"
+  },
+  {
+    "id": "ods-to-pdf",
+    "name": "Ods To Pdf"
+  },
+  {
+    "id": "odp-to-pdf",
+    "name": "Odp To Pdf"
+  },
+  {
+    "id": "pub-to-pdf",
+    "name": "Pub To Pdf"
+  },
+  {
+    "id": "vsd-to-pdf",
+    "name": "Vsd To Pdf"
+  },
+  {
+    "id": "psd-to-pdf",
+    "name": "Psd To Pdf"
+  },
+  {
+    "id": "email-to-pdf",
+    "name": "Email To Pdf"
+  },
+  {
+    "id": "pdf-to-jpg",
+    "name": "Pdf To Jpg"
+  },
+  {
+    "id": "pdf-to-png",
+    "name": "Pdf To Png"
+  },
+  {
+    "id": "pdf-to-webp",
+    "name": "Pdf To Webp"
+  },
+  {
+    "id": "pdf-to-bmp",
+    "name": "Pdf To Bmp"
+  },
+  {
+    "id": "pdf-to-tiff",
+    "name": "Pdf To Tiff"
+  },
+  {
+    "id": "pdf-to-cbz",
+    "name": "Pdf To Cbz"
+  },
+  {
+    "id": "pdf-to-svg",
+    "name": "Pdf To Svg"
+  },
+  {
+    "id": "pdf-to-csv",
+    "name": "Pdf To Csv"
+  },
+  {
+    "id": "pdf-to-excel",
+    "name": "Pdf To Excel"
+  },
+  {
+    "id": "pdf-to-greyscale",
+    "name": "Pdf To Greyscale"
+  },
+  {
+    "id": "pdf-to-json",
+    "name": "Pdf To Json"
+  },
+  {
+    "id": "pdf-to-docx",
+    "name": "Pdf To Docx"
+  },
+  {
+    "id": "extract-images",
+    "name": "Extract Images"
+  },
+  {
+    "id": "pdf-to-markdown",
+    "name": "Pdf To Markdown"
+  },
+  {
+    "id": "prepare-pdf-for-ai",
+    "name": "Prepare Pdf For Ai"
+  },
+  {
+    "id": "pdf-to-text",
+    "name": "Pdf To Text"
+  },
+  {
+    "id": "ocr-pdf",
+    "name": "Ocr Pdf"
+  },
+  {
+    "id": "merge-pdf",
+    "name": "Merge Pdf"
+  },
+  {
+    "id": "alternate-merge",
+    "name": "Alternate Merge"
+  },
+  {
+    "id": "organize-pdf",
+    "name": "Organize Pdf"
+  },
+  {
+    "id": "add-attachments",
+    "name": "Add Attachments"
+  },
+  {
+    "id": "extract-attachments",
+    "name": "Extract Attachments"
+  },
+  {
+    "id": "edit-attachments",
+    "name": "Edit Attachments"
+  },
+  {
+    "id": "pdf-multi-tool",
+    "name": "Pdf Multi Tool"
+  },
+  {
+    "id": "pdf-layers",
+    "name": "Pdf Layers"
+  },
+  {
+    "id": "extract-tables",
+    "name": "Extract Tables"
+  },
+  {
+    "id": "split-pdf",
+    "name": "Split Pdf"
+  },
+  {
+    "id": "divide-pages",
+    "name": "Divide Pages"
+  },
+  {
+    "id": "extract-pages",
+    "name": "Extract Pages"
+  },
+  {
+    "id": "delete-pages",
+    "name": "Delete Pages"
+  },
+  {
+    "id": "add-blank-page",
+    "name": "Add Blank Page"
+  },
+  {
+    "id": "reverse-pages",
+    "name": "Reverse Pages"
+  },
+  {
+    "id": "rotate-pdf",
+    "name": "Rotate Pdf"
+  },
+  {
+    "id": "rotate-custom",
+    "name": "Rotate Custom"
+  },
+  {
+    "id": "n-up-pdf",
+    "name": "N Up Pdf"
+  },
+  {
+    "id": "pdf-booklet",
+    "name": "Pdf Booklet"
+  },
+  {
+    "id": "combine-single-page",
+    "name": "Combine Single Page"
+  },
+  {
+    "id": "view-metadata",
+    "name": "View Metadata"
+  },
+  {
+    "id": "edit-metadata",
+    "name": "Edit Metadata"
+  },
+  {
+    "id": "pdf-to-zip",
+    "name": "Pdf To Zip"
+  },
+  {
+    "id": "compare-pdfs",
+    "name": "Compare Pdfs"
+  },
+  {
+    "id": "posterize-pdf",
+    "name": "Posterize Pdf"
+  },
+  {
+    "id": "page-dimensions",
+    "name": "Page Dimensions"
+  },
+  {
+    "id": "compress-pdf",
+    "name": "Compress Pdf"
+  },
+  {
+    "id": "pdf-to-pdfa",
+    "name": "Pdf To Pdfa"
+  },
+  {
+    "id": "fix-page-size",
+    "name": "Fix Page Size"
+  },
+  {
+    "id": "linearize-pdf",
+    "name": "Linearize Pdf"
+  },
+  {
+    "id": "remove-restrictions",
+    "name": "Remove Restrictions"
+  },
+  {
+    "id": "repair-pdf",
+    "name": "Repair Pdf"
+  },
+  {
+    "id": "rasterize-pdf",
+    "name": "Rasterize Pdf"
+  },
+  {
+    "id": "deskew-pdf",
+    "name": "Deskew Pdf"
+  },
+  {
+    "id": "font-to-outline",
+    "name": "Font To Outline"
+  },
+  {
+    "id": "encrypt-pdf",
+    "name": "Encrypt Pdf"
+  },
+  {
+    "id": "sanitize-pdf",
+    "name": "Sanitize Pdf"
+  },
+  {
+    "id": "decrypt-pdf",
+    "name": "Decrypt Pdf"
+  },
+  {
+    "id": "flatten-pdf",
+    "name": "Flatten Pdf"
+  },
+  {
+    "id": "remove-metadata",
+    "name": "Remove Metadata"
+  },
+  {
+    "id": "change-permissions",
+    "name": "Change Permissions"
+  },
+  {
+    "id": "digital-sign-pdf",
+    "name": "Digital Sign Pdf"
+  },
+  {
+    "id": "validate-signature-pdf",
+    "name": "Validate Signature Pdf"
+  },
+  {
+    "id": "timestamp-pdf",
+    "name": "Timestamp Pdf"
+  }
+]

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const updated = 'November 16, 2026';
+  const updated = 'November 17, 2026';
   return (
     <StaticPage title="Privacy Policy" subtitle={`Last updated: ${updated}`}>
       <p>
@@ -25,10 +25,14 @@ export default function PrivacyPage() {
       </p>
       <h2>Browser-based tools (default)</h2>
       <p>
-        The majority of our tools — calculators, converters, text utilities, PDF tools, and image tools — run
+        Tools marked as local — including calculators, text utilities and supported PDF and image tools — run
         entirely in your web browser. Your inputs, files, and results are processed on your device and are{' '}
         <strong>not uploaded</strong> to our servers.
       </p>
+      <h2>Document Studio and server processing</h2>
+      <p>Document operations labeled server processing upload the files you select only when you press Upload &amp; process. The self-hosted service uses temporary job folders and deletes conversion inputs and results after its response. Documents are not sent to hosted AI providers by these integrations. Standard hosting and access logs can still contain request metadata; document contents are not intentionally logged.</p>
+      <p>The Office editor is different: it needs a temporary editing session. Its source and saved copy remain on the document server for up to one hour, after which the session expires and a cleanup job deletes them. Save and download before leaving. Session URLs grant access to that document; do not share them. Server crashes or provider backups may require separate operator cleanup policies.</p>
+      <p>The full PDF editor runs as a separate PdfCraft app on this site. It loads its app and OCR model files from the site, while document processing stays in your browser. Optional external workspaces retain their own processing details and notices.</p>
       <h2>Optional backend tools</h2>
       <p>
         A small number of tools (grammar checker, paraphrasing, plagiarism checker, URL shortener) may send data

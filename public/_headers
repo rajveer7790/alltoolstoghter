@@ -3,7 +3,7 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; connect-src 'self' blob: data: https://api.frankfurter.dev https://api.alltoolstogether.com; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; connect-src 'self' blob: data: https://api.frankfurter.dev https://api.alltoolstogether.com; frame-ancestors 'none'
 
 /indexnow-manifest.json
   X-Robots-Tag: noindex
@@ -16,3 +16,15 @@
 
 /internal-link-audit.json
   X-Robots-Tag: noindex
+
+/pdf-editor/*
+  X-Robots-Tag: noindex
+
+/pdf-editor/*.wasm
+  Content-Type: application/wasm
+
+/pdf-editor-version.json
+  X-Robots-Tag: noindex
+
+/pdf.worker.min.mjs
+  Content-Type: text/javascript

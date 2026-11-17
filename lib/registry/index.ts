@@ -1,4 +1,5 @@
 import { Category, CatKey, ToolDef } from '../types';
+import { DOCUMENTS } from './documents';
 import { UTILITIES } from './utilities';
 import { INDIA } from './india';
 import { isIndexableTool } from '../toolPolicy';
@@ -34,7 +35,7 @@ export const CATEGORIES: Category[] = [
   { key: 'text', name: 'Text Tools', tagline: 'Count, clean, and transform text — all in your browser.', accent: '#A21CAF' },
   { key: 'developer', name: 'Developer Tools', tagline: 'JSON, Base64, hashes, UUIDs — browser-based utilities for everyday development.', accent: '#1D4ED8' },
   { key: 'seo', name: 'SEO & Web', tagline: 'QR codes, meta tags, redirects — ship sites that rank and scan.', accent: '#047857' },
-  { key: 'pdf', name: 'PDF Tools', tagline: 'Merge, split, rotate, and stamp PDFs — entirely in your browser.', accent: '#B91C1C' },
+  { key: 'pdf', name: 'PDF Tools', tagline: 'Edit and organize locally; use clearly labeled servers for advanced conversions.', accent: '#B91C1C' },
   { key: 'image', name: 'Image Tools', tagline: 'Resize, crop, compress, and convert images — privately, on your device.', accent: '#7C3AED' },
   { key: 'construction', name: 'Construction', tagline: 'Concrete, paint, flooring, roofing — estimate materials before you build.', accent: '#92400E' },
   { key: 'cooking', name: 'Cooking & Food', tagline: 'Scale recipes, convert cooking units, and track nutrition.', accent: '#065F46' },
@@ -47,7 +48,7 @@ export const CATEGORIES: Category[] = [
   { key: 'writing', name: 'Writing Tools', tagline: 'Grammar, paraphrasing, and plagiarism checks — online services with availability shown on each page.', accent: '#0891B2' },
 ];
 
-export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA, ...PRACTICAL, ...NORTH_AMERICA, ...INDIA, ...UTILITIES];
+export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA, ...PRACTICAL, ...NORTH_AMERICA, ...INDIA, ...UTILITIES, ...DOCUMENTS];
 
 export const INDEXABLE_TOOLS = ALL_TOOLS.filter(isIndexableTool);
 export const TOOL_COUNT = INDEXABLE_TOOLS.length;
@@ -58,6 +59,6 @@ export const getCategory = (key: string) => CATEGORIES.find(c => c.key === key);
 export const SITE = {
   name: 'All Tools Together',
   url: 'https://alltoolstogether.com',
-  description: 'Fast, free online calculators, converters, PDF and image tools with browser-based file processing. Some online services use external providers; see each tool for details.',
+  description: 'Fast, free online calculators, converters, PDF and image tools with browser-based file processing. Server-powered document and writing services explain when uploads are required.',
   email: 'hello@alltoolstogether.com',
 };

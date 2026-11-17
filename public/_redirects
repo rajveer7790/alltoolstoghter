@@ -1,3 +1,4 @@
+/api/documents/* https://api.alltoolstogether.com/api/documents/:splat 200
 /icon /icon.svg 301
 /icon/icon* /icon.svg 301
 /apple-icon /apple-icon.png 301

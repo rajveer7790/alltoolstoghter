@@ -1,0 +1,126 @@
+name: alltoolstogether-documents
+services:
+  documents:
+    build:
+      context: ../..
+      dockerfile: backend/documents/Dockerfile
+    restart: unless-stopped
+    read_only: true
+    user: '10001:10001'
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    mem_limit: 2g
+    cpus: 2
+    tmpfs: ['/tmp:size=768m,mode=1777']
+    ports: ['127.0.0.1:8790:8790']
+    environment:
+      CORS_ORIGIN: ${CORS_ORIGIN:-https://alltoolstogether.com}
+      GOTENBERG_URL: http://gotenberg:3000
+      STIRLING_URL: ${STIRLING_URL:-}
+      DOCLING_URL: ${DOCLING_URL:-}
+      PADDLE_URL: ${PADDLE_URL:-}
+      MINERU_URL: ${MINERU_URL:-}
+      MARKER_URL: ${MARKER_URL:-}
+      FILEE_URL: ${FILEE_URL:-}
+      GENOFFICE_URL: ${GENOFFICE_URL:-}
+      BENTO_PUBLIC_URL: ${BENTO_PUBLIC_URL:-}
+      BENTO_INTERNAL_URL: http://bento:8080
+      DOCUMENT_PUBLIC_URL: ${DOCUMENT_PUBLIC_URL:-}
+      DOCUMENT_INTERNAL_URL: http://documents:8790
+      ONLYOFFICE_PUBLIC_URL: ${ONLYOFFICE_PUBLIC_URL:-}
+      ONLYOFFICE_INTERNAL_URL: http://onlyoffice
+      ONLYOFFICE_JWT_SECRET: ${ONLYOFFICE_JWT_SECRET:-}
+    networks: [private]
+  gotenberg:
+    image: gotenberg/gotenberg:9.6.0
+    restart: unless-stopped
+    environment:
+      CHROMIUM_DISABLE_JAVASCRIPT: 'true'
+      CHROMIUM_DENY_PRIVATE_IPS: 'true'
+      CHROMIUM_DENY_PUBLIC_IPS: 'true'
+      API_DOWNLOAD_FROM_DENY_PRIVATE_IPS: 'true'
+      API_DOWNLOAD_FROM_DENY_PUBLIC_IPS: 'true'
+      API_TIMEOUT: 180s
+    security_opt: [no-new-privileges:true]
+    mem_limit: 2g
+    cpus: 2
+    networks: [private]
+  web-api:
+    build: {context: ../.., dockerfile: backend/Dockerfile}
+    restart: unless-stopped
+    environment:
+      CORS_ORIGIN: ${CORS_ORIGIN:-https://alltoolstogether.com}
+      DATA_DIR: /app/data
+    volumes: [web-api-data:/app/data]
+    networks: [private, internet]
+  caddy:
+    image: caddy:2-alpine
+    profiles: [public]
+    restart: unless-stopped
+    ports: ['80:80', '443:443']
+    env_file: .env
+    volumes: ['./Caddyfile:/etc/caddy/Caddyfile:ro', 'caddy-data:/data', 'caddy-config:/config']
+    networks: [private, internet]
+  bento:
+    image: ${BENTO_IMAGE:-ghcr.io/alam00000/bentopdf-simple:latest}
+    profiles: [bento]
+    restart: unless-stopped
+    ports: ['127.0.0.1:8791:8080']
+    networks: [private]
+  onlyoffice:
+    image: onlyoffice/documentserver:latest
+    profiles: [office]
+    restart: unless-stopped
+    environment:
+      JWT_ENABLED: 'true'
+      JWT_SECRET: ${ONLYOFFICE_JWT_SECRET:?Run python setup.py to generate the internal editor secret}
+      ALLOW_PRIVATE_IP_ADDRESS: 'true'
+    mem_limit: 4g
+    shm_size: 1g
+    networks: [private]
+  stirling:
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:3.3.0
+    profiles: [stirling]
+    restart: unless-stopped
+    environment:
+      SECURITY_ENABLELOGIN: 'false'
+      SYSTEM_GOOGLEVISIBILITY: 'false'
+    mem_limit: 4g
+    networks: [private]
+  docling:
+    build: {context: ../.., dockerfile: backend/documents/Dockerfile.model, args: {ENGINE: docling}}
+    profiles: [docling]
+    mem_limit: 6g
+    volumes: [docling-models:/models]
+    networks: [private, internet]
+  paddle:
+    build: {context: ../.., dockerfile: backend/documents/Dockerfile.model, args: {ENGINE: paddle}}
+    profiles: [paddle]
+    mem_limit: 8g
+    volumes: [paddle-models:/models]
+    networks: [private, internet]
+  mineru:
+    build: {context: ../.., dockerfile: backend/documents/Dockerfile.model, args: {ENGINE: mineru}}
+    profiles: [mineru]
+    environment: {MINERU_LICENSE_ACCEPTED: '${MINERU_LICENSE_ACCEPTED:-false}'}
+    mem_limit: 8g
+    volumes: [mineru-models:/models]
+    networks: [private, internet]
+  marker:
+    build: {context: ../.., dockerfile: backend/documents/Dockerfile.model, args: {ENGINE: marker}}
+    profiles: [marker]
+    environment: {MARKER_LICENSE_ACCEPTED: '${MARKER_LICENSE_ACCEPTED:-false}'}
+    mem_limit: 8g
+    volumes: [marker-models:/models]
+    networks: [private, internet]
+networks:
+  private: {internal: true}
+  internet: {}
+volumes:
+  web-api-data: {}
+  caddy-data: {}
+  caddy-config: {}
+  docling-models: {}
+  paddle-models: {}
+  mineru-models: {}
+  marker-models: {}

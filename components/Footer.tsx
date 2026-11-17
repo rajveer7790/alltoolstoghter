@@ -25,7 +25,7 @@ export default function Footer() {
             </svg>
             <span>all<span className="tw-dot">·</span>tools<span className="tw-dot">·</span>together</span>
           </Link>
-            <p>{TOOL_COUNT} free tools. Calculators and file tools run locally; online services disclose their data handling.</p>
+            <p>{TOOL_COUNT} free tools. Local tools stay on your device. Server-powered tools explain when an upload is needed.</p>
           </div>
           <div className="footer-cols">
             {GROUPS.map(g => (
@@ -43,6 +43,8 @@ export default function Footer() {
         </div>
         <div className="footer-legal">
           <Link href="/tools">All tools</Link>
+          <Link href="/document-studio">Document Studio</Link>
+          <Link href="/open-source">Open source</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>
@@ -54,7 +56,7 @@ export default function Footer() {
           <Link href="/methodology">Methodology</Link>
         </div>
         <div className="footer-bottom">
-          <p>© {year} {SITE.name}. PDFs and images are processed on your device. Online services explain when data is sent to a provider.</p>
+          <p>© {year} {SITE.name}. Local tools process files on your device. Document and writing services explain when uploads are required.</p>
           <p className="disclaimer">Results are estimates for information only — not financial, medical, tax, or legal advice.</p>
         </div>
       </div>

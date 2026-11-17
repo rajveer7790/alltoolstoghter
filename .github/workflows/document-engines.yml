@@ -1,0 +1,29 @@
+name: Document engines
+on:
+  pull_request:
+    branches: [main]
+    paths: ['backend/documents/**', 'lib/documents/**', '.github/workflows/document-engines.yml']
+  push:
+    branches: [main]
+    paths: ['backend/documents/**', 'lib/documents/**', '.github/workflows/document-engines.yml']
+permissions:
+  contents: read
+jobs:
+  cpu-and-office:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - run: python backend/documents/setup.py
+      - name: Build and start actual CPU and Office engines
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml up -d --build documents gotenberg
+      - name: Document backend regression tests
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml exec -T documents python -m unittest discover -s backend/documents/tests -v
+      - name: Verify real conversions, OCR and CLI output
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml exec -T documents python backend/documents/smoke_container.py
+      - name: Inspect failures
+        if: failure()
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml logs --tail=80 documents gotenberg
+      - name: Stop test containers
+        if: always()
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml down --volumes

@@ -1,11 +1,13 @@
 # All Tools Together
 
-Updated: 2026-11-16 (maintained content revision)
+Updated: 2026-11-17 (maintained content revision)
 
-> 294 free tools across 19 categories. Calculators, text utilities and file processing run locally; writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
+> 307 free tools across 19 categories. Tools marked local process on the device; advanced document conversion, writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
 
 ## Main pages
 
+- [document-studio](https://alltoolstogether.com/document-studio)
+- [open-source](https://alltoolstogether.com/open-source)
 - [about](https://alltoolstogether.com/about)
 - [contact](https://alltoolstogether.com/contact)
 - [privacy](https://alltoolstogether.com/privacy)

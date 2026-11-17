@@ -25,3 +25,6 @@
 
 /pdf-editor-version.json
   X-Robots-Tag: noindex
+
+/pdf.worker.min.mjs
+  Content-Type: text/javascript

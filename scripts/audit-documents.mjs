@@ -16,7 +16,7 @@ const fixture = resolve(artifacts, 'sample.pdf'); writeFileSync(fixture, await s
 const api = spawn(process.env.PYTHON || 'python', ['-m','uvicorn','backend.documents.app:app','--host','127.0.0.1','--port','8790','--no-access-log'], { stdio: 'ignore' });
 const root = resolve('out');
 const policy = readFileSync('public/_headers','utf8').split('\n').find(line => line.trim().startsWith('Content-Security-Policy:')).split('Content-Security-Policy: ')[1];
-const mime = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.svg':'image/svg+xml','.png':'image/png','.txt':'text/plain'};
+const mime = {'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.svg':'image/svg+xml','.png':'image/png','.txt':'text/plain'};
 const server = http.createServer(async (request,response) => {
   const url = new URL(request.url,'http://localhost');
   if (url.pathname.startsWith('/api/documents/')) {

@@ -1,5 +1,5 @@
 FROM golang:1-bookworm AS pdfcpu
-ARG PDFCPU_VERSION=latest
+ARG PDFCPU_VERSION=v0.16.4
 RUN go install github.com/pdfcpu/pdfcpu/cmd/pdfcpu@${PDFCPU_VERSION}
 
 FROM python:3.12-slim-bookworm

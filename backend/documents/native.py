@@ -260,11 +260,11 @@ def process(operation: str, files: list[Path], options: dict, directory: Path) -
         return output
     if operation in {'validate-pdf', 'optimize-pdf'}:
         if operation == 'validate-pdf':
-            run(['pdfcpu', 'validate', '-mode', 'relaxed', str(source)], directory)
+            run(['pdfcpu', 'validate', '-m', 'relaxed', '--offline', str(source)], directory)
             output = directory / 'validation.json'
             output.write_text(json.dumps({'structurallyValid': True, 'engine': 'pdfcpu', 'mode': 'relaxed', 'notChecked': ['PDF/A', 'PDF/UA', 'signatures']}))
         else:
-            run(['pdfcpu', 'optimize', str(source), str(output)], directory)
+            run(['pdfcpu', 'optimize', '--offline', str(source), str(output)], directory)
         return output
     if operation == 'ocr-pdf':
         from .engines import check_language

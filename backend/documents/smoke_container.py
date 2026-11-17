@@ -22,6 +22,12 @@ with httpx.Client(timeout=330, trust_env=False) as client:
 
     def convert(tool, content, filename, options=None):
         response = client.post(base + '/process/' + tool, files={'files': (filename, content)}, data={'options': json.dumps(options or {})})
+        if response.status_code != 200 and tool == 'validate-pdf':
+            import subprocess, tempfile
+            with tempfile.TemporaryDirectory() as temporary:
+                path = Path(temporary) / 'diagnostic.pdf'; path.write_bytes(content)
+                diagnostic = subprocess.run(['pdfcpu','validate','-m','relaxed','--offline',str(path)], capture_output=True, text=True)
+                print('Synthetic fixture validation diagnostic:', diagnostic.stdout, diagnostic.stderr, flush=True)
         assert response.status_code == 200, (tool, response.status_code, response.text[:200])
         return response.content
 

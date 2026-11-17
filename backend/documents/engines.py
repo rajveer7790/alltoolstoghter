@@ -34,7 +34,7 @@ def available(engine):
         return True, ''  # Service readiness is checked separately by the API.
     if engine in {'docling', 'paddle'}:
         module = 'paddleocr' if engine == 'paddle' else engine
-        ready = importlib.util.find_spec(module) is not None
+        ready = importlib.util.find_spec(module) is not None or (os.getenv('MODEL_ENGINE') == engine and Path(os.getenv('MODEL_PYTHON', '/not-installed')).is_file())
     else:
         ready = bool(shutil.which(BINS.get(engine, engine)))
     if engine in {'marker', 'mineru'} and os.getenv(engine.upper() + '_LICENSE_ACCEPTED') != 'true':
@@ -131,7 +131,7 @@ def process(tool, paths, options, directory):
         request.write_text(json.dumps({'engine': engine, 'operation': operation, 'input': str(source), 'output': str(destination)}))
         # Import heavy models only in a killable, per-job child process.
         script = Path(__file__).with_name('model_worker.py')
-        run([sys.executable, str(script), str(request)], directory, 300)
+        run([os.getenv('MODEL_PYTHON', sys.executable), str(script), str(request)], directory, 300)
     elif engine == 'mineru':
         run(['mineru', '-p', str(source), '-o', str(destination), '-b', 'pipeline'], directory, 300)
     elif engine == 'marker':

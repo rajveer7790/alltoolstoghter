@@ -1,0 +1,18 @@
+{$DOCUMENT_API_HOST:localhost} {
+    encode zstd gzip
+    @documents path /api/documents/*
+    handle @documents {
+        uri strip_prefix /api/documents
+        reverse_proxy documents:8790
+    }
+    handle {
+        reverse_proxy web-api:8787
+    }
+}
+{$BENTO_HOST:pdf-workspace.localhost} {
+    encode zstd gzip
+    reverse_proxy bento:8080
+}
+{$OFFICE_HOST:office.localhost} {
+    reverse_proxy onlyoffice:80
+}

@@ -5,6 +5,8 @@ import { resolve, extname, sep } from 'node:path';
 import { chromium } from 'playwright';
 
 const root = resolve('out');
+const catalog = JSON.parse(readFileSync(resolve(root, 'internal-link-audit.json'), 'utf8')).tools;
+const totalTools = catalog.length;
 const artifacts = resolve('mobile-audit');
 mkdirSync(artifacts, { recursive: true });
 const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.txt': 'text/plain' };
@@ -91,11 +93,11 @@ try {
   await search.fill('mortgage');
   await page.waitForFunction(() => {
     const count = document.querySelectorAll('.ilp-card').length;
-    return count > 0 && count < 294;
+    return count > 0 && count < document.querySelector('.ilp-tab-n').textContent * 1;
   });
   assert.equal(new URL(page.url()).searchParams.get('q'), 'mortgage');
   await search.fill('');
-  await page.waitForFunction(() => document.querySelectorAll('.ilp-card').length === 294);
+  await page.waitForFunction(total => document.querySelectorAll('.ilp-card').length === total, totalTools);
   assert.equal(new URL(page.url()).searchParams.has('q'), false);
   await checkLayout(page, '/', 1280);
   await page.getByRole('button', { name: 'Money', exact: true }).click();
@@ -106,7 +108,7 @@ try {
   await page.waitForURL(origin + '/tools');
 
   // Every canonical tool, including less prominent routes, at a phone width.
-  const tools = JSON.parse(readFileSync(resolve(root, 'internal-link-audit.json'), 'utf8')).tools;
+  const tools = catalog;
   let cursor = 0;
   await Promise.all(Array.from({ length: 3 }, async () => {
     const worker = await context.newPage();

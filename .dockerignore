@@ -1,0 +1,12 @@
+.git
+node_modules
+.next
+out
+.cache
+**/__pycache__
+backend/data
+**/.env
+**/.env.*
+!**/.env.example
+mobile-audit
+document-audit

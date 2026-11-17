@@ -1,0 +1,1007 @@
+[
+  {
+    "id": "pdf-editor",
+    "name": "PDF Editor & Viewer",
+    "group": "Edit",
+    "description": "Open the complete PdfCraft PDF workspace: view, annotate, organize, fill forms and recognize scanned text locally.",
+    "mode": "workspace",
+    "engine": "pdfcraft",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "The full editor loads separately. OCR is memory intensive; use a desktop for large scans. Powered by PdfCraft, with its upstream notices retained.",
+    "page": true
+  },
+  {
+    "id": "reverse-pdf-pages",
+    "name": "Reverse PDF Pages",
+    "group": "Organize",
+    "description": "Reverse the page order without rasterizing the document.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "add-blank-pdf-page",
+    "name": "Add Blank PDF Page",
+    "group": "Organize",
+    "description": "Insert a blank page before or after a chosen page.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "after",
+        "label": "Insert after page (0 = beginning)",
+        "kind": "number",
+        "default": "1",
+        "min": 0
+      }
+    ],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "flatten-pdf-forms",
+    "name": "Flatten PDF Forms",
+    "group": "Forms",
+    "description": "Turn filled form appearances into fixed page content.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Existing digital signatures become invalid after changes. This does not remove all annotations.",
+    "page": true
+  },
+  {
+    "id": "fill-pdf-forms",
+    "name": "Fill PDF Forms",
+    "group": "Forms",
+    "description": "Fill text, checkbox and choice fields using their field names.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "values",
+        "label": "Field values (JSON)",
+        "kind": "textarea",
+        "default": "{}"
+      }
+    ],
+    "note": "Only supported AcroForm fields are filled. XFA forms are unsupported. Fonts outside the built-in Latin font may need an embedded font.",
+    "page": true
+  },
+  {
+    "id": "remove-pdf-metadata",
+    "name": "Remove PDF Metadata",
+    "group": "Security",
+    "description": "Remove standard document information and XMP metadata.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "This is metadata cleanup, not document redaction or removal of content inside pages.",
+    "page": true
+  },
+  {
+    "id": "crop-pdf",
+    "name": "Crop PDF",
+    "group": "Edit",
+    "description": "Set visible page margins in PDF points.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "pages",
+        "label": "Pages (blank means all)",
+        "kind": "text",
+        "default": "",
+        "placeholder": "1, 3-5"
+      },
+      {
+        "key": "top",
+        "label": "Top margin (pt)",
+        "kind": "number",
+        "default": "20",
+        "min": 0,
+        "max": 1000
+      },
+      {
+        "key": "right",
+        "label": "Right margin (pt)",
+        "kind": "number",
+        "default": "20",
+        "min": 0,
+        "max": 1000
+      },
+      {
+        "key": "bottom",
+        "label": "Bottom margin (pt)",
+        "kind": "number",
+        "default": "20",
+        "min": 0,
+        "max": 1000
+      },
+      {
+        "key": "left",
+        "label": "Left margin (pt)",
+        "kind": "number",
+        "default": "20",
+        "min": 0,
+        "max": 1000
+      }
+    ],
+    "note": "Cropping changes the visible page box. Hidden content remains in the file.",
+    "page": true
+  },
+  {
+    "id": "resize-pdf-pages",
+    "name": "Resize PDF Pages",
+    "group": "Organize",
+    "description": "Fit pages inside A4 or Letter sheets while preserving aspect ratio.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "size",
+        "label": "Paper size",
+        "kind": "select",
+        "default": "A4",
+        "options": [
+          "A4",
+          "Letter"
+        ]
+      },
+      {
+        "key": "landscape",
+        "label": "Landscape",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "n-up-pdf",
+    "name": "N-Up PDF",
+    "group": "Organize",
+    "description": "Place two or four source pages on each landscape sheet.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "perSheet",
+        "label": "Pages per sheet",
+        "kind": "select",
+        "default": "2",
+        "options": [
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "pdf-booklet",
+    "name": "PDF Booklet",
+    "group": "Organize",
+    "description": "Arrange pages for a folded, left-to-right booklet.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Pads to a multiple of four pages. Print duplex, flip on the short edge; test a small batch first.",
+    "page": true
+  },
+  {
+    "id": "alternate-merge-pdf",
+    "name": "Alternate Merge PDF",
+    "group": "Organize",
+    "description": "Interleave two PDFs, then append any remaining pages.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": true,
+    "fields": [],
+    "note": "Choose exactly two PDF files in front/back order.",
+    "page": true
+  },
+  {
+    "id": "annotate-pdf",
+    "name": "Add Text to PDF",
+    "group": "Edit",
+    "description": "Add a text annotation to selected pages at a chosen position.",
+    "mode": "local",
+    "engine": "pdf-lib",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "text",
+        "label": "Text to add",
+        "kind": "text",
+        "default": "Reviewed"
+      },
+      {
+        "key": "pages",
+        "label": "Pages (blank means all)",
+        "kind": "text",
+        "default": "",
+        "placeholder": "1, 3-5"
+      },
+      {
+        "key": "x",
+        "label": "Left position (pt)",
+        "kind": "number",
+        "default": "40",
+        "min": 0
+      },
+      {
+        "key": "y",
+        "label": "Top position (pt)",
+        "kind": "number",
+        "default": "40",
+        "min": 0
+      },
+      {
+        "key": "fontSize",
+        "label": "Font size (pt)",
+        "kind": "number",
+        "default": "14",
+        "min": 6,
+        "max": 100
+      }
+    ],
+    "note": "Adds new text; it does not edit or replace existing page text. Built-in font supports Latin text.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-json",
+    "name": "PDF to JSON",
+    "group": "Extract",
+    "description": "Export page text, coordinates and dimensions as JSON.",
+    "mode": "local",
+    "engine": "pdfjs",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Uses the existing text layer. Scanned pages need OCR first.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-word",
+    "name": "PDF to Word",
+    "group": "Convert",
+    "description": "Convert text-based PDF pages and detected tables into an editable DOCX.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "layout",
+        "label": "Output style",
+        "kind": "select",
+        "default": "reflow",
+        "options": [
+          "reflow",
+          "page-breaks"
+        ]
+      }
+    ],
+    "note": "Reconstructs editable text and tables; it cannot guarantee original pagination, fonts, equations or complex layout. For scans, use OCR or the PaddleOCR option.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-excel",
+    "name": "PDF to Excel",
+    "group": "Extract",
+    "description": "Extract detected tables into an XLSX workbook.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Text-based tables work best. Borderless or scanned tables may need review or OCR.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-csv",
+    "name": "PDF to CSV",
+    "group": "Extract",
+    "description": "Save detected PDF tables as separate CSV files in a ZIP archive.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "No table is invented when extraction finds none. Scanned tables need OCR or a layout model.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-html",
+    "name": "PDF to HTML",
+    "group": "Convert",
+    "description": "Export existing page text into a clean, escaped HTML document.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Reflowed text output; not a pixel-perfect page reproduction.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-powerpoint",
+    "name": "PDF to PowerPoint",
+    "group": "Convert",
+    "description": "Place each rendered PDF page on a separate PowerPoint slide.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Slides contain page images. Individual text and shapes are not editable.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-tiff",
+    "name": "PDF to TIFF",
+    "group": "Convert",
+    "description": "Render pages into a multipage TIFF image.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "dpi",
+        "label": "Resolution (DPI)",
+        "kind": "select",
+        "default": "150",
+        "options": [
+          "96",
+          "150",
+          "200"
+        ]
+      }
+    ],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "pdf-to-svg",
+    "name": "PDF to SVG",
+    "group": "Convert",
+    "description": "Export pages as SVG files through Poppler.",
+    "mode": "server",
+    "engine": "poppler",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "extract-pdf-images",
+    "name": "Extract PDF Images",
+    "group": "Extract",
+    "description": "Download embedded page images in a ZIP archive.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "extract-pdf-attachments",
+    "name": "Extract PDF Attachments",
+    "group": "Extract",
+    "description": "Save document attachments into a ZIP archive.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Attachments are untrusted files. Downloading does not execute them.",
+    "page": true
+  },
+  {
+    "id": "pdf-bookmarks-to-json",
+    "name": "PDF Bookmarks to JSON",
+    "group": "Extract",
+    "description": "Export the document outline and destination page numbers.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "remove-pdf-annotations",
+    "name": "Remove PDF Annotations",
+    "group": "Edit",
+    "description": "Remove page annotations while keeping page content.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Comments, links and widgets can be removed. Review the result because form widgets are annotations.",
+    "page": true
+  },
+  {
+    "id": "repair-pdf",
+    "name": "Repair PDF",
+    "group": "Optimize",
+    "description": "Rebuild the cross-reference structure of a readable PDF.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Recovery is best effort. Missing or damaged page content cannot always be recovered.",
+    "page": true
+  },
+  {
+    "id": "protect-pdf",
+    "name": "Protect PDF",
+    "group": "Security",
+    "description": "Encrypt a PDF using AES-256 and a password.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "password",
+        "label": "New document password",
+        "kind": "password",
+        "default": "",
+        "required": true
+      }
+    ],
+    "note": "Keep the password safely. Changes invalidate existing digital signatures.",
+    "page": true
+  },
+  {
+    "id": "unlock-pdf",
+    "name": "Unlock PDF",
+    "group": "Security",
+    "description": "Remove encryption using the document password you supply.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "password",
+        "label": "Current document password",
+        "kind": "password",
+        "default": "",
+        "required": true
+      }
+    ],
+    "note": "A valid password is required for encrypted documents. This tool does not crack passwords.",
+    "page": true
+  },
+  {
+    "id": "rasterize-pdf",
+    "name": "Rasterize PDF",
+    "group": "Convert",
+    "description": "Rebuild each PDF page as an image-only page.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "dpi",
+        "label": "Resolution (DPI)",
+        "kind": "select",
+        "default": "150",
+        "options": [
+          "96",
+          "150",
+          "200"
+        ]
+      }
+    ],
+    "note": "Removes selectable text, forms, links, tags and signatures. Review visual quality and keep the original.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-grayscale",
+    "name": "PDF to Grayscale",
+    "group": "Convert",
+    "description": "Rebuild each page as a grayscale image.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "dpi",
+        "label": "Resolution (DPI)",
+        "kind": "select",
+        "default": "150",
+        "options": [
+          "96",
+          "150",
+          "200"
+        ]
+      }
+    ],
+    "note": "Rasterized output loses searchable text and interactive content.",
+    "page": true
+  },
+  {
+    "id": "compare-pdfs",
+    "name": "Compare PDF Files",
+    "group": "Extract",
+    "description": "Render two PDFs and download a page-by-page visual difference report.",
+    "mode": "server",
+    "engine": "native",
+    "accept": ".pdf",
+    "multiple": true,
+    "fields": [],
+    "note": "Compares pixels at 96 DPI, not legal meaning or edit history. Choose exactly two PDFs.",
+    "page": true
+  },
+  {
+    "id": "ocr-pdf",
+    "name": "OCR PDF",
+    "group": "OCR",
+    "description": "Add a searchable text layer to scanned PDF pages.",
+    "mode": "server",
+    "engine": "ocrmypdf",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "language",
+        "label": "OCR language",
+        "kind": "select",
+        "default": "eng",
+        "options": [
+          "eng",
+          "hin",
+          "deu",
+          "fra",
+          "spa"
+        ]
+      },
+      {
+        "key": "deskew",
+        "label": "Deskew scans",
+        "kind": "checkbox",
+        "default": true
+      }
+    ],
+    "note": "OCR can misread names, numbers, handwriting and tables. Review important text.",
+    "page": true
+  },
+  {
+    "id": "image-to-text",
+    "name": "Image to Text",
+    "group": "OCR",
+    "description": "Recognize text in a PNG, JPG or TIFF image with Tesseract.",
+    "mode": "server",
+    "engine": "tesseract",
+    "accept": ".png,.jpg,.jpeg,.tif,.tiff",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "language",
+        "label": "OCR language",
+        "kind": "select",
+        "default": "eng",
+        "options": [
+          "eng",
+          "hin",
+          "deu",
+          "fra",
+          "spa"
+        ]
+      }
+    ],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "linearize-pdf",
+    "name": "Linearize PDF",
+    "group": "Optimize",
+    "description": "Optimize a PDF for progressive web viewing with qpdf.",
+    "mode": "server",
+    "engine": "qpdf",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "compress-pdf-server",
+    "name": "Compress PDF \u2014 Server",
+    "group": "Optimize",
+    "description": "Recompress PDF images through Ghostscript.",
+    "mode": "server",
+    "engine": "ghostscript",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "quality",
+        "label": "Image quality",
+        "kind": "select",
+        "default": "ebook",
+        "options": [
+          "screen",
+          "ebook",
+          "printer",
+          "prepress"
+        ]
+      }
+    ],
+    "note": "Lossy compression may soften images and remove interactive content. Smaller output is not guaranteed.",
+    "page": true
+  },
+  {
+    "id": "validate-pdf",
+    "name": "Validate PDF",
+    "group": "Inspect",
+    "description": "Inspect PDF structure using pdfcpu.",
+    "mode": "server",
+    "engine": "pdfcpu",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Structural validation is not PDF/A, PDF/UA or digital signature certification.",
+    "page": true
+  },
+  {
+    "id": "optimize-pdf",
+    "name": "Optimize PDF",
+    "group": "Optimize",
+    "description": "Optimize a PDF with pdfcpu without intentionally reducing image quality.",
+    "mode": "server",
+    "engine": "pdfcpu",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "",
+    "page": true
+  },
+  {
+    "id": "word-to-pdf",
+    "name": "Word to PDF",
+    "group": "Convert",
+    "description": "Convert Word documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".doc,.docx",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "excel-to-pdf",
+    "name": "Excel to PDF",
+    "group": "Convert",
+    "description": "Convert Excel documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".xls,.xlsx",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "powerpoint-to-pdf",
+    "name": "PowerPoint to PDF",
+    "group": "Convert",
+    "description": "Convert PowerPoint documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".ppt,.pptx",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "odt-to-pdf",
+    "name": "ODT to PDF",
+    "group": "Convert",
+    "description": "Convert ODT documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".odt",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "rtf-to-pdf",
+    "name": "RTF to PDF",
+    "group": "Convert",
+    "description": "Convert RTF documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".rtf",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "ods-to-pdf",
+    "name": "ODS to PDF",
+    "group": "Convert",
+    "description": "Convert ODS documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".ods",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "odp-to-pdf",
+    "name": "ODP to PDF",
+    "group": "Convert",
+    "description": "Convert ODP documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".odp",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "office-to-pdf",
+    "name": "Office to PDF",
+    "group": "Convert",
+    "description": "Convert Office documents to PDF with LibreOffice through Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp,.rtf",
+    "multiple": false,
+    "fields": [],
+    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "page": true
+  },
+  {
+    "id": "html-to-pdf",
+    "name": "HTML to PDF",
+    "group": "Convert",
+    "description": "Print an uploaded HTML file to PDF through Chromium.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".html,.htm",
+    "multiple": false,
+    "fields": [],
+    "note": "Scripts and outbound network access are disabled in the supplied container configuration.",
+    "page": true
+  },
+  {
+    "id": "pdf-to-pdfa",
+    "name": "PDF to PDF/A",
+    "group": "Optimize",
+    "description": "Remediate a PDF into an archival profile using Gotenberg.",
+    "mode": "server",
+    "engine": "gotenberg",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "profile",
+        "label": "Archival profile",
+        "kind": "select",
+        "default": "PDF/A-2b",
+        "options": [
+          "PDF/A-1b",
+          "PDF/A-2b",
+          "PDF/A-3b"
+        ]
+      }
+    ],
+    "note": "Check conformance independently for regulated archiving. Conversion can change fonts or appearance.",
+    "page": true
+  },
+  {
+    "id": "docling-to-markdown",
+    "name": "Document to Markdown \u2014 Docling",
+    "group": "AI extraction",
+    "description": "Extract document structure, reading order and tables with Docling.",
+    "mode": "server",
+    "engine": "docling",
+    "accept": ".pdf,.docx,.pptx,.xlsx,.png,.jpg,.html",
+    "multiple": false,
+    "fields": [],
+    "note": "Runs a self-hosted layout model. Model files download separately; inspect reconstructed tables and formulas.",
+    "page": false
+  },
+  {
+    "id": "docling-to-json",
+    "name": "Document to JSON \u2014 Docling",
+    "group": "AI extraction",
+    "description": "Extract document structure, reading order and tables with Docling.",
+    "mode": "server",
+    "engine": "docling",
+    "accept": ".pdf,.docx,.pptx,.xlsx,.png,.jpg,.html",
+    "multiple": false,
+    "fields": [],
+    "note": "Runs a self-hosted layout model. Model files download separately; inspect reconstructed tables and formulas.",
+    "page": false
+  },
+  {
+    "id": "docling-to-html",
+    "name": "Document to HTML \u2014 Docling",
+    "group": "AI extraction",
+    "description": "Extract document structure, reading order and tables with Docling.",
+    "mode": "server",
+    "engine": "docling",
+    "accept": ".pdf,.docx,.pptx,.xlsx,.png,.jpg,.html",
+    "multiple": false,
+    "fields": [],
+    "note": "Runs a self-hosted layout model. Model files download separately; inspect reconstructed tables and formulas.",
+    "page": false
+  },
+  {
+    "id": "paddle-pdf-to-word",
+    "name": "Scanned PDF to Word \u2014 PaddleOCR",
+    "group": "OCR",
+    "description": "Recognize layout and export a DOCX with PP-StructureV3.",
+    "mode": "server",
+    "engine": "paddle",
+    "accept": ".pdf,.png,.jpg,.jpeg",
+    "multiple": false,
+    "fields": [],
+    "note": "Self-hosted models, no cloud API key. Complex layout and handwriting may require manual corrections.",
+    "page": false
+  },
+  {
+    "id": "mineru-to-markdown",
+    "name": "PDF to Markdown \u2014 MinerU",
+    "group": "AI extraction",
+    "description": "Parse complex PDF layouts with a self-hosted MinerU engine.",
+    "mode": "server",
+    "engine": "mineru",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "MinerU attribution and current code/model license terms apply. Enable only after reviewing them.",
+    "page": false
+  },
+  {
+    "id": "mineru-to-json",
+    "name": "PDF to JSON \u2014 MinerU",
+    "group": "AI extraction",
+    "description": "Parse complex PDF layouts with a self-hosted MinerU engine.",
+    "mode": "server",
+    "engine": "mineru",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "MinerU attribution and current code/model license terms apply. Enable only after reviewing them.",
+    "page": false
+  },
+  {
+    "id": "marker-to-markdown",
+    "name": "PDF to Markdown \u2014 Marker",
+    "group": "AI extraction",
+    "description": "Extract structured document content with a local Marker model.",
+    "mode": "server",
+    "engine": "marker",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Model-weight commercial conditions apply. LLM enhancement is disabled; no external AI key is used.",
+    "page": false
+  },
+  {
+    "id": "marker-to-json",
+    "name": "PDF to JSON \u2014 Marker",
+    "group": "AI extraction",
+    "description": "Extract structured document content with a local Marker model.",
+    "mode": "server",
+    "engine": "marker",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Model-weight commercial conditions apply. LLM enhancement is disabled; no external AI key is used.",
+    "page": false
+  },
+  {
+    "id": "marker-to-html",
+    "name": "PDF to HTML \u2014 Marker",
+    "group": "AI extraction",
+    "description": "Extract structured document content with a local Marker model.",
+    "mode": "server",
+    "engine": "marker",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Model-weight commercial conditions apply. LLM enhancement is disabled; no external AI key is used.",
+    "page": false
+  },
+  {
+    "id": "filee-converter",
+    "name": "Universal File Converter \u2014 Filee",
+    "group": "Convert",
+    "description": "Use the installed Filee engine to convert supported document, image, media or ebook formats.",
+    "mode": "server",
+    "engine": "filee",
+    "accept": "*",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "to",
+        "label": "Output extension",
+        "kind": "text",
+        "default": "pdf",
+        "required": true
+      }
+    ],
+    "note": "Available format pairs depend on the installed Filee version and optional engines. Unsupported pairs return an error.",
+    "page": false
+  },
+  {
+    "id": "genoffice-converter",
+    "name": "Office Converter \u2014 GenOffice",
+    "group": "Convert",
+    "description": "Convert supported Office and PDF formats with the installed GenOffice CLI.",
+    "mode": "server",
+    "engine": "genoffice",
+    "accept": ".doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp,.pdf,.md,.html",
+    "multiple": false,
+    "fields": [
+      {
+        "key": "to",
+        "label": "Output format",
+        "kind": "select",
+        "default": "pdf",
+        "options": [
+          "pdf",
+          "docx",
+          "xlsx",
+          "pptx",
+          "md",
+          "html"
+        ]
+      }
+    ],
+    "note": "Uses local conversion only. AI, account-linked and cloud commands are excluded.",
+    "page": false
+  }
+]

@@ -119,6 +119,7 @@ export default function Header({ categories }: { categories: (Category & { count
           </div>
           <nav aria-label="Mobile categories">
             <Link href="/tools" className="drawer-link" onClick={() => setOpen(false)}>All tools</Link>
+            <Link href="/document-studio" className="drawer-link" onClick={() => setOpen(false)}>Document Studio</Link>
             <Link href="/guides" className="drawer-link" onClick={() => setOpen(false)}>Practical guides</Link>
             {GROUPS.map(g => <div key={g.label} className="drawer-group">
               <div className="drawer-label">{g.label}</div>

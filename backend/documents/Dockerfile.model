@@ -1,0 +1,19 @@
+FROM python:3.12-slim-bookworm
+ARG ENGINE=docling
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HF_HOME=/models/huggingface PADDLE_PDX_CACHE_HOME=/models/paddle OMP_NUM_THREADS=2
+RUN apt-get update && apt-get install -y --no-install-recommends libglib2.0-0 libgl1 libgomp1 fonts-dejavu-core && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY backend/documents/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+RUN case "$ENGINE" in \
+    docling) pip install --no-cache-dir docling ;; \
+    paddle) pip install --no-cache-dir paddlepaddle 'paddleocr[doc-parser]' ;; \
+    mineru) pip install --no-cache-dir 'mineru[torch]' ;; \
+    marker) pip install --no-cache-dir marker-pdf ;; \
+    *) echo 'Unsupported engine' && exit 1 ;; esac
+RUN useradd --uid 10001 --create-home worker && mkdir /models && chown worker /models
+COPY backend/documents /app/backend/documents
+COPY lib/documents/tools.json /app/lib/documents/tools.json
+USER worker
+EXPOSE 8790
+CMD ["uvicorn", "backend.documents.app:app", "--host", "0.0.0.0", "--port", "8790", "--no-access-log", "--no-proxy-headers"]

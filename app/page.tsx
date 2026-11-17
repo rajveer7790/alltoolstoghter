@@ -72,11 +72,12 @@ export default function Home() {
       <section className="ilp-hero">
         <div className="wrap">
           <h1>Free Online Calculators, Converters & Tools<br className="ilp-br" /> for Everyday Tasks</h1>
-          <p>All {canonicalTools.length} tools are 100% FREE and easy to use! Calculate, convert, edit PDFs and images with just a few clicks — PDFs, images, and calculations are processed on your device. Online services disclose when a server is needed.</p>
+          <p>All {canonicalTools.length} tools are 100% FREE and easy to use! Calculate, convert, edit PDFs and images with just a few clicks — Local tools process files on your device. Advanced document services clearly show when an upload is needed.</p>
           <div className="btn-row hero-actions"><Link href="/tools" className="btn btn-primary">Browse all {canonicalTools.length} tools</Link><Link href="#tool-search" className="btn">Search tools</Link></div>
         </div>
       </section>
 
+      <section className="wrap ds-home-promo"><div><span className="ds-eyebrow">NEW / DOCUMENT STUDIO</span><h2>A better workspace for your documents.</h2><p>Edit PDFs locally, organize pages and explore Office conversion and OCR in one place.</p></div><Link className="btn btn-primary" href="/document-studio">Open Document Studio ↗</Link></section>
       <CategoryQuickLinks />
       <section className="wrap">
         <PopularTools title="Featured tools" limit={12} />
@@ -108,7 +109,7 @@ export default function Home() {
       {/* trust band (kept) */}
       <section className="trust-band">
         <div className="wrap trust-grid">
-          <div className="trust-item"><h3>Runs in your browser</h3><p>Calculations and file processing happen on your device. PDF and image files stay on your device. Online writing services send submitted text to their provider.</p></div>
+          <div className="trust-item"><h3>Runs in your browser</h3><p>Calculations and file processing happen on your device. Tools marked local keep your files on your device. Server-powered document and writing tools disclose their upload processing.</p></div>
           <div className="trust-item"><h3>No signup, no cost</h3><p>Browser-based tools are free to use without an account. No account, no paywall, no email required.</p></div>
           <div className="trust-item"><h3>Built for accuracy</h3><p>Tool pages explain their methods. Estimates and simplified models have limitations; report unexpected results through our contact page.</p></div>
         </div>

@@ -98,3 +98,5 @@ npm run audit:export
 `.github/workflows/document-engines.yml` builds the real CPU container and smoke-tests native conversions, qpdf, OCR, pdfcpu and Gotenberg. Model adapters have request/transport tests; large optional model/desktop stacks require separate deployment tests and are not claimed as benchmarked.
 
 Server-only SEO pages remain `noindex` and outside the sitemap until `NEXT_PUBLIC_DOCUMENTS_READY=true` is explicitly set **after** the required services are working. They remain reachable from Document Studio with honest availability messages. Local operations and the browser editor are indexable immediately. Health checks never turn an unavailable tool into a fake successful conversion.
+
+Before enabling server-page indexing, run `python backend/documents/check_ready.py https://api.alltoolstogether.com/api/documents`. It must report all required pages ready. Only then set `NEXT_PUBLIC_DOCUMENTS_READY=true` for the frontend and rebuild. Optional model/workspace tools are not included in that index-readiness requirement.

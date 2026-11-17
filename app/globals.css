@@ -654,3 +654,9 @@ a:hover { text-decoration: underline; }
 @media(max-width:420px) { .ds-hero-art { min-height: 270px; }.ds-paper { width: 185px; min-height: 225px; padding: 20px 18px; }.ds-art-chip { font-size: 8px; }.ds-operation-grid aside { grid-template-columns: minmax(0,1fr); }.ds-workbench h2 { font-size: 22px; }.ds-tabs button, .ds-tabs a { padding: 9px; font-size: 12px; } }
 
 @media(max-width:760px) { .ds-library input, .ds-library select, .ds-field input:not([type=checkbox]), .ds-field select, .ds-field textarea { font-size:16px; } }
+
+.ds-availability-filter { display:flex !important; align-items:center; gap:8px; margin:12px 0 0; font-size:11px !important; font-weight:400 !important; }
+.ds-availability-filter input { width:16px; height:16px; flex:none; margin:0; }
+
+.ds-hero-notes { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:18px; color:var(--ink-2); font-size:12px; }
+.ds-hero h1 { max-width:15ch; font-size:clamp(38px,4.8vw,56px); }

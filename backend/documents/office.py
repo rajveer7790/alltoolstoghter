@@ -153,6 +153,8 @@ async def editor(token):
 async def callback(token, request: Request):
     folder, data = session(token)
     body = await request.json()
+    if not isinstance(body, dict):
+        raise ToolError('Invalid editor callback.', 400)
     auth = request.headers.get('authorization', '').removeprefix('Bearer ')
     claims = verify(body.get('token') or auth)
     signed = claims.get('payload', claims)

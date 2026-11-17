@@ -33,7 +33,7 @@ const server = http.createServer(async (request,response) => {
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin = 'http://127.0.0.1:' + server.address().port;
-const browser = await chromium.launch({ ...(process.env.CHROMIUM_PATH ? {executablePath:process.env.CHROMIUM_PATH} : {}), args:['--enable-unsafe-swiftshader'] });
+const browser = await chromium.launch({ ...(process.env.CHROMIUM_PATH ? {executablePath:process.env.CHROMIUM_PATH} : {}), args:['--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader'] });
 const context = await browser.newContext({viewport:{width:1280,height:900},acceptDownloads:true});
 const failures=[], pageErrors=[], checks=[];
 context.on('page',page=>page.on('pageerror',error=>pageErrors.push({url:page.url(),error:error.message})));
@@ -56,8 +56,11 @@ try {
     await page.goto(origin+'/pdf/'+tool.id,{waitUntil:'networkidle'});
     await page.locator('input[type=file]').setInputFiles(tool.id==='alternate-merge-pdf'?[fixture,fixture]:fixture);
     if(tool.id==='fill-pdf-forms')await page.getByLabel('Field values (JSON)').fill('{"email":"new@example.test"}');
-    const download=page.waitForEvent('download');
+    console.log('Testing local operation:', tool.id);
     await page.getByRole('button',{name:'Process on my device',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('.ds-result')||document.querySelector('.ds-error'));
+    assert.equal(await page.locator('.ds-error').count(),0,tool.id+': '+(await page.locator('.ds-error').allTextContents()).join(' '));
+    const download=page.waitForEvent('download');
     await page.getByRole('link',{name:'Download result'}).click();
     const saved=await download;const target=resolve(artifacts,tool.id+(tool.id==='pdf-to-json'?'.json':'.pdf'));await saved.saveAs(target);
     const bytes=readFileSync(target);

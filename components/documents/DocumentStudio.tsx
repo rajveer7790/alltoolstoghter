@@ -38,6 +38,7 @@ export default function DocumentStudio() {
   const [selected, setSelected] = useState('pdf-editor');
   const [query, setQuery] = useState('');
   const [group, setGroup] = useState('All');
+  const [showUnavailable, setShowUnavailable] = useState(false);
   const [tab, setTab] = useState('studio');
   const [remote, setRemote] = useState<DocumentTool[]>([]);
   const [connection, setConnection] = useState<'checking' | 'online' | 'offline'>(DOCUMENT_API ? 'checking' : 'offline');
@@ -55,7 +56,7 @@ export default function DocumentStudio() {
     return () => { controller.abort(); clearTimeout(timeout); window.removeEventListener('popstate', sync); };
   }, []);
   const tools = useMemo(() => [...DOCUMENT_TOOLS.map(tool => tool.mode === 'server' ? { ...tool, ...remote.find(candidate => candidate.id === tool.id) } : tool), ...remote.filter(tool => !DOCUMENT_TOOLS.some(existing => existing.id === tool.id))], [remote]);
-  const filtered = tools.filter(tool => (group === 'All' || tool.group === group) && (tool.name + ' ' + tool.description + ' ' + tool.engine).toLowerCase().includes(query.toLowerCase()));
+  const filtered = tools.filter(tool => (showUnavailable || tool.mode !== 'server' || tool.available) && (group === 'All' || tool.group === group) && (tool.name + ' ' + tool.description + ' ' + tool.engine).toLowerCase().includes(query.toLowerCase()));
   const groups = ['All', ...new Set(tools.map(tool => tool.group))];
   const active = tools.find(tool => tool.id === selected) || tools[0];
   const choose = (id: string) => { setSelected(id); setTab('studio'); const url = new URL(window.location.href); url.searchParams.set('tool', id); window.history.replaceState(null, '', url.pathname + url.search); };
@@ -70,6 +71,7 @@ export default function DocumentStudio() {
     {tab === 'studio' && <div className="ds-studio-layout"><aside className="ds-library" aria-label="Choose a document tool">
       <label htmlFor="document-tool-search">Find a tool</label><input id="document-tool-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Word, OCR, tables…" />
       <label className="ds-sr-only" htmlFor="document-group">Filter by task</label><select id="document-group" value={group} onChange={e => setGroup(e.target.value)}>{groups.map(value => <option key={value}>{value}</option>)}</select>
+      <label className="ds-availability-filter"><input type="checkbox" checked={showUnavailable} onChange={event => setShowUnavailable(event.target.checked)} /> Show unavailable server tools</label>
       <p className="ds-library-status">{filtered.length} tools · {connection === 'online' ? 'server connected' : connection === 'checking' ? 'checking server' : 'local tools ready'}</p>
       <div className="ds-tool-list">{filtered.map(tool => <button type="button" key={tool.id} aria-pressed={active.id === tool.id} onClick={() => choose(tool.id)}><span>{tool.name}</span><small>{tool.mode === 'workspace' ? 'Complete workspace' : tool.mode === 'local' ? 'On your device' : tool.available ? 'Server ready' : 'Server unavailable'}</small></button>)}</div>
       {!filtered.length && <p>No matching tools. Try a different search.</p>}

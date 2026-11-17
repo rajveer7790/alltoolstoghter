@@ -1,4 +1,4 @@
-import { PDFDocument, PDFName, StandardFonts } from 'pdf-lib';
+import { PDFDocument, PDFName, PDFTextField, PDFCheckBox, PDFDropdown, PDFOptionList, PDFRadioGroup, StandardFonts } from 'pdf-lib';
 
 export type LocalDocumentResult = { bytes: Uint8Array; filename: string; type: string };
 const selectedPages = (value: unknown, count: number): number[] => {
@@ -72,12 +72,11 @@ export async function processLocalDocument(id: string, files: { arrayBuffer(): P
     for (const [name, value] of Object.entries(fields)) {
       const field = available.find(field => field.getName() === name);
       if (!field) throw new Error(`Unknown field: ${name}. Available fields: ${available.map(f => f.getName()).join(', ')}`);
-      const kind = field.constructor.name;
-      if (kind === 'PDFTextField') form.getTextField(name).setText(String(value));
-      else if (kind === 'PDFCheckBox') { if (typeof value !== 'boolean') throw new Error(`Use true or false for ${name}.`); value ? form.getCheckBox(name).check() : form.getCheckBox(name).uncheck(); }
-      else if (kind === 'PDFDropdown') form.getDropdown(name).select(String(value));
-      else if (kind === 'PDFOptionList') form.getOptionList(name).select(String(value));
-      else if (kind === 'PDFRadioGroup') form.getRadioGroup(name).select(String(value));
+      if (field instanceof PDFTextField) form.getTextField(name).setText(String(value));
+      else if (field instanceof PDFCheckBox) { if (typeof value !== 'boolean') throw new Error(`Use true or false for ${name}.`); value ? form.getCheckBox(name).check() : form.getCheckBox(name).uncheck(); }
+      else if (field instanceof PDFDropdown) form.getDropdown(name).select(String(value));
+      else if (field instanceof PDFOptionList) form.getOptionList(name).select(String(value));
+      else if (field instanceof PDFRadioGroup) form.getRadioGroup(name).select(String(value));
       else throw new Error(`Field ${name} is not a supported fillable field.`);
     }
   } else if (id === 'remove-pdf-metadata') {

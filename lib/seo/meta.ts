@@ -4,6 +4,7 @@ import { INTENT_NOTES } from '../intentNotes';
 import { EDITORIAL } from '../toolEditorial';
 import type { ToolDef } from '../types';
 import { CURATED } from './curated';
+import { OPENERS } from './openers';
 
 export const TITLE_MAX = 60;
 export const DESC_MIN = 120;
@@ -75,7 +76,7 @@ export function toolSeo(tool: ToolDef): ToolSeo {
   const editorial = EDITORIAL[tool.slug]?.title;
   const existing = clean(tool.metaDescription || '');
   const existingOk = existing.length >= DESC_MIN && existing.length <= DESC_MAX;
-  const description = curated?.[1] || (existingOk ? existing : patternDescription(tool));
+  const description = OPENERS[tool.slug]?.description || curated?.[1] || (existingOk ? existing : patternDescription(tool));
   if (intent && fits(intent)) return { title: intent, description, source: 'intent' };
   if (curated) return { title: curated[0], description, source: 'curated' };
   if (editorial && fits(editorial)) return { title: editorial, description, source: 'editorial' };

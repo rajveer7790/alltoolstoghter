@@ -1,6 +1,7 @@
 import { EDITORIAL } from '../toolEditorial';
 import type { ToolDef } from '../types';
 import { DEEP } from './deep';
+import { OPENERS, answerFor } from './openers';
 import { generatedFaqs } from './content';
 import { toolSeo } from './meta';
 
@@ -22,7 +23,7 @@ export function pageParts(tool: ToolDef) {
   const seo = toolSeo(tool);
   const deep = DEEP[tool.slug];
   const editorial = EDITORIAL[tool.slug];
-  const answer = deep?.answer || editorial?.answer || tool.content.intro;
+  const answer = answerFor(tool);
   const headings = [
     'How it works', 'Worked example', 'Frequently asked questions',
     ...(deep?.sections || []).map(s => s.heading), ...(editorial?.sections || []).map(s => s.heading),
@@ -34,8 +35,8 @@ export function pageParts(tool: ToolDef) {
 
 export function keywordReport(tool: ToolDef): KeywordReport {
   const { seo, deep, answer, headings, faqQuestions, body, summary } = pageParts(tool);
-  const declared = !!deep?.shortKeyword;
-  const short = deep?.shortKeyword || tool.keywords[0] || tool.name;
+  const declared = !!(deep?.shortKeyword || OPENERS[tool.slug]?.shortKeyword);
+  const short = deep?.shortKeyword || OPENERS[tool.slug]?.shortKeyword || tool.keywords[0] || tool.name;
   const longs = deep?.longKeywords || tool.keywords.slice(1, 4);
   return {
     slug: tool.slug, short, source: declared ? 'declared' : 'registry',

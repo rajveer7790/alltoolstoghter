@@ -9,6 +9,7 @@ import { backendGuides } from '@/lib/backendGuides';
 import { toolSeo } from '@/lib/seo/meta';
 import { sampleTables, generatedFaqs, workedExample } from '@/lib/seo/content';
 import { DEEP } from '@/lib/seo/deep';
+import { answerFor } from '@/lib/seo/openers';
 import { AtAGlance } from '@/components/AtAGlance';
 import { hasBackend } from '@/lib/apiClient';
 import type { Metadata } from 'next';
@@ -104,7 +105,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
       <JsonLd data={{
         '@context': 'https://schema.org',
         '@graph': [
-          { '@type': 'WebPage', '@id': `${canonicalUrl}#page`, url: canonicalUrl, name: t.name, description: editorial?.answer || deep?.answer || t.short,
+          { '@type': 'WebPage', '@id': `${canonicalUrl}#page`, url: canonicalUrl, name: t.name, description: answerFor(t) || t.short,
             ...(deep?.aiSummary ? { abstract: deep.aiSummary } : {}),
             ...(deep?.shortKeyword ? { keywords: [deep.shortKeyword, ...(deep.longKeywords || [])].join(', ') } : {}),
             dateModified: CONTENT_UPDATED, inLanguage: 'en', author: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path },
@@ -154,7 +155,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
       <h1 className="tool-h1">{t.name}</h1>
       <p className="tool-sub">{t.short}</p>
       <p className="content-byline">Maintained by <Link href={AUTHOR.path}>{AUTHOR.name}</Link> · Content updated <time dateTime={CONTENT_UPDATED}>{new Date(CONTENT_UPDATED + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time> · <Link href="/methodology">Methodology</Link></p>
-      {!guide && <p className="quick-answer">{editorial?.answer || deep?.answer || t.content.intro}</p>}
+      {!guide && <p className="quick-answer">{answerFor(t)}</p>}
       {context && <p className="availability-note" role="note">{context.notice}</p>}
       {guide && <p className="quick-answer" role="note">{guide.description}</p>}
       {!guide && !pendingDocument && <AtAGlance tool={t} summary={deep?.aiSummary} />}

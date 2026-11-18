@@ -14,10 +14,10 @@ from .runtime import ToolError, run, one_or_bundle
 
 MAX_OUTPUT = 64 * 1024 * 1024
 BINS = {'ocrmypdf': 'ocrmypdf', 'tesseract': 'tesseract', 'qpdf': 'qpdf', 'ghostscript': 'gs',
-        'pdfcpu': 'pdfcpu', 'poppler': 'pdftocairo', 'mineru': 'mineru', 'marker': 'marker_single',
+        'pdfcpu': 'pdfcpu', 'poppler': 'pdftocairo', 'mineru': 'mineru-kit', 'marker': 'marker_single',
         'filee': 'filee', 'genoffice': 'genoffice'}
 SERVICES = {'gotenberg': 'GOTENBERG_URL', 'docling': 'DOCLING_URL', 'paddle': 'PADDLE_URL',
-            'mineru': 'MINERU_URL', 'marker': 'MARKER_URL', 'filee': 'FILEE_URL', 'genoffice': 'GENOFFICE_URL'}
+            'mineru': 'MINERU_URL', 'marker': 'MARKER_URL', 'filee': 'FILEE_URL', 'genoffice': 'GENOFFICE_URL', 'geometric': 'GEOMETRIC_URL'}
 
 
 def endpoint(engine):
@@ -32,12 +32,12 @@ def available(engine):
         return True, ''
     if endpoint(engine):
         return True, ''  # Service readiness is checked separately by the API.
-    if engine in {'docling', 'paddle'}:
-        module = 'paddleocr' if engine == 'paddle' else engine
+    if engine in {'docling', 'paddle', 'geometric'}:
+        module = {'paddle': 'paddleocr', 'geometric': 'pdf2docx'}.get(engine, engine)
         ready = importlib.util.find_spec(module) is not None or (os.getenv('MODEL_ENGINE') == engine and Path(os.getenv('MODEL_PYTHON', '/not-installed')).is_file())
     else:
         ready = bool(shutil.which(BINS.get(engine, engine)))
-    if engine in {'marker', 'mineru'} and os.getenv(engine.upper() + '_LICENSE_ACCEPTED') != 'true':
+    if engine in {'marker', 'mineru', 'geometric'} and os.getenv(engine.upper() + '_LICENSE_ACCEPTED') != 'true':
         return False, 'This optional model requires operator review of its code and model licenses.'
     return ready, '' if ready else 'This optional processing engine is not installed.'
 
@@ -90,7 +90,7 @@ def process(tool, paths, options, directory):
         if not url:
             raise ToolError('Office conversion has not been deployed yet.', 503)
         route = '/forms/libreoffice/convert'
-        fields = {'nativeBookmarks': 'true'}
+        fields = {'nativeBookmarks': 'true', 'nativeTaggedPdf': 'true', 'nativeLosslessImageCompression': 'true', 'nativeReduceImageResolution': 'false', 'exportFormFields': 'true' if options.get('formFields', False) else 'false'}
         if operation == 'html-to-pdf':
             route = '/forms/chromium/convert/html'
             # Gotenberg requires an entry HTML named index.html.
@@ -126,14 +126,14 @@ def process(tool, paths, options, directory):
     source = paths[0]
     destination = directory / 'converted'
     destination.mkdir()
-    if engine in {'docling', 'paddle'}:
+    if engine in {'docling', 'paddle', 'geometric'}:
         request = directory / 'model-request.json'
         request.write_text(json.dumps({'engine': engine, 'operation': operation, 'input': str(source), 'output': str(destination)}))
         # Import heavy models only in a killable, per-job child process.
         script = Path(__file__).with_name('model_worker.py')
         run([os.getenv('MODEL_PYTHON', sys.executable), str(script), str(request)], directory, 300)
     elif engine == 'mineru':
-        run(['mineru', '-p', str(source), '-o', str(destination), '-b', 'pipeline'], directory, 300)
+        run(['mineru-kit', 'parse', str(source), '--tier', 'flash', '--format', 'zip', '-o', str(destination / 'mineru-bundle.zip')], directory, 300)
     elif engine == 'marker':
         kind = 'markdown' if operation.endswith('markdown') else 'json' if operation.endswith('json') else 'html'
         run(['marker_single', str(source), '--output_dir', str(destination), '--output_format', kind, '--mode', 'fast'], directory, 300)

@@ -117,10 +117,17 @@ def process(operation: str, files: list[Path], options: dict, directory: Path) -
                 paths.append(path)
         return bundle(directory, paths, 'images.zip')
 
-    if operation in {'pdf-to-word', 'pdf-to-excel', 'pdf-to-csv', 'pdf-to-html'}:
+    if operation == 'pdf-to-word':
+        from .word import export
+        return export(source, options, directory)
+
+    if operation == 'pdf-to-html':
+        from .word import export_html
+        return export_html(source, options, directory)
+
+    if operation in {'pdf-to-excel', 'pdf-to-csv'}:
         import pdfplumber
         with pdfplumber.open(source) as pdf:
-            text = [(page.extract_text() or '') for page in pdf.pages]
             tables = [(i + 1, table) for i, page in enumerate(pdf.pages) for table in page.extract_tables()]
         if operation in {'pdf-to-excel', 'pdf-to-csv'}:
             if not tables:
@@ -145,30 +152,6 @@ def process(operation: str, files: list[Path], options: dict, directory: Path) -
                     writer.writerows([['\'' + str(cell) if str(cell or '').startswith(('=', '+', '-', '@')) else cell or '' for cell in row] for row in rows])
                 paths.append(path)
             return bundle(directory, paths, 'tables.zip')
-        if not any(part.strip() for part in text):
-            raise ToolError('No text layer was found. Run OCR before this conversion.')
-        if operation == 'pdf-to-html':
-            output = directory / 'document.html'
-            output.write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Converted document</title><body>' + ''.join(f'<section><h2>Page {i + 1}</h2><pre>{html.escape(t)}</pre></section>' for i, t in enumerate(text)) + '</body></html>')
-            return output
-        from docx import Document
-        document = Document()
-        for i, part in enumerate(text):
-            if i and options.get('layout') == 'page-breaks':
-                document.add_page_break()
-            for line in part.splitlines():
-                document.add_paragraph(line)
-        for page, rows in tables:
-            document.add_paragraph(f'Table extracted from page {page}')
-            width = max(len(row) for row in rows)
-            table = document.add_table(rows=len(rows), cols=width)
-            for r, row in enumerate(rows):
-                for c, cell in enumerate(row):
-                    table.cell(r, c).text = str(cell or '')
-        output = directory / 'document.docx'
-        document.save(output)
-        return output
-
     if operation in {'rasterize-pdf', 'pdf-to-grayscale', 'pdf-to-tiff', 'pdf-to-powerpoint'}:
         dpi = int(options.get('dpi', '150'))
         if dpi not in {96, 150, 200}:
@@ -252,7 +235,7 @@ def process(operation: str, files: list[Path], options: dict, directory: Path) -
         run(['qpdf', '--linearize', str(source), str(output)], directory)
         return output
     if operation == 'compress-pdf-server':
-        quality = options.get('quality', 'ebook')
+        quality = options.get('quality', 'prepress')
         if quality not in {'screen', 'ebook', 'printer', 'prepress'}:
             raise ToolError('Invalid compression preset.')
         run(['gs', '-dSAFER', '-dBATCH', '-dNOPAUSE', '-sDEVICE=pdfwrite', '-dCompatibilityLevel=1.7',

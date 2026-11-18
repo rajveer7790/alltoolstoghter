@@ -23,6 +23,7 @@ services:
       MARKER_URL: ${MARKER_URL:-}
       FILEE_URL: ${FILEE_URL:-}
       GENOFFICE_URL: ${GENOFFICE_URL:-}
+      GEOMETRIC_URL: ${GEOMETRIC_URL:-}
       BENTO_PUBLIC_URL: ${BENTO_PUBLIC_URL:-}
       BENTO_INTERNAL_URL: http://bento:8080
       DOCUMENT_PUBLIC_URL: ${DOCUMENT_PUBLIC_URL:-}
@@ -32,7 +33,7 @@ services:
       ONLYOFFICE_JWT_SECRET: ${ONLYOFFICE_JWT_SECRET:-}
     networks: [private]
   gotenberg:
-    image: gotenberg/gotenberg:9.6.0
+    build: {context: ../.., dockerfile: backend/documents/Dockerfile.gotenberg}
     restart: unless-stopped
     environment:
       CHROMIUM_DISABLE_JAVASCRIPT: 'true'
@@ -106,6 +107,13 @@ services:
     mem_limit: 8g
     volumes: [mineru-models:/models]
     networks: [private, internet]
+  geometric:
+    build: {context: ../.., dockerfile: backend/documents/Dockerfile.model, args: {ENGINE: geometric}}
+    profiles: [geometric]
+    environment: {GEOMETRIC_LICENSE_ACCEPTED: '${GEOMETRIC_LICENSE_ACCEPTED:-false}', DOCUMENT_CONCURRENCY: '1'}
+    mem_limit: 2g
+    cpus: 2
+    networks: [private]
   marker:
     build: {context: ../.., dockerfile: backend/documents/Dockerfile.model, args: {ENGINE: marker}}
     profiles: [marker]

@@ -144,9 +144,10 @@ class EngineContracts(unittest.TestCase):
         stirling._cache.update(time=0, tools={}, excluded=[])
 
     def test_model_licenses_are_not_silently_assumed(self):
-        with patch.dict(os.environ, {'MARKER_LICENSE_ACCEPTED': 'false', 'MINERU_LICENSE_ACCEPTED': 'false', 'MARKER_URL': '', 'MINERU_URL': ''}):
+        with patch.dict(os.environ, {'MARKER_LICENSE_ACCEPTED': 'false', 'MINERU_LICENSE_ACCEPTED': 'false', 'GEOMETRIC_LICENSE_ACCEPTED': 'false', 'MARKER_URL': '', 'MINERU_URL': '', 'GEOMETRIC_URL': ''}):
             self.assertFalse(engines.available('marker')[0])
             self.assertFalse(engines.available('mineru')[0])
+            self.assertFalse(engines.available('geometric')[0])
 
 
 class OfficeSessions(unittest.TestCase):

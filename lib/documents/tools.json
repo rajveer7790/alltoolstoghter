@@ -291,12 +291,23 @@
     "id": "pdf-to-word",
     "name": "PDF to Word",
     "group": "Convert",
-    "description": "Convert text-based PDF pages and detected tables into an editable DOCX.",
+    "description": "Export editable paragraphs, images and tables, or choose a page-image Word copy.",
     "mode": "server",
     "engine": "native",
     "accept": ".pdf",
     "multiple": false,
     "fields": [
+      {
+        "key": "method",
+        "label": "Word output",
+        "kind": "select",
+        "default": "Editable document",
+        "options": [
+          "Editable document",
+          "Basic text and tables",
+          "Page images (text not editable)"
+        ]
+      },
       {
         "key": "layout",
         "label": "Output style",
@@ -305,10 +316,50 @@
         "options": [
           "reflow",
           "page-breaks"
-        ]
+        ],
+        "visibleWhen": {
+          "method": [
+            "Basic text and tables"
+          ]
+        }
+      },
+      {
+        "key": "ocr",
+        "label": "Recognize scanned pages with OCR",
+        "kind": "checkbox",
+        "default": true,
+        "visibleWhen": {
+          "method": [
+            "Editable document",
+            "Basic text and tables"
+          ]
+        }
+      },
+      {
+        "key": "language",
+        "label": "OCR language",
+        "kind": "select",
+        "default": "eng",
+        "options": [
+          "eng",
+          "hin",
+          "eng+hin",
+          "deu",
+          "fra",
+          "spa"
+        ],
+        "visibleWhen": {
+          "method": [
+            "Editable document",
+            "Basic text and tables"
+          ],
+          "ocr": [
+            true
+          ]
+        }
       }
     ],
-    "note": "Reconstructs editable text and tables; it cannot guarantee original pagination, fonts, equations or complex layout. For scans, use OCR or the PaddleOCR option.",
+    "note": "Editable mode reconstructs headings, paragraphs, tables and images; formatting and pagination can change. Page-image mode contains page pictures, so its text is not editable. OCR can make mistakes; review important documents.",
     "page": true
   },
   {
@@ -341,13 +392,39 @@
     "id": "pdf-to-html",
     "name": "PDF to HTML",
     "group": "Convert",
-    "description": "Export existing page text into a clean, escaped HTML document.",
+    "description": "Export semantic HTML with headings, tables and images in a complete ZIP package.",
     "mode": "server",
     "engine": "native",
     "accept": ".pdf",
     "multiple": false,
-    "fields": [],
-    "note": "Reflowed text output; not a pixel-perfect page reproduction.",
+    "fields": [
+      {
+        "key": "ocr",
+        "label": "Recognize scanned pages with OCR",
+        "kind": "checkbox",
+        "default": true
+      },
+      {
+        "key": "language",
+        "label": "OCR language",
+        "kind": "select",
+        "default": "eng",
+        "options": [
+          "eng",
+          "hin",
+          "eng+hin",
+          "deu",
+          "fra",
+          "spa"
+        ],
+        "visibleWhen": {
+          "ocr": [
+            true
+          ]
+        }
+      }
+    ],
+    "note": "Uses DocVortex 0.6.24. Unzip the package before opening document.html so relative image assets load. This is semantic HTML; original page layout is not guaranteed.",
     "page": true
   },
   {
@@ -658,7 +735,7 @@
         "key": "quality",
         "label": "Image quality",
         "kind": "select",
-        "default": "ebook",
+        "default": "prepress",
         "options": [
           "screen",
           "ebook",
@@ -667,7 +744,7 @@
         ]
       }
     ],
-    "note": "Lossy compression may soften images and remove interactive content. Smaller output is not guaranteed.",
+    "note": "Defaults to the higher-quality prepress profile. Smaller presets trade image detail for size; already optimized PDFs may not become smaller.",
     "page": true
   },
   {
@@ -705,8 +782,15 @@
     "engine": "gotenberg",
     "accept": ".doc,.docx",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -718,8 +802,15 @@
     "engine": "gotenberg",
     "accept": ".xls,.xlsx",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -731,8 +822,15 @@
     "engine": "gotenberg",
     "accept": ".ppt,.pptx",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -744,8 +842,15 @@
     "engine": "gotenberg",
     "accept": ".odt",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -757,8 +862,15 @@
     "engine": "gotenberg",
     "accept": ".rtf",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -770,8 +882,15 @@
     "engine": "gotenberg",
     "accept": ".ods",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -783,8 +902,15 @@
     "engine": "gotenberg",
     "accept": ".odp",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -796,8 +922,15 @@
     "engine": "gotenberg",
     "accept": ".doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp,.rtf",
     "multiple": false,
-    "fields": [],
-    "note": "Layout depends on available fonts, document features and print settings. Review the PDF before sharing.",
+    "fields": [
+      {
+        "key": "formFields",
+        "label": "Keep interactive form fields",
+        "kind": "checkbox",
+        "default": false
+      }
+    ],
+    "note": "Uses lossless image export and an expanded open-font set. Missing custom fonts or unsupported Office features can still change layout. Linked images must be embedded in the original document.",
     "page": true
   },
   {
@@ -887,7 +1020,7 @@
     "accept": ".pdf,.png,.jpg,.jpeg",
     "multiple": false,
     "fields": [],
-    "note": "Self-hosted models, no cloud API key. Complex layout and handwriting may require manual corrections.",
+    "note": "PaddleOCR 3.7.0 PP-StructureV3 recognizes layout and scanned text. It may return one DOCX per page in a ZIP. OCR and reconstruction require review.",
     "page": false
   },
   {
@@ -900,7 +1033,7 @@
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "MinerU attribution and current code/model license terms apply. Enable only after reviewing them.",
+    "note": "MinerU 4.2.3 local Flash produces a ZIP with Markdown, structured JSON and image assets. It requires the optional worker and operator acceptance of its code/model terms; no hosted API is used.",
     "page": false
   },
   {
@@ -913,7 +1046,7 @@
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "MinerU attribution and current code/model license terms apply. Enable only after reviewing them.",
+    "note": "MinerU 4.2.3 local Flash produces a ZIP with Markdown, structured JSON and image assets. It requires the optional worker and operator acceptance of its code/model terms; no hosted API is used.",
     "page": false
   },
   {
@@ -926,7 +1059,7 @@
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "Model-weight commercial conditions apply. LLM enhancement is disabled; no external AI key is used.",
+    "note": "Marker 2.2.0 local fast mode. Optional model installation and model-license eligibility are required. No hosted LLM enhancement is used.",
     "page": false
   },
   {
@@ -939,7 +1072,7 @@
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "Model-weight commercial conditions apply. LLM enhancement is disabled; no external AI key is used.",
+    "note": "Marker 2.2.0 local fast mode. Optional model installation and model-license eligibility are required. No hosted LLM enhancement is used.",
     "page": false
   },
   {
@@ -952,7 +1085,7 @@
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "Model-weight commercial conditions apply. LLM enhancement is disabled; no external AI key is used.",
+    "note": "Marker 2.2.0 local fast mode. Optional model installation and model-license eligibility are required. No hosted LLM enhancement is used.",
     "page": false
   },
   {
@@ -1002,6 +1135,19 @@
       }
     ],
     "note": "Uses local conversion only. AI, account-linked and cloud commands are excluded.",
+    "page": false
+  },
+  {
+    "id": "pdf-to-word-layout",
+    "name": "PDF to Word \u2014 Geometric Layout",
+    "group": "Convert",
+    "description": "Try an alternative editable DOCX reconstruction that follows page geometry.",
+    "mode": "server",
+    "engine": "geometric",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Reconstructs editable text and images using their page positions. Fonts, tables and pagination can still differ. Scanned documents need OCR before using this option.",
     "page": false
   }
 ]

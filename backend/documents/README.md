@@ -4,7 +4,7 @@ This is a separate, working Python document API. Netlify serves the Next.js stat
 
 ## Included and optional capabilities
 
-- `lib/documents/tools.json` is the shared frontend/backend operation contract: 57 entries, including 12 local operations, one complete browser editor, and 44 server operations. Forty-six have individual tool pages.
+- `lib/documents/tools.json` is the shared frontend/backend operation contract: 58 entries, including 12 local operations, one complete browser editor, and 45 server operations. Forty-six have individual tool pages.
 - Native CPU processing: editable text/tables to DOCX, XLSX/CSV extraction, embedded images/attachments/bookmarks, password-based AES-256 encryption/decryption, annotation removal, repair, raster/grayscale/TIFF/image slides, visual comparison, OCR, qpdf linearization, Ghostscript compression and pdfcpu validation/optimization.
 - Gotenberg 9.6.0: Word, Excel, PowerPoint and OpenDocument to PDF; uploaded HTML to PDF; PDF/A remediation. HTML JavaScript and network access are disabled in the supplied configuration.
 - Stirling PDF: optional live OpenAPI discovery of multipart file-processing forms. The gateway never accepts a caller-supplied upstream URL/path. Key-dependent, administrative, outbound-URL and unsupported structured forms are reported as excluded rather than shown as working. Engine edition/allowance failures remain explicit failures.
@@ -100,3 +100,13 @@ npm run audit:export
 Server-only SEO pages remain `noindex` and outside the sitemap until `NEXT_PUBLIC_DOCUMENTS_READY=true` is explicitly set **after** the required services are working. They remain reachable from Document Studio with honest availability messages. Local operations and the browser editor are indexable immediately. Health checks never turn an unavailable tool into a fake successful conversion.
 
 Before enabling server-page indexing, run `python backend/documents/check_ready.py https://api.alltoolstogether.com/api/documents`. It must report all required pages ready. Only then set `NEXT_PUBLIC_DOCUMENTS_READY=true` for the frontend and rebuild. Optional model/workspace tools are not included in that index-readiness requirement.
+
+## November 2026 fidelity upgrade
+
+PDF-to-Word defaults to DocVortex 0.6.24 native structure recovery. The UI offers three explicit modes: editable document, basic text/tables, or page images with no editable text. Basic mode no longer duplicates table cells in prose, and page-image mode anchors each image to the original page dimensions. Optional local OCR handles scans; it is never a hosted API. Complex pagination, fonts, equations and OCR still require review. This is not a claim of lossless editable conversion.
+
+PDF-to-HTML now returns a ZIP containing semantic HTML and all relative image assets. Unzip before opening it. Word/Office-to-PDF uses the custom Gotenberg 9.6.0 image with Noto/CJK and metric-compatible open fonts, lossless image export, original image resolution and flattened form fields by default. Interactive fields can be retained explicitly. Custom licensed fonts must be supplied by the operator when required; arbitrary font uploads or outbound linked-image downloads are not enabled.
+
+Rebuild **both** `documents` and `gotenberg` when upgrading; a frontend redeploy alone cannot apply these backend changes. `Dockerfile.gotenberg` builds the font image on AMD64 and ARM64. MinerU's adapter now uses the 4.2.3 local `mineru-kit` ZIP contract; the old `-p/-o/-b` CLI is not used. Optional PaddleOCR 3.7.0 and Marker 2.2.0 are pinned. Their heavyweight model stacks still need deployment-specific inference verification; the native DocVortex path and local OCR/Office stack are tested separately.
+
+An optional `geometric` profile exposes `PDF to Word — Geometric Layout` as a separate choice. It uses the previously measured pdf2docx/PyMuPDF path and is disabled by default. Review the dependency's AGPL/commercial conditions and source-offer obligations before public deployment; set `GEOMETRIC_LICENSE_ACCEPTED=true` on that worker and `GEOMETRIC_URL=http://geometric:8790` on the gateway only after review. No external API key is required. Its reconstruction is not lossless and the upstream wrapper is no longer actively maintained. Scans need OCR first.

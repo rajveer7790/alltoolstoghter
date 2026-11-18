@@ -69,6 +69,20 @@ try {
     checks.push({tool:tool.id,downloadBytes:bytes.length});
   }
   await page.goto(origin+'/pdf/pdf-to-word',{waitUntil:'networkidle'});
+  const mode=page.getByLabel('Word output');
+  assert.equal(await mode.inputValue(),'Editable document');
+  assert.equal(await page.getByLabel('Output style').count(),0);
+  assert.equal(await page.getByLabel('Recognize scanned pages with OCR').isChecked(),true);
+  await page.getByLabel('Recognize scanned pages with OCR').uncheck();
+  assert.equal(await page.getByLabel('OCR language').count(),0);
+  await mode.selectOption('Basic text and tables');
+  assert.equal(await page.getByLabel('Output style').isVisible(),true);
+  await mode.selectOption('Page images (text not editable)');
+  assert.equal(await page.getByLabel('Recognize scanned pages with OCR').count(),0);
+  assert.equal(await page.getByLabel('Output style').count(),0);
+  await mode.selectOption('Editable document');
+  await page.getByLabel('Recognize scanned pages with OCR').check();
+  checks.push({wordChoices:'editable default; relevant OCR/basic controls; explicit noneditable images'});
   const button=page.getByRole('button',{name:'Upload & process',exact:true});
   await page.locator('input[type=file]').setInputFiles(fixture);
   await button.waitFor({state:'visible'});

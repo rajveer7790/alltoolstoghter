@@ -1,0 +1,4 @@
+pdf2docx==0.5.13
+PyMuPDF==1.26.7
+opencv-python-headless==5.1.0.95
+PyMuPDF==1.26.7

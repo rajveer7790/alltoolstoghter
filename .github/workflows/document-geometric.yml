@@ -1,0 +1,32 @@
+name: Optional geometric Word engine
+on:
+  pull_request:
+    branches: [main]
+    paths: ['backend/documents/**', 'lib/documents/**', '.github/workflows/document-geometric.yml']
+  push:
+    branches: [main]
+    paths: ['backend/documents/**', 'lib/documents/**', '.github/workflows/document-geometric.yml']
+permissions:
+  contents: read
+jobs:
+  geometric:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 backend/documents/setup.py
+      - name: Build isolated evaluation stack
+        env:
+          GEOMETRIC_URL: http://geometric:8790
+          GEOMETRIC_LICENSE_ACCEPTED: 'true'
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml --profile geometric up -d --build documents gotenberg geometric
+      - name: Verify actual geometric conversion through the gateway
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml exec -T documents python backend/documents/smoke_geometric.py
+      - if: failure()
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml logs --tail=80 documents geometric gotenberg
+      - if: always()
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml --profile geometric down --volumes

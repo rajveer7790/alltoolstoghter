@@ -1136,5 +1136,18 @@
     ],
     "note": "Uses local conversion only. AI, account-linked and cloud commands are excluded.",
     "page": false
+  },
+  {
+    "id": "pdf-to-word-layout",
+    "name": "PDF to Word \u2014 Geometric Layout",
+    "group": "Convert",
+    "description": "Try an alternative editable DOCX reconstruction that follows page geometry.",
+    "mode": "server",
+    "engine": "geometric",
+    "accept": ".pdf",
+    "multiple": false,
+    "fields": [],
+    "note": "Uses the optional pdf2docx 0.5.13 / PyMuPDF 1.26.7 worker. Fonts, tables and layout can still differ; it is not a lossless converter. Requires deployment and operator review of AGPL/commercial dependency terms. Scans need OCR first.",
+    "page": false
   }
 ]

@@ -17,7 +17,7 @@ BINS = {'ocrmypdf': 'ocrmypdf', 'tesseract': 'tesseract', 'qpdf': 'qpdf', 'ghost
         'pdfcpu': 'pdfcpu', 'poppler': 'pdftocairo', 'mineru': 'mineru-kit', 'marker': 'marker_single',
         'filee': 'filee', 'genoffice': 'genoffice'}
 SERVICES = {'gotenberg': 'GOTENBERG_URL', 'docling': 'DOCLING_URL', 'paddle': 'PADDLE_URL',
-            'mineru': 'MINERU_URL', 'marker': 'MARKER_URL', 'filee': 'FILEE_URL', 'genoffice': 'GENOFFICE_URL'}
+            'mineru': 'MINERU_URL', 'marker': 'MARKER_URL', 'filee': 'FILEE_URL', 'genoffice': 'GENOFFICE_URL', 'geometric': 'GEOMETRIC_URL'}
 
 
 def endpoint(engine):
@@ -32,12 +32,12 @@ def available(engine):
         return True, ''
     if endpoint(engine):
         return True, ''  # Service readiness is checked separately by the API.
-    if engine in {'docling', 'paddle'}:
-        module = 'paddleocr' if engine == 'paddle' else engine
+    if engine in {'docling', 'paddle', 'geometric'}:
+        module = {'paddle': 'paddleocr', 'geometric': 'pdf2docx'}.get(engine, engine)
         ready = importlib.util.find_spec(module) is not None or (os.getenv('MODEL_ENGINE') == engine and Path(os.getenv('MODEL_PYTHON', '/not-installed')).is_file())
     else:
         ready = bool(shutil.which(BINS.get(engine, engine)))
-    if engine in {'marker', 'mineru'} and os.getenv(engine.upper() + '_LICENSE_ACCEPTED') != 'true':
+    if engine in {'marker', 'mineru', 'geometric'} and os.getenv(engine.upper() + '_LICENSE_ACCEPTED') != 'true':
         return False, 'This optional model requires operator review of its code and model licenses.'
     return ready, '' if ready else 'This optional processing engine is not installed.'
 
@@ -126,7 +126,7 @@ def process(tool, paths, options, directory):
     source = paths[0]
     destination = directory / 'converted'
     destination.mkdir()
-    if engine in {'docling', 'paddle'}:
+    if engine in {'docling', 'paddle', 'geometric'}:
         request = directory / 'model-request.json'
         request.write_text(json.dumps({'engine': engine, 'operation': operation, 'input': str(source), 'output': str(destination)}))
         # Import heavy models only in a killable, per-job child process.

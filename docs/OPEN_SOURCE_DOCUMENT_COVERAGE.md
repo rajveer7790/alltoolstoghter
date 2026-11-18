@@ -22,7 +22,7 @@ The supplied report was checked against current upstream README/license/API docu
 
 ## Coverage files
 
-- `lib/documents/tools.json`: 57 native/adapter operations; 46 individual pages.
+- `lib/documents/tools.json`: 58 native/adapter operations; 46 individual pages.
 - `lib/documents/bento-tools.json`: all 114 reviewed upstream tool IDs, without counting them as installed/live by default.
 - `lib/documents/engines.json`: source/license attribution for each project and supporting libraries.
 - `backend/documents/README.md`: concrete deployment steps, service boundaries and testing commands.

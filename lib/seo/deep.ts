@@ -7481,4 +7481,204 @@ export const DEEP: Record<string, DeepContent> = {
       ]
     ]
   },
+  "reorder-pdf-pages": {
+    "answer": "Reorder PDF pages means changing the sequence of pages in a document without editing their content. This reorder PDF pages tool loads your file, shows each page in a list, and lets you move pages up or down with arrows. When you save, it builds a new PDF using the order you chose. The processing happens in your browser, so the original file is not changed.",
+    "aiSummary": "Reorder PDF pages in a browser-based tool that lists each page and moves it up or down, then builds a new PDF in the chosen sequence. The core method is list-based reordering with no upload. It is useful to organize pages in a PDF file, but it does not repair or edit page content.",
+    "shortKeyword": "reorder pdf pages",
+    "longKeywords": [
+      "how to rearrange pages in a PDF",
+      "change the page order of a PDF",
+      "organize pages in a PDF file"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to rearrange pages in a PDF?",
+        "text": "Use this tool when a PDF has pages in the wrong sequence, such as a scanned stack that came out backwards, a cover page that needs to move to the front, or an appendix that belongs at the end. Load the file, then use the arrows beside each page to move it up or down. Each move changes only the position of that page; the page content itself is not edited. Once the list matches what you need, save the result as a new PDF in that sequence."
+      },
+      {
+        "heading": "What does the page list show after loading?",
+        "text": "After the PDF loads, every page appears in a list in its current order. Read the list from top to bottom: the first entry becomes page one in the saved file. Use the arrows to shift an entry up or down, and watch how the rest of the list adjusts. The list is the only thing that defines the output, so it is the right place to check your plan before saving."
+      },
+      {
+        "heading": "What mistakes or limits should you watch for?",
+        "text": "A common mistake is saving before checking the final list, which can lock in a sequence you did not intend. Another is expecting the tool to edit page content. It only changes order, so it is not a way to fix typos or crop margins. Long documents take more care to sort by hand, so move pages in smaller groups and confirm the list as you go. Keep the original file until you have checked the saved copy."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I change the page order of a PDF more than once?",
+        "Yes. After you save the rearranged document, you can load the new PDF again and move its pages further. Each save creates a fresh file in the sequence you last set, so you can keep adjusting until the order is right. Keep the earlier version if you want to compare."
+      ],
+      [
+        "Do I have to move every page before saving?",
+        "No. Pages you leave where they are keep their current position in the list. Only move the pages that need to change, then save. The saved file follows the list exactly as it looks at that moment, so check the final sequence before you save."
+      ],
+      [
+        "Is my PDF sent anywhere during reordering?",
+        "No. The tool is set to process locally, so the page list and the new PDF are built inside your browser. Nothing is sent to a server as part of reordering. Your file stays on your device unless you choose to share the saved copy yourself."
+      ]
+    ]
+  },
+  "edit-pdf-metadata": {
+    "answer": "Edit PDF metadata means viewing and changing the document properties stored inside a PDF, such as its title, author, subject, and keywords. This edit PDF metadata tool loads the existing values into editable fields. When you save, it writes your changes back into the file and updates the modification date. Processing runs in your browser, so the document is not uploaded.",
+    "aiSummary": "Edits a PDF's title, author, subject and keywords by reading the existing document properties and writing new values back into the file. The method is direct field replacement with an updated modification date. Limitation: it changes only document properties, so visible page content is not altered.",
+    "shortKeyword": "edit pdf metadata",
+    "longKeywords": [
+      "change pdf author and title",
+      "view and edit PDF document properties",
+      "clear a pdf metadata field"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "What does it mean to view and edit PDF document properties?",
+        "text": "Every PDF can carry hidden details called document properties, including a title, author, subject, and keywords. Search tools, file libraries, and document managers often read these fields when they list or sort files. This tool shows the current values so you can see what the file declares about itself, then lets you replace them. The page text and images are not part of this step. Reviewing them before you share a file helps you spot an old author name or a misleading title."
+      },
+      {
+        "heading": "How to change PDF author and title?",
+        "text": "Load the PDF and the form fills with its existing values. Edit the title, author, subject, or keywords fields directly, then save. Clearing a field removes the value it held, while changing a field replaces what was there before. After saving, reload the file in a viewer that shows document properties to confirm the new values appear. Some viewers keep showing older values, so a fresh open is the simplest check."
+      },
+      {
+        "heading": "Should I clear a PDF metadata field I do not need?",
+        "text": "Clearing a field can be useful when an old keyword or a personal name is still stored in the file, but it has limits. Metadata is only one layer: the visible pages, embedded images, and any text inside the document are not changed by this tool. A metadata field may also be set again by the program that exports the PDF, so check the result after your next export. Keep a copy of the original file in case you need to compare values later."
+      }
+    ],
+    "faqs": [
+      [
+        "Will my edits show up in every PDF viewer?",
+        "Most viewers read the standard document properties, so the new title and author usually appear after you reopen the file. Some programs display their own cached information, and a few may not show every field. Open the saved file in a second viewer to check."
+      ],
+      [
+        "Does this tool send my document anywhere?",
+        "No. Processing is set to local, so the PDF is opened and rewritten entirely in your browser. Its metadata never needs a server to be read or saved. Sharing the finished copy is the only step that moves it off your device, and that is your decision."
+      ],
+      [
+        "When should I update the author or subject field?",
+        "Author and subject fields help people and software identify a file when it is shared or filed. A clear title and subject can make a document easier to locate in a folder or library. Updating them is a quick way to tidy a file before you send it on, though it does not change what the pages say."
+      ]
+    ]
+  },
+  "pdf-info-viewer": {
+    "answer": "A PDF info viewer is a tool that reports a document's structure and metadata without opening it for reading. This tool reads the page count, page dimensions in points, file size, title, author, creator, creation date, PDF version, and encryption status. The information is gathered with PDF.js inside your browser, so the file stays on your device.",
+    "aiSummary": "Reads a PDF's page count, page dimensions, file size, and metadata such as title, author, and creation date. It parses the document structure with PDF.js and shows the results in a table. Limitation: it reports what the file declares, so the values can be missing or wrong if the creator left them blank.",
+    "shortKeyword": "pdf info viewer",
+    "longKeywords": [
+      "check pdf page count and size",
+      "how to see pdf page dimensions",
+      "read pdf document properties"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to see PDF page dimensions?",
+        "text": "Page dimensions tell you how large each page is, which matters when you plan printing, scanning, or resizing. The tool reads the size from the document structure and presents it in the results table. Dimensions are shown in points, a print unit, so compare them with the same unit on any other document you check. Check the values across pages if the document mixes page sizes, since one file can hold more than one format."
+      },
+      {
+        "heading": "How do you read PDF document properties in the table?",
+        "text": "The results table groups information into sections you can scan quickly. Page count and file size give you a sense of scope, while the title, author, subject, and creation date describe the document itself. The PDF version and an encryption flag tell you how the file was built and whether it is protected. Read the table from top to bottom, then check any blank rows, since missing values usually mean the creator did not set them."
+      },
+      {
+        "heading": "What limits come with the info a file reports?",
+        "text": "The viewer shows only what the file contains, so a missing or wrong title reflects the document rather than a fault in the tool. Some values are optional in the PDF format, and creators can fill them in inconsistently. A file that is encrypted may limit what can be read, so the report can be shorter than you expect. Treat the results as a description of the file, not a guarantee that the content inside is correct."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I check PDF page count and size before printing?",
+        "Yes. Load the file and read the page count and page dimensions in the results table. Compare the dimensions with the paper size your printer uses, which helps you avoid surprises. The file is inspected in your browser, so nothing is uploaded for this check."
+      ],
+      [
+        "Do I need to install anything to use this viewer?",
+        "Nothing needs to be installed. It runs in a browser page, so you open the page, load a PDF, and read the table. Nothing else is needed for the basic check."
+      ],
+      [
+        "Why is the PDF version useful to know?",
+        "The PDF version shows which edition of the format the file follows, which can affect which readers handle it well. Encryption status is listed next to it, because a locked file may limit what the viewer can read. Use both values when you troubleshoot a file that will not open correctly."
+      ]
+    ]
+  },
+  "military-time-converter": {
+    "answer": "Military time is the 24-hour clock format that runs from 00:00 to 23:59, with no AM or PM labels. This military time converter changes a 12-hour time such as 2:30 PM into its 24-hour equivalent, 14:30, and back again. For times after 12 noon, add 12 to the hour; 12 AM becomes 00. The conversion runs in your browser.",
+    "aiSummary": "Converts clock times between 12-hour AM/PM notation and 24-hour military time. It uses a fixed rule: add 12 to afternoon hours, and map 12 AM to 00 and 12 PM to 12. Limitation: it converts one entered time at a time and does not account for time zones or daylight saving changes.",
+    "shortKeyword": "military time converter",
+    "longKeywords": [
+      "convert 12 hour time to 24 hour",
+      "how to read 24 hour clock times",
+      "what is military time in 24 hour format"
+    ],
+    "exampleInputs": {
+      "time": "14:30"
+    },
+    "sections": [
+      {
+        "heading": "How do you convert 12 hour time to 24 hour?",
+        "text": "Start with the clock time you have. If it is an AM time, keep the hour unless it is 12 AM, which becomes 00. If it is a PM time, add 12 to the hour unless it is 12 PM, which stays 12. Minutes never change in the conversion, so 2:30 PM becomes 14:30. Use the same logic in reverse when you convert 24-hour times back. Check the result against the time of day to confirm it makes sense."
+      },
+      {
+        "heading": "How to read 24 hour clock times?",
+        "text": "A 24-hour clock counts from 00:00 at midnight through 23:59 just before midnight again. Noon is 12:00, and 13:00 is 1 PM, so any hour above 12 is afternoon or evening. Reading the number as a sequence of hours and minutes is easier than memorizing pairs, because the hour alone tells you the part of the day. Times such as 14:30 are simply the afternoon time you already know, written in a different format."
+      },
+      {
+        "heading": "What mistakes should you avoid with military time?",
+        "text": "A frequent mistake is treating 12:00 as midnight, when in military time it is noon. Another error is mixing up 12 AM and 12 PM when you write times quickly. Keep the AM or PM label until the conversion is done, so the direction of the change stays clear. The converter only changes notation, so it cannot tell you which time zone an appointment uses or whether a schedule is correct. Double-check any time that affects travel or a flight plan before you rely on it."
+      }
+    ],
+    "faqs": [
+      [
+        "What is military time in 24 hour format?",
+        "It is a way of writing the time of day as a number from 00:00 to 23:59, with no AM or PM. The hour runs from 0 to 23 and the minutes follow after the colon. Military time is used in fields such as aviation and the armed forces, where clear, unambiguous times matter."
+      ],
+      [
+        "How do I convert a 24-hour time to AM or PM?",
+        "Subtract 12 from any hour from 13 to 23 and add PM, so 14:30 becomes 2:30 PM. Hours 00 through 11 are AM, with 00 read as 12 AM. Hour 12 is PM and stays as 12 PM. Minutes do not change in either direction."
+      ],
+      [
+        "Why does 12 PM stay 12 in military time?",
+        "Noon is the midpoint of the day, so the 24-hour clock keeps it at 12:00 rather than adding 12. Afternoon hours from 1 PM to 11 PM gain 12, but 12 PM is already the twelfth hour. This keeps noon and midnight from being confused when the clock runs from 00:00 onward."
+      ]
+    ]
+  },
+  "rectangle-area-calculator": {
+    "answer": "A rectangle area calculator finds how much flat space a four-sided shape covers, using area equals length times width. It also reports perimeter, the distance around the edges, which equals two times the sum of length and width. Enter both sides in the same unit, and the result is given in that unit squared for area and in that unit for perimeter.",
+    "aiSummary": "Computes the area and perimeter of a rectangle from its length and width. Area multiplies the two sides, and perimeter adds them and doubles the result. The method is plain arithmetic, so the main limitation is that both sides must use the same unit and the shape must truly be a rectangle.",
+    "shortKeyword": "rectangle area calculator",
+    "longKeywords": [
+      "find area of a rectangle from sides",
+      "how to calculate rectangle perimeter from length",
+      "area and perimeter of a rectangle"
+    ],
+    "exampleInputs": {
+      "length": "12",
+      "width": "5"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate rectangle perimeter from length?",
+        "text": "Perimeter is the total distance around the outside of a rectangle, so it adds all four sides. Because opposite sides are equal, you add length and width once, then double that sum. For a length of 12 and a width of 5, add the two sides, then double the sum. Keep the units consistent so the total stays meaningful. This is the amount of fencing or edging needed for a flat rectangular shape, which is one common reason people run the calculation."
+      },
+      {
+        "heading": "How do you read the area result?",
+        "text": "Area tells you how much flat space the rectangle covers inside its edges. The number is always in square units, so a result from centimeter sides is in square centimeters. Area is not the same as perimeter, which measures the boundary instead of the surface. Read the two results together when you plan materials, because one describes coverage and the other describes edges. Using the result this way keeps the planning step simple."
+      },
+      {
+        "heading": "What mistakes should you avoid with length and width?",
+        "text": "The most common mistake is mixing units, such as entering one side in feet and the other in inches. The result can look reasonable but be wrong. Another point is that the order of the two sides does not matter for these formulas, since multiplication and addition both work either way. Also remember that this shape assumes four right angles. A slanted quadrilateral needs a different method. Check each side against the drawing before you calculate, since a single typo changes both results."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I find area of a rectangle from sides I measured myself?",
+        "Yes. Measure the length and width of the shape in the same unit, enter both values, and read the area. Area is found by multiplying the two sides. Measuring the sides carefully matters more than the arithmetic, since small measuring errors carry directly into the result."
+      ],
+      [
+        "Does the calculator work for a shape that is not a rectangle?",
+        "No. The formulas assume four sides with right angles, so an irregular or slanted shape does not fit them. For those shapes, split the figure into smaller rectangles or use a method that matches the actual geometry."
+      ],
+      [
+        "When should I use perimeter instead of area?",
+        "Use perimeter when the question is about the edges, such as how much border, trim, or fencing a rectangular space needs. Use area when the question is about coverage, such as how much floor or paint a surface needs. Choosing the right measure first avoids buying the wrong quantity."
+      ]
+    ]
+  },
 };

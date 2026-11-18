@@ -258,7 +258,7 @@
 - [Find and Replace Text](https://alltoolstogether.com/text/find-and-replace)
 - [Readability Checker](https://alltoolstogether.com/text/readability-checker)
 
-## Round 4 — 100 tools: title + description + short/long-tail target keywords + AI summary + deeper content
+## Round 4 — 105 tools: title + description + short/long-tail target keywords + AI summary + deeper content
 
 ### Text Tools
 - [Remove Duplicate Lines](https://alltoolstogether.com/text/remove-duplicate-lines)
@@ -316,6 +316,9 @@
 - [Alternate Merge PDF](https://alltoolstogether.com/pdf/alternate-merge-pdf)
 - [Add Text to PDF](https://alltoolstogether.com/pdf/annotate-pdf)
 - [PDF to JSON](https://alltoolstogether.com/pdf/pdf-to-json)
+- [Reorder PDF Pages](https://alltoolstogether.com/pdf/reorder-pdf-pages)
+- [Edit PDF Metadata](https://alltoolstogether.com/pdf/edit-pdf-metadata)
+- [PDF Info Viewer](https://alltoolstogether.com/pdf/pdf-info-viewer)
 
 ### Image Tools
 - [PNG to WebP](https://alltoolstogether.com/image/png-to-webp)
@@ -363,6 +366,7 @@
 - [Logarithm Calculator](https://alltoolstogether.com/math/log-calculator)
 - [Rounding Calculator](https://alltoolstogether.com/math/rounding-calculator)
 - [Scientific Notation Converter](https://alltoolstogether.com/math/scientific-notation-converter)
+- [Rectangle Area Calculator](https://alltoolstogether.com/math/rectangle-area-calculator)
 
 ### Finance & Money
 - [Electricity Bill Calculator](https://alltoolstogether.com/finance/electricity-bill-calculator)
@@ -389,6 +393,7 @@
 - [Age Difference Calculator](https://alltoolstogether.com/date-time/age-difference-calculator)
 - [Add Business Days Calculator](https://alltoolstogether.com/date-time/add-business-days-calculator)
 - [Weeks Between Dates Calculator](https://alltoolstogether.com/date-time/weeks-between-dates-calculator)
+- [Military Time Converter](https://alltoolstogether.com/date-time/military-time-converter)
 
 ## Round 5 — 189 tools (rounds 1–3 above): head keyword added to the meta description and opening answer
 

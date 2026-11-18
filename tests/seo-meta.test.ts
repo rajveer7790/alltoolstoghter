@@ -90,7 +90,7 @@ test('generated FAQs add unique question-form answers without breaking existing 
 test('deep content entries are complete, honest and their worked examples are computed by the tool', async () => {
   const { DEEP } = await import('../lib/seo/deep');
   const { workedExample } = await import('../lib/seo/content');
-  assert.ok(Object.keys(DEEP).length >= 200);
+  assert.ok(Object.keys(DEEP).length >= 205);
   const banned = /\b(best|most accurate|adobe|number one|top-rated)\b/i;
   for (const [slug, d] of Object.entries(DEEP)) {
     const tool = bySlug.get(slug);
@@ -130,7 +130,7 @@ test('declared target keywords are placed where search engines and answer engine
     assert.notEqual((d.aiSummary || '').trim(), d.answer.trim(), slug);
     assert.ok(!/search volume|monthly searches|ranks? (first|#)|most popular/i.test(`${d.answer} ${d.aiSummary}`), `${slug}: ranking/volume claim`);
   }
-  assert.ok(declared >= 100, `only ${declared} tools declare keywords`);
+  assert.ok(declared >= 105, `only ${declared} tools declare keywords`);
 });
 
 test('opener rewrites keep the head keyword in the unchanged title, the description and the answer', async () => {

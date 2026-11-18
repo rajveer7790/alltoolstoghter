@@ -9,6 +9,7 @@ import { backendGuides } from '@/lib/backendGuides';
 import { toolSeo } from '@/lib/seo/meta';
 import { sampleTables, generatedFaqs, workedExample } from '@/lib/seo/content';
 import { DEEP } from '@/lib/seo/deep';
+import { AtAGlance } from '@/components/AtAGlance';
 import { hasBackend } from '@/lib/apiClient';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -104,6 +105,8 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
         '@context': 'https://schema.org',
         '@graph': [
           { '@type': 'WebPage', '@id': `${canonicalUrl}#page`, url: canonicalUrl, name: t.name, description: editorial?.answer || deep?.answer || t.short,
+            ...(deep?.aiSummary ? { abstract: deep.aiSummary } : {}),
+            ...(deep?.shortKeyword ? { keywords: [deep.shortKeyword, ...(deep.longKeywords || [])].join(', ') } : {}),
             dateModified: CONTENT_UPDATED, inLanguage: 'en', author: { '@type': 'Person', name: AUTHOR.name, url: SITE.url + AUTHOR.path },
             publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
           },
@@ -154,6 +157,7 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
       {!guide && <p className="quick-answer">{editorial?.answer || deep?.answer || t.content.intro}</p>}
       {context && <p className="availability-note" role="note">{context.notice}</p>}
       {guide && <p className="quick-answer" role="note">{guide.description}</p>}
+      {!guide && !pendingDocument && <AtAGlance tool={t} summary={deep?.aiSummary} />}
 
       {guide && <p className="availability-note" role="note">
         {hasBackend ? 'This online tool sends your submission to a server for processing.' : 'The online tool is currently unavailable. You can follow the steps below.'}{' '}

@@ -660,3 +660,13 @@ a:hover { text-decoration: underline; }
 
 .ds-hero-notes { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:18px; color:var(--ink-2); font-size:12px; }
 .ds-hero h1 { max-width:15ch; font-size:clamp(38px,4.8vw,56px); }
+
+/* At-a-glance summary block */
+.at-a-glance { margin: 0 0 20px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.at-a-glance h2 { margin: 0 0 8px; font-size: 1rem; }
+.at-a-glance .glance-summary { margin: 0 0 10px; line-height: 1.6; }
+.at-a-glance dl { margin: 0; display: grid; gap: 6px; }
+.at-a-glance dl div { display: grid; grid-template-columns: 8.5rem 1fr; gap: 10px; font-size: 14px; line-height: 1.5; }
+.at-a-glance dt { font-weight: 600; color: var(--ink); }
+.at-a-glance dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 600px) { .at-a-glance dl div { grid-template-columns: 1fr; gap: 0; } }

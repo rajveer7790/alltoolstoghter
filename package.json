@@ -13,7 +13,8 @@
     "prebuild": "node --import tsx scripts/generate-discovery.ts && node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\"",
     "test:backend": "node --test backend/tests/*.test.js",
     "postbuild": "node scripts/install-pdf-editor.mjs",
-    "test:documents": "python -m unittest discover -s backend/documents/tests -v"
+    "test:documents": "python -m unittest discover -s backend/documents/tests -v",
+    "report:keywords": "node --import tsx scripts/keyword-report.ts"
   },
   "dependencies": {
     "css-tree": "^3.2.1",

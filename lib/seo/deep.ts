@@ -3,6 +3,12 @@
 // Generated and validated by the content pipeline described in docs/SEO_AEO_GEO_PLAN_2026-11-18.md.
 export interface DeepContent {
   answer: string;
+  /** 35–55 word self-contained summary, written for answer engines and AI overviews. */
+  aiSummary?: string;
+  /** Head term (1–3 words). Must appear in the title, description and answer. */
+  shortKeyword?: string;
+  /** Natural long-tail phrases. Each must appear verbatim in a heading, FAQ question, the answer or the summary. */
+  longKeywords?: string[];
   exampleInputs?: Record<string, string>;
   sections: { heading: string; text: string }[];
   faqs: [string, string][];
@@ -3426,6 +3432,4052 @@ export const DEEP: Record<string, DeepContent> = {
       [
         "Is my text uploaded when I run the check?",
         "The scoring runs in your browser, so the calculation happens on your device rather than on a server. Keep your own copy of the draft as you revise, so you can compare versions and roll back an edit that did not help."
+      ]
+    ]
+  },
+  "remove-duplicate-lines": {
+    "answer": "Remove duplicate lines means deleting every repeated line from a list so each distinct line appears once. This tool compares each line against the lines already seen, drops any match, and keeps the first occurrence in its original order. Turn on the case-insensitive option to treat Apple and apple as the same line, and choose whether surrounding spaces are ignored.",
+    "aiSummary": "A simple way to remove repeated lines from a text list. This tool keeps the first copy of each line in original order. An optional mode ignores letter case and surrounding spaces. The main limit: lines must match after those options, so near-copies with different wording are kept.",
+    "shortKeyword": "remove duplicate lines",
+    "longKeywords": [
+      "how to remove duplicate lines in list",
+      "ignore case when removing duplicate lines",
+      "remove repeated lines from a text list"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to remove duplicate lines in list?",
+        "text": "People use this to clean mailing lists, keyword lists, exported logs, and lists copied from several sources. Paste the list, run the removal, and copy the cleaned output. Because the original order is kept, the list still reads the way you built it, which matters when position carries meaning, such as a ranked list. Only exact line matches are removed, so the tool suits lists where each row should be one unique entry. Use it when you want a unique set without re-sorting anything."
+      },
+      {
+        "heading": "What should I check in the cleaned output?",
+        "text": "Compare the number of lines before and after to confirm how many repeats were dropped. Check that the first occurrence of each item is the one you wanted to keep, because the tool never picks a later copy. If you enabled case-insensitive mode, scan for items that differ only by capitalization and decide whether they really are the same entry. Read a few lines near the top and bottom to confirm nothing was cut by accident before you paste the result back into your project."
+      },
+      {
+        "heading": "What are the common mistakes or limits?",
+        "text": "The most common mistake is forgetting the case option. With it off, Apple and apple both stay, which can look like a failed cleanup. Surrounding spaces also matter: two lines that look identical may differ by an invisible space unless surrounding spaces are ignored. The tool does not merge near-duplicates such as lines with different punctuation or word order, and it does not look inside a line for repeated words. Review the output before using it for anything important."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I ignore case when removing duplicate lines?",
+        "Yes. Turn on the case-insensitive option and lines that differ only in capitalization are treated as the same. The first version you typed is the one kept, so check the result if capitalization matters for your list."
+      ],
+      [
+        "Which copy of a repeated line is kept?",
+        "The first occurrence is kept and every later copy is dropped. Because original order is preserved, the kept line stays where it first appeared, so the overall structure of the list does not change."
+      ],
+      [
+        "Is my text sent to a server?",
+        "No. Processing happens in your browser, so the text you paste stays on your device while duplicates are removed. You can clean sensitive lists without uploading them anywhere."
+      ]
+    ]
+  },
+  "sort-text-lines": {
+    "answer": "Sort text lines means rearranging each line of a list into alphabetical order, A to Z or Z to A, or by how long each line is. Empty lines are removed before sorting. Comparison is locale-aware, so accented letters land in natural positions instead of after z. The output keeps one item per line, ready to paste into a file, spreadsheet, or import list.",
+    "aiSummary": "Use this to alphabetize a list without blank lines: pasted lines are sorted A to Z, Z to A, or by length. Blank lines are dropped first, and comparisons are locale-aware so accented letters sort sensibly. The main limit is that lines are ordered by text or length, not by meaning or dates.",
+    "shortKeyword": "sort text lines",
+    "longKeywords": [
+      "sort lines alphabetically in either direction",
+      "sort a list of lines by length",
+      "alphabetize a list without blank lines"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why sort lines alphabetically in either direction?",
+        "text": "Sorted lists are easier to scan, compare, and check for duplicates by eye. Reference lists, import files, glossary entries, and inventories of names all become easier to review when they follow a predictable order. Reverse alphabetical order is useful when you want the last entries first, and length order helps when you are checking which lines are longest, such as labels that must fit a fixed width. Choose the direction that matches how you will read the result."
+      },
+      {
+        "heading": "How do I read the sorted result?",
+        "text": "Scan the top and bottom of the output first, since those show the start and end of the chosen order. In length mode you can see the spread of your entries at a glance, with the shortest and longest lines at the two ends. Accented letters should sit beside their base letters rather than at the end, which is the locale-aware effect at work. Compare the line count against the original to confirm that only blank lines disappeared."
+      },
+      {
+        "heading": "What limits should I know before sorting?",
+        "text": "Sorting changes the order of your data, so keep a copy of the original if you may need its sequence later. Blank lines are removed, which is a problem if an empty row carries meaning, such as a separator in a template. The tool orders by text or length, not by the meaning of entries, so dates written in different formats and mixed name styles may not line up as you expect. Review the result against your intent before relying on it."
+      }
+    ],
+    "faqs": [
+      [
+        "Does sorting by length put the shortest lines first?",
+        "Length mode orders lines by how long each one is, which makes very short or very long entries easy to spot. Use the alphabetical options when you need a text order instead."
+      ],
+      [
+        "Can I sort a list of lines by length?",
+        "Yes. Choose the length option and each line is ordered by its character count. Empty lines are removed before sorting, so no blank entries remain at the top of the output."
+      ],
+      [
+        "Will accented letters sort in a sensible place?",
+        "Yes. The comparison is locale-aware, so letters with accents are placed beside their base letters instead of being pushed to the end. This keeps names and words with diacritics in a natural order."
+      ]
+    ]
+  },
+  "remove-extra-spaces": {
+    "answer": "Remove extra spaces means cutting spacing that does not belong in a piece of text. Collapse mode reduces each run of spaces to one and trims trailing whitespace. Trim each line removes leading and trailing spaces on every line. Remove all strips every whitespace character, including line breaks, so it turns text into one unbroken string.",
+    "aiSummary": "Cleans messy pasted text in the browser with three whitespace modes. Collapse reduces repeated spaces, trim each line removes edge spaces, and remove all is the way to strip all whitespace from a string. The main limit: remove all also deletes line breaks and indentation, so it can break layouts that rely on them.",
+    "shortKeyword": "remove extra spaces",
+    "longKeywords": [
+      "fix double spaces from copied text",
+      "trim leading and trailing spaces per line",
+      "strip all whitespace from a string"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I fix double spaces from copied text?",
+        "text": "Text copied from PDFs, web pages, and word processors often carries doubled spaces, stray tabs, or indentation that does not belong in your document. These gaps appear as uneven columns or extra room between words. Paste the text, choose collapse, and copy the cleaned result. This is a quick fix for emails, captions, and product descriptions before publishing, saving you from hunting down each gap by hand. Read the output once before you publish it."
+      },
+      {
+        "heading": "Which mode should I pick for each job?",
+        "text": "Collapse is the everyday choice for copy-paste spacing because it keeps line breaks while removing repeated spaces. Trim each line suits lists where every entry has accidental indentation. Remove all is for cases where every whitespace character must go, such as building a compact string from a sentence. Start with the gentlest mode and move to a stronger one only if the result still looks wrong. Each mode is one click, so comparing them takes seconds."
+      },
+      {
+        "heading": "What mistakes should I avoid with whitespace cleanup?",
+        "text": "The most common mistake is choosing remove all for prose, which joins every word together and removes paragraph breaks. Avoid running trim on code or poetry where indentation carries meaning. Check a sample of the output before using it on a full document. Remember that whitespace is treated as characters, so punctuation and visible symbols are left alone. Compare the result with the original for anything important before you publish it."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I trim leading and trailing spaces per line?",
+        "Choose the trim each line mode. It removes spaces at the start and end of every line while keeping the lines themselves in place, so the list keeps its structure and only the edge spacing disappears."
+      ],
+      [
+        "Does trimming affect spaces between words?",
+        "No. Trim each line only touches the edges of a line, so spaces between words stay as they are. Use collapse if you also want repeated spaces between words reduced to a single space."
+      ],
+      [
+        "Can remove all keep punctuation?",
+        "Yes. Punctuation marks are not whitespace, so commas, periods, and symbols remain. Only spaces, tabs, and line breaks are removed, which is why the result can look like one long run of words and marks."
+      ]
+    ]
+  },
+  "keyword-density-checker": {
+    "answer": "Keyword density checker means a tool that counts how often each word appears, divides that count by the total word count, and ranks the top terms as percentages. It is a simple way to count word frequency in text. Common stop words such as the and a can be filtered out so meaningful terms surface. The result describes only the text you pasted, not how it performs anywhere else.",
+    "aiSummary": "Paste any passage and this browser tool lists its most frequent words with the share of total words each one takes. Each count is divided by the total, and common filler words can be skipped. The percentages only reflect word frequency in that passage, so short texts swing sharply with each edit.",
+    "shortKeyword": "keyword density checker",
+    "longKeywords": [
+      "count word frequency in text",
+      "find top keywords in an article",
+      "check keyword balance for SEO"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I find top keywords in an article?",
+        "text": "Drafting an article often drifts toward a few words you keep repeating. Paste the full draft and the checker lists the leading terms with their percentages, which makes repetition visible at a glance. Use the list the way an editor would: spot terms that dominate, check whether they carry the message, and swap some repeats for synonyms or specific details. Rerun the check after editing to see whether the balance shifted."
+      },
+      {
+        "heading": "How should I interpret the percentages?",
+        "text": "Each percentage is a term's count divided by the total word count of the text you pasted, so it is a share of that text only. Compare terms against each other rather than against any fixed target, because the right balance depends on your subject and audience. A term near the top is simply frequent, not necessarily important. Very short passages produce large swings, so read the numbers as a rough guide."
+      },
+      {
+        "heading": "What are the common mistakes with word counts?",
+        "text": "The first mistake is leaving common words in when you want meaningful terms; turn on stop word filtering to see content words instead. Another is assuming that different word forms are grouped without checking, since a count reflects the exact words in the text. Avoid reading the list as proof of quality. A high percentage can be a sign of repetition, but it can also simply reflect a topic that needs its key terms."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I check keyword balance for SEO with this?",
+        "It gives a word-frequency snapshot of the text you paste, which is a useful starting point for reviewing repetition. It does not measure rankings or predict how a page will perform in search, so treat it as an editing aid."
+      ],
+      [
+        "Does the checker send my text anywhere?",
+        "No. Processing is local, so the text stays in your browser while the counts are calculated. You can check private drafts without uploading them to a server."
+      ],
+      [
+        "Can I use this on a short paragraph?",
+        "You can, but a short paragraph has few words, so each repeated term makes a large percentage. Results are more stable on longer passages, where a single word has less effect on the totals."
+      ]
+    ]
+  },
+  "url-encode-decode": {
+    "answer": "URL encode means replacing characters that are unsafe in a web address with percent codes made of a percent sign and two hexadecimal digits. This tool uses the component-level encoding function, which encodes every reserved character, so it suits query string values. Decoding reverses the change. Invalid percent sequences show a clear error instead of producing corrupted output.",
+    "aiSummary": "Converts text into percent-encoded form for safe use in a web address, and decodes encoded strings back to readable text. It applies the component-level encoding function, which handles every reserved character. Use it to encode a query string value safely. Its limit: it encodes one piece of text, so you still build the URL yourself.",
+    "shortKeyword": "url encode",
+    "longKeywords": [
+      "how to encode spaces in a url",
+      "decode percent encoded text back to readable",
+      "encode a query string value safely"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to encode spaces in a url?",
+        "text": "Spaces and symbols such as ampersands, question marks, and equals signs have special jobs inside a web address. When your text includes them as data, they must be encoded or the link will break. Paste the value, encode it, and place the result after the parameter name. This keeps the link intact whether the value is a search term, a file name, or a title with punctuation in it. Test it with a sample before using it widely."
+      },
+      {
+        "heading": "How do I read the encoded output?",
+        "text": "Each percent code stands for one byte of the original character, so an ampersand becomes a code that the web address can carry as data. Letters and digits stay the same, which makes the output easy to scan. Check the result by decoding it again: if you get your original text back, the round trip worked. Encoded strings produced by other tools can look similar, so compare against the source before trusting the result."
+      },
+      {
+        "heading": "What mistakes break encoded URLs?",
+        "text": "The most common mistake is encoding a whole URL when only one value needs encoding. That turns the colons and slashes into codes and the link stops working. Double encoding is another trap: encoding text that is already encoded makes the percent signs themselves encoded. When decoding fails, the input probably contains a stray percent sign or an incomplete code, which the tool reports as an error rather than guessing at the intent."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I decode percent encoded text back to readable form?",
+        "Switch to decode mode and paste the encoded string. The tool reverses each percent code into its original character. If the string contains an incomplete code, you will see an error that points to a problem in the input."
+      ],
+      [
+        "Does encoding change letters or digits?",
+        "No. Letters and digits pass through unchanged, so only symbols, spaces, and other reserved characters gain codes. That keeps encoded values readable and easy to compare with the original."
+      ],
+      [
+        "How can I encode a query string value safely?",
+        "Encode only the value, not the whole address. Symbols inside the value, such as ampersands and equals signs, need codes so the receiving site reads them as data rather than as separators."
+      ]
+    ]
+  },
+  "uuid-generator": {
+    "answer": "UUID generator means a tool that produces universally unique identifiers in the familiar eight-four-four-four-twelve hex layout. This one creates version 4 values from the browser's cryptographic random source, which supplies 122 random bits per value. Generate one at a time or in bulk. Collisions are so unlikely in practice that each value works as a unique key.",
+    "aiSummary": "Creates random version 4 identifiers in the browser, one at a time or in batches, using the platform's cryptographic random generator. Each value is 122 random bits formatted as hex groups. The limit: values are random rather than time-ordered, so they do not sort by creation time.",
+    "shortKeyword": "uuid generator",
+    "longKeywords": [
+      "generate random uuid values for test fixtures",
+      "bulk uuid v4 for seeding databases",
+      "make unique ids for database seed data"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I generate random uuid values for test fixtures?",
+        "text": "Test fixtures need records with identifiers that look real but do not collide with each other. Generating a batch of version 4 values gives each fixture a distinct key without inventing strings by hand. Copy the list into your seed file or test setup, and keep the output in version control if the fixtures must stay stable. Because each value is random, regenerate only when you deliberately want new identifiers."
+      },
+      {
+        "heading": "How should I read a generated UUID?",
+        "text": "A UUID has five groups of hexadecimal characters separated by hyphens, following the eight-four-four-four-twelve pattern. In version 4 values the first character of the third group is always the version digit, which is how you recognize the type. Treat the whole string as an opaque identifier: do not try to read meaning into its characters, and compare values exactly, including the hyphens. Every value has the same length, so mismatches are easy to spot."
+      },
+      {
+        "heading": "Is bulk uuid v4 for seeding databases safe?",
+        "text": "For seeding development and test databases, bulk generation is a convenient approach because the random space is enormous. Still, check that your schema's unique constraints and foreign keys point at the right rows, since a generated list does not know your relationships. Avoid relying on the order of generated values, since they are random. Keep the generated set consistent across runs if other tests refer to specific identifiers. Write down which batch each fixture set came from."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the generator store the IDs it creates?",
+        "Generation happens locally in your browser, so the values are created on your device. The page shows them to you, and you decide where to save or paste them."
+      ],
+      [
+        "How do I make unique ids for database seed data?",
+        "Generate a batch, paste the values into your seed script, and map each one to a row. Save the list if other fixtures refer to these identifiers, because a new batch will contain different values."
+      ],
+      [
+        "Why are version four values random rather than ordered?",
+        "Version four is defined by random bits, so it carries no timestamp or sequence. Choose a time-ordered version when you need values that sort by creation time, which is a different tradeoff."
+      ]
+    ]
+  },
+  "hash-generator": {
+    "answer": "Hash generator means a tool that turns text into a fixed-length digest using a one-way function. This page computes SHA-256, SHA-512, or SHA-1 by UTF-8 encoding the text and passing it to the browser's Web Crypto digest function, then showing lowercase hexadecimal. The same input always gives the same hash, and a single changed character gives a completely different result.",
+    "aiSummary": "Turns pasted text into a SHA-256, SHA-512, or SHA-1 digest inside the browser. The text is UTF-8 encoded, hashed with the native Web Crypto API, and displayed as lowercase hex. Use it to check whether two texts match by comparing digests. A hash is not encryption, and SHA-1 is considered weak for security purposes.",
+    "shortKeyword": "hash generator",
+    "longKeywords": [
+      "compute a SHA-256 digest of text",
+      "check whether two texts match",
+      "why does one character change the hash"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I compare two texts with a hash generator?",
+        "text": "Hashing gives each text a compact fingerprint. Paste the first text, note its digest, then paste the second and compare the two strings. If they match exactly, the inputs were identical as encoded. If they differ in any character, even a trailing space or a capital letter, the digests will be completely different. This is a practical way to verify a copied value, an exported text, or a template before and after an edit."
+      },
+      {
+        "heading": "How do I compute a SHA-256 digest of text?",
+        "text": "Paste your text, choose SHA-256, and the tool encodes the text as UTF-8 and returns a lowercase hexadecimal string. SHA-256 is a common default for integrity checks, while SHA-512 produces longer output and SHA-1 is kept mainly for legacy comparisons. Copy the digest exactly as shown, because uppercase letters or stray spaces will make a comparison fail even when the text looks the same. Paste it into your comparison notes exactly as copied."
+      },
+      {
+        "heading": "What are the limits of hashing text?",
+        "text": "A hash is a one-way fingerprint, so it cannot be used to recover the original text, but it is not encryption and it does not hide data from anyone who already has a candidate string. Hashing passwords calls for dedicated methods with salting, which a general digest tool does not provide. The digest also depends on the exact bytes you hashed, so line endings and invisible characters count. Confirm the input is the same before drawing conclusions."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a hash generator send my text to a server?",
+        "No. The text is encoded and hashed in your browser with Web Crypto, so the input stays on your machine. The digest appears on the same page, so you can copy it immediately."
+      ],
+      [
+        "Can I check whether two texts match with hashes?",
+        "Yes. Generate the digest for each text using the same algorithm and compare the two hex strings. Identical digests indicate identical input, while any difference, however small, means the texts do not match."
+      ],
+      [
+        "Why does one character change the hash so much?",
+        "A good digest function spreads every input bit across the output, so even a one-character edit reshuffles the whole result. That avalanche effect is why a tiny difference looks like a completely new string."
+      ]
+    ]
+  },
+  "html-encode-decode": {
+    "answer": "HTML encode means replacing the five reserved characters, ampersand, less-than, greater-than, double quote, and apostrophe, with safe entities such as &amp; and &lt;. This makes markup display as plain text instead of being interpreted by the browser. HTML decode reverses the change. Encoding is a display safeguard, not a complete sanitizer for untrusted markup.",
+    "aiSummary": "Swaps characters that have special meaning in markup for their entity equivalents, so text shows literally rather than as HTML. Decoding reverses the swap. It works through a fixed map of five characters, and its limit is that it protects display only and does not clean untrusted code.",
+    "shortKeyword": "html encode",
+    "longKeywords": [
+      "escape special characters for html display",
+      "why encode user input before showing it",
+      "convert html entities back to plain text"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why encode user input before showing it?",
+        "text": "Anything a visitor types can contain characters that a browser reads as markup. Without encoding, a comment containing an angle bracket might be treated as a tag, breaking the layout or allowing injected elements. Encoding turns those characters into entities, so the browser displays them as ordinary text. Developers apply it at the point where data enters a page, which keeps content readable and prevents accidental formatting bugs. Encoding at the right place keeps that protection consistent."
+      },
+      {
+        "heading": "Which characters should I check in encoded output?",
+        "text": "Look for the five reserved characters: ampersand, less-than, greater-than, double quote, and apostrophe. An ampersand becomes an entity that starts with an ampersand, so seeing one in the output is normal. Confirm that angle brackets now appear as their entity codes, since those are the characters that would otherwise start a tag. Decode a sample to check that the original text returns exactly. Keep a few test strings with special characters for this purpose."
+      },
+      {
+        "heading": "What mistakes do people make with entity encoding?",
+        "text": "The most common mistake is encoding twice, which turns an existing entity into visible code on the page. Another is applying text encoding where an attribute context needs its own handling, so check the destination carefully. Decoding untrusted markup and then displaying it can reintroduce the danger that encoding prevented. Treat this tool as a helper for plain text, and use a proper sanitizer for HTML from unknown sources. Test any output in a page before you rely on it."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I escape special characters for HTML display in a code sample?",
+        "Yes. Paste the snippet, encode it, and the angle brackets and quotes become entities that display as literal characters. This lets you show markup in documentation without the browser running it."
+      ],
+      [
+        "Does encoding turn my text into a web page?",
+        "No. The output is still plain text containing entity codes. Encoding does not create any layout or markup; it only changes how the characters are interpreted when a browser displays them."
+      ],
+      [
+        "How do I convert html entities back to plain text?",
+        "Switch to decode mode and paste the encoded string. Each entity is replaced with its original character, so the ampersand, brackets, and quotes return to normal text, ready for editing or copying."
+      ]
+    ]
+  },
+  "css-minifier": {
+    "answer": "CSS minifier means a tool that compresses stylesheets by removing comment blocks, collapsing whitespace, and dropping spaces around braces, colons, and semicolons. The meaning of each rule is preserved in a smaller file. Keep your readable source, run the minifier on a copy, and test the result in the browser before publishing.",
+    "aiSummary": "Minify CSS without changing styling rules by stripping comment blocks and collapsing whitespace around selectors, braces, and declarations. Everything runs in the browser, so your stylesheet stays on your device. The limit is that it compresses text only; it does not remove unused rules or restructure selectors.",
+    "shortKeyword": "css minifier",
+    "longKeywords": [
+      "reduce css file size before deployment",
+      "remove comments from a stylesheet",
+      "minify css without changing styling rules"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I reduce css file size before deployment?",
+        "text": "Production stylesheets benefit from smaller files because browsers download them before rendering the page. Long comments, indentation, and spacing that help you read the source add bytes without adding any styling. Run your final file through the minifier and publish the output while keeping the readable version in your repository. Small snippets pasted into a site builder also become lighter this way, which helps pages that load several stylesheets. Measure the sizes before and after to see the difference."
+      },
+      {
+        "heading": "How do I check the minified output?",
+        "text": "Compare file sizes before and after to confirm the reduction is real, then load the page and look at the parts that matter most: navigation, forms, and responsive breakpoints. Open the browser developer tools and check for console errors related to the stylesheet. Because the tool only removes comments and whitespace, a rule that was already broken stays broken, since minification is not a fix for invalid CSS. Keep a side-by-side copy until you are satisfied with the result."
+      },
+      {
+        "heading": "What does a css minifier leave alone?",
+        "text": "A minifier does not reorganize your selectors, merge duplicate rules, or delete styles that no page uses, so an unused rule remains in the output. It also does not add vendor prefixes or rewrite older syntax into newer forms. Think of it as a whitespace and comment cleanup rather than a full optimizer. For larger projects, a build pipeline with dedicated tools handles those extra steps. Use this tool for quick cleanups and a build pipeline for the rest."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I remove comments from a stylesheet without changing the layout?",
+        "Yes. Comment blocks have no effect on how rules are applied, so removing them should leave the layout unchanged. Whitespace removal likewise keeps each declaration intact, but still check key pages after minifying."
+      ],
+      [
+        "Does the minifier remove unused selectors?",
+        "No. It only strips comments and whitespace and removes spacing around punctuation. Selectors that no page uses remain in the output, so removing dead code requires a separate tool or audit."
+      ],
+      [
+        "Should I keep my unminified source file?",
+        "Yes. Keep the readable version in your project so you can edit and review it later. Use the minified copy only for publishing, and regenerate it whenever the source changes."
+      ]
+    ]
+  },
+  "javascript-minifier": {
+    "answer": "JavaScript minifier means a tool that shrinks script source by removing block and line comments and collapsing empty lines. This javascript minifier uses conservative minification that keeps code structure, so the logic stays readable and unchanged. Use it for quick cleanup, and use a real build tool when you need aggressive renaming or bundling.",
+    "aiSummary": "Trims JavaScript by stripping comments and blank lines, a deliberately gentle pass that leaves statements in place. The work happens in your browser, so the source is not uploaded. Its main limit is that it does not shorten identifiers or bundle modules, so the output is only modestly smaller than the input.",
+    "shortKeyword": "javascript minifier",
+    "longKeywords": [
+      "remove comments from javascript for smaller files",
+      "light cleanup before shipping javascript",
+      "conservative minification that keeps code structure"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When should I do a light cleanup before shipping javascript?",
+        "text": "A light cleanup suits small scripts, snippets pasted into a site builder, or files you want to keep easy to read for teammates. Comments that describe internal decisions can stay in your repository but add weight to the public file. Removing them and collapsing empty lines is a low-risk step before deployment. Choose it when the goal is modest savings with a clear diff rather than a dramatic reduction in size."
+      },
+      {
+        "heading": "How do I check that my script still runs?",
+        "text": "Load the minified file in a test page and exercise the features it powers, such as forms, animations, and event handlers. Watch the browser console for syntax errors, which would appear immediately if something went wrong. Compare behavior against the original, and keep the readable source so you can revert quickly. Because the tool stays conservative, the logic should behave the same, but a quick run through real interactions is still the right final step."
+      },
+      {
+        "heading": "What are the limits of this conservative approach?",
+        "text": "A conservative pass does not rename variables, bundle modules, or remove unused functions, so it will not match the output of a production toolchain. The size reduction is usually modest because most of the bytes live in the code itself. Source maps, transpilation, and dead code elimination are outside its scope. If you need those, a real build tool is the right choice, and this tool still helps with quick comment and spacing cleanup."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I remove comments from javascript for smaller files?",
+        "Yes. Block and line comments are stripped, along with unnecessary blank lines. This trims the file without touching the statements, which is the main reason the cleanup is low risk for most scripts."
+      ],
+      [
+        "Does minifying keep my code on my device?",
+        "Yes. Processing happens locally in your browser, so the script you paste is not sent to a server. You can clean private code without uploading it anywhere."
+      ],
+      [
+        "Should I minify a script I plan to edit later?",
+        "Usually not. Keep the readable file as the working copy and produce the minified version only for publishing. That way edits stay easy, and you never need to reverse the cleanup."
+      ]
+    ]
+  },
+  "sql-formatter": {
+    "answer": "A sql formatter rewrites a query so each major clause, such as SELECT, FROM, WHERE and JOIN, starts on its own line, with comma-separated column lists indented underneath. It changes only whitespace and line breaks, not what the query does. Use it to split sql clauses onto separate lines before reviewing or sharing a query.",
+    "aiSummary": "Reflows a cramped SQL query by starting a new line at common keywords such as SELECT, FROM, WHERE and GROUP BY, then indenting comma-separated items. The core method is keyword detection plus whitespace layout. Its main limit is that it recognizes common keywords only, so unusual dialect syntax may not lay out cleanly.",
+    "shortKeyword": "sql formatter",
+    "longKeywords": [
+      "how to make a sql query readable",
+      "indent sql column lists for review",
+      "split sql clauses onto separate lines"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to make a sql query readable?",
+        "text": "Long queries written in one line are hard to scan. Pasting the query into the formatter gives each clause its own line, so you can follow the flow from SELECT down to any ORDER BY. This is useful when reviewing a colleague's query, debugging a join that returns surprising rows, or preparing a snippet for documentation. Each clause becomes a visual landmark, and indented column lists make it obvious which fields are being pulled. The result is the same query, just laid out so a human can read it in less time."
+      },
+      {
+        "heading": "How should I read the formatted output?",
+        "text": "Read the output from top to bottom, treating each line that starts with a keyword as a new step in the query. Indented lines belong to the clause above them, so a column list under SELECT is visually grouped apart from the table names that follow FROM. Check that table names and join conditions appear where you expect them. If a line looks out of place, the original query may have an unusual keyword order, and the layout is simply making that visible. Compare the formatted version with the original to confirm no words were lost."
+      },
+      {
+        "heading": "What are the common mistakes or limits?",
+        "text": "The most common mistake is assuming the formatter checks correctness. It changes spacing and line breaks, so a query with a misspelled column or a missing comma is still broken after formatting, just easier to see. Keyword recognition covers the common clauses named in the description, so less common or dialect-specific syntax may not be laid out as neatly. Very large or deeply nested queries can still be hard to follow. Always run the formatted query in your own database environment before relying on it, because only the database can confirm that the logic works."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I indent sql column lists for review?",
+        "Yes. Comma-separated column lists are indented beneath their clause, which makes it easier to scan which fields a query returns. The indentation is only visual and does not change the query's results."
+      ],
+      [
+        "Will the formatter catch syntax errors?",
+        "No. The formatter only reflows text around recognized keywords and does not parse the whole statement. A missing parenthesis or misspelled keyword will still be present after formatting, so run the query in your database to find errors."
+      ],
+      [
+        "Does the sql formatter send my query anywhere?",
+        "No. This tool runs locally in your browser, so the query is processed on your device rather than uploaded to a server. You can still check the output in your own environment before using it."
+      ]
+    ]
+  },
+  "markdown-to-html": {
+    "answer": "A markdown to html converter reads common Markdown syntax line by line and emits matching HTML tags for headings, bold and italic text, links, lists, inline code and code blocks. Code is escaped so characters display literally. Output is ready to paste into a web page, though you should review it first.",
+    "aiSummary": "Turns Markdown text into HTML by parsing it line by line and emitting matching tags for headings, lists, links and code. The method will escape code blocks in html output so characters display literally. Its main limit is that only the listed features are covered, so unsupported syntax may not convert as expected.",
+    "shortKeyword": "markdown to html",
+    "longKeywords": [
+      "convert markdown headings and lists",
+      "escape code blocks in html output",
+      "paste converted html into a web page"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I paste converted html into a web page?",
+        "text": "Copy the HTML produced by the converter and place it inside the body of your page, in the spot where the content should appear. Most content management systems offer an HTML or code block for this. Paste the markup as it is rather than rewriting its tags, because the escaping inside code samples is already handled. Then preview the page on a staging copy to confirm the layout. If your editor reformats the markup, compare the result with the original output to be sure the code blocks still show literally."
+      },
+      {
+        "heading": "What should I check in the converted output?",
+        "text": "Start with the headings, since they define the outline of the page and should appear in the same order as in your source. Next, check links and confirm each one points to the intended address. Look closely at code blocks and inline code, because their characters should display literally rather than running as markup. Finally, scan the lists to confirm the items and their nesting match what you wrote. A quick side-by-side comparison of source and output catches most issues before publishing."
+      },
+      {
+        "heading": "What are the common limits or mistakes?",
+        "text": "A common mistake is assuming every Markdown feature is supported. The converter works from the features listed in its description, so extended syntax, such as some tables or custom blocks, may come out as plain text or be dropped. Another mistake is editing the HTML after conversion without understanding the tags, which can break the structure. The output is also not a security review, so check the content first if it comes from an untrusted source before publishing it on a site."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I convert markdown headings and lists at once?",
+        "Yes. Headings and lists are both part of the supported syntax, so one conversion pass handles them together. Check the result in a preview, because list nesting and spacing in the source can affect how the output looks."
+      ],
+      [
+        "Should I review the output before publishing it?",
+        "Yes. The converter emits HTML from the syntax it recognizes, so it does not judge whether your content is accurate or appropriate. Read the rendered result and confirm links, code samples and headings look right before the page goes live."
+      ],
+      [
+        "Does the tool handle tables in Markdown?",
+        "This tool's listed features are headings, bold and italic, links, lists, inline code and code blocks, and table support is not part of that description. Test any table syntax in the output before relying on it, and fix it by hand if needed."
+      ]
+    ]
+  },
+  "number-base-converter": {
+    "answer": "A number base converter takes a value written in one base, such as binary, octal, decimal or hexadecimal, converts it to an integer, then writes that integer in base 2, 8, 10 and 16. Hexadecimal output carries the conventional 0x prefix. Use it to check binary to decimal or hex to decimal conversions quickly.",
+    "aiSummary": "Converts a number entered in binary, octal, decimal or hexadecimal into all four representations at once. The value is parsed into an integer and re-rendered in base 2, 8, 10 and 16, which suits hex to decimal conversion for programmers. Its main limit is that the description covers integers, so fractional input is not documented.",
+    "shortKeyword": "number base converter",
+    "longKeywords": [
+      "how to convert binary to decimal",
+      "see all four number bases at once",
+      "hex to decimal conversion for programmers"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to convert binary to decimal?",
+        "text": "Binary to decimal conversion means reading each digit as a power of two, starting from the right, and adding up the place values that contain a one. This tool does the work for you: enter the binary value with binary as its input base, and read the decimal result in the same view. Seeing the number re-rendered in other bases helps you confirm the answer, since octal and hexadecimal should line up with the same underlying value. It is a fast way to check homework, debugging output or a value copied from a register dump."
+      },
+      {
+        "heading": "How should I read the four outputs?",
+        "text": "Each output shows the same underlying integer written in a different base. Decimal is the everyday base, binary shows individual bits, octal groups bits in threes, and hexadecimal groups them in fours. Hexadecimal output carries the conventional 0x prefix, so it is easy to spot. If two outputs look different but refer to the same value, that is expected. Compare the decimal line first, because it is the easiest to check against a count you already know."
+      },
+      {
+        "heading": "What are the common mistakes or limits?",
+        "text": "A common mistake is entering digits that do not belong to the input base, such as a 9 in an octal value, which cannot be parsed correctly. Another is mixing up hexadecimal letters with decimal text. Remember that the tool works on the value as an integer, so fractional input is outside its described behavior. Finally, the result depends on the base you selected, so confirm that choice before trusting the output."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I see all four number bases at once?",
+        "Yes. The tool renders the parsed value in binary, octal, decimal and hexadecimal together, so you do not need to convert each one separately. This makes it easy to compare a value across bases in a single view."
+      ],
+      [
+        "Why does the 0x prefix appear?",
+        "The 0x prefix is the conventional marker for hexadecimal numbers. It tells a reader that the digits that follow are base 16, which avoids confusing a hex value with a decimal one. The prefix is part of the notation, not extra data."
+      ],
+      [
+        "What happens if I enter an invalid digit?",
+        "The description does not say exactly how invalid input is reported, so do not rely on a partial result. Confirm that every digit fits the input base, such as only 0 and 1 for binary, before reading the output."
+      ]
+    ]
+  },
+  "http-status-codes": {
+    "answer": "HTTP status codes are three-digit numbers a server returns to say how it handled a request. This reference lists them from 200 OK to 500 Internal Server Error, grouped into 1xx informational, 2xx success, 3xx redirection, 4xx client errors and 5xx server errors. Type a number or keyword to filter the list.",
+    "aiSummary": "Looks up HTTP response codes and gives a plain explanation for each one. The method groups codes by their first digit, and you can search status codes by number or keyword. Its main limit is that it describes standard meanings, not how a particular application uses them, so check your own server logs as well.",
+    "shortKeyword": "http status codes",
+    "longKeywords": [
+      "what each http response code means",
+      "difference between client and server errors",
+      "search status codes by number or keyword"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "What is this reference used for?",
+        "text": "Developers, site owners and support staff meet status codes in logs, browser tools and error reports. This reference lets you look up a code quickly and read a plain explanation of what it signals. It is useful when a page fails to load, a redirect behaves oddly, or an API returns an unfamiliar response. Because the list is searchable, you can type part of a number or a word from the meaning and jump to the entry rather than scanning every class by hand. Use it as a fast starting point for diagnosis."
+      },
+      {
+        "heading": "How do I find what each http response code means?",
+        "text": "Start with the first digit, because it groups the code into a class: 1xx informational, 2xx success, 3xx redirection, 4xx client errors and 5xx server errors. That tells you whether the request worked, whether the client needs to change something, or whether the server failed. Then read the specific entry for the exact meaning. Two codes in the same class can point to very different fixes, so the class is a direction rather than a full answer."
+      },
+      {
+        "heading": "What are common mistakes when reading status codes?",
+        "text": "A common mistake is treating the class as the whole story. A 4xx error means the request was problematic from the client side, but the right fix depends on the exact code and what the server expects. Another mistake is assuming the message a browser shows matches the server code exactly, since intermediaries, caches and proxies can change what you see. Read the entry for the precise code, and confirm it against the actual response when you can."
+      }
+    ],
+    "faqs": [
+      [
+        "What is the difference between client and server errors?",
+        "Client errors, the 4xx class, mean the request itself seems to be the problem, such as a missing page or missing permission. Server errors, the 5xx class, mean the request was reasonable but the server failed to handle it. The class tells you where to look first."
+      ],
+      [
+        "Why does my browser show a different message than this list?",
+        "Browsers and websites can display their own error text, and a page may be generated by an intermediary such as a proxy or cache. Check the response itself in developer tools when possible, since the code there is what matters for diagnosis."
+      ],
+      [
+        "Can I search by a word instead of a number?",
+        "Yes. Type a keyword from a meaning, such as a word from the explanation, and the list filters to matching entries. Searching by number works too, so you can use whichever is easier to remember or copy from a log."
+      ]
+    ]
+  },
+  "barcode-generator": {
+    "answer": "A barcode generator encodes your value into the bar pattern for a chosen symbology, such as CODE128, EAN-13, UPC or CODE39, and renders it as vector SVG. It checks that the value fits that format's rules, for example that an EAN-13 value has 12 to 13 digits. The file can be downloaded and scaled without losing sharpness.",
+    "aiSummary": "Generates CODE128, EAN-13, UPC and CODE39 barcodes from a typed value as a scalable svg barcode for print. The value is encoded into the bar pattern after a check against that format's rules. Its main limit is that it checks format rules only, so it cannot confirm a product's registration.",
+    "shortKeyword": "barcode generator",
+    "longKeywords": [
+      "make a scannable barcode for a product",
+      "validate barcode digits before printing",
+      "scalable svg barcode for print"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I make a scannable barcode for a product?",
+        "text": "Pick the symbology that the retailer, warehouse system or scanner expects, since formats differ in the characters and lengths they allow. Enter the value exactly as it should be encoded, then generate the barcode and download the SVG. Test a printed sample with the scanner you will actually use before printing a large batch. Keep the value and the format recorded together so future labels match the same product record."
+      },
+      {
+        "heading": "How do I read the validation feedback?",
+        "text": "The tool compares your value against the rules of the selected format, so a message usually points to a length or character problem. For a format such as EAN-13, the value must contain only digits and the right number of them, so an extra letter or a missing digit will be flagged. Read the message as a description of the format rule rather than a verdict on the product itself. Once the value follows the rule, the bar pattern is rendered from it."
+      },
+      {
+        "heading": "What are the common mistakes or limits?",
+        "text": "A frequent mistake is choosing a format that does not match the target system, which can produce a code the scanner cannot read in the expected way. Another is treating a valid pattern as a registered product code, since the generator encodes what you type and cannot confirm ownership or uniqueness. Also avoid shrinking a barcode until the bars blur, because print size and the blank quiet space around the symbol affect scanning. Check the printed result before relying on it."
+      }
+    ],
+    "faqs": [
+      [
+        "Should I validate barcode digits before printing?",
+        "Yes, because a value that fails the format rule will not scan correctly or may not render at all. The tool's checks catch length and character errors early, so you can fix the input before wasting paper or label stock on a bad print."
+      ],
+      [
+        "Can the tool confirm a barcode is registered?",
+        "No. The generator only builds the symbol from the value you enter and checks it against format rules. It cannot tell you whether a code belongs to a product or is unused elsewhere, so confirm registration through your own product records."
+      ],
+      [
+        "Does the barcode leave my value on a server?",
+        "No. This tool runs locally in your browser, so the value is encoded on your device and the SVG is created there. You can still review the downloaded file before using it in print or on a label."
+      ]
+    ]
+  },
+  "robots-txt-generator": {
+    "answer": "A robots.txt generator writes a plain text file using the Robots Exclusion Standard, with User-agent lines followed by Allow and Disallow rules. It builds common policies: allow everything, block everything, or allow with specific exclusions, then appends your sitemap URL. Save the output at the root of your site so crawlers can find it.",
+    "aiSummary": "Builds a robots.txt file that follows the Robots Exclusion Standard, using User-agent lines with Allow and Disallow rules. It supports allow-everything, block-everything and custom exclusion policies, then appends a sitemap URL. Its main limit is that it writes rules only; crawlers may ignore them, and the file does not secure private content.",
+    "shortKeyword": "robots.txt generator",
+    "longKeywords": [
+      "block a staging site from crawlers",
+      "add a sitemap line to robots.txt",
+      "allow some folders but block others"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "What is a robots.txt file for?",
+        "text": "A robots.txt file sits at the root of a site and gives crawlers instructions about which paths they may crawl. It is a request that well-behaved crawlers follow, not a lock on the server. Use it to keep crawlers out of areas such as internal search results or admin pages, and to point them toward your sitemap. The generator produces a correctly formatted file so you do not have to remember the exact syntax of User-agent and Disallow lines."
+      },
+      {
+        "heading": "How do I add a sitemap line to robots.txt?",
+        "text": "The generator appends your sitemap URL as a separate line in the file. Enter the full address of the sitemap, including the protocol, so crawlers can fetch it directly without guessing the location. Keeping the sitemap line in robots.txt helps crawlers discover the sitemap even if you have not submitted it elsewhere. Check the final file to confirm the URL is correct and that it is not accidentally mixed into a Disallow line."
+      },
+      {
+        "heading": "When should I block a staging site from crawlers?",
+        "text": "Blocking a staging site with a Disallow rule is common, but it is only one piece of the picture. A robots.txt rule discourages compliant crawlers, yet it does not hide a page from people who have the link, and it cannot make a page private. If a staging site must stay out of search, pair the rule with password protection on the server. Also remember that a broad block copied onto a live site can hide important pages, so check the file before publishing. Review it again after any site change."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use the generator to block all crawlers?",
+        "Yes. The tool includes a block-everything policy, which tells every crawler to avoid the whole site. Use it with care, because a live site with that file can disappear from search results. Switch to a targeted policy once you are ready."
+      ],
+      [
+        "Is robots.txt a security tool?",
+        "No. It is a set of requests that well-behaved crawlers respect, and the file is publicly readable, so it can even reveal paths you list. Use real access controls such as passwords or server rules to protect content that must stay private."
+      ],
+      [
+        "How do I allow some folders but block others?",
+        "Choose the allow-with-exclusions policy, then list the folders to block as Disallow rules. Everything not listed stays open to crawlers under that policy. Check the generated file and test a few URLs before publishing."
+      ]
+    ]
+  },
+  "xml-sitemap-generator": {
+    "answer": "An xml sitemap generator creates a file with one url entry per page inside a urlset element, following the sitemaps.org schema. Each URL can carry an optional last-modified date and a change frequency hint. Ampersands are escaped automatically, so the XML stays well formed. Submit the finished file to search engines so they can discover your pages.",
+    "aiSummary": "Converts a list of URLs into an XML sitemap file, with optional last-modified dates and change frequency hints for each entry. It escapes ampersands and follows the sitemaps.org schema. Its main limit is that it only knows the URLs you list. Submit a sitemap to search engines once it is current.",
+    "shortKeyword": "xml sitemap generator",
+    "longKeywords": [
+      "turn a url list into sitemap xml",
+      "add a lastmod date to each entry",
+      "submit a sitemap to search engines"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I turn a URL list into sitemap xml?",
+        "text": "Paste or list one URL per line, using the full address for each page you want indexed. The generator wraps each address in a url entry inside a urlset element, which is the structure the sitemaps.org schema expects. Include only pages you actually want search engines to discover, such as public articles and product pages, and leave out drafts or duplicate addresses. The result is a single XML file you can save and place on your site."
+      },
+      {
+        "heading": "What do the optional fields add to each entry?",
+        "text": "The lastmod field records when a page last changed, which helps a crawler decide whether to revisit it. The changefreq field is a hint about how often the content tends to change, such as daily or monthly. Leave these blank if you do not know them, since a missing field is valid and an inaccurate date is worse than none. Use real modification dates from your content system rather than today's date on every entry."
+      },
+      {
+        "heading": "What are the common mistakes or limits?",
+        "text": "A common mistake is listing URLs that redirect, return errors or are blocked by robots rules, which wastes crawl attention and confuses the file. Another is assuming changefreq controls exactly when a page is crawled, when it is only a hint. The generator also cannot see your site, so it will not catch pages you forgot to list. Compare the output with your live pages before submitting, and regenerate the file whenever content is added or removed."
+      }
+    ],
+    "faqs": [
+      [
+        "Should I add a lastmod date to each entry?",
+        "Add it when you can supply an accurate date from your content system, because it tells crawlers when a page changed. Skip it rather than filling every entry with the same or guessed date, since misleading dates reduce the value of the field."
+      ],
+      [
+        "Why does my URL need escaping?",
+        "Ampersands and some other characters have special meaning in XML, so a raw ampersand inside a query string would break the file. The generator escapes them automatically, so you can paste addresses as they appear in your browser."
+      ],
+      [
+        "Where should I host the finished sitemap file?",
+        "Place it on your own domain, usually at a stable address such as the site root, and reference that exact location when you submit it. Keep the file updated as pages change, and make sure the address returns the XML without redirects."
+      ]
+    ]
+  },
+  "meta-tag-generator": {
+    "answer": "A meta tag generator assembles the essential HTML meta tags for a page head, including title, description, robots and viewport, with special characters escaped. It shows live character counts against the rough limits search engines use when truncating, about 60 characters for titles and 160 for descriptions. Use the output to copy tags into your page.",
+    "aiSummary": "Generates essential HTML meta tags, including title, description, robots and viewport, with escaped characters and live length feedback. It assembles head tags and compares their length against rough truncation targets. Its main limit is that the counts are approximate, so you should check head tags before publishing a page.",
+    "shortKeyword": "meta tag generator",
+    "longKeywords": [
+      "how long should a seo title be",
+      "write a meta description that fits",
+      "check head tags before publishing a page"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How long should a seo title be?",
+        "text": "Search engines often truncate long titles, so the title needs to communicate its purpose early. The generator flags titles that run past the rough limit of about 60 characters, which gives you a practical target. Lead with the most important words, because truncated titles lose their ending. Treat the count as a guide rather than a hard rule, since truncation depends on the characters used and the device. Write for people first and let the limit shape the wording, not the other way round."
+      },
+      {
+        "heading": "How do I write a meta description that fits?",
+        "text": "Describe what the page offers in plain sentences, using words a searcher would recognize. The live counter shows when the text passes about 160 characters, the point where descriptions are often cut off. Shorter descriptions are fine if they still say something specific. Avoid repeating the title word for word, and avoid stuffing in keywords, because the description is a summary for the reader. Read it aloud once to check that it makes sense on its own."
+      },
+      {
+        "heading": "Which optional tags can I skip?",
+        "text": "The robots tag tells crawlers whether a page may be indexed or whether its links should be followed, so an incorrect value can keep a page out of results. The viewport tag tells mobile browsers how wide to render the page, which affects layout on phones. Leave out tags you do not need, and check that each one sits inside the head section. Before publishing, review the generated markup once to confirm the values match what you intend."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I see character counts while I type?",
+        "Yes. The tool shows live counts for the title and description, and flags when either runs past the rough limits it targets. Use those counts as a guide while you edit the wording."
+      ],
+      [
+        "Should the title and description be identical?",
+        "No. The title names the page and the description summarizes it for a searcher, so repeating the same words wastes space and gives less information. Make each one distinct while keeping both accurate to the page."
+      ],
+      [
+        "Where do the meta tags go in my page?",
+        "They belong inside the head section of the HTML document, which is where browsers and crawlers read page metadata. Paste the generated tags there, then reload the page and check that they appear in the source."
+      ]
+    ]
+  },
+  "open-graph-generator": {
+    "answer": "An open graph generator builds og: property tags and matching twitter: tags for the title, description and preview image of a page. Platforms read these tags from the page head to render a rich link preview instead of a bare URL. Escaping is handled for you, and the output can be copied into your page's head section.",
+    "aiSummary": "Creates Open Graph and Twitter Card meta tags for title, description and preview image from the same fields, so you can use og and twitter tags together. Platforms read the property and matching twitter tags from the head. Its main limit is that the tool writes tags only, and platforms may cache earlier previews.",
+    "shortKeyword": "open graph generator",
+    "longKeywords": [
+      "choose an image size for link previews",
+      "test open graph tags before sharing",
+      "can one set of tags serve"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I choose an image size for link previews?",
+        "text": "The preview image is the most visible part of a shared link, so choose an image that stays clear when it is scaled down. A landscape image with the main subject centered works well, and small text tends to be unreadable in a preview. The generator stores the address you provide, so make sure the image URL is public and loads without a login. Pick one consistent image per page so the preview matches what visitors expect when they arrive."
+      },
+      {
+        "heading": "What do the title and description tags control?",
+        "text": "The og title and description supply the headline and summary shown under the image in a shared link. Matching twitter tags let X and similar platforms show the same card. Because each platform reads its own tags, the generator outputs both sets from one set of fields. Keep the wording short and specific, since long text may be cut off in the preview. Test the wording in a preview before settling on it."
+      },
+      {
+        "heading": "How can I test open graph tags before sharing?",
+        "text": "Publish the page or a staging copy first, then paste its address into the link preview debugger offered by the platforms you care about. Platforms often cache earlier previews, so an old image or title may persist after you fix the tags. Check the final head section in your page source to confirm the tags match what you generated. Test the wording in a preview before settling on it. Test a few key pages rather than only the homepage, because templates can differ between them."
+      }
+    ],
+    "faqs": [
+      [
+        "Can one set of tags serve every page?",
+        "Technically yes, but every page should describe its own content, so a shared title and image make previews less useful. Generate tags for each important page, and keep the image relevant to that page's subject."
+      ],
+      [
+        "Does the preview image need a specific file type?",
+        "The tool does not specify a file type in its description, so check the platform's current requirements before publishing. Use a common web image format, and confirm the image address loads publicly in a private browser window."
+      ],
+      [
+        "Does the generator upload my page or images?",
+        "No. The tool runs locally in your browser, so the tags are built on your device from the values you enter. The image itself is referenced by its address, so the file still needs to be hosted publicly."
+      ]
+    ]
+  },
+  "extract-pdf-pages": {
+    "answer": "Extract PDF pages means picking specific pages from a PDF and saving only those into a new document. List the pages to keep, such as 1, 3-4, and the tool builds a fresh PDF copied exactly from the original, in the order you listed. The original file is left unchanged.",
+    "aiSummary": "Builds a new PDF from selected pages of an existing file, copied exactly and placed in the order you list them. It can keep pages in a chosen order for sharing or reference. Its main limit is that the new file is separate, so mistyped page numbers produce the wrong pages.",
+    "shortKeyword": "extract pdf pages",
+    "longKeywords": [
+      "pull selected pages from a pdf",
+      "keep pages in a chosen order",
+      "save only needed pages from a long pdf"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I pull selected pages from a PDF?",
+        "text": "Load the PDF into the tool and list the page numbers you want to keep, separated by commas. Ranges work as well, so a list such as 1, 3-4 keeps page one followed by pages three and four. The tool then builds a new document containing only those pages. Check the page count of the result before sharing it, because an incorrect range is an easy mistake to miss. Scan the list once more before extracting."
+      },
+      {
+        "heading": "How should I order the pages I keep?",
+        "text": "The output follows the order you type, not the order in the original, so the list is effectively the outline of the new file. Type the numbers in ascending sequence to keep the original order, or change the sequence to build a different flow. Read the list from left to right before extracting, since it describes the new document exactly. A short check of the list at this stage saves a second extraction later."
+      },
+      {
+        "heading": "When should I save only needed pages from a long PDF?",
+        "text": "Saving only the pages you need is useful when a long report must be shared with someone who only needs one section, or when a file is too large to send comfortably. It also helps when you want a clean copy of a chapter for reference. Keep in mind that the new file is separate, so later edits to the original will not appear in it. Note the page numbers used in the source so the extract is easy to trace back."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the extraction need an internet connection?",
+        "No. The tool runs in your browser, so the PDF is processed on your device and does not need to be uploaded. Speed then depends on your computer, which matters most for large files."
+      ],
+      [
+        "Can I keep pages in a chosen order?",
+        "Yes. The new PDF follows the sequence you list, so you can keep pages in a chosen order by typing the numbers in that sequence. Check the final page count afterward to confirm nothing was dropped."
+      ],
+      [
+        "What happens if a page number is wrong?",
+        "A page number that does not match the document cannot give you the page you meant, so correct the list first. Open the new file afterward and check each page to confirm it is the one you expected."
+      ]
+    ]
+  },
+  "delete-pdf-pages": {
+    "answer": "Delete PDF pages is the process of removing chosen page numbers from a PDF while every other page stays in its original order. You list the pages to drop, such as 2 or 5-6, and the tool saves a new file without them. Everything runs in your browser, and the remaining pages are copied across unchanged.",
+    "aiSummary": "This tool lets you delete unwanted pages from a PDF in the browser by listing their numbers and saving a trimmed copy. Remaining pages keep their original order and content. The main limit is that you must type the page numbers yourself, so check them in your viewer to avoid removing the wrong pages.",
+    "shortKeyword": "delete pdf pages",
+    "longKeywords": [
+      "how to remove pages from a pdf",
+      "remove blank pages from a pdf",
+      "delete unwanted pages from a pdf"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to remove pages from a PDF?",
+        "text": "People trim PDFs for many reasons: a cover sheet is no longer needed, an appendix belongs in a different file, or a scanned report includes blank sheets. This tool handles those cases by removing only the pages you name. It is a quick way to shorten a contract or handout before sharing it. Because the output is a new file, your original document is left untouched on your device. Nothing needs to be installed first."
+      },
+      {
+        "heading": "How do you read the page list before deleting?",
+        "text": "Enter page numbers separated by commas, and use a dash for a range, such as 2 or 5-6. Check the page count in your viewer before typing anything, because the numbers are taken exactly as written. Count from the first page of the file you loaded, not from any earlier version. Download the result only after checking its page count yourself. A short check now prevents exporting a file that lost the wrong pages."
+      },
+      {
+        "heading": "What mistakes should you avoid when trimming pages?",
+        "text": "The most common mistake is typing a page number from memory instead of checking it, especially when a cover sheet shifts the numbering you expect. Listing every page is another trap, since nothing would be left to save, so confirm that some pages remain. Also watch overlapping ranges like 3-5 and 4, which can leave you unsure what was removed. Deleted pages are not in the new file, so keep your original copy safe."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I remove blank pages from a PDF in one go?",
+        "Yes, if you know their page numbers. Type each blank page in the list, separated by commas, or use a dash for a run of consecutive blanks, then run the tool once. The trimmed PDF downloads with all other pages kept in order."
+      ],
+      [
+        "What happens to the original file after I download the trimmed one?",
+        "The trimmed file is a separate download, so the copy you loaded is not overwritten by the tool. Keep your original as a backup before sharing the new version. The work happens in your browser, so the edit stays on your device."
+      ],
+      [
+        "How do I avoid removing the wrong pages?",
+        "Open the file in a viewer first and note the page numbers you want gone, counting from the first page. Enter them in the tool exactly as you noted them, then check the page count of the result. If the number is off, reload the original and try again."
+      ]
+    ]
+  },
+  "rotate-pdf": {
+    "answer": "Rotate PDF means turning selected pages a quarter turn, a half turn, or three quarters of a turn so they display the right way up. The rotation is added to each page's existing orientation and saved into the file. You can apply it to all pages or only odd or even ones.",
+    "aiSummary": "This tool shows how to rotate pages in a PDF by a quarter, half or three-quarter turn, adding the turn to each page's orientation and saving the result. It can target all pages or only odd or even ones. The limit is fixed quarter steps, so a slightly crooked scan needs another tool.",
+    "shortKeyword": "rotate pdf",
+    "longKeywords": [
+      "how to rotate pages in a pdf",
+      "fix sideways scanned pages in a pdf",
+      "rotate only odd or even pages"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do you fix sideways scanned pages in a PDF?",
+        "text": "Scanners and phone cameras often save a page sideways, so pages in one batch often share the same fix. Rotating the file once is quicker than turning each page by hand in a viewer. Pick the quarter turn that makes the text read normally, then apply it to the whole document or just the affected pages. Check the first page after saving, because a wrong direction is easy to spot there. Nothing else in the layout is changed."
+      },
+      {
+        "heading": "How do you rotate only odd or even pages?",
+        "text": "Choose odd pages when a scanner fed alternating sheets in the wrong direction, which can occur with some duplex scans. Choose even pages to correct the opposite set. Choose all pages when the whole batch is turned the same way. Because the tool adds the rotation to each page's existing orientation, applying it twice to the same page turns it further, so apply it once and check the result. Look at a few pages first."
+      },
+      {
+        "heading": "What limits should you know before rotating a file?",
+        "text": "The tool turns pages in quarter steps, so a slightly crooked scan stays crooked and needs a different correction. Rotating only some pages can leave a mixed document, so scroll through the whole result before sharing it. Keep your original file, because a rotation applied and saved is easy to forget. If you are unsure which direction is right, test on a copy first. Preview the result in a viewer, since the direction is easy to misjudge at small sizes."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I fix sideways scanned pages in a PDF without re-scanning?",
+        "Yes. Select the quarter turn that corrects the orientation, apply it to all pages or the affected ones, and download the saved file. Re-scanning is unnecessary because the tool changes only how each page is displayed and stored, not the scanned image itself."
+      ],
+      [
+        "What turn should I pick for a page that is upside down?",
+        "Choose the half turn, which turns the page completely around. Check the text direction in your viewer first, so you pick the correct option the first time."
+      ],
+      [
+        "What should I do if the rotated file looks wrong?",
+        "Do not overwrite the original, since it is still on your device. Reload the source PDF, choose a different turn or page selection, and run the tool again. Compare the first page of each attempt before sharing."
+      ]
+    ]
+  },
+  "add-page-numbers-to-pdf": {
+    "answer": "PDF page numbers are digits stamped onto each page of a PDF at a position you choose, counting up from a starting number you set. The tool embeds a standard font and draws the number at that spot on every page. You can place them in a corner or in the center. The work happens in your browser, so the file never has to be sent anywhere.",
+    "aiSummary": "Adds sequential page numbers to a PDF in the browser, drawn at a chosen corner or center with a custom starting value. The main limit is that numbers are stamped on top of existing content, so a chosen position may overlap text or images, and you should check the result in your viewer.",
+    "shortKeyword": "pdf page numbers",
+    "longKeywords": [
+      "how to number pages in a pdf",
+      "start page numbers from a custom number",
+      "add page numbers to a pdf"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to number pages in a PDF?",
+        "text": "Page numbers help readers find their place in a long report, a handout, or a printed manual. They also make it easier to refer to a specific page when someone discusses the document. This tool stamps the numbers directly onto the pages, so they show up wherever the file is opened or printed. Choose the corner that suits your layout, then download the new file. Your original stays as it was."
+      },
+      {
+        "heading": "Can you start page numbers from a custom number?",
+        "text": "Yes. Set the starting number, and the tool counts upward from that value on every page. This suits a document that is an excerpt of a longer work, where the first page should carry the number it had in the original. Choose the position before you run it, then check that the first page looks right. A quick look at the last page confirms the final number is what you expected."
+      },
+      {
+        "heading": "What limits come with stamping numbers on a PDF?",
+        "text": "Numbers are drawn on top of whatever already sits on the page, so a busy footer or a dark image can make them hard to read. Pick a position with open space, such as a bottom corner, rather than a center spot over a figure. Stamped numbers become part of the page, so a change later means running the tool again on a clean copy. Keep an unnumbered original in case a recipient needs the plain version."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I add page numbers to a PDF that has a cover page?",
+        "Yes, but the tool stamps a number on every page, including the cover, since it does not skip pages. Set the starting value so the first body page shows the number you intend, and check the result before sharing."
+      ],
+      [
+        "Can I change the font used for the page numbers?",
+        "No. The tool embeds a standard font, so the numbers use that font rather than one you pick. Choose the corner or center that suits the layout instead. If you need a specific typeface, add numbers in your document editor before exporting to PDF."
+      ],
+      [
+        "Where does the numbered PDF end up after I make it?",
+        "It is saved as a download from your browser, separate from the file you loaded. Your browser's download folder or prompt shows where it went. Keep the original as a backup, since numbering is applied only to the new copy."
+      ]
+    ]
+  },
+  "watermark-pdf": {
+    "answer": "A PDF watermark is a line of text, such as DRAFT or CONFIDENTIAL, stamped across every page of a document. The tool draws your text with a bold font at the chosen opacity and size, optionally rotated diagonally across the page center. The work happens in your browser, so the file is not sent to a server.",
+    "aiSummary": "Places a text watermark across every page of a PDF in the browser, with chosen opacity, size and an optional diagonal angle. The main limit is that it handles text only, so a logo cannot be used here.",
+    "shortKeyword": "pdf watermark",
+    "longKeywords": [
+      "add a draft watermark to a pdf",
+      "set watermark opacity on a pdf",
+      "mark a pdf as confidential before sharing"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do you add a draft watermark to a PDF?",
+        "text": "Drafts are often shared for review, and a DRAFT stamp makes clear that the content is not final. Confidential documents benefit from a visible notice on every page, so a stray copy is easier to recognize. A watermark also signals ownership when a report leaves your team. This tool applies one line of text across all pages at once, which saves repeating the step page by page. Choose the wording once and it appears everywhere."
+      },
+      {
+        "heading": "How do you set watermark opacity on a PDF?",
+        "text": "Opacity controls how strongly the text shows. A lighter setting keeps the page readable underneath, which suits a draft that people still need to read. A stronger setting makes the notice hard to miss, which suits a confidential label. Test a couple of values on one page before running the whole file. Remember that a very faint watermark may not register at a glance, while a heavy one can hide the text beneath it."
+      },
+      {
+        "heading": "What mistakes should you avoid with PDF watermarks?",
+        "text": "The biggest mistake is choosing a watermark so faint that it does not register, or so heavy that the content cannot be read. Placing the text diagonally across the center is useful for drafts, but it can cover figures, so check a few pages before sharing. A watermark is a visual notice, not a security control, so do not rely on it to stop copying. Keep the source file if you need to make changes later."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I mark a PDF as confidential before sharing it?",
+        "Yes. Type the label, such as CONFIDENTIAL, choose the opacity and whether to rotate it, then run the tool on the file. The new copy carries the notice on every page. Share that copy and keep your original unmarked for your own records."
+      ],
+      [
+        "Does a watermark protect a PDF from being copied?",
+        "No. A watermark makes a copy easier to trace back to its source, and it signals intent, but it does not block copying, printing or editing. Use access controls in your document system if the content must stay restricted."
+      ],
+      [
+        "Can I change the watermark text after the file is saved?",
+        "Not in the saved copy. The text is drawn into the new file, so changing it means starting again from your original and running the tool with the new wording. Keep the original so that edits are quick."
+      ]
+    ]
+  },
+  "png-to-webp": {
+    "answer": "PNG to WebP means re-encoding a PNG image as a WebP file, a modern format built for web pages. The tool keeps optional transparency, and you choose the quality level before converting. WebP typically produces much smaller files than PNG, so pages load faster. The work runs in your browser.",
+    "aiSummary": "Re-encodes PNG images as WebP files in your browser at a quality you pick, keeping transparency and usually giving a smaller file. The main limit is that WebP is not universal, so some older software may not open the converted image. Compare sizes before replacing originals.",
+    "shortKeyword": "png to webp",
+    "longKeywords": [
+      "convert png images to webp",
+      "reduce png file size for websites",
+      "keep transparency when converting to webp"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why convert PNG images to WebP for a website?",
+        "text": "Many websites carry PNG files that are far bigger than they need to be, which slows pages for visitors on slower connections. Converting to WebP is a common way to tackle that without redesigning anything. The format handles photos and graphics well and supports transparency. This tool re-encodes your image at the quality you choose and saves the result for download. Your original file is not changed. Compare the two files side by side before you swap anything."
+      },
+      {
+        "heading": "Can you keep transparency when converting to WebP?",
+        "text": "Yes, transparency is kept in the converted file, so logos and cut-out graphics still sit cleanly over a colored background. The quality setting still matters, because a low value can soften edges and fine detail. Try a middle setting on one image, view it over a dark and a light background, and adjust from there. Check the edges of any cut-out graphic over a dark background, since soft halos are easier to spot there."
+      },
+      {
+        "heading": "What limits should you expect when using WebP?",
+        "text": "WebP is not a fit for every workflow. Some older image editors and email programs may not open it, so keep the PNG for any file you might need to edit or send to people who use older software. Lossy settings discard detail each time you re-save, so do not repeatedly convert the same file. Keep a copy of the original image for future work, and treat the converted file as the delivery version."
+      }
+    ],
+    "faqs": [
+      [
+        "How can I reduce PNG file size for websites?",
+        "Convert the image to WebP at a quality level that still looks sharp at the size it will display. Compare the output with the original on a dark and a light background before publishing. Keep the original PNG so you can convert again later if needed."
+      ],
+      [
+        "Does WebP keep the image's colors exactly the same?",
+        "Not always, because lossy encoding trades some fine detail for size. At a high quality setting, differences are usually hard to see. Check brand colors by eye, since small shifts may matter for logos."
+      ],
+      [
+        "Should I convert photos or only graphics?",
+        "Both can be converted, but the gain varies. Flat graphics with few colors often shrink a lot, while busy photos may shrink less. Test a sample from each group before converting a whole library."
+      ]
+    ]
+  },
+  "image-rotator": {
+    "answer": "An image rotator turns a photo left or right in quarter-turn steps and flips it horizontally or vertically. The tool applies each change on a canvas, so the preview matches the exported picture. Rotation and flipping are geometric transforms run in your browser, so the photo never leaves your device.",
+    "aiSummary": "Rotates a photo in quarter-turn steps and flips it horizontally or vertically, with a live preview that matches the downloaded file. Edits are drawn on a canvas in the browser. The main limit is that rotation is fixed to right angles, so a tilted photo needs a different editor for straightening.",
+    "shortKeyword": "image rotator",
+    "longKeywords": [
+      "how to rotate an image online",
+      "flip a photo horizontally or vertically",
+      "fix a sideways photo quickly"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to rotate an image online?",
+        "text": "Photos from phones or cameras sometimes land sideways because of how the device was held, and a rotation fixes that in one step. Choose left or right to move the picture in quarter-turn steps until the subject stands upright. Then download the corrected image. The preview shows the result before you save, so you can see the change first. Work through one photo at a time, and keep the original file as it was."
+      },
+      {
+        "heading": "When should you flip a photo horizontally or vertically?",
+        "text": "Flipping mirrors a photo across one axis, which suits a selfie that should match a mirror view or a layout that faces the wrong way. A vertical flip is less common but can help with a reflected scene. Rotation, by contrast, turns the whole image in quarter steps and does not mirror it. Check any text or signage after flipping, since a mirrored sign is easy to misread at a glance."
+      },
+      {
+        "heading": "What mistakes should you avoid when rotating images?",
+        "text": "The most common mistake is rotating in the wrong direction, then exporting before noticing. Check the orientation in the preview before you export, and confirm the subject looks natural in the final file. Another mistake is expecting a freeform straighten, since this tool only moves in fixed steps. Finally, remember that a flipped image is a new file, so keep the original in case you need to start again later."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I fix a sideways photo quickly in the browser?",
+        "Yes. Pick a left or right turn, watch the live preview until the photo looks upright, and download the result. If one step is not enough, apply another turn and check again."
+      ],
+      [
+        "Can I combine a rotation and a flip in one export?",
+        "The tool lets you apply rotations and flips to the preview before you download, so both changes appear in the exported picture. Set each one, confirm the preview, then save. Check the final result before sharing it."
+      ],
+      [
+        "Does the export match what I see on screen?",
+        "Yes, the tool draws each rotation and flip on a canvas, and the preview uses the same transforms as the export. What you see is what gets downloaded. If something looks off, adjust the setting and preview again before saving."
+      ]
+    ]
+  },
+  "image-color-picker": {
+    "answer": "An image color picker reads the exact color of a single pixel where you click, then reports it as HEX, RGB and HSL codes. The image is drawn to a canvas, and each click converts the pixel into the common formats. You can copy the values with one tap. The picker works entirely in your browser, so the photo is not sent anywhere.",
+    "aiSummary": "Reads the exact pixel color at any point you click on an image and converts it to HEX, RGB and HSL codes, keeping a history of recent picks. The main limit is that you get one pixel per click, so a color that varies across a surface may need several samples to judge.",
+    "shortKeyword": "image color picker",
+    "longKeywords": [
+      "how to pick a color from an image",
+      "get the hex code from a photo",
+      "match colors from a photo"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to pick a color from an image?",
+        "text": "Designers and marketers often need the exact shade used in a photo, such as a brand color that appears in a logo shot. Click the spot you want, and the tool reads that single pixel rather than an average. The reading is shown in HEX, RGB and HSL, so it fits whatever format your design tool expects. Pick several spots to compare. Recent picks stay listed for quick comparison, and you can copy the codes you need as you go."
+      },
+      {
+        "heading": "Can you match colors from a photo for a design?",
+        "text": "Yes, but treat a picked value as a starting point. Photos include lighting, shadows and camera settings, so the color you sample may differ from how it looks printed or on another screen. Pick a few neighboring pixels from the same area and compare them before choosing one. The HSL reading helps when you want to lighten or darken a shade while keeping its hue steady. Note the values before you move on."
+      },
+      {
+        "heading": "What limits should you keep in mind when sampling colors?",
+        "text": "A single click gives one pixel, which can be noisy in a compressed image. Sampling from the middle of a flat area is more dependable than sampling right on an edge, where blended pixels can shift the reading. Remember that the code describes the image as it was saved, not how a screen or print will show it. Confirm the final color in your own design tool before you commit to it."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I get the hex code from a photo for a design?",
+        "Yes. Click the spot, copy the HEX value, and paste it into your design tool. Use the RGB or HSL values if the tool needs them instead. Verify the final color on the actual layout, since the sampled value came from a photo."
+      ],
+      [
+        "Does the picker keep a list of colors I already chose?",
+        "Yes, a history of recently picked colors is kept, so you can return to an earlier shade without clicking the image again. Use it to compare candidates side by side. Copy any value you plan to keep before closing the page, to be safe."
+      ],
+      [
+        "Which color format should I use for CSS?",
+        "HEX codes are common in stylesheets, while RGB and HSL are also valid CSS color formats. HSL is handy when you want to adjust lightness while keeping the same hue. Pick the one your project already uses so the code stays consistent."
+      ]
+    ]
+  },
+  "image-color-palette": {
+    "answer": "An image color palette is a short set of the most prominent colors in a picture, returned as copyable swatches. The tool samples the image's pixels, groups similar colors into buckets, and ranks the buckets by how often they appear. The most common groups become the palette. Everything runs in your browser, so the image stays on your device.",
+    "aiSummary": "Samples a photo's pixels, groups similar shades, and ranks them to list the dominant colors as swatches, all within the browser. This suits building a theme or matching a picture. The main limit is that the output depends on bucket grouping, so subtle shades can merge and the list may miss minor tones.",
+    "shortKeyword": "image color palette",
+    "longKeywords": [
+      "extract colors from an image",
+      "build a brand palette from a photo",
+      "pick a theme palette from a photo"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why extract colors from an image for a project?",
+        "text": "Designers often start a project by pulling colors from a reference image, such as a landscape or a product shot. The extractor saves that step by listing the main tones at once. It is useful for theming a website, building a mood board or checking that a photo fits an existing scheme. Each swatch can be copied directly, so you can move straight into a design tool. Use it early, before choices harden."
+      },
+      {
+        "heading": "Can you build a brand palette from a photo?",
+        "text": "You can, as long as the photo represents the look you want. Choose a reference image that shows the intended tones, not one dominated by a single color or heavy shadow. Review the swatches and keep only the ones that fit your brand. Some dominant colors are accents rather than core colors, so decide which role each one plays before building the set. Check contrast for text separately, since a palette does not measure readability."
+      },
+      {
+        "heading": "What limits come with extracting dominant colors?",
+        "text": "Grouping similar shades means close tones may merge, so a subtle highlight or a thin accent color can vanish from the list. The most frequent colors are not always the most important ones, since a small logo may carry the whole identity. Photos also reflect lighting, so the palette describes the picture as lit rather than the object's true paint. Treat the output as a useful starting point and adjust by hand."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I pick a theme palette from a photo for my site?",
+        "Yes. Extract the palette, choose the swatches that match your content, and note their HEX values for your stylesheet. Pick one dominant color for backgrounds and one accent for buttons, then test text contrast on each pairing before publishing."
+      ],
+      [
+        "Can I use the palette without the original photo?",
+        "Yes, once you have the swatch values, they are plain color codes that work in most design tools and stylesheets. Copy the codes and keep a note of which photo they came from, so you can check them again later. The photo itself is not needed to use the values."
+      ],
+      [
+        "Should I extract from a cropped or full photo?",
+        "Crop to the area that represents the look you want, because a full photo may include backgrounds or borders that pull the result off target. Cropping before extraction keeps the palette focused. Compare the two results if you are unsure which framing suits the project."
+      ]
+    ]
+  },
+  "image-watermark": {
+    "answer": "A photo watermark is a line of text, such as your name, a brand or a copyright notice, drawn onto an image at a position you choose. The text is painted on a canvas with the color, size, and opacity you set, and a subtle shadow helps it stay legible. The result is exported as a PNG. Everything happens in your browser, so the unwatermarked photo is not uploaded.",
+    "aiSummary": "Stamps custom text onto a photo, with control over position, color, size and opacity, then exports a PNG. A soft shadow keeps the text readable on busy areas. The main limit is that a text mark can be cropped out or covered, so it is a visible notice not a security measure.",
+    "shortKeyword": "photo watermark",
+    "longKeywords": [
+      "add a copyright notice to a photo",
+      "place a name watermark on a photo",
+      "label a photo with a visible text mark"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do you add a copyright notice to a photo?",
+        "text": "Photographers and small businesses often publish images online where they can be copied with a single click. A copyright notice drawn on the picture states ownership in a way that travels with the image, even when it is shared without the original caption. This tool places your text at a chosen position, so the notice is visible to anyone who views the picture. Save the watermarked copy for public use and keep the unmarked master for your records."
+      },
+      {
+        "heading": "How do you place a name watermark on a photo?",
+        "text": "Choose a corner or the center, depending on how much of the photo you can afford to cover. A corner keeps the subject clear, while the center is harder to crop away. Pick a color that contrasts with the area under the text, then set the size so the name is readable without dominating. The soft shadow helps on bright or busy backgrounds. Preview the result carefully before you download it."
+      },
+      {
+        "heading": "What limits come with a text watermark on a photo?",
+        "text": "Text is easy to read, but it can also be cropped or painted over, so it deters casual reuse more than determined misuse. Heavy opacity may hide the image, while very light text may disappear on screens. Your watermark also changes the picture permanently in the exported file, so keep the unmarked original for editing or print work. Avoid placing the mark where a viewer's attention naturally falls. Check the result at the size people will see it."
+      }
+    ],
+    "faqs": [
+      [
+        "Is it enough to label a photo with a visible text mark?",
+        "For casual sharing, a visible notice reminds viewers who made the picture and discourages simple reuse. It does not stop a determined person from cropping or editing it. For stronger protection, combine the mark with careful publishing choices, such as sharing smaller web copies."
+      ],
+      [
+        "Can I add the watermark to several photos in one session?",
+        "Process each image in turn, reusing the same position, color and opacity so the set looks consistent. Name each saved file clearly so watermarked copies do not get mixed up with originals."
+      ],
+      [
+        "Should the watermark text match my brand colors?",
+        "It helps to choose a color that appears in your brand palette, so the mark feels consistent across your images. Keep contrast in mind, since a color close to the photo's tones can disappear. Test the choice on a bright and a dark image before settling on it."
+      ]
+    ]
+  },
+  "image-to-base64": {
+    "answer": "Image to Base64 means encoding a picture as a text string, a data URI, that can be pasted straight into HTML or CSS. The bytes are read and converted into Base64 characters, and the tool wraps the result into ready-to-copy img and background snippets. Base64 is about a third larger than the binary file, so inlining suits only small images.",
+    "aiSummary": "Converts an image file into a base64 image data URI for HTML or CSS, with copy-ready tag and background snippets. Base64 text is about a third bigger than the source file. The main limit is that inlined images cannot be cached separately, so large pictures are better served as normal files.",
+    "shortKeyword": "image to base64",
+    "longKeywords": [
+      "embed an image in html as base64",
+      "inline a small image in css",
+      "base64 image data uri for html"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When should you embed an image in HTML as Base64?",
+        "text": "Inlining an image removes one network request, which can matter for a tiny icon or logo that appears on a page that already loads slowly. The approach is most sensible for small graphics used once or twice. For large photos, the Base64 text makes the HTML or CSS file heavier, which can slow the page instead. Use inlining as a deliberate choice for small assets. Measure before and after to confirm the change helps."
+      },
+      {
+        "heading": "Can you inline a small image in CSS safely?",
+        "text": "Yes, a small background such as a texture or an icon can live in a stylesheet as a data URI. Keep the snippet short, because long strings make the stylesheet harder to read and edit. Reusing the same image in many places repeats the Base64 text each time, so prefer a single class for repeated use. Check the stylesheet still loads quickly after the change. Keep a copy of the source file for future edits."
+      },
+      {
+        "heading": "What mistakes should you avoid with inline images?",
+        "text": "The most common mistake is inlining a large photo because it seems convenient, which bloats the page or stylesheet that holds it. Editing the start of a data URI, such as the type prefix, can stop the image from displaying, so copy the snippet as generated. Base64 is an encoding, not compression, so the text is larger than the file it came from. Keep original image files for editing later."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I paste the base64 image data URI for HTML straight into a page?",
+        "Yes, that is the purpose of the generated snippet. Paste the img tag where the picture should appear, and the browser reads the data directly. Add descriptive alt text yourself, because the snippet cannot know what the picture shows."
+      ],
+      [
+        "Does Base64 encoding make the image smaller in any way?",
+        "No. Base64 turns binary data into text that is about a third larger, so the encoded string takes more space than the file. The benefit is one fewer network request, not a smaller payload. If size matters, compress the image before encoding it."
+      ],
+      [
+        "Can I encode several images at once?",
+        "Work through images one at a time, pasting each snippet where it belongs. Long data strings are easy to mix up, so label each one with its source file name in your notes."
+      ]
+    ]
+  },
+  "rental-yield-calculator": {
+    "answer": "A rental yield calculator shows how much a rental property earns compared with its price. Gross yield is annual rent divided by purchase price. Net yield also deducts running costs and an allowance for vacancy, so it gives a more realistic figure. Cap rate uses net operating income before any loan payments. Enter the price, monthly rent, monthly expenses and vacancy rate to see each figure.",
+    "aiSummary": "Calculates gross yield, net yield and cap rate for a rental. Gross yield is annual rent over price. Net yield after vacancy and expenses subtracts running costs from that income. Cap rate uses operating income before loan costs. Limitation: an educational estimate that ignores tax, financing and rent growth.",
+    "shortKeyword": "rental yield calculator",
+    "longKeywords": [
+      "how to work out rental yield",
+      "cap rate for a rental property",
+      "net yield after vacancy and expenses"
+    ],
+    "exampleInputs": {
+      "price": "285000",
+      "rent": "1850",
+      "expenses": "420",
+      "vacancy": "6"
+    },
+    "sections": [
+      {
+        "heading": "How to work out rental yield for a property?",
+        "text": "Use this tool when you want a quick comparison between two or more rental properties before you make an offer. Enter the purchase price and the expected monthly rent, then add the monthly running costs such as tax, insurance and management fees. The gross figure gives a starting point, and the net figure shows what remains after costs and an allowance for empty months. Because the calculator runs in your browser, you can test several scenarios without creating an account. This is an educational estimate, not professional financial advice."
+      },
+      {
+        "heading": "Why does cap rate for a rental property matter?",
+        "text": "Cap rate divides net operating income by the purchase price, and it leaves out loan payments. That makes it useful for comparing two properties that might be financed differently, because the number describes the building rather than your mortgage. Read a higher cap rate as more income per dollar of price, but remember it does not show risk, location quality or how fast rents will rise. Compare cap rates only between similar property types in the same area, and check that the same costs were deducted for each one."
+      },
+      {
+        "heading": "What common mistakes make the result misleading?",
+        "text": "The most common error is mixing up gross and net figures, then comparing one property's gross yield with another's net yield. Another is leaving out vacancy or a maintenance allowance, which makes the result look better than it will be. Check that the rent you enter is a realistic market figure rather than an optimistic figure from a listing, and that the purchase price includes any immediate repair costs. The calculator reflects only what you type, so every assumption is yours to verify."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the calculator include mortgage payments?",
+        "No. Gross yield, net yield and cap rate are all calculated before financing, so loan repayments are not part of the result. If you want to know your cash flow after a mortgage, you need a separate calculation using your loan amount, interest and term."
+      ],
+      [
+        "Can I use this for holiday lets?",
+        "The formulas work for any property that earns rent, but short stays have different costs, seasonal gaps and occupancy patterns. Enter an average monthly income and realistic expenses, and treat the result as a rough starting point rather than a forecast."
+      ],
+      [
+        "Why does vacancy matter for the net figure?",
+        "Vacancy reduces the rent you actually collect over a year, so the net figure assumes some months earn nothing. Even a modest allowance protects you from an overly optimistic result, and you can change the rate to test how sensitive the deal is."
+      ]
+    ]
+  },
+  "house-price-to-income-ratio": {
+    "answer": "An affordability ratio is a home's price divided by a household's gross annual income. It is a quick check on whether a purchase looks comfortable, stretched or hard to finance. Ratios below 3 are usually treated as affordable, 3 to 5 as manageable, above 5 as stretched and above 7 as difficult to finance conventionally. Enter the price and yearly income to see the ratio.",
+    "aiSummary": "Divides a home price by annual household income to give an affordability ratio, then places it in a rough band. Ratios below 3 are affordable and above 7 are hard to finance. Its core is house price compared with annual income, so it ignores debts, deposits and interest rates.",
+    "shortKeyword": "affordability ratio",
+    "longKeywords": [
+      "how to check if a home is affordable",
+      "house price compared with annual income",
+      "home price to income ratio calculator"
+    ],
+    "exampleInputs": {
+      "price": "480000",
+      "income": "110000"
+    },
+    "sections": [
+      {
+        "heading": "How to check if a home is affordable?",
+        "text": "Start with the number this tool gives you and compare it with the bands listed above: below 3 is affordable, 3 to 5 is manageable, above 5 is stretched. The ratio is a first screen, so pair it with your monthly budget, savings for a deposit and the interest rate you would actually be offered. Use gross income, meaning before tax, because that is the figure most lenders quote. This is an educational estimate, not professional financial advice, so speak with a qualified adviser before committing."
+      },
+      {
+        "heading": "What does the ratio miss about your budget?",
+        "text": "A price-to-income ratio uses only two numbers, so it cannot see your monthly outgoings, existing debts, childcare costs or how much cash you hold for repairs and closing fees. Two households with the same income can have very different room in their budgets. Treat a high ratio as a warning to look closer, and a low one as encouragement rather than proof that a purchase is safe. Location matters too, since the same ratio can feel different where local prices and rents vary."
+      },
+      {
+        "heading": "Which input mistakes change the result the most?",
+        "text": "A common error is entering take-home pay instead of gross income, which produces a higher ratio than the lender would use and can make a purchase look more stretched than it is. The opposite error is adding a partner's income that will not be part of the mortgage application, or counting bonuses that are irregular. Use a steady, documented figure. Also remember that the bands are rough guides, so a ratio just above a boundary is not a clear yes or no."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a home price to income ratio calculator replace a mortgage check?",
+        "No. This ratio is a simple first screen and ignores interest rates, deposits, debts and local prices. Lenders assess your full finances, so use the result only to decide which price range to explore further."
+      ],
+      [
+        "Is a higher ratio always a reason to walk away?",
+        "Not always. A high ratio is a signal to test the numbers more carefully, using your full budget, a realistic deposit and a stress-tested repayment figure. Only you can judge whether the payments fit your life."
+      ],
+      [
+        "Does a higher ratio mean a home is overpriced?",
+        "Not necessarily. Ratios describe affordability for a buyer on a given income, not whether a price matches the market value. Prices in some cities can be high relative to incomes for years, so compare with local listings too."
+      ]
+    ]
+  },
+  "fence-calculator": {
+    "answer": "A fence calculator estimates how many posts, rails and pickets a wood fence needs. Posts equal the perimeter divided by post spacing, plus one. Rails are two per post for a standard two-rail design, and pickets equal the perimeter divided by board width in feet. Add about ten percent for waste. Everything runs in your browser.",
+    "aiSummary": "Works out posts and rails for a fence line, plus the pickets, from total length, post spacing and board width. Posts equal length divided by spacing plus one, rails are two per post, and pickets equal length divided by board width. Limitation: gates, corners and slopes are not modelled.",
+    "shortKeyword": "fence calculator",
+    "longKeywords": [
+      "how to calculate fence posts needed",
+      "how many boards for a fence",
+      "posts and rails for a fence line"
+    ],
+    "exampleInputs": {
+      "perimeter": "150",
+      "spacing": "8",
+      "height": "6",
+      "boardWidth": "5.5"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate fence posts needed for a run?",
+        "text": "Measure the total length of each straight run and add them together to get the perimeter you will fence. Divide that length by your chosen post spacing and add one, because a run needs a post at both ends. The tool starts with eight feet, but enter the spacing you intend to build with. Posts are only one part of the job, so check the rails and pickets afterwards before buying materials."
+      },
+      {
+        "heading": "How many boards for a fence run should you order?",
+        "text": "Pickets are the vertical boards, and the calculator divides the perimeter by the width of one board in feet. Enter the real board width, because a wider board means fewer pickets for the same length. The result includes a waste allowance, which covers cuts, splits and warped pieces. Check the fence height too, because each picket is cut to that length."
+      },
+      {
+        "heading": "Which mistakes or limits affect the fence estimate?",
+        "text": "The calculator gives a planning estimate, so it does not model gates, corners, slopes or uneven ground, each of which may need extra posts or sections. It also assumes a standard two-rail layout, so a three-rail or privacy design will need different rail counts. Common mistakes include entering the fence height in the wrong unit, or leaving out the plus-one step that adds the final post. Measure twice and buy a little spare material."
+      }
+    ],
+    "faqs": [
+      [
+        "Does this fence calculator account for gates?",
+        "No. Gates, corners and sloped ground are not modelled, so add the extra posts and boards for them by hand after the main estimate. Measure each gate opening separately and check the gate hardware with a supplier."
+      ],
+      [
+        "How much waste should I plan for?",
+        "The estimate adds about ten percent to the picket count to cover cuts, splits and warped pieces. Buy a few extra boards on top of that if your cuts are tricky or your ground slopes."
+      ],
+      [
+        "Why is board width asked in inches?",
+        "Boards are usually described by their width in inches, which is how you will read it on a supplier label. The calculator converts that figure to feet before dividing the perimeter, so you can type the number straight from the label."
+      ]
+    ]
+  },
+  "roof-pitch-calculator": {
+    "answer": "A roof pitch calculator converts rise and run into a pitch written as X:12, an angle in degrees and an area multiplier. Pitch is the rise for every 12 inches of run. The angle is the arctangent of rise divided by run. Multiply your floor plan area by the multiplier to estimate the true sloped roof surface for shingles.",
+    "aiSummary": "Turns the rise and run for roof pitch measurements into an X:12 ratio, an angle in degrees and an area multiplier. The angle is the arctangent of rise over run. Limitation: it models a single sloped plane, not complex roofs with several slopes.",
+    "shortKeyword": "roof pitch calculator",
+    "longKeywords": [
+      "how to convert roof pitch to degrees",
+      "roof area for shingle and material estimates",
+      "rise and run for roof pitch"
+    ],
+    "exampleInputs": {
+      "rise": "6",
+      "run": "12",
+      "planArea": "1500"
+    },
+    "sections": [
+      {
+        "heading": "How to convert roof pitch to degrees?",
+        "text": "Pitch and angle describe the same slope in two forms. The angle in degrees is the arctangent of rise divided by run, so each rise and run pair gives its own angle. Degrees are useful when a drawing, a saw setting or a specification uses angles instead of X:12 ratios. Enter both measured values into the calculator rather than estimating either one. The result is an estimate for planning, not a structural check."
+      },
+      {
+        "heading": "Why use a roof area for shingle and material estimates?",
+        "text": "Shingles, underlay and sheathing cover the sloped surface, not the flat footprint on a plan. A steeper roof has more surface than its plan area suggests, and the area multiplier shows how much more. Multiply your floor plan area by it, then add an allowance for waste, overhangs and hips or valleys. Ordering from the flat plan area is an easy way to run short. Check the figure with a roofer before buying materials, since local practice and roof shape change the final count."
+      },
+      {
+        "heading": "What mistakes make the roof pitch reading wrong?",
+        "text": "The most common slip is measuring rise over a run that is not 12 inches, then reading the answer as X:12 without converting. Another is mixing up pitch with a percentage slope, which is a different number for the same roof. Measure rise with a level and a tape from a fixed point, and avoid rough guesses made from the ground. The calculator assumes a simple single plane, so complex roofs with several slopes need a separate calculation for each face."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a steeper roof always cost more?",
+        "Steeper roofs have more surface per plan area, so material quantities rise with the multiplier. Labor costs depend on access and local rates, which this tool does not include. Use the calculator for material quantities only."
+      ],
+      [
+        "Is a roof pitch calculator the same as a rafter calculator?",
+        "No. Pitch and area describe the roof surface, while a rafter calculator also works out lengths, cuts and spacing for the timber framing. Pitch is one of the inputs a rafter calculation needs, so the two tools are related but do different jobs."
+      ],
+      [
+        "What if my roof run is not 12 inches?",
+        "The angle and area multiplier use rise and run directly, so they stay valid for any run you enter. Pitch is expressed per 12 inches, so convert it yourself if your run is a different length before comparing with plans."
+      ]
+    ]
+  },
+  "staircase-calculator": {
+    "answer": "A staircase calculator divides the total rise between floors into equal steps, so every riser is the same height. Steps equal the rounded total rise divided by your target riser. Total run is the number of steps multiplied by tread depth. Comfortable stairs usually sit between thirty and forty-five degrees. Everything runs in your browser.",
+    "aiSummary": "Works out step count, exact riser height, total run and stair angle from floor-to-floor height. The total run for a straight staircase equals steps multiplied by tread depth. Limitation: it does not model landings, winders or building code requirements.",
+    "shortKeyword": "staircase calculator",
+    "longKeywords": [
+      "how to work out stair riser height",
+      "riser height and tread depth",
+      "total run for a straight staircase"
+    ],
+    "exampleInputs": {
+      "rise": "114",
+      "riserHeight": "7",
+      "treadDepth": "10"
+    },
+    "sections": [
+      {
+        "heading": "How to work out stair riser height from floor height?",
+        "text": "Start with the floor-to-floor height, which is the vertical distance you need to climb. Divide it by your target riser height and round to a whole number of steps. The calculator then divides the total rise by that step count to give the actual riser, which will usually differ slightly from the target. Use the actual figure when you cut stringers, because every step must match, and a small error repeats on each one."
+      },
+      {
+        "heading": "Why does riser height and tread depth matter for comfort?",
+        "text": "Riser height and tread depth work as a pair. A tall riser with a shallow tread feels steep and can catch the toe, while a low riser with a generous tread feels like walking on a ramp. The stair angle summarises that pairing, and the calculator reports it so you can check the stair sits in the usual comfortable band. Adjust the target riser or tread until the angle and step count both look right for your space."
+      },
+      {
+        "heading": "Which errors or limits should you check before building?",
+        "text": "The calculator assumes your floor-to-floor height is accurate and that the finished floor, including any screed or flooring, is measured correctly. Forgetting the thickness of the finished floor is a frequent source of error, and so is measuring to the wrong point at the top or bottom. It does not model landings, winders, headroom or specific building code requirements, which vary by location and must be checked with the authority that governs your build. Treat the output as a planning figure, not a compliance check."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use the target riser as my final riser height?",
+        "Only if the total rise divides exactly into the step count you want. Otherwise the calculator's actual riser is the figure to build to, because each step must be identical."
+      ],
+      [
+        "Does tread depth need to include the nosing?",
+        "The tread depth you enter should be the measured depth you plan to build, and it is worth confirming whether any nosing overhang is included in that figure. Nosing changes how far the step projects, so keep the value consistent across all steps."
+      ],
+      [
+        "Is the stair angle a safety rating?",
+        "No. The angle is a geometric result from rise and run, and it describes slope rather than safety. It helps you compare with commonly used ranges, but it cannot judge handrails, lighting or surface grip."
+      ]
+    ]
+  },
+  "resistor-color-code-calculator": {
+    "answer": "A resistor color code calculator reads the four colored bands on a resistor. Bands one and two are the first two digits, band three is the power of ten multiplier, and band four is the tolerance. The value is ten times the first digit plus the second digit, times ten to the multiplier. Pick each color from the list to see the result.",
+    "aiSummary": "Works out the resistance value from four color bands on a resistor, with digits from bands one and two, a power of ten from band three and tolerance from band four. Limitation: it covers only standard four-band codes, so faded bands need checking with a meter.",
+    "shortKeyword": "resistor color code",
+    "longKeywords": [
+      "how to read resistor color bands",
+      "resistance value from four color bands",
+      "tolerance band for circuit design"
+    ],
+    "exampleInputs": {
+      "band1": "yellow",
+      "band2": "violet",
+      "band3": "orange",
+      "tolerance": "silver"
+    },
+    "sections": [
+      {
+        "heading": "How to read resistor color bands in order?",
+        "text": "Hold the resistor so the tolerance band sits on the right, which is usually a gold or silver band. Read the first three bands from left to right: the first two give digits and the third sets the multiplier. The color order is fixed, so learn the sequence black, brown, red, orange, yellow, green, blue, violet, grey, white and use it for every value. Use the calculator to check your reading, especially when the bands are faded or hard to distinguish."
+      },
+      {
+        "heading": "What do the tolerance bands tell you about accuracy?",
+        "text": "The fourth band states how far the real resistance may differ from the printed value. Gold means plus or minus five percent, silver ten percent, and tighter bands such as brown, red, green and blue indicate smaller allowed differences. A part with a tight tolerance costs more and suits circuits where exact division matters. A loose tolerance is usually acceptable for pull-up resistors or general biasing. Check the tolerance on your parts list before ordering."
+      },
+      {
+        "heading": "Which mistakes make a resistor reading wrong?",
+        "text": "The most frequent mistake is reading the bands from the wrong end, which gives a completely different value. Another is confusing the multiplier band with the second digit, so the multiplier is applied to the wrong number. Faded paint, dust and lighting can make red and brown look alike, so check with a meter when the stakes are high. This calculator covers four-band resistors only, and five-band or six-band parts need a different method."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does the tolerance band for circuit design matter?",
+        "The tolerance band sets how far a part can drift from its marked value, which affects timing, filters and voltage dividers. Choosing a tighter band costs more, so pick the tolerance your circuit actually needs rather than the tightest one available."
+      ],
+      [
+        "Does the calculator read SMD resistor codes?",
+        "No. Surface-mount parts use a different numeric marking system, usually printed digits rather than colored bands. This calculator reads only the four colored bands on through-hole parts, so enter the values from a printed code using a separate reference."
+      ],
+      [
+        "Can a faded resistor be read without a meter?",
+        "Sometimes. Compare the bands with a known chart under good light and check that the sequence starts from the correct end. If the colors are still unclear, measure the resistance with a multimeter to confirm."
+      ]
+    ]
+  },
+  "voltage-divider-calculator": {
+    "answer": "A voltage divider calculator finds the output voltage taken across the bottom resistor of two resistors in series. Output equals input voltage times R2 divided by the sum of R1 and R2. Divider current is input voltage divided by the total resistance, and power is input voltage times that current. A connected load can lower the output.",
+    "aiSummary": "Gives the output of a two-resistor divider, the current through it and the power it uses. Output equals input times R2 over R1 plus R2. Limitation: the figure is unloaded, so resistor divider output with a load connected is always somewhat lower.",
+    "shortKeyword": "voltage divider calculator",
+    "longKeywords": [
+      "how to find divider output voltage",
+      "resistor divider output with a load",
+      "power dissipation in a divider circuit"
+    ],
+    "exampleInputs": {
+      "vin": "9",
+      "r1": "4700",
+      "r2": "10000"
+    },
+    "sections": [
+      {
+        "heading": "How to find divider output voltage in a circuit?",
+        "text": "Use the calculator when you need a fixed fraction of a supply voltage, for example to feed a sensor input or a reference pin. Enter the input voltage and the two resistor values, then read the output across R2. The result tells you the fraction the circuit produces, which the resistor pair sets. Choose resistor sizes that suit the current you can afford to waste, because a larger current uses more power."
+      },
+      {
+        "heading": "Why does a load change the output of a divider?",
+        "text": "The unloaded figure assumes nothing draws current from the output node. When you connect a load, it effectively sits in parallel with R2, lowering the combined resistance and pulling the output down. The heavier the load compared with R2, the larger the change. For that reason a divider works well for feeding a high-impedance input, such as a microcontroller pin, but is poor at supplying power to anything that draws real current."
+      },
+      {
+        "heading": "What mistakes make a divider design fail?",
+        "text": "A frequent error is treating the output as fixed while forgetting the load, so the real voltage ends up lower than the design value. Another is choosing resistors so small that they waste power, or so large that noise and leakage disturb the reading. Check the power in each resistor, not just the total, and remember that resistor tolerance shifts the output too. The formula assumes ideal resistors, so real designs need margin."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I check power dissipation in a divider circuit?",
+        "Multiply input voltage by divider current to get total power, which the calculator reports. Each resistor also dissipates its own share, so check each part's rating against its own power rather than the total. Keep a margin below the rated limit."
+      ],
+      [
+        "What happens if R1 and R2 have equal values?",
+        "Both resistors then take half the input voltage, so the unloaded output is half the input. Equal values are a common choice for a simple halving circuit, although the current and power are set by the total resistance."
+      ],
+      [
+        "Can a voltage divider set a supply voltage?",
+        "Usually not for anything drawing real current. A divider gives a reference or sensing level, and its output changes with the load. For a stable supply, use a regulator, which keeps the output steady across a range of loads."
+      ]
+    ]
+  },
+  "torque-calculator": {
+    "answer": "A torque calculator multiplies force by the moment arm to give a turning effect, measured in newton-metres. Torque equals force times the perpendicular distance from the pivot. Foot-pounds and inch-pounds are other units for the same quantity, so the calculator converts the result for you. Enter force and lever length to see it.",
+    "aiSummary": "Multiplies a force by its moment arm to give torque in N·m, ft·lb and in·lb. Explains how a moment arm changes torque: doubling the lever length doubles the turning effect. Limitation: it assumes a perpendicular force and ignores friction and dynamic loads.",
+    "shortKeyword": "torque calculator",
+    "longKeywords": [
+      "how to calculate torque from force",
+      "how a moment arm changes torque",
+      "torque units for bolt tightening"
+    ],
+    "exampleInputs": {
+      "force": "250",
+      "arm": "0.4"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate torque from force and distance?",
+        "text": "Torque depends on two things: how hard you push or pull, and how far from the pivot that push acts. Multiply the force in newtons by the moment arm in metres to get newton-metres. The moment arm must be the perpendicular distance from the pivot to the line of action, not the length of the handle if the force is angled. Enter the force and the arm, and the calculator reports the same torque in the other common units."
+      },
+      {
+        "heading": "Why does a longer moment arm make torque larger?",
+        "text": "Torque grows in direct proportion to the moment arm, so doubling the lever length doubles the turning effect for the same push. That is why a long wrench loosens a stuck nut more easily than a short one. The relationship only holds when the force stays perpendicular to the lever, because a sideways or angled pull reduces the effective arm. Keep that in mind when you use a force gauge or a cable, since the geometry can cut the result without you noticing."
+      },
+      {
+        "heading": "Which unit or setup mistakes change the answer?",
+        "text": "The most common slip is mixing units, such as entering a force in pounds-force while the calculator expects newtons, or a distance in centimetres while it expects metres. Each conversion is simple, but a single wrong unit scales the whole answer. Another mistake is using the total length of a lever instead of the perpendicular distance. Finally, the calculator gives only force times arm, so it does not model friction, angular acceleration or dynamic loads."
+      }
+    ],
+    "faqs": [
+      [
+        "Which torque units for bolt tightening should I use?",
+        "Use the unit your fastener specification or manual gives, because that is the value the tightening tool expects. N·m is the SI unit, while ft·lb or in·lb may be quoted on older or regional documents. Convert with the calculator rather than by memory, and avoid mixing units in one calculation."
+      ],
+      [
+        "Is torque the same as a twisting force?",
+        "Torque is a twisting effect that depends on force and distance, so it is not a force on its own. Two setups with the same force can produce different torques if their arms differ. Thinking of torque as force applied at a distance helps avoid confusion."
+      ],
+      [
+        "Does the calculator handle a force applied at an angle?",
+        "Not directly. Enter only the perpendicular component of the force, which is the force times the sine of its angle to the lever, or measure the perpendicular distance from the pivot to the line of action. Both approaches give the same torque."
+      ]
+    ]
+  },
+  "half-life-calculator": {
+    "answer": "A half-life calculator estimates how much of a radioactive substance remains after a set time. The remaining amount equals the starting quantity multiplied by one half raised to the elapsed time divided by the half-life. Time and half-life must use the same units. Enter the initial amount, half-life and elapsed time to see the result.",
+    "aiSummary": "Gives the amount left after radioactive decay over any time period, from the start amount, half-life and elapsed time. The formula is start times one half raised to elapsed time over half-life. Limitation: it assumes a single decaying substance with consistent units.",
+    "shortKeyword": "half-life calculator",
+    "longKeywords": [
+      "how to work out remaining amount",
+      "how many half-lives have passed",
+      "radioactive decay over any time period"
+    ],
+    "exampleInputs": {
+      "initial": "500",
+      "halfLife": "8",
+      "time": "24"
+    },
+    "sections": [
+      {
+        "heading": "How to work out remaining amount after decay?",
+        "text": "Start with the initial quantity and the half-life of the material, which is the time for half of the atoms to decay. Enter the time that has passed in the same units, and the calculator returns the amount still remaining. Use it for teaching, lab planning or checking a decay chart, where the question is how much is left at a given moment. It is a model of an idealised decay, so treat the output as a guide."
+      },
+      {
+        "heading": "How many half-lives have passed in your sample?",
+        "text": "The exponent in the formula counts half-lives, so an elapsed time of two half-lives leaves one quarter of the starting amount. Each half-life halves whatever remains, which means the drop is fastest at the start in absolute terms and slows as the sample shrinks. The curve never reaches zero in the model, so very long times give very small numbers rather than an exact none. Read the result as a fraction of the start rather than a fixed count of atoms."
+      },
+      {
+        "heading": "What limits and errors affect a decay estimate?",
+        "text": "The model assumes a single isotope decaying in a steady way, with no new material being produced from parents and no loss from the sample. Real samples can contain mixtures with different half-lives, and each one behaves differently over the same period. Mixing up units is another frequent error, such as entering a half-life in years while the elapsed time is in days. For safety, medical or regulatory work, use the values from qualified sources rather than a quick estimate."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the result depend on the starting amount?",
+        "The fraction left depends only on the number of half-lives that have passed, so a larger starting amount gives a larger remaining amount in the same proportion. Doubling the initial quantity doubles the answer, while the time pattern stays the same."
+      ],
+      [
+        "Can I use this for carbon dating?",
+        "The same decay formula applies, but dating needs measured isotope ratios, a known starting assumption and corrections that this calculator does not include. Treat it as an illustration of the math, not a dating method."
+      ],
+      [
+        "Why does the calculator need matching time units?",
+        "The exponent is the ratio of elapsed time to half-life, and that ratio is only a pure number when both values share the same unit. Converting one of them first avoids a result that is silently wrong."
+      ]
+    ]
+  },
+  "kinematic-calculator": {
+    "answer": "A kinematics calculator solves the constant-acceleration equations of motion for any unknown. Given the known values among initial velocity, acceleration, time and displacement, it finds the rest using v = u + at and s = ut + ½at². Enter the values you know and leave the others blank. The method is only valid when acceleration stays constant.",
+    "aiSummary": "Solves SUVAT equations for initial velocity, acceleration, time and displacement from known values. Velocity after a set time follows v = u + at, and displacement uses s = ut + ½at². Limitation: it assumes straight-line motion with constant acceleration, so it cannot model drag or changing forces.",
+    "shortKeyword": "kinematics calculator",
+    "longKeywords": [
+      "how to solve suvat equations for displacement",
+      "constant acceleration motion problems",
+      "velocity after a set time"
+    ],
+    "exampleInputs": {
+      "initial": "0",
+      "acceleration": "9.8",
+      "time": "3"
+    },
+    "sections": [
+      {
+        "heading": "How to solve SUVAT equations for displacement?",
+        "text": "Pick the known values that match an equation with the unknown you want. Displacement, for example, follows s = ut + ½at², so you need initial velocity, acceleration and time. If you know final velocity instead, the relation v² = u² + 2as can give displacement without time. Enter the values you know and the calculator solves for the rest. Write down what you know before you start, and check the units match, because a mixed unit like kilometres per hour will give a wrong answer."
+      },
+      {
+        "heading": "Which constant acceleration motion problems suit this tool?",
+        "text": "This tool fits straight-line motion where acceleration stays steady, such as a car accelerating at a constant rate or an object falling with only gravity acting on it. It is a good match for textbook exercises that give three values and ask for the fourth. Problems involving drag, varying thrust or motion along curved paths need a different approach, because the SUVAT relations rely on constant acceleration and a straight line. Check that assumption before trusting any output."
+      },
+      {
+        "heading": "What limits should you check before trusting the answer?",
+        "text": "The equations assume constant acceleration, so changing forces, air resistance or a braking profile that varies over time will make the results approximate or wrong. Signs matter too: choose a positive direction, such as upward or forward, and keep it for every value. A negative acceleration then means slowing down or acting backwards. Also check that the answer is physically sensible, such as a time that cannot be negative. If the tool cannot find a unique answer, add another known quantity, because most problems need at least three independent values."
+      }
+    ],
+    "faqs": [
+      [
+        "Why can the calculator return no answer for some inputs?",
+        "The equations can give no real answer when the values you enter contradict each other, such as a stopping distance that a given speed and deceleration cannot produce. Check the signs and the inputs, then try a different combination of known values."
+      ],
+      [
+        "Can I use this for projectile motion?",
+        "Yes, if you split the motion into horizontal and vertical parts. Horizontal velocity stays constant when air resistance is ignored, and vertical motion has steady gravitational acceleration, so each part can use the same equations separately."
+      ],
+      [
+        "Which values should I leave blank?",
+        "Leave blank any quantity you do not know and want the calculator to find, and fill in the values the problem gives you. Blanks that are too many can leave the problem undetermined."
+      ]
+    ]
+  },
+  "correlation-coefficient-calculator": {
+    "answer": "A correlation coefficient calculator measures how closely two sets of numbers move together. It computes Pearson r by comparing each value to its mean, multiplying the paired deviations, and dividing by the product of the spread of each list. The result runs from minus one to plus one. Squaring r gives R², the share of variation one variable explains in the other.",
+    "aiSummary": "This calculator takes two equal-length lists of numbers and returns Pearson r, the linear link between them, plus R squared, the share of variation explained. It centers each list on its mean and divides summed cross-products by the spreads. It measures only straight line association, so outliers and curved patterns can mislead it.",
+    "shortKeyword": "correlation coefficient calculator",
+    "longKeywords": [
+      "how to find pearson r between two lists",
+      "strength of a linear relationship",
+      "measures only straight line association"
+    ],
+    "exampleInputs": {
+      "x": "1, 2, 3, 4, 5, 6",
+      "y": "2, 3, 5, 4, 7, 8"
+    },
+    "sections": [
+      {
+        "heading": "How to find Pearson r between two lists?",
+        "text": "Use this tool when you have paired observations, such as hours studied and exam scores for each student, and you want one number that summarizes how the two move together. Enter the X values and Y values in the same order, separated by commas or spaces. Each X must pair with the Y in the same position, or the result will not mean what you expect. The calculator returns Pearson r, along with R squared and a plain label for direction and strength. Everything is computed in your browser, so your figures are not uploaded anywhere."
+      },
+      {
+        "heading": "How do you judge the strength of a linear relationship?",
+        "text": "A value of r near plus one means that higher X values tend to come with higher Y values, while a value near minus one means the reverse. Values close to zero suggest little straight line pattern. Labels such as weak, moderate or strong are conventions rather than fixed laws, so read them in the context of your field. R squared is simpler to explain: it is r multiplied by itself, so an r near plus or minus one gives an R squared near one, and the share explained rises quickly as r grows."
+      },
+      {
+        "heading": "What common mistakes should you avoid with correlation?",
+        "text": "The most common error is treating correlation as proof that one variable causes the other, since a third factor may drive both. Another mistake is mixing up lists that do not line up, such as entering dates in one list and totals in another. Outliers can pull r sharply up or down, so check a scatter plot before trusting the number. Finally, r from a small sample can be unstable, and r only describes straight line association, so a clear curved pattern can still produce a weak r."
+      }
+    ],
+    "faqs": [
+      [
+        "Can a correlation be negative?",
+        "Yes. A negative r means that as one variable rises, the other tends to fall. The sign shows direction, while the size shows how tightly the points follow a straight line. A value of minus one is a perfect inverse line, and a value of zero means no linear pattern."
+      ],
+      [
+        "How many data pairs do I need?",
+        "There is no fixed minimum that makes r valid, but very small samples produce unstable values that can change sharply when one pair is added or removed. Collect as many pairs as your study design allows, and report the number alongside r so readers can judge how stable the figure is."
+      ],
+      [
+        "Should I use Spearman instead?",
+        "Spearman rank correlation is a useful alternative when the relationship is consistently rising or falling but not straight, or when the data are ranks or contain strong outliers. Pearson r assumes a roughly linear pattern and is sensitive to extreme values, so compare both when you are unsure which fits your data."
+      ]
+    ]
+  },
+  "p-value-calculator": {
+    "answer": "A p-value calculator converts a z-statistic into the probability of seeing a result at least as extreme as yours if the null hypothesis were true. It uses the standard normal curve: for a two-tailed test, it doubles the area beyond the absolute value of z, while one-tailed tests use only one side. Smaller p-values mean the data are less consistent with the null hypothesis.",
+    "aiSummary": "Takes a z-statistic and a test direction, two-tailed, right-tailed or left-tailed, and returns the matching p-value from the standard normal distribution. It is the chance of a result as extreme as yours under the null hypothesis. The output depends only on the z-statistic you enter, so it cannot check your model, sampling or assumptions.",
+    "shortKeyword": "p-value calculator",
+    "longKeywords": [
+      "how to find a p value",
+      "what a significance threshold means",
+      "choosing between one-tailed and two-tailed tests"
+    ],
+    "exampleInputs": {
+      "zstat": "1.96",
+      "tail": "right"
+    },
+    "sections": [
+      {
+        "heading": "How to find a p value from a z score?",
+        "text": "Enter the z-statistic from your test and choose whether the alternative hypothesis points in one direction or both. The calculator looks up the area under the standard normal curve beyond your value and reports the p-value. If your z-statistic is positive and you chose a right-tailed test, the tail is the area above z. Use this tool when you already have a z-statistic from a test, such as a z-test on a mean or a proportion, and need the matching probability."
+      },
+      {
+        "heading": "What a significance threshold means for your test?",
+        "text": "Researchers often compare the p-value with a cutoff set before the study, commonly a small value such as five percent. If the p-value falls below that cutoff, the result is called statistically significant at that level. The cutoff is a convention, not a proof, and it should be chosen before looking at the data. A result just above the line is not a failed study; it is weaker evidence that deserves a cautious reading, and effect size matters too."
+      },
+      {
+        "heading": "What mistakes happen when choosing between one-tailed and two-tailed tests?",
+        "text": "The most common error is picking a one-tailed test after seeing which direction the data moved, which inflates the chance of a false positive. The direction should follow from your hypothesis and be fixed in advance. A second mistake is entering the wrong sign for the z-statistic, which flips a right-tailed result into a left-tailed one. Finally, a small p-value does not measure how large or important an effect is, and it does not prove your hypothesis is true."
+      }
+    ],
+    "faqs": [
+      [
+        "Is a p-value the chance my hypothesis is true?",
+        "No. The p-value is calculated assuming the null hypothesis is true, so it describes how surprising your data would be under that assumption. It says nothing direct about the probability that either hypothesis is correct. Treat it as one piece of evidence next to study design, effect size and prior knowledge."
+      ],
+      [
+        "What happens if my z-statistic is negative?",
+        "The sign matters mainly for one-tailed tests. For a two-tailed test, the calculator uses the absolute value, so a negative z gives the same p-value as its positive counterpart. For a left-tailed test, a negative z points toward the tail being tested and gives a smaller p-value."
+      ],
+      [
+        "Can I use this for a t-test?",
+        "Not directly. This calculator uses the standard normal distribution, which matches a z-test. A t-test uses a t distribution whose shape depends on sample size, so its p-value can differ, especially with small samples. For a t-test, use a tool built for t distributions."
+      ]
+    ]
+  },
+  "email-marketing-roi-calculator": {
+    "answer": "An email campaign ROI calculator projects the revenue and return from sending one campaign. It multiplies list size by open rate, click-through rate, conversion rate and average order value to estimate sales. Then it subtracts the total send cost and divides by that cost to give ROI. The output is a planning estimate, not a promise, because real audience behavior changes.",
+    "aiSummary": "Projects revenue from one email send by multiplying list size by open, click and conversion rates and average order value. ROI is revenue minus send cost, divided by send cost. The core method is a simple multiplicative funnel that assumes steady rates, so it cannot capture list decay, seasonality or costs beyond sending.",
+    "shortKeyword": "email campaign roi",
+    "longKeywords": [
+      "how to model email campaign revenue",
+      "from list size to conversions",
+      "what counts as a good open rate"
+    ],
+    "exampleInputs": {
+      "listSize": "10000",
+      "openRate": "25",
+      "ctr": "3",
+      "avgOrder": "60"
+    },
+    "sections": [
+      {
+        "heading": "How to model email campaign revenue from a list?",
+        "text": "This calculator follows the funnel that most email programs share. You start with the number of people on the list, apply the share who open, the share who click, and the share who buy, then multiply by the average order value. The result is projected revenue for one campaign. Use it before sending to decide whether a campaign is worth the effort, or after sending by replacing the assumptions with your actual figures. Start with conservative rates so the first run is not too optimistic."
+      },
+      {
+        "heading": "How do the funnel rates from list size to conversions interact?",
+        "text": "Each rate multiplies the one before it, so small changes compound. Doubling the open rate has the same effect on revenue as doubling the click-through rate, because both sit in the product. Conversion rate and average order value often move the result most, and they are the figures teams can influence through offers and landing pages. Check which stage is weakest in your funnel before spending on list growth. Small gains in two stages can outweigh a large gain in one."
+      },
+      {
+        "heading": "What mistakes make email ROI look better than it is?",
+        "text": "A common mistake is using the full list size when many addresses are inactive or unsubscribed, which inflates every downstream figure. Another is applying an open rate from a welcome series to a general promotion. The calculator also treats each rate as independent and constant, while real audiences fade over time. Finally, the cost input covers only sending, so it may leave out design, copywriting, software and staff time. Review each assumption before sharing the figure."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a high ROI mean the campaign should be repeated?",
+        "Not automatically. A high ROI on one send can reflect an unusually engaged segment or a one-off offer. Check whether the result holds across several sends and whether the costs you entered are complete. Repeating only the campaigns whose numbers hold up gives a more reliable picture."
+      ],
+      [
+        "How should I count the cost of an email?",
+        "Include the cost of the sending platform, any per-message fees, and time spent writing and designing the email. Many teams spread software costs across all campaigns. The cost input in this tool is per email, so divide monthly totals by the number of messages sent that month to get a usable figure."
+      ],
+      [
+        "What counts as a good open rate?",
+        "There is no universal figure, because open rates vary by industry, list quality and subject line quality. Use your own past campaigns as the baseline, and change one input at a time when testing scenarios with this calculator. The result is only as good as the rates you enter."
+      ]
+    ]
+  },
+  "employee-turnover-calculator": {
+    "answer": "An employee turnover calculator divides the number of staff who left during a period by the average number of employees, then multiplies by one hundred to express a percentage. It also estimates replacement cost by applying a rough share of annual salary to each departure, covering recruiting, onboarding and lost productivity. The outputs are planning figures, so treat the replacement estimate as an approximation.",
+    "aiSummary": "Computes an attrition rate as leavers divided by average headcount for the period, then estimates the cost of each departure as a share of annual salary. The core assumption is a fixed replacement share, which ignores role seniority and local hiring costs.",
+    "shortKeyword": "employee turnover calculator",
+    "longKeywords": [
+      "how to calculate employee turnover rate",
+      "estimating the cost of replacing staff",
+      "average headcount for the period"
+    ],
+    "exampleInputs": {
+      "left": "12",
+      "avg": "100",
+      "salary": "60000"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate employee turnover rate?",
+        "text": "Turnover rate compares departures with the team you actually run. Count the employees who left during the period, then find the average number of employees across that same period, often the mean of opening and closing headcount. Divide leavers by that average and multiply by one hundred. Use the result to track trends over time, compare teams of different sizes, or set retention goals. A rising line matters more than any single reading."
+      },
+      {
+        "heading": "What goes into estimating the cost of replacing staff?",
+        "text": "The replacement estimate in this tool uses a simple rule of thumb: a share of the average annual salary for each person who left. That share is meant to cover advertising and recruiter fees, interview time, onboarding, training and the weeks before a new hire reaches full output. Real costs depend on seniority, scarcity of the skill, and how long the role stays open. Read the figure as an order-of-magnitude guide rather than a budget line."
+      },
+      {
+        "heading": "What limits should you keep in mind about turnover figures?",
+        "text": "A single turnover rate hides who left and why. Voluntary exits, dismissals and retirements carry different meanings, so consider filtering them before drawing conclusions. Small teams swing sharply with one departure, which makes the percentage noisy. A high rate in one department may also reflect a management issue rather than pay. Finally, the replacement estimate ignores lost knowledge and customer relationships, so the true cost is often higher than shown."
+      }
+    ],
+    "faqs": [
+      [
+        "Is a turnover rate the same as attrition?",
+        "In everyday HR usage the two terms are used interchangeably, and both describe the share of staff leaving over a period. Some organizations separate voluntary and involuntary attrition, so check the definition a report uses before comparing numbers across sources."
+      ],
+      [
+        "Which period should I use for the calculation?",
+        "Most teams use a full year so seasonal hiring and exits average out, but a quarter or month can show recent changes faster. Use the same period each time you compare results, and calculate the headcount average over that same window. Mixing a monthly leaver count with an annual average gives misleading percentages."
+      ],
+      [
+        "Should I include people hired and gone in the same period?",
+        "Including or excluding them changes the result, so decide once and apply it consistently. Many people count them among leavers because they still cost recruiting effort. Document the choice alongside the rate so colleagues can reproduce it."
+      ]
+    ]
+  },
+  "dividend-yield-calculator": {
+    "answer": "A dividend yield calculator shows the annual dividend per share as a percentage of the current share price. It divides the dividend by the price and multiplies by one hundred. It can also multiply the per-share dividend by the number of shares held to show annual income. Yield moves inversely with price, so it changes as the stock price changes, even when the payout stays the same.",
+    "aiSummary": "Estimates dividend yield by dividing annual dividend per share by share price, then optionally multiplies by shares held to show annual income. The core method is a single ratio that assumes the dividend stays constant. It is an educational estimate, not investment advice, and it says nothing about whether the dividend is sustainable.",
+    "shortKeyword": "dividend yield calculator",
+    "longKeywords": [
+      "how to work out dividend yield",
+      "read a high dividend yield",
+      "income from a dividend holding"
+    ],
+    "exampleInputs": {
+      "price": "50",
+      "annual": "2",
+      "shares": "100"
+    },
+    "sections": [
+      {
+        "heading": "How to work out dividend yield from a share price?",
+        "text": "Dividend yield expresses the cash a company pays each year as a percentage of what you pay for a share. Enter the current share price and the annual dividend per share, and the calculator returns the yield. Adding the number of shares you hold turns the per-share dividend into an annual income estimate. Use the tool to compare income-paying stocks on an equal footing, or to see what a holding might pay in a year. Check that the dividend figure is annual, not quarterly."
+      },
+      {
+        "heading": "How should you read a high dividend yield?",
+        "text": "A high yield is not automatically attractive. Because yield rises when price falls, an unusually high number can signal that the market expects the dividend to be cut, or that the share price has dropped for other reasons. Compare the yield with similar companies in the same sector, and look at the payout ratio and earnings history. The calculator shows the arithmetic only; judging whether the payment will last takes further research."
+      },
+      {
+        "heading": "What mistakes do investors make with yield?",
+        "text": "The most common error is using a quarterly dividend as if it were annual, which can badly misstate the yield. Another is ignoring special one-off payments, which can distort a single year. Yield also says nothing about total return, since price changes can outweigh income. Finally, the calculation assumes the dividend stays constant, which many companies do not promise. Compare the figure against the company's own history and against peers in the same sector, reading both together."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I compute income from a dividend holding?",
+        "Multiply the annual dividend per share by the number of shares you own, then review the result before tax. Tax treatment varies by country and account type, so this is an educational estimate rather than a tax figure."
+      ],
+      [
+        "Does a dividend reinvestment plan change the yield?",
+        "The yield at any moment is still the annual dividend divided by the price. Reinvesting dividends adds shares over time, which increases future income, but it does not change the percentage shown for a given price. Check your plan's terms, since fees and timing rules differ."
+      ],
+      [
+        "Why is yield lower after a share price rises?",
+        "Yield is a ratio, so when the price rises and the dividend is unchanged, the numerator stays the same while the denominator grows. The percentage falls even though the company paid the same cash. This is why yield alone does not show whether the stock is cheap or expensive."
+      ]
+    ]
+  },
+  "pe-ratio-calculator": {
+    "answer": "A P/E ratio calculator divides a share price by earnings per share, producing a multiple that describes how much investors pay for each unit of current earnings. It also shows earnings yield, the inverse: earnings per share divided by price, expressed as a percentage. Earnings yield can be set beside bond yields when comparing returns. The P/E ratio is a valuation shorthand, not a verdict on a company.",
+    "aiSummary": "Computes a price to earnings multiple by dividing share price by earnings per share, and the earnings yield as its inverse. The method is one division. It does not show whether a multiple is high or low without context, and it ignores growth, debt and one-off items. Educational estimate, not investment advice.",
+    "shortKeyword": "p/e ratio calculator",
+    "longKeywords": [
+      "how to calculate price to earnings",
+      "comparing earnings yield to bond yields",
+      "whether a multiple is high or low"
+    ],
+    "exampleInputs": {
+      "price": "150",
+      "eps": "5"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate price to earnings for a stock?",
+        "text": "Enter the current share price and the earnings per share for the same period. The calculator returns the P/E ratio, which tells you how many dollars investors pay for each dollar of annual earnings. It also returns earnings yield, a percentage you can set beside bond yields. Use it to screen companies in the same industry or to see how a valuation changes as the price moves. Make sure the share price and earnings are both current and on the same basis. Note the date each figure was reported."
+      },
+      {
+        "heading": "What does a P/E ratio tell you about valuation?",
+        "text": "A higher P/E usually means investors expect faster growth or are willing to pay a premium for stability, while a lower P/E can signal slower growth, higher risk, or simply an overlooked company. Typical values differ widely between industries, so comparing a software firm with a utility is rarely useful. Use P/E as a starting point for questions, not as a conclusion about whether a share is cheap or expensive."
+      },
+      {
+        "heading": "What are the common mistakes with earnings figures?",
+        "text": "The most frequent mistake is mixing trailing and forward earnings, which can change the ratio sharply. Another is using earnings that include large one-time gains or losses, which distorts the result. Companies with negative earnings do not produce a meaningful P/E at all. The ratio also ignores debt and cash, so two companies with equal multiples can carry very different risk. Check the earnings basis before comparing numbers, and write down which definition you used so the comparison can be repeated later."
+      }
+    ],
+    "faqs": [
+      [
+        "Is a P/E ratio the same as a price target?",
+        "No. A P/E is a current ratio built from today's price and reported earnings. A price target is a forecast of where a price might go, usually built on expected earnings and an assumed multiple. The calculator reports the ratio only and makes no forecast."
+      ],
+      [
+        "How does comparing earnings yield to bond yields work?",
+        "Earnings yield is the inverse of P/E, so it can be placed next to a bond's yield as a rough comparison. Earnings can grow or fall, while a bond pays fixed coupons, so the two are not like for like. Treat the comparison as a framing device, not a return forecast."
+      ],
+      [
+        "Why do some stocks have no P/E?",
+        "A P/E needs positive earnings per share to be meaningful. When earnings are zero or negative, the division does not help comparison, so analysts usually look at other measures such as revenue or cash flow instead."
+      ]
+    ]
+  },
+  "circle-area-calculator": {
+    "answer": "A circle area calculator takes the radius and multiplies pi by the radius squared to give the area. It also computes circumference as two times pi times the radius, and shows the diameter as twice the radius. The tool uses a fixed decimal value for pi, so results are very close for everyday use but are approximations rather than exact values.",
+    "aiSummary": "Computes the area of a circle as pi times radius squared, and the circumference as two pi times radius. The core method is standard geometry, approximating pi with a fixed constant, so results are close but rounded. It assumes a perfect circle and does not handle arcs, ellipses or unit conversion.",
+    "shortKeyword": "circle area calculator",
+    "longKeywords": [
+      "how to find area from radius",
+      "circumference from radius or diameter",
+      "approximating pi with a fixed constant"
+    ],
+    "exampleInputs": {
+      "radius": "5"
+    },
+    "sections": [
+      {
+        "heading": "How to find area from radius for any circle?",
+        "text": "Use this tool when you know the distance from the center of a circle to its edge and need its area, such as the floor space of a round table or the surface of a round plate. Enter the radius and the calculator squares it, multiplies by pi, and reports the area. The same radius also gives the circumference and diameter, which helps when you need the length of trim, a ring or a pipe wrap. Keep the unit the same for every value you enter."
+      },
+      {
+        "heading": "What is the circumference from radius or diameter?",
+        "text": "Circumference is the distance around the circle, found by multiplying two by pi and then by the radius. If you measured across the middle instead, enter half of that diameter as the radius, because the tool takes the radius as its input. Circumference grows in a straight line with radius while area grows with its square, so doubling the radius doubles the length around but quadruples the area. Keep this distinction in mind when estimating materials."
+      },
+      {
+        "heading": "What common mistakes lead to wrong circle results?",
+        "text": "The most frequent error is entering the diameter where the radius belongs, which makes the area four times too large. Keep units consistent, so a radius in inches should not be treated as centimeters. Remember that the result is for an ideal circle; a real object with a flattened edge or a hole will differ. Finally, rounding the radius early in a multi-step calculation can shift the final value more than expected."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does the calculator use a decimal for pi?",
+        "Pi is an irrational number, so its decimal digits never end or repeat. Software must stop at some finite precision, which is why the tool stores a fixed approximation. For construction, sewing or classroom work this precision is more than enough."
+      ],
+      [
+        "How do I find a radius from a measured circle?",
+        "Measure straight across the center to get the diameter, then halve it. Measuring the distance from the center to the edge directly is also valid. Keep the same unit throughout, because the area will be in square units and the circumference in linear units."
+      ],
+      [
+        "Does this work for a semicircle?",
+        "Not directly. A semicircle has half the area of a full circle with the same radius, so you can halve the result. Its curved boundary has half the circumference, but the flat edge adds the diameter to the perimeter. Calculate the full circle, then adjust for the part you need."
+      ]
+    ]
+  },
+  "electricity-bill-calculator": {
+    "answer": "An electricity bill calculator estimates your monthly power cost by multiplying total kWh used by your price per kWh. Each kilowatt-hour is one kilowatt of power used for one hour, so the product gives the energy portion of the bill. Many utilities add fixed monthly charges and taxes, which this simple method leaves out unless you add them separately.",
+    "aiSummary": "Estimates a monthly electricity cost by multiplying kilowatt-hours used by the rate per kWh, so the core method is one multiplication. It helps with comparing appliances by monthly cost before you buy. It leaves out fixed fees, taxes and tiered pricing, so the result is an educational estimate rather than your exact bill.",
+    "shortKeyword": "electricity bill calculator",
+    "longKeywords": [
+      "how to estimate monthly electricity cost",
+      "what does reading kWh involve",
+      "comparing appliances by monthly cost"
+    ],
+    "exampleInputs": {
+      "kwh": "900",
+      "rate": "0.15"
+    },
+    "sections": [
+      {
+        "heading": "How to estimate monthly electricity cost from usage?",
+        "text": "Start with the total kilowatt-hours your home used in a billing period, which appears on most utility statements. Multiply that figure by your rate per kWh to get the energy charge. Use the tool to plan a budget, to see what a new heater or a second refrigerator could add, or to check whether a bill looks reasonable. Repeat the calculation for each month to see seasonal swings in cost."
+      },
+      {
+        "heading": "What does reading kWh involve on a utility bill?",
+        "text": "A kWh figure counts energy, not money, so it must always be paired with a price. Look for the usage line on the bill, which usually shows the current period and sometimes a comparison with last year. Some plans charge different rates at different times of day, so one number may not capture your real cost. If your bill has several rate lines, enter a blended average rather than a single peak price."
+      },
+      {
+        "heading": "What limits should you keep in mind for power estimates?",
+        "text": "The calculator uses one flat rate, so tiered or time-of-use pricing will produce a different answer. Fixed monthly charges, taxes and surcharges are left out unless you add them. Appliance estimates depend on hours of use, which people often overestimate. Seasonal changes in heating or cooling can dominate the bill, so one month rarely represents a full year. Treat the result as a planning figure. Check your statement for any charges the tool leaves out."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does my real bill differ from this estimate?",
+        "Real bills include fixed charges, taxes, demand fees, and tiered or time-of-use pricing that this simple method does not model. Meter reading dates may also not match the calendar month. Add those items separately if you need a closer match, and compare with the kWh total on your statement."
+      ],
+      [
+        "Can I use this to compare two appliances?",
+        "Yes, for a rough comparison. Estimate each appliance's kWh over a month by multiplying its power draw by its hours of use, then run both through this calculator with the same rate. The difference shows relative running cost, which is often more useful than the absolute figure."
+      ],
+      [
+        "Should the rate include delivery charges?",
+        "Your price per kWh may be split into supply and delivery components on the statement. Using only the supply rate understates your bill, while adding every line item gives a closer figure. Choose the approach that matches what you want to plan for, and state it when you share the result."
+      ]
+    ]
+  },
+  "calorie-deficit-calculator": {
+    "answer": "A calorie deficit calculator works out how many calories you need to eat below your maintenance level to lose a target amount each week. It uses the rule that about seven thousand seven hundred kilocalories equals one kilogram of body fat, spreads the weekly target across seven days, and subtracts that daily deficit from maintenance calories.",
+    "aiSummary": "Estimates daily calories by subtracting a daily deficit from maintenance calories, where the deficit is the weekly target in kilograms times a fixed energy value, divided by seven. It takes maintenance calories and target loss as inputs and assumes both are accurate and weight change is steady. Educational estimate, not medical advice.",
+    "shortKeyword": "calorie deficit calculator",
+    "longKeywords": [
+      "how many calories to cut each day",
+      "adjust a deficit when progress stalls",
+      "maintenance calories and target loss"
+    ],
+    "exampleInputs": {
+      "tdee": "2200",
+      "target": "0.5"
+    },
+    "sections": [
+      {
+        "heading": "How many calories to cut each day to lose weight?",
+        "text": "Enter your estimated maintenance calories, which is the intake that keeps your weight steady, and the weekly loss you want. The calculator converts that loss into a daily deficit, then shows how many calories to eat. A gentle target of around half a kilogram per week is a common starting point in general guidance. Use this as a starting plan, then watch the trend over several weeks and adjust. Pick a start date and record your weight at the same time of day to keep the trend readable."
+      },
+      {
+        "heading": "How should you adjust a deficit when progress stalls?",
+        "text": "Weight moves from day to day because water and digestion shift it, so judge the trend over two or more weeks before changing anything. If the trend is flat, first check how closely you are tracking intake, since small errors add up. Only then reduce the target or recalculate maintenance, which changes as body weight changes. Make one adjustment at a time so you can see what caused the change."
+      },
+      {
+        "heading": "What mistakes come from using a big deficit?",
+        "text": "A larger deficit is not always more useful. Very steep cuts can increase hunger, reduce training quality, and make the plan hard to keep. The formula also assumes maintenance is known, and estimates can be off by a wide margin. Avoid setting intake far below what you can sustain. Eating too little for long periods does not suit everyone, so people with medical conditions or who are pregnant should consult a clinician."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does weight loss slow down over time?",
+        "As body weight falls, maintenance calories usually fall too, so the same intake produces a smaller deficit. Activity levels can also drift downward without notice. Recalculate with your new weight every so often, and check that your logged intake still matches what you eat."
+      ],
+      [
+        "How can I estimate my maintenance calories?",
+        "Many people start with a formula based on body size, age, sex and activity, then refine the figure using their own weight trend. If weight stays steady while eating a known amount, that intake is a practical estimate of maintenance. Treat it as a starting point rather than a fixed fact."
+      ],
+      [
+        "Does the half kilogram target apply to everyone?",
+        "No. It is a common moderate pace, not a rule. Some people choose a slower rate to protect muscle or energy. Pick a pace you can sustain, and speak with a qualified professional about weight goals, especially if you have a health condition."
+      ]
+    ]
+  },
+  "pregnancy-week-calculator": {
+    "answer": "A pregnancy week calculator measures gestational age, the time since the first day of your last menstrual period, and reports it in completed weeks and days. It also shows the trimester. Clinicians count pregnancy from that date by convention, so the figure is usually a little ahead of conception timing. The result is an estimate for planning and does not replace a clinical dating scan.",
+    "aiSummary": "Calculates gestational age in weeks and days from the first day of the last menstrual period, plus the trimester. The method is date subtraction, since gestational age from the first day counts from that date. It assumes regular cycles, so irregular cycles or ultrasound dating can change it. Educational estimate, not medical advice.",
+    "shortKeyword": "pregnancy week calculator",
+    "longKeywords": [
+      "how to count weeks from last period",
+      "what trimester you are in",
+      "gestational age from the first day"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to count weeks from last period to today?",
+        "text": "Enter the first day of your last period. The calculator counts the days between that date and today, then divides by seven to give full weeks and remaining days. This is the standard way pregnancy is dated in clinical settings, so it matches what many providers will say. Because the count starts before conception, the number can seem higher than you expect. Check the result against your own records and your care team's dating."
+      },
+      {
+        "heading": "How do you tell what trimester you are in?",
+        "text": "Pregnancy is commonly split into three trimesters. The first covers roughly weeks one to twelve, the second runs from about week thirteen to week twenty six, and the third covers the final stretch to about week forty. These boundaries are approximate and vary between guidelines, so the label is a rough guide to stages of development. Your care team will tell you which milestones and tests apply at each point."
+      },
+      {
+        "heading": "What limits make the week count less reliable?",
+        "text": "Irregular cycles make the start date hard to pin down, because ovulation may fall later than the usual middle of a cycle. If you do not remember the first day of your last period, the result will not be reliable. Early ultrasound measurements often override the date-based count when the two disagree. Treat this tool as a planning aid and confirm your dates with a healthcare professional. Keep a note of the start date you used so later checks can be compared with it."
+      }
+    ],
+    "faqs": [
+      [
+        "How is a due date worked out?",
+        "A due date is usually set about forty weeks after the first day of the last period, using the same dating method. Many people deliver before or after that date, so it is a target window rather than a fixed day. Your provider may revise it after an early ultrasound."
+      ],
+      [
+        "Can I track a pregnancy without knowing my last period?",
+        "Yes, but the estimate will be less precise. A clinician can date a pregnancy with an early ultrasound, which measures the embryo directly and is usually more reliable than counting from an uncertain start date. Ask your provider about dating options."
+      ],
+      [
+        "Why do pregnancy weeks start before conception?",
+        "Gestational age is counted from the start of the last period because that day is easy to identify, while the exact moment of conception is not. Ovulation typically happens about two weeks later in a standard cycle, so the first two weeks are counted before a pregnancy exists. This is a convention, not a sign that something went wrong."
+      ]
+    ]
+  },
+  "pdf-editor": {
+    "answer": "A PDF editor is software for opening, reading and changing PDF documents. This PDF editor workspace lets you view pages, add annotations, organize pages, fill form fields and recognize text in scanned pages. It is hosted separately from this site and opens when you use it. Choose your file, use the tools you need, then save the result as a separate copy and keep the original.",
+    "aiSummary": "This page describes an online PDF editor that lets you view, annotate, organize pages, fill out PDF forms online and recognize text in scanned pages. The workspace is hosted separately and loads when opened. Its main limitation is that processing depends on that separate workspace, so keep a copy of your original file.",
+    "shortKeyword": "pdf editor",
+    "longKeywords": [
+      "how to annotate a PDF file",
+      "fill out PDF forms online",
+      "recognize text in scanned pages"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "What tasks does this PDF editor cover?",
+        "text": "Use this workspace when a PDF needs more than a viewer. Typical tasks include reading a long document, marking up a contract with notes, rearranging pages before sending a file, and completing a form that someone else created. The same workspace also includes optical text recognition for scanned pages, which helps when a document is an image and text cannot be selected. Because the workspace is a separate tool, check its own menus for the exact operation you need before you start."
+      },
+      {
+        "heading": "How to annotate a PDF file?",
+        "text": "Open the file in the workspace, select the annotation or markup tool, and place notes, highlights or drawings on the page you want to mark. Review each mark at normal zoom before you save, because small notes can be hard to see when a page is printed. Keep the original unchanged by saving the annotated version under a new name. If several people will review the file, agree on a naming rule first so that the latest copy is easy to find."
+      },
+      {
+        "heading": "What limits should you check before relying on it?",
+        "text": "Check that the workspace opens your file type and that the operation you need is available there. Scanned text recognition depends on image quality, so verify important names, numbers and dates against the page. Form filling works only where the form fields are present and readable. Also confirm that a saved copy contains your changes before you delete anything, and do not treat an annotated file as a secure redaction, since marks placed on top of content do not remove it."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I fill out PDF forms online?",
+        "Yes, if the form has fillable fields that the workspace can read. Open the form in the editor, select the field you want to complete, type your entry and save a copy. Forms that are flat scans or use unsupported form technology may need a different approach, such as typing text as an annotation."
+      ],
+      [
+        "Could editing here overwrite my source PDF?",
+        "Not unless you save over it. Work on a copy when you can, and save changes under a new file name so the source document stays intact. Keep the original until you have checked the saved version in another viewer."
+      ],
+      [
+        "What should I check after scanned text is recognized?",
+        "Compare the recognized text with the page, especially names, amounts, dates and codes. Recognition quality falls with blurry, skewed or low-resolution scans, so correct errors before the text is used for search, copying or records. Keep the scanned image as the reference copy."
+      ]
+    ]
+  },
+  "reverse-pdf-pages": {
+    "answer": "Reverse PDF pages means changing the order so the last page becomes the first and the first becomes the last, while the content of each page stays the same. This reverse PDF pages tool does that without rasterizing the document, which means the pages are not turned into images. Choose a supported file, process it and download the result. Keep and review the original.",
+    "aiSummary": "Explains a browser-based tool that reverses the page order of a PDF so the last page comes first. The method rewrites page sequence without rasterizing, so content stays as-is. Main limitation: it changes only order, so check that the reversed file still reads correctly before sharing it.",
+    "shortKeyword": "reverse pdf pages",
+    "longKeywords": [
+      "how to reverse PDF page order",
+      "check reversed PDF page order",
+      "without rasterizing the document"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When would you reverse PDF pages?",
+        "text": "Reversing is useful when a scanned stack was fed into a scanner backward, or when a document was exported in the wrong sequence. It also helps when a stack of pages was numbered in reverse order. Reviewing the last pages first is another reason people use it. The tool changes only the sequence of pages, so the content of each page stays the same. Before you share the result, open it once to confirm that the first page is now the one you expected."
+      },
+      {
+        "heading": "How do you check reversed PDF page order?",
+        "text": "Compare the first and last pages of the output with the first and last pages of the original. Scroll through a few pages in the middle as well, because a reversal moves every page, so a mismatch is easy to spot near the ends. Note the page count too. A reversed file should have the same number of pages as the source, so any difference is a reason not to use the output until the cause is found."
+      },
+      {
+        "heading": "What are the common mistakes with reversing pages?",
+        "text": "A common mistake is reversing a file and then replacing the original without checking it, which leaves no way back if the order was wrong. Another is assuming the reversed order is the same as a booklet or duplex layout; reversal changes the sequence only, so any imposition for printing needs a separate step. Also remember that page labels, bookmarks and internal links may still refer to the old order, so review them before distribution."
+      }
+    ],
+    "faqs": [
+      [
+        "How to reverse PDF page order?",
+        "Choose the PDF, let the tool read its page count, and run the reverse operation. The result has the last page first and the first page last, with each page's content unchanged. Download the output and keep the original file in place."
+      ],
+      [
+        "Does reversing keep the text searchable?",
+        "Reversing does not rasterize the document, so the pages stay as document content rather than images. Searchability should be preserved in that case, but confirm with a quick search in the output, since some scanned files are already images before you start."
+      ],
+      [
+        "Can I undo a reversal after downloading?",
+        "Reversing a reversed file gives back the earlier order, so the same tool can undo a mistake. Still, the simplest protection is your original copy, which you should keep until the output has been checked in a viewer."
+      ]
+    ]
+  },
+  "add-blank-pdf-page": {
+    "answer": "Adding a blank PDF page means placing an empty sheet into a document at a chosen position while the existing pages keep their order. This add blank pdf page tool places a blank page before or after a page you choose, in your browser. Choose a supported file, set the position, process the document and download the result. Keep and review the original to compare page counts.",
+    "aiSummary": "Describes a browser-based tool that inserts one empty page before or after a chosen page in a PDF. The existing pages keep their order, while later pages move one place further along. Main limitation: the new page is only empty space, so any content, numbering or header must be added separately.",
+    "shortKeyword": "add blank pdf page",
+    "longKeywords": [
+      "how to insert a blank page",
+      "blank page before or after a page",
+      "where to put a blank page"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why add a blank page to a PDF?",
+        "text": "A blank page is useful when a document needs space for a handwritten note, when a page was accidentally left out, or when a deliberate separator should start a new section. Printing workflows also use blank sheets to begin a fresh section on its own page. Because the inserted page carries no content, it works as a placeholder you can fill later with a scan, a signature page or a note added in another editor. Choose the position carefully so that the surrounding pages still read in the right order."
+      },
+      {
+        "heading": "Where to put a blank page in a PDF?",
+        "text": "Choose the existing page you are working from, then decide whether the blank page should come before or after it. Before is the right choice when a missing page belongs at the start of a section, and after suits a sheet that follows the page you just finished. Check the page numbers in the result, because every page after the insertion point moves one place further along. Compare the new order against your outline before sharing."
+      },
+      {
+        "heading": "What are the limits of adding a blank page?",
+        "text": "The inserted page is truly empty, so it does not add a heading, page number or header unless you place those elements later. Bookmarks, page labels and cross-references that point to later pages may now point to the wrong place, which is a common surprise. Check the page size of the new sheet against its neighbors before printing, since a mismatch can cause scaling problems. Review the whole file in a viewer before you distribute it."
+      }
+    ],
+    "faqs": [
+      [
+        "How to insert a blank page?",
+        "Open the supported file, pick the page you are working from, and choose whether the blank page goes before or after it. Process the document and download the output. Then open it in a viewer to confirm that the blank sheet is in the position you intended."
+      ],
+      [
+        "Will the blank page have a page number?",
+        "No. The inserted sheet is empty, so any page number, header or footer does not appear unless you add it with another tool. Printed numbers on the original pages stay as they were, which can make the numbering look off by one until you check the result."
+      ],
+      [
+        "Can I add several blank pages at once?",
+        "Run the tool once for each position you need. After every pass, recheck the page order, because each insertion moves all later pages one place further along and changes the numbers you would use next."
+      ]
+    ]
+  },
+  "flatten-pdf-forms": {
+    "answer": "To flatten PDF forms means converting the visible appearance of filled form fields into fixed page content. This flatten pdf forms tool does that in your browser. In effect, you turn form entries into PDF content so they can no longer be edited as fields. Choose a supported file, process it and download the result. Signatures may become invalid, so keep and review the original.",
+    "aiSummary": "Describes a browser-based step that converts filled form appearances into fixed page content, so entries can no longer be edited as fields. The page content is rewritten rather than the form being edited. Main limitation: digital signatures become invalid, and not all annotations are removed, so check the output.",
+    "shortKeyword": "flatten pdf forms",
+    "longKeywords": [
+      "how to flatten filled PDF forms",
+      "turn form entries into PDF content",
+      "flatten PDF form fields for printing"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Should you flatten PDF form fields for printing?",
+        "text": "Flattening makes sense after a form has been completed and no further edits are expected, such as when an applicant's entries must be archived as they were submitted. It also helps when a printer or viewer does not display form fields reliably, because the entries become part of the page. Before flattening, confirm that every field you need is filled, since the result is harder to change afterward. Keep an editable copy in case corrections are needed later."
+      },
+      {
+        "heading": "How do you read the flattened result?",
+        "text": "Open the output in a viewer and check that each entry appears where you expect and matches the filled form. Try selecting text or clicking a field, because flattened entries should no longer behave as editable inputs. Look at the signature area too, since changes to a signed document can make an existing signature invalid. Compare the output with the original side by side to catch missing entries. Note any values that look truncated or shifted, because they often point to a layout problem that is easier to fix before you share the file."
+      },
+      {
+        "heading": "What are the common mistakes and limits with flattening?",
+        "text": "A common mistake is flattening a form before all its fields are complete, which fixes blanks into the page. Another is assuming flattening removes everything else in the file. It does not remove all annotations, and it is not a way to delete sensitive information. Also remember that a signed document may need to be signed again after changes, because the original signature no longer validates. Keep the unflattened source so that corrections remain possible."
+      }
+    ],
+    "faqs": [
+      [
+        "How to flatten filled PDF forms?",
+        "Choose the supported file, process it to convert the filled fields into fixed page content, and download the result. Before you do, make sure every entry is final, because the fields will not stay editable. Open the output in a viewer to confirm the values appear correctly."
+      ],
+      [
+        "Can I still edit fields after flattening?",
+        "Not as form fields. Flattening turns their appearance into page content, so you would need to keep an editable copy of the form if corrections might be needed. Keep that copy before you run the operation."
+      ],
+      [
+        "Are digital signatures still valid after flattening?",
+        "Usually not. Changing a signed document can make the existing digital signature invalid, so check the signature status after processing. If a signature is required, sign the flattened file again using a method suited to your process."
+      ]
+    ]
+  },
+  "fill-pdf-forms": {
+    "answer": "Filling PDF forms means writing values into the named fields of a form, such as text boxes, checkboxes and choice lists. This fill pdf forms tool does that in your browser, matching each entry to the field name you provide. Choose a supported file, enter the values, process the document and download the result. Only supported AcroForm fields are filled, and XFA forms are unsupported.",
+    "aiSummary": "Describes a browser-based method that fills text, checkbox and choice fields in a PDF by matching values to their field names. Only standard AcroForm fields are supported, not XFA forms. Main limitation: characters outside the built-in Latin font may need an embedded font to display correctly.",
+    "shortKeyword": "fill pdf forms",
+    "longKeywords": [
+      "how to fill PDF forms by name",
+      "find field names in a PDF",
+      "check a filled PDF form"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do you find field names in a PDF?",
+        "text": "Each fillable box in a PDF form carries an internal name, which is often different from the label printed next to it. This tool writes values by that name, so you need to know the names before filling. Inspect the form in an editor that lists fields, or note the names from an earlier run. Checkboxes and choice fields need values that match their settings, so enter data that fits each field type."
+      },
+      {
+        "heading": "How should you check a filled PDF form?",
+        "text": "Open the completed file in a viewer and compare every entry with your source data. Check that text is not cut off by the box size, that checkboxes are in the state you intended, and that choice fields show the option you chose. Because a fill can succeed while a field is misnamed, look for any value that did not appear at all and trace it back to its field name. Note which fields were missed, so the next run can be corrected."
+      },
+      {
+        "heading": "What are the common limits of filling PDF forms?",
+        "text": "The most common problem is an unsupported form type. Forms built with XFA technology cannot be filled by this method, so a blank result may mean the form itself is the cause rather than your entries. Non-Latin text can also fail to display if the built-in font lacks the characters, which may require an embedded font. Finally, do not assume a filled form is still signed or certified after editing. Keep the original form as a reference for comparison."
+      }
+    ],
+    "faqs": [
+      [
+        "How to fill PDF forms by name?",
+        "Open the supported file, enter each value against its exact field name, and choose only option values the field allows. Process the document and download the result. Then check the output in a viewer, since a value entered under a misspelled name will not appear."
+      ],
+      [
+        "Can I fill a form that uses XFA?",
+        "No. Only supported AcroForm fields are filled, and XFA forms are unsupported. If a form does not respond to any entry, check whether it uses XFA technology before assuming your values are wrong."
+      ],
+      [
+        "Will filled values stay editable?",
+        "They usually do, because the values are written into the form fields rather than flattened onto the page. Still, keep the original and review the output, because later steps such as flattening or printing can change how the entries behave."
+      ]
+    ]
+  },
+  "remove-pdf-metadata": {
+    "answer": "Removing PDF metadata means clearing the descriptive details stored in a document, such as title, author and creation information, plus the XMP metadata block. This remove pdf metadata tool does that in your browser and can clear PDF document information fields for you. Choose a supported file, run the operation and download the cleaned copy. It does not redact content inside pages, so keep and review the original.",
+    "aiSummary": "Explains a browser-based cleanup that clears standard document information and XMP metadata from a PDF. The page contents are not edited, so the visible text and images stay the same. Main limitation: this is metadata cleanup only, not redaction, so sensitive content inside pages must be handled separately.",
+    "shortKeyword": "remove pdf metadata",
+    "longKeywords": [
+      "remove metadata from a PDF file",
+      "clear PDF document information fields",
+      "is metadata removal the same as redaction"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why remove metadata from a PDF file?",
+        "text": "Metadata can record an author name, editing software, timestamps and document titles that you may not want to share. Removing it before publishing or sending a file reduces the background information that travels with the document. This is common when a file is shared outside an organization or uploaded to a public place. The visible pages remain as they were, so a reader sees the same document while the file carries less hidden detail."
+      },
+      {
+        "heading": "How do you confirm the cleanup worked?",
+        "text": "Open the cleaned file in a viewer and check its document properties, which should show empty or generic values where the originals appeared. Compare the page count and a few pages visually against the original, since the operation should not change page content. If a property still shows a value, the file may hold that information in a place this operation does not reach, so do not rely on the result alone for sensitive files."
+      },
+      {
+        "heading": "What does metadata removal not protect?",
+        "text": "Metadata cleanup does not remove text, images or annotations that sit on the pages, so a name written inside a document stays visible. It is not document redaction, and it does not remove content inside the pages themselves. Also remember that the file name, the place you send it and any email headers can reveal information outside the PDF itself. Review the content as well as the properties before you share."
+      }
+    ],
+    "faqs": [
+      [
+        "Is metadata removal the same as redaction?",
+        "No. Redaction removes or hides sensitive content on the pages, while this operation clears descriptive properties such as author and title. Text, images and annotations inside the pages are left as they were, so review the content separately."
+      ],
+      [
+        "Will the visible pages change?",
+        "The page content should look the same, because the operation targets document information and XMP metadata rather than the drawing on each page. Check a few pages after processing, especially if the file has form fields or annotations, to be sure nothing unexpected changed."
+      ],
+      [
+        "Do I need to remove metadata before sharing?",
+        "It depends on the file and its audience. Metadata can reveal authors, software and dates, so cleaning a copy before publishing or sending it outside your organization is a sensible precaution. Keep the original in case you need its properties later."
+      ]
+    ]
+  },
+  "crop-pdf": {
+    "answer": "Cropping a PDF means trimming what readers see by setting visible margins in PDF points on each page. This crop pdf tool does that in your browser and changes the visible page box, while content outside that box stays in the file. Choose a supported file, enter the margin values, process the document and download the result. Keep and review the original, since hidden content remains.",
+    "aiSummary": "Describes a browser-based way to reduce the visible area of PDF pages by setting margins in points. The method changes the page box that readers display, not the content stored behind it. Main limitation: anything outside the visible box still exists in the file and can be found by tools that read the whole file.",
+    "shortKeyword": "crop pdf",
+    "longKeywords": [
+      "how to crop a PDF page",
+      "setting visible margins in PDF points",
+      "trim the margins of a PDF"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When should you trim the margins of a PDF?",
+        "text": "Cropping helps when scanned pages have uneven borders, when a page carries a printed header you want hidden from view, or when a document needs a tighter layout before printing or viewing on a small screen. Because margins are entered in PDF points, you can set the same trim on every page so the layout stays consistent. Preview the result on several pages, including ones with different content, before you accept a trim that works for one page only."
+      },
+      {
+        "heading": "How do you choose the margin values?",
+        "text": "Start with a small trim and check the output carefully, since points are a fixed unit and large values can cut into text. Look at the edges of pages with dense content, such as tables or footnotes, because a margin that suits a plain page may clip them. Keep a record of the values you used, so the same setting can be reapplied to other files that share the same page layout."
+      },
+      {
+        "heading": "What does cropping not change?",
+        "text": "Cropping changes the visible page box, so the file still contains everything that was outside the new margins. Anyone who opens the file with a tool that shows full page boundaries may see the removed area again. Cropping also does not remove text, images or metadata, and it should not be treated as redaction for sensitive material. Review the cropped pages carefully before sharing. Keep the original file so that you can redo the trim if the margins need adjusting."
+      }
+    ],
+    "faqs": [
+      [
+        "How to crop a PDF page?",
+        "Open the supported file, enter the margin values in PDF points, and process the document. Download the result, then open it in a viewer to confirm that the trim sits where you expected on every page."
+      ],
+      [
+        "Does cropping delete the hidden content?",
+        "No. Cropping changes the visible page box, while the removed areas stay in the file. For a file that must not show that material, cropping alone is not enough, so check the output in a viewer that displays full page boundaries."
+      ],
+      [
+        "Can cropping fix a scanned page with uneven edges?",
+        "It can trim dark or uneven borders if the margin values are set to cover them. Choose values after looking at several pages, since scans often vary, and confirm that the trim does not clip any text near the edges."
+      ]
+    ]
+  },
+  "resize-pdf-pages": {
+    "answer": "Resizing PDF pages means scaling each page so it sits inside a standard sheet without distorting its proportions. This resize pdf pages tool can fit pages to Letter sheets or A4 in your browser, keeping the aspect ratio of every page. Choose a supported file, pick the target sheet, process the document and download the result. Keep and review the original to compare page sizes.",
+    "aiSummary": "Describes a browser-based method that scales each PDF page to fit inside an A4 or Letter sheet while preserving its proportions. Pages are fitted rather than stretched, so the layout is not distorted. Main limitation: pages that are much larger or smaller than the target may appear with empty margins or reduced text.",
+    "shortKeyword": "resize pdf pages",
+    "longKeywords": [
+      "how to fit PDF pages to A4",
+      "keep aspect ratio when resizing PDF",
+      "fit pages to Letter sheets"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to fit PDF pages to A4 or Letter?",
+        "text": "Documents assembled from mixed sources often contain pages of different sizes, which can print inconsistently or look uneven in a binder. Fitting them onto one standard sheet gives a uniform result for printing, emailing or archiving. A4 is the usual choice for metric-paper regions, while Letter suits North American office printers, so match the sheet to the printer tray you actually use. Check the paper loaded in the printer before you print a full batch."
+      },
+      {
+        "heading": "How should you check the fitted pages?",
+        "text": "Open the output and compare a page of known size with its original, looking at whether the content sits centered and fully visible. Because the aspect ratio is kept, a wide page shows larger top and bottom margins, and a tall page shows larger side margins. Check small text in particular, since a reduced page can be hard to read when printed. Repeat the check on one page from each source type so mixed inputs are covered."
+      },
+      {
+        "heading": "What are the limits of fitting pages to a sheet?",
+        "text": "Fitting does not crop or rearrange content, so a page with edge-to-edge artwork may still look crowded even though nothing is cut off. Pages that differ widely from the target shape will leave empty space, which can look odd in a booklet or binder. Check that scale-sensitive items such as forms still read correctly after resizing, since small labels and fine lines shrink with the page. Keep the original for comparison."
+      }
+    ],
+    "faqs": [
+      [
+        "Does it keep aspect ratio when resizing PDF pages?",
+        "Yes. Pages are scaled uniformly, so their proportions are kept rather than stretched. Expect empty space on the sheet when a page's shape differs from A4 or Letter, and check that the fitted content is still legible."
+      ],
+      [
+        "Which sheet should I choose, A4 or Letter?",
+        "Pick the size your printer and audience use. A4 is common for documents in metric-paper regions, while Letter is standard for many North American office printers. If you are unsure, test one page on the printer before processing a long file."
+      ],
+      [
+        "Will small text become hard to read?",
+        "It can. Shrinking a large page to fit a smaller sheet reduces everything on it, including small type. Check the output at the size you will print or view, and keep the original if the text needs to stay at full size."
+      ]
+    ]
+  },
+  "n-up-pdf": {
+    "answer": "N-up PDF means printing several source pages on one sheet, so two or four pages appear side by side on each landscape page. This n-up pdf tool arranges them in your browser, which suits handouts and drafts. Choose a supported file, pick the number of pages per sheet, process the document and download the result. Keep and review the original, and check that small text still reads well.",
+    "aiSummary": "Describes an n-up pdf layout for handouts that places two or four pages on each landscape sheet of a PDF. Each source page is reduced to fit its cell, which can save paper for review copies. Main limitation: with four pages per sheet, text can become very small, so check legibility before printing.",
+    "shortKeyword": "n-up pdf",
+    "longKeywords": [
+      "how to print multiple pages per sheet",
+      "two or four pages on each sheet",
+      "n-up pdf layout for handouts"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "What is N-up layout used for?",
+        "text": "N-up layout helps when a long document needs to be reviewed or handed out in fewer sheets. Placing two or four pages on each landscape sheet gives a compact overview, which suits drafts, proofs or study notes. Each source page is reduced to fit its cell, so the overall look is smaller than the original. Because the output is a new arrangement, it is most useful for reading and distribution rather than for editing the content."
+      },
+      {
+        "heading": "Should you use two or four pages on each sheet?",
+        "text": "Two pages per sheet gives larger text and is easier to read, while four pages per sheet suits quick overviews where small type is acceptable. Print a single sheet first to judge readability at your chosen scale. If the source pages contain fine detail such as tables or charts, prefer two per sheet so those details remain legible. Compare both options on one sample page before committing to a full run."
+      },
+      {
+        "heading": "What are the common mistakes with N-up output?",
+        "text": "A common mistake is printing the whole output without checking the scale, which can make headers and small labels unreadable. Another is treating the output as a substitute for the original. It is a new arrangement, so keep the source file for edits and corrections. Also check the orientation of each sheet in the printer dialog, since a portrait setting can crop or shrink the landscape layout unexpectedly. Run a test sheet to confirm."
+      }
+    ],
+    "faqs": [
+      [
+        "How to print multiple pages per sheet?",
+        "Choose the supported file, select two or four pages per sheet, and process the document. Download the output and print one sheet first to confirm the scale and orientation. Set the printer to landscape and match the paper size used for the sheets."
+      ],
+      [
+        "Does N-up change the page content?",
+        "It reduces each source page so that it fits its cell on the new sheet, but the text and images of each page are kept. The layout is a new document, so review the output for legibility and check that no page has been clipped."
+      ],
+      [
+        "Can I use N-up for a booklet?",
+        "This tool arranges pages as an N-up sheet, not as a folded booklet. For booklet order, use the separate booklet arrangement, which pads to a multiple of four pages and is meant for duplex printing."
+      ]
+    ]
+  },
+  "pdf-booklet": {
+    "answer": "A PDF booklet is a document whose pages are reordered so folded printed sheets read in sequence. This pdf booklet tool helps arrange pages for folded booklet printing in your browser, padding the document to a multiple of four pages. Choose a supported file, process it and download the result. Print duplex, flipping on the short edge, and test a small batch before printing a long run.",
+    "aiSummary": "Explains how to reorder pdf pages for duplex booklet output, placing them in a folded, left-to-right sequence in the browser. The document is padded to a multiple of four pages so every sheet is full. Main limitation: the printer must flip on the short edge, so its setup decides whether the result works.",
+    "shortKeyword": "pdf booklet",
+    "longKeywords": [
+      "how to make a booklet from PDF",
+      "arrange pages for folded booklet printing",
+      "pdf pages for duplex booklet"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why arrange pages for folded booklet printing?",
+        "text": "A booklet layout lets you print a document on sheets that are folded into a small book, which suits brochures, programs, zines and study packets. Each folded sheet carries four pages, so the arrangement puts pages in an order that reads correctly after folding and stapling. The layout is useful when a finished piece should feel like a small bound object rather than a stack of loose pages. Choose it when the goal is a compact, readable result."
+      },
+      {
+        "heading": "How do you print and fold the result?",
+        "text": "Print the output duplex and flip on the short edge, so the back of each sheet lines up with its front. Fold the stack in half at the center and staple along the fold if the booklet needs binding. Test a small batch first, because printer driver settings differ and a wrong flip direction scrambles every spread. Check the first and last spread to confirm the page order matches your plan."
+      },
+      {
+        "heading": "What limits should you check before printing a booklet?",
+        "text": "Confirm the page count after padding, since blank pages are added to reach a multiple of four and will print as blank sheets. Single-sided printers need manual reloading for the second side, so plan that step in advance. Also check that margins near the fold are wide enough, because content placed too close to the center can be lost in the crease. Keep a copy of the output so you can compare the sheets later."
+      }
+    ],
+    "faqs": [
+      [
+        "How to make a booklet from PDF?",
+        "Choose the supported file, process it to get the left-to-right folded order, and download the result. Check that the output page count is a multiple of four, then print duplex on the short edge, using one test sheet first."
+      ],
+      [
+        "Why are blank pages added to my booklet?",
+        "The layout needs a multiple of four pages so that every folded sheet is full. If the source has a page count that is not a multiple of four, blank pages are added to reach that count. They may print, so check the final spread before using the file."
+      ],
+      [
+        "Can I print a booklet on a single-sided printer?",
+        "Yes, but only by printing one side, reloading the stack, and printing the other side in the correct orientation. Test the reload direction on a few sheets first, because a mistake is easy to make and wastes paper."
+      ]
+    ]
+  },
+  "alternate-merge-pdf": {
+    "answer": "An alternate merge PDF combines two PDF files by taking one page from the first file, then one page from the second, and repeating. Any pages left over from the longer file are appended at the end. Choose the two files in front and back order to build a single document.",
+    "aiSummary": "Alternate Merge PDF can combine two PDFs in alternating order, taking one page from each file in turn. Any extra pages from the longer file are added at the end. The method runs in the browser, but it only reorders and joins pages. It cannot repair page content or fix mismatched page sizes.",
+    "shortKeyword": "alternate merge pdf",
+    "longKeywords": [
+      "how to interleave two PDF files",
+      "merge scanned front and back pages",
+      "combine two PDFs in alternating order"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to interleave two PDF files in order?",
+        "text": "Use this when you have two PDFs that should alternate page by page, such as a set of fronts and a set of backs that were scanned separately. The tool takes one page from the first file, then one from the second, and keeps repeating that pattern. Because the output is built from the page order you choose, check which file goes first before you start. The result is a new document you download."
+      },
+      {
+        "heading": "What order does the merged file follow?",
+        "text": "The merged file starts with page one of the first PDF, followed by page one of the second PDF. The pattern continues page by page until one file has no pages left. If the first file is longer, its extra pages are placed at the end in their original order. If the second file is longer, the same rule applies to its extra pages. Check the page counts of both inputs so you can predict where the leftover pages will land in the final document."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "The most common mistake is swapping the two files, which reverses the whole sequence. Confirm the front and back order before processing, and then open the downloaded result to scan a few pages. The tool does not reorder pages within a single file, and it does not repair damaged pages or fix mismatched page sizes. If you need a different order, reorder the pages first in a separate step and then merge again."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I pick the right file order?",
+        "Put the file whose pages should come first in the first slot, and the file whose pages should follow in the second slot. Check each file's page order before processing. If the result looks reversed, run the tool again with the two inputs swapped."
+      ],
+      [
+        "Can I merge scanned front and back pages?",
+        "Yes, that is a common use. Pick the scan of the fronts as the first file and the scan of the backs as the second. Make sure the backs are in the order that matches the fronts, because the tool does not reverse them for you. Then download the merged result."
+      ],
+      [
+        "Is there a limit on how many files I can add?",
+        "This tool takes exactly two PDF files for each run, so it cannot alternate three or more at once. Use a separate merge tool first if you need to join more files, then run this tool on the two results you want to interleave."
+      ]
+    ]
+  },
+  "annotate-pdf": {
+    "answer": "Add text to PDF means placing a new text note on one or more chosen pages at a position you pick. The added text is an annotation layered on the page, so existing text is not rewritten. The built-in font supports Latin characters, so other scripts may not display. Choose the file, the pages, and the position, then download the result.",
+    "aiSummary": "Add Text to PDF places a new text annotation on chosen pages at a position the user sets. It can annotate PDF without editing existing text, since the note is layered over the page. The method uses a built-in font, so the main limit is that only Latin characters are supported.",
+    "shortKeyword": "add text to pdf",
+    "longKeywords": [
+      "how to add a note to a PDF page",
+      "place text on specific PDF pages",
+      "annotate PDF without editing existing text"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to add a note to a PDF page?",
+        "text": "Use this tool when you want to mark up a document without changing what is already printed on it. Typical uses include adding a reviewer comment, a label, a reference number, or a short instruction at a fixed spot. Select the pages that need the note, type the text, and pick where it should appear. The result arrives as a downloaded file, so the note is part of that copy. Check the placement on the page before you download, because a fixed position is easier to get right at the start."
+      },
+      {
+        "heading": "How should I choose the position and pages?",
+        "text": "Choose a position that falls in clear space, because the added text sits on top of anything already printed there. When you apply one note to several pages, confirm that the same spot works on each page, since layouts often differ from page to page. Keep the wording short so that it fits within the available space on the page. Open the downloaded file and scroll through every marked page to confirm the note landed where you expected."
+      },
+      {
+        "heading": "What are the common mistakes and limits?",
+        "text": "A frequent mistake is assuming the tool rewrites existing words. It only adds a new text layer, so a typo in the original stays visible and cannot be corrected here. Another limit is the built-in font, which supports Latin text, so characters from other writing systems may not display correctly. Avoid very long paragraphs, which can run off the page edge. Finally, remember that the note sits above the page content, so a dark background may hide dark text."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I place text on specific PDF pages?",
+        "Yes. Select only the pages that should receive the note, then set one position for them. Pages you leave out keep their original look. Confirm the page numbers before processing, since a wrong selection is easy to miss."
+      ],
+      [
+        "Can the note be used to correct a typo?",
+        "Not directly. The tool adds a new text layer and does not remove or replace what is already printed. To hide an error, you could place a note over it, but the original text remains underneath and may still be visible."
+      ],
+      [
+        "Which languages does the built-in font handle?",
+        "The built-in font is designed for Latin text, so languages that use other scripts may not render correctly. Keep the note in Latin characters, or check the downloaded file to confirm the result before sharing it."
+      ]
+    ]
+  },
+  "pdf-to-json": {
+    "answer": "PDF to JSON is a method that reads the text layer of a PDF and exports each page as structured JSON. The output includes the text along with coordinates and page dimensions, so software can locate each piece of text on the page. It works on existing text only, so scanned pages need OCR before export. Choose a file, process it, and download the JSON.",
+    "aiSummary": "PDF to JSON reads the existing text layer of a PDF and writes page text, coordinates and page dimensions as JSON. It can export PDF text with positions for parsing by other programs. It does not run text recognition, so the main limitation is that scanned pages with no text layer need OCR first.",
+    "shortKeyword": "pdf to json",
+    "longKeywords": [
+      "how to export PDF text as JSON",
+      "extract text coordinates from PDF pages",
+      "export PDF text with positions for parsing"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to export PDF text as JSON?",
+        "text": "Use this when a program needs the words on a PDF along with their positions, rather than a plain text copy. The export keeps each page as its own block, so you can match text to a location on that page. Typical uses include feeding document content into a data pipeline, checking which words appear where, or building a search index. Select your file, run the process, and download the JSON for use in your own code."
+      },
+      {
+        "heading": "What do the coordinates and dimensions mean?",
+        "text": "Coordinates describe where each piece of text sits on its page, usually measured from a corner of the page. Dimensions give the width and height of the page, which lets you convert positions into relative values if you need them. Because the export reflects the stored text layer, the order of items in the JSON may not match the order you read them visually. Compare a few known words with the original page before relying on positions in production code."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "The biggest limit is that the tool reads only the existing text layer. A scanned page usually contains an image of text rather than text itself, so it returns little or nothing until OCR has been applied. Another common mistake is building code on one sample without checking a few other pages first. Also check that you exported the right file, since a long export can be hard to review by eye."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I extract text coordinates from PDF pages?",
+        "Yes, as long as the PDF has a text layer. The export lists each text item with its position and the size of its page. Scanned images without text will not produce usable content, so run OCR first if needed."
+      ],
+      [
+        "Is the output useful for building a search index?",
+        "It can be, because the text is paired with positions and page numbers. A search index usually needs the words and their page location, both of which the export provides. Check that the extracted words match the original spelling and spacing on a sample page."
+      ],
+      [
+        "Why is some text missing from the export?",
+        "Text missing from the export usually means the page is an image or the text is stored as outlines. Only the existing text layer is read, so nothing is recognized from pixels. Run OCR on the file, then export it again to see if the missing text appears."
+      ]
+    ]
+  },
+  "future-value-calculator": {
+    "answer": "A future value calculator finds how much a lump sum will be worth after growing at a steady annual rate. It multiplies the present amount by one plus the rate, raised to the number of years. This compound growth means interest builds on earlier interest, so the total rises faster over longer periods. The result is nominal and does not adjust for inflation.",
+    "aiSummary": "Future value calculator estimates what a single sum will grow to at a fixed annual rate over a set number of years. It models compound growth of a single amount, applying the rate to each year's new balance. The main limitation is that it assumes a steady rate and ignores inflation taxes and fees.",
+    "shortKeyword": "future value calculator",
+    "longKeywords": [
+      "how to grow a lump sum",
+      "compound growth of a single amount",
+      "projected value of savings over years"
+    ],
+    "exampleInputs": {
+      "present": "10000",
+      "rate": "7",
+      "years": "20"
+    },
+    "sections": [
+      {
+        "heading": "How to grow a lump sum over time?",
+        "text": "Use this when you have an amount today and want to see its value at a later date under a steady growth assumption. Common cases include projecting a savings balance, comparing what a cash gift could become if invested, or comparing two growth rates side by side. Enter the present amount, the annual rate, and the number of years. The output shows the projected total, which you can use as a starting point for planning conversations or further study."
+      },
+      {
+        "heading": "How should I read the projected total?",
+        "text": "The total is the amount the present sum would reach if the rate held every year. Compare it with the starting figure to see the total growth over the period, not just the yearly gain. A higher rate or a longer period raises the result sharply because each year's growth is added to the balance. Treat the result as an educational estimate and one scenario among several, not professional advice or a promise of what will happen."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "A frequent mistake is treating a nominal result as spending power. The calculator does not subtract inflation, so a future total can look large while buying less. Another mistake is using an unrealistic rate for a long period, since small changes compound into big differences. Fees, taxes, and irregular deposits are also outside this single lump-sum view, so add them separately if they matter to your plan. Check the inputs twice before you rely on the output."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use this for the projected value of savings over years?",
+        "Yes, if you assume one lump sum and a steady rate. It is a simple projection, so it does not model regular contributions. For a stream of payments, the annuity calculator on this site is a better fit."
+      ],
+      [
+        "How do I choose a realistic growth rate?",
+        "Base the rate on a return you can justify from historical data or a stated plan, and test a lower and a higher value to see the range. The calculator cannot judge which rate is likely, so the choice is yours. Consider how sensitive the result is to small changes."
+      ],
+      [
+        "Is future value the same as compound interest?",
+        "They are closely related. Compound interest is the process of earning returns on earlier returns, and future value is the result of applying that process to a starting sum over a set period. The calculator shows the end result of that growth."
+      ]
+    ]
+  },
+  "present-value-calculator": {
+    "answer": "A present value calculator works out how much a future amount is worth today, given a discount rate and a number of years. It divides the future amount by one plus the rate, raised to the number of years. The discount rate represents the return you could earn elsewhere, so money received later is worth less now. Results are estimates, not professional financial advice.",
+    "aiSummary": "Present value calculator estimates the worth today of a future sum by discounting it at a chosen rate over a set number of years. Use it to see how to find today's value of a payment that arrives later. The main limitation is that the result depends on the discount rate.",
+    "shortKeyword": "present value calculator",
+    "longKeywords": [
+      "discount a future payment to today",
+      "value of money received later",
+      "how to find today's value of a payment"
+    ],
+    "exampleInputs": {
+      "future": "50000",
+      "rate": "7",
+      "years": "10"
+    },
+    "sections": [
+      {
+        "heading": "How to discount a future payment to today?",
+        "text": "Use this when a payment, bond, or other future amount must be compared with money you have now. Discounting moves the amount backward in time, so a larger future number may be worth less than a smaller sum available immediately. Enter the future amount, the discount rate, and the years until payment. The result is the amount that, at that rate, would equal the future sum today. Read the output as a planning figure rather than a guarantee."
+      },
+      {
+        "heading": "How should I pick the discount rate?",
+        "text": "The discount rate stands for the return you could earn on the same money elsewhere over the same period. A higher rate reduces today's value more sharply, and a lower rate keeps it closer to the face amount. Many people test several rates to see how much the answer depends on that choice. Use a rate that reflects a realistic alternative for your situation, and state it clearly whenever you share the result with someone else."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "A common mistake is mixing units, such as entering a yearly rate with a monthly period. Another is forgetting that the discount rate is an assumption, not a measured fact, so results can shift a lot with small changes. The calculator also works from a single amount and does not account for fees, taxes, or uncertain payment timing. Treat the output as an educational estimate, and consult a qualified professional before making financial decisions."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the value of money received later depend on the rate?",
+        "Yes. A higher discount rate lowers today's value, and a lower rate raises it, for the same future amount and timing. Changing the number of years also matters, because the discount compounds over each year that passes before payment."
+      ],
+      [
+        "Can I compare two offers with different payment dates?",
+        "Yes, that is a typical use. Convert each future amount to today's value using the same rate, then compare the two results. Make sure both offers use the same discount rate, since a different rate can reverse which offer looks better."
+      ],
+      [
+        "What if the payment is uncertain?",
+        "The calculator assumes the amount arrives on schedule. If a payment might be late, smaller, or never paid, the simple result overstates its value. You can test a lower future amount or a longer delay to see how sensitive the answer is."
+      ]
+    ]
+  },
+  "annuity-calculator": {
+    "answer": "An annuity calculator works out the future value and present value of a series of equal payments made at regular intervals. Future value adds up each payment compounded to the end, while present value discounts each payment back to today. Both use standard formulas with monthly compounding, which is the basis of the results shown.",
+    "aiSummary": "Annuity calculator estimates the future value of regular monthly payments and their present value using monthly compounding. The method sums each payment compounded to the end, or discounts each back to today. The main limitation is that it assumes equal payments and a fixed rate, so irregular contributions need separate modeling.",
+    "shortKeyword": "annuity calculator",
+    "longKeywords": [
+      "how to plan a series of payments",
+      "present value of annuity payments",
+      "future value of regular monthly payments"
+    ],
+    "exampleInputs": {
+      "payment": "500",
+      "rate": "5",
+      "years": "20"
+    },
+    "sections": [
+      {
+        "heading": "How to plan a series of payments?",
+        "text": "Use this when you contribute or receive the same amount at each interval and want to know the total or the current worth of that stream. Savings plans, pension contributions, and loan schedules all follow this pattern. Enter the regular payment, the annual rate, and the number of years. The results let you compare saving toward a goal with paying a fixed amount over time, as long as the payment schedule stays the same."
+      },
+      {
+        "heading": "How should I read the two results?",
+        "text": "Future value shows what the payments add up to by the end of the period, including growth on each deposit. Present value shows what that same stream of payments is worth today, which is smaller because later payments are discounted more heavily. Read them together, since the gap between the two shows how much time and rate matter for the stream. Check that both numbers use the same payment timing and rate before comparing them."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "Many people mix up an annuity in this sense with an insurance product. This calculator covers only the math of equal payments, not contract terms, guarantees, or fees. Another mistake is entering a yearly payment in the monthly field, which changes the result by a large factor. Keep the rate and payment inputs consistent with each other before reading the output. Results are educational estimates and not professional financial advice, so confirm important decisions with a qualified professional."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I find the present value of annuity payments here?",
+        "Yes. The calculator shows both the present value and the future value, so you can compare a stream of payments with a single lump sum. Enter the regular payment, rate, and years to see each result."
+      ],
+      [
+        "Does the timing of payments change the result?",
+        "Yes. Payments made earlier in each period compound longer, so an earlier schedule usually produces a larger future value than a later one, all else equal."
+      ],
+      [
+        "Is an annuity calculator the same as a loan calculator?",
+        "They use related math but answer different questions. A loan calculator usually solves for a payment that clears a debt, while this tool projects the value of a series of payments over time. Both rely on the same compounding idea."
+      ]
+    ]
+  },
+  "commission-calculator": {
+    "answer": "A commission calculator works out the pay earned from a percentage of sales, then adds any base salary to show total pay. Commission equals total sales multiplied by the commission rate. The two parts are kept separate, so you can see how much comes from sales and how much from the fixed base. Results are estimates before any deductions.",
+    "aiSummary": "Commission calculator estimates earnings from a percentage of total sales, then adds a fixed base pay. It shows commission on sales and base salary as separate lines for easy checking. The main limitation is that it does not model tiers, caps, bonuses, or deductions, so real pay may differ.",
+    "shortKeyword": "commission calculator",
+    "longKeywords": [
+      "how to calculate sales commission pay",
+      "total pay with base salary plus commission",
+      "commission on sales and base salary"
+    ],
+    "exampleInputs": {
+      "sales": "50000",
+      "rate": "8",
+      "base": "2000"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate sales commission pay?",
+        "text": "Use this when your earnings depend partly on sales you close and partly on a fixed base. Enter total sales for the period, the commission rate, and any base salary. The calculator multiplies sales by the rate to get commission, then adds the base to give total pay. Keeping the two numbers separate helps you see which part of your income moves with performance and which part stays steady from period to period."
+      },
+      {
+        "heading": "How should I interpret the commission figure?",
+        "text": "The commission figure is the rate applied to total sales, so it rises in direct proportion when sales rise. A small change in the rate can move the result noticeably, which is why it helps to test a few values. Compare commission-only pay with base plus commission before accepting a role, since the mix changes how much risk your income carries. Keep in mind that the output is before taxes and other deductions, so take-home pay will be lower."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "A common mistake is entering the rate as a whole number when it should be a percentage, or the reverse, which changes the result dramatically. Check whether the commission applies to gross sales or to net sales after returns, since the calculator uses the number you type. Also remember that many plans have thresholds, caps, or different rates for different products, and this simple model does not capture those rules. Confirm the actual plan terms with your employer or a qualified professional."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I see total pay with base salary plus commission?",
+        "Yes. The calculator lists commission and base pay as separate lines, then shows their sum as total pay. Changing either input updates the total, which makes it easy to compare scenarios."
+      ],
+      [
+        "Is a higher commission rate always better?",
+        "Not necessarily. A higher rate helps only when sales volume stays strong, and it does not change the base pay. Look at the full package, including the base, the expected sales, and any conditions attached to the rate."
+      ],
+      [
+        "How do I test different sales targets?",
+        "Enter your expected sales as one value, then change it to match a lower and a higher target. Compare the totals side by side to see how sensitive your pay is to performance. Keep the rate and base fixed during the test so the only change is the sales figure."
+      ]
+    ]
+  },
+  "bac-calculator": {
+    "answer": "A BAC calculator estimates blood alcohol concentration from the number of standard drinks, body weight, sex, and hours since the first drink. It uses the Widmark formula, which divides alcohol grams by body water grams and subtracts a small amount per hour for metabolism. The result is an approximation only. It must never be used to decide whether it is safe to drive.",
+    "aiSummary": "BAC calculator estimates blood alcohol from drinks, body weight, sex and time using the Widmark approach. It shows how weight and time shape blood alcohol in a simple model. The main limitation is that individual factors such as food, medication and tolerance are not modeled, so the number is only approximate.",
+    "shortKeyword": "bac calculator",
+    "longKeywords": [
+      "estimate blood alcohol from standard drinks",
+      "how many drinks affect blood alcohol",
+      "how weight and time shape blood alcohol"
+    ],
+    "exampleInputs": {
+      "sex": "female",
+      "weight": "70",
+      "unit": "kg",
+      "drinks": "3",
+      "hours": "2"
+    },
+    "sections": [
+      {
+        "heading": "How to estimate blood alcohol from standard drinks?",
+        "text": "The calculator is meant for learning how the Widmark approach works. It takes the number of standard drinks, converts that into grams of alcohol, and then adjusts for body water based on weight and sex. Time is subtracted through a steady hourly reduction. Because so many personal factors vary, the number is a rough model of a single average body, not a measurement of your actual level. Treat any output as a teaching aid."
+      },
+      {
+        "heading": "How should I read the drinks and hours inputs?",
+        "text": "Enter drinks as standard drinks rather than glasses or pours, because pour sizes vary widely. The hours field measures time since the first drink, so a long gap reduces the estimate while more drinks increase it. Weight and sex change the body water assumption, which is why the same drinks can produce different numbers. Use the inputs as a way to see the direction of each factor, not as a precise reading for any particular night."
+      },
+      {
+        "heading": "What are the common mistakes and limits?",
+        "text": "The most serious mistake is treating the result as permission to drive or as proof that you are fine. Alcohol affects people differently because of food, medication, health, fatigue, and tolerance, none of which the model captures. Another error is entering weight in the wrong unit, so confirm the kg or lb setting first. Finally, a result of zero is an estimate, not a guarantee, and it does not reflect the effects you may feel. If you are unsure, do not drive. This is an educational estimate, not professional advice."
+      }
+    ],
+    "faqs": [
+      [
+        "How many drinks affect blood alcohol over a few hours?",
+        "The estimate rises with each standard drink and falls over time as the model subtracts metabolism. Because the rate is an approximation, the same drinks can produce different results in different people. Use this as an educational estimate, not professional advice."
+      ],
+      [
+        "Does body weight change the estimate?",
+        "Yes. Body weight and sex change the assumed amount of body water, which shifts the result. Heavier body weight generally spreads the alcohol across more water, so the estimate tends to be lower for the same drinks. Choose the correct unit before reading the output."
+      ],
+      [
+        "What does a zero result mean here?",
+        "A zero result means the model estimates alcohol has cleared under its assumed rates. It does not confirm that you are sober or fit to act. Impairment can differ from what any number suggests, so never use it to decide about driving."
+      ]
+    ]
+  },
+  "heart-rate-zone-calculator": {
+    "answer": "A heart rate zone calculator estimates training zones from your age and resting heart rate. Maximum heart rate comes from the Tanaka formula, then the Karvonen method uses heart rate reserve, the gap between maximum and resting, to set five zones from light recovery to maximum effort. The output is a training guide only and not medical advice.",
+    "aiSummary": "Heart rate zone calculator uses age and resting heart rate to estimate five intensity bands. The output gives a target heart rate for cardio training sessions. It applies the Tanaka maximum and the Karvonen reserve method. The main limitation is that age-based formulas are population averages, so individual maximums can differ noticeably.",
+    "shortKeyword": "heart rate zone calculator",
+    "longKeywords": [
+      "calculate five training zones from age",
+      "how to find your heart rate zones",
+      "target heart rate for cardio training"
+    ],
+    "exampleInputs": {
+      "age": "30",
+      "resting": "60"
+    },
+    "sections": [
+      {
+        "heading": "How to find your heart rate zones?",
+        "text": "Use this when you want structure for cardio sessions rather than guessing how hard to push. The calculator first estimates your maximum heart rate from age, then removes your resting rate to find the reserve. Each zone is a percentage band of that reserve, added back onto resting heart rate. Lower zones suit recovery and base endurance, while higher zones target speed and near-maximum efforts. Enter your age and resting heart rate, then compare the five bands."
+      },
+      {
+        "heading": "What do the five zones tell me?",
+        "text": "The zones describe effort levels, from easy recovery pace through steady aerobic work to hard intervals close to your maximum. Heart rate is only one signal, so pair it with how you feel and how talk feels during exercise. A zone shows a target range, not a requirement. Many plans spend most time in easier zones and reserve the top zones for short, deliberate efforts. If the numbers look unfamiliar, start with lower zones and build gradually."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "The biggest limit is that age-based maximum formulas are averages, so your true maximum may be higher or lower. Resting heart rate should be measured under calm, consistent conditions, since a value taken after stress or caffeine skews every zone. Avoid treating the zones as medical thresholds; anyone with a heart condition, medication effects, or symptoms should seek advice from a qualified professional before intense training. This tool is an educational estimate, not medical advice."
+      }
+    ],
+    "faqs": [
+      [
+        "What do I need to calculate five training zones from age?",
+        "You need your age and your resting heart rate. Measure it when you are calm and rested for a more consistent value. The calculator then applies the same steps to produce all five zones."
+      ],
+      [
+        "Why might my real maximum differ from the formula?",
+        "Age-based formulas are averages drawn from groups of people, so any one person can sit above or below them. Fitness, genetics, and recent illness also influence how high your heart rate climbs. Use the zones as a starting point and adjust based on how sessions feel."
+      ],
+      [
+        "How should I use the zones across a training week?",
+        "Mix easy sessions with a smaller number of harder efforts rather than pushing every workout. Place the most intense work on separate days so you can recover. Adjust the balance as your fitness and schedule change."
+      ]
+    ]
+  },
+  "water-intake-calculator": {
+    "answer": "A water intake calculator estimates a daily hydration target from body weight and exercise time. It uses a common baseline of about 35 ml per kilogram of body weight, then adds extra for exercise. Results appear in liters, cups, and fluid ounces. The number is a general starting point, not a medical requirement, since heat, illness, and pregnancy change needs.",
+    "aiSummary": "Water intake calculator gives a starting hydration figure based on body weight, adding volume for exercise time. It helps estimate daily fluid needs from weight in liters, cups, or ounces. The main limitation is that a baseline cannot account for heat, altitude, illness, or pregnancy, which all raise needs.",
+    "shortKeyword": "water intake calculator",
+    "longKeywords": [
+      "how much water to drink daily",
+      "daily water target from body weight",
+      "estimate daily fluid needs from weight"
+    ],
+    "exampleInputs": {
+      "weight": "70",
+      "unit": "kg",
+      "activity": "30"
+    },
+    "sections": [
+      {
+        "heading": "How much water to drink daily?",
+        "text": "Use this to get a starting figure before you think about specific drinks or foods. The calculator takes your body weight, converts it to kilograms if needed, and applies a baseline per kilogram. Exercise minutes add a further allowance on top. Results are shown in liters, cups, and fluid ounces, so you can use the unit that matches your measuring tools. Treat the total as a planning target that you adjust with experience."
+      },
+      {
+        "heading": "How should I read the liters, cups, and ounces?",
+        "text": "The three units show the same total in different measures, so pick the one that is easiest to track during the day. A liter bottle is a convenient way to track progress against the target, while cups suit people who count servings. Fluid ounces are common in some regions, and converting is mainly a matter of matching the scale on your bottle. Remember that the total is a daily figure, so spread intake through the day rather than drinking it all at once."
+      },
+      {
+        "heading": "What common mistakes or limits should I check?",
+        "text": "A common mistake is treating one number as a strict rule. Needs shift with heat, altitude, illness, and pregnancy, and the baseline does not account for those changes. Another error is entering the wrong weight unit, so confirm kilograms or pounds before reading the output. Food also supplies water, so the figure is a total for all intake rather than plain drinks only. This is an educational estimate, not medical advice, so ask a clinician about fluid limits if you have a health condition."
+      }
+    ],
+    "faqs": [
+      [
+        "What is a daily water target from body weight?",
+        "It is a starting estimate that scales with body weight, using a baseline of about 35 ml for each kilogram. Exercise minutes then add a further amount. Treat the result as a planning figure rather than a fixed prescription."
+      ],
+      [
+        "Do hot weather and altitude raise my needs?",
+        "They can. Heat and altitude increase fluid loss in many people, which is why the baseline is only a starting point. Pay attention to thirst, urine color, and how you feel, and adjust your intake to match the conditions around you."
+      ],
+      [
+        "Should I drink the whole target in one sitting?",
+        "No. Spreading fluids across the day is easier on your schedule and makes it simpler to track progress. Drinking a very large volume at once is rarely necessary, and it can be uncomfortable. Sip steadily and adjust with meals and activity."
+      ]
+    ]
+  },
+  "protein-intake-calculator": {
+    "answer": "A protein calculator estimates how many grams of protein you need per day. It multiplies your body weight by a factor that rises with your goal, from a sedentary baseline to a higher range for building muscle, then gives a range and a per-meal split. The result is an educational estimate based on common sports-nutrition ranges, not individual medical advice.",
+    "aiSummary": "This protein calculator takes body weight, unit and training goal, then returns a daily gram range and a protein grams per meal breakdown. It scales intake by goal using common sports-nutrition ranges. Results are estimates; it does not account for illness, kidney conditions or individual needs.",
+    "shortKeyword": "protein calculator",
+    "longKeywords": [
+      "how much protein per day to build muscle",
+      "daily protein target by body weight",
+      "protein grams per meal breakdown"
+    ],
+    "exampleInputs": {
+      "weight": "70",
+      "unit": "kg",
+      "goal": "muscle"
+    },
+    "sections": [
+      {
+        "heading": "How much protein per day to build muscle?",
+        "text": "Pick the Build muscle goal when your main aim is adding lean mass through resistance training. The result then sits toward the upper end of the range, since higher daily intake is commonly used in that setting. Sedentary and general fitness goals use lower figures. Enter your weight, choose kilograms or pounds, and select the goal that matches your training. Treat the number as a starting estimate for planning meals, not a prescription."
+      },
+      {
+        "heading": "What does the daily protein target by body weight mean?",
+        "text": "The target is a gram range calculated from your body weight, so heavier people generally get a larger number. Read it as a daily total to aim for across all meals, not a minimum to hit at each sitting. If the range looks high or low for your situation, compare it with your own eating pattern over a couple of weeks. The per-meal split simply divides the total so that each meal carries a meaningful share."
+      },
+      {
+        "heading": "What common mistakes should I avoid with protein targets?",
+        "text": "A frequent mistake is treating the estimate as exact, when real needs vary with age, body composition, illness and training load. Another is counting only the protein powder and forgetting whole foods, which often supply most of the day's grams. People also tend to back-load almost everything into dinner. Spreading intake across meals is a simple habit to check against the per-meal breakdown. Consult a registered dietitian or doctor for medical or kidney-related diet questions."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the unit I choose change the result?",
+        "No. The calculator works from your weight in whichever unit you select, so switching between kilograms and pounds should give the same target once the weight is entered correctly. Double-check the number you type, since a typo in weight is a common source of an odd result."
+      ],
+      [
+        "Is protein powder a good way to hit the target?",
+        "Protein powder is one convenient way to add grams, but it is not required. Whole foods such as eggs, dairy, fish, legumes and meat provide protein along with other nutrients. Use the tool's total as a guide and fill the gap with the foods you already enjoy, whichever sources you choose."
+      ],
+      [
+        "When should I ask a professional about my protein?",
+        "Talk with a doctor or registered dietitian if you have kidney disease, diabetes, pregnancy, an eating disorder history, or take medication that affects diet. A clinician can set targets around your full health picture. This calculator is an educational estimate and cannot assess those conditions."
+      ]
+    ]
+  },
+  "bsa-calculator": {
+    "answer": "A BSA calculator estimates body surface area, the total skin area of a person in square meters, from height and weight. It applies a formula such as Mosteller's square root of height times weight divided by a constant, or the Du Bois power-law fit. Clinicians use this figure to scale medication doses by body size. Results are an educational estimate.",
+    "aiSummary": "Computes body surface area from height and weight using the Mosteller and Du Bois formulas. Mosteller takes a square root of height multiplied by weight, scaled by a fixed constant; Du Bois uses a power-law fit. The values are estimates, and they do not account for body shape beyond these two inputs.",
+    "shortKeyword": "bsa calculator",
+    "longKeywords": [
+      "body surface area from height and weight",
+      "compare mosteller and du bois formulas",
+      "scale medication doses by body size"
+    ],
+    "exampleInputs": {
+      "height": "172",
+      "hUnit": "cm",
+      "weight": "70",
+      "wUnit": "kg"
+    },
+    "sections": [
+      {
+        "heading": "What is body surface area from height and weight used for?",
+        "text": "Body surface area is a single figure that puts people of different sizes on a common scale. Clinicians use it when a dose or a physiological measure should be adjusted for how large a person is, rather than for weight alone. The calculator gives you the figure from height and weight so you can see the value for a body size you enter. It is a planning and learning tool, not a basis for any dosing decision."
+      },
+      {
+        "heading": "How do I compare Mosteller and Du Bois formulas?",
+        "text": "Both formulas take height and weight and usually return values close to each other for typical adults. Mosteller is a simple square-root expression that is easy to check by hand. Du Bois uses a power-law fit with a different shape. Running both and seeing how close they land is a quick way to gauge how much the formula choice matters for your numbers. Use the formula that the relevant source or protocol names, since mixing methods makes results hard to compare."
+      },
+      {
+        "heading": "What are common mistakes with BSA results?",
+        "text": "A frequent mistake is mixing units, such as entering height in inches while the calculator expects centimeters, or weight in pounds without changing the unit selector. Check the unit dropdowns before you read the answer. Another mistake is treating BSA as a diagnosis; it is a size-scaling figure and says nothing about health on its own. Finally, people sometimes assume the result is exact, when rounding and the formula's simplifying assumptions both add uncertainty."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a larger body always need a larger dose?",
+        "Not automatically. Scaling by body surface area is one approach used for certain drugs and measurements, while others follow weight, age or organ function. Whether BSA applies depends on the specific drug, protocol or test, so the prescriber or the official guidance for that treatment decides."
+      ],
+      [
+        "Does the calculator work for every body size?",
+        "It applies the same two formulas to whatever height and weight you enter. Very unusual body shapes, such as extreme muscularity or fluid retention, can make a height-and-weight estimate less representative. Treat the output as a standard-size estimate and confirm any clinical use with a professional."
+      ],
+      [
+        "Does this calculator send my measurements anywhere?",
+        "No. Processing is local, so the calculation runs in your browser and the values you type stay on your device. Still, check any clinical result with a qualified professional before acting on it."
+      ]
+    ]
+  },
+  "waist-to-hip-ratio-calculator": {
+    "answer": "A WHR calculator divides your waist circumference by your hip circumference, using the same unit for both. The result is a ratio that indicates how fat is distributed around the body. Risk categories differ for men and women, so the tool applies the matching thresholds. Research links higher ratios with cardiovascular and metabolic risk. Treat the output as an educational estimate.",
+    "aiSummary": "Lets you calculate waist to hip ratio at home by dividing waist circumference by hip circumference, then reports a risk category adjusted for male or female sex. The method is a simple ratio of two measurements, which is quick but cannot tell muscle from fat on its own. Treat results as an estimate.",
+    "shortKeyword": "WHR calculator",
+    "longKeywords": [
+      "how to measure waist and hip circumference",
+      "body fat distribution and health risk",
+      "calculate waist to hip ratio at home"
+    ],
+    "exampleInputs": {
+      "sex": "female",
+      "waist": "85",
+      "hip": "100"
+    },
+    "sections": [
+      {
+        "heading": "How to measure waist and hip circumference for this tool?",
+        "text": "Measure waist and hip with the same flexible tape, keeping it level and snug without compressing the skin. The waist point is commonly taken at the narrowest visible part of the torso, while the hip is measured at the widest part of the buttocks. Enter both figures in the same unit, because mixing centimeters and inches gives a meaningless ratio. Measuring at the same time of day, relaxed and standing, makes repeat checks more comparable."
+      },
+      {
+        "heading": "How does body fat distribution and health risk connect?",
+        "text": "Where fat sits matters as well as how much there is. Fat stored around the midsection is generally linked with a higher cardiovascular and metabolic risk than fat on the hips and thighs, which is why a ratio can add information beyond overall weight. Two people with the same BMI may have very different ratios. The tool applies the category that fits your sex, because typical distribution patterns differ between men and women."
+      },
+      {
+        "heading": "What are common mistakes with waist to hip ratio results?",
+        "text": "A common error is measuring over thick clothing or letting the tape drift to different heights, which shifts the waist figure. Another is comparing your number with a chart meant for the other sex, since the category thresholds are not interchangeable. The ratio also does not capture height, muscle mass or total body fat, so it should sit alongside other information. A single reading is less useful than a repeated measurement taken the same way."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a high ratio mean I have a medical problem?",
+        "Not by itself. A ratio above the category for your sex is a signal worth discussing with a clinician, alongside blood pressure, blood glucose, lipids and family history. The number is one input among several, and it does not diagnose any condition on its own."
+      ],
+      [
+        "Can I use a waist measurement alone instead?",
+        "A waist measurement alone is a useful tracking number for many people, since it changes over time with the same tape. It does not account for hip size, which is why the ratio exists. Whichever you track, measure the same way each time and compare trends rather than single readings."
+      ],
+      [
+        "Why does this tool ask for my sex?",
+        "The risk categories used for waist-to-hip ratio are set separately for men and women, because typical fat distribution differs between the sexes. Selecting the correct option makes the category meaningful. The sex field affects only which category is applied, not the ratio itself."
+      ]
+    ]
+  },
+  "smoking-cost-calculator": {
+    "answer": "A smoking cost calculator estimates how much money cigarettes take out of a budget. It works out the daily cost from cigarettes smoked per day, pack size and price per pack, then multiplies that across a month, a year and ten years. The result is a simple projection of spending, not a full measure of the costs of smoking, which can include health expenses.",
+    "aiSummary": "Projects the spending on cigarettes over a day, month, year and ten years, using cigarettes per day, pack size and pack price. The method works out the daily share of packs and multiplies by price, then scales it forward. It covers cash spending only, leaving out health costs, lost income and future price changes.",
+    "shortKeyword": "smoking cost calculator",
+    "longKeywords": [
+      "how much does smoking cost per year",
+      "cumulative cost of cigarettes over time",
+      "save money by quitting smoking"
+    ],
+    "exampleInputs": {
+      "perDay": "5",
+      "price": "8",
+      "packSize": "20"
+    },
+    "sections": [
+      {
+        "heading": "How much does smoking cost per year?",
+        "text": "Use the calculator to turn a habit into a number you can see. Enter cigarettes per day, the cigarettes in a pack and the price of one pack. The tool shows a daily figure first, then projects it over a month, a year and ten years. Seeing the annual total is often the most useful step, because small daily amounts feel minor until they are added up across the year. Enter honest figures, since the total is only as reliable as the inputs."
+      },
+      {
+        "heading": "How do I read the cumulative cost of cigarettes over time?",
+        "text": "The monthly figure is the daily amount multiplied by the days in a month, which gives a simple monthly budget line. The ten-year figure is the same arithmetic over a longer period, so it shows the cumulative total rather than a forecast. Treat all of these as fixed-price projections: if the pack price rises or you smoke more or less, the totals change in proportion. Compare the figure with other spending you already track, such as groceries or a subscription, to put the number in context."
+      },
+      {
+        "heading": "What common mistakes make the savings estimate misleading?",
+        "text": "A frequent error is entering a pack price from a different brand or country than the one you actually buy, which skews every total. Another is forgetting that partial packs, gifts or cheaper purchases change the real average. People also tend to ignore the wider picture, such as health costs, which this tool does not include. Finally, treating the projection as a promise rather than a rough picture of spending can set unrealistic expectations."
+      }
+    ],
+    "faqs": [
+      [
+        "How can I save money by quitting smoking?",
+        "Take the yearly total from the calculator as a baseline, since that is the amount that stopping would keep in your budget. Set that figure against the cost of any nicotine replacement or support you plan to use, and compare the two honestly."
+      ],
+      [
+        "How many packs a day does the calculator assume?",
+        "It converts the cigarettes per day you enter into packs using the pack size you enter, then multiplies by the price per pack. It does not assume a brand or a fixed pack, so change the pack size if yours holds a different number of cigarettes."
+      ],
+      [
+        "Does the ten-year total include future price increases?",
+        "No. It repeats today's price, so the ten-year figure is a fixed-price projection. If pack prices rise, or you smoke more or less over time, the real total will be different."
+      ]
+    ]
+  },
+  "ratio-calculator": {
+    "answer": "A ratio calculator reduces two numbers to their simplest form by dividing both by their greatest common divisor. It can also solve a proportion: enter A, B and C, and the missing term equals C times B divided by A. Ratios appear in recipes, scale drawings and mixtures, so the same steps apply wherever two quantities are compared.",
+    "aiSummary": "Helps you simplify a ratio to lowest terms by dividing both terms by their greatest common divisor, and solves a missing term in an equal-ratio pair. The method is straightforward arithmetic, but it needs a non-zero first term and assumes the two pairs truly match.",
+    "shortKeyword": "ratio calculator",
+    "longKeywords": [
+      "simplify a ratio to lowest terms",
+      "solve a proportion for a missing term",
+      "ratio of two numbers in simplest form"
+    ],
+    "exampleInputs": {
+      "a": "2",
+      "b": "3",
+      "c": "6"
+    },
+    "sections": [
+      {
+        "heading": "Why would I need to simplify a ratio to lowest terms?",
+        "text": "Simplified ratios are easier to read and compare. A recipe that calls for 16 cups to 24 cups is clearer as 2 to 3, and the same reduction makes two mixtures comparable at a glance. The tool divides both terms by their greatest common divisor, so the result keeps the same relationship with fewer, smaller numbers. Use the reduced form when you want to communicate a relationship rather than exact quantities."
+      },
+      {
+        "heading": "How do I solve a proportion for a missing term?",
+        "text": "Write the known pairs as A to B equals C to an unknown. The optional third field holds C, so the tool cross-multiplies and divides: the missing term equals C times B, divided by A. Cross-multiplication works because both ratios describe the same relationship. Check the answer by substituting it back into the original pair; the two ratios should reduce to the same form. Keep the first term nonzero, because division by zero has no meaningful result."
+      },
+      {
+        "heading": "What are common mistakes when reading a ratio?",
+        "text": "A frequent mistake is reversing the order of the terms, which swaps the meaning of the answer. A ratio of 2 to 3 is not the same as 3 to 2 for a recipe or a map. Another is simplifying a ratio that compares different units without converting first, such as minutes against hours. Finally, mixing up which term is the first when solving a proportion throws off the result, so label A, B and C before entering them."
+      }
+    ],
+    "faqs": [
+      [
+        "What is the ratio of two numbers in simplest form?",
+        "It is the pair you get after dividing both numbers by their greatest common divisor, so no whole number greater than one divides both evenly. For example, 16 and 24 reduce to 2 and 3. The reduced pair keeps the same relationship as the original, just with smaller values."
+      ],
+      [
+        "Can a ratio have more than two terms?",
+        "Yes. A ratio such as 2:3:5 compares three quantities at once, and it can be simplified by dividing every term by their common divisor. This calculator handles two terms at a time, so a three-part ratio can be checked pair by pair."
+      ],
+      [
+        "Why must the first term be nonzero?",
+        "The missing term is found by dividing by the first term A, and division by zero is undefined. A zero first term therefore leaves no usable answer, so check the input before reading the result. Enter a non-zero first term whenever you solve for a missing value."
+      ]
+    ]
+  },
+  "slope-calculator": {
+    "answer": "A slope calculator finds the steepness of the line through two points as rise over run: the change in y divided by the change in x. It then solves for the y-intercept and writes the full slope-intercept equation, y = mx + b. A vertical line has an undefined slope because its change in x is zero.",
+    "aiSummary": "Computes the slope of a line from two coordinate points, the y-intercept, and the equation in slope-intercept form. The core method is rise over run, with the intercept found by substitution. It applies only to non-vertical lines, since a vertical line has no defined slope.",
+    "shortKeyword": "slope calculator",
+    "longKeywords": [
+      "find the slope from two points",
+      "write the equation of a line",
+      "vertical line has no defined slope"
+    ],
+    "exampleInputs": {
+      "x1": "2",
+      "y1": "3",
+      "x2": "5",
+      "y2": "9"
+    },
+    "sections": [
+      {
+        "heading": "How do I find the slope from two points?",
+        "text": "Slope measures how steeply a line rises or falls. Take two points, subtract the y-values to get the rise, subtract the x-values to get the run, and divide. Keep the same order of points for both subtractions to avoid a sign error. A positive result means the line climbs left to right, while a negative result means it falls. The calculator performs this arithmetic for you, so you can focus on entering the coordinates correctly and reading the sign of the result."
+      },
+      {
+        "heading": "How do I write the equation of a line from slope?",
+        "text": "Once you have the slope m, the intercept b is the value of y where the line crosses the vertical axis. The tool substitutes one of your points into y = mx + b and solves for b. The result gives the complete equation, which you can use to predict y for any x. Two distinct points define exactly one line, so the equation is unique."
+      },
+      {
+        "heading": "What are common mistakes with vertical lines and slope?",
+        "text": "The most common mistake is dividing by zero when two points share an x-value. That situation is a vertical line, and its slope is undefined rather than zero or very large. Another error is swapping x and y while subtracting, which flips the sign or inverts the slope. Finally, reading the intercept from the wrong form of the equation can give a false value, so confirm the line is written as y = mx + b before reading b."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a horizontal line have a slope of zero?",
+        "Yes. A horizontal line has the same y-value at every point, so the change in y is zero and the slope is zero. Its equation takes the form y = b, with no x term because the slope multiplies nothing. The constant value is the y-intercept."
+      ],
+      [
+        "Can two different lines share the same slope?",
+        "Yes. Parallel lines have equal slopes but different y-intercepts, so they never meet. Two lines with the same slope and the same intercept are the same line. Comparing slopes is therefore a quick first test for whether two lines are parallel."
+      ],
+      [
+        "How do I check that my equation is correct?",
+        "Substitute each of your original points into the equation and confirm both sides match. If either point fails, recheck the intercept or the sign in the slope. A correct line passes through both points exactly, so a single mismatch tells you the calculation or the input needs another look."
+      ]
+    ]
+  },
+  "combination-calculator": {
+    "answer": "A combination calculator counts how many ways to choose r items from n when order does not matter, using nCr = n! / (r! (n-r)!). The related permutation count nPr applies when order matters and drops the division by r!. Both are the foundation of counting and probability, and they answer different questions about the same set of items.",
+    "aiSummary": "Computes permutations nPr and combinations nCr for n total items and r chosen items, using factorial ratios. Combinations divide out the arrangements of the chosen items, so the result counts selections. The method assumes distinct items, and results grow very fast as n rises.",
+    "shortKeyword": "combination calculator",
+    "longKeywords": [
+      "count selections when order does not matter",
+      "nPr formula count ordered arrangements",
+      "choose r items from n"
+    ],
+    "exampleInputs": {
+      "n": "10",
+      "r": "4"
+    },
+    "sections": [
+      {
+        "heading": "How do I count selections when order does not matter?",
+        "text": "Use combinations when the group is what matters and the order of picking does not. Choosing three toppings from ten is a combination, because picking pepperoni then olives gives the same pizza as olives then pepperoni. The calculator takes n as the total pool and r as the number you select, then returns the count of distinct groups. Keep n and r as whole numbers, with r no larger than n."
+      },
+      {
+        "heading": "Does the nPr formula count ordered arrangements?",
+        "text": "Permutations apply when position matters, such as ranking the top three finishers in a race. The formula nPr multiplies n by one fewer each time, for r factors in total, which lists every ordered result. Compared with combinations, the count is larger because each group can be arranged in several orders. The difference between the two is exactly the arrangements inside each chosen group, which is the r factorial term. Check small cases by hand to build intuition."
+      },
+      {
+        "heading": "What are common mistakes with combinations and permutations?",
+        "text": "The most frequent error is using a combination when order matters, which undercounts arrangements. Users also mix up n and r, entering the chosen count where the pool size belongs. Another mistake is applying the formulas to repeated items, such as letters in a word with duplicates, since the standard formulas assume each item is distinct. Finally, very large n gives huge numbers, so read the result as a count, not a probability."
+      }
+    ],
+    "faqs": [
+      [
+        "What does the factorial symbol mean here?",
+        "The factorial of a whole number is the product of every whole number from that value down to one, so 4 factorial is 4 times 3 times 2 times 1. The formulas use factorials because they count how many orders exist for a set of items. By convention, 0 factorial is defined as 1 so the formulas work at the edges."
+      ],
+      [
+        "Can r be zero or equal to n?",
+        "Yes, both are valid edge cases. Choosing zero items gives one way, and choosing all n items also gives one way, because only a single group exists. The formulas handle these cases correctly, so you do not need a special rule."
+      ],
+      [
+        "Can I count outcomes for a lottery with this tool?",
+        "Yes, for the count of possible picks. A lottery with a fixed number of chosen balls from a larger pool is a combination problem. Multiply by any extra choices, such as a bonus ball, separately. The tool gives the number of possible tickets, not your chance of winning, which needs the probability step as well."
+      ]
+    ]
+  },
+  "probability-calculator": {
+    "answer": "A probability calculator divides favorable outcomes by total outcomes to give the chance an event occurs, shown as a decimal and a percentage. It also converts that value into odds, which compare favorable to unfavorable outcomes, and reports the complement, the chance that an event does not happen. Probabilities always fall between zero and one.",
+    "aiSummary": "Converts favorable and total outcome counts into a probability, reported as a decimal, a percentage, odds, and the complement. The core method is a ratio of counts, valid only when every outcome is equally likely. Real events with unequal chances need a different model than this simple count.",
+    "shortKeyword": "probability calculator",
+    "longKeywords": [
+      "probability of an event from outcomes",
+      "convert probability to odds",
+      "chance that an event does not happen"
+    ],
+    "exampleInputs": {
+      "favorable": "3",
+      "total": "8"
+    },
+    "sections": [
+      {
+        "heading": "How do I find the probability of an event from outcomes?",
+        "text": "Start by counting the outcomes that count as success, then count every outcome that could occur. Divide the first number by the second to get the probability. The result sits between zero, meaning impossible, and one, meaning certain. This works cleanly when each outcome is equally likely, such as a fair die where one face out of six lands on a particular number. Make sure both counts come from the same list of outcomes so the ratio stays meaningful."
+      },
+      {
+        "heading": "How do I convert probability to odds?",
+        "text": "Odds compare favorable outcomes with unfavorable ones, so they are a different way of describing the same chance. Subtract favorable from total to get the unfavorable count, then write favorable to unfavorable. A probability of one in six therefore corresponds to odds of one to five. Converting back and forth is reversible, so no information is lost. Odds are common in betting and games, while probability is more common in science and statistics, so choose the form your audience expects."
+      },
+      {
+        "heading": "What are common mistakes when reading probability results?",
+        "text": "A frequent error is treating odds and probability as interchangeable, which can overstate or understate a chance by a large margin. Another is adding probabilities of events that overlap, which double-counts the shared outcomes. People also forget that a very small probability is not the same as impossibility. Finally, a probability computed from a small sample of outcomes may not match the underlying chance, so check the assumptions behind the counts."
+      }
+    ],
+    "faqs": [
+      [
+        "Can a probability be greater than one?",
+        "No. A probability can never exceed one, because favorable outcomes are a subset of total outcomes, so the ratio cannot be larger than one. If you enter more favorable outcomes than total outcomes, the input is wrong. Check that both counts describe the same set of possibilities."
+      ],
+      [
+        "Why is a probability of zero called impossible?",
+        "A probability of zero means that no favorable outcome exists among the total outcomes, so the event cannot happen under the setup you entered. Probabilities of one mean the event is certain under that same setup. Both extremes depend entirely on how the outcomes were defined."
+      ],
+      [
+        "What does a half chance mean in practice?",
+        "A half chance means that, across many repeated trials under the same conditions, the event happens about half the time. It does not guarantee that a single trial will split evenly. Each individual outcome still either happens or does not, even when the long-run rate is one half."
+      ]
+    ]
+  },
+  "exponent-calculator": {
+    "answer": "An exponent calculator raises a base to a power by multiplying the base by itself exponent times. A negative exponent gives the reciprocal of the positive power, and a fractional exponent gives a root, so x to the one-half power is the square root of x. Results grow very quickly for large exponents, so check the magnitude as well as the value.",
+    "aiSummary": "Raises a base to any power, handling whole, negative and fractional exponents with the rule that repeated multiplication defines the result. Negative exponents give the reciprocal of the positive power, and fractional exponents take roots. Very large exponents produce numbers that are hard to read, and zero bases need care.",
+    "shortKeyword": "exponent calculator",
+    "longKeywords": [
+      "raise a number to a power",
+      "turn a fractional exponent into a root",
+      "reciprocal of the positive power"
+    ],
+    "exampleInputs": {
+      "base": "3",
+      "exp": "5"
+    },
+    "sections": [
+      {
+        "heading": "How do I raise a number to a power by hand?",
+        "text": "Base two raised to ten means two multiplied by itself ten times. Writing out the steps for small exponents helps you see the pattern before you rely on a tool for larger ones. Each extra exponent multiplies the result by the base once more, so the value grows geometrically rather than in equal steps. The calculator performs the same multiplication, returning the result without manual steps. Use it for quick checks on homework or spreadsheets, where mistakes in repeated multiplication are easy to make."
+      },
+      {
+        "heading": "How do I turn a fractional exponent into a root?",
+        "text": "A fractional exponent with numerator one is a root: x to the power one half is the square root of x, and x to the power one third is the cube root. Larger numerators raise the root result to that power, so the exponent combines both ideas. The calculator follows this rule automatically when you enter a fraction as a decimal. A negative base with a fractional exponent may have no real result, so an error is possible."
+      },
+      {
+        "heading": "What common mistakes happen with exponents?",
+        "text": "A frequent mistake is reading a negative exponent as a negative number, when it actually means the reciprocal. Another is the order of operations: a negative sign in front of a number is not the same as a negative base raised to a power, so parentheses matter. People also tend to round intermediate steps, which compounds small errors when the exponent is large. Keep in mind that exponents are evaluated before multiplication, so two times three squared is not the same as six squared. Check each step by estimating the size of the answer first, which catches many slips before they reach a report. Finally, very large results can be hard to read, so report the base and exponent alongside the answer."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does a base of one always give one?",
+        "Multiplying one by itself any number of times leaves it unchanged, so one raised to any power is one. This holds for negative and fractional exponents as well, since the reciprocal of one is one and the root of one is one. It is a useful check when a result looks unexpected."
+      ],
+      [
+        "Can I raise a negative base to a power?",
+        "Yes, with whole-number exponents. A negative base raised to an even power gives a positive result, while an odd power keeps the sign negative. Fractional exponents on negative bases are the tricky case, because the root may not be a real number."
+      ],
+      [
+        "Why do exponents show up in growth and decay?",
+        "Repeated multiplication by a fixed factor produces exponential patterns, which is why exponents model compound growth, population change and radioactive decay. Each step multiplies by the same ratio, so the amount changes by a constant share rather than a constant amount. Calculators make these projections quick to test."
+      ]
+    ]
+  },
+  "log-calculator": {
+    "answer": "A logarithm calculator finds the power a base must be raised to in order to produce a given number. In general, the logarithm of a number in base b equals ln(x) divided by ln(b), the change-of-base formula. The tool also shows the natural log and the common log, and the input number must be positive.",
+    "aiSummary": "Computes the logarithm of a positive number in any base, alongside the natural log and base-ten log. The core method is change of base: divide the natural log of the number by the natural log of the base. Inputs of zero or below have no real logarithm, so the tool needs a positive value.",
+    "shortKeyword": "logarithm calculator",
+    "longKeywords": [
+      "find the logarithm of any number",
+      "change of base formula for logs",
+      "logarithm of zero or negative numbers"
+    ],
+    "exampleInputs": {
+      "number": "8",
+      "base": "2"
+    },
+    "sections": [
+      {
+        "heading": "How do I find the logarithm of any number?",
+        "text": "A logarithm answers the question of which power a base needs to reach a number. Logarithm base ten of one thousand asks how many tens multiply to give one thousand, which is three. The calculator takes the number and the base, then returns the answer with ln and log base 10 for comparison. Use it for pH-style scales, sound levels, or growth problems where values span many orders of magnitude. Check the result by raising the base to that power and confirming you return the original number."
+      },
+      {
+        "heading": "How does the change of base formula for logs work?",
+        "text": "Many calculators provide only the natural log and the base-ten log directly, so other bases need a conversion. The change of base rule says the log of x in base b equals the natural log of x divided by the natural log of b. Dividing the two natural logs gives the answer directly, because the conversion uses the same scale in both terms. The tool applies this step internally and shows the natural log and log base 10, so you can verify the division yourself."
+      },
+      {
+        "heading": "What goes wrong with the logarithm of zero or negative numbers?",
+        "text": "The logarithm is defined only for positive inputs in real numbers, because no power of a positive base yields zero or a negative value. Entering zero or a negative number may produce an error or no meaningful answer, which is a signal to recheck the input. A related pitfall is a base of one, which cannot be used because every positive power of one is one, so no power reaches a different number. Also watch for bases that are zero or negative, since those break the standard definition."
+      }
+    ],
+    "faqs": [
+      [
+        "Why is ln used in mathematics?",
+        "The natural log uses the base e, a constant that appears naturally in continuous growth and calculus. Its derivative is especially simple, which is why it turns up in formulas for rates and models. The tool shows ln alongside your chosen base so you can compare the values directly."
+      ],
+      [
+        "Are logs of negative numbers possible with complex numbers?",
+        "They exist in the complex number system, but this calculator works in real numbers only. Within real numbers, the logarithm of a negative value has no answer, so the tool expects a positive input. If you are studying complex analysis, a different treatment applies."
+      ],
+      [
+        "How do I check a logarithm result?",
+        "Raise the base to the logarithm you calculated and confirm that the outcome matches your original number, allowing for rounding. Doing this check catches mistakes in the base or the input. It takes only a moment and is a good habit for any logarithm problem."
+      ]
+    ]
+  },
+  "rounding-calculator": {
+    "answer": "A rounding calculator takes a number and a count of decimal places, then returns that number rounded to the nearest value, with ties rounding up. Ceiling rounds toward positive infinity and floor rounds toward negative infinity, so both results are shown alongside. This runs entirely in your browser, so the numbers you enter stay on your device.",
+    "aiSummary": "Rounds a number to a chosen count of decimal places using standard half-up rounding, and also shows ceiling and floor results, so you can round a number up or down. Negative places round to tens and hundreds. The main limit is that it rounds only the value entered, not any wider calculation.",
+    "shortKeyword": "rounding calculator",
+    "longKeywords": [
+      "how to round a number to decimal places",
+      "rounding numbers to tens or hundreds",
+      "round a number up or down"
+    ],
+    "exampleInputs": {
+      "number": "3.14159",
+      "places": "3"
+    },
+    "sections": [
+      {
+        "heading": "What is a rounding calculator used for?",
+        "text": "People use a rounding calculator to tidy numbers before they go into a report, a receipt, a spreadsheet cell, or a measurement log. Rounding to two decimal places is common for money, while three or four places can suit lab readings. Because the tool shows standard rounding next to ceiling and floor results, you can see at a glance which direction each rule pushes the value. Everything runs in your browser, so the figures you type never leave the page."
+      },
+      {
+        "heading": "How to round a number to decimal places?",
+        "text": "Enter the number and the count of decimal places. The main result is standard rounding, which moves to the nearest value at that precision and rounds a tie up. The ceiling result is never smaller than the input, because it rounds toward positive infinity. The floor result is never larger than the input, because it rounds toward negative infinity. When the digits after the cut-off are all zero, the three figures match."
+      },
+      {
+        "heading": "What mistakes happen when rounding numbers to tens or hundreds?",
+        "text": "A common mistake is rounding too early. If you round an intermediate result and keep calculating, small differences can add up, so keep full precision until the final step. Another slip is mixing up the three modes: ceiling and floor always move in one fixed direction, which can differ from nearest rounding when the number is negative. Rounding to tens or hundreds is a separate step, so enter a negative place count deliberately. This tool rounds only the single value you enter. It does not apply currency rules, units or any reporting requirement, so check those separately."
+      }
+    ],
+    "faqs": [
+      [
+        "Can rounding ever add precision to a number?",
+        "No. Rounding only removes digits past the chosen place and never adds real precision. The result has at most the number of decimal places you asked for, though trailing zeros may still display to fill that count."
+      ],
+      [
+        "Why does the same value round differently in two tools?",
+        "Tools can differ in tie handling and in whether they use nearest, ceiling or floor by default. This calculator uses round-half-up for the standard result and shows ceiling and floor separately, so compare the rule each tool names before matching results."
+      ],
+      [
+        "Should I round before or after adding values?",
+        "Usually after. Adding full-precision values first and rounding the total avoids compounding small errors. If a form or invoice requires rounding each line, follow that rule instead, because it defines the figure people will check."
+      ]
+    ]
+  },
+  "scientific-notation-converter": {
+    "answer": "A scientific notation converter rewrites a number as a mantissa between 1 and 10 multiplied by a power of ten, such as a value times ten raised to a negative power. It also gives the compact E notation form used in calculators and software. The exponent counts how far the decimal point moves, and the tool works it out from the base-10 logarithm. Everything runs in your browser.",
+    "aiSummary": "Turns any number into scientific notation or E notation by finding a mantissa between 1 and 10 and an exponent from its base-10 logarithm, and converts back the other way. Good for very large or very small values. Main limit: the displayed form is a finite approximation for numbers with many digits.",
+    "shortKeyword": "scientific notation converter",
+    "longKeywords": [
+      "how to write numbers in scientific notation",
+      "converting very small decimals to E notation",
+      "reading the exponent in scientific notation"
+    ],
+    "exampleInputs": {
+      "number": "0.00042"
+    },
+    "sections": [
+      {
+        "heading": "How to write numbers in scientific notation?",
+        "text": "Scientific notation is a common way to handle values that run from extremely large to extremely small, such as distances in astronomy or sizes of particles in physics. A number is written as a mantissa from 1 up to 10, multiplied by a power of ten. The converter does this for you, and it also reverses the process, so a value typed in scientific or E form returns to ordinary digits. Results are computed in your browser."
+      },
+      {
+        "heading": "What helps with reading the exponent in scientific notation?",
+        "text": "The exponent is the power of ten at the end. A positive exponent means the original number is large, and the decimal point moved left to reach the mantissa. A negative exponent means the number is small, because the decimal point moved right. Count the places the point travels to confirm the exponent by hand. Then check that the mantissa sits between 1 and 10, since that rule keeps the form consistent."
+      },
+      {
+        "heading": "What mistakes should you avoid when entering very small decimals?",
+        "text": "A frequent mistake is miscounting leading zeros in a small decimal, which shifts the exponent by a full power of ten. Another is assuming E notation is a different number. The letter E followed by an exponent names the same value as the spelled-out form, so only the appearance changes. Very long inputs may also be shortened in the mantissa, so compare the converted value with the original wherever precision matters for your work."
+      }
+    ],
+    "faqs": [
+      [
+        "What changes when converting very small decimals to E notation?",
+        "The digits stay the same, but the decimal point moves and the exponent is written after the letter E with a minus sign for small values. The mantissa keeps one non-zero digit before the point, so the form stays uniform across very different sizes."
+      ],
+      [
+        "Is standard form the same as scientific notation?",
+        "Yes. Standard form is another name for the same format, a mantissa between 1 and 10 times a power of ten. Scientific notation is the term most common in science and engineering texts."
+      ],
+      [
+        "Does E notation work in every program?",
+        "Many calculators, spreadsheets and programming languages read the letter E as times ten to a power, but the exact input rules vary by program. Check how your software expects the exponent before pasting a value into it."
+      ]
+    ]
+  },
+  "days-until-calculator": {
+    "answer": "A days until calculator counts the full calendar days between today and a chosen future date. Both dates are set to midnight before subtracting, so the answer means whole days remaining rather than 24-hour blocks from this moment. It is a static count, not a live timer, and everything is computed in your browser.",
+    "aiSummary": "Counts the whole calendar days from today to a target date by setting both dates to midnight and subtracting. Useful for launches, deadlines and holidays. The main limit is that it is a fixed count for the day it is viewed, not a ticking countdown to the minute.",
+    "shortKeyword": "days until calculator",
+    "longKeywords": [
+      "how many days until a deadline",
+      "counting full calendar days remaining",
+      "days between today and a launch date"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How many days until a deadline or holiday?",
+        "text": "People use this when a date is fixed and they want a plain number: days left before a product launch, a school exam, a family holiday or a contract deadline. A single figure is easier to share in a plan or message than a calendar date alone. Enter the target date, and the result gives the number of full calendar days between the current day and that target. The field takes one calendar date at a time, so compare several deadlines by running each one separately."
+      },
+      {
+        "heading": "What does counting full calendar days remaining mean?",
+        "text": "The tool sets both the current day and the target to midnight before it subtracts. That step means the result is a count of whole calendar days, not a number of 24-hour periods from the exact moment you open the page. Using the calendar keeps the number steady across a day, so the result reads the same whenever you check it that day. A target of tomorrow therefore reads as one day remaining."
+      },
+      {
+        "heading": "What mistakes should you avoid when a deadline has a specific hour?",
+        "text": "Check the year first, because a typo in the target date changes the count directly. Also remember this is a static count, not a live countdown, so a deadline with a specific hour will show only days. If you need hours or minutes left, use a dedicated timer. Agree in advance whether the starting day counts, since teams often disagree on that, and state the rule next to any figure you share."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I count days between today and a launch date?",
+        "Yes. Enter the launch date as the target and the tool returns the full calendar days remaining from the current day to that date. Because both dates are set to midnight, the count matches the calendar rather than hours."
+      ],
+      [
+        "Does the count change if I open the page on another day?",
+        "Yes, because the starting point is the current day. A later visit gives a smaller number for the same target, so record the date you calculated on when you share a count with someone."
+      ],
+      [
+        "Why does the result show only whole days?",
+        "The tool counts calendar days, so each step is one whole day and no fractions appear. Hours and minutes would need a different calculation based on the exact time of day."
+      ]
+    ]
+  },
+  "week-number-calculator": {
+    "answer": "A week number calculator finds the ISO 8601 week for a date, where week 1 is the week containing the year's first Thursday and weeks start on Monday. It also reports the day of the year. The rule is applied exactly, including dates near 1 January or the end of December, where the week can belong to the adjacent year. Runs in your browser.",
+    "aiSummary": "Answers what week number is this date by returning the ISO 8601 week and the day of the year. The rule: week 1 holds the first Thursday, and weeks begin on Monday. Main limit: numbering systems differ, so confirm which one your schedule or payroll uses.",
+    "shortKeyword": "week number calculator",
+    "longKeywords": [
+      "how to find the iso week number",
+      "which week of the year is it",
+      "what week number is this date"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to find the ISO week number for a date?",
+        "text": "Planners, project managers and payroll teams often refer to weeks by number, so a shared reference matters. This calculator returns the ISO week for the date you enter, along with the day of the year. That gives a fixed label for scheduling sprints, reporting periods or shift rotas. Because the calculation follows one rule across every date, two people entering the same date get the same answer. Enter the date and read both figures."
+      },
+      {
+        "heading": "Which week of the year is it for my date?",
+        "text": "Read the week number first, then the day of the year, which counts from 1 at the start of the calendar year. Week 1 is the week that contains the first Thursday, and it may start in late December of the previous year. Likewise the final days of December can already belong to week 1 of the next year. Treat the week number as the ISO value, not as a simple count of seven-day blocks from 1 January."
+      },
+      {
+        "heading": "What mistakes happen with week numbers near New Year?",
+        "text": "The most common mistake is assuming the week number resets on 1 January. Early January dates can belong to the last week of the old year, and late December dates can show week 1. Another slip is mixing up systems: some start weeks on Sunday, so a schedule built on a different rule can be off by one week. Check which system your team uses, and keep the ISO value in any shared document so everyone reads it the same way."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use this to plan a sprint or shift rota?",
+        "Yes. Enter any date in the sprint or rota and use the week number as a shared label. Because the rule is fixed, everyone who checks the same date will see the same week, which avoids disagreement about which week is meant."
+      ],
+      [
+        "How do I count the day of the year by hand?",
+        "Add the days in each completed month to the day of the month. The result is the day of the year, starting from 1 on 1 January. Leap years add one extra day after February, so check that month when the year is a leap year."
+      ],
+      [
+        "Does a late December date always fall in the last week?",
+        "No. A late December date can fall in week 1 of the following year, because week 1 is set by the year's first Thursday. Check the calculator instead of assuming the calendar year and week number move together."
+      ]
+    ]
+  },
+  "roman-numeral-converter": {
+    "answer": "A roman numeral converter changes a whole number from 1 to 3999 into Roman symbols, using greedy subtraction over values such as M, CM and D, and it reads Roman numerals back into numbers by adding symbols and subtracting where a smaller value comes first. Everything runs in your browser.",
+    "aiSummary": "Converts whole numbers from 1 to 3999 into Roman numerals and converts Roman numerals back, using the standard symbols. Number-to-Roman uses greedy subtraction; Roman-to-number adds symbols and subtracts where a smaller value precedes a larger one. Main limit: the standard notation only covers that range, so larger values are outside it.",
+    "shortKeyword": "roman numeral converter",
+    "longKeywords": [
+      "converting numbers to roman numerals by hand",
+      "how to read roman numerals",
+      "what is the largest roman numeral"
+    ],
+    "exampleInputs": {
+      "mode": "toRoman",
+      "number": "2026"
+    },
+    "sections": [
+      {
+        "heading": "When is converting numbers to Roman numerals by hand useful?",
+        "text": "Roman numerals still appear in book chapters, film copyright lines, clock faces, movie sequels and some formal documents. Converting by hand is slow and error-prone for large values, so a tool helps when you need a quick, correct form. The converter handles both directions, so it can also check a numeral someone else wrote. In the Direction field, choose Number to Roman or Roman to number before you enter a value."
+      },
+      {
+        "heading": "How to read Roman numerals in a clock or title?",
+        "text": "Read Roman numerals from left to right. Letters that appear in descending order simply add, so XVI means ten plus five plus one. When a smaller value sits before a larger one, subtract it, as in IV for four or IX for nine. Symbols such as I, X and C can repeat up to three times in a row, while V, L and D do not repeat. Check the result by converting it back to a number with the Roman-to-number mode, which confirms the reading."
+      },
+      {
+        "heading": "What mistakes should you avoid with Roman numerals above 3999?",
+        "text": "The standard system covers 1 to 3999 only. Values above that range need extra notation that the standard rules do not cover. A frequent mistake is copying a numeral from an old source with a non-standard form, such as IIII for four, and expecting the standard reading. Check any unusual numeral against the standard rules before relying on it. Keep the original source beside the result so you can compare the two."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I write zero as a Roman numeral?",
+        "No. The standard Roman system has no symbol for zero, so the converter starts at 1, which matches the range shown in the number field above."
+      ],
+      [
+        "Does the order of letters ever change the value?",
+        "Yes. Placing a smaller symbol before a larger one subtracts it, so IV is four while VI is six. Reversing the pair changes the meaning, which is why the order of symbols matters."
+      ],
+      [
+        "What is the largest roman numeral this tool can write?",
+        "The converter covers numbers from 1 to 3999, so the largest numeral it writes is MMMCMXCIX, which is 3999 in standard notation. Its symbols are M, D, C, L, X, V and I, with the subtractive pairs CM, CD, XC, XL, IX and IV."
+      ]
+    ]
+  },
+  "age-difference-calculator": {
+    "answer": "An age difference calculator measures the gap between two birth dates in years and months, and also in total days and weeks. Dates can be entered in either order, because the tool takes the absolute difference. The years-and-months figure uses an average year length, so it suits practical use but is not a calendar-exact count. Everything runs in your browser.",
+    "aiSummary": "Finds the gap between two birth dates, whichever is entered first, and expresses it in years and months plus total days and weeks. It uses an average year length for long spans. Limitation: the years-and-months figure is an approximation, so use the day count where an exact figure is needed.",
+    "shortKeyword": "age difference calculator",
+    "longKeywords": [
+      "how many years between two birth dates",
+      "comparing the ages of two people",
+      "days and weeks between two birth dates"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Why check how many years between two birth dates?",
+        "text": "A gap in years is often asked for in family, school and sports settings, where grade cut-offs, sibling spacing or team age rules depend on exact timing. The tool gives the gap in years and months, so you can see whether a cut-off applies. It also shows days and weeks, which helps when a rule counts in units smaller than a month. Enter the two birth dates as they appear on your documents to keep the result tied to real records."
+      },
+      {
+        "heading": "What is useful about comparing the ages of two people?",
+        "text": "Comparing ages shows whether two people are close in age or separated by a generation, which can matter for mentoring, family trees, or historical research. The tool takes the absolute difference, so the order you type the dates does not change the result. Read the years-and-months line first, then check the total days for an exact figure. Keep in mind that the gap is a plain difference, not a judgment about the people involved, and it says nothing about their experience or maturity."
+      },
+      {
+        "heading": "What limits should you keep in mind for the years-and-months figure?",
+        "text": "The years-and-months figure relies on an average year length, so it can drift slightly from a count that follows each calendar anniversary. Leap years and month lengths are the usual sources of that difference. For legal ages, contract dates or official records, confirm the result against the official rule that applies rather than relying on this estimate. Another common mistake is swapping the two fields, so double-check which box holds which person's birth date."
+      }
+    ],
+    "faqs": [
+      [
+        "How are days and weeks between two birth dates counted?",
+        "The day count is the plain difference between the two dates. The weeks figure expresses that same count in seven-day units, so it stays consistent with the days line."
+      ],
+      [
+        "Can I use the result on an official form?",
+        "Use it as a quick estimate or a cross-check. For forms, legal records or eligibility decisions, use the rule or record that governs your situation, since this tool does not apply jurisdiction-specific counting."
+      ],
+      [
+        "Why would the years figure differ from a day count?",
+        "The years-and-months figure is scaled with an average year length, while the day count is exact. Over long spans, the two can seem slightly out of step, so the day count is the more literal figure."
+      ]
+    ]
+  },
+  "add-business-days-calculator": {
+    "answer": "An add business days calculator finds the date that falls a given number of working days before or after a start date. It steps one day at a time and counts only Monday through Friday, so weekends never add to the total. Enter a negative number to count backward. Everything runs in your browser.",
+    "aiSummary": "Moves a start date forward or backward by a chosen number of working days, stepping through the calendar and counting only Monday to Friday. Useful for delivery promises and service deadlines. Limitation: the count is based on Monday to Friday, so holidays in the range need a manual check.",
+    "shortKeyword": "add business days calculator",
+    "longKeywords": [
+      "how to count working days after a date",
+      "delivery date after several business days",
+      "subtract business days from a deadline"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to count working days after a date?",
+        "text": "Service teams, legal offices and shipping desks often promise a response or delivery in working days, not calendar days, so weekends must be skipped. This tool lets you enter a start date and a number of days, then returns the matching date. Set the number to a positive value for a future date or a negative one to look back. Use the result as a planning date, and confirm any contractual deadline against the wording of the agreement."
+      },
+      {
+        "heading": "What does a delivery date after several business days mean?",
+        "text": "Read the output as the date reached after stepping through working days, not as a calendar-day offset. A weekend in the range adds nothing to the count, so a span that crosses one or more weekends lands later than a plain day count would suggest. Compare the result with the start date and a calendar to confirm the logic before you share it with a client. The same rule works in reverse for negative inputs."
+      },
+      {
+        "heading": "What limits or mistakes affect a business day deadline?",
+        "text": "The main limit is that the tool counts Monday to Friday only, so public holidays inside the range are not treated as special days by this rule. Check the calendar of your region or client and adjust by hand when a holiday falls in the period. Another mistake is mixing up calendar and working days: a promise of ten days may mean ten working days, which can stretch across two weeks or more."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I subtract business days from a deadline?",
+        "Enter the deadline as the start date, then type a negative number of business days. The tool steps backward one day at a time, counting only Monday through Friday, until it reaches the requested total. Compare the result against a calendar before committing to a plan."
+      ],
+      [
+        "Does a weekend start date change the answer?",
+        "Only Monday to Friday days are counted as steps, so the weekend itself never adds to the number. Test the same input with a weekday start to see how the result shifts."
+      ],
+      [
+        "Can I use this for a timeline with holidays?",
+        "The rule described here counts Monday to Friday only. For each holiday inside the period, check the result by hand and shift it one working day further for every closed day in your schedule."
+      ]
+    ]
+  },
+  "weeks-between-dates-calculator": {
+    "answer": "A weeks between dates calculator takes the day difference between two dates and divides it by seven. It shows the exact decimal weeks, the whole weeks with leftover days, and the total day count. Everything runs in your browser, so the dates you enter stay on your device.",
+    "aiSummary": "Counts how many weeks lie between two dates by dividing the day difference by seven, showing a decimal figure, whole weeks with leftover days, and total days. Useful for sprint planning and project timelines. Limitation: the ratio is simple, so it does not account for weekends or holidays within the span.",
+    "shortKeyword": "weeks between dates calculator",
+    "longKeywords": [
+      "how many weeks are between two dates",
+      "whole weeks plus leftover days",
+      "counting weeks for a project timeline"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When is it handy to know how many weeks are between two dates?",
+        "text": "Weeks are a common unit for short and medium spans, such as a sprint, a training block, a lease notice or a school term. Counting in weeks gives a feel for scale that a day count often hides. This tool shows the total in three forms, so you can pick the one that fits the message. The decimal suits calculations, the whole weeks with leftover days suits people, and the total days suits systems that store dates."
+      },
+      {
+        "heading": "What do whole weeks plus leftover days tell you?",
+        "text": "The whole-weeks figure counts complete seven-day blocks between the two dates. The leftover figure is the number of days that do not fill another full block. Reading the two together tells you both the rhythm of the span and its exact length. Use the whole weeks for a plain estimate and the leftover days when you need the exact arrangement of the last partial week. Both figures come from the same day difference, so they never disagree."
+      },
+      {
+        "heading": "What mistakes come up when counting weeks for a project timeline?",
+        "text": "A common slip is counting the start and end days inconsistently, which can shift the total by a day. Another is treating a fractional week as a deliverable week, so work that needs a full week gets planned as a partial one. The tool counts calendar days, so weekends and holidays are included in the total. If your timeline runs on working days, use a working-day method instead of dividing this total by seven."
+      }
+    ],
+    "faqs": [
+      [
+        "Can this tool show weeks for a span longer than one year?",
+        "Yes. The day difference is divided by seven regardless of span, so a multi-year range gives a larger week count using the same method. Expect a long decimal, and read the whole-weeks line for planning."
+      ],
+      [
+        "Why does the decimal figure run on for so long?",
+        "Division by seven rarely gives a clean result, so the decimal goes on. The tool shows it to make the exact ratio visible. For everyday planning, the whole weeks and leftover days are usually easier to read."
+      ],
+      [
+        "Can I work out the weeks by hand?",
+        "Yes. Divide the total day count by seven, then take the whole part as full weeks and multiply the fraction by seven to get leftover days. The calculator does the same arithmetic, so you can check it by hand."
+      ]
+    ]
+  },
+  "reverse-text": {
+    "answer": "Reverse text flips a string so its last character comes first, either letter by letter or word by word. This reverse text tool splits the input into characters, reverses the list, and rejoins it, with Unicode-aware handling so emoji stay intact. Word mode splits on spaces and reverses the sequence. Everything runs in your browser.",
+    "aiSummary": "Mirrors a piece of text by reversing its characters, or reorders it by flipping the sequence of words while keeping each word spelled normally. It handles emoji safely by working on Unicode characters. Limitation: the result is plain reordered text, so display in some scripts or apps may look unexpected.",
+    "shortKeyword": "reverse text",
+    "longKeywords": [
+      "flip text backwards character by character",
+      "reverse the order of words",
+      "reversing a sentence for a word puzzle"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When do people flip text backwards character by character?",
+        "text": "Flipping text backwards is a common way to make puzzles, create mirror-style captions, or check whether a word reads the same in reverse. Playful headers and social posts also use it. Character mode mirrors every symbol in order, so the last letter becomes the first. Word mode is a different task, because it keeps every word intact and changes only the sequence. Because the tool runs in your browser, the text you paste stays on your device."
+      },
+      {
+        "heading": "How to read the output when you reverse the order of words?",
+        "text": "Word mode splits on spaces, so each word stays readable and only its position changes. Punctuation attached to a word moves with that word, which can look odd at the end of a sentence. A sentence ending in a full stop attached to its last word will start with that word and its stop after reversal, so the sentence can read oddly until you edit it. Check the output for these edges before you publish it."
+      },
+      {
+        "heading": "What limits show up when reversing a sentence for a word puzzle?",
+        "text": "Reversed text is plain text, so the result may look unexpected in some scripts, fonts or apps. Emoji stay whole in character mode because the method is Unicode-aware, but a reversed string can still read as nonsense to anyone expecting normal letter order. Reversing a second time usually returns the original, though extra spaces may differ. Keep an unedited copy of the source text in case you need to go back to it."
+      }
+    ],
+    "faqs": [
+      [
+        "Does reversing text change punctuation?",
+        "Yes, in word mode punctuation stays attached to its word, so a comma or full stop moves with that word. In character mode every symbol, including punctuation, moves to the opposite position."
+      ],
+      [
+        "Which mode should I pick for a poem?",
+        "Pick character mode for a mirror effect or a puzzle, where every letter must flip. Pick word mode for a line of verse you want to read backwards by phrase, since each word keeps its spelling."
+      ],
+      [
+        "Is my text sent anywhere when I reverse it?",
+        "No. Processing happens locally in your browser, so the reversing step does not send your text anywhere. Close the tab once you are finished if the text is sensitive."
+      ]
+    ]
+  },
+  "remove-line-breaks": {
+    "answer": "To remove line breaks means joining hard-wrapped lines into flowing text. This tool can replace breaks with spaces, delete them, or keep paragraph gaps, which is usually what PDF text needs. Use the mode that matches the text's structure. Everything runs in your browser, so the text you paste stays on your device.",
+    "aiSummary": "Strips or replaces hard line breaks in pasted text, either joining every line with spaces, removing breaks completely, or keeping blank-line paragraph gaps. Built for text copied from PDFs and emails. Limitation: the paragraph-preserving mode relies on blank lines already being present, so check results before using them.",
+    "shortKeyword": "remove line breaks",
+    "longKeywords": [
+      "how to clean text copied from a PDF",
+      "joining broken lines into one paragraph",
+      "keeping paragraph gaps when pasting email text"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to clean text copied from a PDF?",
+        "text": "PDF text often arrives with a hard break at the end of every visual line, so a sentence is split across several lines when pasted. Email text can do the same when a mail client wraps lines at a fixed width. Cleaning those breaks by hand is slow, and it is easy to miss one. The tool removes or replaces them in one pass, which keeps the wording intact while making the text easier to edit or search."
+      },
+      {
+        "heading": "Which mode fits joining broken lines into one paragraph?",
+        "text": "Replace with spaces joins every line into one continuous block, which suits a single short passage or a quote. Remove entirely closes the gaps without adding spaces, so use it only when the lines already carry their own spacing. Keep paragraphs is usually the right fit for PDF cleanup because it joins single breaks while preserving blank-line separations. Try the mode on a short sample first and read the output before you process the full document."
+      },
+      {
+        "heading": "What should you check before trusting the cleaned text?",
+        "text": "Look for words that were hyphenated across a line break, since removing the break can leave a stray hyphen. Check headings and list items, because a bullet or number at the start of a line may now sit inside a sentence. Tables and columns copied from PDFs can lose their structure entirely, so review those by hand. The tool changes only line breaks, not the layout around them. Keep a copy of the original for comparison."
+      }
+    ],
+    "faqs": [
+      [
+        "Is keeping paragraph gaps when pasting email text reliable?",
+        "It works when the email already separates paragraphs with blank lines. If the mail client removed those blanks, the mode has nothing to preserve, so check the output and add paragraph spacing by hand where needed."
+      ],
+      [
+        "Can I use this on text that has no line breaks?",
+        "Yes, but it will have nothing to change, so the output matches the input. Breaks are the only thing the tool edits, so text without them passes through as it is."
+      ],
+      [
+        "How do I handle hyphenated words after cleaning?",
+        "Search the cleaned output for a hyphen followed by a space, which often marks a word split across lines, and rejoin those words by hand. Some hyphens are real, so read each match before editing."
+      ]
+    ]
+  },
+  "text-repeater": {
+    "answer": "A text repeater copies a word or phrase a chosen number of times and places each copy on its own line. Pick a count such as five, ten, twenty-five or one hundred, and the tool joins the copies with line breaks. It is useful for test data, filler text and layout checks. The work runs in your browser.",
+    "aiSummary": "Repeat a word many times online by entering text and choosing a count. The tool joins identical copies with line breaks and runs entirely in the browser. It cannot vary the copies, and output size is capped, so very large repeats are limited.",
+    "shortKeyword": "text repeater",
+    "longKeywords": [
+      "how to repeat text many times",
+      "filler text for testing",
+      "repeat a word many times online"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to repeat text many times in one list?",
+        "text": "Paste a word, phrase, or short sentence into the input and choose how many copies you need. The tool outputs the same line the chosen number of times, with each copy on its own line. This is handy when you need a long column of identical entries to paste into a spreadsheet, a form field, or a test script. Because each copy sits on its own line, you can also count lines or scan the result quickly."
+      },
+      {
+        "heading": "When is filler text for testing useful?",
+        "text": "Filler text fills a layout so you can check spacing, wrapping, and scrolling before real content exists. Repeating a short phrase works well for that, since the line lengths stay predictable. Developers also use repeated strings to test input length limits, and writers use them as placeholders in drafts. Choose a phrase that matches the length of the content you plan to replace, because a single word and a full sentence stress a layout in very different ways."
+      },
+      {
+        "heading": "What mistakes should I avoid when repeating a phrase?",
+        "text": "The most common mistake is forgetting that the output is a single block, so copying it straight into a document may add unwanted line breaks. Check the count before you copy, since a high multiplier produces a large block that is slow to scroll or edit. Another limit is that the tool repeats text exactly, so it does not vary wording or numbering for you. If you need unique items, a list generator or a spreadsheet fill handle works better than a repeater."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the text I enter leave my device?",
+        "No. Processing runs locally in your browser, so the text you paste is not sent to a server by this tool. You still control where the copied output goes, and you can clear the input at any time."
+      ],
+      [
+        "Can the repeater add numbers to each copy?",
+        "No. The tool repeats the exact text you enter, so every line is identical. If you want numbered copies, add the numbers in a spreadsheet or an editor with a column or multi-cursor feature after copying the output."
+      ],
+      [
+        "Why does the output sometimes look very long?",
+        "A large count multiplied by a long phrase creates a big block of text. Reduce the count or shorten the phrase to get a smaller result. Output is capped at a set size so that the page stays responsive in your browser."
+      ]
+    ]
+  },
+  "title-case-converter": {
+    "answer": "A title case converter capitalizes a headline by making major words capitalized and leaving small words such as a, of, and the in lowercase. This one applies the AP-style convention with a fixed list of small words. The first and last words always capitalize, whatever the list says. Each word is checked against that list, so you can copy the result straight into a draft.",
+    "aiSummary": "Capitalizes headlines by applying AP-style small-word rules: major words get capitals, short function words stay lowercase in the middle, and the first and last words always capitalize. It cannot judge meaning or house style. Capitalize headlines for a blog post by running the text through it and checking the output.",
+    "shortKeyword": "title case converter",
+    "longKeywords": [
+      "how to title case a headline",
+      "capitalize headlines for a blog post",
+      "AP-style capitalization for titles"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How to title case a headline correctly?",
+        "text": "Start by capitalizing the first word and every word that carries meaning, such as nouns, verbs, and adjectives. Then lowercase short function words in the middle of the line, like a, an, of, in, and the. Finally, check that the last word is capitalized even when it is a small word. The converter does these steps for you, so you can paste a full headline and compare the output with your own draft."
+      },
+      {
+        "heading": "What does AP-style capitalization for titles change?",
+        "text": "AP-style capitalization for titles keeps a fixed list of short words in lowercase, which is why a headline can look different from a sentence-case version. The list covers small words such as articles, short conjunctions, and short prepositions. Notice that the tool does not judge whether a word is correct for your context; it applies one rule set consistently. If your publication follows a different guide, the same headline may come out with different small words lowercased."
+      },
+      {
+        "heading": "What common mistakes should I avoid with headlines?",
+        "text": "A frequent mistake is running the converter on a headline that already has deliberate branding or unusual spelling, which can be overwritten. Another is assuming the output is final for every publication, since house styles differ. Watch hyphenated compounds and words with apostrophes, and review those by eye. Remember that a converter cannot judge meaning, so proper nouns and product names need a manual check before you publish. Keep a copy of your original text in case you need to compare."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the title case converter store my headlines?",
+        "No. Processing runs locally in your browser, so the headlines you paste stay on your device. You can copy the result into your editor and clear the input whenever you like."
+      ],
+      [
+        "Does it handle headlines written in all capital letters?",
+        "The converter applies the small-word rules to the words it receives, so an all-caps headline may need lowercasing first. Lowercase the text, then run the converter for the cleanest result. Review the output because a tool cannot tell a true acronym from an ordinary word."
+      ],
+      [
+        "Which words does the converter keep lowercase?",
+        "It keeps a fixed set of short function words in lowercase when they fall in the middle of a headline, such as a, an, of, in, and the. The first and last words still capitalize. Check the output against your house style when it differs."
+      ]
+    ]
+  },
+  "text-to-binary": {
+    "answer": "A text to binary converter turns each character into an 8-bit code made of ones and zeros, then separates the codes with spaces. Paste binary into the same box to decode it, and each group of eight digits maps back to one character. The method is a direct character-code lookup, which makes it well suited to learning and puzzles.",
+    "aiSummary": "Converts text into space-separated 8-bit binary, and can decode binary back into readable text. Each character is looked up by its character code and written as eight bits. It is a direct lookup for learning and puzzles, not encryption, and it needs correctly grouped input.",
+    "shortKeyword": "text to binary",
+    "longKeywords": [
+      "convert text into 8-bit binary",
+      "binary code for each letter",
+      "decode binary back into readable text"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I convert text into 8-bit binary?",
+        "text": "Each character in your input is looked up by its character code, and that number is written as eight bits. Eight bits give a group of zeros and ones, so a short word becomes a row of groups separated by spaces. Spaces and punctuation also get their own codes. To go the other way, split the binary into groups of eight and map each group back to a character. Keep the groups aligned, or the decoded text will come out wrong."
+      },
+      {
+        "heading": "What does binary code for each letter look like?",
+        "text": "A capital A and a lowercase a have different character codes, so their binary strings differ. Digits, such as the character 1, also have their own codes, which means the digit 1 typed as text is not the same as the binary value 1. Read each group from left to right, because the leftmost bit is the most significant. Comparing a known letter with its output is the quickest way to check your understanding of the mapping."
+      },
+      {
+        "heading": "What mistakes or limits should I watch for?",
+        "text": "The most common error is pasting binary with missing or extra spaces, which shifts every later group and produces unreadable characters. Check that each group has exactly eight digits before decoding. Also remember that this tool works on characters, so emoji and characters outside the basic range may not split into one clean byte each. Binary is only a representation; it does not compress or hide your text, and anyone can decode it."
+      }
+    ],
+    "faqs": [
+      [
+        "Is my text sent anywhere when I convert it?",
+        "No. The conversion runs locally in your browser, so the text you paste is not sent to a server by this tool. You can clear the input at any time and copy the result wherever you need it."
+      ],
+      [
+        "Can I use binary to hide a message?",
+        "Not in any real sense. Binary is a plain encoding of characters, so anyone who recognizes the format can decode it. Use proper encryption if you need privacy, and treat this tool as a learning aid for representation rather than security."
+      ],
+      [
+        "Does the converter handle spaces between my words?",
+        "Yes. A space is a character too, so it receives its own eight-bit code and appears as its own group. When you decode, keep the spaces that separate groups, because they tell the tool where each character starts."
+      ]
+    ]
+  },
+  "html-minifier": {
+    "answer": "An html minifier removes HTML comments and the whitespace between tags, then collapses runs of spaces to a single space. The output is smaller, which can speed up delivery over a network. The tool keeps the document structure valid while collapsing that whitespace. Use the result as a smaller production copy and keep your readable source.",
+    "aiSummary": "This tool can remove html comments and whitespace between tags to produce a smaller file for delivery. It strips comments and collapses spaces while keeping the document structure valid. Its main limit is whitespace-sensitive content, such as preformatted text, which may look different afterward.",
+    "shortKeyword": "html minifier",
+    "longKeywords": [
+      "reduce html file size",
+      "minify html for faster pages",
+      "remove html comments and whitespace"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I reduce html file size safely?",
+        "text": "Start by pasting the markup you plan to publish, not a half-finished draft, because the output is meant to be shipped. The tool removes comments first, then collapses the whitespace between elements and inside long runs of spaces. Those changes can make a noticeable difference in size on template-heavy pages with lots of indentation. Compare the rendered page before and after to confirm nothing shifted, and keep the original file for editing."
+      },
+      {
+        "heading": "What does minify html for faster pages mean?",
+        "text": "Minifying means producing the same document with fewer characters, so each byte sent over the network is useful content. Faster delivery is the goal, but the real gain depends on your server, caching, and compression settings. Minification does not replace compression, and the two work well together. Think of it as tidying the file before the server or browser handles it. Measure before and after so you can see whether the change is worth keeping."
+      },
+      {
+        "heading": "Which mistakes can break markup after minifying?",
+        "text": "The main risk is over-trusting the output on pages that depend on whitespace, such as preformatted blocks, code samples, or inline text where a space separates two words. Check those sections by eye after minifying. Keep your readable source under version control, so you can always regenerate a smaller copy when the page changes. Avoid minifying a file you still plan to edit by hand, because the compact result is harder to read and review."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the minifier send my HTML to a server?",
+        "No. Processing runs locally in your browser, so the markup you paste is not uploaded by this tool. You can keep your original file untouched and copy only the compressed result when you are ready to publish it."
+      ],
+      [
+        "Should I minify HTML that I edit by hand?",
+        "Usually not. Keep the readable version for editing and run the minifier only on the copy you deploy. That way comments and indentation stay available for later changes, and the compact file is generated rather than maintained."
+      ],
+      [
+        "Can minifying break a page that uses preformatted text?",
+        "It can, because whitespace inside preformatted blocks carries meaning. Check those sections after minifying, or leave them out of the input. Compare the rendered result to make sure spacing still matches the original."
+      ]
+    ]
+  },
+  "json-escape": {
+    "answer": "JSON escape means changing quotes, backslashes, and newlines into the backslash sequences that a JSON string requires, so the text can sit safely inside quotes. Unescaping reverses this and turns those sequences back into the original characters. Each quote becomes a backslash followed by a quote, and each newline becomes a backslash followed by n. The rules are fixed by the JSON format itself.",
+    "aiSummary": "Escapes text for a JSON string by adding backslashes before quotes and backslashes and turning newlines into backslash-n. It can also unescape a json string value back to the original characters. The main limit is that only standard JSON sequences decode cleanly, so broken input may fail.",
+    "shortKeyword": "json escape",
+    "longKeywords": [
+      "escape quotes in a json string",
+      "unescape a json string value",
+      "how to escape newlines in json"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I escape quotes in a JSON string?",
+        "text": "Paste the raw text into the input and choose escape. Every double quote gets a backslash in front of it, and every backslash doubles so the parser reads it literally. The result can then be placed between two double quotes in a JSON document, API payload, or config file. This is handy when you embed a snippet of code, a message, or a sentence that contains quotation marks in a larger data structure."
+      },
+      {
+        "heading": "How to escape newlines in JSON for a multi-line value?",
+        "text": "A newline is a real line break, which JSON strings cannot contain directly. The escape turns it into the two characters backslash and n, so the whole value stays on one line in the file. Tabs and carriage returns follow the same idea with their own sequences. When you unescape, those sequences come back as real line breaks, which is useful for reading a value copied from a log, a database export, or an API response."
+      },
+      {
+        "heading": "Which mistakes happen when escaping JSON by hand?",
+        "text": "The most common mistake is escaping twice, which adds more backslashes each time and corrupts the value after parsing. Check whether your input is already escaped before you run it again. Another error is forgetting that single quotes do not need escaping in JSON, so adding backslashes to them adds noise without changing meaning. Finally, remember that escaping is only one layer; the destination system may apply its own encoding on top."
+      }
+    ],
+    "faqs": [
+      [
+        "Does this tool send my text to a server?",
+        "No. Escaping and unescaping run locally in your browser, so the text you paste stays on your device. You can copy the result directly into your editor or request body once it looks right."
+      ],
+      [
+        "Can I unescape text that is not valid JSON?",
+        "Unescaping expects the standard JSON sequences, so an unusual or broken sequence may not decode cleanly. Check the input for stray backslashes or missing quotes first. If decoding fails, fix the source value rather than forcing the output."
+      ],
+      [
+        "Should I escape the whole JSON document or only the values?",
+        "Only the values. A JSON document is already structured, so you escape each string value that contains special characters, not the braces, brackets, or keys. Escaping the whole document would turn it into one big string and break its structure."
+      ]
+    ]
+  },
+  "json-to-yaml": {
+    "answer": "A json to yaml converter walks the JSON structure and writes equivalent YAML, using indentation for nesting and dashes for list items. The format is favored for configuration files in tools such as Docker, Kubernetes, and CI pipelines. The two formats describe the same kinds of data: objects, arrays, strings, and numbers. Conversion rewrites the syntax without changing the values.",
+    "aiSummary": "Converts JSON into YAML, a readable indentation-based format common in config files. Object keys become mapping entries and arrays become dash-prefixed lists. The method rewrites notation only, aiming to keep values the same after conversion. Its limits are quoting subtleties and missing comments, so test the output before deploying.",
+    "shortKeyword": "json to yaml",
+    "longKeywords": [
+      "convert json to yaml for configs",
+      "json yaml parser for config files",
+      "keep values the same after conversion"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I convert json to yaml for configs?",
+        "text": "Paste your JSON into the input and check that it is valid first, because a missing comma or bracket will stop the conversion. The converter then emits keys as YAML mappings and arrays as dash-prefixed lists, using two-space indentation for each level. Strings are written plainly unless they need quotes, so the output reads more like a hand-written config. Review the result before using it, especially for keys that contain special characters or values that look like numbers or booleans."
+      },
+      {
+        "heading": "Why use a json yaml parser for config files?",
+        "text": "A YAML config is easier to scan because it drops braces and quotation marks, so nested settings line up by indentation. That makes it a common choice for files that people read and edit often. A converter lets you start from JSON that a program already produces and turn it into the format a tool expects. The structure stays the same, so you are changing the notation rather than redesigning the data. Keep the JSON as the source of truth when that is easier to generate automatically."
+      },
+      {
+        "heading": "What limits or mistakes should I check after converting?",
+        "text": "YAML has its own quirks, such as values that parse differently depending on how they are written. A string like yes or a value with a leading zero can turn into something other than you intended, so compare key values by eye. Also note that JSON has no comments, anchors, or tags, so the output will not include any of those, and you may want to add comments by hand. Test the output in the tool that will read it before you deploy."
+      }
+    ],
+    "faqs": [
+      [
+        "Will the converter keep my key order?",
+        "Key order is not part of the JSON standard, so do not rely on it. Check the result against your original file if entry sequence matters to the program that reads it."
+      ],
+      [
+        "How do I handle a value that looks like a number?",
+        "Check values such as numeric-looking strings after conversion. The converter quotes strings only when needed, but a consuming tool may still read a plain-looking value as a number or boolean. If that matters, check the output by eye and quote the value in the YAML before deploying."
+      ],
+      [
+        "Is the converter safe for production config files?",
+        "Treat it as a helper rather than a substitute for testing. Run the output through the program that will load it, and review the result against your original JSON before deploying. Keep the JSON source under version control so you can regenerate the YAML."
+      ]
+    ]
+  },
+  "yaml-to-json": {
+    "answer": "A yaml to json converter reads indentation-based YAML, including keys, nested maps, and lists, and produces equivalent formatted JSON. It targets the common configuration subset of YAML rather than every advanced feature. Use the output when a tool or API expects JSON but your config is written in YAML.",
+    "aiSummary": "Converts yaml config into formatted json by reading indentation-based keys, nested maps, and lists. Fix yaml errors before converting, since a parse failure stops the output. It targets the common configuration subset, so advanced features are the main limit.",
+    "shortKeyword": "yaml to json",
+    "longKeywords": [
+      "convert yaml config to json",
+      "parse yaml config into json",
+      "fix yaml errors before converting"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I convert yaml config to json?",
+        "text": "Paste the YAML config into the input and run the conversion. The parser reads keys, nested maps, and lists by their indentation, then writes out the same structure as formatted JSON. Check that indentation uses spaces rather than tabs, because YAML does not accept tabs for nesting. When the output appears, copy it directly into the API request or config file that needs JSON. Keep a copy of the original YAML so you can compare the two if anything looks off."
+      },
+      {
+        "heading": "When should I parse yaml config into json?",
+        "text": "Parsing into JSON is useful when the consumer reads only JSON, such as a web API, a JavaScript build step, or a service that does not handle YAML. JSON is stricter and more uniform, so a program can read it with fewer surprises. The conversion keeps the data structure intact, which means you can edit in the friendlier YAML and generate JSON only when a tool needs it. Treat the JSON as a build artifact rather than the file you maintain."
+      },
+      {
+        "heading": "What can go wrong when turning YAML into JSON?",
+        "text": "A parse failure usually comes from indentation, a missing colon, or a stray character, and the error can point to a line that is not the real cause. Look at the lines just above the reported position first. Another limit is that the tool targets the common configuration subset of YAML, so advanced features may not convert as you expect. Anchors, custom tags, and multi-document files are the kinds of features to check by hand after converting."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the converter send my config to a server?",
+        "No. The conversion runs locally in your browser, so your YAML stays on your device. Secrets still deserve care, so avoid pasting credentials into any tool, and remove them from examples before sharing the output."
+      ],
+      [
+        "Can I convert a file with multiple YAML documents?",
+        "Multi-document files are among the features to check carefully. Split the file into one document per conversion if the tool does not handle the separator, and confirm each JSON output matches what you expected from the original."
+      ],
+      [
+        "Why does my JSON look longer than the YAML?",
+        "JSON uses braces, brackets, and quoted keys, so it often takes more characters for the same data. The extra syntax is what makes JSON strict and easy for programs to read. Length alone is not a sign of a conversion error."
+      ]
+    ]
+  },
+  "xml-formatter": {
+    "answer": "An xml formatter adds line breaks between elements and indents each level by its nesting depth, producing a readable tree. The data and attribute values stay the same; only whitespace between tags changes. Reading the hierarchy becomes much easier, which helps when you inspect a config, feed, or export. Formatting does not check whether the document is valid against a schema.",
+    "aiSummary": "Use this to format xml online for inspection: it indents each element by its nesting depth so the tree shape is visible. It changes only whitespace between tags, leaving values intact. The main limit is that it does not validate the document against a schema.",
+    "shortKeyword": "xml formatter",
+    "longKeywords": [
+      "pretty print xml for reading",
+      "indent xml by nesting depth",
+      "format xml online for inspection"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I pretty print xml for reading?",
+        "text": "Paste the compact or messy XML into the input and run the formatter. The output places each element on its own line, which makes parent and child relationships visible at a glance. Attributes stay on the opening tag, and text content keeps its characters. Once formatted, you can scan for a missing closing tag, find a repeated section, or spot where an unexpected element sits. Keep your original file as the untouched source of truth."
+      },
+      {
+        "heading": "How does indent xml by nesting depth work?",
+        "text": "Each opening tag increases the depth by one, and its children are indented one step further than it is. Closing tags return to the matching level, so the indentation shows the tree shape. Siblings at the same depth line up in a column, which helps you compare repeated records. Because the indent follows nesting rather than content, a deeply nested element appears far to the right, a visual hint that the structure is complicated."
+      },
+      {
+        "heading": "What limits should I keep in mind with XML formatting?",
+        "text": "Formatting improves readability but does not validate the document, so a file can look neat and still break a strict parser. Namespaces, schema rules, and encoding declarations lie outside what indentation reveals. Whitespace inside text nodes can matter in some documents, so a formatted copy may not be safe to use where exact spacing counts. Use the formatted version for reading and review, and keep the compact original for anything sensitive to whitespace."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the formatter send my XML anywhere?",
+        "No. Formatting runs locally in your browser, so the XML you paste is not sent to a server by this tool. You can clear the input at any time and copy the formatted result into your own editor."
+      ],
+      [
+        "Why does my XML still look hard to read after formatting?",
+        "Formatting fixes indentation, but it cannot shorten long element names or simplify a complex structure. Look at the depth of the tree and the repeated sections, and consider a viewer that collapses branches if the file is very large."
+      ],
+      [
+        "Should I format XML before committing it to version control?",
+        "It depends on the project. Formatting can make diffs easier to read, but it also changes whitespace in the file. Agree on one convention with your team and apply it consistently, so that reformatting does not create noisy changes."
+      ]
+    ]
+  },
+  "mime-types-lookup": {
+    "answer": "A mime type lookup matches a file extension to its MIME type, the value servers send in the Content-Type header so browsers know how to handle a file. Search by extension or by keyword to find the standard type and a short description. MIME types tell software what kind of file it is. A wrong value can cause a file to display or download incorrectly.",
+    "aiSummary": "Maps a file extension to its content type. Search by extension or keyword to see the standard type and a short description. The main limit is that the extension is only a hint, so consider what happens with the wrong mime type before you trust a result.",
+    "shortKeyword": "mime type lookup",
+    "longKeywords": [
+      "find the correct content type for a file",
+      "file extension to mime type mapping",
+      "what happens with the wrong mime type"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I find the correct content type for a file?",
+        "text": "Type a file extension such as .png into the search box, or type a keyword such as image to see matching types. Each result shows the standard MIME type string and a short description. Copy that string into your server configuration, response header, or upload form where it is needed. If several types share a keyword, read the descriptions to pick the one that matches your file format. Double-check the spelling, since a near-match can return a different type."
+      },
+      {
+        "heading": "How is a file extension to mime type mapping used?",
+        "text": "The mapping is a lookup from the end of a file name to the content type that describes its format. Servers use it when they set the Content-Type header, and browsers use that header to decide whether to render, play, or download a response. Developers also check it when a file upload is rejected or when a download opens with the wrong program. Keep in mind that the extension is only a hint, so the mapping works well when filenames are reliable."
+      },
+      {
+        "heading": "Which mistakes or limits matter with content types?",
+        "text": "A common mistake is trusting the extension alone, because a renamed file can carry a type that does not match its contents. Another is copying a type that is not the standard one, such as an invented vendor string, when a well-known type exists. Also remember that application/octet-stream is a generic fallback for unknown binary data, so it tells the browser little about the file. Check the type against the format you actually serve before publishing."
+      }
+    ],
+    "faqs": [
+      [
+        "Is the lookup performed on my device?",
+        "Yes. The search runs locally in your browser, so the extension or keyword you type is not sent to a server by this tool. You can search as many times as you like."
+      ],
+      [
+        "Why might one extension have more than one type?",
+        "Some extensions have historical or vendor-specific types alongside the standard one, so a search can return several rows. Choose the type that matches the format and the software that will read the file. Read each short description before you copy a value."
+      ],
+      [
+        "Should I edit the server config by hand after looking up a type?",
+        "Usually you add the mapping to your server or framework config, following its own syntax. Test one file in the browser after the change, and check the response headers to confirm the type reached the client as intended."
+      ]
+    ]
+  },
+  "htaccess-redirect-generator": {
+    "answer": "An htaccess redirect generator writes ready-to-paste Apache rules for 301 redirects, forced HTTPS, a single www variant, and trailing-slash normalization. The rules use mod_rewrite, with RewriteEngine, RewriteCond, and RewriteRule lines for each scenario. A 301 status tells search engines the move is permanent. Review the output before uploading, because a loop in redirect rules can break a site.",
+    "aiSummary": "Generates Apache .htaccess rules that use mod_rewrite for 301 redirects, forced HTTPS, one www variant, and trailing-slash handling. The core method is RewriteEngine, RewriteCond, and RewriteRule lines per scenario, with the 301 status signalling a permanent move. Redirect old pages with mod_rewrite, then test each rule because conflicting rules can cause loops.",
+    "shortKeyword": "htaccess redirect generator",
+    "longKeywords": [
+      "create a 301 redirect in htaccess",
+      "force https and one www version",
+      "redirect old pages with mod_rewrite"
+    ],
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "How do I create a 301 redirect in htaccess?",
+        "text": "Open the generator, choose the scenario, and enter the old and new paths. The tool writes a RewriteRule line that matches the old path and sends a 301 response to the new one. Place the output in the .htaccess file at the site root, or in the directory where the rules should apply. Test a few old URLs after uploading to confirm each one lands on the right page with the correct status."
+      },
+      {
+        "heading": "When should I force https and one www version?",
+        "text": "Forcing HTTPS sends visitors from the plain http address to the secure version, so the site has one canonical address scheme. Choosing one www variant does the same for the hostname, sending either www or the bare domain to the other. Pick the version you already use in your sitemap and links, then redirect the rest to it. Using one variant avoids the same page appearing under two addresses, which can split signals between them."
+      },
+      {
+        "heading": "What mistakes can cause redirect loops or errors?",
+        "text": "The most serious mistake is a loop, where two rules keep sending a request back and forth and the page never loads. This can happen when HTTPS or www rules conflict with an existing rule or a host-level setting. Test each rule on its own before combining them. Also avoid redirecting a page to a URL that itself redirects, since each extra hop slows visitors and adds delay. Check the final status code with a browser tool or command-line request."
+      }
+    ],
+    "faqs": [
+      [
+        "Can these rules break a site if pasted in the wrong place?",
+        "They can. A rule placed in the wrong directory may apply to pages you did not intend, or a conflicting rule above it can cause a loop. Upload to a staging copy first and check several URLs before making the change live."
+      ],
+      [
+        "Do I need mod_rewrite enabled on my server?",
+        "The generated rules depend on mod_rewrite and RewriteEngine, so the server must support them. Hosts differ in how they configure it, so confirm with yours before relying on it. Without it, the rules will not work."
+      ],
+      [
+        "Should I redirect every old URL one by one?",
+        "Not always. Map only the pages that have moved, and let unchanged pages stay as they are. For a large set of moved pages, plan the mapping in a spreadsheet first so that every old path has one clear target."
       ]
     ]
   },

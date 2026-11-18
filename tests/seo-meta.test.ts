@@ -89,7 +89,7 @@ test('generated FAQs add unique question-form answers without breaking existing 
 test('deep content entries are complete, honest and their worked examples are computed by the tool', async () => {
   const { DEEP } = await import('../lib/seo/deep');
   const { workedExample } = await import('../lib/seo/content');
-  assert.ok(Object.keys(DEEP).length >= 100);
+  assert.ok(Object.keys(DEEP).length >= 200);
   const banned = /\b(best|most accurate|adobe|number one|top-rated)\b/i;
   for (const [slug, d] of Object.entries(DEEP)) {
     const tool = bySlug.get(slug);
@@ -106,4 +106,28 @@ test('deep content entries are complete, honest and their worked examples are co
       assert.ok(example && !/NaN|undefined/.test(example), `${slug}: example does not compute`);
     }
   }
+});
+
+test('declared target keywords are placed where search engines and answer engines read them', async () => {
+  const { DEEP } = await import('../lib/seo/deep');
+  const { keywordReport } = await import('../lib/seo/keywordCheck');
+  let declared = 0;
+  for (const [slug, d] of Object.entries(DEEP)) {
+    if (!d.shortKeyword) continue;
+    declared++;
+    const tool = bySlug.get(slug)!;
+    const r = keywordReport(tool);
+    assert.equal(r.source, 'declared', slug);
+    assert.ok(r.title, `${slug}: short keyword "${r.short}" missing from title`);
+    assert.ok(r.description, `${slug}: short keyword missing from description`);
+    assert.ok(r.answer, `${slug}: short keyword missing from the first 70 words of the answer`);
+    assert.equal(d.longKeywords?.length, 3, slug);
+    for (const l of r.long) assert.ok(l.where.some(w => w === 'heading' || w === 'faq' || w === 'answer' || w === 'summary'), `${slug}: long-tail "${l.phrase}" not in a heading, FAQ question, answer or summary`);
+    assert.ok(r.long.filter(l => l.where.includes('heading') || l.where.includes('faq')).length >= 2, `${slug}: fewer than two long-tail phrases used as heading/FAQ question`);
+    const words = (d.aiSummary || '').trim().split(/\s+/).length;
+    assert.ok(words >= 30 && words <= 62, `${slug}: aiSummary ${words} words`);
+    assert.notEqual((d.aiSummary || '').trim(), d.answer.trim(), slug);
+    assert.ok(!/search volume|monthly searches|ranks? (first|#)|most popular/i.test(`${d.answer} ${d.aiSummary}`), `${slug}: ranking/volume claim`);
+  }
+  assert.ok(declared >= 100, `only ${declared} tools declare keywords`);
 });

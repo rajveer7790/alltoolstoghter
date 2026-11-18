@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CATEGORIES, byCategory, getCategory, SITE } from '@/lib/registry';
+import { CATEGORY_SEO } from '@/lib/seo/categories';
 
 import ToolCard from '@/components/ToolCard';
 import CategoryCrossLinks from '@/components/CategoryCrossLinks';
@@ -23,20 +24,22 @@ export async function generateMetadata({ params: pendingParams }: { params: Prom
   const tools = byCategory(cat.key).filter(isIndexableTool);
   const n = tools.length;
   const examples = tools.slice(0, 3).map(tool => tool.name).join(', ');
-  const desc = `Explore ${cat.name} on All Tools Together. Find ${examples}, with usage instructions and FAQs.`;
+  const curated = CATEGORY_SEO[cat.key];
+  const desc = curated?.[1] || `Explore ${cat.name} on All Tools Together. Find ${examples}, with usage instructions and FAQs.`;
+  const pageTitle = curated?.[0] || `${cat.name} — ${n} Free Online Tools`;
   return {
-    title: `${cat.name} — ${n} Free Online Tools`,
+    title: { absolute: pageTitle },
     description: desc,
     alternates: { canonical: `/${cat.key}` },
     openGraph: {
     images: [{ url: `/og/${cat.key}.png`, width: 1200, height: 630, alt: 'All Tools Together' }],
-      title: `${cat.name} | ${SITE.name}`,
+      title: `${pageTitle} | ${SITE.name}`,
       description: desc,
       url: `/${cat.key}`,
       siteName: SITE.name,
       type: 'website',
     },
-    twitter: { images: [`/og/${cat.key}.png`], card: 'summary_large_image', title: `${cat.name} | ${SITE.name}`, description: desc },
+    twitter: { images: [`/og/${cat.key}.png`], card: 'summary_large_image', title: `${pageTitle} | ${SITE.name}`, description: desc },
   };
 }
 

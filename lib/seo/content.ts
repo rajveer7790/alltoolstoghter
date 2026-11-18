@@ -24,7 +24,7 @@ function run(tool: ToolDef, values: Record<string, string>): CalcResult[] | null
 }
 
 /** Calculators that read the clock or a date field would make builds non-deterministic; skip them. */
-const deterministic = (tool: ToolDef) => (tool.fields || []).every(f => f.type === 'number' || f.type === 'select');
+const deterministic = (tool: ToolDef) => (tool.fields || []).every(f => f.type === 'number' || f.type === 'select' || f.type === 'text');
 
 /**
  * Scenario tables produced by the tool's own compute function. Each table varies one input and
@@ -100,4 +100,38 @@ export function generatedFaqs(tool: ToolDef): [string, string][] {
     faqs.push([`Are my files uploaded when I use ${name}?`, 'Yes. This tool needs server processing, so what you submit is sent to the document or writing service only when you press the action button. Read the privacy policy for retention details, and do not submit confidential material you are not comfortable sending.']);
   }
   return faqs;
+}
+
+/**
+ * A worked example whose numbers are produced by the tool's own formula. Writers supply only the input values;
+ * results are never written by hand. Returns null if any input is unknown, out of range, or the result is invalid.
+ */
+export function workedExample(tool: ToolDef, inputs: Record<string, string> | undefined): string | null {
+  if (!inputs || tool.widget !== 'calc' || !deterministic(tool)) return null;
+  const fields = tool.fields || [];
+  const entries = Object.entries(inputs);
+  if (!entries.length) return null;
+  const defaults = Object.fromEntries(fields.map(f => [f.key, String(f.def ?? '')]));
+  const described: string[] = [];
+  for (const [key, value] of entries) {
+    const field = fields.find(f => f.key === key);
+    if (!field) return null;
+    if (field.type === 'number') {
+      const n = Number(value);
+      if (!Number.isFinite(n) || (field.min !== undefined && n < field.min) || (field.max !== undefined && n > field.max)) return null;
+      described.push(`${field.label.toLowerCase()} ${show(field, n)}`);
+    } else if (field.type === 'select') {
+      const option = field.options?.find(o => o.value === value);
+      if (!option) return null;
+      described.push(`${field.label.toLowerCase()} “${option.label}”`);
+    } else if (field.type === 'text') {
+      if (!value || value.length > 60) return null;
+      described.push(`${field.label.toLowerCase()} ${value}`);
+    } else return null;
+    defaults[key] = value;
+  }
+  const out = run(tool, defaults);
+  if (!out) return null;
+  const shown = out.slice(0, 4).map(r => `${r.label}: ${r.value}`).join('; ');
+  return `With ${described.join(', ')} (all other inputs at their defaults), the ${tool.name} returns ${shown}.`;
 }

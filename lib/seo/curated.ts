@@ -2,7 +2,8 @@
 // docs/SEO_AEO_GEO_PLAN_2026-11-18.md. Titles are absolute (no brand suffix), 30–60 chars,
 // primary keyword first. "In your browser / no upload" appears only for tools that process locally.
 // tests/seo-meta.test.ts enforces length, uniqueness and keyword presence.
-export const CURATED: Record<string, [title: string, description: string]> = {
+import { CURATED_BATCH_2 } from './curatedBatch2';
+const BASE: Record<string, [title: string, description: string]> = {
   // Finance
   'mortgage-calculator': ['Mortgage Calculator with Taxes & Insurance', 'Estimate your monthly mortgage payment with optional property tax and insurance. See total interest, a PMI warning and the formula. Free, in your browser.'],
   'loan-calculator': ['Loan Calculator — Monthly Payment & Total Interest', 'Enter loan amount, rate and term to see the monthly payment, total interest and total cost. Free loan calculator with the amortization formula explained.'],
@@ -93,3 +94,5 @@ export const CURATED: Record<string, [title: string, description: string]> = {
   'webp-to-png': ['WebP to PNG Converter — In Your Browser, No Upload', 'Convert WebP images to PNG in your browser for wider app compatibility. Nothing is uploaded and no account is needed. Free to use.'],
   'heic-to-jpg': ['HEIC to JPG Converter — iPhone Photos, No Upload', 'Convert HEIC photos from an iPhone to JPG in your browser. Nothing is uploaded. Conversion is lossy and metadata is not kept. Free to use.'],
 };
+
+export const CURATED: Record<string, [title: string, description: string]> = { ...BASE, ...CURATED_BATCH_2 };

@@ -87,3 +87,22 @@ The 21 existing editorial pages keep their richer content.
 Files: `lib/seo/{curated,meta,content,categories}.ts`, `app/[category]/[tool]/page.tsx`, `app/[category]/page.tsx`, `scripts/generate-discovery.ts`, `tests/seo-meta.test.ts`.
 
 Next steps needing real data: connect Search Console, export queries after 4–6 weeks, then re-curate titles for tools whose impressions are high and CTR is low; add more curated entries for the 237 pattern-based tools by impressions.
+
+## 5. Batch 2 — next 50 tools and auto-linking (applied)
+
+### Content team and quality gate
+Five writer agents (a small model) each drafted 10 tools to a strict JSON schema: title, description, answer-first definition, 3 question-form sections, 3 FAQs, and example *inputs only*. A script then rejected anything that failed: title 30–60 chars, description 120–158, section/FAQ word ranges, banned superlatives, privacy claims on non-local tools, duplicate/existing FAQs, unknown or out-of-range example inputs, and **any number not found in the tool's own text** (24 of 50 were flagged on the first pass). Every flagged number and every claim about tool behaviour was then checked against the tool's code (e.g. 1.4 t/yd³ gravel, 13.5 mulch bags/yd³, 10-billion-guesses/s password estimate, CIDR 0–32, overnight shifts in the hours tool). Worked examples are computed by each tool's own formula, so a writer cannot invent a result.
+
+Tools covered: due date, ovulation, fraction, final grade, scientific calculator, hours, currency converter, CSS gradient, box shadow, color palette, IP subnet, HTML→Markdown, Markdown previewer, password strength, UTM builder, image cropper/converter, favicon generator, square footage, capital gains, paint, flooring, gravel, mulch, grams↔cups, recipe scaling, cooking units, calories burned, Ohm's law, Newton's second law, density, pH, z-score, confidence interval, sample size, CAC, CLV, ROAS, dollar-cost averaging, crypto P/L, stock return, self-employment tax, fuel cost, battery life, random number, coin flip, random name picker, typing test, tip, ROI. (The four server-backed writing/shortener tools already have dedicated guides and were excluded.)
+
+### Indexed ↔ not-indexed auto-linking
+`lib/seo/autolink.ts`, rendered by `components/AutoLinks.tsx`:
+- Indexable PDF/image pages link to up to five topical server tools (`noindex, follow`) under a heading that says files are sent to a server; not-indexed pages link back to up to four **browser-only** alternatives.
+- A curated user-journey map (`PENDING_ANCHORS`) is the primary source; a keyword scorer only fills remaining slots within the same category, so a JSON tool never links to a PDF tool.
+- Deterministic load balancing guarantees **every one of the 33 not-indexed tools has at least two incoming links** from indexable pages, capped per page (test-enforced).
+- When `NEXT_PUBLIC_DOCUMENTS_READY=true` these tools become indexable and the blocks disappear automatically; the normal related-tools block takes over.
+- Alias URLs produce no links (a build crash on alias pages was found and fixed, with a regression test).
+
+Verified: 394 tests, typecheck, production build; built HTML shows FAQ JSON-LD equal to visible FAQs on sampled pages.
+
+Totals now: 125 hand-reviewed titles/descriptions, 15 intent-specific, 13 editorial, 187 pattern-based.

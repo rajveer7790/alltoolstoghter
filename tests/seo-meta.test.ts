@@ -85,3 +85,25 @@ test('generated FAQs add unique question-form answers without breaking existing 
   const questions = generatedFaqs(bySlug.get('sip-calculator')!).map(f => f[0]).join('|');
   assert.match(questions, /How is the SIP Calculator \(India\) calculated\?/);
 });
+
+test('deep content entries are complete, honest and their worked examples are computed by the tool', async () => {
+  const { DEEP } = await import('../lib/seo/deep');
+  const { workedExample } = await import('../lib/seo/content');
+  assert.ok(Object.keys(DEEP).length >= 50);
+  const banned = /\b(best|most accurate|adobe|number one|top-rated)\b/i;
+  for (const [slug, d] of Object.entries(DEEP)) {
+    const tool = bySlug.get(slug);
+    assert.ok(tool, slug);
+    assert.equal(d.sections.length, 3, slug);
+    assert.equal(d.faqs.length, 3, slug);
+    const text = [d.answer, ...d.sections.flatMap(s => [s.heading, s.text]), ...d.faqs.flat()].join(' ');
+    assert.ok(!banned.test(text), `${slug}: banned phrase`);
+    if (processing(tool) !== 'local') assert.ok(!/no upload|not uploaded|in your browser|locally/i.test(text), `${slug}: privacy claim on a server tool`);
+    const existing = new Set(tool.content.faqs.map(f => f[0].toLowerCase()));
+    for (const [q] of d.faqs) assert.ok(!existing.has(q.toLowerCase()), `${slug}: duplicate FAQ ${q}`);
+    if (d.exampleInputs && Object.keys(d.exampleInputs).length) {
+      const example = workedExample(tool, d.exampleInputs);
+      assert.ok(example && !/NaN|undefined/.test(example), `${slug}: example does not compute`);
+    }
+  }
+});

@@ -120,7 +120,7 @@ export default function DocumentWorkbench({ tool, ready, unavailableReason }: { 
         <FileDrop accept={slot.accept === '*' ? '' : slot.accept} multiple={slot.multiple} label={slot.label} onFiles={selected => { if (!busy) choose(slot.key, selected, slot.accept, slot.multiple); }} />
         {!!files[slot.key]?.length && <ul className="ds-files">{files[slot.key].map((file, i) => <li key={file.name + i}><span>{file.name}<small>{formatBytes(file.size)}</small></span><button type="button" aria-label={'Remove ' + file.name} disabled={busy} onClick={() => { setFiles(previous => ({ ...previous, [slot.key]: previous[slot.key].filter((_, index) => index !== i) })); setResult(null); }}>×</button></li>)}</ul>}
       </div>)}
-      <div className="ds-fields">{tool.fields.map(field => <label key={field.key} className={field.kind === 'textarea' ? 'ds-field ds-wide' : 'ds-field'}>
+      <div className="ds-fields">{tool.fields.filter(field => !field.visibleWhen || Object.entries(field.visibleWhen).every(([key, values]) => values.includes(options[key] as string | boolean))).map(field => <label key={field.key} className={field.kind === 'textarea' ? 'ds-field ds-wide' : 'ds-field'}>
         <span>{field.label}{field.required ? ' *' : ''}</span>
         {field.kind === 'select' ? <select disabled={busy} value={String(options[field.key])} onChange={e => setOptions(previous => ({ ...previous, [field.key]: e.target.value }))}>{field.options?.map(value => <option key={value} value={value}>{value}</option>)}</select>
           : field.kind === 'textarea' ? <textarea disabled={busy} rows={5} value={String(options[field.key])} onChange={e => setOptions(previous => ({ ...previous, [field.key]: e.target.value }))} />

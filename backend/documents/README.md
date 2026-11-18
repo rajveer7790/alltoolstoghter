@@ -100,3 +100,11 @@ npm run audit:export
 Server-only SEO pages remain `noindex` and outside the sitemap until `NEXT_PUBLIC_DOCUMENTS_READY=true` is explicitly set **after** the required services are working. They remain reachable from Document Studio with honest availability messages. Local operations and the browser editor are indexable immediately. Health checks never turn an unavailable tool into a fake successful conversion.
 
 Before enabling server-page indexing, run `python backend/documents/check_ready.py https://api.alltoolstogether.com/api/documents`. It must report all required pages ready. Only then set `NEXT_PUBLIC_DOCUMENTS_READY=true` for the frontend and rebuild. Optional model/workspace tools are not included in that index-readiness requirement.
+
+## November 2026 fidelity upgrade
+
+PDF-to-Word defaults to DocVortex 0.6.24 native structure recovery. The UI offers three explicit modes: editable document, basic text/tables, or page images with no editable text. Basic mode no longer duplicates table cells in prose, and page-image mode anchors each image to the original page dimensions. Optional local OCR handles scans; it is never a hosted API. Complex pagination, fonts, equations and OCR still require review. This is not a claim of lossless editable conversion.
+
+PDF-to-HTML now returns a ZIP containing semantic HTML and all relative image assets. Unzip before opening it. Word/Office-to-PDF uses the custom Gotenberg 9.6.0 image with Noto/CJK and metric-compatible open fonts, lossless image export, original image resolution and flattened form fields by default. Interactive fields can be retained explicitly. Custom licensed fonts must be supplied by the operator when required; arbitrary font uploads or outbound linked-image downloads are not enabled.
+
+Rebuild **both** `documents` and `gotenberg` when upgrading; a frontend redeploy alone cannot apply these backend changes. `Dockerfile.gotenberg` builds the font image on AMD64 and ARM64. MinerU's adapter now uses the 4.2.3 local `mineru-kit` ZIP contract; the old `-p/-o/-b` CLI is not used. Optional PaddleOCR 3.7.0 and Marker 2.2.0 are pinned. Their heavyweight model stacks still need deployment-specific inference verification; the native DocVortex path and local OCR/Office stack are tested separately.

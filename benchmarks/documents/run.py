@@ -207,8 +207,9 @@ def one_case(entry, args):
             result['pipeline'] = 'OCRmyPDF English -> native-text-tables -> LibreOffice PDF'
             result['reference_kind'] = 'OCR estimate; no independent OCR accuracy ground truth'
         stage = 'pdf_to_docx'; work = directory / 'native'; work.mkdir(exist_ok=True)
-        if args.engine == 'native':
-            docx = engines.process(CATALOG['pdf-to-word'], [native_input], {'layout': 'page-breaks'}, work)
+        if args.engine in {'native', 'docvortex'}:
+            method = 'Editable document' if args.engine == 'docvortex' else 'Basic text and tables'
+            docx = engines.process(CATALOG['pdf-to-word'], [native_input], {'layout': 'page-breaks', 'method': method, 'ocr': False}, work)
         else:
             from backend.documents.runtime import run
             docx = work / 'document.docx'
@@ -277,7 +278,7 @@ def main():
     parser.add_argument('--gotenberg', default=os.getenv('GOTENBERG_URL', 'http://127.0.0.1:8879'))
     parser.add_argument('--libreoffice', action='store_true', help='Local diagnostic renderer; CI uses pinned Gotenberg')
     parser.add_argument('--ocr', action='store_true')
-    parser.add_argument('--engine', choices=['native', 'geometric'], default='native')
+    parser.add_argument('--engine', choices=['native', 'geometric', 'docvortex'], default='native')
     parser.add_argument('--engine-python', type=Path, default=Path(sys.executable))
     parser.add_argument('--shard', type=int, default=0)
     parser.add_argument('--shards', type=int, default=1)

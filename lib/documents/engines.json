@@ -124,5 +124,12 @@
     "license": "MIT",
     "integration": "Native Python backend library",
     "scope": "Text-layer tables used by editable Word, Excel and CSV extraction."
+  },
+  {
+    "name": "DocVortex",
+    "repository": "https://github.com/myhloli/DocVortex",
+    "license": "MIT project; MIT/Apache-2.0/BSD-3-Clause components",
+    "integration": "Included native backend engine, 0.6.24",
+    "scope": "Structured PDF-to-DOCX with native text, headings, tables and images; semantic HTML packages. No model download or hosted API. OCR is a separate local OCRmyPDF step."
   }
 ]

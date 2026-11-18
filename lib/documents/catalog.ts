@@ -4,6 +4,7 @@ import bentoInventory from './bento-tools.json';
 export type DocumentField = {
   key: string; label: string; kind: string; default: string | boolean | number;
   required?: boolean; min?: number; max?: number; options?: string[]; placeholder?: string;
+  visibleWhen?: Record<string, (string | boolean)[]>;
 };
 export type DocumentTool = {
   id: string; name: string; description: string; group: string; mode: 'local' | 'server' | 'workspace';

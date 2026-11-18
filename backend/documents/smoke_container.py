@@ -34,6 +34,14 @@ with httpx.Client(timeout=330, trust_env=False) as client:
     source = io.BytesIO(); document = Document(); document.add_paragraph('Verified Office conversion'); document.save(source)
     pdf = convert('word-to-pdf', source.getvalue(), 'sample.docx')
     assert 'Verified Office conversion' in PdfReader(io.BytesIO(pdf)).pages[0].extract_text()
+    # Page-image Word mode must not spill a full-page picture onto extra pages.
+    visual_docx = convert('pdf-to-word', pdf, 'sample.pdf', {'method': 'Page images (text not editable)', 'ocr': False})
+    visual_pdf = convert('word-to-pdf', visual_docx, 'visual.docx')
+    assert len(PdfReader(io.BytesIO(visual_pdf)).pages) == len(PdfReader(io.BytesIO(pdf)).pages)
+    # Structured DOCX must contain actual editable text after a second round trip.
+    editable_docx = convert('pdf-to-word', pdf, 'sample.pdf', {'ocr': False})
+    editable_pdf = convert('word-to-pdf', editable_docx, 'editable.docx')
+    assert 'Verified Office conversion' in PdfReader(io.BytesIO(editable_pdf)).pages[0].extract_text()
     linear = convert('linearize-pdf', pdf, 'sample.pdf')
     assert b'/Linearized' in linear[:1024]
     optimized = convert('optimize-pdf', pdf, 'sample.pdf')
@@ -49,6 +57,10 @@ with httpx.Client(timeout=330, trust_env=False) as client:
     scan = io.BytesIO(); canvas = Canvas(scan, pagesize=(600, 200)); canvas.drawImage(ImageReader(image), 0, 0, 600, 200); canvas.showPage(); canvas.save()
     recognized = convert('ocr-pdf', scan.getvalue(), 'scan.pdf', {'language': 'eng', 'deskew': False})
     assert 'HELLO' in PdfReader(io.BytesIO(recognized)).pages[0].extract_text().upper()
+    ocr_word = convert('pdf-to-word', recognized, 'recognized.pdf', {'ocr': False})
+    import zipfile
+    with zipfile.ZipFile(io.BytesIO(ocr_word)) as archive:
+        assert b'HELLO' in archive.read('word/document.xml')
     archived = convert('pdf-to-pdfa', pdf, 'sample.pdf', {'profile': 'PDF/A-2b'})
     assert len(PdfReader(io.BytesIO(archived)).pages) == 1
-    print(json.dumps({'liveEngineChecks': ['Gotenberg Word to PDF', 'qpdf linearization', 'pdfcpu optimization', 'pdfcpu validation', 'Ghostscript compression', 'OCRmyPDF searchable text', 'Gotenberg archival remediation'], 'status': 'passed'}))
+    print(json.dumps({'liveEngineChecks': ['Gotenberg Word to PDF', 'qpdf linearization', 'pdfcpu optimization', 'pdfcpu validation', 'Ghostscript compression', 'OCRmyPDF searchable text', 'Gotenberg archival remediation', 'structured editable Word round trip', 'page-image Word pagination', 'OCR to editable DOCX'], 'status': 'passed'}))

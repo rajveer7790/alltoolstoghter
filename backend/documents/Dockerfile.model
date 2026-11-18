@@ -8,9 +8,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN python -m venv /opt/modelenv
 RUN case "$ENGINE" in \
     docling) /opt/modelenv/bin/pip install --no-cache-dir docling ;; \
-    paddle) /opt/modelenv/bin/pip install --no-cache-dir paddlepaddle 'paddleocr[doc-parser]' ;; \
-    mineru) /opt/modelenv/bin/pip install --no-cache-dir 'mineru[torch]' ;; \
-    marker) /opt/modelenv/bin/pip install --no-cache-dir marker-pdf ;; \
+    paddle) /opt/modelenv/bin/pip install --no-cache-dir paddlepaddle 'paddleocr[doc-parser]==3.7.0' ;; \
+    mineru) /opt/modelenv/bin/pip install --no-cache-dir 'mineru[torch]==4.2.3' ;; \
+    marker) /opt/modelenv/bin/pip install --no-cache-dir marker-pdf==2.2.0 ;; \
     *) echo 'Unsupported engine' && exit 1 ;; esac
 RUN useradd --uid 10001 --create-home worker && mkdir /models && chown worker /models
 COPY backend/documents /app/backend/documents

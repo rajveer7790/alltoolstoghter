@@ -14,7 +14,7 @@ from .runtime import ToolError, run, one_or_bundle
 
 MAX_OUTPUT = 64 * 1024 * 1024
 BINS = {'ocrmypdf': 'ocrmypdf', 'tesseract': 'tesseract', 'qpdf': 'qpdf', 'ghostscript': 'gs',
-        'pdfcpu': 'pdfcpu', 'poppler': 'pdftocairo', 'mineru': 'mineru', 'marker': 'marker_single',
+        'pdfcpu': 'pdfcpu', 'poppler': 'pdftocairo', 'mineru': 'mineru-kit', 'marker': 'marker_single',
         'filee': 'filee', 'genoffice': 'genoffice'}
 SERVICES = {'gotenberg': 'GOTENBERG_URL', 'docling': 'DOCLING_URL', 'paddle': 'PADDLE_URL',
             'mineru': 'MINERU_URL', 'marker': 'MARKER_URL', 'filee': 'FILEE_URL', 'genoffice': 'GENOFFICE_URL'}
@@ -90,7 +90,7 @@ def process(tool, paths, options, directory):
         if not url:
             raise ToolError('Office conversion has not been deployed yet.', 503)
         route = '/forms/libreoffice/convert'
-        fields = {'nativeBookmarks': 'true'}
+        fields = {'nativeBookmarks': 'true', 'nativeTaggedPdf': 'true', 'nativeLosslessImageCompression': 'true', 'nativeReduceImageResolution': 'false', 'exportFormFields': 'true' if options.get('formFields', False) else 'false'}
         if operation == 'html-to-pdf':
             route = '/forms/chromium/convert/html'
             # Gotenberg requires an entry HTML named index.html.
@@ -133,7 +133,7 @@ def process(tool, paths, options, directory):
         script = Path(__file__).with_name('model_worker.py')
         run([os.getenv('MODEL_PYTHON', sys.executable), str(script), str(request)], directory, 300)
     elif engine == 'mineru':
-        run(['mineru', '-p', str(source), '-o', str(destination), '-b', 'pipeline'], directory, 300)
+        run(['mineru-kit', 'parse', str(source), '--tier', 'flash', '--format', 'zip', '-o', str(destination / 'mineru-bundle.zip')], directory, 300)
     elif engine == 'marker':
         kind = 'markdown' if operation.endswith('markdown') else 'json' if operation.endswith('json') else 'html'
         run(['marker_single', str(source), '--output_dir', str(destination), '--output_format', kind, '--mode', 'fast'], directory, 300)

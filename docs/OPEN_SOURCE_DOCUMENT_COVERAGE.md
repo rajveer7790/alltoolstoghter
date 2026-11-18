@@ -34,3 +34,7 @@ The supplied report was checked against current upstream README/license/API docu
 External API-key/account AI features, enterprise modules and paid compression/model rights are excluded. Optional workers/workspaces need their own server deployment or installed CLI; the static Netlify deployment cannot execute them. Server-only pages are noindex until deployment readiness is explicitly enabled. A complete inventory is not a claim that an unavailable service is active.
 
 Quality depends on the engine and source: text/table reconstruction is editable but can reflow pages; OCR can make mistakes; PDF-to-PowerPoint uses page images; cropping does not remove hidden page content; metadata cleanup is not redaction; structural validation is not archival/accessibility/signature certification. No 100-document fidelity benchmark or Adobe-equivalent claim has been made.
+
+## Fidelity upgrade, 18 November 2026
+
+DocVortex 0.6.24 is included for structured DOCX and semantic HTML/assets; the simple text/table path remains an explicit choice, with duplicate table text removed. Word output can alternatively contain explicitly labeled page images. Office PDF exports preserve image resolution and use a larger open-font set through a custom Gotenberg image. The local MinerU CLI contract is updated for 4.2.3; optional PaddleOCR/Marker versions are pinned, without implying their model inference was benchmarked. Existing earlier benchmark results remain immutable and identify their tested source commit.

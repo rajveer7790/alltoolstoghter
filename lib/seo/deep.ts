@@ -3,6 +3,12 @@
 // Generated and validated by the content pipeline described in docs/SEO_AEO_GEO_PLAN_2026-11-18.md.
 export interface DeepContent {
   answer: string;
+  /** 35–55 word self-contained summary, written for answer engines and AI overviews. */
+  aiSummary?: string;
+  /** Head term (1–3 words). Must appear in the title, description and answer. */
+  shortKeyword?: string;
+  /** Natural long-tail phrases. Each must appear verbatim in a heading, FAQ question, the answer or the summary. */
+  longKeywords?: string[];
   exampleInputs?: Record<string, string>;
   sections: { heading: string; text: string }[];
   faqs: [string, string][];

@@ -1,0 +1,29 @@
+{
+  "run_url": "https://github.com/rajveer7790/alltoolstoghter/actions/runs/44269141294",
+  "tested_source_commit": "0c78eb7cb35df3837f0f6997135dd24e9caf9f79",
+  "arm64": {
+    "job_url": "https://github.com/rajveer7790/alltoolstoghter/actions/runs/44269141294/job/134681046763",
+    "runner": "ubuntu-24.04-arm",
+    "status": "passed",
+    "python_regression_tests": 13,
+    "liveEngineChecks": [
+      "Gotenberg Word to PDF",
+      "qpdf linearization",
+      "pdfcpu optimization",
+      "pdfcpu validation",
+      "Ghostscript compression",
+      "OCRmyPDF searchable text",
+      "Gotenberg archival remediation"
+    ],
+    "scope": "Core documents/Gotenberg stack with compose.oracle.yml; not an Oracle tenancy or optional model test."
+  },
+  "renderer": {
+    "image": "gotenberg/gotenberg:9.6.0",
+    "digest": "sha256:bf8a2296b58bad169f052ef59a7f4c22f55b7fdbafd708c2c5da06ef5b95c926",
+    "version": "LibreOffice 26.8.2.2 680(Build:2)",
+    "provenance_lines": [
+      "2026-11-18T08:41:58.5497482Z Digest: sha256:bf8a2296b58bad169f052ef59a7f4c22f55b7fdbafd708c2c5da06ef5b95c926",
+      "2026-11-18T08:42:05.5765337Z {\"status\":\"up\",\"details\":{\"chromium\":{\"status\":\"up\",\"timestamp\":\"2026-11-18T08:42:05.398649396Z\"},\"libreoffice\":{\"status\":\"up\",\"timestamp\":\"2026-11-18T08:42:05.398652521Z\"}}}LibreOffice 26.8.2.2 680(Build:2)"
+    ]
+  }
+}

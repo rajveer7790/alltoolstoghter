@@ -12,3 +12,4 @@ backend/data
 *.pyc
 mobile-audit/
 document-audit/
+.benchmark-venv/

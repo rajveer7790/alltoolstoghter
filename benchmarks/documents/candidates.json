@@ -1,0 +1,1087 @@
+[
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw2.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw2.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw3.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw3.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw4.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw4.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw4p.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw4p.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw4r.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw4r.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw8ben.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw8ben.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw8bene.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw8bene.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "fw9.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw9.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f1040.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f1040sr.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sr.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f1040sc.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sc.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f1040sd.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sd.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f1040se.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040se.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f941.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f941.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "US Internal Revenue Service",
+    "revision": "retrieved-2026-11-18",
+    "path": "f1099div.pdf",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf",
+    "category": "government_tax_forms",
+    "source_kind": "public_government_form",
+    "rights": "US federal government form. Retrieved bytes are locked by SHA-256; live URLs may change."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/ocr/sources/nemotron_multipage.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/ocr/sources/nemotron_multipage.pdf",
+    "bytes": 372905,
+    "category": "scanned_ocr",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/ocr/sources/ocr_test.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/ocr/sources/ocr_test.pdf",
+    "bytes": 93549,
+    "category": "scanned_ocr",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/ocr/sources/sample_with_rotation_mismatch.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/ocr/sources/sample_with_rotation_mismatch.pdf",
+    "bytes": 429779,
+    "category": "scanned_ocr",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/odf/sources/odf_presentation_01.odp.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/odf/sources/odf_presentation_01.odp.pdf",
+    "bytes": 45958,
+    "category": "graphics_slides",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/odf/sources/odf_presentation_02.odp.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/odf/sources/odf_presentation_02.odp.pdf",
+    "bytes": 8921030,
+    "category": "graphics_slides",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/odf/sources/odf_table_with_title_01.ods.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/odf/sources/odf_table_with_title_01.ods.pdf",
+    "bytes": 17431,
+    "category": "tables",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/odf/sources/text_document_01.odt.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/odf/sources/text_document_01.odt.pdf",
+    "bytes": 74629,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/odf/sources/text_document_02.odt.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/odf/sources/text_document_02.odt.pdf",
+    "bytes": 3679578,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/odf/sources/text_document_03.odt.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/odf/sources/text_document_03.odt.pdf",
+    "bytes": 44695,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/2203.01017v2.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/2203.01017v2.pdf",
+    "bytes": 7215177,
+    "category": "scientific_formula",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/2206.01062.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/2206.01062.pdf",
+    "bytes": 4310680,
+    "category": "scientific_formula",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/2305.03393v1.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/2305.03393v1.pdf",
+    "bytes": 4318934,
+    "category": "scientific_formula",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/acroform_sample.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/acroform_sample.pdf",
+    "bytes": 2055,
+    "category": "forms",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/amt_handbook_sample.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/amt_handbook_sample.pdf",
+    "bytes": 673416,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/code_and_formula.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/code_and_formula.pdf",
+    "bytes": 89031,
+    "category": "scientific_formula",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/multi_page.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/multi_page.pdf",
+    "bytes": 128322,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/newspaper-00.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/newspaper-00.pdf",
+    "bytes": 620470,
+    "category": "multicolumn",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/normal_4pages.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/normal_4pages.pdf",
+    "bytes": 359233,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/picture_classification.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/picture_classification.pdf",
+    "bytes": 212855,
+    "category": "graphics_slides",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/redp5110_sampled.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/redp5110_sampled.pdf",
+    "bytes": 1277938,
+    "category": "mixed_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/right_to_left_01.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/right_to_left_01.pdf",
+    "bytes": 102852,
+    "category": "multilingual_rtl",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/right_to_left_02.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/right_to_left_02.pdf",
+    "bytes": 92036,
+    "category": "multilingual_rtl",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/right_to_left_03.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/right_to_left_03.pdf",
+    "bytes": 278131,
+    "category": "multilingual_rtl",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/table_misidentified_as_form.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/table_misidentified_as_form.pdf",
+    "bytes": 1254021,
+    "category": "tables",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "docling-project/docling",
+    "revision": "bba07950f7ab967f6c5dd4949f2c6df76bc680bd",
+    "path": "tests/data/pdf/sources/table_mislabeled_as_picture.pdf",
+    "url": "https://raw.githubusercontent.com/docling-project/docling/bba07950f7ab967f6c5dd4949f2c6df76bc680bd/tests/data/pdf/sources/table_mislabeled_as_picture.pdf",
+    "bytes": 45661,
+    "category": "tables",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "001-trivial/minimal-document.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/001-trivial/minimal-document.pdf",
+    "bytes": 16978,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "002-trivial-libre-office-writer/002-trivial-libre-office-writer.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/002-trivial-libre-office-writer/002-trivial-libre-office-writer.pdf",
+    "bytes": 12609,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "003-pdflatex-image/pdflatex-image.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/003-pdflatex-image/pdflatex-image.pdf",
+    "bytes": 74061,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "004-pdflatex-4-pages/pdflatex-4-pages.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/004-pdflatex-4-pages/pdflatex-4-pages.pdf",
+    "bytes": 24607,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "006-pdflatex-outline/pdflatex-outline.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/006-pdflatex-outline/pdflatex-outline.pdf",
+    "bytes": 48722,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "008-reportlab-inline-image/inline-image.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/008-reportlab-inline-image/inline-image.pdf",
+    "bytes": 1537,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "009-pdflatex-geotopo/GeoTopo.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/009-pdflatex-geotopo/GeoTopo.pdf",
+    "bytes": 5321132,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "010-pdflatex-forms/pdflatex-forms.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/010-pdflatex-forms/pdflatex-forms.pdf",
+    "bytes": 27712,
+    "category": "forms",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "011-google-doc-document/google-doc-document.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/011-google-doc-document/google-doc-document.pdf",
+    "bytes": 80100,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "012-libreoffice-form/libreoffice-form.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/012-libreoffice-form/libreoffice-form.pdf",
+    "bytes": 34186,
+    "category": "forms",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "013-reportlab-overlay/reportlab-overlay.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/013-reportlab-overlay/reportlab-overlay.pdf",
+    "bytes": 13790,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "014-outlines/mistitled_outlines_example.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/014-outlines/mistitled_outlines_example.pdf",
+    "bytes": 82281,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "015-arabic/habibi.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/015-arabic/habibi.pdf",
+    "bytes": 14957,
+    "category": "multilingual_rtl",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "016-libre-office-link/libre-office-link.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/016-libre-office-link/libre-office-link.pdf",
+    "bytes": 9473,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "017-unreadable-meta-data/unreadablemetadata.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/017-unreadable-meta-data/unreadablemetadata.pdf",
+    "bytes": 2818798,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "018-base64-image/base64image.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/018-base64-image/base64image.pdf",
+    "bytes": 2267027,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "019-grayscale-image/grayscale-image.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/019-grayscale-image/grayscale-image.pdf",
+    "bytes": 40115,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "021-pdfa/crazyones-pdfa.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/021-pdfa/crazyones-pdfa.pdf",
+    "bytes": 16368,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "022-pdfkit/pdfkit.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/022-pdfkit/pdfkit.pdf",
+    "bytes": 14404,
+    "category": "text_document",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "023-cmyk-image/cmyk-image.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/023-cmyk-image/cmyk-image.pdf",
+    "bytes": 443953,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "024-annotations/annotated_pdf.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/024-annotations/annotated_pdf.pdf",
+    "bytes": 1833,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "025-attachment/with-attachment.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/025-attachment/with-attachment.pdf",
+    "bytes": 24296,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "026-latex-multicolumn/multicolumn.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/026-latex-multicolumn/multicolumn.pdf",
+    "bytes": 78657,
+    "category": "multicolumn",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "027-cropped-rotated-scaled/cropped-rotated-scaled.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/027-cropped-rotated-scaled/cropped-rotated-scaled.pdf",
+    "bytes": 272039,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "029-optional-content-groups/ocg_map_test.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/029-optional-content-groups/ocg_map_test.pdf",
+    "bytes": 313834,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "030-tagged-pdf/tagged.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/030-tagged-pdf/tagged.pdf",
+    "bytes": 6712,
+    "category": "pdf_features",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "031-png-predictors/png-predictors.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/031-png-predictors/png-predictors.pdf",
+    "bytes": 176798,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "py-pdf/sample-files",
+    "revision": "80d67b91f3e28909756ca7807bbe8f43b599d12f",
+    "path": "032-png-predictors-low-bit-depth/png-predictors-low-bit-depth.pdf",
+    "url": "https://raw.githubusercontent.com/py-pdf/sample-files/80d67b91f3e28909756ca7807bbe8f43b599d12f/032-png-predictors-low-bit-depth/png-predictors-low-bit-depth.pdf",
+    "bytes": 24700,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/160F-2019.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/160F-2019.pdf",
+    "bytes": 328400,
+    "category": "forms",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/ArabicCIDTrueType.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/ArabicCIDTrueType.pdf",
+    "bytes": 39370,
+    "category": "multilingual_fonts",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/S2.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/S2.pdf",
+    "bytes": 478490,
+    "category": "scientific_multicolumn",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/TAMReview.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/TAMReview.pdf",
+    "bytes": 674629,
+    "category": "scientific_multicolumn",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/ThuluthFeatures.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/ThuluthFeatures.pdf",
+    "bytes": 117677,
+    "category": "multilingual_fonts",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/basicapi.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/basicapi.pdf",
+    "bytes": 105779,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/canvas.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/canvas.pdf",
+    "bytes": 150904,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/chrome-text-selection-markedContent.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/chrome-text-selection-markedContent.pdf",
+    "bytes": 137291,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/cmykjpeg.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/cmykjpeg.pdf",
+    "bytes": 374080,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/prefilled_f1040.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/prefilled_f1040.pdf",
+    "bytes": 306416,
+    "category": "forms",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/scan-bad.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/scan-bad.pdf",
+    "bytes": 29832,
+    "category": "scanned_ocr",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/standard_fonts.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/standard_fonts.pdf",
+    "bytes": 94800,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/structure_simple.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/structure_simple.pdf",
+    "bytes": 40264,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/tracemonkey.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/tracemonkey.pdf",
+    "bytes": 1016315,
+    "category": "scientific_multicolumn",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/two_pages.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/two_pages.pdf",
+    "bytes": 98403,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/two_paragraphs.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/two_paragraphs.pdf",
+    "bytes": 25142,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/transparent.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/transparent.pdf",
+    "bytes": 56597,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/zero_descent.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/zero_descent.pdf",
+    "bytes": 66554,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/alphatrans.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/alphatrans.pdf",
+    "bytes": 16910,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/bigboundingbox.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/bigboundingbox.pdf",
+    "bytes": 76044,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/Test-plusminus.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/Test-plusminus.pdf",
+    "bytes": 28401,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/calrgb.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/calrgb.pdf",
+    "bytes": 322053,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/blendmode.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/blendmode.pdf",
+    "bytes": 50567,
+    "category": "graphics_images",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/attachment.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/attachment.pdf",
+    "bytes": 15299,
+    "category": "pdf_regression",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/arial_unicode_ab_cidfont.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/arial_unicode_ab_cidfont.pdf",
+    "bytes": 13110,
+    "category": "multilingual_fonts",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/arial_unicode_en_cidfont.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/arial_unicode_en_cidfont.pdf",
+    "bytes": 15779,
+    "category": "multilingual_fonts",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/font_ascent_descent.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/font_ascent_descent.pdf",
+    "bytes": 15056,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/issue10402.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/issue10402.pdf",
+    "bytes": 20955,
+    "category": "forms",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_cff.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_cff.pdf",
+    "bytes": 63801,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_cff_embedded_variants.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_cff_embedded_variants.pdf",
+    "bytes": 64048,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_cid_truetype.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_cid_truetype.pdf",
+    "bytes": 192207,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_cjk_nonembedded.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_cjk_nonembedded.pdf",
+    "bytes": 7521,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_cmap_mixed.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_cmap_mixed.pdf",
+    "bytes": 189345,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_labels.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_labels.pdf",
+    "bytes": 153720,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_office_nonembedded.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_office_nonembedded.pdf",
+    "bytes": 10927,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_render_modes.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_render_modes.pdf",
+    "bytes": 208164,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_standard14.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_standard14.pdf",
+    "bytes": 5846,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_transformed.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_transformed.pdf",
+    "bytes": 249110,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_truetype.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_truetype.pdf",
+    "bytes": 183387,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_type1.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_type1.pdf",
+    "bytes": 29003,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_type3_bitmap.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_type3_bitmap.pdf",
+    "bytes": 30131,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  },
+  {
+    "repository": "mozilla/pdf.js",
+    "revision": "74b5f3eed80e1449356758c6153f7de788bc5c47",
+    "path": "test/pdfs/perf_text_type3_vector.pdf",
+    "url": "https://raw.githubusercontent.com/mozilla/pdf.js/74b5f3eed80e1449356758c6153f7de788bc5c47/test/pdfs/perf_text_type3_vector.pdf",
+    "bytes": 63511,
+    "category": "fonts_text",
+    "source_kind": "public_upstream_test_document",
+    "rights": "Upstream fixture; source-specific rights retained. Download for testing only; original PDFs are not redistributed in this repository."
+  }
+]

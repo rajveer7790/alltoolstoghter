@@ -1,0 +1,17 @@
+# Apply after compose.yml on a small, two-core OCI Ampere A1 host.
+# Optional model/editor profiles are not enabled by this override.
+services:
+  documents:
+    environment:
+      DOCUMENT_CONCURRENCY: '1'
+    cpus: 1
+    mem_limit: 2g
+  gotenberg:
+    cpus: 1
+    mem_limit: 2g
+  web-api:
+    cpus: 0.5
+    mem_limit: 512m
+  caddy:
+    cpus: 0.25
+    mem_limit: 256m

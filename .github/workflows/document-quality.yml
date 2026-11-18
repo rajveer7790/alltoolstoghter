@@ -1,0 +1,71 @@
+name: Open-source document quality
+on:
+  push:
+    branches: [test/document-quality-100]
+    paths: ['benchmarks/documents/*.py', 'benchmarks/documents/corpus.json', 'benchmarks/documents/requirements-*.txt', '.github/workflows/document-quality.yml', 'backend/documents/compose.oracle.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [native, geometric]
+        shard: [0, 1]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated, pinned conversion and measurement dependencies
+        run: |
+          python -m venv .benchmark-venv
+          .benchmark-venv/bin/pip install -r backend/documents/requirements.txt -r benchmarks/documents/requirements-metrics.txt
+          if [ '${{ matrix.engine }}' = geometric ]; then
+            .benchmark-venv/bin/pip install -r benchmarks/documents/requirements-geometric.txt
+          fi
+      - name: Start the actual Office engine
+        run: |
+          docker run -d --name quality-office --memory=2g --cpus=2 -p 127.0.0.1:8879:3000 gotenberg/gotenberg:9.6.0
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:8879/health; then break; fi
+            sleep 1
+          done
+          docker exec quality-office libreoffice --version
+      - name: Check benchmark invariants
+        run: .benchmark-venv/bin/python -m unittest discover -s benchmarks/documents/tests -v
+      - name: Evaluate locked inputs without replacing failures
+        run: |
+          .benchmark-venv/bin/python benchmarks/documents/run.py --engine '${{ matrix.engine }}' --engine-python "$PWD/.benchmark-venv/bin/python" --shards 2 --shard '${{ matrix.shard }}' --output '.cache/quality-${{ matrix.engine }}-${{ matrix.shard }}'
+      - name: Upload measured numbers and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-${{ matrix.engine }}-${{ matrix.shard }}
+          path: |
+            .cache/quality-${{ matrix.engine }}-${{ matrix.shard }}/summary.json
+            .cache/quality-${{ matrix.engine }}-${{ matrix.shard }}/results.json
+            .cache/quality-${{ matrix.engine }}-${{ matrix.shard }}/results.csv
+            .cache/quality-${{ matrix.engine }}-${{ matrix.shard }}/*.log
+          retention-days: 14
+      - if: always()
+        run: docker rm -f quality-office
+  oracle-arm64:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 backend/documents/setup.py
+      - name: Build and start the ARM64 CPU stack with Oracle resource settings
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml -f backend/documents/compose.oracle.yml up -d --build documents gotenberg
+      - name: Real ARM64 conversions and regressions
+        run: |
+          docker compose --env-file backend/documents/.env -f backend/documents/compose.yml -f backend/documents/compose.oracle.yml exec -T documents python -m unittest discover -s backend/documents/tests -v
+          docker compose --env-file backend/documents/.env -f backend/documents/compose.yml -f backend/documents/compose.oracle.yml exec -T documents python backend/documents/smoke_container.py
+      - if: failure()
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml -f backend/documents/compose.oracle.yml logs --tail=80
+      - if: always()
+        run: docker compose --env-file backend/documents/.env -f backend/documents/compose.yml -f backend/documents/compose.oracle.yml down --volumes

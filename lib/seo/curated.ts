@@ -4,6 +4,7 @@
 // tests/seo-meta.test.ts enforces length, uniqueness and keyword presence.
 import { CURATED_BATCH_2 } from './curatedBatch2';
 import { CURATED_BATCH_3 } from './curatedBatch3';
+import { CURATED_BATCH_4 } from './curatedBatch4';
 const BASE: Record<string, [title: string, description: string]> = {
   // Finance
   'mortgage-calculator': ['Mortgage Calculator with Taxes & Insurance', 'Estimate your monthly mortgage payment with optional property tax and insurance. See total interest, a PMI warning and the formula. Free, in your browser.'],
@@ -96,4 +97,4 @@ const BASE: Record<string, [title: string, description: string]> = {
   'heic-to-jpg': ['HEIC to JPG Converter — iPhone Photos, No Upload', 'Convert HEIC photos from an iPhone to JPG in your browser. Nothing is uploaded. Conversion is lossy and metadata is not kept. Free to use.'],
 };
 
-export const CURATED: Record<string, [title: string, description: string]> = { ...BASE, ...CURATED_BATCH_2, ...CURATED_BATCH_3 };
+export const CURATED: Record<string, [title: string, description: string]> = { ...BASE, ...CURATED_BATCH_2, ...CURATED_BATCH_3, ...CURATED_BATCH_4 };

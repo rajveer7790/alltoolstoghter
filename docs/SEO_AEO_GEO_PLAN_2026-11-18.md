@@ -116,3 +116,28 @@ Tools covered: simple interest, savings, DTI, down payment, sales tax, Roth IRA,
 Date/time-input calculators intentionally have no computed worked example (their results depend on the clock/calendar).
 
 Totals now: 175 hand-reviewed titles/descriptions (75 + 50 + 50), 15 intent-specific, 13 editorial, ~137 pattern-based. Verified with the exact Netlify build command (`npm run check && npm run build && npm run audit:export`).
+
+## 7. Batch 4 — 100 tools with target keywords, AI summary and keyword test (applied)
+
+### What each of the 100 tools now has
+- **Short target keyword** (the head term) that must appear verbatim in the title, meta description and the first 70 words of the answer.
+- **Three long-tail phrases** that must each appear verbatim in a section heading, an FAQ question, the answer or the summary, with at least two used as headings/FAQ questions. Content was written around these phrases.
+- **AI summary** (30–62 words, self-contained, different wording from the answer) shown in a new **"at a glance"** block, plus key facts derived from the tool's own data (method, inputs, results, where it runs). `WebPage` JSON-LD gains `abstract` and `keywords`.
+- Same quality gate as earlier batches (lengths, banned claims, numbers must come from the tool, examples computed by the tool) plus: no search-volume/ranking claims, `bac-calculator` must say it must never be used to decide whether to drive. A proper-noun scan was checked against code (Mosteller and Du Bois, A4/Letter, ISO first-Thursday week rule, Roman 1–3999). Two phrase false-positives ("not … guarantees", "the number one" as a digit) were reviewed; the second was reworded.
+- Two writer defects were repaired by hand: the smoking-cost tool had one FAQ instead of three, and one tool used a textarea field type that the example computer did not support (now supported).
+
+### Keyword test (`npm run report:keywords` → `docs/KEYWORD_COVERAGE_REPORT.md`)
+It tests **on-page placement only**. It cannot measure search volume, rankings, impressions or whether any AI answer cites the page.
+
+| Group | Tools | Title | Description | H1 | Answer (first 70 words) | Long-tail phrases on page |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Declared keywords (batch 4) | 100 | 100% | 100% | 90% | 100% | 100% |
+| Registry keywords only (older 207) | 207 | 88% | 23% | 94% | 33% | 10% |
+
+The older tools are the next gap: their registry keyword is usually in the title but rarely in the description or opening answer.
+
+### Live check
+A search for `site:alltoolstogether.com` and for the site name plus "cm to inches converter" returned **no pages from this domain**. The tool is a limited, US-only search summary, so this is not proof, but it suggests the site is not yet indexed or ranking. Submit the sitemap in Google Search Console and Bing Webmaster Tools and verify indexing there. In the same search, many small `*.pages.dev` converter sites rank, which shows small sites can compete on narrow intents.
+
+### AI overviews
+No markup guarantees inclusion in an AI overview. The pages provide what these systems read: a direct answer, a self-contained summary, question-form headings and FAQs, a computed worked example, a source-of-truth method statement, and structured data that matches visible content. Long-tail phrases were suggested by a model, not validated against query data; replace them with real Search Console queries after a few weeks.

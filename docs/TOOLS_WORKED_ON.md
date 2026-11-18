@@ -257,3 +257,135 @@
 - [Lorem Ipsum Generator](https://alltoolstogether.com/text/lorem-ipsum-generator)
 - [Find and Replace Text](https://alltoolstogether.com/text/find-and-replace)
 - [Readability Checker](https://alltoolstogether.com/text/readability-checker)
+
+## Round 4 — 100 tools: title + description + short/long-tail target keywords + AI summary + deeper content
+
+### Text Tools
+- [Remove Duplicate Lines](https://alltoolstogether.com/text/remove-duplicate-lines)
+- [Sort Text Lines](https://alltoolstogether.com/text/sort-text-lines)
+- [Remove Extra Spaces](https://alltoolstogether.com/text/remove-extra-spaces)
+- [Keyword Density Checker](https://alltoolstogether.com/text/keyword-density-checker)
+- [Reverse Text](https://alltoolstogether.com/text/reverse-text)
+- [Remove Line Breaks](https://alltoolstogether.com/text/remove-line-breaks)
+- [Text Repeater](https://alltoolstogether.com/text/text-repeater)
+- [Title Case Converter](https://alltoolstogether.com/text/title-case-converter)
+- [Text to Binary Converter](https://alltoolstogether.com/text/text-to-binary)
+
+### Developer Tools
+- [URL Encode / Decode](https://alltoolstogether.com/developer/url-encode-decode)
+- [UUID Generator](https://alltoolstogether.com/developer/uuid-generator)
+- [Hash Generator (SHA-256, SHA-512, SHA-1)](https://alltoolstogether.com/developer/hash-generator)
+- [HTML Encode / Decode](https://alltoolstogether.com/developer/html-encode-decode)
+- [CSS Minifier](https://alltoolstogether.com/developer/css-minifier)
+- [JavaScript Minifier](https://alltoolstogether.com/developer/javascript-minifier)
+- [SQL Formatter](https://alltoolstogether.com/developer/sql-formatter)
+- [Markdown to HTML Converter](https://alltoolstogether.com/developer/markdown-to-html)
+- [Number Base Converter](https://alltoolstogether.com/developer/number-base-converter)
+- [HTTP Status Codes Reference](https://alltoolstogether.com/developer/http-status-codes)
+- [HTML Minifier](https://alltoolstogether.com/developer/html-minifier)
+- [JSON String Escape / Unescape](https://alltoolstogether.com/developer/json-escape)
+- [JSON to YAML Converter](https://alltoolstogether.com/developer/json-to-yaml)
+- [YAML to JSON Converter](https://alltoolstogether.com/developer/yaml-to-json)
+- [XML Formatter](https://alltoolstogether.com/developer/xml-formatter)
+- [MIME Types Lookup](https://alltoolstogether.com/developer/mime-types-lookup)
+
+### SEO & Web
+- [Barcode Generator](https://alltoolstogether.com/seo/barcode-generator)
+- [Robots.txt Generator](https://alltoolstogether.com/seo/robots-txt-generator)
+- [XML Sitemap Generator](https://alltoolstogether.com/seo/xml-sitemap-generator)
+- [Meta Tag Generator](https://alltoolstogether.com/seo/meta-tag-generator)
+- [Open Graph Generator](https://alltoolstogether.com/seo/open-graph-generator)
+- [Htaccess Redirect Generator](https://alltoolstogether.com/seo/htaccess-redirect-generator)
+
+### PDF Tools
+- [Extract PDF Pages](https://alltoolstogether.com/pdf/extract-pdf-pages)
+- [Delete PDF Pages](https://alltoolstogether.com/pdf/delete-pdf-pages)
+- [Rotate PDF](https://alltoolstogether.com/pdf/rotate-pdf)
+- [Add Page Numbers to PDF](https://alltoolstogether.com/pdf/add-page-numbers-to-pdf)
+- [Watermark PDF](https://alltoolstogether.com/pdf/watermark-pdf)
+- [PDF Editor & Viewer](https://alltoolstogether.com/pdf/pdf-editor)
+- [Reverse PDF Pages](https://alltoolstogether.com/pdf/reverse-pdf-pages)
+- [Add Blank PDF Page](https://alltoolstogether.com/pdf/add-blank-pdf-page)
+- [Flatten PDF Forms](https://alltoolstogether.com/pdf/flatten-pdf-forms)
+- [Fill PDF Forms](https://alltoolstogether.com/pdf/fill-pdf-forms)
+- [Remove PDF Metadata](https://alltoolstogether.com/pdf/remove-pdf-metadata)
+- [Crop PDF](https://alltoolstogether.com/pdf/crop-pdf)
+- [Resize PDF Pages](https://alltoolstogether.com/pdf/resize-pdf-pages)
+- [N-Up PDF](https://alltoolstogether.com/pdf/n-up-pdf)
+- [PDF Booklet](https://alltoolstogether.com/pdf/pdf-booklet)
+- [Alternate Merge PDF](https://alltoolstogether.com/pdf/alternate-merge-pdf)
+- [Add Text to PDF](https://alltoolstogether.com/pdf/annotate-pdf)
+- [PDF to JSON](https://alltoolstogether.com/pdf/pdf-to-json)
+
+### Image Tools
+- [PNG to WebP](https://alltoolstogether.com/image/png-to-webp)
+- [Image Rotator & Flipper](https://alltoolstogether.com/image/image-rotator)
+- [Image Color Picker](https://alltoolstogether.com/image/image-color-picker)
+- [Image Color Palette Extractor](https://alltoolstogether.com/image/image-color-palette)
+- [Add Watermark to Image](https://alltoolstogether.com/image/image-watermark)
+- [Image to Base64](https://alltoolstogether.com/image/image-to-base64)
+
+### Real Estate
+- [Rental Yield Calculator](https://alltoolstogether.com/real-estate/rental-yield-calculator)
+- [House Price-to-Income Ratio](https://alltoolstogether.com/real-estate/house-price-to-income-ratio)
+
+### Construction
+- [Fence Calculator](https://alltoolstogether.com/construction/fence-calculator)
+- [Roof Pitch Calculator](https://alltoolstogether.com/construction/roof-pitch-calculator)
+- [Staircase Calculator](https://alltoolstogether.com/construction/staircase-calculator)
+
+### Science & Engineering
+- [Resistor Color Code Calculator](https://alltoolstogether.com/science/resistor-color-code-calculator)
+- [Voltage Divider Calculator](https://alltoolstogether.com/science/voltage-divider-calculator)
+- [Torque Calculator](https://alltoolstogether.com/science/torque-calculator)
+- [Half-Life Calculator](https://alltoolstogether.com/science/half-life-calculator)
+- [Kinematics Calculator](https://alltoolstogether.com/science/kinematic-calculator)
+
+### Statistics
+- [Correlation Coefficient Calculator](https://alltoolstogether.com/statistics/correlation-coefficient-calculator)
+- [P-Value Calculator](https://alltoolstogether.com/statistics/p-value-calculator)
+
+### Business & Marketing
+- [Email Marketing ROI Calculator](https://alltoolstogether.com/business/email-marketing-roi-calculator)
+- [Employee Turnover Calculator](https://alltoolstogether.com/business/employee-turnover-calculator)
+
+### Investing & Crypto
+- [Dividend Yield Calculator](https://alltoolstogether.com/investing/dividend-yield-calculator)
+- [P/E Ratio Calculator](https://alltoolstogether.com/investing/pe-ratio-calculator)
+
+### Math & Education
+- [Circle Area Calculator](https://alltoolstogether.com/math/circle-area-calculator)
+- [Ratio Calculator](https://alltoolstogether.com/math/ratio-calculator)
+- [Slope Calculator](https://alltoolstogether.com/math/slope-calculator)
+- [Combination & Permutation Calculator](https://alltoolstogether.com/math/combination-calculator)
+- [Probability Calculator](https://alltoolstogether.com/math/probability-calculator)
+- [Exponent Calculator](https://alltoolstogether.com/math/exponent-calculator)
+- [Logarithm Calculator](https://alltoolstogether.com/math/log-calculator)
+- [Rounding Calculator](https://alltoolstogether.com/math/rounding-calculator)
+- [Scientific Notation Converter](https://alltoolstogether.com/math/scientific-notation-converter)
+
+### Finance & Money
+- [Electricity Bill Calculator](https://alltoolstogether.com/finance/electricity-bill-calculator)
+- [Future Value Calculator](https://alltoolstogether.com/finance/future-value-calculator)
+- [Present Value Calculator](https://alltoolstogether.com/finance/present-value-calculator)
+- [Annuity Calculator](https://alltoolstogether.com/finance/annuity-calculator)
+- [Commission Calculator](https://alltoolstogether.com/finance/commission-calculator)
+
+### Health & Fitness
+- [Calorie Deficit Calculator](https://alltoolstogether.com/health/calorie-deficit-calculator)
+- [Pregnancy Week Calculator](https://alltoolstogether.com/health/pregnancy-week-calculator)
+- [Blood Alcohol (BAC) Calculator](https://alltoolstogether.com/health/bac-calculator)
+- [Heart Rate Zone Calculator](https://alltoolstogether.com/health/heart-rate-zone-calculator)
+- [Water Intake Calculator](https://alltoolstogether.com/health/water-intake-calculator)
+- [Protein Intake Calculator](https://alltoolstogether.com/health/protein-intake-calculator)
+- [Body Surface Area (BSA) Calculator](https://alltoolstogether.com/health/bsa-calculator)
+- [Waist-to-Hip Ratio Calculator](https://alltoolstogether.com/health/waist-to-hip-ratio-calculator)
+- [Smoking Cost Calculator](https://alltoolstogether.com/health/smoking-cost-calculator)
+
+### Date & Time
+- [Days Until Calculator](https://alltoolstogether.com/date-time/days-until-calculator)
+- [Week Number Calculator](https://alltoolstogether.com/date-time/week-number-calculator)
+- [Roman Numeral Converter](https://alltoolstogether.com/date-time/roman-numeral-converter)
+- [Age Difference Calculator](https://alltoolstogether.com/date-time/age-difference-calculator)
+- [Add Business Days Calculator](https://alltoolstogether.com/date-time/add-business-days-calculator)
+- [Weeks Between Dates Calculator](https://alltoolstogether.com/date-time/weeks-between-dates-calculator)

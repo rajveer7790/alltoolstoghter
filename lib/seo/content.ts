@@ -24,7 +24,7 @@ function run(tool: ToolDef, values: Record<string, string>): CalcResult[] | null
 }
 
 /** Calculators that read the clock or a date field would make builds non-deterministic; skip them. */
-const deterministic = (tool: ToolDef) => (tool.fields || []).every(f => f.type === 'number' || f.type === 'select' || f.type === 'text');
+const deterministic = (tool: ToolDef) => (tool.fields || []).every(f => f.type === 'number' || f.type === 'select' || f.type === 'text' || (f.type as string) === 'textarea');
 
 /**
  * Scenario tables produced by the tool's own compute function. Each table varies one input and
@@ -124,8 +124,8 @@ export function workedExample(tool: ToolDef, inputs: Record<string, string> | un
       const option = field.options?.find(o => o.value === value);
       if (!option) return null;
       described.push(`${field.label.toLowerCase()} “${option.label}”`);
-    } else if (field.type === 'text') {
-      if (!value || value.length > 60) return null;
+    } else if (field.type === 'text' || (field.type as string) === 'textarea') {
+      if (!value || value.length > 120) return null;
       described.push(`${field.label.toLowerCase()} ${value}`);
     } else return null;
     defaults[key] = value;

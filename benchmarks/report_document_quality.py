@@ -60,7 +60,7 @@ args.output.mkdir(parents=True, exist_ok=True)
 (args.output / 'results.json').write_text(json.dumps(combined, indent=2) + '\n')
 columns = ['engine', 'id', 'source', 'category', 'sha256', 'status', 'text_token_f1', 'visual_ssim', 'foreground_f1', 'same_page_count', 'conversion_seconds', 'sampled_worker_peak_mib', 'layout_quality_gate', 'failed_stage', 'error']
 with (args.output / 'results.csv').open('w') as stream:
-    writer = csv.DictWriter(stream, fieldnames=columns, extrasaction='ignore'); writer.writeheader()
+    writer = csv.DictWriter(stream, fieldnames=columns, extrasaction='ignore', lineterminator='\n'); writer.writeheader()
     for engine, rows in groups.items():
         for row in rows: writer.writerow({**row, 'engine': engine})
 

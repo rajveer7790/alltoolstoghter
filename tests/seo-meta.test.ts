@@ -6,6 +6,7 @@ import { CURATED } from '../lib/seo/curated';
 import { CATEGORY_SEO } from '../lib/seo/categories';
 import { toolSeo, processing, TITLE_MAX, DESC_MIN, DESC_MAX } from '../lib/seo/meta';
 import { sampleTables, generatedFaqs } from '../lib/seo/content';
+import { EDITORIAL } from '../lib/toolEditorial';
 
 const canonical = ALL_TOOLS.filter(t => !TOOL_ALIASES[t.slug]);
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, '');
@@ -130,4 +131,21 @@ test('declared target keywords are placed where search engines and answer engine
     assert.ok(!/search volume|monthly searches|ranks? (first|#)|most popular/i.test(`${d.answer} ${d.aiSummary}`), `${slug}: ranking/volume claim`);
   }
   assert.ok(declared >= 100, `only ${declared} tools declare keywords`);
+});
+
+test('opener rewrites keep the head keyword in the unchanged title, the description and the answer', async () => {
+  const { OPENERS } = await import('../lib/seo/openers');
+  const { keywordReport } = await import('../lib/seo/keywordCheck');
+  assert.ok(Object.keys(OPENERS).length >= 150, `only ${Object.keys(OPENERS).length} openers`);
+  const banned = /\b(best|most accurate|adobe|number one|#1|top-rated)\b/i;
+  for (const [slug, o] of Object.entries(OPENERS)) {
+    const tool = bySlug.get(slug);
+    assert.ok(tool, slug);
+    const r = keywordReport(tool);
+    assert.ok(r.title, `${slug}: "${o.shortKeyword}" not in title`);
+    assert.ok(r.description, `${slug}: keyword not in description`);
+    assert.ok(!banned.test(`${o.description} ${o.answer}`), slug);
+    if (processing(tool) !== 'local') assert.ok(!/no upload|not uploaded|in your browser|locally/i.test(`${o.description} ${o.answer}`), `${slug}: privacy claim on a server tool`);
+    if (!EDITORIAL[slug]) assert.ok(r.answer, `${slug}: keyword not in the first 70 words of the answer`);
+  }
 });

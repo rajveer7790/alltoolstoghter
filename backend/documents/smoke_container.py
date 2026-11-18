@@ -57,7 +57,8 @@ with httpx.Client(timeout=330, trust_env=False) as client:
     scan = io.BytesIO(); canvas = Canvas(scan, pagesize=(600, 200)); canvas.drawImage(ImageReader(image), 0, 0, 600, 200); canvas.showPage(); canvas.save()
     recognized = convert('ocr-pdf', scan.getvalue(), 'scan.pdf', {'language': 'eng', 'deskew': False})
     assert 'HELLO' in PdfReader(io.BytesIO(recognized)).pages[0].extract_text().upper()
-    ocr_word = convert('pdf-to-word', recognized, 'recognized.pdf', {'ocr': False})
+    # Exercise the default scan -> automatic OCR -> editable DOCX path too.
+    ocr_word = convert('pdf-to-word', scan.getvalue(), 'scan.pdf')
     import zipfile
     with zipfile.ZipFile(io.BytesIO(ocr_word)) as archive:
         assert b'HELLO' in archive.read('word/document.xml')

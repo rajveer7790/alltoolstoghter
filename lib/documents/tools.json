@@ -1147,7 +1147,7 @@
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "Uses the optional pdf2docx 0.5.13 / PyMuPDF 1.26.7 worker. Fonts, tables and layout can still differ; it is not a lossless converter. Requires deployment and operator review of AGPL/commercial dependency terms. Scans need OCR first.",
+    "note": "Reconstructs editable text and images using their page positions. Fonts, tables and pagination can still differ. Scanned documents need OCR before using this option.",
     "page": false
   }
 ]

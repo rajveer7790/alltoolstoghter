@@ -27,10 +27,16 @@ The native text/table reconstruction path is compared with the optional geometri
 
 - Every original and round-trip page is rendered; extra/missing pages are compared against white, with page count reported separately.
 - Token precision/recall/F1 uses independently extracted PDFium source text. It measures retained token content, ignores reading order, and is **not** human-verified text/OCR accuracy.
-- SSIM, pixel MAE and foreground F1 measure page appearance. Letterboxing preserves aspect ratio. White space can inflate SSIM, so foreground F1 and pagination must also be considered.
+- SSIM, pixel MAE and foreground F1 measure grayscale page appearance on 900-by-900 letterboxed canvases. These metrics do not assess color fidelity or microscopic print detail. Letterboxing preserves aspect ratio. White space can inflate SSIM, so foreground F1 and pagination must also be considered.
 - Native DOCX tables and embedded images are counted. Table correctness and semantic editability require annotated ground truth/manual review; table count alone is not an accuracy score.
 - Source/output font sets are reported; exact names are only a diagnostic because aliases and subset naming can differ.
 - Conversion wall time and sampled worker RSS are reported. RSS excludes a separate Gotenberg container; it is not total hosting RAM. Test-machine timings are not Oracle performance guarantees.
 - The strict layout gate (token F1 >= .98, SSIM >= .95, foreground F1 >= .85 and unchanged page count) is a predeclared heuristic, not an industry or Adobe standard.
 
 Do not claim Adobe-equivalent fidelity, production certification, or model quality from these measurements. Optional PaddleOCR/Docling/MinerU/Marker stacks need their own runs and model/license/version records.
+
+## Aggregate and inspect results
+
+Download the four measured shard `results.json` artifacts (two per engine). Generate the final report with `python benchmarks/report_document_quality.py <four-shard-results.json paths> --output benchmarks/documents/results/<date> --run-url <actual-CI-run-URL>`. The generator refuses missing/duplicate IDs, mismatched input hashes, or a missing engine. A successful workflow means the benchmark executed; inspect the reported fidelity gates before claiming quality.
+
+The measured run from 18 November 2026 is in [results/2026-11-18/REPORT.md](results/2026-11-18/REPORT.md).

@@ -89,7 +89,7 @@ test('generated FAQs add unique question-form answers without breaking existing 
 test('deep content entries are complete, honest and their worked examples are computed by the tool', async () => {
   const { DEEP } = await import('../lib/seo/deep');
   const { workedExample } = await import('../lib/seo/content');
-  assert.ok(Object.keys(DEEP).length >= 50);
+  assert.ok(Object.keys(DEEP).length >= 100);
   const banned = /\b(best|most accurate|adobe|number one|top-rated)\b/i;
   for (const [slug, d] of Object.entries(DEEP)) {
     const tool = bySlug.get(slug);

@@ -1731,4 +1731,1702 @@ export const DEEP: Record<string, DeepContent> = {
       ]
     ]
   },
+  "simple-interest-calculator": {
+    "answer": "A simple interest calculator finds interest charged or earned only on the original principal, never on interest already added. The formula is I = P × R × T, meaning principal times the annual rate as a decimal times the number of years. Add that interest to the principal to get the total repaid or owed. Because the base stays fixed, the interest grows by the same amount each year.",
+    "exampleInputs": {
+      "principal": "12000",
+      "rate": "4.75",
+      "years": "5"
+    },
+    "sections": [
+      {
+        "heading": "What situations use simple interest?",
+        "text": "Simple interest appears in short-term loans and some bonds, where interest is calculated only on the original principal. It is also handy for a quick check on an informal loan between people or a promissory note with a fixed rate. Enter the principal, the annual rate as a percentage, and the term in years. The tool multiplies the three values to give interest for the full term, then adds it to the principal for the total. Use the figure to compare offers before you sign. This is an educational estimate, not professional financial advice."
+      },
+      {
+        "heading": "How should I read the interest result?",
+        "text": "The interest figure is the total earned or owed across the whole term, not a yearly amount. For the yearly figure, multiply the principal by the rate as a decimal, since that product is the interest for one year. Because the base never grows, each year adds the same amount, so the total rises in a straight line when plotted over time. Compare that with compound interest, where each period's interest joins the base and the curve bends upward. If the repayment total looks too high, check that the rate was entered as a percentage and the term was in years, not months."
+      },
+      {
+        "heading": "What mistakes make the result misleading?",
+        "text": "The most common error is mixing units. A rate of six percent should be entered as six in the rate field, and a term in months must be converted to years first. Another mistake is assuming the quoted rate is the true cost. Fees, required insurance, and payment timing can change what you actually pay, which is why an APR check helps when a loan has upfront charges. Simple interest also does not model extra payments or missed payments that change the balance. This is an educational estimate, not professional financial advice, so verify terms with the lender."
+      }
+    ],
+    "faqs": [
+      [
+        "Is simple interest ever paid on interest?",
+        "No. Simple interest is calculated only on the original principal for the whole term. Interest already earned is not added to the base, so it never earns interest of its own. If interest is reinvested each period, the balance grows on its own growth, which is compounding and needs a different formula."
+      ],
+      [
+        "What balance applies partway through a term?",
+        "Multiply the principal by the rate as a decimal and by the years elapsed so far, then add that interest to the principal. For example, halfway through the term, half of the total interest has accrued. Because the base never changes, the calculation is linear and easy to check by hand."
+      ],
+      [
+        "Does this calculator account for taxes on interest?",
+        "No. The result shows interest before any tax. Interest income may be taxable depending on where you live and the type of account, and interest paid on some loans may have its own rules. Confirm those rules with a qualified tax professional. This tool gives an educational estimate only, not tax or financial advice."
+      ]
+    ]
+  },
+  "savings-calculator": {
+    "answer": "A savings calculator projects an account balance by starting from your current amount, adding a fixed deposit each month, and compounding interest monthly at your APY. The result separates what you deposited from the interest the account earned. It uses the future-value-of-a-series method that banks use, so the outcome depends on the starting balance, deposit size, APY, and time.",
+    "exampleInputs": {
+      "initial": "2500",
+      "monthly": "300",
+      "apy": "4.25",
+      "years": "8"
+    },
+    "sections": [
+      {
+        "heading": "Which goals fit a savings projection?",
+        "text": "A projection works well for goals with a clear timeline, such as an emergency cushion, a down payment fund, or a planned purchase in a few years. Enter the balance you have today, the amount you can deposit each month, and the number of years until you need the money. Then change one input at a time to see its effect. Testing a bigger deposit against a higher APY shows which lever moves the total more for your timeline. The result tells you whether the goal is reachable at the current pace."
+      },
+      {
+        "heading": "How should I read deposits versus interest?",
+        "text": "The breakdown separates the money you put in from the money the account earned. Early in a projection, deposits make up most of the ending balance because interest has had little time to build. Over longer periods the earned share grows, since each month's interest joins the balance and then earns interest itself. Compare the two totals to judge how much of the outcome depends on steady saving and how much depends on the rate. A higher APY only changes the earned portion, so a long, consistent habit often matters more than small rate differences."
+      },
+      {
+        "heading": "What limits should I keep in mind?",
+        "text": "The model assumes the APY stays the same for the whole period and that every deposit lands on schedule. Real high-yield accounts can change their rate, and some have minimum balances or withdrawal limits that this calculator does not model. Inflation is not subtracted, so the ending balance is a nominal figure, and withdrawals are not modeled either. Use the output for planning and comparison only. This is an educational estimate, not professional financial advice."
+      }
+    ],
+    "faqs": [
+      [
+        "Should deposits land at the start or end of each month?",
+        "The calculator assumes deposits are added at one consistent point each month, with interest compounded monthly. Depositing earlier in the month gives money a little more time to earn, so the real balance could finish slightly higher than the projection. For planning, the monthly model is a sensible baseline for comparison."
+      ],
+      [
+        "What amount should an emergency fund reach?",
+        "This tool does not set a target, because the right amount depends on your income, expenses, and obligations. A personal budget is the right place to size that figure. Once you have a number, enter it as your goal and adjust the monthly deposit until the projected balance reaches it. This is an educational estimate, not professional financial advice."
+      ],
+      [
+        "Can I model a retirement account with this tool?",
+        "The same math applies to any balance that compounds at a steady rate, but retirement accounts carry contribution rules, tax treatment, and investment returns that vary. A savings APY is fixed, while investments fluctuate. For retirement planning, use a tool that reflects your account type, then confirm the details with a qualified professional."
+      ]
+    ]
+  },
+  "dti-calculator": {
+    "answer": "A debt-to-income calculator divides monthly debt obligations by gross monthly income to show what share of income is committed to debt. Front-end DTI uses only the housing payment. Back-end DTI adds all other monthly debt payments to housing. Each ratio is expressed as a percentage, and lenders review both figures when assessing a mortgage or loan application.",
+    "exampleInputs": {
+      "income": "7200",
+      "housing": "2050",
+      "debts": "600"
+    },
+    "sections": [
+      {
+        "heading": "Who looks at DTI during an application?",
+        "text": "Mortgage underwriters review DTI early because it shows how much room your income leaves for a new payment. Auto lenders and personal loan providers also weigh debt load, though their limits differ. Before applying, enter gross monthly income, the expected housing payment, and your other monthly debt payments. Treat the result as a screening check. If the back-end ratio sits above the common guideline, lowering a balance or delaying a new loan may help before you apply. This is an educational estimate, not professional financial advice."
+      },
+      {
+        "heading": "What do the two ratios tell me?",
+        "text": "The front-end ratio isolates housing cost and answers whether the home payment alone fits your income. The back-end ratio includes everything owed each month, such as car loans, student loans, and credit card minimums. Conventional guidelines favor back-end ratios at or below 36%, with 43% a common ceiling for qualified mortgages. Falling under those lines does not settle approval, because lenders also weigh credit history, savings, and down payment. Read the two numbers together, since a high back-end figure can exist even when the front-end looks fine."
+      },
+      {
+        "heading": "Which errors skew the ratio?",
+        "text": "The most frequent error is using take-home pay instead of gross income. Lenders typically work from income before tax and payroll deductions, so a net figure makes the ratio look higher than the one they compute. Another mistake is leaving out a recurring obligation, such as a co-signed loan or a required monthly payment. Also use scheduled payments rather than total balances. For the housing field, enter the full expected payment, including any taxes and insurance you will pay monthly. This is an educational estimate, not professional financial advice."
+      }
+    ],
+    "faqs": [
+      [
+        "Is a lower DTI always better?",
+        "Generally a lower ratio leaves more room in your budget and can make an application easier to approve. A very low ratio still does not prove a payment is affordable, since savings, job stability, and living costs matter too. Use the ratio as one input in a wider budget review. This is an educational estimate, not professional financial advice."
+      ],
+      [
+        "Can an application succeed above the usual benchmarks?",
+        "Some lenders accept higher ratios when other factors are strong, such as substantial savings, a larger down payment, or a steady income history. Program rules differ, so the benchmarks are guidelines rather than hard cutoffs. Ask a lender to explain its specific limits and compare their figure with this calculator's result."
+      ],
+      [
+        "Should I count the monthly payment or the loan balance?",
+        "Lenders generally use the required monthly payment for each debt, not the total balance. A large balance with a small required minimum contributes only that minimum. Enter the scheduled payment shown on your statement. If a payment will change after a new loan or rate reset, use the expected future payment."
+      ]
+    ]
+  },
+  "down-payment-calculator": {
+    "answer": "A down payment calculator converts a percentage of the home price into a dollar amount, then subtracts that from the price to find the loan you would need. Down payment equals price times the percent you put down. Loan-to-value, or LTV, equals the loan divided by the price, shown as a percentage. Above 80% LTV, conventional loans generally require private mortgage insurance until equity grows.",
+    "exampleInputs": {
+      "price": "525000",
+      "percent": "10"
+    },
+    "sections": [
+      {
+        "heading": "What does the down payment actually fund?",
+        "text": "The down payment is the share of the price you pay from your own funds, and the rest is borrowed. A larger down payment means a smaller loan, which lowers the monthly principal and interest and reduces the loan-to-value ratio that lenders review. Enter the home price and the percentage you plan to put down. The calculator returns the dollar amount to bring to the purchase, the resulting loan, and the LTV. Use it to compare scenarios, such as a smaller percentage now versus a larger one after more saving. Closing costs are separate from this figure."
+      },
+      {
+        "heading": "How should I interpret the LTV line?",
+        "text": "LTV compares what you borrow with what the home costs. A loan at 80 percent of the price sits at the line where conventional loans generally begin requiring private mortgage insurance. Above that line, insurance adds to the monthly cost until enough equity builds. Below it, that coverage is usually not part of the payment. Watch how LTV moves as you change the percentage, since each step shows the trade between cash on hand and the size of the loan. A lower LTV typically supports more favorable loan terms, though exact pricing depends on the lender."
+      },
+      {
+        "heading": "What can make the number misleading?",
+        "text": "The calculator uses only the home price and the percentage. It does not include closing costs, inspection fees, moving costs, or the cash reserves some lenders want after closing. Many buyers underestimate the total cash they need, so save for those separately. Check that the price is the agreed purchase price, since an appraisal that differs from the contract can change the loan amount. PMI cost is not calculated here. This is an educational estimate, not professional financial advice, so confirm figures with your lender."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the result include closing costs?",
+        "No. The tool computes the down payment, loan amount, and LTV from the home price and percentage alone. Closing costs, prepaid items, and lender fees are excluded, so the cash needed at closing will be higher than the down payment. Ask your lender for a written estimate of those charges before deciding how much to save."
+      ],
+      [
+        "What changes if the agreed price moves?",
+        "The down payment dollar amount and the loan both move with the price, because the percentage applies to whatever price you agree on. At a fixed percentage, the LTV stays the same. Rerun the calculator with the new price to see updated figures. This is an educational estimate, not professional financial advice."
+      ],
+      [
+        "What happens with a smaller down payment percentage?",
+        "A smaller down payment produces a higher LTV and a larger loan. The calculator shows where the resulting LTV sits relative to the 80% line, but whether a particular loan requires insurance depends on the loan program and lender. Confirm those rules directly with the lender before you choose a percentage."
+      ]
+    ]
+  },
+  "sales-tax-calculator": {
+    "answer": "A sales tax calculator either adds tax to a pre-tax price or works backward from a tax-inclusive total. To add tax, total equals price times one plus the rate. To extract it, the pre-tax amount equals the total divided by one plus the rate. The rate is entered as a percentage and converted to a decimal first, so the same formula covers both directions.",
+    "exampleInputs": {
+      "amount": "86.40",
+      "rate": "7.5",
+      "mode": "extract"
+    },
+    "sections": [
+      {
+        "heading": "When is the reverse calculation the right tool?",
+        "text": "Reverse calculation helps when you only have a receipt total and need the pre-tax cost, such as when recording an expense for reimbursement or splitting a business purchase. Bookkeepers often need the net amount for a ledger entry while tracking the tax separately. Choose the extract direction, enter the total as the amount, and enter the rate that applied to the sale. The output is the pre-tax figure. Forward math is what you need when pricing an item before checkout. Pick the direction that matches the number you already have."
+      },
+      {
+        "heading": "How can I check a result quickly?",
+        "text": "A simple check is to reverse your own answer. If you add tax to a price, then run the extract direction on the total with the same rate, you should return to the original price, apart from rounding. Confirm that the rate is the combined rate for your purchase, since local and state components can stack. Receipts may differ by a cent because stores round each line or the final total under their own rules. Note the rounding method alongside the figure you record, so future comparisons stay consistent."
+      },
+      {
+        "heading": "What mistakes lead to wrong totals?",
+        "text": "The most common error is applying the rate in the wrong direction. Adding tax to a total that already includes tax counts the tax twice, while extracting tax from a pre-tax price removes tax that was never added. Another mistake is using a rate from the wrong place or ignoring items that may be exempt. This calculator does not check tax rules for specific goods or jurisdictions, and it is not a substitute for a tax professional's advice. Treat results as an educational estimate and verify against the receipt before filing or reimbursing."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I enter a rate with decimal places?",
+        "Yes. A rate with decimal places works the same way, because the formula uses one plus the rate as a decimal. Enter the rate only in the percentage field, without typing a percent sign, so the percentage is not applied twice. Round the final figure to cents after the calculation, not before."
+      ],
+      [
+        "Why does my total differ by a cent from the receipt?",
+        "Stores often round tax per item, on the subtotal, or on the final total, and each method can land a cent apart. The calculator computes exact values and does not know a store's rounding rule. When the gap is one cent, the receipt is usually the record to use for expense reports."
+      ],
+      [
+        "Should shipping be included in the taxable amount?",
+        "Whether shipping or service fees are taxable depends on the rules where you buy and on the type of charge, so the calculator cannot decide that. Enter only the portion you know is subject to the rate you plan to apply, and keep other charges on a separate line. For business filings, confirm treatment with a qualified tax professional."
+      ]
+    ]
+  },
+  "roth-ira-calculator": {
+    "answer": "A Roth IRA calculator projects how an account grows until retirement age. It compounds your current balance and each annual contribution at an expected yearly return across the years remaining. Roth contributions use after-tax money, so qualified withdrawals in retirement can come out tax-free. The output is an educational estimate that assumes a steady return and does not model taxes, fees, or market swings.",
+    "exampleInputs": {
+      "age": "35",
+      "retAge": "62",
+      "balance": "24000",
+      "annual": "6500"
+    },
+    "sections": [
+      {
+        "heading": "Who gets the most from a Roth projection?",
+        "text": "A Roth projection is useful for anyone who expects a higher tax rate in retirement or values tax-free withdrawals later. The calculator needs your current age, target retirement age, current balance, the amount you contribute each year, and an expected annual return. The years between your age and retirement age set how long compounding runs. Start with a realistic contribution, then test a higher and a lower return to see the range. A longer timeline can change the result more than a small change in the annual amount. This is an educational estimate, not professional financial advice."
+      },
+      {
+        "heading": "What does the tax-free part really mean?",
+        "text": "The advantage comes from when tax is paid, not from avoiding tax on growth. Contributions go in after tax, so growth is not taxed as it builds, and qualified withdrawals made after age fifty-nine and a half, once the account is five plus years old, come out tax-free. The calculator projects the balance, not spending power after inflation, because it does not model inflation, fees, or changes to the tax rules. Read the result as a nominal figure unless you lower the return yourself to reflect inflation."
+      },
+      {
+        "heading": "Which limits should I keep in view?",
+        "text": "The projection assumes the same return every year, but real returns vary and can be negative in some years. It does not apply contribution caps, income eligibility rules, or early-withdrawal rules, which matter for Roth accounts. Enter only what you can realistically contribute each year, since a planned amount you later cannot afford changes the outcome. Consider fees and investment choices separately. Transfers and rollovers are not modeled either. This output is an educational estimate, not professional financial advice, so review account rules with a qualified advisor."
+      }
+    ],
+    "faqs": [
+      [
+        "What return should I enter for a Roth projection?",
+        "Use a return you can justify from your own mix of investments, rather than an optimistic figure. Then run one lower and one higher case so you see a range. The calculator treats the rate as constant, so results are sensitive to that single input. This is an educational estimate, not professional financial advice."
+      ],
+      [
+        "Does starting earlier matter more than contributing more?",
+        "Both matter, but time is powerful because growth compounds on prior growth. Compare two runs: one with more years and a modest annual amount, and one with a larger amount over fewer years. Seeing both side by side clarifies which lever you can actually control, and it is an educational estimate, not professional advice."
+      ],
+      [
+        "Can this tool handle a rollover from another account?",
+        "No. The calculator projects only the balance you enter, and it does not model transfers, rollovers, or conversions from other accounts. Those follow their own rules and can carry tax consequences. Before moving money, confirm the process and any tax effects with the plan administrator or a qualified professional."
+      ]
+    ]
+  },
+  "investment-calculator": {
+    "answer": "An investment calculator estimates future value by compounding an upfront lump sum at an expected annual return, while each periodic contribution compounds from the period it is added. Future value is the sum of all those compounded amounts. The tool separates what you put in from the growth it generated, so you can see how much of the result comes from returns. Projections assume a constant return.",
+    "exampleInputs": {
+      "principal": "15000",
+      "contrib": "400",
+      "freq": "12",
+      "return": "7"
+    },
+    "sections": [
+      {
+        "heading": "What situations fit this projection?",
+        "text": "This projection suits someone with money to start and a plan to keep adding on a schedule, such as regular payments into a brokerage account. Enter the initial investment, the amount added each period, how often you contribute, the expected annual return, and the number of years. Switching frequency while keeping the annual total the same still changes the result, because earlier contributions have more time to compound. Use the calculator to set a target and test what contribution would reach it. It describes one path, not a forecast for any specific holding."
+      },
+      {
+        "heading": "How should I read growth versus contributions?",
+        "text": "The result has two parts: the money you put in and the growth earned on it. Early in a long projection, contributions dominate the balance. As years pass, growth takes a larger share, because returns join the base and earn returns themselves. If the growth share looks small, check the years and the return first, since both drive compounding more strongly than the size of each contribution. Compare the lump sum and periodic portions separately to see which decision you control most directly."
+      },
+      {
+        "heading": "What assumptions could overstate the outcome?",
+        "text": "A fixed return is the biggest simplification. Markets move up and down, and a steady rate hides sequence risk, meaning the order of good and bad years matters when money is withdrawn. Taxes, fees, and inflation are not part of the basic result, so after-tax, after-fee, inflation-adjusted value will be lower. Test a conservative return alongside an optimistic one rather than planning around a single figure. Past performance does not predict future results. This is an educational estimate, not professional investment advice."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does contribution frequency change the total?",
+        "Each contribution starts compounding from the period it is added. Monthly deposits put money to work sooner than yearly deposits of the same total, so the ending value is usually somewhat higher when the return is positive. The gap widens with more time and a higher return. Switching the frequency option shows the effect directly."
+      ],
+      [
+        "Can I apply this to individual stocks or funds?",
+        "You can use the same math for any holding where you can enter an expected annual return. Individual stocks can be volatile and may lose value, so a single steady return is only a planning placeholder. Use the output to compare scenarios rather than to predict a specific security. This is an educational estimate, not professional investment advice."
+      ],
+      [
+        "What if I withdraw money partway through the period?",
+        "This calculator does not model withdrawals and assumes money stays invested to the end year. A withdrawal reduces the base that compounds, so over long periods the future value drops by more than the amount taken out. To test this, project to the withdrawal year, subtract the amount, then project the remainder forward manually."
+      ]
+    ]
+  },
+  "debt-snowball-calculator": {
+    "answer": "A debt snowball calculator builds a month-by-month payoff plan. Every debt receives its minimum payment, and the extra monthly amount plus any freed-up minimums go to one target debt at a time. The snowball method targets the smallest balance first, while the avalanche method targets the highest rate first. The output is a debt-free date and total interest for each approach.",
+    "exampleInputs": {
+      "debts": "4200, 19.99, 110\n8500, 9.5, 240\n1900, 26, 60",
+      "extra": "350",
+      "method": "avalanche"
+    },
+    "sections": [
+      {
+        "heading": "Which debts belong in the plan?",
+        "text": "List every debt with a required monthly payment, such as credit cards, personal loans, auto loans, and student loans. For each one, enter the current balance, the annual percentage rate, and the minimum payment shown on your statement, with one debt per line in the format the field describes. Small debts matter under the snowball method because they free up minimums sooner. Leave out money you owe without a scheduled payment, and refresh the figures after each billing cycle so the plan reflects what you actually owe."
+      },
+      {
+        "heading": "How should I compare the two methods?",
+        "text": "Run both options with the same debts and extra payment, then compare the debt-free date and total interest. The snowball method often delivers quick wins, because closing a small account frees its payment and builds momentum. The avalanche method usually pays less interest, since money goes first to the costliest rate. If the two results are close, the snowball may be easier to sustain. If the interest gap is large, the avalanche may be worth the slower first win."
+      },
+      {
+        "heading": "What limits should I keep in mind?",
+        "text": "The plan assumes every minimum is paid on time and no new debt is added. New charges, rate changes, and missed payments can push the date later. Balances and rates are held fixed for the whole plan, so variable-rate debt may drift. Fees, expiring promotional rates, and payment rounding are not modeled. Use the output to plan and compare, not as a lender's payoff statement. This is an educational estimate, not professional financial advice; a nonprofit credit counselor or your lender can confirm exact figures."
+      }
+    ],
+    "faqs": [
+      [
+        "What if I cannot afford an extra payment every month?",
+        "Start with minimums you can keep up with, then add extra whenever your budget allows. Irregular extra payments still help. Re-run the plan each time your budget changes to see the updated debt-free date, and cover essential bills before adding money to debt."
+      ],
+      [
+        "Can I include a debt with no interest?",
+        "Yes. Enter zero as the rate. The avalanche method places that debt last because it carries no interest, while the snowball method may still target it first if its balance is small. Its minimum payment rolls forward once it is paid off."
+      ],
+      [
+        "Why does the debt-free date shift with a different extra amount?",
+        "A larger extra payment reduces principal faster, which lowers the interest charged in later months and speeds up the rollover of minimums. Even a modest change can move the finish date noticeably over a long plan. Compare two extra amounts to see what an added monthly payment is worth."
+      ]
+    ]
+  },
+  "budget-calculator": {
+    "answer": "A 50/30/20 budget calculator divides monthly after-tax income into three buckets. Needs get 50 percent, covering essentials such as housing, food, and utilities. Wants get 30 percent for discretionary spending. Savings and extra debt payments get the remaining 20 percent. Multiply your take-home pay by each percentage to get the dollar target for each bucket.",
+    "exampleInputs": {
+      "income": "4200"
+    },
+    "sections": [
+      {
+        "heading": "Where does this framework fit in planning?",
+        "text": "The 50/30/20 rule works as a starting template for people who want a simple split instead of tracking every category. It suits a first budget or a reset after spending has drifted. Enter monthly income after tax, since the rule is built on take-home pay. Then compare each dollar target with your real bills. The figures show whether essentials fit inside the needs bucket before discretionary spending is planned. Adjust the percentages if your costs require it, while keeping the overall structure visible."
+      },
+      {
+        "heading": "How should I use the three buckets?",
+        "text": "Treat the needs bucket as the ceiling for fixed obligations. If essential costs add up to more than that bucket, the template signals a mismatch that needs attention, such as housing cost or the balance between categories. The wants bucket is flexible by design, so it is usually the first place to trim when savings fall short. The savings bucket also covers extra debt payments, so a costly balance may justify directing more of it there. Review the split monthly rather than once."
+      },
+      {
+        "heading": "Which mistakes make the split misleading?",
+        "text": "The biggest mistake is entering gross pay. The rule uses after-tax income, so a gross figure makes every bucket look larger than money you can really spend. Another error is labeling wants as needs to make the numbers fit, which hides spending that could fund savings. Avoid treating 50/30/20 as a fixed law. It is a planning template, not a benchmark every household must meet. This is an educational estimate, not professional financial advice, so consult a qualified adviser for your situation."
+      }
+    ],
+    "faqs": [
+      [
+        "What if rent alone takes more than half my income?",
+        "The template will show a needs bucket that cannot cover rent and other essentials together. That is a signal to review housing costs or plan additional income, not a reason to abandon the budget. Use the dollar figures to see the gap, then decide which category has the most room to adjust."
+      ],
+      [
+        "Should the savings bucket fund an emergency reserve first?",
+        "The calculator does not rank savings goals. Many people direct the savings bucket toward an emergency cushion first, but the right order depends on your debts, income stability, and existing reserves. Treat the dollar target as the total, then assign it to your priorities in a separate plan."
+      ],
+      [
+        "How should I plan for annual bills that come up once a year?",
+        "Divide each annual bill by twelve and include that monthly amount in the needs or wants bucket, depending on its purpose. Setting money aside each month avoids surprise shortfalls. The calculator only splits the income you enter, so tracking those set-asides is up to you."
+      ]
+    ]
+  },
+  "apr-calculator": {
+    "answer": "An APR calculator finds a loan's true annual cost by including upfront fees. It computes the payment from the nominal rate, then solves for the rate that makes those payments match the net cash you actually receive after fees. That solved rate is the annual percentage rate, which is usually higher than the advertised rate when fees are charged.",
+    "exampleInputs": {
+      "amount": "18500",
+      "rate": "7.25",
+      "months": "60",
+      "fees": "450"
+    },
+    "sections": [
+      {
+        "heading": "Why does the advertised rate understate cost?",
+        "text": "A quoted interest rate describes what you pay on the borrowed balance, but it ignores money taken out of the loan at closing. Origination charges, processing fees, and similar upfront costs reduce the cash you receive, while the repayment schedule stays the same. That gap between cash received and cash repaid raises the effective cost. Enter the loan amount, nominal rate, term in months, and upfront fees. The result shows the APR that reflects those charges, which is the figure to use for comparing offers side by side."
+      },
+      {
+        "heading": "How should I compare two loan offers?",
+        "text": "Compare offers on the same loan amount and term, because the same fees spread over a different number of months change the APR. Enter each offer's fees and compare the resulting APRs, not the advertised rates alone. A lower rate with high fees can cost more than a slightly higher rate with minimal fees. Confirm the fee list with the lender, since some charges are optional or apply only at certain points. Use APR as one input alongside the total you will repay over the full term."
+      },
+      {
+        "heading": "Does the lowest APR always win?",
+        "text": "Not automatically. APR is a standardized comparison, but it assumes the loan runs its full term without early payoff, refinancing, or missed payments. If you expect to repay early, fees spread over a shorter life can change which offer is cheapest. Variable-rate loans may move after closing, and the APR shown reflects current terms only. This is an educational estimate, not professional financial advice, so confirm the disclosed APR with the lender before you sign."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the loan term change the APR?",
+        "Yes, because the same upfront fees are spread across a different number of months. A shorter term places fees into fewer payments, which generally raises the effective rate, while a longer term spreads them out. Test a few term lengths with the same amount, rate, and fees to see how the figure shifts."
+      ],
+      [
+        "Are all fees counted in the APR?",
+        "Not every charge is treated the same way. Some fees are finance charges that affect the disclosed APR, while others may be classified differently in official disclosures. This calculator uses the upfront fees you enter, so include charges you know will be paid at closing and confirm the official figure before deciding."
+      ],
+      [
+        "What if a lender will not itemize its fees?",
+        "Ask for a written list of all upfront charges and the official disclosed APR before committing. Without those figures, any APR estimate is only a guess. Compare offers only when each one lists the same types of fees, and be cautious with any quote that will not itemize its charges."
+      ]
+    ]
+  },
+  "net-worth-calculator": {
+    "answer": "Net worth is what you own minus what you owe. This calculator adds your cash, investments, property and other assets, then subtracts your mortgage, loans and credit card balances. The result is total assets minus total liabilities, computed entirely in your browser, so the figures you type are never sent anywhere.",
+    "exampleInputs": {
+      "cash": "15000",
+      "investments": "60000",
+      "property": "250000",
+      "mortgage": "180000"
+    },
+    "sections": [
+      {
+        "heading": "What should go on each side of the ledger?",
+        "text": "Assets are things with resale or cash value: checking and savings balances, brokerage and retirement accounts, the estimated value of a home or car, and collectibles you could sell. Liabilities are what you owe: mortgage principal, auto and student loans, and credit card balances. Use the balance you would see on a statement today rather than the original loan amount. Home and vehicle values are estimates, so a conservative figure is often more useful than an optimistic one. Keep the same method each time you update, so changes reflect real movement rather than shifting assumptions."
+      },
+      {
+        "heading": "Why does the trend matter more than one number?",
+        "text": "A single net worth figure is a snapshot, and it can swing with market prices or a car's depreciation. The more useful signal is the direction across several review periods. If assets grow faster than debts shrink, the figure rises even when income stays flat. Because the calculator is only arithmetic, a falling number is not automatically a problem. Paying down a mortgage moves money from liabilities into equity without changing the total much. Compare the same categories each time to see where a change came from."
+      },
+      {
+        "heading": "What mistakes make the total misleading?",
+        "text": "A common error is listing a home at its full value while omitting the mortgage that funds it, which inflates the result. Another is valuing retirement accounts without considering that withdrawals may later be taxed, so the balance can overstate what you could spend. Leaving out a credit card balance because you pay it off each month also distorts a single snapshot. Finally, mixing rough estimates with hard bank balances makes trends hard to trust. Note which figures are estimates so you know where the uncertainty sits."
+      }
+    ],
+    "faqs": [
+      [
+        "Do I need to include my paycheck in net worth?",
+        "No. Net worth measures a balance sheet at one moment, not cash flow. Income matters because it funds savings, and those savings then appear as assets, but the salary itself is not an asset. Use the calculator for what you hold and owe, and track income separately."
+      ],
+      [
+        "How often should I update my net worth?",
+        "Many people review it once a quarter or once a year. Updating monthly can help you spot debt growth, but daily market swings add noise without much insight. Pick a fixed schedule and use the same sources each time so the comparison stays meaningful."
+      ],
+      [
+        "Can this calculator tell me how to reach a goal?",
+        "No. It reports your current position and nothing about future returns, savings rates or spending. The output is an educational estimate, not financial advice. For retirement or debt payoff planning, a qualified professional can model scenarios using your full situation."
+      ]
+    ]
+  },
+  "cd-calculator": {
+    "answer": "A certificate of deposit pays interest on a fixed deposit for a set term. This calculator compounds your deposit at the stated rate and frequency, then reports the maturity value. It also converts the result to annual percentage yield (APY), the effective yearly return that includes compounding. The math runs in your browser, and the output is an educational estimate.",
+    "exampleInputs": {
+      "principal": "10000",
+      "rate": "4.5",
+      "years": "2"
+    },
+    "sections": [
+      {
+        "heading": "When is a CD a good fit for savings?",
+        "text": "A CD suits money you will not need until a known date, such as a down payment planned for next year or a reserve you prefer to leave untouched. Because the rate and term are fixed when you open the account, you can see the likely outcome in advance. Compare the maturity value against what a savings account might return over the same period, and remember that the deposit is locked. Matching the term to when you actually need the cash helps you avoid early withdrawal penalties later."
+      },
+      {
+        "heading": "Why does APY read higher than the stated rate?",
+        "text": "The stated rate is a nominal annual rate. When interest is added back to the balance and then earns interest of its own, the effective yield grows. That effective yield is the APY. Daily compounding produces a slightly higher APY than monthly compounding at the same rate, and annual compounding produces the lowest. Read the APY when comparing products, because it puts accounts with different compounding schedules on the same footing. The gap is small at low rates and grows as rates rise."
+      },
+      {
+        "heading": "Where can a projection go wrong?",
+        "text": "A projection assumes the rate stays fixed for the whole term and that you leave the money untouched. Many issuers charge a penalty for early withdrawal, which can reduce or eliminate the interest you earned. Inflation also erodes purchasing power, so a positive return can still lose ground after prices rise. Check whether the rate is promotional, whether interest is paid out or compounded, and whether the account renews automatically at a different rate when it matures."
+      }
+    ],
+    "faqs": [
+      [
+        "Does compounding frequency change the final balance much?",
+        "It changes the balance, but usually by a modest amount. Compounding more often adds a little interest on interest each period. Moving from annual to daily can noticeably raise the total on large deposits or long terms, while the gap between monthly and daily is often small. Use the calculator to compare the options side by side."
+      ],
+      [
+        "Should I ladder CDs with different terms?",
+        "A CD ladder splits savings across several maturity dates so that part of the money becomes available regularly. Each rung can be reinvested at prevailing rates when it matures. The tradeoffs are more accounts to track and possibly lower yields on some rungs. Model each rung separately with this calculator, then compare the total to a single longer term."
+      ],
+      [
+        "Is an educational estimate the same as a bank quote?",
+        "No. The calculator applies the standard compounding formula to the numbers you enter, so it shows what those terms imply on paper. The issuer's disclosure documents control the actual rate, fees, penalties and payment schedule. Confirm those terms directly with the bank before you open an account."
+      ]
+    ]
+  },
+  "break-even-calculator": {
+    "answer": "The break-even point is the number of units you must sell so total revenue equals total costs. This calculator divides fixed costs by the contribution margin, which is price per unit minus variable cost per unit. Each sale contributes that margin toward covering fixed costs, and any units sold beyond break-even add to profit. Everything runs locally in your browser.",
+    "exampleInputs": {
+      "fixed": "10000",
+      "price": "50",
+      "variable": "20"
+    },
+    "sections": [
+      {
+        "heading": "Which costs belong in the fixed column?",
+        "text": "Fixed costs stay roughly the same whether you sell ten units or a thousand. Typical examples include rent, insurance, software subscriptions, salaried staff and loan payments. Variable costs rise with each unit sold, such as materials, packaging, shipping and sales commissions. Some expenses are semi-variable, like a utility bill that climbs with production. Split those according to how they behave across the range of output you plan to run, and write down the assumption you made so you can revisit it."
+      },
+      {
+        "heading": "What does the contribution margin tell me?",
+        "text": "Contribution margin is the amount each unit adds toward fixed costs. If a product sells for fifty dollars and costs twenty to make, each sale contributes thirty. A higher margin means fewer sales are needed to break even. Margin also shows how sensitive profit is to price changes: a price cut shrinks the margin directly, which pushes the break-even count up. Compare margin per unit across products before deciding which to promote, since a high-volume product with a thin margin may still be the weaker line."
+      },
+      {
+        "heading": "Where does the break-even model fall short?",
+        "text": "The model assumes one constant price and one constant variable cost, which real businesses rarely have. Discounts, bulk pricing and rising supplier costs make the real cost curve bend. The model also ignores demand: knowing you need a certain number of sales does not tell you whether customers will buy that many. Taxes, interest on debt and working capital needs fall outside the calculation. Treat the output as a starting point for a conversation about pricing and volume rather than a forecast of profit."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I calculate break-even revenue instead of units?",
+        "Multiply the break-even unit count by the price per unit. Equivalently, divide fixed costs by the contribution margin ratio, which is contribution margin divided by price. Both routes give the same revenue figure, so pick whichever matches the way your sales targets are written."
+      ],
+      [
+        "Can break-even help me decide on a price change?",
+        "Yes, by testing scenarios. Enter a higher or lower price and watch how the unit count moves. A small price cut can require a large jump in volume to hold the same profit, which is why sensitivity matters. Pair the result with an honest estimate of how demand would respond."
+      ],
+      [
+        "What if my costs change every month?",
+        "Recalculate with the updated figures, or use an average over a period you consider representative. Seasonal or unpredictable costs can make a single break-even number misleading, so consider running a few scenarios instead of relying on one. Keep notes on the assumptions behind each run so you can compare them later."
+      ]
+    ]
+  },
+  "overtime-calculator": {
+    "answer": "Overtime pay is your hourly rate multiplied by overtime hours and by an overtime multiplier, commonly 1.5 for time-and-a-half. This calculator adds regular pay, which is rate times regular hours, to overtime pay, which is rate times overtime hours times the multiplier. You can change the multiplier for double time or other agreements. The math runs locally in your browser, and the result is an estimate.",
+    "exampleInputs": {
+      "rate": "25",
+      "regular": "40",
+      "overtime": "8",
+      "multiplier": "1.5"
+    },
+    "sections": [
+      {
+        "heading": "Which hours count toward the overtime rate?",
+        "text": "Overtime rules depend on where you work and the agreement you have, so the hours you enter should match your own pay terms. Hours above a weekly limit often qualify, while some salaried or exempt roles receive no overtime at all. Some arrangements use daily thresholds or special premiums for weekends or holidays. Check your pay stub or employment contract for the exact trigger. Enter the hours that earn the overtime premium in the overtime field, and the remaining hours in the regular field."
+      },
+      {
+        "heading": "What does the multiplier do to the total?",
+        "text": "The multiplier scales the hourly rate for each overtime hour. A multiplier of one means overtime is paid at the normal rate, which adds no premium. Time-and-a-half raises each overtime hour to one and a half times the base, and double time doubles it. Because only overtime hours use the multiplier, a larger overtime share changes the total far more than a small increase in the regular rate would. Change the multiplier and watch the total move to see that effect."
+      },
+      {
+        "heading": "Why might my actual paycheck differ?",
+        "text": "This calculator reports gross pay, before taxes, retirement contributions, insurance premiums and other deductions, so net pay will be lower. Hours logged in a timekeeping system may be rounded differently from the hours you enter, and some employers pay overtime on a different cycle than regular wages. Shift differentials, bonuses and commissions can also change the base rate used for overtime. Compare the estimate with a recent pay stub before relying on it."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use this to estimate the effect of a raise?",
+        "Yes. Change the hourly rate to the new figure and compare totals. Because overtime is calculated from the base rate, a raise increases both the regular and overtime portions. Run the calculation once with the old rate and once with the new, then subtract to see the difference."
+      ],
+      [
+        "Does overtime pay include bonuses or tips?",
+        "Not in this calculator. It multiplies a single hourly rate by the hours you enter. Some employers and jurisdictions include certain bonuses or shift premiums in the overtime base, which would raise the figure. If that applies to you, add the adjusted rate manually or confirm the treatment with your payroll team."
+      ],
+      [
+        "Is the output professional payroll advice?",
+        "No. The output is an educational estimate based on the numbers you enter. It does not account for local rules, deductions or exemptions, and it is not payroll or legal advice. Confirm your pay terms with your employer or a qualified professional."
+      ]
+    ]
+  },
+  "one-rep-max-calculator": {
+    "answer": "A one-rep max is the heaviest weight you can lift for a single clean repetition. This calculator estimates it from a submaximal set using two formulas: Epley, weight times one plus reps divided by thirty, and Brzycki, weight times thirty-six divided by thirty-seven minus reps. It then lists 90 and 80 percent loads for training. Everything is computed locally in your browser.",
+    "exampleInputs": {
+      "weight": "100",
+      "reps": "8"
+    },
+    "sections": [
+      {
+        "heading": "Which set should I enter?",
+        "text": "The estimate is steadiest when the set is moderate, neither very light nor grinding to failure, and performed with good form. Sets close to failure can produce estimates that drift, because the formulas assume consistent effort throughout the set. Very high rep sets carry more error, since fatigue rather than maximal strength becomes the limit. Choose a load that you can repeat cleanly and that ends with a few reps left in reserve. Record the exercise and the rep count so you can compare results over time."
+      },
+      {
+        "heading": "How do the Epley and Brzycki results compare?",
+        "text": "Both formulas convert a submaximal set into a projected single-rep load, but they weight reps differently. Epley adds a fixed share for each rep, so its estimate rises gently with reps. Brzycki divides by a term that shrinks as reps increase, so its estimate climbs faster at higher reps. When the two results are close, the estimate is more stable. When they diverge, the set is probably far from a single-rep effort, and a lower-rep set will give a firmer number."
+      },
+      {
+        "heading": "What are the limits of a calculated max?",
+        "text": "A calculated one-rep max is an estimate built from one set, not a measured limit. Sleep, fatigue, technique and equipment can shift the result from day to day. Exercise choice matters as well: the formulas are generally applied to multi-joint lifts, and isolation movements may not follow the same pattern. The percentages are planning guides, so adjust loads based on how sets actually feel. Anyone with an injury or medical concern should discuss heavy training with a qualified coach or clinician before testing a true maximum."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does the estimate change with fewer reps?",
+        "A set with fewer reps is usually performed closer to your limit, so the estimate tends to track the real maximum more closely. Longer sets rely more on endurance and pacing, which the formulas cannot see. Use a set you can complete with consistent form, and compare results across a few different rep counts."
+      ],
+      [
+        "Is it safe to lift heavy without a spotter?",
+        "Heavy lifting carries real risk, especially when testing a true maximum. Warm up thoroughly, use safety stands or a spotter, and stop if your form breaks down. This calculator does not replace supervised instruction. If you have a health condition, speak with a clinician before testing heavy loads."
+      ],
+      [
+        "Can I use this for every exercise?",
+        "You can enter any weight and reps, so the arithmetic works for any lift. Accuracy depends on how well the exercise fits the formulas, which are generally applied to common multi-joint barbell lifts. Machines, single-limb work and bodyweight movements can behave differently, so treat their estimates as rough guides."
+      ]
+    ]
+  },
+  "pace-calculator": {
+    "answer": "Running pace is the time it takes to cover one unit of distance, usually minutes per kilometer or per mile. This calculator divides your total time in minutes by the distance, then formats the result as minutes and seconds per unit. It also shows speed, the distance covered per hour. Everything is computed locally in your browser, so your times stay on your device.",
+    "exampleInputs": {
+      "distance": "10",
+      "hours": "0",
+      "minutes": "55",
+      "seconds": "0"
+    },
+    "sections": [
+      {
+        "heading": "How can I use this for race planning?",
+        "text": "Enter a target finish time and the race distance to get the pace you need to hold. Then break the race into splits, such as each kilometer or mile, and print the list to carry on a card or set on your watch. Plan a slightly slower pace for the opening stretch, since early adrenaline often leads to overpacing. Treat the number as a target to test in training rather than a promise, because elevation, heat and crowds all affect real results."
+      },
+      {
+        "heading": "Why do my watch and this result differ?",
+        "text": "Pace from this tool is only as precise as the distance and time you type. GPS watches estimate distance from satellite signals, which can drift on winding routes, under tree cover or between tall buildings. Many devices also smooth pace over a rolling window, so their average may not match a simple division. Compare totals rather than single splits, and use a measured course when you need a reliable reference distance."
+      },
+      {
+        "heading": "What mistakes do runners make with pace units?",
+        "text": "The most common error is mixing kilometers with miles. A pace per mile is a longer time than the same pace per kilometer, so reading one as the other can throw a race plan badly off. Another is entering minutes in the seconds field, or leaving hours at zero while entering a time over an hour. Check that the total time matches your watch before trusting the output, and confirm that the distance matches the event."
+      }
+    ],
+    "faqs": [
+      [
+        "Does pace change on hills?",
+        "Yes. Uphill sections are slower, and downhill sections can be faster even at a similar effort. A flat average pace hides that variation. Many runners plan by effort on hilly courses rather than by a fixed split, and this calculator can help you check the overall average."
+      ],
+      [
+        "Can I convert a pace from miles to kilometers?",
+        "Yes. Convert the distance to the new unit first, then enter it with the same total time. The calculator is simplest when the distance is in the unit you want the pace in. Keep the total time unchanged, because only the distance unit changes."
+      ],
+      [
+        "How much does a fast start affect the finish?",
+        "A fast start spends energy you may need later. Starting a few seconds per unit slower than goal pace can help you hold the target through the end. Use the splits list to check that early pace stays controlled, and compare your finish to the plan after each training run."
+      ]
+    ]
+  },
+  "ideal-weight-calculator": {
+    "answer": "Ideal body weight is a clinical reference weight estimated from height and sex. This calculator applies three published formulas, Devine, Robinson and Miller. Each takes a base weight for five feet and adds a fixed increment for every inch above that height. The three results are shown as a range, and the calculation runs locally in your browser as an educational estimate.",
+    "exampleInputs": {
+      "height": "172",
+      "hUnit": "cm"
+    },
+    "sections": [
+      {
+        "heading": "What does a range tell me that one number does not?",
+        "text": "Each formula was developed separately and produces a slightly different base, so a single figure would hide that spread. Showing the lowest and highest results gives a sense of how sensitive the estimate is to the method. A narrow range suggests the formulas agree at your height, while a wide one signals that the estimate depends heavily on assumptions. Treat the band as a reference zone rather than a target you must hit exactly, and avoid reading it as a verdict on your health."
+      },
+      {
+        "heading": "Which height unit should I select?",
+        "text": "Choose centimeters or inches to match the tape measure or chart you have. The calculator converts internally, so the same height should give the same range in either unit. Measure without shoes, and check that the number is in the unit you selected before reading the output. Mixing a height in centimeters with the inches setting is the most common error here, and it produces an implausible range, which is a quick sign to recheck the unit."
+      },
+      {
+        "heading": "Where does ideal weight stop being useful?",
+        "text": "Ideal body weight was developed for clinical dosing and does not measure body composition. Two people of the same height can differ widely in muscle, bone and fat. The formulas also ignore age, frame size and activity level. A person with a lot of muscle may read above the range while being healthy. Use the output as one reference point alongside waist measurements, activity levels and guidance from a clinician."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the sex setting change the result?",
+        "Yes. Each formula uses separate constants for men and women, so changing the setting moves the whole range. The formulas are population-level approximations, so the setting is a modeling input rather than a measurement of your body."
+      ],
+      [
+        "Can children use this calculator?",
+        "These formulas are intended for adults, so this calculator is not designed for children or teenagers. Growth charts that account for age and development are the appropriate reference for younger people. If you are unsure whether a result applies to you, ask a pediatrician or physician."
+      ],
+      [
+        "Why would a clinician use ideal body weight?",
+        "Clinicians sometimes use ideal body weight to set certain medication doses or to calculate settings in specialized care, where actual weight can be misleading. It is a calculation input in those settings rather than a personal goal. This calculator does not provide clinical guidance."
+      ]
+    ]
+  },
+  "body-fat-calculator": {
+    "answer": "Body fat percentage is the share of your body weight that is fat tissue. The US Navy tape method estimates it from height, neck and waist circumference, adding hip circumference for women, and then runs those lengths through logarithmic equations. The formula produces a quick estimate, not a measured value, and this calculator then places the result into a fitness category. Calculations run in your browser.",
+    "exampleInputs": {
+      "height": "172",
+      "neck": "38",
+      "waist": "85",
+      "unit": "cm"
+    },
+    "sections": [
+      {
+        "heading": "Why does the tape method suit repeat checks?",
+        "text": "Tape measurements need only a flexible tape and a few minutes, so they are easy to repeat at home. Because the same method is applied each time, changes over weeks are more informative than any single reading. Measure at the same time of day, with the same posture and tape placement, and record the unit you used. Small differences in tension or breathing can shift a result noticeably, so consistency matters more than chasing a precise number."
+      },
+      {
+        "heading": "Which measurement points should the tape follow?",
+        "text": "Wrap the tape around the neck just below the larynx, keeping it level and snug without compressing the skin. For the waist, the usual reference is at the navel, measured at the end of a normal exhale. For women, measure the hips at the widest point of the buttocks. Keep the tape parallel to the floor all the way around. A tape that slopes or sags between measurements will change the numbers and make comparisons unreliable."
+      },
+      {
+        "heading": "What should the number not be used for?",
+        "text": "The estimate is not a diagnosis, and it does not separate fat from muscle, bone or water the way a scan would. Athletes with dense muscle can read higher than their health status suggests, and the broad fitness categories may not fit every body type. The category is a general label drawn from typical ranges, so it should not drive crash dieting or extreme training. If the result worries you, discuss body composition with a qualified clinician."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does the hip measurement matter only for women?",
+        "The US Navy equations use a different formula for women that includes hip circumference, reflecting how fat is distributed differently between the sexes. The men's calculation uses only neck and waist. If you choose the female setting, make sure the hip value is filled in and uses the same unit as the other measurements."
+      ],
+      [
+        "Should I measure in the morning?",
+        "Many people measure first thing in the morning, before eating or drinking, to reduce variation from food and fluid. The goal is consistency rather than a perfect time. Use the same time, posture and tape for every check so that trends reflect your body rather than your schedule."
+      ],
+      [
+        "What if my measurements jump between sessions?",
+        "Some change is normal because tape placement, breathing and tension all vary. Compare averages across two or three measurements taken on the same day, and look for trends over several weeks. A single large jump is often a measurement error rather than a real change in body composition."
+      ]
+    ]
+  },
+  "sleep-calculator": {
+    "answer": "A sleep cycle calculator counts backward or forward from a target time in blocks of 90 minutes, the length of a typical sleep cycle. It adds about 15 minutes to fall asleep and returns times that align with cycle ends. Waking at a cycle end is the goal. The timing logic runs locally in your browser and is a planning guide, not a medical measure.",
+    "exampleInputs": {
+      "time": "07:00"
+    },
+    "sections": [
+      {
+        "heading": "Why does timing within a cycle matter?",
+        "text": "Sleep moves through stages in cycles, with lighter and deeper phases. Waking during a deep phase often feels heavy and groggy, even after a long night. Timing an alarm near the end of a cycle tends to make the transition smoother. Total hours still matter most for recovery, so use cycle alignment as a fine-tuning tool rather than a reason to cut sleep short. If you must choose between a slightly later alarm and a cycle-aligned one, pick whichever gives you enough total sleep."
+      },
+      {
+        "heading": "Which direction should I calculate?",
+        "text": "Choose the wake up option when your schedule is fixed, such as a work start, and the tool will suggest bedtimes that finish cycles just before the alarm. Choose the go to sleep option when you can start winding down immediately and want to know when to set the alarm. Both directions use the same cycle length and the same fall-asleep allowance, so the results mirror each other. Enter times in 24-hour format, so seven in the evening is written as nineteen hundred."
+      },
+      {
+        "heading": "What assumptions should I keep in mind?",
+        "text": "Real sleep cycles vary in length from person to person and night to night, so the cycle grid is an approximation. The fall-asleep allowance is a typical average: some people drift off faster, and those who struggle to sleep may need longer. Caffeine, alcohol, room temperature and screen use all affect how quickly sleep begins and how deep it becomes. A neat plan cannot fix sleep deprivation. If you regularly wake unrefreshed, talk with a clinician about your sleep."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use the calculator for a nap?",
+        "Yes, but the model is built for overnight sleep. Naps are usually kept short so they end before deeper stages begin, and that timing varies by person. Use the calculator to plan a longer nap that ends at a cycle boundary, and treat the output as a starting point."
+      ],
+      [
+        "What should I do if I wake before my alarm?",
+        "Waking early often comes from stress, light exposure, timing or an irregular schedule rather than from the calculator itself. Keep a consistent wake time on most days, get morning light, and limit caffeine late in the day. If early waking persists, a clinician can help identify the cause."
+      ],
+      [
+        "Does using the calculator replace medical advice?",
+        "No. The calculator applies a simple timing model to the numbers you enter. It does not diagnose sleep disorders, and it cannot judge whether your sleep is adequate for your health. If you snore loudly, feel sleepy during the day or have trouble sleeping most nights, speak with a healthcare professional."
+      ]
+    ]
+  },
+  "a1c-calculator": {
+    "answer": "An A1C result is a percentage that reflects average blood sugar over roughly the prior three months. This calculator converts it to estimated average glucose (eAG) in mg/dL using the ADA formula: eAG equals 28.7 times A1C minus 46.7. It also runs in reverse, turning a glucose average back into an estimated A1C. The math runs locally in your browser, and the output is educational, not a diagnosis.",
+    "exampleInputs": {
+      "value": "7"
+    },
+    "sections": [
+      {
+        "heading": "Why does an A1C-to-glucose conversion help?",
+        "text": "Meter readings capture one moment, while A1C reflects a longer average. Translating A1C into eAG lets you compare it with the glucose numbers you see day to day. That comparison can make a lab result feel more concrete, and it gives you a shared language for conversations with a care team. The conversion describes an average relationship across many people. Individual results can differ because of red blood cell lifespan, anemia or other factors that change how glucose attaches to those cells."
+      },
+      {
+        "heading": "Which way should the conversion run?",
+        "text": "Pick A1C to average glucose when you start with a lab percentage and want the estimated glucose equivalent. Pick average glucose to A1C when you have a set of meter readings and want the percentage they would correspond to. Enter the value in the matching units, percent for A1C and mg/dL for glucose. Confirm the direction before reading the output, because entering the wrong unit produces a number that is valid arithmetic but clinically meaningless."
+      },
+      {
+        "heading": "What should the conversion not be used for?",
+        "text": "The eAG figure is a statistical estimate, not a measured average, and it can be less reliable for people with conditions that change red blood cell turnover, such as some anemias, pregnancy, recent blood loss or kidney disease. Decisions about diagnosis, dosing or treatment changes should rest on clinical testing and the advice of a care team. A converted number is useful for context and conversation, but it does not replace a lab report or a clinician's review."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I convert a glucose reading into A1C?",
+        "Yes, using the reverse direction of the same formula. Average glucose in mg/dL is converted by adding 46.7 and dividing by 28.7. The result is an estimate, and it is steadier with averages built from many readings over several weeks rather than a single value."
+      ],
+      [
+        "Why do my meter readings and A1C sometimes disagree?",
+        "Meter readings are snapshots that rise and fall with meals, activity and medication timing, while A1C averages a longer window. Differences also come from how many readings you took and when you took them. Conditions that alter red blood cell lifespan can push the two apart. Discuss persistent gaps with your clinician."
+      ],
+      [
+        "Should I change my medication based on this result?",
+        "No. Any change to medication or treatment goals should come from a clinician who knows your history and lab results. This calculator only performs a unit conversion between two measures. Bring the converted numbers to your appointment if they help the discussion."
+      ]
+    ]
+  },
+  "quadratic-formula-calculator": {
+    "answer": "This calculator solves a quadratic equation in the form ax² + bx + c = 0 using the quadratic formula: x equals negative b, plus or minus the square root of b squared minus 4ac, all divided by 2a. The discriminant, b squared minus 4ac, decides the result. Positive gives two real roots, zero gives one repeated root, and negative gives a complex conjugate pair.",
+    "exampleInputs": {
+      "a": "2",
+      "b": "-5",
+      "c": "3"
+    },
+    "sections": [
+      {
+        "heading": "When should I use the quadratic formula?",
+        "text": "Reach for this tool when a problem reduces to a second-degree polynomial set equal to zero, such as the height of a thrown object over time or a break-even point in a simple profit model. Factoring is faster when the numbers split neatly, but many real coefficients do not factor cleanly, and the formula works either way. Enter a, b, and c exactly as they appear in your equation, keeping every sign. If the equation is not yet in standard form, move all terms to one side first so the right side is zero. The calculator reads each coefficient literally, so a missing term means its coefficient is zero."
+      },
+      {
+        "heading": "How should I read a complex root result?",
+        "text": "A complex root appears when the discriminant is negative, which means the parabola never touches the x-axis. The two roots are conjugates: they share the same real part, negative b over 2a, and their imaginary parts are equal in size but opposite in sign. Complex roots are not errors. They tell you the equation has no real solution, while still carrying meaning in fields such as electrical engineering, where they describe oscillating behavior. When the discriminant is exactly zero, the two roots merge into one repeated real value, and the parabola just touches the axis at its vertex."
+      },
+      {
+        "heading": "What mistakes make the roots look wrong?",
+        "text": "The most common error is a sign slip on b. Because the formula starts with negative b, entering b with the wrong sign flips the answer. Another is mixing up c, which is the constant term, with the coefficient of x. Rounding also matters: when b squared and 4ac are very close, subtracting them loses precision, so a tiny discriminant can look like zero even when it is not. Finally, check the answer by substituting each root back into the original equation. If both return zero, the roots are correct for the coefficients you entered."
+      }
+    ],
+    "faqs": [
+      [
+        "Can the coefficients be decimals or fractions?",
+        "Yes. The formula works with decimal coefficients, and the roots are shown as rounded decimals for readability. If you need exact fractional roots, simplify the square root of the discriminant by hand, since the displayed values are approximations for most inputs."
+      ],
+      [
+        "Does the order of a, b, and c matter?",
+        "Yes, because each letter has a fixed role. a multiplies x squared, b multiplies x, and c is the constant term. Swapping b and c produces a different equation with different roots, so always write the equation in standard form before reading off the coefficients."
+      ],
+      [
+        "Why can the formula return the same answer twice?",
+        "That happens when the discriminant equals zero, so the plus-or-minus part adds nothing to the result. The parabola's vertex then sits exactly on the x-axis, which creates one repeated root. Mathematicians sometimes call this a double root, and it marks the boundary between real and complex solutions."
+      ]
+    ]
+  },
+  "lcm-calculator": {
+    "answer": "This calculator returns the greatest common factor and least common multiple of a list of whole numbers. The GCF is found with Euclid's algorithm, which repeatedly replaces the larger number with the remainder until nothing remains. The LCM of a pair equals their product divided by their GCF, and that rule is applied across the whole list one pair at a time.",
+    "exampleInputs": {
+      "list": "8, 12, 20"
+    },
+    "sections": [
+      {
+        "heading": "Where do LCM and GCF show up in practice?",
+        "text": "Least common multiples help when events repeat on different cycles. If one bus leaves every twelve minutes and another every eighteen, the LCM of those gaps tells you when both leave together again. Greatest common factors help when splitting things into equal groups, such as dividing twelve red and eighteen blue tiles into identical packs with nothing left over. The GCF gives the largest pack size that works for both colors. Fraction simplification uses the same idea: dividing the top and bottom by their GCF reduces the fraction to lowest terms."
+      },
+      {
+        "heading": "How should I interpret the list output?",
+        "text": "Read the GCF as the biggest number that divides every entry without a remainder, and the LCM as the smallest number that every entry divides into evenly. When you enter three or more values, the calculation runs pairwise, so each intermediate result feeds the next step. Check any result by dividing the LCM by each input; every division should come out whole. If one value is a multiple of all the others, it becomes the LCM of the list, which is a quick shortcut to recognize."
+      },
+      {
+        "heading": "What mistakes should I avoid with these numbers?",
+        "text": "The most frequent mistake is mixing up GCF and LCM. The GCF is never larger than the smallest input, while the LCM is never smaller than the largest. Another is entering decimals or negative numbers, since the method is defined for whole numbers. Separate entries with commas or spaces, and confirm that every value you intended is in the list before reading the result. Finally, adding one more number can change both answers, so recompute whenever you extend a list rather than reusing an earlier result."
+      }
+    ],
+    "faqs": [
+      [
+        "Is the GCF always smaller than the LCM?",
+        "For distinct positive whole numbers, the GCF is never larger than the smallest input and the LCM is never smaller than the largest, so the GCF comes out smaller. A special case is a pair where one divides the other, like 4 and 8, which gives a GCF of 4 and an LCM of 8."
+      ],
+      [
+        "How do I find these by hand for a long list?",
+        "Write each number as a product of primes. The GCF takes each shared prime at its lowest power, and the LCM takes every prime at its highest power. For longer lists the pairwise method used here is faster, but the prime method makes the logic visible for homework."
+      ],
+      [
+        "Can I use the GCF to simplify a fraction?",
+        "Yes. Divide the numerator and the denominator by their GCF, and the fraction reduces to lowest terms. Entering the two numbers as a pair gives you the value to divide by, and the reduced fraction has no common factor left above one."
+      ]
+    ]
+  },
+  "square-root-calculator": {
+    "answer": "This tool returns the principal square root of a number, the non-negative value that multiplied by itself gives back the original input. For a negative input, the result is imaginary: the square root of the absolute value, multiplied by i, where i is the imaginary unit. Results are shown to eight-digit precision and labeled so the real and imaginary parts stay clear.",
+    "exampleInputs": {
+      "n": "144"
+    },
+    "sections": [
+      {
+        "heading": "When is a square root the right tool?",
+        "text": "Square roots appear whenever you know an area or a squared quantity and need the side or base that produced it. A square tile with a known area needs its root to find the edge length. Standard deviation is the square root of variance, and distance formulas in coordinate geometry take the root of a sum of squares. Use the principal, positive result for ordinary real problems. Use the imaginary result for negative inputs only when your work involves complex numbers, because it has no meaning on a real number line."
+      },
+      {
+        "heading": "How do I read an imaginary result?",
+        "text": "A negative input has no real square root, because squaring any real number produces a non-negative value. The tool writes the answer as a real magnitude multiplied by i, where i is defined as the square root of negative one. The root of a negative number therefore equals the root of its positive counterpart times i. Treat this as a correct mathematical result rather than a failure, and confirm whether your context calls for complex numbers before using it."
+      },
+      {
+        "heading": "What common mistakes come with roots?",
+        "text": "A frequent mistake is treating the principal root as the only solution to an equation. The principal square root is positive, but solving x squared equals a positive number gives two answers, one positive and one negative. Squaring both sides of an equation can also introduce false solutions, so test each candidate in the original equation. Rounding is another limit: an irrational root is shown as an approximation, so do not treat the displayed value as exact unless the input is a perfect square."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the tool handle very large or very small numbers?",
+        "It handles ordinary decimal inputs well, and results are shown with a fixed level of precision. Extremely large or tiny values can lose detail in display, so compare the magnitude of the result against your expectation before relying on it."
+      ],
+      [
+        "Is the square root of a decimal found the same way?",
+        "Yes. The principal root of a decimal is the non-negative number that squares back to it, so a quarter has a root of one half. Decimal inputs follow the same rule as whole numbers, and the output uses the same display precision."
+      ],
+      [
+        "Can I take a cube root with this tool?",
+        "No, this tool only computes square roots. A cube root asks for a number that, multiplied by itself three times, gives the input, which is a different operation. Use a dedicated cube root or exponent tool for that calculation."
+      ]
+    ]
+  },
+  "standard-deviation-calculator": {
+    "answer": "This calculator finds the mean of a list, then the variance as the average squared distance from that mean, and the standard deviation as the square root of the variance. Population variance divides the sum of squared differences by n. Sample variance divides by n minus one, a correction for estimating spread from a subset of a larger group.",
+    "exampleInputs": {
+      "list": "2, 4, 4, 4, 5, 5, 7, 9"
+    },
+    "sections": [
+      {
+        "heading": "When should I pick sample or population?",
+        "text": "Use population when your list includes every member of the group you care about, such as all students in a single class. Use sample when your list is a subset meant to estimate a larger group, such as surveying a few hundred customers to describe thousands. The sample version divides by n minus one because a sample tends to understate spread, and that correction offsets the bias. If you are unsure, ask whether the list is the whole group or a slice of it."
+      },
+      {
+        "heading": "How do I interpret the spread number?",
+        "text": "Standard deviation is in the same units as your data, which makes it easier to read than variance, whose units are squared. A small value means most numbers sit close to the mean, and a large value means they are scattered widely. For data that is roughly bell-shaped, most values usually fall within one standard deviation of the mean, though that pattern depends on the shape of the distribution. Compare standard deviations only between data sets measured in the same units."
+      },
+      {
+        "heading": "What mistakes distort the result?",
+        "text": "Outliers pull both the mean and the squared distances upward, so a single extreme value can inflate the standard deviation dramatically. Mixing separate groups into one list hides real differences between them, and the combined spread may look misleading. Treating a sample as if it were a full population is another common error, and it slightly underestimates the spread. Check for typos as well, such as an extra zero, because one misplaced value changes the mean and the spread together."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I enter negative or decimal numbers?",
+        "Yes. The formulas work for any real numbers, including negatives and decimals, because they rely only on addition, subtraction, multiplication, division, and a square root. Keep the entries separated by commas or spaces so each one is read as its own value."
+      ],
+      [
+        "How many values do I need?",
+        "A single number has no spread around its mean, so at least two values are needed for a meaningful result. Sample standard deviation requires at least two values as well, because dividing by n minus one with only one value would mean dividing by zero. More values generally give a steadier estimate of spread."
+      ],
+      [
+        "Does the order of the numbers matter?",
+        "No. Variance and standard deviation depend only on which values appear and how often, not on their sequence. Reordering the list leaves the mean, variance, and standard deviation unchanged, so you can paste data in any order."
+      ]
+    ]
+  },
+  "prime-factorization-calculator": {
+    "answer": "This calculator splits a whole number into the prime numbers that multiply together to produce it. It divides by successive primes, up to the square root of what remains, and records each prime until only one is left. The result appears in exponent form, where repeated primes are grouped, and as a full list.",
+    "exampleInputs": {
+      "number": "360"
+    },
+    "sections": [
+      {
+        "heading": "When do I need prime factors?",
+        "text": "Prime factors help when you simplify fractions, find a common denominator, or check whether one number divides another. They also reveal the structure behind the GCF and LCM, since shared primes determine both. In cryptography and computing, prime factors matter because multiplying two large primes is easy while recovering them from the product is hard. This tool is meant for everyday-sized integers, though, so treat it as a learning and checking aid rather than a security tool."
+      },
+      {
+        "heading": "How do I read exponent form?",
+        "text": "Exponent form groups repeated primes, so a prime that appears three times is written once with a small raised three. Read each base as a prime and each exponent as the number of copies multiplied together. Multiplying every base raised to its exponent returns the original number, which makes a quick check. If the number is itself prime, the factorization is just that number, and the primality check reports it directly."
+      },
+      {
+        "heading": "What mistakes come up with factor trees?",
+        "text": "A common error is treating one as a prime. It is neither prime nor composite, so it never appears in a factorization. Another is stopping early on a factor tree and leaving a composite branch unfinished. Different tree layouts can look unlike each other, yet the final set of primes stays the same. Input size also matters: trial division is efficient for everyday integers, so very large values may take noticeably longer to process."
+      }
+    ],
+    "faqs": [
+      [
+        "Is 1 a prime number?",
+        "No. A prime has exactly two distinct positive divisors, one and itself, and the number 1 has only one. For that reason 1 is excluded from prime factorizations, so the list for any number greater than one contains only primes."
+      ],
+      [
+        "Does the order of the factors matter?",
+        "The list is usually written from the smallest prime to the largest, which makes comparison easy. Any order of the same primes gives the same product, and the fundamental theorem of arithmetic states that each whole number greater than one has exactly one such factorization apart from ordering."
+      ],
+      [
+        "Can I use the factorization to find the GCF?",
+        "Yes. The GCF takes each prime that appears in both factorizations, using the smaller exponent. The LCM takes every prime that appears in either one, using the larger exponent. Comparing exponent forms makes both values quick to read."
+      ]
+    ]
+  },
+  "pythagorean-theorem-calculator": {
+    "answer": "This calculator solves a right triangle with the Pythagorean theorem, which states that the square of the hypotenuse equals the sum of the squares of the two legs: a squared plus b squared equals c squared. Enter any two sides, leave the unknown as zero, and the tool rearranges the formula to find the third side.",
+    "exampleInputs": {
+      "a": "5",
+      "b": "12",
+      "c": "0"
+    },
+    "sections": [
+      {
+        "heading": "When can I use this on a real project?",
+        "text": "Use it when a triangle has a verified right angle, such as a room corner, a square frame, or a ramp meeting a level floor. Carpenters and surveyors use the same relationship to check that corners are square by comparing diagonals. Confirm the corner is actually a right angle before trusting the output, because a slightly off angle changes the hypotenuse. Measure both legs from the same reference point and in the same units so the inputs line up."
+      },
+      {
+        "heading": "How do I tell the hypotenuse from a leg?",
+        "text": "The hypotenuse is always the longest side and sits opposite the right angle. When you solve for a leg, the calculation subtracts the known leg's square from the hypotenuse's square, so the hypotenuse must be longer than the other known side. If you enter a hypotenuse shorter than a leg, no real triangle exists. Area uses half the product of the legs, and perimeter adds all three sides, so area is only meaningful once both legs are known."
+      },
+      {
+        "heading": "What common mistakes should I avoid?",
+        "text": "The biggest mistake is entering the hypotenuse as a leg, which swaps the roles inside the formula. Another is leaving an unknown side blank when the tool expects zero. Mixing units, such as feet for one side and inches for another, produces a meaningless result. Finally, the theorem applies only to right triangles, so this tool does not describe general triangles. For other shapes, use a method that works from the sides or angles you actually have."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I solve for a leg if I know the hypotenuse?",
+        "Yes. Enter the hypotenuse and one leg, leave the other leg as zero, and the tool subtracts the known leg's square from the hypotenuse's square before taking the square root. The result must be positive, which requires the hypotenuse to be longer than the leg you entered."
+      ],
+      [
+        "Does the unit I choose change the result?",
+        "No. The theorem works in any unit, so the output uses whatever unit you entered. If both legs are in meters, the hypotenuse is in meters too, while the area is in square meters. Mixed units are the real risk, so convert every side before entering it."
+      ],
+      [
+        "Why is my hypotenuse a long decimal?",
+        "Many side lengths produce square roots that cannot be written as a finite decimal. The tool rounds these for display, so the value is a close approximation. Triangles whose sides are all whole numbers are the special case where the result comes out as a whole number."
+      ]
+    ]
+  },
+  "triangle-area-calculator": {
+    "answer": "This calculator finds the area of a triangle two ways. Base and height multiplies the base by the perpendicular height and halves the product. Heron's formula uses only the three side lengths: it computes the semi-perimeter, half the sum of the sides, then takes the square root of the semi-perimeter times each side's difference from it.",
+    "exampleInputs": {
+      "base": "12",
+      "height": "5"
+    },
+    "sections": [
+      {
+        "heading": "When should I use Heron's formula instead?",
+        "text": "Use Heron's formula when you know the three side lengths but cannot measure a perpendicular height, such as a triangular plot bounded by three straight edges. It is also useful in surveying and design when the height falls outside the drawing. Base and height is faster when the height is easy to measure, like a triangle drawn on graph paper with a visible altitude. Both methods give the same area for the same triangle, so choose whichever inputs you already have."
+      },
+      {
+        "heading": "How do I know three sides form a triangle?",
+        "text": "Three lengths form a real triangle only when the two shorter sides together are longer than the longest side. If they are not, the sides cannot meet to close a shape, and the product inside Heron's formula turns negative. The tool validates the sides before computing, so an impossible set is caught rather than silently producing a number. If you hit that check, re-measure, since a typo is a frequent cause."
+      },
+      {
+        "heading": "What mistakes lead to a wrong area?",
+        "text": "Mixing units is the most common error, such as entering the base in feet and the height in inches. Using a slanted side as the height is another, because the height must be perpendicular to the base. For Heron's formula, sides that do not belong to the same triangle can produce a plausible number that describes nothing real. Area is always expressed in square units of the input, so label the answer accordingly."
+      }
+    ],
+    "faqs": [
+      [
+        "Is the base always the bottom side?",
+        "No. Any side can serve as the base, as long as you use the height measured perpendicular to that same side. Choosing the longest side often makes the height easier to see in a drawing. The area stays the same no matter which side you pick."
+      ],
+      [
+        "Does a triangle's area change if I rotate it?",
+        "No. Area depends only on the shape and size of the triangle, not its orientation on the page. Rotating or moving it leaves the base, height, and side lengths unchanged, so the computed area stays identical."
+      ],
+      [
+        "Why must the height be perpendicular?",
+        "The height is the straight distance from the opposite corner to the line containing the base, measured at a right angle. A slanted line would be longer than the true height and overstate the area. Perpendicular height matches the geometry that the half base times height formula assumes."
+      ]
+    ]
+  },
+  "add-days-to-date": {
+    "answer": "This calculator adds or subtracts a chosen number of days, weeks, months, or years from a start date, using the real calendar. Days and weeks are straight counts of calendar days. Months and years keep the same day of the month when possible, and if that day does not exist in the target month, the result moves to the last day of that month.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When is this useful for deadlines?",
+        "text": "Use it to project a deadline forward, such as a warranty end, a follow-up call, or a review window measured from a signing or delivery date. It also works backward: subtract a number of days from a due date to find when a task should begin. Because the output names the weekday, you can see at once whether a deadline lands on a weekend and plan around it. Confirm with the party who set the deadline whether counting begins on the day after the event or on the event itself."
+      },
+      {
+        "heading": "How do month and year additions behave?",
+        "text": "Adding months keeps the day of the month when possible. When the start falls on a day that the target month lacks, the calendar clamps the result to that month's last day, so a date near the end of a long month can land at the end of a shorter one. Adding years follows the same logic, which matters for a date on a leap day. Month results can look surprising at first, so check the output against your own calendar before committing to it."
+      },
+      {
+        "heading": "What mistakes change the answer?",
+        "text": "The most common mistake is counting the start date itself, which shifts the result by one day. Another is mixing weeks with working days, because adding weeks is pure calendar time with weekends included. Time zones can matter when a date sits near midnight on a shared deadline. Finally, negative amounts subtract, so confirm the sign before reading the result, especially when you are working backward from a fixed date."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the start date count as day one?",
+        "Usually not. Adding a set number of days to a date gives the date that many calendar days later, so the start itself is day zero. If your policy counts the start as day one, subtract one day from the result. Check the convention in the contract or policy that sets the deadline."
+      ],
+      [
+        "Can I leave the start date empty?",
+        "Yes. The start date field defaults to today, so leaving it blank projects forward from the current day. Enter a specific date when you need a fixed answer, because a blank field gives a different result on each day you check it."
+      ],
+      [
+        "Why does the weekday matter?",
+        "Many deadlines fall on weekends, and some offices or processes do not accept submissions then. Seeing the weekday next to the result helps you decide whether to move the date earlier. The tool names the weekday of the computed date, but it does not decide which days count as working days."
+      ]
+    ]
+  },
+  "business-days-calculator": {
+    "answer": "This calculator counts the working days between two dates by stepping through each calendar day in the range and tallying weekdays separately from weekend days. Both the start and end dates are included. The tool reports business days, weekend days, and total days, so the three figures reconcile with each other.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Where do business day counts matter?",
+        "text": "Delivery estimates, project schedules, and service-level agreements often promise results in working days rather than calendar days. A ticket with a three-business-day target, for instance, is measured in weekdays only, so a Friday request and a Monday request follow different calendars. Notice periods and review windows follow similar logic in many workplaces. Counting only weekdays prevents the common error of promising a delivery on a day when nobody is working."
+      },
+      {
+        "heading": "How should I read the three totals?",
+        "text": "The business day count and the weekend count should add up to the total day count, which is a quick sanity check. Because both endpoints are included, a range that starts and ends on a Monday contains more days than a simple subtraction suggests. If you need the gap between two dates rather than an inclusive count, subtract one from the total. Read the business day figure as the number of working days you have to act within, not as a calendar span."
+      },
+      {
+        "heading": "What mistakes change the business day count?",
+        "text": "Public holidays are a separate question. Check whether the count accounts for closures before relying on it for a schedule that includes them, since a week with a holiday has fewer working days than the weekday tally shows. Another mistake is treating the end date as exclusive when your agreement counts it. Also confirm whether your organization works a different week, because the standard Monday-to-Friday assumption may not match your team."
+      }
+    ],
+    "faqs": [
+      [
+        "What if the start date falls on a weekend?",
+        "The start date still appears in the total, but as a weekend day, so it adds to the weekend tally and not to the business day count. The same rule applies to the end date. The three numbers stay consistent with each other."
+      ],
+      [
+        "What happens if the end date is earlier than the start?",
+        "Put the earlier date first. A count is defined from a start to a later end, so a reversed pair does not describe a forward span. Reorder the two entries before reading the totals so the result matches the period you meant to measure."
+      ],
+      [
+        "Is Saturday always a non-working day?",
+        "For most standard schedules, yes, but the definition is set by your organization or contract, not by the calendar. Some industries work weekends or use rotating shifts. The tool follows the usual weekend assumption, so adjust your reading if your working week is different."
+      ]
+    ]
+  },
+  "time-duration-calculator": {
+    "answer": "This calculator finds the elapsed time between a start and an end clock time in 24-hour format. It converts both times to minutes from midnight and subtracts them. If the end time is earlier than the start, the span is treated as crossing midnight and 24 hours are added before the result appears as hours, minutes, total minutes, and decimal hours.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When do I need a duration rather than a time?",
+        "text": "A duration answers how long something took, such as a shift, a meeting block, or a repair window, while two clock times describe when it began and ended. Timesheets, hourly billing, and travel planning usually need the length rather than the endpoints. Subtracting times by hand invites errors when the span crosses midnight or when minutes do not divide evenly, so a calculator removes that friction. Enter the start and end as they appear on your clock or schedule."
+      },
+      {
+        "heading": "Why are decimal hours useful?",
+        "text": "Decimal hours express a duration as one number, which makes multiplying by an hourly rate straightforward. A span of hours and minutes becomes decimal by dividing the minutes by sixty and adding the result to the whole hours. Many invoicing forms ask for decimal hours, though the rounding rules come from your billing system. Read the decimal as a fraction of an hour, not as hours and hundredths of a clock."
+      },
+      {
+        "heading": "What mistakes come from overnight spans?",
+        "text": "The most common error is entering a late evening start and an early morning end and reading the result as negative or wrong. The tool assumes a span crosses midnight when the end precedes the start, so a span lasting a full day or longer cannot be expressed by clock times alone. Also watch the format: the field expects 24-hour times, so an afternoon time entered as a morning time shifts the answer by hours."
+      }
+    ],
+    "faqs": [
+      [
+        "What if the start and end times are identical?",
+        "Identical times produce a zero-length duration under the midnight rule, because the end is not earlier than the start and no 24 hours is added. Whether you need zero or a full day depends on the situation, so check the span manually for shifts that repeat every day."
+      ],
+      [
+        "Can I use the total minutes in a spreadsheet?",
+        "Yes. The total minutes figure is the whole span expressed as minutes, which pastes cleanly into a spreadsheet and sums easily across rows. Decimal hours serve the same purpose. Keep the original start and end times beside the result so you can verify each entry later."
+      ],
+      [
+        "Does the tool account for daylight saving changes?",
+        "The calculation uses the clock times you type, so it does not know whether a clock change happened between them. On a night when clocks shift, the real elapsed time can differ by an hour from the clock difference. Check the change manually when a span crosses that boundary."
+      ]
+    ]
+  },
+  "day-of-week-calculator": {
+    "answer": "This day of the week calculator takes a calendar date and returns the weekday it falls on, such as Monday or Friday. It also reports the day of the year and whether the year is a leap year. The weekday comes from the Gregorian calendar rules, which account for leap years automatically, so past and future dates both work. Everything is computed in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "What is a day of the week calculator used for?",
+        "text": "People use a day of the week calculator to answer practical date questions. You can find the weekday of a birthday, an anniversary, or a historical event to see whether it fell on a weekend. Planners use it to check whether a deadline lands on a business day, and teachers use it when building lesson calendars. Because the answer comes from the calendar date alone, the same entry always returns the same weekday. That makes it useful for checking a date you have written down before you commit to it in a contract, invitation, or schedule."
+      },
+      {
+        "heading": "What does the day of the year number tell me?",
+        "text": "The day of the year counts how far a date sits from the start of its calendar year. January 1 is day 1, and the count runs until the last day of December. The total is three hundred sixty five in an ordinary year and three hundred sixty six in a leap year. The number is useful for logs, project timelines, and any system that numbers days in sequence. Two dates in different years can share the same day of the year while falling on different weekdays, so read the weekday and the year together."
+      },
+      {
+        "heading": "Why can a weekday look wrong for very old dates?",
+        "text": "Weekday results depend on the calendar system used at the time. The calculator follows the Gregorian calendar rules, which most countries now use. Before those rules were adopted in a given region, people counted dates with the older Julian calendar, which ran several days behind. A date written in a historical record may therefore name a different weekday than the same date would in the calendar used today. Check which calendar a source used before you rely on a computed weekday for historical research. For modern dates, the result matches the calendar on your wall."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I check a date that is years in the future?",
+        "Yes. The calculator applies the same calendar rules to future dates as to past ones, so you can check a deadline, a planned event, or an anniversary that has not happened yet. The result is computed from the date you enter, so nothing needs updating as time passes."
+      ],
+      [
+        "Does the leap day fall on the same weekday every year?",
+        "No. A fixed calendar date usually shifts forward by one weekday each year, and a leap day falling in between moves it by two. That is why a birthday on a Friday one year may land on a Sunday a few years later."
+      ],
+      [
+        "Is the weekday the same in every time zone?",
+        "Yes, for a plain calendar date. The weekday is set by the date itself, not by the clock time or your location. Time zones only matter when you compare a specific moment, such as an event starting late in the evening, against a date stored in another zone."
+      ]
+    ]
+  },
+  "unit-converter": {
+    "answer": "A unit converter changes a value from one unit to another by passing through a shared base unit. Each unit has a fixed factor relating it to that base, so you multiply the input by its factor and divide by the target's factor. Temperature is the exception because its scales start at different zero points, so it uses formulas instead. Every calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When should I reach for a unit converter?",
+        "text": "A unit converter helps whenever a number arrives in a unit you do not use daily. Travelers meet road distances in kilometers, cooks see recipes written in grams or milliliters, and shoppers compare product specs listed in different systems. Engineers and students use the same tool to check a hand calculation before submitting it. The main benefit is speed and consistency: once the units are set, you can change the value and see every related result without rebuilding the arithmetic yourself each time."
+      },
+      {
+        "heading": "What role does the base unit play?",
+        "text": "The base unit is the common reference that every other unit links to. Instead of storing a separate factor for every possible pair, the converter stores one factor per unit, relative to the base. To move from feet to yards, it first converts feet into the base, then converts that amount into yards. This keeps the logic consistent across categories and avoids chains of rounding errors, because only the final display step rounds the value. Understanding this helps explain why two different paths between the same units always agree."
+      },
+      {
+        "heading": "Where do unit conversions usually go wrong?",
+        "text": "The most common mistake is mixing units that share a name but differ in size. Gallons, ounces, and tons each come in more than one version, so the label alone does not tell you the amount. Another frequent problem is converting a rate or density as if it were a plain quantity, which changes the meaning of the result. Finally, avoid rounding intermediate steps by hand. Enter the original value and let the converter handle the full chain, then round only the final answer to the precision you need."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I convert between different categories, such as length and weight?",
+        "No. A length cannot become a mass, because the units measure different physical quantities. Each category has its own set of units and its own base unit. Pick the category first, then choose the units within it. If a result seems to mix categories, check that both units belong to the same group."
+      ],
+      [
+        "Why does the displayed result sometimes look shorter than the full value?",
+        "The converter keeps the full value internally and shows it at a readable precision, which can cut off long decimal tails. For a result that will feed into another calculation, carry the extra decimals forward instead of copying the rounded display."
+      ],
+      [
+        "Is my data sent to a server when I convert?",
+        "No. The calculation happens in your browser, so the values you type are processed on your own device. You do not need to create an account to run ordinary conversions."
+      ]
+    ]
+  },
+  "length-converter": {
+    "answer": "The length converter turns a distance from one unit into another, such as meters into feet or kilometers into miles. Each unit is defined as an exact amount of meters, so the converter multiplies your value by the source unit's meter factor and divides by the target's. Metric and imperial units are covered in one place, and the calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Who gets the most use from a length converter?",
+        "text": "Length conversions show up in many everyday tasks. Someone reading a race course description in kilometers may want the figure in miles, and a traveler checking road signs may need meters translated into feet. Sewers, woodworkers, and home renovators often work from plans written in another system, and a quick conversion prevents cutting material to the wrong size. Students comparing textbook values with local measurements also rely on the same conversions. Anyone who switches between metric and imperial benefits from having both units in one place."
+      },
+      {
+        "heading": "What does an inch to centimeter result mean?",
+        "text": "Some length units are defined directly in terms of other units, which is why certain conversions look unusually tidy. The inch is fixed in relation to the centimeter, so the converter applies that fixed relation rather than an estimate taken from a physical ruler. When you see a long string of decimal places, that is usually the exact factor at work rather than an error. The displayed precision controls how many decimals appear, while the underlying calculation uses the full defined factor. Keep this in mind when comparing a converted figure with a physical measurement, since a tape measure has its own tolerance."
+      },
+      {
+        "heading": "What mistakes come up with distances?",
+        "text": "Distance mistakes are usually about the unit, not the arithmetic. Statute miles and nautical miles are different lengths, and a marine chart uses the nautical version. The US survey foot differs slightly from the international foot, which matters for surveying and land records. Another common error is rounding too early: convert the original value, then round the final answer. If you convert in several steps, keep the extra decimals until the end. Finally, check whether a number is a length or a speed before you convert, since both can look similar on a page."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I convert feet and inches together in one step?",
+        "Convert the feet and inches as separate values, then add the results in the target unit. Because a foot is twelve inches, you can also turn the whole height into inches first, which is often the cleanest route to one final figure. Either path gives the same total because the factors are exact."
+      ],
+      [
+        "Is a yard longer than a meter?",
+        "No. A yard is shorter than a meter, so a meter always converts to more than one yard. The difference is small enough that people often mix the two in rough estimates, but the converter uses the exact definition for each unit and will not confuse them."
+      ],
+      [
+        "Does the converter round my number before it converts?",
+        "No. The calculation uses the exact factors and only limits the decimals shown on screen. If you need a rounded figure for a document, round the final result rather than the input, so the error stays small."
+      ]
+    ]
+  },
+  "weight-converter": {
+    "answer": "The weight converter changes a mass from one unit to another, such as kilograms to pounds or stone to kilograms. Each unit passes through kilograms using a fixed factor, with one pound defined exactly in kilograms and one stone equal to fourteen pounds. You multiply the input by its kilogram factor and divide by the target's factor. The calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Which tasks call for a weight converter?",
+        "text": "A weight converter is handy for shipping, where carriers may list limits in pounds while your scale reads kilograms. It also helps with luggage, recipes that switch between grams and ounces, and product labels from other countries. Gym equipment, fishing gear, and garden supplies often carry weights in mixed units. Because the converter works from exact definitions, you can enter the number printed on the item and get a figure you can compare directly with your own limit or scale, without estimating the conversion in your head."
+      },
+      {
+        "heading": "What is a stone, and why does it show up?",
+        "text": "The stone is an imperial unit that is still used in some places, most often for describing body weight in the United Kingdom. One stone equals fourteen pounds, so a value in stone converts to pounds by multiplying by fourteen, and then to kilograms through the pound factor. The converter includes it so you do not need to work through that chain yourself. If a source gives a weight as stone and pounds together, convert each part separately and add the totals in the unit you need."
+      },
+      {
+        "heading": "What limits should I keep in mind with mass?",
+        "text": "Mass and weight are different physical quantities, and this converter handles mass units. It does not adjust for gravity, so it will not tell you how something would weigh on the Moon. Also watch the word ton. A metric ton, a short ton, and a long ton differ in size, so confirm which one a source means before you convert. For shipping rules and similar limits, use the figure the carrier or issuing body publishes, and treat the converted value as a cross-check rather than the official number."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I convert tons to pounds in one step?",
+        "Yes. Choose the ton unit you mean, then select pounds as the target. Because the converter passes through kilograms, tons, pounds, and ounces are linked directly. Before you convert, confirm whether the source means a metric ton or a short ton, since those two differ in size."
+      ],
+      [
+        "Why do ounces show larger numbers than pounds?",
+        "An ounce is the smaller unit. A pound contains sixteen ounces, so the same weight expressed in ounces becomes a bigger number. The converter makes this shift automatically, so the value stays correct even though the figure grows."
+      ],
+      [
+        "Can I convert very small weights such as milligrams?",
+        "Yes. The converter covers metric mass units from milligrams up to tons, so small amounts such as spices or lab samples can be converted the same way as large loads. Very small results may need more decimal places before they become meaningful to read."
+      ]
+    ]
+  },
+  "temperature-converter": {
+    "answer": "The temperature converter translates a reading between Celsius, Fahrenheit, and Kelvin. Fahrenheit equals Celsius multiplied by nine fifths, then increased by thirty-two. Kelvin equals Celsius increased by 273.15. Because these scales start from different zero points, the converter applies these formulas rather than a simple multiplier, and the calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When do temperature scales need converting?",
+        "text": "Temperature conversions show up in several everyday places. Oven settings and food safety guidance may be written in one scale while your appliance uses another. Weather forecasts from abroad, laboratory readings, and scientific papers can all use a scale you do not normally read. Students often convert between Celsius and Kelvin when working through physics problems, while travelers want to know how a forecast feels compared with home. A quick conversion avoids the confusion of reading a number on the wrong scale."
+      },
+      {
+        "heading": "How should I read a Kelvin value?",
+        "text": "Kelvin starts at absolute zero, the theoretical lowest temperature, so Kelvin readings never fall below zero. Its degree size matches Celsius exactly, which means a change of one kelvin equals a change of one degree Celsius. The only difference between the two scales is the offset between their zero points. Scientists prefer Kelvin in calculations because many physical formulas need a scale that starts at zero. When you convert a Celsius reading to Kelvin, add the fixed offset, then use the Kelvin value in any equation that expects an absolute temperature."
+      },
+      {
+        "heading": "Why do simple multipliers fail for temperature?",
+        "text": "Temperature conversions are not just scaling. Celsius and Fahrenheit both allow negative values and have different zero points, so multiplying by a ratio alone gives the wrong answer for an absolute reading. A common mistake is converting a temperature change as if it were a reading. A rise of ten degrees Celsius equals a rise of eighteen degrees Fahrenheit, but the readings themselves need the offset. Keep these two cases separate. Use the full formula for absolute readings, and use only the ratio when you are describing a difference between two temperatures."
+      }
+    ],
+    "faqs": [
+      [
+        "Can Kelvin and Celsius ever show the same number?",
+        "No. Kelvin is offset from Celsius by a fixed amount of 273.15, so a Kelvin reading is always higher than the same temperature in Celsius. The two scales share the same degree size, which is why changes look identical on both."
+      ],
+      [
+        "Is absolute zero the coldest anything can get?",
+        "On the Kelvin scale, absolute zero is the lowest possible value, and no physical temperature reads below it. In practice, labs can cool matter very close to absolute zero but cannot reach it exactly. A Kelvin result below zero signals an invalid input and should be checked."
+      ],
+      [
+        "Can I enter negative temperatures?",
+        "Yes for Celsius and Fahrenheit, where negative readings are normal cold weather values. Kelvin does not use negative numbers for real temperatures, so a negative Kelvin result usually means the input is not a valid physical temperature. Check the source before relying on that output."
+      ]
+    ]
+  },
+  "area-converter": {
+    "answer": "The area converter changes a surface measurement between square meters, square feet, acres, and hectares. Every unit converts through square meters using an exact factor. Because area covers two dimensions, each length factor is squared, so a square foot is the square of a foot's meter value. Multiply your value by the source factor and divide by the target factor. The calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When is an area converter worth using?",
+        "text": "Area units matter whenever a surface is priced, covered, or permitted by size. Property listings may give floor space in square feet while your plans use square meters. Flooring, paint, and turf are often sold by area, so a conversion tells you how many units to buy. Farmers and land buyers compare plots reported in acres or hectares. In each case, converting the total area first lets you compare offers and estimates on equal terms."
+      },
+      {
+        "heading": "How does a hectare compare with an acre?",
+        "text": "A hectare is a metric unit of 10,000 square meters, while an acre is an imperial unit that is somewhat smaller. An acre is a little less than half a hectare, so a single hectare holds roughly two and a half acres. People often lose track of this difference when reading land reports. The converter removes the guesswork by placing both units on the same square meter base, so you can see the exact ratio rather than relying on a rough sense of size."
+      },
+      {
+        "heading": "Why do area results come out wrong?",
+        "text": "The most common area mistake is applying a length factor directly. Because area is two-dimensional, converting a length of one foot into meters is not the same as converting a square foot into square meters. Using the length factor for area gives a result that is off by the difference between the factor and its square, which is large enough to matter. A second issue is combining dimensions in different units, such as multiplying feet by meters. Convert each side to the same unit first, multiply to get the area, then convert the total."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I convert a room if I know its width and length?",
+        "Yes. Multiply width by length first to get the floor area in square feet or square meters, then convert that total. Make sure both sides use the same unit before you multiply, because mixing feet and meters produces a figure that matches neither system."
+      ],
+      [
+        "Does the converted area reflect the shape of a plot?",
+        "No. The converter changes units for a total area you already have. It does not measure irregular boundaries, slopes, or easements. For land purchases, use the area stated in an official survey or deed, then convert it here for comparison."
+      ],
+      [
+        "Is the area on a listing the same as usable floor space?",
+        "Not always. A listed area can follow a measuring method that includes or excludes certain spaces, and the converter only changes the number you provide. Check how the seller defines the figure before comparing it with another property."
+      ]
+    ]
+  },
+  "volume-converter": {
+    "answer": "The volume converter changes a liquid or container measurement between liters, US and UK gallons, cups, pints, and fluid ounces. Each unit converts through liters using an exact factor, so you multiply by the source unit's liter value and divide by the target's. US and UK gallons differ in size, so the unit name must match the source you are reading. The calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Where do liquid volume conversions matter?",
+        "text": "Liquid volume matters in recipes, fuel purchases, and product labels. A cookbook from another country may list ingredients in cups or pints that do not match your measuring set, and a bottle label may use milliliters while your jug is marked in gallons. Aquarium, garden, and cleaning instructions often specify dosing volumes, where a small error changes the result. Converting before you pour keeps the amount you intended, and it works the same whether you are scaling up a batch or checking a container's capacity."
+      },
+      {
+        "heading": "How do US and UK measurements differ?",
+        "text": "The US and UK systems both use gallons, pints, and fluid ounces, but the sizes are not the same. A UK imperial gallon is larger than a US gallon, and the pint and fluid ounce also differ between the two. This is why a recipe or fuel figure can look correct yet give the wrong amount when used with the other system. The converter keeps the two gallons separate and converts each through liters, so you can see the true difference rather than guess it. Always confirm which system a source uses."
+      },
+      {
+        "heading": "What mistakes happen when measuring by volume?",
+        "text": "A frequent error is treating volume and weight as interchangeable. A cup of a dry ingredient can weigh very different amounts depending on how it was packed, so recipes that specify weight are more reliable for baking. The converter changes volume units into each other, but it cannot tell you how dense a substance is. Another mistake is using a cup from a different country without checking its size. Measure liquids at eye level in a clear container, and convert the target figure before you start pouring."
+      }
+    ],
+    "faqs": [
+      [
+        "Is a US fluid ounce the same as an ounce of weight?",
+        "No. A fluid ounce measures volume, while an ounce on a scale measures mass. Water makes the two feel related, but other liquids weigh different amounts for the same volume. Use the unit that matches what you are actually measuring."
+      ],
+      [
+        "Can I convert a bottle label in milliliters into gallons?",
+        "Yes. Enter the milliliter value from the label and select gallons as the target. The converter moves through liters, so the result uses the exact factor. Choose US or UK gallons deliberately, since the answer depends on which one you select."
+      ],
+      [
+        "Should I convert liquid volumes to weight for a recipe?",
+        "Sometimes. For water-like liquids, volume and weight are close enough for most cooking. For dry ingredients or thick liquids, recipes that give a weight are more dependable, because density changes the relationship. The converter handles volume to volume, not volume to weight."
+      ]
+    ]
+  },
+  "speed-converter": {
+    "answer": "The speed converter changes a rate of travel between kilometers per hour, miles per hour, meters per second, and knots. Each speed converts through meters per second using an exact factor, so you multiply by the source factor and divide by the target factor. A knot is one nautical mile per hour, which makes it a distance-per-time unit like the others. The calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Where do these speed units appear?",
+        "text": "Road speed is usually posted in miles per hour or kilometers per hour, depending on the country, so a converter helps when you drive or compare vehicles across borders. Weather data and physics problems often use meters per second, which is common in scientific work. Knots appear in marine and aviation contexts, where charts and instruments report speed in that unit. Sports and fitness apps may switch between these measures too. Converting into the unit your context uses prevents you from misreading a speed."
+      },
+      {
+        "heading": "How does a knot relate to miles per hour?",
+        "text": "A knot is one nautical mile per hour, and a nautical mile is longer than a statute mile. That means one knot is faster than one mile per hour, so the two should never be treated as the same number. Nautical distances are based on the earth's geometry, which is why marine charts use them. The converter places both units on the meters-per-second base, so the relationship is exact. You can check the difference by converting a known speed and watching how the figure changes between the two units."
+      },
+      {
+        "heading": "What do speed conversions not tell me?",
+        "text": "A speed conversion changes units, but it does not describe a whole trip. An average speed over a long journey depends on stops, slowdowns, and route changes, which the converter does not model. Be careful not to convert a distance when you meant a speed, or a time when you meant a rate. Another common error is using a sustained speed where a peak value is needed. Read the source to see whether a figure is an instantaneous reading, a maximum, or an average, and convert it with that meaning intact."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the converter account for changing speed?",
+        "No. It converts one stated speed, which is a single rate. A speed that changes over time needs an average or a set of readings, and you would convert each value separately before comparing them."
+      ],
+      [
+        "How do I tell whether a meter-per-second value is fast?",
+        "The converter does not judge speed. It shows the same rate in each unit, so you can compare it with a reference you trust for your field. Walking pace and running pace are very different numbers, and only a known benchmark can tell you which one a value resembles."
+      ],
+      [
+        "Does a knot differ from a nautical mile?",
+        "Yes. A nautical mile measures distance, while a knot measures speed. One knot means covering one nautical mile in one hour. Keeping the two terms separate helps when you read charts or weather reports that mix distance and rate figures."
+      ]
+    ]
+  },
+  "data-storage-converter": {
+    "answer": "The data storage converter changes file and drive sizes between bytes, kilobytes, megabytes, gigabytes, terabytes, and their binary counterparts. Decimal units step up by a factor of one thousand, while binary units step up by one thousand twenty-four. Every size converts through bytes, so you can move between any two units, and the calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When do storage conversions help?",
+        "text": "Storage conversions help when you plan space before a transfer or purchase. You might check whether a folder fits on a flash drive, estimate how much room a backup set needs in a cloud plan, or compare a file size listed in megabytes with a limit given in gigabytes. Photographers, video editors, and game players often hit these comparisons. Converting the numbers into one unit before deciding avoids the mistake of comparing a decimal figure with a binary figure, which is easy to do without noticing."
+      },
+      {
+        "heading": "What do decimal and binary units mean?",
+        "text": "Decimal units step by one thousand, so a gigabyte is one thousand megabytes. Storage manufacturers usually label drives this way. Binary units step by one thousand twenty-four, and the names gibibyte and mebibyte mark that difference. Many operating systems report sizes using binary steps while still labeling them with decimal names. The drive itself has not changed, but the same bytes produce a smaller number when counted in the larger binary unit. The converter shows both families so the two readings can be matched."
+      },
+      {
+        "heading": "Which unit should I trust for planning?",
+        "text": "Choose the unit that matches the source. Network speeds are usually stated in bits per second, while file and drive sizes are stated in bytes, and a byte holds eight bits. Mixing the two produces answers that look plausible but are off by a factor of eight. Also remember that formatted storage holds less than its label, because the file system uses part of the space for its own structures. Use the converter for unit translation, then leave a margin when planning space."
+      }
+    ],
+    "faqs": [
+      [
+        "Do file sizes include file system overhead?",
+        "A file's listed size usually reflects its content. The drive's used space also includes file system structures, so the total used can appear larger than the sum of the visible files. The converter changes units for any size you enter but cannot see those hidden structures."
+      ],
+      [
+        "Can I convert megabytes to gigabytes in one step?",
+        "Yes. Enter the megabyte figure, select gigabytes as the target, and the converter passes the value through bytes. Choose decimal or binary units explicitly, since the result differs depending on which family you pick."
+      ],
+      [
+        "Is a gigabit the same as a gigabyte?",
+        "No. A bit is a single binary digit, and a byte holds eight bits. A gigabit is therefore one eighth the size of a gigabyte, which is why download speeds and file sizes can look inconsistent when read side by side."
+      ]
+    ]
+  },
+  "pressure-converter": {
+    "answer": "The pressure converter changes a pressure reading between pascals, bar, PSI, atmospheres, and mmHg. Every unit normalizes through pascals using an exact factor, so you multiply the input by its pascal factor and divide by the target's. Pascals serve as the common base because pressure is force spread over an area. The calculation runs in your browser.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Where do pressure readings appear?",
+        "text": "Pressure shows up in more places than most people expect. Tire gauges often display PSI or bar, while industrial equipment, hydraulic systems, and engineering specifications may use pascals or bar. Barometers and some weather readings use millimeters of mercury, and science texts usually use the atmosphere as a reference. If you are reading a manual from another region, the unit may differ from the one on your gauge. A converter lets you compare each reading against the figure you actually need."
+      },
+      {
+        "heading": "Why is one atmosphere a common reference?",
+        "text": "One standard atmosphere is a reference value that many pressure units are defined against. Scientists use it to describe conditions relative to the air around us, and it sits close to one bar. A reading of one atmosphere is therefore a convenient anchor when you need to judge whether a pressure is higher or lower than everyday air. The converter treats atmospheres like any other unit, using the exact pascal value, so you can move between the reference and any other scale without memorizing separate factors."
+      },
+      {
+        "heading": "How do gauge and absolute pressure differ?",
+        "text": "Many gauges report gauge pressure, which measures the amount above surrounding air pressure, while some scientific figures report absolute pressure, which starts from a perfect vacuum. The converter changes units but does not add or subtract atmospheric pressure, so it cannot turn one type into the other. Check how the source defines its reading before converting. Another mistake is assuming all pressure units mean the same thing in every industry. The number you convert is only as meaningful as the definition behind it."
+      }
+    ],
+    "faqs": [
+      [
+        "Does the converter tell me whether a tire pressure is safe?",
+        "No. The converter changes units only. Recommended pressures come from the vehicle or tire manufacturer's specifications, and those are the figures to follow. Once you have the correct recommended value, the converter can show it in the unit your gauge uses."
+      ],
+      [
+        "Why do pascals produce such large numbers?",
+        "A pascal is a small unit, equal to one newton per square meter. Everyday pressures are often thousands of pascals, so bigger units such as bar keep the figures short. The converter shows the same pressure in each unit, so you can pick the scale that reads most easily."
+      ],
+      [
+        "Is mmHg the same as millimeters of water?",
+        "No. The mmHg unit refers to a column of mercury, which is much denser than water. The same pressure therefore produces a much shorter column of mercury than a column of water. Keep the two units separate, and check which liquid a gauge or source is referring to."
+      ]
+    ]
+  },
+  "energy-converter": {
+    "answer": "The energy converter changes a value from one energy unit to another, such as joules, food calories, or kilowatt-hours. It converts every input to joules first, using fixed factors: one calorie equals 4.184 joules and one kilowatt-hour equals 3,600,000 joules. The result is then expressed in the unit you choose.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Which energy unit fits my task?",
+        "text": "Physics and engineering work usually runs in joules, the SI unit, so formulas stay consistent across sources. Nutrition labels quote food energy in Calories, while electricity bills use kilowatt-hours. Those are different scales for the same kind of quantity. Pick the unit your source document uses, then convert once when you need to compare it with a figure written in another unit. Scientists and engineers prefer the SI base so calculations need no extra conversion step."
+      },
+      {
+        "heading": "What does a converted energy value mean?",
+        "text": "A converted value describes the same amount of energy, only expressed on a different scale. Converting does not change how much energy is involved, so one kilowatt-hour and its joule equivalent represent the same work or heat. Large units produce small numbers and small units produce large ones. A day of household electricity yields an enormous count in joules but a modest figure in kilowatt-hours, which is why billing uses the larger unit."
+      },
+      {
+        "heading": "Where do energy conversions go wrong?",
+        "text": "The most common error is mixing the food Calorie with the small physics calorie, which differ by a factor of a thousand. The second is confusing kilowatts with kilowatt-hours. A kilowatt measures power, the rate of energy transfer, while a kilowatt-hour measures total energy over time. A converter also cannot tell you how much energy an appliance will use, because that depends on runtime and load. Check the unit on a label before you copy the figure elsewhere."
+      }
+    ],
+    "faqs": [
+      [
+        "Why do nutrition labels and physics textbooks disagree on calories?",
+        "They are not disagreeing about the same unit. A physics calorie is a small unit, while the food Calorie on labels is a kilocalorie, which is a thousand times larger. Converting both into joules puts them on one scale, so the two values can be compared directly without guessing which one a source meant."
+      ],
+      [
+        "Is kWh a measure of energy or power?",
+        "A kilowatt-hour is a measure of energy. Power is the rate at which energy moves, measured in kilowatts. Multiply a power rating by the hours it runs to get energy in kilowatt-hours, which is why a utility bill counts energy and not the appliance size alone."
+      ],
+      [
+        "Does the converter treat heat and electrical work differently?",
+        "No. Heat, work, and electrical energy all share the joule as a common base, so the converter scales them the same way. The unit tells you what the number is counted in, not a different kind of quantity. Use the same tool for any of them when the question is only about units."
+      ]
+    ]
+  },
+  "power-converter": {
+    "answer": "The power converter changes a rate of energy transfer from one unit to another, such as watts, kilowatts, or horsepower. Every value is first converted to watts. One mechanical horsepower equals 745.7 watts and one metric horsepower, also called PS, equals 735.5 watts. The converted figure then appears in the unit you select.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When should I compare power in watts or horsepower?",
+        "text": "Electronics, appliances, and motor nameplates often list watts, while kilowatts suit larger machines and building loads. Automotive and motorcycle specs commonly use horsepower, and many European and Japanese sheets use metric horsepower, labeled PS. Choose the unit used by both documents you plan to compare. If one side lists kilowatts and the other lists horsepower, convert both into watts first so the comparison rests on a single base. Matching units first avoids most of the confusion."
+      },
+      {
+        "heading": "What does a converted power figure tell me?",
+        "text": "Power is energy transferred per unit of time, so a converted figure states the same rate on a different scale. One kilowatt equals a thousand watts, and the two units are simply different markings on the same ruler. Converting a rating does not reveal torque, efficiency, or how hard a machine works under load. Those need separate measurements. Treat the output as an exact translation of the number you entered, nothing more."
+      },
+      {
+        "heading": "Why do two horsepower figures sometimes conflict?",
+        "text": "Mechanical horsepower and metric horsepower are defined with slightly different constants, so the same engine can carry two numbers that look inconsistent. The gap is small, but it is real and can matter when two specs are compared closely. Before comparing, confirm which standard each brochure or database uses. Mixing standards is a common mistake, and the converter cannot fix it unless you tell it which horsepower you started with."
+      }
+    ],
+    "faqs": [
+      [
+        "Is one kilowatt the same as one horsepower?",
+        "No. A kilowatt is a thousand watts, while one mechanical horsepower is roughly three-quarters of a kilowatt. Metric horsepower is a bit smaller again. The units are close enough that people trade them casually, but a conversion gives an exact answer when a spec needs precision."
+      ],
+      [
+        "Can I convert a motor's power into torque here?",
+        "No. Torque depends on rotational speed as well as power, and this tool only changes the unit of power. If you have a power rating and a speed in revolutions per minute, you would need a separate calculation to find torque. The converter handles unit scaling only."
+      ],
+      [
+        "Does the converter account for efficiency losses?",
+        "No. The tool multiplies your value by a fixed factor for the chosen unit. It does not model friction, heat, drivetrain losses, or electrical conversion efficiency. If you need the power delivered after losses, apply the efficiency figure yourself before or after converting."
+      ]
+    ]
+  },
+  "time-converter": {
+    "answer": "The time converter turns a duration from one unit into another, covering milliseconds, seconds, minutes, hours, days, and weeks. It converts the input to seconds first, then scales the result to the unit you select. Each unit uses a fixed factor, so one hour is 3600 seconds, one day is 86,400 seconds, and one week is 604,800 seconds.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Where do duration conversions come up?",
+        "text": "Timesheets often record hours and minutes, while billing software may expect decimal hours, so a conversion keeps the two in agreement. Developers switch between milliseconds for timeouts and seconds for log entries. Project managers convert a total of minutes into hours to plan capacity. Any time you have a duration in one unit and need it in another, a converter removes the manual multiplication that causes slips. Each use case benefits from a single, consistent unit."
+      },
+      {
+        "heading": "How should I interpret a converted duration?",
+        "text": "A converted duration describes the same length of time, only written in a different unit. Ninety minutes becomes one and a half hours, and that value is correct as written. Decimal results appear when the input does not divide evenly into the target unit, so a duration may show a long fraction of an hour. Round only at the final step, because rounding each intermediate value can drift a total over several entries."
+      },
+      {
+        "heading": "What are the limits of a fixed-factor converter?",
+        "text": "Every unit here uses a fixed number of seconds, which works for milliseconds through weeks. Months and years vary in length, so they do not map to one factor, and this converter stops at weeks for that reason. Calendar arithmetic, time zones, and daylight saving shifts fall outside its scope. For those, use a date-aware calculator. Also remember that a week always means seven days in this tool, whatever calendar period you are measuring."
+      }
+    ],
+    "faqs": [
+      [
+        "Are milliseconds useful outside of programming?",
+        "Yes. Milliseconds appear in race timing, sports analytics, audio editing, and performance logs, where a fraction of a second matters. The converter treats one thousandth of a second as the base step, so a value in milliseconds converts to seconds, minutes, or hours using exact factors."
+      ],
+      [
+        "Can I turn a clock time into a duration?",
+        "Not directly. A clock time such as mid-afternoon is a point in the day, not a length of time. To get a duration, subtract a start time from an end time, then convert the difference with this tool. Durations that cross midnight or time zones need a calculator that understands calendars."
+      ],
+      [
+        "Is a week always the same length here?",
+        "Yes. The week factor is seven days, which equals 604,800 seconds, so every week converts identically. That is a fixed definition, not a calendar count, so it gives consistent results for planning and billing. If your report counts weeks by a calendar boundary, check that boundary separately."
+      ]
+    ]
+  },
+  "fuel-economy-converter": {
+    "answer": "The fuel economy converter translates a vehicle rating between US miles per gallon, UK miles per gallon, and liters per 100 km. MPG and L/100km are inversely related, so the tool divides a fixed constant by the MPG value to get L/100km. Using the stated constants, US MPG uses 235.215 and UK MPG uses 282.481, and every figure stays in sync.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When is L/100km easier to use than MPG?",
+        "text": "Many markets outside the US and UK publish fuel consumption as liters per 100 km, so European and Asian spec sheets often use that scale. Using the same unit as the source avoids mental flips. L/100km also gives a direct sense of fuel burned over a trip, since a lower figure means less fuel used. If you are reviewing a rental in one country and a manual in another, convert both to L/100km before deciding which car is more economical."
+      },
+      {
+        "heading": "How should I read the relationship between the units?",
+        "text": "MPG and L/100km move in opposite directions, so a higher MPG means a lower L/100km. The relationship is inverse rather than linear, which means each extra mile per gallon saves less fuel than the one before it. Moving from a poor rating to a moderate one produces a large change in consumption, while the same numerical gain at a high rating yields a smaller one. Keep this curve in mind when a small MPG bump seems to promise a large saving."
+      },
+      {
+        "heading": "What mistakes skew fuel economy comparisons?",
+        "text": "Mixing US and UK MPG is the classic error, because the UK uses an imperial gallon that is larger than the US gallon, so the same car shows a higher UK figure. Comparing a combined rating with a city rating is another, since the converter translates units but does not know the test cycle behind a number. Real driving depends on speed, load, weather, and habits. Use the converted values to compare like with like, not as a prediction of your own trip."
+      }
+    ],
+    "faqs": [
+      [
+        "Does a lower L/100km always mean lower running costs?",
+        "A lower figure means less fuel per distance, which helps running costs. Total cost also depends on fuel prices, how many kilometers you drive, insurance, and maintenance. Treat the converted number as one input to a cost estimate rather than the whole answer, and compare alternatives under the same driving conditions."
+      ],
+      [
+        "Can this tool show kilometers per liter?",
+        "Not directly. Kilometers per liter is the reciprocal of liters per 100 km, so divide a hundred by the L/100km value to get it. The tool covers US MPG, UK MPG, and L/100km, so use that division yourself for the kilometers per liter figure."
+      ],
+      [
+        "Is the converted figure a real-world consumption number?",
+        "No. The converter changes a rating from one unit system to another. It does not measure the car you own or estimate your actual consumption. Ratings come from standard test conditions, while actual fuel use varies with driving style and conditions, so the figure describes the rating only."
+      ]
+    ]
+  },
+  "usd-to-gbp": {
+    "answer": "The USD to GBP converter multiplies a US dollar amount by the ECB reference rate for British pounds sterling. The European Central Bank publishes an official daily fix from the latest business day. The tool also shows the inverse rate, so a pound-to-dollar figure is just the reciprocal of the displayed rate.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When do I need a dollar to pound conversion?",
+        "text": "Travel budgets for the United Kingdom are often planned in dollars, so converting a daily spending target into pounds makes it easier to track. Freelancers and buyers comparing a UK product with a US price use the same figure to line up quotes. Before you send money, though, treat this converter as a starting estimate. The rate it shows is the reference figure, which helps you understand the baseline before you check the offer your provider gives."
+      },
+      {
+        "heading": "What does the reference rate represent?",
+        "text": "The European Central Bank publishes one reference rate per currency each business day. It is not the buy or sell price that a bank, card network, or currency service quotes. Those providers add margins and fees on top, so the pounds you receive can be lower than the reference suggests. The inverse rate shown alongside helps you check that a reverse conversion is consistent with the same published figure. Treat the figure as a benchmark, not a promise."
+      },
+      {
+        "heading": "Which mistakes change the converted amount?",
+        "text": "Reading a currency pair backward is the most common slip. A dollar amount converts to fewer pounds than its face value, so an answer that looks too large often means the direction was reversed. Round only at the end of a calculation, not on each intermediate step. Also check the date of the rate, since a published figure applies to a specific business day. Converters cannot forecast how the pound will move, so avoid using a single rate to predict a future price."
+      }
+    ],
+    "faqs": [
+      [
+        "Do banks charge the same rate this converter shows?",
+        "Usually not. Banks and payment providers apply their own exchange margins and fees, so the rate you receive differs from the published reference figure. This converter gives the reference value for comparison. Ask your provider for its final quoted rate and total fees before you commit to a transfer."
+      ],
+      [
+        "Can I convert pounds back into dollars with this tool?",
+        "Yes. The inverse rate covers the reverse direction, and the swap control reverses the currencies in one click. Check that the reversed result matches the reciprocal of the forward rate, since small rounding differences are normal. The same published figure underlies both directions."
+      ],
+      [
+        "Is this converter enough for a binding exchange?",
+        "It is an educational estimate, not professional financial advice, and it is not a quote. For any transaction, confirm the exact rate, timing, and fees with the institution handling your money. Rates move between the moment you check and the moment you act."
+      ]
+    ]
+  },
+  "usd-to-inr": {
+    "answer": "The USD to INR converter multiplies a US dollar amount by the ECB reference rate for the Indian rupee. The European Central Bank updates its reference rates each business day, and INR is among the currencies it publishes. A comparison grid shows the same dollar amount converted into other major currencies at once.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When would I convert dollars to rupees?",
+        "text": "Families sending money home to India often want to see what a dollar amount becomes in rupees before choosing a transfer. Travelers budget trips with a daily rupee target, and businesses paying Indian vendors need a rough figure before invoicing. In each case, the reference rate gives a clear starting point. It answers the question of scale quickly, while the final transfer amount depends on the provider you use. Clear arithmetic makes those conversations easier."
+      },
+      {
+        "heading": "How do I use the comparison grid?",
+        "text": "The grid shows the same dollar amount converted into several major currencies at once. Each row is an independent conversion from dollars, so compare the rows to understand how one amount looks across markets, not to derive exchange rates between those currencies. This is useful when a quote could be priced in more than one currency. Read the rupee row as the figure this page is about and the others as context."
+      },
+      {
+        "heading": "What is this converter unable to tell me?",
+        "text": "The figure is a reference, not a live market quote. The ECB publishes rates on business days, so the value reflects the most recent published fix rather than a continuously moving price. It does not include transfer fees, spreads, or the rate your bank will apply. It also cannot forecast where the rupee is heading. Remittance rules differ by country and are outside this tool, so verify the final amount with your provider before sending."
+      }
+    ],
+    "faqs": [
+      [
+        "Will the converted amount change from one day to the next?",
+        "It can. Reference rates update each business day, so the figure reflects the most recent published value. A calculation made on a non-business day uses the last rate that was published, which may differ from the rate on the following business day."
+      ],
+      [
+        "Does this converter include transfer fees?",
+        "No. It shows the reference rate and the arithmetic built from it. Transfer fees, currency margins, and any charges applied by your provider are separate and can change the amount received. Add those costs yourself after you see the quote from your service."
+      ],
+      [
+        "Is a reference rate the same as a live market quote?",
+        "No. A reference rate is a single figure published for each business day. A live market quote changes continuously during trading hours and can differ between dealers. Use the reference value to understand scale and compare options, then check a live quote from your provider when you are ready to transact."
+      ]
+    ]
+  },
+  "slug-generator": {
+    "answer": "A URL slug is the readable part of a web address that identifies a page, such as the words after the last slash. This generator normalizes the title with Unicode normalization so accented letters become plain letters, lowercases everything, replaces each run of non-alphanumeric characters with one hyphen, and trims hyphens from the edges. The output is ready to paste into a CMS.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Where do I paste a generated slug?",
+        "text": "Most content management systems offer a slug field under the title of a post, page, or product. Static site generators often read the slug from the file name, so the same string keeps the link consistent across tools. Generate the slug from the finished title, then paste it into the field before publishing. Changing it later is possible, but it affects every link that already points to the old address, so settle it early."
+      },
+      {
+        "heading": "What makes a slug easy to read and share?",
+        "text": "A readable slug uses lowercase words separated by hyphens, so a reader can guess the page topic from the address alone. Shorten long titles by dropping filler words, keeping the terms a visitor would search for. Avoid stacking dates, stop words, and repeated phrases, since they add length without adding meaning. Clean slugs also look better when pasted into messages and social posts, where a long string can break across lines."
+      },
+      {
+        "heading": "What does this generator leave for me to check?",
+        "text": "The generator changes characters in the text you provide, but it cannot see your site. It does not confirm that the slug is unused, so two pages can end up with the same address unless you check. It does not create redirects when you change a slug later. After generating, review the result against existing pages and make sure the page you publish matches the address you planned. A short checklist keeps the process consistent."
+      }
+    ],
+    "faqs": [
+      [
+        "Should I change a slug after a page is published?",
+        "Only when there is a strong reason. Changing it breaks existing links unless you set up a redirect from the old address to the new one. Most content management systems and hosting tools offer redirect settings. Check that every internal link points to the new address after the change."
+      ],
+      [
+        "Why do accented letters become plain letters?",
+        "Unicode normalization splits an accented character into a base letter and a separate combining mark. The generator then removes the marks, so an e with an acute accent becomes a plain e. This keeps the slug in the basic character set that URLs handle most reliably."
+      ],
+      [
+        "Can a slug include numbers or a year?",
+        "Yes. Numbers are alphanumeric, so they survive generation and stay in place. A year in the slug can help readers see when a guide was written, but it also makes the page look outdated sooner. Decide based on whether the content will stay current for a long time."
+      ]
+    ]
+  },
+  "lorem-ipsum-generator": {
+    "answer": "The lorem ipsum generator produces placeholder Latin text, starting with the traditional opening phrase, in the number of paragraphs you request. It draws words from a standard lorem word pool and varies sentence lengths within each paragraph, so the paragraphs vary in rhythm. Because it is deterministic per page load, a layout tested with it looks the same each time.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When is placeholder text the right choice?",
+        "text": "Placeholder text is useful when a layout must be judged before final copy exists. Designers use it to test typography, line length, spacing, and how a grid handles long or short blocks. Stakeholders can react to the design without getting stuck on wording that has not been written yet. Keep a clear label on placeholder sections, so nobody mistakes filler for approved content during a review. Real copy often arrives late in a project, so placeholders keep work moving."
+      },
+      {
+        "heading": "How many paragraphs should I generate?",
+        "text": "Match the paragraph count to the content you expect, then test a range around it. A single long block can hide spacing problems that appear when three short sections stack. Include headings, captions, and buttons in the same mockup, because the surrounding elements change how paragraphs wrap and align. Changing the count only tells you about the paragraphs themselves, so check the full page too. Three or four paragraphs is a useful spread for most cards and columns."
+      },
+      {
+        "heading": "What can placeholder copy not reveal?",
+        "text": "Latin filler looks neutral, but it is not meaningful, so it cannot expose readability problems or tone issues. Languages with longer words or different scripts can break a layout that the Latin sample handles well, so test with real text in the target language before launch. For accessibility, check contrast and heading structure with real content. Replace every placeholder before publishing, and rerun the layout check afterward. Agree on a replacement deadline before the design review begins."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use this text on a live website?",
+        "It is meant for drafts, mockups, and staging environments. Before a site goes live, replace every placeholder paragraph with approved copy, since visitors and search engines should read content that describes your product or service. Lorem text left on a live page looks unfinished."
+      ],
+      [
+        "Will the same paragraph count give the same layout each time?",
+        "The generator is built to be deterministic, so the text for a given paragraph count stays consistent between loads. That consistency matters when you compare screenshots or test a layout across browsers, because a changing sample would make differences hard to attribute."
+      ],
+      [
+        "Should I use placeholder text in my own language?",
+        "Often yes, for layouts meant for that market. Words in a target language can be longer or shorter than Latin filler, and that changes wrapping, button widths, and navigation labels. A sample in the real language reveals problems the standard filler will hide, so use it for final layout checks."
+      ]
+    ]
+  },
+  "find-and-replace": {
+    "answer": "A find and replace tool scans a block of text for a search string and substitutes a new string at every match. In plain mode, your search term is escaped so symbols are treated literally. In regex mode, the input is read as a regular expression pattern, letting one rule match many variations. A live counter shows the number of replacements before you copy the result.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "When is bulk replacement faster than editing by hand?",
+        "text": "Bulk replacement saves time when the same term appears dozens of times, such as a product name that changed, a retired domain in links, or a repeated typo across a long draft. Run a plain search first to see the scale of the change. A tool that reports the count helps you confirm the scope before you commit, and you can decide whether a targeted manual edit is safer for a few special cases."
+      },
+      {
+        "heading": "How should I read the replacement counter?",
+        "text": "The counter reports how many matches were replaced under your current options. If the number is zero, check the search term, the case setting, and whether plain mode is active. An unexpectedly large count usually means the term is too general, such as a short word that appears inside longer ones. Compare the count with what you expected, then review a few replaced sections in the output before you copy the whole result."
+      },
+      {
+        "heading": "Which mistakes do regex replacements cause?",
+        "text": "Switching to regex mode without escaping punctuation is a frequent problem, because characters such as a period or a question mark change meaning as patterns. Greedy patterns can match far more text than intended, swallowing content between two markers. Patterns that look precise may still match inside larger words unless you anchor them with boundaries. Test a pattern on a short sample first, then apply it to the full text."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does my search match part of a longer word?",
+        "Plain substring matching replaces every occurrence, including occurrences inside longer words. A search for cat also matches category. In regex mode, add word boundaries around the term, or use a more specific phrase, so only the whole word is replaced."
+      ],
+      [
+        "Should I keep a copy of the original text?",
+        "Yes. A bulk replacement changes every match at once, and it can be hard to reconstruct the original after you paste over the source. Keep the unchanged version in a separate file or tab, so you can compare the output or start again if a pattern matched more than expected."
+      ],
+      [
+        "Does case-insensitive matching change the replacement text?",
+        "No. The option controls which occurrences count as matches, while the replacement string is inserted exactly as you typed it. For example, a case-insensitive search for the word cat will catch Cat and CAT, and each of them will be replaced with the text you entered."
+      ]
+    ]
+  },
+  "readability-checker": {
+    "answer": "A readability checker estimates how easily a reader can understand a text. The Flesch Reading Ease score uses average sentence length and average syllables per word: longer sentences and longer words lower the score. The Flesch-Kincaid grade level uses the same inputs to estimate a US school grade. Higher ease scores mean easier text, and higher grade levels mean harder text.",
+    "exampleInputs": {},
+    "sections": [
+      {
+        "heading": "Who benefits from checking readability?",
+        "text": "Writers of public guides, product help articles, and health or legal explainers benefit when a reader needs to act on the information. Teachers adapting material for different reading levels can compare drafts quickly. Editors can score each section separately to find where a piece becomes dense. Run the check on the final draft, and also on individual sections when a document mixes plain prose with technical passages. Each group gains a different kind of feedback from the same score."
+      },
+      {
+        "heading": "How should I respond to a low ease score?",
+        "text": "Start with the longest sentences, because splitting them usually raises the score more than swapping single words. Replace multi-syllable words where a simpler equivalent keeps the meaning. Break dense paragraphs into shorter blocks and move the key point to the first sentence. Re-score after each edit to see which change helped, rather than rewriting everything at once. Do not sacrifice precision just to reach a number. Keep notes on which edits worked for the next draft."
+      },
+      {
+        "heading": "What does the formula overlook?",
+        "text": "Flesch scores count sentences, words, and syllables. They do not judge meaning, logical structure, tone, or whether a reader knows the vocabulary. A short sentence full of unfamiliar jargon can score as easy yet still confuse people. Headings, bullet lists, and code can also distort sentence counts. Syllable counting is an estimate, so treat the result as a guide for revision, not a verdict on quality. Pair the score with a careful human read before deciding."
+      }
+    ],
+    "faqs": [
+      [
+        "Can a text score well and still be confusing?",
+        "Yes. The formula rewards short sentences and short words, but it cannot check whether ideas connect or whether terms are defined. A clear text usually scores well, yet a high score alone does not prove that the content is organized logically or useful to its audience."
+      ],
+      [
+        "Does the checker work on a single sentence?",
+        "It will return a figure for one sentence, but that result is unstable because the formula averages across sentences. Score a full paragraph or section for a meaningful reading. Short samples swing widely when one sentence changes, so compare longer passages when deciding between drafts."
+      ],
+      [
+        "Is my text uploaded when I run the check?",
+        "The scoring runs in your browser, so the calculation happens on your device rather than on a server. Keep your own copy of the draft as you revise, so you can compare versions and roll back an edit that did not help."
+      ]
+    ]
+  },
 };

@@ -106,3 +106,13 @@ Tools covered: due date, ovulation, fraction, final grade, scientific calculator
 Verified: 394 tests, typecheck, production build; built HTML shows FAQ JSON-LD equal to visible FAQs on sampled pages.
 
 Totals now: 125 hand-reviewed titles/descriptions, 15 intent-specific, 13 editorial, 187 pattern-based.
+
+## 6. Batch 3 — another 50 tools (applied)
+
+Same pipeline as batch 2 (writer agents → script gate → check against tool code). The gate passed 47/50 on the first complete run, then 50/50 after the files finished writing; no number or formula name outside the tool's own text survived. A proper-noun scan found one misleading sentence (an invented "ECB basket" claim on USD→INR), which was corrected; the ECB source itself is real (the tool fetches ECB-sourced rates via Frankfurter).
+
+Tools covered: simple interest, savings, DTI, down payment, sales tax, Roth IRA, investment, debt snowball, budget, APR, net worth, CD, break-even, overtime, one-rep max, pace, ideal weight, body fat, sleep, A1C, quadratic formula, LCM, square root, standard deviation, prime factorization, Pythagorean theorem, triangle area, add days to date, business days, time duration, day of week, unit/length/weight/temperature/area/volume/speed/data-storage/pressure/energy/power/time/fuel-economy converters, USD→GBP, USD→INR, slug generator, lorem ipsum, find & replace, readability checker.
+
+Date/time-input calculators intentionally have no computed worked example (their results depend on the clock/calendar).
+
+Totals now: 175 hand-reviewed titles/descriptions (75 + 50 + 50), 15 intent-specific, 13 editorial, ~137 pattern-based. Verified with the exact Netlify build command (`npm run check && npm run build && npm run audit:export`).

@@ -141,3 +141,41 @@ A search for `site:alltoolstogether.com` and for the site name plus "cm to inche
 
 ### AI overviews
 No markup guarantees inclusion in an AI overview. The pages provide what these systems read: a direct answer, a self-contained summary, question-form headings and FAQs, a computed worked example, a source-of-truth method statement, and structured data that matches visible content. Long-tail phrases were suggested by a model, not validated against query data; replace them with real Search Console queries after a few weeks.
+
+## 8. Round 5 — head keyword in description and opening answer for the older tools (applied)
+
+The keyword report showed the older 207 tools had their keyword in the title (88%) but rarely in the description (23%) or the first 70 words of the answer (33%). 189 tools needed work.
+
+- **Titles were not changed.** For each tool the head keyword is the term already in its title, so no URL/title churn.
+- 13 writer agents rewrote only the meta **description** and the **opening answer**, under the same gate as before: keyword verbatim in title, description and answer; description 120–158 chars and unique; no invented numbers or names (a proper-noun scan found none); no volume/ranking claims; no browser/privacy claim on server tools; existing limitations ("educational estimate, not professional advice") must be kept. Two keyword shapes were fixed by hand (Mean/Median/Mode, Crypto Profit/Loss).
+- Acronyms were capitalised (HRA, EMI, SIP, JSON, PDF, …). The 20 editorial pages keep their hand-written numeric answer; only their description changed.
+- New `lib/seo/openers.ts` (`OPENERS`, `answerFor`) feeds both the page and the keyword report; a permanent test keeps the keyword in title, description and answer.
+
+Result (`npm run report:keywords`):
+
+| Group | Tools | Title | Description | Answer (first 70 words) |
+| --- | ---: | ---: | ---: | ---: |
+| Short + 3 long-tail + AI summary (round 4) | 100 | 100% | 100% | 100% |
+| Short keyword in description + answer (round 5) | 189 | 100% | 100% | 94% (editorial answers kept) |
+| Registry keywords only | 18 | 100% | 100% | 100% |
+
+Known weaknesses: some descriptions place the keyword at the end ("… with this mortgage calculator") rather than the start; only the round-4 tools have long-tail phrases; none of this measures rankings, volume or AI citations.
+
+## 9. Final pass — remaining tools (applied)
+
+- **12 editorial pages**: the head keyword was missing from the first 70 words of their hand-written answer. Only the first sentence of each answer was reworded (e.g. "A BMI calculator applies adult body mass index, which is…"); every number and fact is unchanged.
+- **5 last pattern-title tools** (Reorder PDF Pages, Edit PDF Metadata, PDF Info Viewer, Military Time Converter, Rectangle Area Calculator) received the full treatment: title, description, short + 3 long-tail keywords, AI summary, deeper content, same gate as round 4. This makes 105 tools with long-tail phrases.
+- **Intentionally not changed**: Grammar Checker, Paraphrasing Tool, Plagiarism Checker and URL Shortener. They are server-backed and have dedicated guides; a stronger title would claim a capability that only exists once the backend is deployed.
+
+Final on-page keyword coverage (`npm run report:keywords`):
+
+| Group | Tools | Title | Description | Answer (first 70 words) |
+| --- | ---: | ---: | ---: | ---: |
+| Short + 3 long-tail + AI summary | 105 | 100% | 100% | 100% |
+| Short keyword in description + answer | 184 | 100% | 100% | 100% |
+| Registry keywords only | 18 | 100% | 100% | 100% |
+
+Verified with the Netlify build command (`npm run check && npm run build && npm run audit:export`): 396 tests, 385 pages, 33,489 internal links/assets OK. This measures placement only, not rankings, volume or AI-answer citations.
+
+### Still open (needs data or people, not code)
+Submit the sitemap and verify indexing in Google Search Console and Bing Webmaster; replace model-suggested long-tail phrases with real Search Console queries after a few weeks; add sources and expert review to health, finance and tax pages; deploy the document/writing backends and set `NEXT_PUBLIC_DOCUMENTS_READY=true`.

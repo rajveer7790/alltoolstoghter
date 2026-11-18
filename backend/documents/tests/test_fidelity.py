@@ -71,5 +71,16 @@ class FidelityTests(unittest.TestCase):
                 if not src.startswith(('data:', 'https:', 'http:')):
                     self.assertIn(src.removeprefix('./'), archive.namelist())
 
+    def test_invisible_ocr_layer_becomes_editable_word_text(self):
+        data = io.BytesIO(); canvas = Canvas(data, pagesize=(600, 200))
+        image = Image.new('RGB', (1200, 400), 'white')
+        canvas.drawImage(ImageReader(image), 0, 0, 600, 200)
+        text = canvas.beginText(40, 90); text.setTextRenderMode(3)
+        text.textLine('HELLO RECOGNIZED DOCUMENT'); canvas.drawText(text); canvas.save()
+        result = self.post('pdf-to-word', data.getvalue(), {'ocr': False})
+        self.assertEqual(result.status_code, 200, result.text[:250] if result.status_code != 200 else '')
+        with zipfile.ZipFile(io.BytesIO(result.content)) as archive:
+            self.assertIn(b'HELLO RECOGNIZED DOCUMENT', archive.read('word/document.xml'))
+
 
 if __name__ == '__main__': unittest.main()

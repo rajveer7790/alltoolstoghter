@@ -210,6 +210,8 @@ def one_case(entry, args):
         if args.engine in {'native', 'docvortex'}:
             method = 'Editable document' if args.engine == 'docvortex' else 'Basic text and tables'
             docx = engines.process(CATALOG['pdf-to-word'], [native_input], {'layout': 'page-breaks', 'method': method, 'ocr': False}, work)
+            mode_record = work / 'conversion-mode.json'
+            if mode_record.exists(): result.update(json.loads(mode_record.read_text()))
         else:
             from backend.documents.runtime import run
             docx = work / 'document.docx'

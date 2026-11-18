@@ -1,5 +1,6 @@
 """Key-free Word exports: semantic DOCX, basic reconstruction, or explicit page images."""
 from pathlib import Path
+import json
 import re
 import zipfile
 
@@ -116,11 +117,15 @@ def basic_document(source, directory, layout):
 
 def export(source, options, directory):
     method = options.get('method', STRUCTURED)
-    if method == VISUAL: return page_images(source, directory)
+    if method == VISUAL:
+        (directory / 'conversion-mode.json').write_text(json.dumps({'engine_used': 'page-images', 'editable_text': False}))
+        return page_images(source, directory)
     if method not in {STRUCTURED, BASIC}: raise ToolError('Choose an available Word output mode.')
     if options.get('ocr', True) and has_image_only_pages(source):
         source = ocr_source(source, directory, options.get('language', 'eng'))
-    if method == BASIC: return basic_document(source, directory, options.get('layout', 'reflow'))
+    if method == BASIC:
+        (directory / 'conversion-mode.json').write_text(json.dumps({'engine_used': 'basic-text-tables', 'editable_text': True}))
+        return basic_document(source, directory, options.get('layout', 'reflow'))
     try:
         import docvortex
     except ImportError:
@@ -138,7 +143,14 @@ def export(source, options, directory):
     with zipfile.ZipFile(output) as archive:
         xml = etree.fromstring(archive.read('word/document.xml'))
         text = ''.join(xml.xpath('//w:t/text()', namespaces={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}))
-    if not re.search(r'\S', text): raise ToolError('No editable text was recovered. Enable OCR or choose page images.')
+    if not re.search(r'\S', text):
+        # OCRmyPDF stores recognized words as invisible text over a scan. Native
+        # layout parsers can intentionally ignore that layer. Recover it as real
+        # editable text rather than returning an image-only "editable" document.
+        output = basic_document(source, directory, options.get('layout', 'reflow'))
+        (directory / 'conversion-mode.json').write_text(json.dumps({'engine_used': 'text-layer-recovery', 'editable_text': True}))
+        return output
+    (directory / 'conversion-mode.json').write_text(json.dumps({'engine_used': 'docvortex-0.6.24', 'editable_text': True}))
     return output
 
 
@@ -154,6 +166,17 @@ def export_html(source, options, directory):
         result.export(destination / 'document.html', output_format='html', overwrite=True)
     except Exception:
         raise ToolError('The structured HTML export could not process this PDF. Try OCR first.')
+    from bs4 import BeautifulSoup
+    html_path = destination / 'document.html'
+    markup = html_path.read_text()
+    if len(BeautifulSoup(markup, 'html.parser').get_text(' ', strip=True)) < 20:
+        import pdfplumber
+        import html
+        with pdfplumber.open(source) as pdf:
+            recovered = '\n\n'.join(page.extract_text() or '' for page in pdf.pages)
+        if recovered.strip():
+            section = '<section><h2>Recognized text</h2><pre>' + html.escape(recovered) + '</pre></section>'
+            html_path.write_text(markup.replace('</body>', section + '</body>'))
     paths = [path for path in destination.rglob('*') if path.is_file()]
     if len(paths) > 2000 or sum(path.stat().st_size for path in paths) > 64 * 1024 * 1024:
         raise ToolError('The HTML package exceeds the download limit.', 413)

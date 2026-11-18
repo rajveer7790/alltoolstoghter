@@ -11,8 +11,11 @@ from pypdf import PdfReader
 with httpx.Client(timeout=330, trust_env=False) as client:
     base = 'http://127.0.0.1:8790'
     for attempt in range(120):
-        response = client.get(base + '/capabilities')
-        if response.status_code == 200 and any(t['id'] == 'pdf-to-word-layout' and t['available'] for t in response.json()['tools']): break
+        try:
+            response = client.get(base + '/capabilities', timeout=5)
+            if response.status_code == 200 and any(t['id'] == 'pdf-to-word-layout' and t['available'] for t in response.json()['tools']): break
+        except httpx.RequestError:
+            pass  # Docker has started the process, but Uvicorn may not be listening yet.
         time.sleep(1)
     else: raise RuntimeError('The geometric worker did not become ready')
     content = io.BytesIO(); canvas = Canvas(content, pagesize=(500, 700))

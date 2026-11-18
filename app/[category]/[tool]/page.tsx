@@ -6,6 +6,8 @@ import { guideLinksForTool } from '@/lib/guides';
 import { topicContext } from '@/lib/topicContext';
 import { canonicalToolPath, isIndexableTool } from '@/lib/toolPolicy';
 import { backendGuides } from '@/lib/backendGuides';
+import { toolSeo } from '@/lib/seo/meta';
+import { sampleTables, generatedFaqs } from '@/lib/seo/content';
 import { hasBackend } from '@/lib/apiClient';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -48,15 +50,18 @@ export async function generateMetadata({ params: pendingParams }: { params: Prom
   const params = await pendingParams;
   const t = bySlug.get(params.tool);
   if (!t || t.category !== params.category) return {};
-  const description = backendGuides[t.slug]?.description || t.metaDescription || t.short;
+  const seo = toolSeo(t);
+  const description = backendGuides[t.slug]?.description || seo.description;
+  const title = backendGuides[t.slug] ? (EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name) : seo.title;
   const canonical = canonicalToolPath(t);
   return {
-    title: EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name,
+    // Absolute: the brand suffix would push most titles past ~60 characters. The brand stays in Open Graph.
+    title: { absolute: title },
     description,
     robots: t.widget === 'document' && !isIndexableTool(t) ? { index: false, follow: true } : undefined,
     alternates: { canonical },
     openGraph: {
-      title: `${EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name} | ${SITE.name}`,
+      title: `${title} | ${SITE.name}`,
       description,
       url: canonical,
       siteName: SITE.name,
@@ -65,7 +70,7 @@ export async function generateMetadata({ params: pendingParams }: { params: Prom
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${EDITORIAL[t.slug]?.title || INTENT_NOTES[t.slug]?.title || t.name} | ${SITE.name}`,
+      title: `${title} | ${SITE.name}`,
       description,
       images: ['/opengraph-image.png'],
     },
@@ -83,7 +88,8 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
   const editorial = EDITORIAL[t.slug];
   const context = topicContext(t);
   const table = editorial?.table || referenceTable(t);
-  const faqs = [...t.content.faqs, ...(editorial?.faqs || [])].filter(([q], i, list) => list.findIndex(([other]) => other === q) === i);
+  const tables = sampleTables(t);
+  const faqs = [...t.content.faqs, ...(editorial?.faqs || []), ...generatedFaqs(t)].filter(([q], i, list) => list.findIndex(([other]) => other === q) === i);
   const sources = [...(t.sources || []), ...(editorial?.sources || [])].filter((item, i, list) => list.findIndex(other => other.url === item.url) === i);
   const guides = guideLinksForTool(t.slug);
   const canonicalUrl = SITE.url + canonicalToolPath(t);
@@ -178,6 +184,15 @@ export default async function ToolPage({ params: pendingParams }: { params: Prom
             <table><caption>{table.caption}</caption><thead><tr>{table.headers.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{table.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody></table>
           </div>
           {editorial?.sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><p>{section.text}</p></section>)}
+        </>}
+        {tables.length > 0 && <>
+          <h2>Sample results for the {t.name}</h2>
+          <p>These scenarios were produced by this page’s own formula, changing one input at a time. They are illustrations, not advice or a quote.</p>
+          {tables.map(tb => (
+            <div className="table-scroll" tabIndex={0} role="region" aria-label={tb.caption} key={tb.caption}>
+              <table><caption>{tb.caption}</caption><thead><tr>{tb.headers.map(h => <th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{tb.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody></table>
+            </div>
+          ))}
         </>}
         <h2>Frequently asked questions</h2>
         {faqs.map(([q, a], i) => (

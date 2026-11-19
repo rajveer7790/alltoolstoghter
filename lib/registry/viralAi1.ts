@@ -1,0 +1,140 @@
+import { ToolDef } from '../types';
+const $ = (k: string, l: string, d: number, u?: string, help?: string): any => ({ key: k, label: l, type: 'number', def: d, unit: u, help });
+const S = (k: string, l: string, d: string, options: [string, string][], help?: string): any => ({ key: k, label: l, type: 'select', def: d, options: options.map(([value, label]) => ({ value, label })), help });
+const CAT = 'ai-engineering' as any;
+
+export const VIRAL_AI1: ToolDef[] = [
+{
+  slug: 'llm-vram-calculator', name: 'LLM VRAM Calculator', short: 'Estimate GPU memory for LLM weights plus KV cache at a given quantization, context and batch.',
+  category: CAT, prio: 'P2', widget: 'calc',
+  keywords: ['llm vram calculator', 'kv cache memory calculator', 'gguf vram estimate', 'gpu memory for llm inference'],
+  metaDescription: 'LLM VRAM calculator: estimate GPU memory for model weights plus KV cache at FP16, INT8 or 4-bit, any context length and batch. Runs in your browser.',
+  fields: [
+    $('params', 'Model parameters', 8, 'billion'),
+    S('quant', 'Weight format', 'fp16', [['fp32', 'FP32 (4 bytes)'], ['fp16', 'FP16 / BF16 (2 bytes)'], ['int8', 'INT8 (1 byte)'], ['int4', 'INT4 (0.5 byte)'], ['q8_0', 'GGUF Q8_0 (approx. 8.5 bits)'], ['q4_k_m', 'GGUF Q4_K_M (approx. 4.85 bits)']], 'GGUF values are approximate effective bits per weight.'),
+    $('layers', 'Layers', 32), $('kvHeads', 'KV heads', 8, undefined, 'Key/value heads (equals attention heads without grouped-query attention).'),
+    $('headDim', 'Head dimension', 128), $('context', 'Context length', 8192, 'tokens'), $('batch', 'Batch size (sequences)', 1),
+    S('kvBytes', 'KV cache precision', '2', [['4', 'FP32 (4 bytes)'], ['2', 'FP16 / BF16 (2 bytes)'], ['1', 'INT8 / FP8 (1 byte)']]),
+    $('overhead', 'Overhead for activations and runtime', 10, '%', 'Your own allowance; real overhead depends on the runtime.'),
+    $('gpu', 'GPU memory (0 to skip check)', 24, 'GiB'),
+  ],
+  content: {
+    intro: 'Estimate how much GPU memory a large language model needs for inference. Enter the parameter count, weight format and the model\'s layer, KV-head and head-dimension values from its config, and the tool adds the KV cache for your context length and batch size, plus an overhead allowance you control.',
+    how: 'Weights = parameters x 1e9 x bytes per weight. KV cache bytes = 2 x layers x KV heads x head dimension x context tokens x batch x bytes per element (the 2 is keys plus values). Total = (weights + KV cache) x (1 + overhead %). Results are shown in GB (1e9 bytes) and GiB (2^30 bytes). GGUF Q8_0 and Q4_K_M use approximate effective bits per weight. This is an estimate: real usage depends on the runtime, activation buffers, fragmentation and features such as paged attention. The GPU check treats the entered size as GiB.',
+    howSteps: ['Enter parameters and pick the weight format.', 'Copy layers, KV heads and head dimension from the model config, then set context and batch.', 'Set an overhead % and optionally your GPU memory to see if it fits.'],
+    example: '8 billion parameters in FP16 is 16.00 GB of weights. With 32 layers, 8 KV heads, head dimension 128, 8,192 tokens, batch 1 and an FP16 cache, the KV cache is 1.07 GB (1.00 GiB). Adding 10 % overhead gives 18.78 GB (17.49 GiB), which fits a 24 GiB GPU with 6.51 GiB headroom.',
+    faqs: [
+      ['Why does context length matter so much?', 'The KV cache grows linearly with context tokens and with batch size, so long contexts or many concurrent sequences can use more memory than the weights.'],
+      ['Where do I find layers, KV heads and head dimension?', 'In the model\'s config file (for example num_hidden_layers, num_key_value_heads and hidden_size divided by num_attention_heads). Check the model card for the exact values.'],
+      ['Is the overhead percentage accurate?', 'No. It is your own allowance for activations, buffers and runtime memory. Measure on your hardware and runtime before sizing a deployment.'],
+      ['Does this cover training or fine-tuning?', 'No. Training needs gradients, optimizer states and activations, which this inference estimate does not include. Mixture-of-experts and multimodal models also need extra care.'],
+      ['Are the GGUF figures exact?', 'No. Q8_0 and Q4_K_M are shown with approximate effective bits per weight; actual file sizes vary by model because some tensors use other quantization types.'],
+    ],
+  },
+  related: ['data-storage-converter', 'local-llm-vs-cloud-api-breakeven-calculator', 'agent-loop-token-cost-calculator', 'rag-chunking-vector-storage-calculator'],
+},
+{
+  slug: 'rag-chunking-vector-storage-calculator', name: 'RAG Chunking and Vector Storage Calculator', short: 'Chunk count, vector index size and embedding tokens for a document set with overlap.',
+  category: CAT, prio: 'P2', widget: 'calc',
+  keywords: ['rag chunk size calculator', 'vector database memory calculator', 'embedding storage size', 'chunk overlap calculator'],
+  metaDescription: 'RAG chunk size calculator: estimate chunk count, vector database storage and embedding tokens from document size, chunk size, overlap and dimension.',
+  fields: [
+    $('docs', 'Documents', 1000), $('tokens', 'Tokens per document', 5000, 'tokens'), $('chunk', 'Chunk size', 512, 'tokens'), $('overlap', 'Overlap', 64, 'tokens'),
+    $('dim', 'Embedding dimension', 1536),
+    S('precision', 'Stored vector precision', 'f32', [['f32', 'float32 (4 bytes)'], ['f16', 'float16 (2 bytes)'], ['i8', 'int8 (1 byte)']]),
+    $('meta', 'Metadata per chunk', 200, 'bytes'),
+    $('mult', 'Index overhead multiplier (assumption)', 1.5, 'x', 'Applied to raw vectors only. Graph indexes such as HNSW add links; your engine may differ.'),
+    $('price', 'Embedding price (0 to skip)', 0.1, '$ per 1M tokens', 'Enter your provider\'s price; the default is a placeholder.'),
+  ],
+  content: {
+    intro: 'Plan a retrieval-augmented generation (RAG) pipeline before you build it. Enter your document count, tokens per document, chunk size and overlap to see how many chunks you will store, how large the vector index is, and how many tokens you will send to an embedding model.',
+    how: 'Per document: chunks = ceil(max(0, tokens - overlap) / (chunk size - overlap)), at least 1. Overlap must be smaller than the chunk size. Raw vector bytes = chunks x dimension x bytes per value. Total = raw vectors x index overhead multiplier + chunks x metadata bytes. The multiplier is an assumption you set; it is not a fixed property of any database. Tokens to embed count every chunk in full, so overlap is embedded twice. Token counts depend on the tokenizer you use; this tool does not tokenize text.',
+    howSteps: ['Enter the number of documents and the average tokens per document.', 'Set chunk size and overlap, then the embedding dimension and stored precision.', 'Adjust metadata bytes, the index overhead assumption and optionally your embedding price.'],
+    example: '1,000 documents of 5,000 tokens with 512-token chunks and 64 overlap give 12 chunks per document (12,000 total). At 1,536 dimensions in float32 the raw vectors are 73.73 MB; with a 1.5x index assumption and 200 bytes of metadata per chunk the total is 112.99 MB. Embedding processes 5,704,000 tokens, about 1.141x the corpus because of overlap, which is $0.5704 at $0.10 per 1M tokens.',
+    faqs: [
+      ['Why is the index multiplier an input?', 'Index memory depends on the engine, algorithm and settings (for example the number of graph links). The default of 1.5 is only a placeholder; replace it with a measured value.'],
+      ['Does overlap increase cost?', 'Yes. Overlapping tokens appear in two chunks, so they are embedded and stored twice. The tool shows the duplication factor.'],
+      ['Are tokens the same for every model?', 'No. Different tokenizers split text differently, so convert your corpus size using the tokenizer of your embedding model.'],
+      ['Does it include the original text storage?', 'Only through the metadata bytes you enter. Store chunk text size there if your database keeps it.'],
+    ],
+  },
+  related: ['llm-vram-calculator', 'prompt-caching-savings-calculator', 'data-storage-converter', 'agent-loop-token-cost-calculator'],
+},
+{
+  slug: 'prompt-caching-savings-calculator', name: 'Prompt Caching Savings Calculator', short: 'Estimate LLM input cost with and without prompt caching, using your own prices and hit rate.',
+  category: CAT, prio: 'P2', widget: 'calc',
+  keywords: ['prompt caching calculator', 'llm context caching savings', 'cache hit rate break-even', 'api input token cost'],
+  metaDescription: 'Prompt caching calculator: compare daily and monthly input cost with and without caching, plus the break-even hit rate, using your own prices and multipliers.',
+  fields: [
+    $('price', 'Base input price', 3, '$ per 1M tokens', 'Your provider\'s uncached input price. Enter it yourself; the default is a placeholder.'),
+    $('writeMult', 'Cache write multiplier', 1.25, 'x base', 'Providers differ; check your provider\'s pricing page.'),
+    $('readMult', 'Cache read multiplier', 0.1, 'x base', 'Providers differ; check your provider\'s pricing page.'),
+    $('prefix', 'Cacheable prefix per request', 20000, 'tokens'), $('uncached', 'Uncached input per request', 500, 'tokens'),
+    $('requests', 'Requests per day', 1000), $('hit', 'Cache hit rate', 90, '%'), $('days', 'Days per month', 30),
+  ],
+  content: {
+    intro: 'Prompt caching lets a provider reuse a repeated prompt prefix, such as a long system prompt or document, at a different price than normal input. Enter your own prices and traffic to see the input-cost difference and the hit rate at which caching starts to pay off.',
+    how: 'Without caching: requests x (prefix + uncached tokens) x price. With caching: on a miss the prefix is billed at the write multiplier, on a hit at the read multiplier, and uncached tokens always at the base price. Cost per request = prefix x ((1 - hit) x write + hit x read) + uncached. Break-even hit rate = (write - 1) / (write - read) when write is above 1. Only input tokens are modelled: output tokens, storage fees, cache lifetimes and expiry are not, and prices and multipliers are entirely your inputs. This is an estimate.',
+    howSteps: ['Enter your base input price and the cache write and read multipliers.', 'Enter the prefix and uncached tokens per request and requests per day.', 'Set an expected hit rate to see savings and the break-even hit rate.'],
+    example: 'At $3 per 1M tokens, a 20,000-token prefix, 500 uncached tokens and 1,000 requests a day cost $61.50 a day without caching. With a 1.25x write, 0.1x read and 90 % hit rate, the daily cost is $14.40, saving $47.10 a day (76.58 %), or $1,413 over 30 days. Break-even is a 21.74 % hit rate.',
+    faqs: [
+      ['Where do the multipliers come from?', 'From your provider\'s pricing documentation, which differs between providers and changes over time. They are inputs here, not built-in values.'],
+      ['What is the hit rate?', 'The share of requests whose prefix is found in the cache. It depends on traffic spacing versus the cache lifetime, which this tool does not model.'],
+      ['Are output tokens included?', 'No. Caching only changes input pricing, so output cost is the same either way and is left out.'],
+      ['Does this cover batch discounts?', 'No. If you also use a batch discount, apply it to your base price and multipliers yourself, after checking that your provider allows combining them.'],
+    ],
+  },
+  related: ['agent-loop-token-cost-calculator', 'rag-chunking-vector-storage-calculator', 'roi-calculator', 'break-even-calculator'],
+},
+{
+  slug: 'agent-loop-token-cost-calculator', name: 'AI Agent Loop Token Cost Calculator', short: 'Estimate token and dollar cost of a multi-turn agent that re-sends its growing context every turn.',
+  category: CAT, prio: 'P2', widget: 'calc',
+  keywords: ['ai agent cost calculator', 'agent token compounding', 'tool calling context growth', 'multi-turn llm cost'],
+  metaDescription: 'AI agent cost calculator: estimate total tokens and cost of a multi-turn tool-calling loop where each turn re-sends the whole context. Runs in your browser.',
+  fields: [
+    $('system', 'System prompt', 2000, 'tokens'), $('user', 'Initial user message', 500, 'tokens'), $('turns', 'Turns (model calls)', 10),
+    $('output', 'Assistant output per turn', 300, 'tokens'), $('tool', 'Tool result per turn', 1500, 'tokens'),
+    $('inPrice', 'Input price', 3, '$ per 1M tokens', 'Enter your provider\'s price; the default is a placeholder.'),
+    $('outPrice', 'Output price', 15, '$ per 1M tokens', 'Enter your provider\'s price; the default is a placeholder.'),
+  ],
+  content: {
+    intro: 'An agent that calls tools in a loop sends the whole conversation so far back to the model on every turn, so input tokens grow faster than the number of turns. This calculator sums that growth and shows total tokens, cost, and how much of the bill is the same history being re-read.',
+    how: 'Input tokens at turn t = system + user + (t - 1) x (assistant output + tool result). Total input = turns x (system + user) + (output + tool) x turns x (turns - 1) / 2. Total output = turns x output. Cost = tokens x price / 1M. The re-read share counts input beyond the first time each token is sent. The model assumes constant per-turn sizes, no provider caching and no context truncation, so it is an estimate; real agents vary per turn.',
+    howSteps: ['Enter system prompt and initial user tokens, and the number of turns.', 'Enter average assistant output and tool-result tokens per turn.', 'Enter your input and output prices per 1M tokens.'],
+    example: 'With 2,000 system and 500 user tokens, 10 turns, 300 output and 1,500 tool-result tokens per turn, total input is 106,000 tokens and output 3,000 tokens. At $3 and $15 per 1M tokens that costs $0.318 for input plus $0.045 for output, $0.363 in total. Turn 1 costs $0.012 and turn 10 costs $0.0606; 72.1 % of the total is history re-read.',
+    faqs: [
+      ['Why does cost grow faster than the number of turns?', 'Each turn re-sends earlier turns, so input per turn increases linearly and the total over all turns grows roughly with the square of the turn count.'],
+      ['Does prompt caching change this?', 'It can lower the price of re-read history, but it is not modelled here. See the prompt caching calculator and enter your provider\'s rates.'],
+      ['Are tool-result sizes constant?', 'The tool assumes averages. Real tool outputs vary, so treat the result as an estimate and compare it with your provider\'s usage logs.'],
+      ['Are reasoning or hidden tokens included?', 'Only if you add them to the output tokens per turn. Some providers bill additional reasoning tokens as output.'],
+    ],
+  },
+  related: ['prompt-caching-savings-calculator', 'llm-vram-calculator', 'local-llm-vs-cloud-api-breakeven-calculator', 'rag-chunking-vector-storage-calculator'],
+},
+{
+  slug: 'local-llm-vs-cloud-api-breakeven-calculator', name: 'Local LLM vs Cloud API Cost Calculator', short: 'Compare local hardware plus electricity cost per 1M tokens with a cloud API price and find break-even.',
+  category: CAT, prio: 'P2', widget: 'calc',
+  keywords: ['local llm vs api cost calculator', 'electricity cost per million tokens', 'self hosted llm breakeven', 'gpu payback vs api'],
+  metaDescription: 'Local LLM vs API cost calculator: compare hardware amortisation plus electricity per 1M tokens with a cloud price and see the monthly break-even volume.',
+  fields: [
+    $('hardware', 'Hardware cost', 2500, '$'), $('life', 'Amortisation lifetime', 36, 'months'),
+    $('watts', 'Power draw under load', 350, 'W'), $('hours', 'Hours per day under load', 8, 'h'),
+    $('kwh', 'Electricity price', 0.15, '$ per kWh'), $('tps', 'Sustained throughput', 80, 'tokens/s'),
+    $('util', 'Utilisation while under load', 50, '%', 'Share of load time actually generating tokens.'),
+    $('cloud', 'Cloud API price', 10, '$ per 1M tokens', 'Enter the price you would pay; the default is a placeholder.'),
+  ],
+  content: {
+    intro: 'Is running a model on your own hardware cheaper than paying a cloud API? Enter your hardware cost, power draw, electricity price, throughput and the cloud price per million tokens to compare cost per 1M tokens and see the monthly volume at which local starts to win.',
+    how: 'Monthly hardware = cost / lifetime months. Monthly energy = watts / 1000 x hours per day x 30.4375 days x price per kWh. Monthly tokens = tokens per second x 3600 x utilisation x load hours. Local cost per 1M tokens = (hardware + energy) / monthly tokens in millions. Break-even volume = (hardware + energy) / cloud price per 1M tokens. Not included: idle power, maintenance, staff time, resale value, and differences in model quality or latency. It is an estimate, and the throughput must be measured on your own setup.',
+    howSteps: ['Enter hardware cost, lifetime, power draw, load hours and electricity price.', 'Enter your measured throughput and utilisation.', 'Enter the cloud price per 1M tokens to see local cost and break-even volume.'],
+    example: 'A $2,500 machine amortised over 36 months costs $69.44 a month. At 350 W for 8 load hours a day and $0.15 per kWh, electricity is $12.78 a month. At 80 tokens/s and 50 % utilisation it produces 35.06 M tokens a month, so local cost is $2.35 per 1M tokens. Against a $10 per 1M cloud price, break-even is 8.22 M tokens a month, and hardware pays back in 7.4 months at full capacity.',
+    faqs: [
+      ['Does it include idle power?', 'No. Only the draw under load is counted, so a machine that idles around the clock will cost more than shown.'],
+      ['What throughput should I use?', 'Use a measured sustained rate for your model, quantization and batch settings. Published peak numbers often differ from real workloads.'],
+      ['Is the local model equivalent to the cloud model?', 'Not necessarily. Quality, context length and reliability can differ, and this tool compares cost only.'],
+      ['Which cloud price applies?', 'Enter a blended price for your input and output mix from your provider. Prices are inputs and change over time.'],
+    ],
+  },
+  related: ['llm-vram-calculator', 'electricity-bill-calculator', 'break-even-calculator', 'prompt-caching-savings-calculator'],
+},
+];

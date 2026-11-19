@@ -63,6 +63,7 @@ test('source subset limitations and unsupported scripts fail without changing th
   const source = await fixture(), region = (await inspectEditorPage(source, 0)).regions[0];
   await assert.rejects(applyEditorAction(source, 0, { kind: 'text', change: { index: region.index, original: region.text, text: '@ unknown glyph', font: 'source', size: 18, color: '#000000' } }), /source font/);
   await assert.rejects(applyEditorAction(source, 0, { kind: 'text', change: { text: 'नमस्ते', font: 'inter', size: 16, color: '#000000', x: 30, y: 60 } }, fontBytes), /shape/);
+  await assert.rejects(applyEditorAction(source, 0, { kind: 'text', change: { text: 'This text would extend past the edge', font: 'inter', size: 18, color: '#000000', x: 390, y: 60 } }, fontBytes), /cut off/);
   assert.equal((await inspectEditorPage(source, 0)).regions[0].text, 'Original invoice');
   await assert.rejects(inspectEditorPage(new Uint8Array([1,2,3]), 0), /damaged|unsupported/);
 });

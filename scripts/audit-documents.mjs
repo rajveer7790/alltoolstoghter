@@ -111,6 +111,7 @@ try {
   await originalText.waitFor({timeout:60000});await originalText.click();
   const textInput=page.getByLabel('Text content',{exact:true});
   assert.equal(await textInput.isEnabled(),true);
+  await page.getByLabel('Font size',{exact:true}).fill('16');
   await textInput.fill('Edited locally');await textInput.press('End');await textInput.pressSequentially(' successfully');
   assert.equal(await textInput.inputValue(),'Edited locally successfully');
   await page.getByRole('button',{name:'Apply text',exact:true}).click();

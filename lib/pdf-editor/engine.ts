@@ -75,6 +75,13 @@ class Session {
     const origin = map(0, 0), horizontal = map(16, 0), vertical = map(0, 16);
     return [(horizontal.x - origin.x) / 16, (horizontal.y - origin.y) / 16, (vertical.x - origin.x) / 16, (vertical.y - origin.y) / 16, origin.x, origin.y];
   }
+  keepTextOnPage(object: number, view: Matrix) {
+    const pointer = this.alloc(16);
+    assert(this.api.FPDFPageObj_GetBounds(object, pointer, pointer + 4, pointer + 8, pointer + 12), 'The replacement text could not be measured.');
+    const [left, bottom, right, top] = [0,4,8,12].map(offset => this.getFloat(pointer + offset));
+    const box = boxFromPoints([{ x:left,y:bottom },{ x:left,y:top },{ x:right,y:bottom },{ x:right,y:top }].map(point => transform(view, point)));
+    assert(box.x >= -2 && box.y >= -2 && box.x + box.width <= this.api.FPDF_GetPageWidth(this.page) + 2 && box.y + box.height <= this.api.FPDF_GetPageHeight(this.page) + 2, 'This text would be cut off by the page edge. Use a smaller font, add a line break, or choose a position farther inside the page.');
+  }
   text(object: number, textPage: number) {
     const length = this.api.FPDFTextObj_GetText(object, textPage, 0, 0);
     if (!length || length > 100000) return '';
@@ -235,6 +242,7 @@ export async function applyEditorAction(bytes: Uint8Array, pageIndex: number, ac
         assert(api.FPDFText_SetText(object, pointer), 'The font could not encode this text.');
         const position: Matrix = [...matrix]; position[4] -= index * change.size * 1.3 * matrix[2]; position[5] -= index * change.size * 1.3 * matrix[3];
         session.setMatrix(object, position); api.FPDFPageObj_SetFillColor(object, r, g, b, 255);
+        session.keepTextOnPage(object, view);
       });
     } catch (error) { objects.forEach(object => api.FPDFPageObj_Destroy(object)); throw error; }
     // Remove the actual original object only after the replacement has been built.

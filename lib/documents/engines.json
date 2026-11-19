@@ -63,11 +63,11 @@
     "scope": "Local Markdown, HTML and JSON extraction. Hosted LLM enhancement is excluded. Model-weight eligibility must be verified before enabling."
   },
   {
-    "name": "PdfCraft",
-    "repository": "https://github.com/storytold/pdfcraft",
-    "license": "MIT or Apache-2.0; bundled notices and model licenses retained",
-    "integration": "Included browser workspace, version 0.21.1",
-    "scope": "Full independent WebAssembly PDF editor at /pdf-editor/. The release is checksum verified and distributed without changing its app or branding."
+    "name": "PDFium / EmbedPDF engine",
+    "repository": "https://github.com/embedpdf/embed-pdf-viewer",
+    "license": "MIT wrapper; bundled PDFium/component notices retained",
+    "integration": "Engine helper in our own editor",
+    "scope": "PDFium WebAssembly 2.15.1 renders and modifies PDF objects behind our original React interface. No upstream editor app, launcher or branding is shipped. A checksum-pinned Inter font is embedded for replacement text; its SIL OFL notice is retained."
   },
   {
     "name": "ONLYOFFICE Docs",

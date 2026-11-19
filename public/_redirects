@@ -8,3 +8,6 @@
 /blog /guides 301
 
 /security.txt /.well-known/security.txt 301
+
+/pdf-editor/app /pdf-editor/ 301
+/pdf-editor/app/* /pdf-editor/ 301

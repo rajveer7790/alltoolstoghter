@@ -1,6 +1,6 @@
 # Open-source document coverage — 17 November 2026
 
-The supplied report was checked against current upstream README/license/API documentation. Several projects have changed since the pasted recommendation: PdfCraft has a usable static WebAssembly release; Filee and GenOffice have headless conversion CLIs. No hosted AI key, enterprise module or commercial model eligibility is assumed.
+The supplied report was checked against current upstream README/license/API documentation. Several projects have changed since the pasted recommendation: PdfCraft has a usable static WebAssembly release, but its full UI was subsequently replaced by our own editor; Filee and GenOffice have headless conversion CLIs. No hosted AI key, enterprise module or commercial model eligibility is assumed.
 
 | Project | Integration and actual boundary |
 | --- | --- |
@@ -13,7 +13,7 @@ The supplied report was checked against current upstream README/license/API docu
 | GenOffice | Installed headless `convert` adapter. Desktop application and cloud/AI features are not relabeled as native website features. Office editing is provided separately with ONLYOFFICE. |
 | Filee | Installed `filee convert` adapter, including the installed engine's actual format pairs. No invented universal-fidelity claim. |
 | Marker | Optional local fast-mode Markdown/HTML/JSON worker; no `--use_llm`, and model-license gate defaults off. |
-| PdfCraft | Actual unmodified 0.21.1 WebAssembly release hosted at `/pdf-editor/`, verified SHA-256 `fe9708d46af191aebb56f70eb32cf8b112b0b9452d17ae6ba3a8c4a8665fe748`. Licenses/model attribution retained. |
+| PdfCraft / ArtCraft | The direct app and launcher were removed on 19 November. Only a pinned Inter font asset is reused under SIL OFL; our own editor uses PDFium as its rendering/editing helper. |
 | ONLYOFFICE Docs | Separate Community editor with one-hour sessions, internal JWT and constrained callbacks. Does not include paid enterprise features or unlimited edition capacity. |
 | PDF.js | Existing browser PDF engine reused for thumbnails and JSON text/coordinates. |
 | qpdf | Real native executable for linearization. |
@@ -38,3 +38,7 @@ Quality depends on the engine and source: text/table reconstruction is editable 
 ## Fidelity upgrade, 18 November 2026
 
 DocVortex 0.6.24 is included for structured DOCX and semantic HTML/assets; the simple text/table path remains an explicit choice, with duplicate table text removed. Word output can alternatively contain explicitly labeled page images. Office PDF exports preserve image resolution and use a larger open-font set through a custom Gotenberg image. The local MinerU CLI contract is updated for 4.2.3; optional PaddleOCR/Marker versions are pinned, without implying their model inference was benchmarked. Existing earlier benchmark results remain immutable and identify their tested source commit.
+
+## Editor correction — 19 November 2026
+
+The direct PdfCraft/ArtCraft app and launcher are no longer shipped. Our React interface uses the MIT PDFium helper for rendering and actual top-level text-object replacement, with a pinned Inter font and retained licenses. Source text is removed as an object before replacement; it is not hidden beneath a white rectangle. Image-only pages, outlined/grouped text, font coverage and complex-script shaping have explicit limits. Add text stays available without selecting original text. Standard forms, images, highlighting, page rotation/deletion and undo/redo are provided in our interface. Separate OCR and optional model workers retain their existing deployment limits.

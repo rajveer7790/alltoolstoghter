@@ -12,7 +12,7 @@ const root = 'out';
 const origin = new URL(SITE.url);
 const exists = (path: string) => [path, `${path}.html`, `${path}/index.html`].some(p => existsSync(join(root, p)));
 const files = (dir: string): string[] => readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? files(join(dir,e.name)) : [join(dir,e.name)]);
-const htmlFiles = files(root).filter(f => f.endsWith('.html') && !f.startsWith(join(root, 'pdf-editor') + '/'));
+const htmlFiles = files(root).filter(f => f.endsWith('.html') && !f.startsWith(join(root, 'pdf-editor') + '/') && f !== join(root, 'pdf-editor.html'));
 const titles = new Map<string,string>();
 const descriptions = new Map<string,string>();
 const pageAudit: { path: string; title: string; description: string; canonical: string; robots: string; inSitemap?: boolean }[] = [];

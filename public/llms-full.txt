@@ -3406,16 +3406,16 @@ Processing: runs locally in the browser
 
 Method: The timer starts on the first input. Correctly matched characters divided by five and elapsed minutes gives correct WPM. Accuracy compares current text positions, so edits can correct earlier errors. Pasting is disabled for practice.
 
-## PDF Editor & Viewer
+## PDF Editor
 
 URL: https://alltoolstogether.com/pdf/pdf-editor
 
-Open the complete PdfCraft PDF workspace: view, annotate, organize, fill forms and recognize scanned text locally.
+Edit PDF text, add text and images, highlight pages, fill forms and organize your document locally.
 
-Search focus: pdf editor & viewer; edit; pdfcraft; local private pdf tool
-Processing: separate workspace
+Search focus: pdf editor; edit; pdfium; local private pdf tool
+Processing: runs locally in the browser
 
-Method: Open the independently hosted PdfCraft workspace on this website. Choose your PDF, use its editing or document tools, and save the result. The editor and its local OCR assets are loaded only when opened.
+Method: Open a PDF in our editor. Click a blue text outline to replace editable text, or choose Add text and click the page. Apply changes before downloading. Scans and grouped artwork have clear limitations; the original file is kept unchanged.
 
 ## Reverse PDF Pages
 

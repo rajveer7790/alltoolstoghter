@@ -136,8 +136,8 @@ export const VIRAL_CREATOR: ToolDef[] = [
 {
   slug: 'youtube-revenue-estimator', name: 'YouTube Revenue Estimator (RPM x Views)', prio: 'P2', category: CAT, widget: 'calc',
   short: 'Estimate monthly and multi-month ad revenue from views and your own RPM, with growth and RPM scenarios.',
-  metaDescription: 'YouTube shorts money calculator: enter monthly views, your RPM and growth to estimate revenue over time, with low and high RPM scenarios. Estimate only.',
-  keywords: ['youtube shorts money calculator', 'youtube rpm calculator', 'youtube revenue estimator', 'adsense revenue per 1000 views'],
+  metaDescription: 'YouTube revenue estimator: enter monthly views, your RPM and growth to estimate revenue over time, with low and high RPM scenarios. Estimate only.',
+  keywords: ['youtube revenue estimator', 'youtube ad revenue calculator', 'youtube rpm calculator', 'youtube money calculator'],
   fields: [
     $('views', 'Monthly views', 100000, 'views', { min: 0 }),
     $('rpm', 'RPM (revenue per 1,000 views)', 2, undefined, { min: 0, step: 0.01, help: 'Use the RPM from your own analytics. It varies widely by niche, country, format and season; the default is only a placeholder.' }),

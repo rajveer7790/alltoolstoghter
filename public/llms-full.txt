@@ -2,7 +2,7 @@
 
 Updated: 2026-11-17 (maintained content revision)
 
-> 307 free tools across 19 categories. Tools marked local process on the device; advanced document conversion, writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
+> 355 free tools across 23 categories. Tools marked local process on the device; advanced document conversion, writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
 
 ## Mortgage Calculator
 
@@ -3548,6 +3548,582 @@ Search focus: pdf to json; extract; pdfjs; local private pdf tool
 Processing: runs locally in the browser
 
 Method: Export page text, coordinates and dimensions as JSON. Choose a supported file, review the operation options, process the document, and download the result. Uses the existing text layer. Scanned pages need OCR first.
+
+## LLM VRAM Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/llm-vram-calculator
+
+Estimate GPU memory for LLM weights plus KV cache at a given quantization, context and batch.
+
+Search focus: llm vram calculator; kv cache memory calculator; gguf vram estimate; gpu memory for llm inference
+Processing: runs locally in the browser
+Inputs: Model parameters (billion), Weight format, Layers, KV heads, Head dimension, Context length (tokens), Batch size (sequences), KV cache precision, Overhead for activations and runtime (%), GPU memory (0 to skip check) (GiB).
+
+Method: Weights = parameters x 1e9 x bytes per weight. KV cache bytes = 2 x layers x KV heads x head dimension x context tokens x batch x bytes per element (the 2 is keys plus values). Total = (weights + KV cache) x (1 + overhead %). Results are shown in GB (1e9 bytes) and GiB (2^30 bytes). GGUF Q8_0 and Q4_K_M use approximate effective bits per weight. This is an estimate: real usage depends on the runtime, activation buffers, fragmentation and features such as paged attention. The GPU check treats the entered size as GiB.
+
+## RAG Chunking and Vector Storage Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/rag-chunking-vector-storage-calculator
+
+Chunk count, vector index size and embedding tokens for a document set with overlap.
+
+Search focus: rag chunk size calculator; vector database memory calculator; embedding storage size; chunk overlap calculator
+Processing: runs locally in the browser
+Inputs: Documents, Tokens per document (tokens), Chunk size (tokens), Overlap (tokens), Embedding dimension, Stored vector precision, Metadata per chunk (bytes), Index overhead multiplier (assumption) (x), Embedding price (0 to skip) ($ per 1M tokens).
+
+Method: Per document: chunks = ceil(max(0, tokens - overlap) / (chunk size - overlap)), at least 1. Overlap must be smaller than the chunk size. Raw vector bytes = chunks x dimension x bytes per value. Total = raw vectors x index overhead multiplier + chunks x metadata bytes. The multiplier is an assumption you set; it is not a fixed property of any database. Tokens to embed count every chunk in full, so overlap is embedded twice. Token counts depend on the tokenizer you use; this tool does not tokenize text.
+
+## Prompt Caching Savings Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/prompt-caching-savings-calculator
+
+Estimate LLM input cost with and without prompt caching, using your own prices and hit rate.
+
+Search focus: prompt caching calculator; llm context caching savings; cache hit rate break-even; api input token cost
+Processing: runs locally in the browser
+Inputs: Base input price ($ per 1M tokens), Cache write multiplier (x base), Cache read multiplier (x base), Cacheable prefix per request (tokens), Uncached input per request (tokens), Requests per day, Cache hit rate (%), Days per month.
+
+Method: Without caching: requests x (prefix + uncached tokens) x price. With caching: on a miss the prefix is billed at the write multiplier, on a hit at the read multiplier, and uncached tokens always at the base price. Cost per request = prefix x ((1 - hit) x write + hit x read) + uncached. Break-even hit rate = (write - 1) / (write - read) when write is above 1. Only input tokens are modelled: output tokens, storage fees, cache lifetimes and expiry are not, and prices and multipliers are entirely your inputs. This is an estimate.
+
+## AI Agent Loop Token Cost Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/agent-loop-token-cost-calculator
+
+Estimate token and dollar cost of a multi-turn agent that re-sends its growing context every turn.
+
+Search focus: ai agent cost calculator; agent token compounding; tool calling context growth; multi-turn llm cost
+Processing: runs locally in the browser
+Inputs: System prompt (tokens), Initial user message (tokens), Turns (model calls), Assistant output per turn (tokens), Tool result per turn (tokens), Input price ($ per 1M tokens), Output price ($ per 1M tokens).
+
+Method: Input tokens at turn t = system + user + (t - 1) x (assistant output + tool result). Total input = turns x (system + user) + (output + tool) x turns x (turns - 1) / 2. Total output = turns x output. Cost = tokens x price / 1M. The re-read share counts input beyond the first time each token is sent. The model assumes constant per-turn sizes, no provider caching and no context truncation, so it is an estimate; real agents vary per turn.
+
+## Local LLM vs Cloud API Cost Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/local-llm-vs-cloud-api-breakeven-calculator
+
+Compare local hardware plus electricity cost per 1M tokens with a cloud API price and find break-even.
+
+Search focus: local llm vs api cost calculator; electricity cost per million tokens; self hosted llm breakeven; gpu payback vs api
+Processing: runs locally in the browser
+Inputs: Hardware cost ($), Amortisation lifetime (months), Power draw under load (W), Hours per day under load (h), Electricity price ($ per kWh), Sustained throughput (tokens/s), Utilisation while under load (%), Cloud API price ($ per 1M tokens).
+
+Method: Monthly hardware = cost / lifetime months. Monthly energy = watts / 1000 x hours per day x 30.4375 days x price per kWh. Monthly tokens = tokens per second x 3600 x utilisation x load hours. Local cost per 1M tokens = (hardware + energy) / monthly tokens in millions. Break-even volume = (hardware + energy) / cloud price per 1M tokens. Not included: idle power, maintenance, staff time, resale value, and differences in model quality or latency. It is an estimate, and the throughput must be measured on your own setup.
+
+## LLM Tokens per Second & TTFT Roofline Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/llm-tokens-per-second-estimator
+
+Upper-bound decode tokens/s from memory bandwidth and a lower-bound prefill time-to-first-token.
+
+Search focus: llm tokens per second calculator; memory bandwidth roofline llm inference; time to first token estimator; decode vs prefill bound
+Processing: runs locally in the browser
+Inputs: Parameters read per token (B), Bytes per parameter, Memory bandwidth (GB/s), Bandwidth efficiency (%), KV cache read per token (optional) (GB), Peak compute (TFLOPS), Compute utilisation (%), Prompt length (tokens).
+
+Method: Decode upper bound (tokens/s) = bandwidth (GB/s) × efficiency ÷ bytes read per token (GB), where bytes per token = parameters × bytes per parameter (+ optional KV cache bytes). Prefill TTFT lower bound = 2 × parameters × prompt tokens ÷ (peak TFLOPS × 10¹² × utilisation). The 2 × parameters FLOPs per token is the usual dense-transformer approximation; it ignores attention FLOPs that grow with context, network and scheduling overhead, and batching. Efficiency and utilisation are your inputs, not constants. Results are theoretical bounds and real throughput is lower.
+
+## LoRA Trainable Parameters Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/lora-trainable-parameters-calculator
+
+Trainable parameters, scaling factor α/r and adapter size for a LoRA rank, hidden size and layer count.
+
+Search focus: lora rank alpha calculator; lora trainable parameters; lora scaling factor alpha over r; lora adapter size
+Processing: runs locally in the browser
+Inputs: Hidden size (d_model), Number of layers, LoRA rank r, LoRA alpha (α), Adapted modules, Intermediate (MLP) size, Base model parameters (B).
+
+Method: For one adapted weight matrix of shape d_in × d_out, LoRA adds A (d_in × r) and B (r × d_out), i.e. r × (d_in + d_out) parameters. The calculator multiplies this by the number of adapted matrices per layer and by the number of layers. The q, v preset uses 2 square matrices (hidden × hidden), q, k, v, o uses 4, and all-linear adds 3 MLP matrices of shape hidden × intermediate. It assumes standard multi-head attention with square projections; grouped-query or multi-query attention makes the k and v projections smaller, so the true count would be lower. The LoRA update is scaled by α/r; rsLoRA instead proposes α/√r. Adapter size is parameters × 2 bytes (fp16) or × 4 bytes (fp32), in MB of 10⁶ bytes; optimiser state and base weights are not included.
+
+## Softmax Temperature, Top-K & Top-P Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/softmax-temperature-calculator
+
+See how temperature, top-k and top-p reshape next-token probabilities from a list of logits.
+
+Search focus: llm temperature top p visualizer; softmax temperature calculator; nucleus sampling top p; top-k sampling probabilities
+Processing: runs locally in the browser
+Inputs: Logits (2 to 50 values), Temperature T, Top-k (0 = off), Top-p (1 = off).
+
+Method: Probabilities are p_i = exp(z_i / T) / Σ exp(z_j / T), computed after subtracting the largest scaled logit for numerical stability. Top-k keeps the k most probable tokens (0 disables it). Top-p then works on the renormalised distribution: tokens are taken in descending order until their cumulative probability reaches p (1 disables it). The survivors are renormalised to sum to 1. Entropy is Σ −p log₂ p in bits. Ties are broken by input order. Individual APIs and libraries may order or combine these filters differently, and this tool does not model min-p or repetition penalties. Temperature must be greater than 0; values below 0.001 are rejected.
+
+## Confusion Matrix Calculator (F1, Precision, Recall, MCC)
+
+URL: https://alltoolstogether.com/ai-engineering/classification-metrics-calculator
+
+Accuracy, precision, recall, specificity, F-beta, balanced accuracy and MCC from TP, FP, FN and TN.
+
+Search focus: confusion matrix calculator; precision recall f1 score calculator; matthews correlation coefficient calculator; specificity false positive rate
+Processing: runs locally in the browser
+Inputs: True positives (TP), False positives (FP), False negatives (FN), True negatives (TN), F-beta β.
+
+Method: Accuracy = (TP + TN) / total; precision = TP / (TP + FP); recall = TP / (TP + FN); specificity = TN / (TN + FP); F-beta = (1 + β²) × TP / ((1 + β²) × TP + β² × FN + FP), which equals F1 = 2TP / (2TP + FP + FN) at β = 1; balanced accuracy = (recall + specificity) / 2; MCC = (TP × TN − FP × FN) / √((TP+FP)(TP+FN)(TN+FP)(TN+FN)); prevalence = (TP + FN) / total. When a denominator is zero the metric is shown as n/a rather than guessed. Counts may be fractional (for example averaged results). ROC-AUC needs scores for every example, so it is not computed here.
+
+## Word Error Rate (WER) & CER Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/word-error-rate-calculator
+
+WER and CER between a reference and a hypothesis transcript, with substitution, deletion and insertion counts.
+
+Search focus: word error rate calculator; wer cer levenshtein distance; asr transcription accuracy; substitutions deletions insertions
+Processing: runs locally in the browser
+Inputs: Reference (ground truth), Hypothesis (ASR output), Text normalisation.
+
+Method: Both texts are split on whitespace (optionally lowercased with punctuation replaced by spaces; apostrophes are kept). A Levenshtein dynamic-programming alignment finds the minimum edit distance and a backtrace counts substitutions S, deletions D and insertions I. WER = (S + D + I) / N, where N is the number of reference words. Because insertions are not bounded by N, WER can exceed 100% and accuracy (1 − WER) can be negative. CER is the character-level edit distance divided by the number of reference characters, with single spaces counted. When several alignments have the same minimum cost the S/D/I split may differ between tools, but the total WER does not. Each text is limited to 8,000 characters.
+
+## Cosine Similarity, Dot Product & L2 Distance Calculator
+
+URL: https://alltoolstogether.com/ai-engineering/vector-similarity-calculator
+
+Cosine similarity, dot product, Euclidean and Manhattan distance, norms and angle for two vectors.
+
+Search focus: cosine similarity calculator; dot product vs cosine similarity vs l2; embedding similarity; normalize vector l2
+Processing: runs locally in the browser
+Inputs: Vector A, Vector B.
+
+Method: Dot = Σ AᵢBᵢ. Norm ‖A‖₂ = √(Σ Aᵢ²). Cosine similarity = Dot / (‖A‖₂ ‖B‖₂), cosine distance = 1 − cosine similarity, and the angle is acos of the similarity, clamped to [−1, 1] to absorb rounding. Euclidean distance (L2) = √(Σ (Aᵢ − Bᵢ)²) and Manhattan distance (L1) = Σ |Aᵢ − Bᵢ|. If both vectors have unit length, cosine similarity equals the dot product and squared L2 distance equals 2 × (1 − cosine similarity). The tool flags vectors whose norm is within 10⁻⁶ of 1. If either vector is all zeros, cosine similarity is undefined and shown as n/a.
+
+## ADC Resolution, LSB, ENOB & SNR Calculator
+
+URL: https://alltoolstogether.com/electronics/adc-resolution-calculator
+
+LSB voltage, codes, ideal SNR and ENOB for an N-bit unipolar ADC, plus code and error for an input.
+
+Search focus: adc resolution calculator; enob to sinad snr calculator; lsb step size voltage calculator; quantization noise db formula
+Processing: runs locally in the browser
+Inputs: Resolution N (bits), Reference voltage V_ref (V), Measured SINAD (optional) (dB), Input voltage (optional) (V).
+
+Method: LSB = V_ref / 2^N, so the full-scale range is 0 to V_ref. Ideal SNR for a full-scale sine wave is 6.02 × N + 1.76 dB, and ENOB = (SINAD − 1.76) / 6.02. For an input voltage the code is floor(V_in / LSB), clamped to 0 … 2^N − 1, and the quantisation error is V_in − code × LSB. This tool models a unipolar, ideal converter only: offset, gain and nonlinearity errors, bipolar or differential ranges and the 1.76 dB term for non-sinusoidal signals are not modelled. Results are estimates.
+
+## IEEE 754 Floating-Point Converter (FP16, BF16, FP32, FP64)
+
+URL: https://alltoolstogether.com/electronics/ieee-754-converter
+
+Convert decimal to IEEE 754 bits and hex, or hex to the exact decimal, for half, bfloat16, single and double.
+
+Search focus: ieee 754 converter; float32 fp16 bfloat16 bit representation; hex to float ieee 754 calculator; sign exponent mantissa bias
+Processing: runs locally in the browser
+Inputs: Mode, Format, Decimal value, Hex bits.
+
+Method: The decimal text is read exactly (as a rational number, not through a double) and rounded to the nearest representable value, ties to even. A normal number equals (−1)^S × (1 + M / 2^m) × 2^(E − bias); an exponent field of 0 gives subnormals (M / 2^m) × 2^(1 − bias); an all-ones exponent gives infinity (zero mantissa) or NaN. The bias is 2^(e−1) − 1 for e exponent bits. The stored value is shown as an exact decimal expansion (very long expansions are truncated for display). Only the default quiet NaN is produced when encoding; NaN payloads are not preserved.
+
+## PCB Trace Width Calculator (IPC-2221)
+
+URL: https://alltoolstogether.com/electronics/pcb-trace-width-calculator
+
+Minimum PCB trace width for a current and temperature rise using the IPC-2221 formula, with DC resistance.
+
+Search focus: pcb trace width calculator; ipc 2221 trace width current calculator; pcb trace resistance; copper weight temperature rise
+Processing: runs locally in the browser
+Inputs: Current (A), Allowed temperature rise (°C), Copper weight, Layer, Trace length (optional) (mm).
+
+Method: IPC-2221 gives I = k × ΔT^0.44 × A^0.725, with A the cross-section in square mils, ΔT the temperature rise in °C, and k = 0.048 for external and 0.024 for internal layers. The tool solves A = (I / (k × ΔT^0.44))^(1 / 0.725), then width = A / thickness with thickness = 1.378 mil per ounce of copper. Resistance uses R = ρL/A with ρ = 1.72e-8 Ω·m (copper near 20 °C), so it is approximate and ignores temperature rise. The IPC-2221 curves are conservative, cover roughly up to 35 A and 10-100 °C, and do not model planes, neighbouring traces or airflow; IPC-2152 is not implemented. This is an estimate, not design validation.
+
+## CRC Calculator (CRC-8, CRC-16 Modbus, CRC-32)
+
+URL: https://alltoolstogether.com/electronics/crc-calculator
+
+CRC-8, CRC-16/CCITT-FALSE, CRC-16/MODBUS and CRC-32 of ASCII text or hex bytes, with Modbus byte order.
+
+Search focus: crc calculator; crc16 modbus calculator; crc32 checksum calculator; modbus rtu frame checksum
+Processing: runs locally in the browser
+Inputs: Algorithm, Input as, Data.
+
+Method: Each algorithm is the standard parameter set (width, polynomial, initial value, input and output reflection, final XOR), computed bit by bit as polynomial division over GF(2). CRC-8: poly 0x07, init 0, no reflection. CCITT-FALSE: 0x1021, init 0xFFFF, no reflection. MODBUS: 0x8005 (reflected 0xA001), init 0xFFFF, reflected, no final XOR. CRC-32: 0x04C11DB7, init 0xFFFFFFFF, reflected, final XOR 0xFFFFFFFF. Text is encoded as UTF-8. Other CRC variants, custom polynomials and lookup-table code generation are not included.
+
+## I2C Pull-Up Resistor Calculator
+
+URL: https://alltoolstogether.com/electronics/i2c-pull-up-resistor-calculator
+
+Minimum and maximum I2C pull-up resistance from supply, sink current, bus capacitance and speed mode.
+
+Search focus: i2c pull up resistor calculator; i2c rp min rp max; i2c bus capacitance rise time; i2c pull-up value 400khz
+Processing: runs locally in the browser
+Inputs: Bus supply voltage (Vcc) (V), Max low-level output voltage (VOL max) (V), Sink current (IOL) (mA), Total bus capacitance (Cb) (pF), Bus speed mode.
+
+Method: Rp(min) = (Vcc − VOL(max)) / IOL. Rp(max) = tr(max) / (0.8473 × Cb), where 0.8473 = ln(0.7/0.3) is the RC factor for rising from 30% to 70% of Vcc, and tr(max) is 1000 ns, 300 ns or 120 ns for Standard, Fast and Fast-mode Plus. The recommendation is the E24 value closest (on a log scale) to the geometric mean of the two limits; if no E24 value fits, the geometric mean itself is shown. If Rp(min) is above Rp(max) there is no valid value and you should reduce Cb or use a slower mode. This is an estimate for a single pull-up per line and ignores input-pin leakage, resistor tolerance and the Vcc-dependent VOL rule for supplies below 2 V.
+
+## Timer Prescaler and Auto-Reload (PSC / ARR) Calculator
+
+URL: https://alltoolstogether.com/electronics/timer-prescaler-calculator
+
+Find timer PSC and ARR register values for a target frequency, with error in ppm and period.
+
+Search focus: stm32 timer calculator; psc arr calculator; timer prescaler auto reload; timer interrupt frequency calculator
+Processing: runs locally in the browser
+Inputs: Timer clock (Hz), Target update frequency (Hz), Counter (ARR) width.
+
+Method: f_update = f_clk / ((PSC + 1) × (ARR + 1)). For every PSC from 0 to 65535 the tool sets ARR + 1 = round(f_clk / (f_target × (PSC + 1))), keeps pairs where ARR fits the chosen width, and picks the one with the smallest frequency error. Ties go to the largest ARR, which gives the finest PWM duty resolution. PSC and ARR are shown as register values, so the divisors are PSC + 1 and ARR + 1. It assumes an up-counting timer with no repetition counter and a 16-bit prescaler; check your reference manual for your timer.
+
+## Op-Amp Gain and Standard Resistor Calculator
+
+URL: https://alltoolstogether.com/electronics/op-amp-gain-calculator
+
+Nearest E24 or E96 feedback resistor for a target op-amp gain, with gain error and bandwidth.
+
+Search focus: op amp gain resistor calculator; op amp feedback resistor e24 e96; inverting non inverting gain calculator; op amp bandwidth gbw
+Processing: runs locally in the browser
+Inputs: Configuration, Target gain magnitude (V/V), Fixed resistor (Rg or Rin) (Ω), Standard value series, Op-amp gain-bandwidth product (optional) (MHz).
+
+Method: Non-inverting gain = 1 + Rf/Rg; inverting gain = −Rf/Rin. The ideal Rf is (G − 1) × Rg or G × Rin. The tool checks every E24 or E96 value from 10 Ω to 10 MΩ, ranks them by gain error and shows the best two. Closed-loop bandwidth is estimated as GBW divided by the noise gain 1 + Rf/R, a first-order approximation for a voltage-feedback op-amp that ignores slew rate, output swing and resistor tolerance.
+
+## NTC Thermistor Calculator (Beta and Steinhart-Hart)
+
+URL: https://alltoolstogether.com/electronics/ntc-thermistor-calculator
+
+Convert NTC thermistor resistance or divider voltage to temperature with the Beta or Steinhart-Hart model.
+
+Search focus: ntc thermistor calculator; beta value 3950 10k thermistor; steinhart hart calculator; thermistor resistance to temperature
+Processing: runs locally in the browser
+Inputs: Calculation, Model, R0 (resistance at T0) (Ω), T0 (reference temperature) (°C), Beta (K), Measured NTC resistance (Ω), Temperature (°C), Measured divider voltage (V), Divider reference voltage (V), Fixed divider resistor (Ω), NTC position in divider, Steinhart-Hart A, Steinhart-Hart B, Steinhart-Hart C.
+
+Method: Beta model: 1/T = 1/T0 + ln(R/R0)/B with temperatures in kelvin, so R = R0 × exp(B × (1/T − 1/T0)). Steinhart-Hart: 1/T = A + B·ln(R) + C·(ln R)³, inverted for resistance with the closed-form cubic solution. Divider mode first finds R from the voltage: R = Rfixed × Vout / (Vref − Vout) when the NTC is to ground, or Rfixed × (Vref − Vout) / Vout when it is to Vref. The Beta model is an approximation that is best near T0 and the temperature range its datasheet Beta is specified for. The sample Steinhart-Hart coefficients are illustrative; use your own.
+
+## IoT / BLE Battery Life Calculator
+
+URL: https://alltoolstogether.com/electronics/ble-battery-life-calculator
+
+Estimate battery life of a duty-cycled device from sleep current, active current, interval and capacity.
+
+Search focus: iot battery life calculator; ble battery life calculator; coin cell battery life sleep current; duty cycle average current
+Processing: runs locally in the browser
+Inputs: Sleep current (µA), Event interval (cycle period) (s), Active / transmit current (mA), Active time per event (ms), Battery capacity (nominal) (mAh), Usable capacity (derating) (%), Self-discharge (optional) (% per year).
+
+Method: Average current = (I_sleep × (T − t_active) + I_active × t_active) / T. Usable capacity = nominal capacity × derating %. Self-discharge is treated as an extra constant drain of capacity × rate / 8760 h. Life in hours = usable capacity / (average current + self-discharge current), then converted to days and years. This is an estimate: real cells lose capacity at higher pulse currents, low temperature and with voltage cut-off, and the model uses one active state rather than separate radio phases.
+
+## CCTV Storage Calculator
+
+URL: https://alltoolstogether.com/electronics/cctv-storage-calculator
+
+Estimate NVR disk space in TB from camera count, bitrate, recording share and retention days.
+
+Search focus: cctv storage calculator; nvr hard drive size calculator; security camera storage calculator; surveillance storage per day
+Processing: runs locally in the browser
+Inputs: Number of cameras, Bitrate per camera (Mbps), Share of time recording (%), Retention (days), Extra overhead (%).
+
+Method: Each camera writes bitrate / 8 bytes per second. Per camera per day = bitrate (Mbps) x 1,000,000 / 8 x 86,400 s x recording share, divided by 10^9 for GB. Total = per-camera daily GB x days x cameras x (1 + overhead %). TB = GB / 1,000; TiB = bytes / 2^40. The bitrate is your input: this tool makes no assumption about codec or resolution. Variable-bitrate cameras fluctuate with motion, so real use can differ; the figure is an estimate and a drive's usable capacity is also slightly lower than its label.
+
+## 3D Print Cost Calculator
+
+URL: https://alltoolstogether.com/electronics/3d-printing-filament-cost-calculator
+
+Cost and selling price of a 3D print from filament, electricity, failure allowance, wear and markup.
+
+Search focus: 3d print cost calculator; 3d printing filament cost; how much to charge for 3d printing; filament spool remaining
+Processing: runs locally in the browser
+Inputs: Filament used (g), Spool net weight (g), Spool price, Print time (hours), Average printer power (W), Electricity price per kWh, Failure allowance (%), Machine wear per hour, Labour / post-processing, Markup (%), Spool weight left before print (optional) (g).
+
+Method: Material = grams used / spool net grams x spool price. Electricity = watts / 1,000 x hours x price per kWh. Failure allowance = (material + electricity) x failure %. Machine wear = wear per hour x hours. Production cost = material + electricity + failure allowance + wear + labour. Selling price = production cost x (1 + markup %). If you enter the grams left on the spool, the tool subtracts the print weight. These are planning estimates; slicer weights and real power draw vary.
+
+## DMARC Record Generator
+
+URL: https://alltoolstogether.com/developer/dmarc-record-generator
+
+Build a DMARC TXT record and host name from policy, report addresses and alignment choices.
+
+Search focus: dmarc record generator; dmarc txt record; dmarc p=none rua; create dmarc record
+Processing: runs locally in the browser
+Inputs: Domain, Policy (p), Subdomain policy (sp), Percentage of mail the policy applies to (pct) (%), Aggregate report address (rua), Failure report address (ruf), DKIM alignment (adkim), SPF alignment (aspf), Report interval (ri) (seconds).
+
+Method: DMARC is defined in RFC 7489. The record is published as a TXT record at _dmarc.<domain> and starts with v=DMARC1 followed by p=. This tool then adds only tags that differ from the RFC defaults: sp (default: same as p), pct (100), rua, ruf, adkim (r), aspf (r) and ri (86400 seconds). rua and ruf are written as mailto: URIs. The tool checks syntax only; it does not query DNS, test your SPF or DKIM or confirm delivery.
+
+## SLA Uptime & Downtime Calculator
+
+URL: https://alltoolstogether.com/developer/sla-downtime-calculator
+
+Convert an availability percentage to allowed downtime, serial services and measured uptime.
+
+Search focus: sla uptime calculator; uptime downtime calculator; composite sla serial services; error budget calculator
+Processing: runs locally in the browser
+Inputs: Mode, Availability target (%), Period (allowed-downtime mode), Services in series (allowed-downtime mode), Measured downtime (achieved mode) (minutes).
+
+Method: Allowed downtime = period seconds x (1 - availability / 100). For N services in series, each needing to be up, availability = (A/100)^N. Achieved availability = 1 - downtime seconds / 2,592,000 for a 30-day month. Period conventions: day 86,400 s; week 604,800 s; 30-day month 2,592,000 s; average month 2,629,746 s; quarter 7,889,400 s (365.25 d / 4); year 365 d = 31,536,000 s or 365.2425 d = 31,556,952 s. Contracts may define measurement windows and exclusions differently, so check the actual SLA wording.
+
+## CSS Clamp Fluid Typography Generator
+
+URL: https://alltoolstogether.com/developer/css-fluid-typography-clamp-calculator
+
+Generate a CSS clamp() value that scales a font size linearly between two viewport widths.
+
+Search focus: css clamp generator; fluid typography calculator; clamp font size min max viewport; px to rem clamp
+Processing: runs locally in the browser
+Inputs: Minimum size (px), Maximum size (px), Minimum viewport width (px), Maximum viewport width (px), Root font size (px), Preview viewport width (px).
+
+Method: slope = (max size - min size) / (max viewport - min viewport), with sizes and viewports in px. intercept = min size - slope x min viewport. The preferred value is intercept (in rem, divided by the root font size) + slope x 100 vw. The output is clamp(min rem, intercept rem + slope vw, max rem), with up to 4 decimals. Because the middle term mixes rem and vw, text zoom still scales the rem part. Check readability and zoom behaviour in your own design; accessibility depends on more than this formula.
+
+## Video File Size & Bitrate Calculator
+
+URL: https://alltoolstogether.com/creator/video-bitrate-file-size-calculator
+
+Estimate video file size from bitrate and duration, or the bitrate needed to hit a target size.
+
+Search focus: video file size calculator; video bitrate calculator; bitrate to file size; target file size bitrate
+Processing: runs locally in the browser
+Inputs: Video bitrate (kbps), Audio bitrate (kbps), Duration: hours (h), Duration: minutes (min), Duration: seconds (s), Container overhead (optional) (%), Target size (optional, 0 = off) (MB).
+
+Method: Size in bytes = (video kbps + audio kbps) x 1,000 / 8 x duration in seconds x (1 + overhead%). Bitrates use decimal kilobits (1 kbps = 1,000 bits per second), the convention used for video and audio bitrates. Decimal results use 1 MB = 1,000,000 bytes and 1 GB = 1,000,000,000 bytes; binary results use MiB (1,048,576 bytes) and GiB (1,073,741,824 bytes). With a target size, total kbps = target bytes x 8 / duration / 1,000 / (1 + overhead%), and video kbps = total minus audio. Constant-bitrate math only: variable-bitrate or two-pass encodes will land near, not exactly on, the figure.
+
+## BPM to Delay Time (ms) Calculator
+
+URL: https://alltoolstogether.com/creator/bpm-delay-time-calculator
+
+Convert tempo in BPM to straight, dotted and triplet note lengths in ms, with Hz and pre-delay values.
+
+Search focus: bpm to ms calculator; delay time calculator; dotted eighth triplet delay ms; tempo synced lfo hz
+Processing: runs locally in the browser
+Inputs: Tempo (BPM).
+
+Method: One quarter-note beat lasts 60,000 / BPM milliseconds. A 1/n note lasts the quarter note x 4 / n. A dotted note is 1.5 times the straight length and a triplet note is 2/3 of it. Frequency in Hz is 1,000 / milliseconds, which is the rate of one cycle per note. The pre-delay values are just note lengths; the right pre-delay depends on the source and your ears, so treat them as starting points.
+
+## SMPTE Timecode Calculator (Drop-Frame & Non-Drop)
+
+URL: https://alltoolstogether.com/creator/smpte-timecode-calculator
+
+Convert SMPTE timecode to frames and back, or add two timecodes, at common frame rates including drop-frame.
+
+Search focus: timecode calculator; smpte timecode calculator; frames to timecode converter; drop frame timecode calculator
+Processing: runs locally in the browser
+Inputs: Mode, Frame rate, Timecode A (HH:MM:SS:FF), Timecode B (HH:MM:SS:FF), Frame count (frames).
+
+Method: Timecode counts frames at the nominal rate (24, 25, 30, 50 or 60 per second). NTSC-style rates actually run at 1000/1001 of nominal (for example 30000/1001 = 29.97003 fps), so non-drop timecode slowly falls behind the wall clock. Drop-frame timecode skips frame numbers 0 and 1 at the start of each minute except every tenth minute (59.94 skips 0 to 3); no picture frames are removed. Timecode to frames = nominal x (3600 h + 60 m + s) + f - drop x (total minutes - floor(total minutes / 10)). Frames to timecode uses the standard drop-frame renumbering with 17,982 frames per ten minutes at 29.97. Real duration = frames / actual fps. Hours are not wrapped at 24.
+
+## Lens Crop Factor & Equivalent Focal Length Calculator
+
+URL: https://alltoolstogether.com/creator/camera-crop-factor-calculator
+
+Crop factor from sensor size, with 35mm-equivalent focal length, aperture and ISO.
+
+Search focus: lens crop factor calculator; full frame equivalent focal length; aps-c micro four thirds equivalent; equivalent aperture calculator
+Processing: runs locally in the browser
+Inputs: Sensor size, Custom sensor width (mm), Custom sensor height (mm), Lens focal length (mm), Lens aperture (f-number) (f/), ISO.
+
+Method: Crop factor = diagonal of a full-frame sensor (36 x 24 mm, 43.267 mm) divided by the diagonal of your sensor. Equivalent focal length = focal length x crop factor (same field of view). Equivalent aperture = f-number x crop factor (same depth of field and total light gathered for the same framing). Equivalent ISO = ISO x crop factor squared (same noise for the same total light). Sensor dimensions are nominal values and vary a little between camera models; the lens itself still behaves as its marked focal length and f-number, and the actual exposure does not change.
+
+## Timelapse Interval & Clip Length Calculator
+
+URL: https://alltoolstogether.com/creator/timelapse-calculator
+
+Frames, clip length, speed-up and storage from event duration and interval, or the interval for a target clip.
+
+Search focus: timelapse calculator; timelapse interval calculator; event duration to clip length; timelapse storage calculator
+Processing: runs locally in the browser
+Inputs: Event duration: hours (h), Event duration: minutes (min), Shooting interval (s), Playback frame rate (fps), Target clip length (optional, 0 = off) (s), File size per frame (MB).
+
+Method: Frames shot = floor(event seconds / interval). Clip length = frames / playback fps. Speed-up factor = event seconds / clip seconds. Storage = frames x file size per frame (decimal: 1,000 MB = 1 GB). In target mode, frames = target seconds x fps and interval = event seconds / frames. The 180-degree exposure shown (interval / 2) is a common rule of thumb for natural-looking motion blur, not a requirement; the first frame at time zero is not counted extra.
+
+## YouTube Revenue Estimator (RPM x Views)
+
+URL: https://alltoolstogether.com/creator/youtube-revenue-estimator
+
+Estimate monthly and multi-month ad revenue from views and your own RPM, with growth and RPM scenarios.
+
+Search focus: youtube revenue estimator; youtube ad revenue calculator; youtube rpm calculator; youtube money calculator
+Processing: runs locally in the browser
+Inputs: Monthly views (views), RPM (revenue per 1,000 views), Monthly view growth (%), Months to project (months).
+
+Method: Revenue = views / 1,000 x RPM. With growth g per month, month k views = starting views x (1 + g)^(k - 1), and totals are the sum over the months you choose. The scenarios simply multiply total revenue by 0.5 and 1.5 to show sensitivity; they are not benchmarks. Use your own RPM from YouTube analytics, which is already net of the platform share. Results are in the currency of the RPM you enter. This is an estimate only and does not model the Partner Program rules, taxes or sponsorship income.
+
+## COD vs Prepaid RTO Breakeven Calculator
+
+URL: https://alltoolstogether.com/ecommerce/cod-vs-prepaid-rto-breakeven-calculator
+
+Expected profit per order for cash on delivery vs prepaid, given return-to-origin (RTO) rates.
+
+Search focus: rto calculator ecommerce; cash on delivery rto loss calculator; cod vs prepaid profit; cod to prepaid discount calculator
+Processing: runs locally in the browser
+Inputs: Selling price, Product cost, Forward shipping cost, Return (RTO) shipping cost, COD handling fee per delivered order, Payment gateway fee on prepaid orders (%), RTO rate on COD orders (%), RTO rate on prepaid orders (%), Prepaid discount, Product cost recovered on a returned order (%).
+
+Method: Delivered COD profit = price - product cost - forward shipping - COD fee. Delivered prepaid profit = (price - prepaid discount) x (1 - gateway %) - product cost - forward shipping. A returned order loses forward shipping + return shipping + the unrecovered share of product cost. Expected profit = (1 - RTO rate) x delivered profit - RTO rate x loss, for each channel. The break-even COD RTO rate is the rate at which expected COD profit equals expected prepaid profit. Assumptions: the COD fee and gateway fee are charged only on delivered orders, and prepaid RTO orders are fully refunded. It is an estimate; actual carrier and gateway terms differ.
+
+## Volumetric Weight & CBM Calculator
+
+URL: https://alltoolstogether.com/ecommerce/volumetric-weight-calculator
+
+Volumetric vs actual weight, chargeable weight and carton CBM from box size and a carrier divisor.
+
+Search focus: volumetric weight calculator; dimensional weight calculator; cbm calculator cartons; chargeable weight calculator
+Processing: runs locally in the browser
+Inputs: Dimension unit, Length (in chosen unit), Width, Height, Actual weight per carton (kg), Volumetric divisor (cm³ per kg), Number of cartons, Freight rate per chargeable kg (optional).
+
+Method: Volumetric weight (kg) = length x width x height in cm / divisor. Inch inputs are converted with 1 in = 2.54 cm. Chargeable weight = the larger of actual weight and volumetric weight, per carton, and is multiplied by the number of cartons. CBM per carton = length x width x height in cm / 1,000,000. The divisor is carrier- and service-specific (commonly 4000 to 6000 cm³/kg); carriers may also round weights or measure whole consignments differently, so check your carrier's terms.
+
+## MER, Break-Even ROAS & Target CPA Calculator
+
+URL: https://alltoolstogether.com/ecommerce/ecommerce-mer-break-even-roas-calculator
+
+Break-even ROAS, max CPA, MER and net profit after ads from order value, margin and ad spend.
+
+Search focus: breakeven roas calculator; marketing efficiency ratio mer calculator; target cpa calculator; break even cpa from aov and margin
+Processing: runs locally in the browser
+Inputs: Total revenue, Total ad spend, Number of orders, Gross margin on product price (%), Other variable cost per order (shipping, fees), Target profit margin after ads (% of order value) (%).
+
+Method: AOV = total revenue / orders. Contribution margin per order (before ads) = AOV x gross margin % - other variable cost per order. Break-even CPA = that contribution margin. Break-even ROAS = AOV / contribution margin. MER = total revenue / total ad spend (a blended figure, not platform-attributed ROAS). Target CPA = contribution margin - target profit margin % x AOV. Net profit after ads = orders x contribution margin - ad spend. If contribution margin is zero or negative no ROAS can break even and the tool says so. Fixed costs such as salaries and software are not included.
+
+## A/B Test Significance Calculator
+
+URL: https://alltoolstogether.com/ecommerce/ab-test-significance-calculator
+
+Two-proportion z-test: p-value, lift and confidence interval for an A/B conversion test.
+
+Search focus: ab test significance calculator; conversion rate p value calculator; ab test z score calculator; two proportion z test
+Processing: runs locally in the browser
+Inputs: Visitors in A (control), Conversions in A, Visitors in B (variant), Conversions in B, Confidence level.
+
+Method: p_pool = (x1 + x2) / (n1 + n2). z = (p2 - p1) / sqrt(p_pool x (1 - p_pool) x (1/n1 + 1/n2)). The two-sided p-value is 2 x (1 - Phi(|z|)), computed with a high-precision complementary error function. The result is called significant when p < 1 - confidence. The confidence interval for the difference uses the unpooled standard error sqrt(p1(1-p1)/n1 + p2(1-p2)/n2) with the normal critical value (1.645, 1.960 or 2.576). The normal approximation is most reliable with at least about 10 conversions and 10 non-conversions per variant. Decide the sample size in advance: stopping when the p-value first dips below the threshold, or testing many variants, raises the false-positive rate.
+
+## Reorder Point, Safety Stock & EOQ Calculator
+
+URL: https://alltoolstogether.com/ecommerce/reorder-point-eoq-calculator
+
+Economic order quantity, safety stock and reorder point from demand, lead time and service level.
+
+Search focus: reorder point calculator; safety stock calculator; eoq calculator; economic order quantity formula
+Processing: runs locally in the browser
+Inputs: Annual demand (units), Daily demand standard deviation (σ) (units), Supplier lead time (days), Service level, Cost per order (setup), Holding cost per unit per year, Unit purchase cost (optional, 0 to skip).
+
+Method: EOQ = √(2 × D × S / H), where D is annual demand, S the cost per order and H the holding cost per unit per year. Average daily demand d = D / 365. Safety stock = z × σ × √L, where σ is the daily demand standard deviation, L the lead time in days and z the one-sided normal quantile for the service level. Reorder point = d × L + safety stock. Annual cost = (D / Q) × S + (Q / 2) × H, plus D × unit cost if you enter one. Assumptions: constant demand rate, fixed lead time, no quantity discounts and normally distributed daily demand. Lead-time variability is not modelled. Results are estimates.
+
+## Discount & BOGO Breakeven Calculator
+
+URL: https://alltoolstogether.com/ecommerce/bogo-discount-breakeven-calculator
+
+Extra sales volume needed for a BOGO, buy X get Y free or percent-off offer to match baseline profit.
+
+Search focus: discount breakeven calculator; bogo profit calculator; volume needed to offset discount; buy one get one free margin
+Processing: runs locally in the browser
+Inputs: Normal selling price per unit, Unit cost, Offer, Percent off (used for "Percent off") (%), Buy quantity X (used for custom), Free quantity Y (used for custom), Baseline units sold per period (units).
+
+Method: For a set offer, the effective discount is Y / (X + Y) and profit per unit under the offer = (price × X − cost × (X + Y)) / (X + Y). For a percent-off offer, profit per unit = price × (1 − discount) − cost. Baseline profit = (price − cost) × baseline units. Units needed to match = baseline profit / profit per unit under the offer, and the required uplift is that figure minus baseline units, shown also as a percentage. Assumption: customers buy complete sets, and costs per unit stay the same. If profit per unit under the offer is zero or negative, no volume can compensate. This is an estimate and ignores extra fixed costs and repeat-purchase effects.
+
+## Price Elasticity of Demand Calculator
+
+URL: https://alltoolstogether.com/ecommerce/price-elasticity-calculator
+
+Midpoint (arc) price elasticity of demand, revenue change and a constant-elasticity price estimate.
+
+Search focus: price elasticity of demand calculator; midpoint elasticity formula; elastic vs inelastic demand; profit maximizing price
+Processing: runs locally in the browser
+Inputs: Original price (P1), Original quantity (Q1) (units), New price (P2), New quantity (Q2) (units), Unit cost (optional, 0 to skip).
+
+Method: E = [(Q2 − Q1) / ((Q1 + Q2) / 2)] / [(P2 − P1) / ((P1 + P2) / 2)]. |E| above 1 is elastic, below 1 inelastic, and equal to 1 unit elastic. Revenue is price × quantity at each point. If you add a unit cost c and assume constant elasticity with E below −1, the profit-maximising price is P* = c × E / (1 + E); otherwise it is not defined. The midpoint method gives the same value whichever point you call first, but it is only an estimate from two observations, and real demand curves are rarely constant-elasticity.
+
+## EV Home Charging Time & Cost Calculator
+
+URL: https://alltoolstogether.com/science/ev-home-charging-time-cost-calculator
+
+Charging time, grid energy and cost for an EV from battery size, charge levels, charger power and tariff.
+
+Search focus: ev charging time calculator; home charger cost calculator; ev charging cost per kwh; wallbox charging time
+Processing: runs locally in the browser
+Inputs: Usable battery capacity (kWh), Starting charge (%), Target charge (%), Home charger power (kW), Car's onboard AC charger limit (kW), Charging efficiency (%), Electricity price per kWh, Vehicle consumption (battery side) (kWh/100 km).
+
+Method: Energy added = battery kWh × (target% − start%) / 100. Effective power = the lower of the charger kW and the car's onboard AC limit. Time = energy added / (effective kW × efficiency). Grid energy = energy added / efficiency, and cost = grid energy × your price per kWh. Cost per 100 km = consumption / efficiency × price, treating consumption as battery-side energy. Range added = energy added / consumption × 100. Assumptions: constant charge power throughout. Real charging slows at high state of charge and in cold weather, and this is not modelled, so times are estimates and often longer above about 80%.
+
+## Air Conditioner BTU and Tonnage Room Size Calculator
+
+URL: https://alltoolstogether.com/construction/ac-btu-room-size-calculator
+
+Estimate room air conditioner BTU/h and tons from floor area, sun, people and kitchen use.
+
+Search focus: ac tonnage calculator; ac btu calculator; room air conditioner size calculator; btu to ton converter
+Processing: runs locally in the browser
+Inputs: Room floor area, Area unit, Sun exposure, People regularly in the room, Is it a kitchen?.
+
+Method: The base capacity comes from the ENERGY STAR floor-area chart (100 to 2,500 sq ft, which assumes a typical ceiling height). Very sunny rooms add 10%, heavily shaded rooms subtract 10%, each person beyond two adds 600 BTU/h, and a kitchen adds 4,000 BTU/h. Tons = BTU/h divided by 12,000. Areas in square metres are converted at 1 m² = 10.7639 ft². Area boundaries use the smaller row (a room of exactly 300 sq ft uses the 250-300 row). Areas below 100 or above 2,500 sq ft are outside the chart. This is an estimate; high ceilings, large windows, climate and insulation change real loads, so confirm with an installer.
+
+## TV Viewing Distance and Field of View Calculator
+
+URL: https://alltoolstogether.com/construction/tv-viewing-distance-calculator
+
+Viewing distance for 30° (SMPTE), 40° (THX) or custom field of view from TV size and aspect ratio.
+
+Search focus: tv viewing distance calculator; tv size distance calculator; thx viewing angle calculator; tv field of view calculator
+Processing: runs locally in the browser
+Inputs: Screen diagonal, Aspect ratio, Custom aspect width, Custom aspect height, Unit (diagonal and distance), Custom horizontal field of view (°), Your seating distance (optional).
+
+Method: Screen width = diagonal × cos(atan(height/width)) for the chosen aspect ratio. For a horizontal field of view θ, distance = (width/2) / tan(θ/2). In reverse, θ = 2 × atan(width / (2 × distance)). The 30° and 40° values are widely quoted guidelines rather than rules, and personal comfort, room layout and content type vary. The calculation covers width only and ignores the height of the screen above the floor.
+
+## Coffee to Water Ratio Calculator
+
+URL: https://alltoolstogether.com/cooking/coffee-brew-ratio-calculator
+
+Coffee dose and water by weight for a brew ratio, plus extraction yield and concentrate dilution.
+
+Search focus: coffee to water ratio calculator; coffee brew ratio; extraction yield calculator; cold brew dilution calculator
+Processing: runs locally in the browser
+Inputs: Calculate from, Coffee dose (g), Ratio (grams water per 1 g coffee), Cups (volume mode), Cup size (volume mode) (ml), Brew TDS (optional) (%), Beverage in the cup (optional) (g), Concentrate: grams of concentrate per g coffee (0 to skip), Dilute to ratio (grams per g coffee).
+
+Method: Water = coffee dose × ratio, where the ratio is grams of water per gram of coffee (16 means 1:16), and 1 g of water is taken as 1 ml. In volume mode, water = cups × cup size and dose = water ÷ ratio. Extraction yield % = TDS % × beverage mass (g) ÷ dose (g). For concentrate, water to add = dose × (target ratio − concentrate ratio), where both ratios are by the mass of finished liquid per gram of coffee. Ratios are starting points to adjust to taste. Brewed coffee yields less liquid than the water poured because grounds retain water.
+
+## Baker's Percentage and Hydration Calculator
+
+URL: https://alltoolstogether.com/cooking/sourdough-bakers-percentage-calculator
+
+Convert baker's percentages to ingredient weights for a total dough weight, counting starter flour and water.
+
+Search focus: bakers percentage calculator; sourdough hydration calculator; pizza dough calculator; dough ball weight calculator
+Processing: runs locally in the browser
+Inputs: Total dough weight (g), Total hydration (%), Salt (% of flour), Starter (% of total flour), Starter hydration (%), Number of dough balls.
+
+Method: In baker's percentages, total flour is 100% and every other ingredient is a percentage of it. Total dough weight = flour × (1 + hydration + salt). Starter weight = starter % × total flour; the starter splits into flour = starter ÷ (1 + starter hydration) and water = starter − flour. Flour and water to add are the totals minus those amounts. If the starter would need more water or flour than the recipe contains, the calculator reports an error. The sum of all ingredients is shown as a check. Results are rounded for display.
+
+## Caffeine Half-Life Calculator
+
+URL: https://alltoolstogether.com/health/caffeine-half-life-calculator
+
+Estimate caffeine remaining after a given time using exponential decay and a half-life you choose.
+
+Search focus: caffeine half life calculator; how long does caffeine last; caffeine decay calculator; caffeine clearance time
+Processing: runs locally in the browser
+Inputs: First dose (mg), Hours since first dose (h), Second dose (0 for none) (mg), Hours since second dose (h), Half-life (h), Threshold of interest (mg).
+
+Method: Remaining = dose × 0.5^(hours ÷ half-life), summed over doses. Because every dose decays at the same rate, the time until the total drops below a threshold is half-life × log2(total now ÷ threshold). The half-life is your input: it differs widely between people and is affected by pregnancy, some medications, liver function and other factors. This is a simplified model and not medical advice; it ignores absorption time.
+
+## VDOT Race Equivalency and Running Pace Calculator
+
+URL: https://alltoolstogether.com/health/vdot-race-equivalency-calculator
+
+VDOT from a race result and equivalent 5K, 10K, half and marathon times using Daniels equations.
+
+Search focus: running pace calculator; vdot calculator; race time predictor; race equivalency calculator
+Processing: runs locally in the browser
+Inputs: Race distance, Hours, Minutes, Seconds.
+
+Method: Velocity v = distance in metres ÷ time in minutes. VO2 = −4.60 + 0.182258 v + 0.000104 v². Fraction of VO2max sustained = 0.8 + 0.1894393 e^(−0.012778 t) + 0.2989558 e^(−0.1932605 t), with t in minutes. VDOT = VO2 ÷ that fraction. Equivalent times are found by searching for the time at each distance that gives the same VDOT. These are predictions from a model, not guarantees; training, terrain, weather and pacing change real results. Training paces are not included.
+
+## Rupee Number to Words Converter (Lakhs & Crores)
+
+URL: https://alltoolstogether.com/text/rupee-number-to-words-converter
+
+Convert a rupee amount to Indian-English words, Indian comma format and a cheque-style line.
+
+Search focus: number to words in lakhs and crores; cheque amount in words converter india; rupees in words generator; indian numbering system comma formatter
+Processing: runs locally in the browser
+Inputs: Amount (₹).
+
+Method: The whole-rupee part is split the Indian way: crores (10,000,000s), lakhs (100,000s), thousands and the last three digits, and each block is spelled out. The decimal part is rounded half up to two places and read as paise. Comma grouping puts the last three digits together and then groups of two. Amounts of exactly one rupee use the singular. The tool handles up to 12 digits before the decimal point and is a formatting aid: check the wording against your bank or organisation before relying on it.
+
+## Exam Negative Marking Calculator
+
+URL: https://alltoolstogether.com/math/exam-negative-marking-calculator
+
+Net score, accuracy, attempt rate and break-even guessing accuracy for any marking scheme you enter.
+
+Search focus: negative marking calculator; neet +4 -1 score calculator; ssc negative marking calculator; accuracy percentage exam
+Processing: runs locally in the browser
+Inputs: Total questions, Correct answers, Wrong answers, Marks per correct answer (marks), Penalty per wrong answer (marks), Maximum marks (optional) (marks).
+
+Method: Net score = correct × marks per correct − wrong × penalty per wrong. Accuracy = correct ÷ (correct + wrong). Attempt rate = (correct + wrong) ÷ total. Break-even accuracy comes from setting the expected gain of a guess to zero: p × m − (1 − p) × n = 0, so p = n ÷ (m + n). Above that accuracy a guess has a positive expected value, below it a negative one. The tool does not know any exam's official rules; it applies the numbers you enter.
+
+## Attendance Percentage & Bunk Planner Calculator
+
+URL: https://alltoolstogether.com/math/attendance-percentage-calculator
+
+Attendance percentage, classes you can miss or must attend to reach your required percentage.
+
+Search focus: 75 percent attendance calculator; how many classes to attend for 75 attendance; college bunk calculator; attendance shortage calculator
+Processing: runs locally in the browser
+Inputs: Classes attended, Total classes held so far, Required attendance (%), Classes remaining in term (optional).
+
+Method: Attendance % = attended ÷ total × 100. If you are below the required percentage R, the classes to attend consecutively is the smallest x with (attended + x) ÷ (total + x) ≥ R%, which gives x = ceil((R × total − 100 × attended) ÷ (100 − R)). If you are at or above R, classes you can miss = floor(attended × 100 ÷ R − total). The required percentage is whatever you enter; institutions and courses have different rules, so confirm yours. Projections assume every remaining class is counted.
 
 
 ## Citation and processing notes

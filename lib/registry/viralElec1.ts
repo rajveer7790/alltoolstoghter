@@ -90,7 +90,7 @@ export const VIRAL_ELEC1: ToolDef[] = [
   slug: 'crc-calculator', name: 'CRC Calculator (CRC-8, CRC-16 Modbus, CRC-32)', prio: 'P2', category: CAT, widget: 'calc',
   short: 'CRC-8, CRC-16/CCITT-FALSE, CRC-16/MODBUS and CRC-32 of ASCII text or hex bytes, with Modbus byte order.',
   metaDescription: 'CRC16 Modbus calculator that also computes CRC-8, CRC-16/CCITT-FALSE and CRC-32 for text or hex bytes, with hex output and Modbus low-byte-first order.',
-  keywords: ['crc16 modbus calculator', 'crc8 crc16 ccitt crc32 hex calculator', 'modbus rtu frame checksum', 'crc32 checksum calculator'],
+  keywords: ['crc calculator', 'crc16 modbus calculator', 'crc32 checksum calculator', 'modbus rtu frame checksum'],
   fields: [
     SEL('algo', 'Algorithm', 'modbus', [['crc8', 'CRC-8 (poly 0x07)'], ['ccitt', 'CRC-16/CCITT-FALSE'], ['modbus', 'CRC-16/MODBUS'], ['crc32', 'CRC-32 (IEEE 802.3)']]),
     SEL('mode', 'Input as', 'ascii', [['ascii', 'ASCII text (UTF-8 bytes)'], ['hex', 'Hex bytes']]),

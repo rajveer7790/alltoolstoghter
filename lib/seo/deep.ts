@@ -7681,4 +7681,2106 @@ export const DEEP: Record<string, DeepContent> = {
       ]
     ]
   },
+  "llm-vram-calculator": {
+    "answer": "An LLM VRAM calculator estimates how much GPU memory a language model needs for inference. It adds the weight memory, which is parameters times bytes per weight, to the KV cache, which is two times layers times KV heads times head dimension times context tokens times batch times bytes per element. The total is then increased by your overhead percentage.",
+    "aiSummary": "Computes estimated GPU memory for a transformer language model, from parameter count, weight format, layer count, KV heads, head dimension, context length and batch size. Weights and cached keys and values are summed, then an overhead allowance is added. Runtime buffers, fragmentation and paged attention are not modelled, so real usage can differ.",
+    "shortKeyword": "llm vram calculator",
+    "longKeywords": [
+      "how much gpu memory does an llm need",
+      "kv cache memory for long context",
+      "estimate memory for quantized model weights"
+    ],
+    "exampleInputs": {
+      "params": "8",
+      "quant": "q4_k_m",
+      "context": "8192",
+      "gpu": "12"
+    },
+    "sections": [
+      {
+        "heading": "How much GPU memory does an LLM need?",
+        "text": "Use this tool before you download a model or rent a card, to check whether the weights and the cache for your planned context will fit. Enter the parameter count and the weight format first, because they set the largest fixed block. Then add the layer, KV head and head dimension values from the model's configuration file, since the cache scales with them. Context length and batch size set how large the cache gets for each request. The result is a planning estimate, so leave headroom on the card for the runtime itself."
+      },
+      {
+        "heading": "Why does KV cache memory for long context matter?",
+        "text": "The KV cache stores keys and values for every token in the context, so its size grows in step with the context length and the batch. Each stored value takes the bytes set by the cache precision option, which can differ from the weight format. In the result, the cache line is shown separately from the weights, so you can see whether a longer prompt or a bigger batch is the thing that pushes the total past your card. Read the total as the figure after overhead, not as the sum of the bare numbers."
+      },
+      {
+        "heading": "Where do estimates like this go wrong?",
+        "text": "The most common mistake is treating the number as a guarantee. Runtime buffers, activation memory, fragmentation and features such as paged attention change real usage, and runtime choices change what is reserved. Another mistake is mixing units: the tool reports gigabytes in powers of ten and the GPU check uses gibibytes, so a figure that looks close to the card size may still fail. Finally, the layer and head values must come from the same model variant, because the cache depends on them directly."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I estimate memory for quantized model weights?",
+        "Pick the weight format that matches your file. Each option has a fixed byte count per weight, such as two bytes for FP16 or half a byte for the smallest integer option, and the tool multiplies that by the parameter count. GGUF options use approximate effective bits, so their results are approximate too."
+      ],
+      [
+        "Can this estimate an unusual attention design?",
+        "Only roughly. The cache formula assumes every layer stores keys and values for each KV head, which is the usual layout for transformer decoders. Designs that share or compress the cache need a smaller effective KV head count, so you may need to adjust that input by hand."
+      ],
+      [
+        "What GPU memory figure should I compare against?",
+        "Compare the total against the free memory your GPU reports after the operating system and other programs take their share, not the advertised size on the box. Enter that free amount in GiB in the GPU field. Set the field to zero to skip the check and see only the total."
+      ]
+    ]
+  },
+  "rag-chunking-vector-storage-calculator": {
+    "answer": "A RAG chunk size calculator estimates how many chunks a document set produces for a chosen chunk size and overlap. Per document, chunks equal the tokens minus overlap, divided by chunk size minus overlap, rounded up. It then multiplies chunks by the embedding dimension and bytes per value to size the raw vectors, and adds index overhead and metadata.",
+    "aiSummary": "Counts text chunks, vector storage and embedding tokens for a corpus, given document count, tokens per document, chunk size, overlap, embedding dimension and precision. Overlap is embedded twice, which raises the token total. Index overhead is a multiplier you set, not a database constant, and no real text is tokenized.",
+    "shortKeyword": "rag chunk size calculator",
+    "longKeywords": [
+      "how many chunks does a document need",
+      "vector storage size for embeddings",
+      "chunk overlap and embedding token cost"
+    ],
+    "exampleInputs": {
+      "docs": "1000",
+      "chunk": "512",
+      "overlap": "64",
+      "precision": "f16"
+    },
+    "sections": [
+      {
+        "heading": "How many chunks does a document need?",
+        "text": "Use this planner before you index a corpus, so you know roughly how many vectors you will store and how many tokens the embedding job will process. Set the document count and the average tokens per document, then choose the chunk size your pipeline will use. The results show chunks per document and in total, which is the number you need when you size a storage tier or estimate an embedding bill."
+      },
+      {
+        "heading": "How do I read the chunk and token totals?",
+        "text": "Chunks per document is rounded up, so a short file still counts as one chunk. The total chunk count multiplies that by the document count, and the raw vector size follows from the embedding dimension and the stored precision. The index line adds your overhead multiplier and the metadata bytes for each chunk. Check the embedding token total as well, because it counts every chunk in full and is the figure that drives the price."
+      },
+      {
+        "heading": "Where do chunk plans go wrong?",
+        "text": "A common mistake is treating the index multiplier as a fixed fact. It is an assumption you set, and real vector databases vary with their index type and settings. Another is forgetting that tokens are estimated, not counted: this tool does not tokenize your text, so the tokenizer of your embedding model decides the real number. Also remember that the sizes cover vectors and metadata only, not the original document text, which you must budget separately."
+      }
+    ],
+    "faqs": [
+      [
+        "How should I think about chunk overlap and embedding token cost?",
+        "Overlap repeats the last part of each chunk at the start of the next one. Those repeated tokens are embedded again, so the embedding total is larger than the corpus. The result compares the embedding total with the corpus size, so you can see the cost of the overlap you chose."
+      ],
+      [
+        "How do I estimate vector storage size for embeddings?",
+        "Multiply the chunk count by the embedding dimension and the bytes per stored value, which is four for float32 and two for float16. Then apply your index multiplier and add the metadata bytes for each chunk. The result is an estimate that depends on the assumptions you enter."
+      ],
+      [
+        "Does the tool count tokens in my text?",
+        "No. You enter a token count per document, and the tool does not split your text. Use the tokenizer of your embedding model to measure real token counts, then enter those figures for a more reliable plan."
+      ]
+    ]
+  },
+  "prompt-caching-savings-calculator": {
+    "answer": "A prompt caching calculator estimates input cost when a provider reuses a repeated prompt prefix at a lower read price. It bills cached prefix tokens at a write multiplier on a miss and a read multiplier on a hit, and uncached tokens at the base price. Enter your own prices, so the result is an estimate and not a quote.",
+    "aiSummary": "Estimates input token spend with and without prompt caching, given your prices, daily requests, hit rate and multipliers. Each request blends write and read prices by hit rate. Output tokens, storage fees and cache expiry are left out, so treat the figure as an educational estimate, not professional advice.",
+    "shortKeyword": "prompt caching calculator",
+    "longKeywords": [
+      "when does prompt caching pay off",
+      "cached prefix write and read multipliers",
+      "compare daily input cost with caching"
+    ],
+    "exampleInputs": {
+      "price": "3",
+      "prefix": "20000",
+      "requests": "1000",
+      "hit": "90"
+    },
+    "sections": [
+      {
+        "heading": "When does prompt caching pay off?",
+        "text": "Prompt caching suits applications that send the same long block of text on many requests, such as a fixed system prompt, a reference document or a tool schema. The provider stores that prefix so later requests read it at a lower price. Use this calculator to check whether your traffic repeats the prefix often enough to offset the extra cost of the first write. Low traffic or a prefix that changes every call rarely benefits."
+      },
+      {
+        "heading": "How do cached prefix write and read multipliers change cost?",
+        "text": "Each request pays the base price for uncached tokens. The cached prefix is billed at the write multiplier when it is first stored, and at the read multiplier on each later hit. The hit rate is the share of requests that find the prefix already stored. Raising the hit rate moves the blended price of the prefix toward the read multiplier, which is why traffic volume and request spacing matter as much as the list price."
+      },
+      {
+        "heading": "Where do caching estimates mislead?",
+        "text": "The main mistake is using a provider's published multipliers from memory. Enter the values from the current price sheet you are billed under, because this tool does not know them. Also remember that output tokens, storage fees, cache lifetimes and expiry are not modelled, and batch discounts are not included. Savings shown here are an educational estimate, not professional advice, so check a few real invoices before you commit a budget."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I compare daily input cost with caching on and off?",
+        "Yes. The calculator prices the same traffic twice: once with every prefix token at the base price, and once with the write and read multipliers applied to the prefix. The difference is the daily saving, and the break-even hit rate shows the lowest hit rate at which caching starts to pay off."
+      ],
+      [
+        "How do I find my own cache hit rate?",
+        "Estimate it from your traffic pattern: count how many requests reuse the same prefix within the cache lifetime, and divide by all requests. Your provider's usage data may show this directly. Start with a conservative figure, then recalculate with real numbers."
+      ],
+      [
+        "Does the calculator use live provider prices?",
+        "No. Every price and multiplier is an input you type in, so the result is only as current as the figures you enter. Check the pricing page you are billed under before you rely on the totals, and update the fields whenever the rates change."
+      ]
+    ]
+  },
+  "agent-loop-token-cost-calculator": {
+    "answer": "An AI agent cost calculator estimates the tokens and dollars a multi-turn agent uses when it re-sends its growing conversation on every model call. Each turn adds the assistant output and tool result to the history, so total input grows roughly with the square of the turn count. Totals are summed per turn from the prices you enter.",
+    "aiSummary": "Calculates total input and output tokens across an agent loop where each model call resends the system prompt, user message and all prior turns. Inputs are per-turn output and tool result sizes plus per-million prices. It assumes constant turn sizes, no provider caching and no truncation, so real agents will differ.",
+    "shortKeyword": "ai agent cost calculator",
+    "longKeywords": [
+      "why does agent cost grow each turn",
+      "budget a multi-step tool calling loop",
+      "re-read history share of cost"
+    ],
+    "exampleInputs": {
+      "turns": "12",
+      "system": "2000",
+      "tool": "1500",
+      "inPrice": "3"
+    },
+    "sections": [
+      {
+        "heading": "Why does agent cost grow each turn?",
+        "text": "Every model call in an agent loop includes the full conversation so far: the system prompt, the first user message, each earlier assistant reply and each tool result. This calculator is for planning a run before you launch it, such as comparing a short loop with ten model calls against a longer one. Set the per-turn sizes to match a realistic trace from your own logs, because the total depends heavily on how big the tool results are."
+      },
+      {
+        "heading": "How should I read the re-read history share of cost?",
+        "text": "The result splits input tokens into the first send of each token and the extra sends that repeat earlier history. A large share means most of the bill pays for the same text again on later turns. In that case, shortening tool outputs, trimming old turns or caching the stable prefix can do more than changing the model. Compare turn one with the final turn too, since the last call often costs several times as much as the first."
+      },
+      {
+        "heading": "Where does this estimate fall short?",
+        "text": "The model assumes every turn has the same size, so it cannot show a run where early steps are short and late steps carry large documents. It also ignores provider caching, which can cut the repeated input cost, and any context truncation the agent framework applies. Any extra tokens beyond the output field are not counted. Because these cost figures depend on your inputs, treat them as an educational estimate, not professional advice, and confirm them against real usage."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I budget a multi-step tool calling loop?",
+        "Estimate the number of model calls, then size a typical tool result and assistant reply from a real trace. Enter those values, and check the turn-one and final-turn costs to see the range. Add a margin, because loops often run longer than planned."
+      ],
+      [
+        "Does a longer system prompt cost more on every turn?",
+        "Yes, if it is re-sent in full. The system prompt counts as input on every model call in this calculator, so each extra token there adds to every turn. Prompt caching can reduce the repeated part, but this calculator does not model that discount."
+      ],
+      [
+        "Can I use this for a single model call?",
+        "Set Turns to one and the calculator reduces to a single request, with the system prompt, user message and output priced once. For anything with several calls, the growth term is what matters."
+      ]
+    ]
+  },
+  "local-llm-vs-cloud-api-breakeven-calculator": {
+    "answer": "An LLM cost calculator compares the cost of running a model on your own hardware with a cloud API price. It spreads hardware cost over its lifetime, adds electricity for the hours under load, and divides by the monthly tokens that throughput allows. Break-even is the monthly volume at which your fixed and energy costs equal what the cloud API would charge for the same tokens.",
+    "aiSummary": "Compares monthly cost of self-hosting a language model, from amortised hardware, electricity and measured throughput, with a cloud API price per million tokens. Reports cost per million tokens and the monthly volume where local becomes cheaper. Idle power, maintenance, staff time and quality differences are excluded, so the result is an estimate.",
+    "shortKeyword": "LLM cost calculator",
+    "longKeywords": [
+      "electricity cost per million tokens",
+      "when does local hardware pay back",
+      "measure throughput for a self-hosted setup"
+    ],
+    "exampleInputs": {
+      "hardware": "2500",
+      "watts": "350",
+      "hours": "8",
+      "cloud": "10"
+    },
+    "sections": [
+      {
+        "heading": "How do I work out electricity cost per million tokens?",
+        "text": "Start with the monthly energy bill for the machine. Multiply its draw in watts, converted to kilowatts, by the hours it runs under load each day and by the days in a month, then by your electricity price. Add the monthly hardware share to that energy cost, then divide by the monthly tokens the throughput allows. The machine's idle draw is not included here, so running it always-on adds a cost this calculator does not show. Use the power figure that you measure at the wall where possible."
+      },
+      {
+        "heading": "When does local hardware pay back against the cloud?",
+        "text": "Payback depends on volume. Below the break-even volume, paying per token is cheaper, because you still carry the full monthly hardware cost. Above it, the hardware is spread over more tokens, so the local cost per million falls below the cloud price. Read the payback months as the time to recover the purchase at full capacity, which assumes the machine runs at the utilisation you entered every month. Real projects rarely stay at full capacity for the whole life of the hardware."
+      },
+      {
+        "heading": "Where can a local versus cloud comparison mislead?",
+        "text": "The biggest risk is comparing a local model with a cloud model as if they were equal. Quality, context limits and latency can differ, so the cheaper option may not do the same job. Throughput is also easy to overstate; measure it on your own setup under your own prompts, not on a marketing figure. Maintenance, staff time, resale value and idle power are left out. Use the result as an educational estimate, not professional advice, before committing to hardware spending."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I measure throughput for a self-hosted setup?",
+        "Run your real workload on the hardware, count the output tokens generated over a steady stretch, and divide by the seconds it took. Repeat with your typical prompt lengths and batch size. Use that sustained figure, not the peak number from a single short test."
+      ],
+      [
+        "Should I include the cost of a machine I already own?",
+        "You can. If the hardware is already paid for, set its cost to zero or to a resale-based figure, and the comparison becomes mostly electricity against the cloud price. Keep the amortisation lifetime in mind if you plan to replace the machine."
+      ],
+      [
+        "What if my hardware is shared with other work?",
+        "Then only part of the machine's time serves this model, so the utilisation input should reflect that share. Lower utilisation raises the local cost per million tokens, because the same hardware cost is spread over fewer tokens."
+      ]
+    ]
+  },
+  "llm-tokens-per-second-estimator": {
+    "answer": "An LLM tokens per second calculator gives theoretical bounds for generation speed. Decode is capped by memory bandwidth, because each token streams the weights, so the ceiling is bandwidth times efficiency divided by bytes read per token. Prefill time to first token is estimated from compute, as two times parameters times prompt tokens divided by usable FLOPS.",
+    "aiSummary": "Gives upper-bound decode speed in tokens per second from model size, bytes per parameter, memory bandwidth and efficiency, plus a lower-bound time to first token from prompt length, peak compute and utilisation. Real throughput is lower because batching, scheduling and attention cost are ignored.",
+    "shortKeyword": "llm tokens per second calculator",
+    "longKeywords": [
+      "why is LLM decode memory bound",
+      "estimate time to first token for prompts",
+      "compare memory bandwidth across hardware options"
+    ],
+    "exampleInputs": {
+      "params": "8",
+      "bytes": "0.5",
+      "bandwidth": "1000",
+      "prompt": "1000"
+    },
+    "sections": [
+      {
+        "heading": "Why is LLM decode memory bound?",
+        "text": "At batch size one, generating each token needs the model weights read from memory once, so memory speed limits how fast tokens can appear. Compute is often idle during that stretch. Halving the bytes per parameter roughly doubles this ceiling, which is why the bytes-per-parameter input matters so much. The same logic explains why a larger model or a slower memory system both reduce the ceiling. This calculator is for reasoning about that trade-off before you pick a model size or a quantization format."
+      },
+      {
+        "heading": "How should I read the prefill lower bound?",
+        "text": "Prefill processes the whole prompt in parallel, so its time grows with prompt length and is usually limited by compute. The estimate uses the common approximation of two floating point operations per parameter per prompt token, then divides by peak compute scaled by your utilisation. Because the estimate ignores attention cost that grows with context, network hops and scheduling, the number is a floor, not a forecast. Use it to see how a long prompt changes the wait before the first token."
+      },
+      {
+        "heading": "Can I compare memory bandwidth across hardware options?",
+        "text": "Yes, for the decode ceiling, because bandwidth is the main input there. Enter each device's memory bandwidth and keep the model, bytes per parameter and efficiency the same, so only the hardware changes. The result is a ranking of ceilings, not a benchmark. Measured speed depends on the runtime, the quantization kernels, the thermal state and context length, none of which this tool models. Treat the figures as a planning starting point, not a promise of speed."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I estimate time to first token for prompts?",
+        "Enter the prompt length in tokens, then the compute figure for your device and the utilisation you expect. The tool returns a lower bound in milliseconds, which grows roughly in proportion to prompt length. Long prompts with large contexts will be slower than this floor."
+      ],
+      [
+        "What does the KV cache input add?",
+        "It adds bytes read per token on top of the weights, so the decode ceiling falls as the cache grows. Use the cache size you expect at your target context length. Leave it at zero to see the weights-only ceiling, which is the simplest starting point."
+      ],
+      [
+        "Why are my real results slower than the ceiling?",
+        "The ceiling assumes the bandwidth is used at your efficiency figure and nothing else limits the run. Real systems also pay for scheduling, attention cost at long context, and framework overhead. Expect measured speed to sit below this bound, and measure it on your own setup."
+      ]
+    ]
+  },
+  "lora-trainable-parameters-calculator": {
+    "answer": "A LORA rank alpha calculator counts the trainable parameters a low-rank adapter adds to a model. For each adapted matrix of size input by output, LORA adds rank times the sum of those two sizes, multiplied across the adapted modules and layers. It also reports the scaling factor alpha divided by rank and the adapter size in megabytes.",
+    "aiSummary": "Calculates trainable LORA parameters for a transformer from hidden size, layer count, rank, adapted module set and MLP width. Adds the alpha over rank scaling factor and adapter size. Assumes square attention projections, so grouped-query models are overcounted; optimiser state and base weights are excluded.",
+    "shortKeyword": "lora rank alpha calculator",
+    "longKeywords": [
+      "how many trainable parameters in lora",
+      "lora scaling factor alpha over rank",
+      "estimate adapter file size for fine-tuning"
+    ],
+    "exampleInputs": {
+      "hidden": "4096",
+      "layers": "32",
+      "rank": "16",
+      "modules": "qkvo"
+    },
+    "sections": [
+      {
+        "heading": "How many trainable parameters in LORA does a model get?",
+        "text": "Use this tool when you plan a fine-tune and want to know how much the trainable part changes with rank and module choice. Trainable count is what the optimiser updates, while the base weights stay frozen. Raising rank increases the count linearly, and adding MLP projections adds more than attention alone. Read the result as the size of the adapter rather than of the full model, since the frozen base still has to fit in memory."
+      },
+      {
+        "heading": "How should I read alpha and the scaling factor?",
+        "text": "The update is multiplied by alpha divided by rank, so doubling alpha at the same rank doubles the scale, while raising rank with alpha fixed lowers it. This tool shows that factor so you can see the effect before you train. The rsLoRA variant replaces the divisor with the square root of rank, which changes how the scale behaves as rank grows. Choose the scaling convention your training library uses, because the same numbers mean different things under each."
+      },
+      {
+        "heading": "How do I estimate adapter file size for fine-tuning?",
+        "text": "The file size is the parameter count times the bytes per stored value, where half precision stores two bytes and single precision stores four, reported in megabytes using ten to the sixth bytes. Optimiser state, base weights and any merged copy are not part of this number, so the disk you need for a full training run is larger. Also remember that the parameter count assumes standard attention layouts; grouped-query models will have a smaller count than shown. Treat the figure as an estimate of the adapter alone."
+      }
+    ],
+    "faqs": [
+      [
+        "What does the LORA scaling factor alpha over rank do?",
+        "It multiplies the learned update before it is added to the frozen weight, so it sets how strongly the adapter changes the model. Changing alpha or rank changes this scale, which can interact with the learning rate you choose."
+      ],
+      [
+        "Can I use this for a model with a different hidden size?",
+        "Yes, as long as you enter that model's hidden size, layer count and intermediate size from its configuration. The formula only depends on those numbers and the chosen modules, so it applies to any standard transformer of that shape."
+      ],
+      [
+        "Are the base model parameters used in the calculation?",
+        "Not for the adapter count. Base model size is shown only to express the adapter as a percentage of the full model. The adapter count comes from hidden size, layers, rank and modules, so the base figure should match the model you are tuning."
+      ]
+    ]
+  },
+  "softmax-temperature-calculator": {
+    "answer": "A softmax temperature calculator turns raw logits into next-token probabilities by dividing each by the temperature, exponentiating and normalising. Lower temperature sharpens the distribution toward the top token, while higher temperature flattens it. Top-k and top-p then cut the tail and renormalise the rest, so you can see the effect of each setting.",
+    "aiSummary": "Converts a list of logits into token probabilities with temperature scaling, then applies optional top-k and top-p filtering and renormalises the survivors. Reports the probabilities before and after truncation and their entropy in bits. Individual libraries may order or combine filters differently, and min-p and repetition penalties are not modelled.",
+    "shortKeyword": "softmax temperature calculator",
+    "longKeywords": [
+      "temperature reshapes token probabilities",
+      "nucleus sampling with top p cutoff",
+      "entropy of a token distribution in bits"
+    ],
+    "exampleInputs": {
+      "logits": "2.0, 1.0, 0.5, 0.0, -1.0, -2.0",
+      "temperature": "0.8",
+      "topk": "3",
+      "topp": "0.9"
+    },
+    "sections": [
+      {
+        "heading": "How temperature reshapes token probabilities?",
+        "text": "Temperature divides every logit before the softmax, so it controls how peaked the output distribution is. A temperature below one makes high logits dominate and suits tasks that need predictable wording. A temperature above one spreads probability across more tokens, which adds variety and also adds risk of unlikely choices. Setting temperature to zero is a separate case, since the formula divides by it, so the tool asks for a value above a small minimum."
+      },
+      {
+        "heading": "How does nucleus sampling with top p cutoff work?",
+        "text": "Top-p keeps the smallest group of most likely tokens whose cumulative probability reaches the cutoff, then renormalises that group. Top-k instead keeps a fixed count, however the probability is spread. The two filters can behave very differently: on a sharp distribution top-p may keep one token, while on a flat one it may keep many. Check the candidate list after each change to see which rule is doing the work."
+      },
+      {
+        "heading": "Where do these sampling sliders mislead?",
+        "text": "The logits in this tool are typed in by you, so the probabilities describe your example, not a particular model's behaviour. Real models may apply extra steps such as repetition penalties or a min-p filter, which change the outcome and are not included. Temperature and top-p also interact, so changing both at once can be hard to read. Compare one setting at a time, and remember that the entropy shown is a property of the distribution, not a measure of answer quality."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I read the entropy of a token distribution in bits?",
+        "Entropy is the average surprise of the distribution, measured in bits. A single token with probability one gives zero, and a spread-out distribution gives a larger number. After truncation it usually falls, because fewer candidates remain. Compare the before and after values to see how much a filter narrowed the choice."
+      ],
+      [
+        "Can I use these results to choose settings for a specific model?",
+        "Use them to build intuition, not as proof for one model. Every model produces its own logits, so the same temperature can look very different on another system. Test your chosen settings on your actual prompts, and check the output quality directly."
+      ],
+      [
+        "How many candidates should I keep?",
+        "There is no single right number. A small top-k keeps the list tight and predictable, while a larger one leaves room for variety. Judge the choice by the candidate list shown here, then by the text your model actually writes on your prompts."
+      ]
+    ]
+  },
+  "classification-metrics-calculator": {
+    "answer": "A confusion matrix calculator takes true positives, false positives, false negatives and true negatives from a binary classifier and returns the usual metrics. Precision is true positives over predicted positives, recall is true positives over actual positives, and accuracy is the share of all examples that are correct. MCC summarises all four counts in one value.",
+    "aiSummary": "Computes accuracy, precision, recall, specificity, F-beta, balanced accuracy and Matthews correlation from the four counts of a binary classifier. Zero denominators show n/a instead of a guessed value. Counts can be fractional, but ROC-AUC needs per-example scores and is not computed, and multi-class problems are out of scope.",
+    "shortKeyword": "confusion matrix calculator",
+    "longKeywords": [
+      "accuracy misleading on imbalanced data",
+      "choose between precision and recall",
+      "matthews correlation for imbalanced classifiers"
+    ],
+    "exampleInputs": {
+      "tp": "80",
+      "fp": "10",
+      "fn": "20",
+      "tn": "890"
+    },
+    "sections": [
+      {
+        "heading": "Why is accuracy misleading on imbalanced data?",
+        "text": "Accuracy counts every correct prediction equally, so a classifier that always predicts the common class can look strong when that class dominates. Entering your counts here shows the damage: accuracy may stay high while recall for the rare class collapses. The tool is useful for seeing that gap, because it lists precision, recall, specificity and balanced accuracy side by side for the same four counts. Use it before you report one number from a skewed test set."
+      },
+      {
+        "heading": "How do I choose between precision and recall?",
+        "text": "Precision answers how many of the positive calls were right, while recall answers how many real positives were found. Which one matters more depends on the cost of each error. A spam filter that blocks legitimate mail needs high precision, while a screening test that misses cases needs high recall. Changing the decision threshold usually moves the two in opposite directions, so compare them at the operating point you will actually deploy, not at a default."
+      },
+      {
+        "heading": "Where do these metrics go wrong?",
+        "text": "The counts must come from one fixed threshold and one test set. Mixing counts from different thresholds or averaging folds without care gives a number that matches no real classifier. Fractional counts are accepted for averaged results, but you should say so when you report them. Remember that the tool does not compute ROC-AUC, because that needs a score for every example, and that multi-class problems need a separate per-class or averaged approach. Zero denominators show n/a on purpose."
+      }
+    ],
+    "faqs": [
+      [
+        "Why use matthews correlation for imbalanced classifiers?",
+        "MCC uses all four cells of the confusion matrix, so it stays informative when one class is rare. It ranges from minus one to one, where values near zero mean the classifier is little better than chance. It is a single number, but read it alongside precision and recall rather than instead of them."
+      ],
+      [
+        "How do I find the four counts for my data?",
+        "Tally them from a labelled test set after you choose a threshold. True positives are positive examples predicted positive, and so on for the other cells. Count on held-out data, not the training set, or the numbers will look better than they are."
+      ],
+      [
+        "What beta should I pick for F-beta?",
+        "Beta above one weights recall more than precision, and below one weights precision more. The default of one gives equal weight, which is the familiar F1 score. Pick beta from how costly a missed positive is compared with a false alarm."
+      ]
+    ]
+  },
+  "word-error-rate-calculator": {
+    "answer": "A word error rate calculator compares a reference transcript with a hypothesis, usually from speech recognition, and counts the substitutions, deletions and insertions needed to match them. WER is those errors divided by the number of reference words. It can exceed one hundred percent, and the character error rate applies the same method to letters.",
+    "aiSummary": "Scores a transcript against a reference by word error rate and character error rate, from a Levenshtein alignment that counts substitutions, deletions and insertions. Text is split on whitespace and optionally normalised for case and punctuation. Scores can exceed one hundred percent, and the split between error types can vary between tools.",
+    "shortKeyword": "word error rate calculator",
+    "longKeywords": [
+      "measure speech recognition accuracy for transcripts",
+      "count substitutions deletions and insertions",
+      "normalise text before scoring a transcript"
+    ],
+    "exampleInputs": {
+      "reference": "the cat sat on the mat",
+      "hypothesis": "the cat sit on mat",
+      "normalise": "raw"
+    },
+    "sections": [
+      {
+        "heading": "How do I measure speech recognition accuracy for transcripts?",
+        "text": "Use this tool after you run a recogniser on audio that already has a trusted human transcript. Paste the human version as the reference and the machine output as the hypothesis. The word error rate then tells you how far the output is from the reference, relative to the length of the reference. Lower is better, and the same test set should be used when you compare two systems, otherwise the numbers are not comparable."
+      },
+      {
+        "heading": "How should I read substitutions, deletions and insertions?",
+        "text": "The tool reports three error counts that add up to the numerator of the score. A substitution is a wrong word in place of the right one, a deletion is a reference word the system missed, and an insertion is an extra word it added. Two systems with the same WER can have different mixes, which matters when you are fixing a specific problem, such as dropped words in a meeting. Read the counts together with the score rather than the score alone."
+      },
+      {
+        "heading": "Should I normalise text before scoring a transcript?",
+        "text": "Normalisation makes the score about words rather than capitals and punctuation. With it on, the tool lowercases text and replaces punctuation with spaces, while apostrophes stay. Turn it off when case or punctuation is part of what you measure, such as in a formatted output. Remember that each text is limited in length, so long recordings should be scored in segments and then combined by summing their counts, not by averaging their rates. The same setting should be used on both sides."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I count substitutions deletions and insertions by hand?",
+        "Align the two word lists so that matching words line up, using the fewest changes. A mismatched word in the same slot is a substitution, a missing one is a deletion, and an extra one is an insertion. Add those counts, then divide by the reference word count to check the score."
+      ],
+      [
+        "Does capitalisation count as an error?",
+        "Only if you choose raw text. With lowercase normalisation on, Hello and hello are the same word, so no error is counted. With it off, the case difference is a substitution, which adds to the error rate."
+      ],
+      [
+        "How long a transcript can I score?",
+        "Each text is limited in characters, so very long recordings need to be split. Score each segment against its own part of the reference, then add the error counts across segments and divide by the total reference words. Averaging the percentages instead can give a different answer."
+      ]
+    ]
+  },
+  "vector-similarity-calculator": {
+    "answer": "A cosine similarity calculator measures how closely two vectors point in the same direction. It divides their dot product, the sum of matching components multiplied together, by the product of their two lengths. The result runs from minus one to one. This page also reports Euclidean and Manhattan distance for the same pair.",
+    "aiSummary": "Computes dot product, cosine similarity, cosine distance, the angle between two vectors, their norms, and L2 and L1 distances. Method: dot product divided by the product of the norms. Limitation: cosine ignores vector length, and zero vectors give no result.",
+    "shortKeyword": "cosine similarity calculator",
+    "longKeywords": [
+      "how to compare two embedding vectors",
+      "dot product vs cosine similarity",
+      "check whether a vector has unit length"
+    ],
+    "exampleInputs": {
+      "a": "2, 0, 5, 1",
+      "b": "1, 3, 4, 2"
+    },
+    "sections": [
+      {
+        "heading": "How to compare two embedding vectors with this tool?",
+        "text": "Embedding search, recommendation and retrieval systems all need a way to score how alike two vectors are. Enter two vectors of the same length, such as the output of an embedding model, and the tool lists the common measures together: dot product, cosine similarity, cosine distance, the angle between the vectors, the norm of each one, and the Euclidean and Manhattan distances. Seeing them side by side helps you choose a measure that matches how your system was built, before you set any thresholds in code."
+      },
+      {
+        "heading": "How should I read dot product vs cosine similarity?",
+        "text": "Read cosine similarity first when vector length should not matter: it lies between minus one and one, where one means the same direction, zero means perpendicular and minus one means opposite. Dot product also depends on length, so a long vector can score high even when its direction is only loosely aligned. Distances behave the other way: smaller Euclidean or Manhattan values mean closer vectors. The angle field converts similarity to degrees for intuition. If an input is all zeros, the similarity shows n/a."
+      },
+      {
+        "heading": "What mistakes should I avoid with these vector measures?",
+        "text": "The most common mistake is treating one number as universal. A cosine threshold that works for one embedding model can be meaningless for another, so calibrate on your own data. Vectors must have the same length, and an all-zero vector has no direction, so cosine similarity is undefined. Also remember that unnormalized vectors make dot product and cosine disagree. The tool checks norms against unit length but does not change your data, and it says nothing about retrieval quality."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I check whether a vector has unit length?",
+        "Yes. The tool reads the norm of each vector and flags it when it is within a very small tolerance of one. For such vectors cosine similarity equals the dot product, so both give the same ranking. Otherwise, divide each vector by its own norm first."
+      ],
+      [
+        "Does the order of the two vectors change the result?",
+        "No. Dot product, cosine similarity and both distances are symmetric, so swapping Vector A and Vector B gives the same value. The angle and norms are also unchanged. Both vectors still need equal length."
+      ],
+      [
+        "Does this calculator store or upload my vectors?",
+        "No. The calculation runs locally in your browser, so the vectors you enter stay on your device and are not sent to a server. That lets you test real embedding values from internal data without uploading them, though your own data policy still applies. The results are only as good as the vectors you provide."
+      ]
+    ]
+  },
+  "adc-resolution-calculator": {
+    "answer": "An ADC resolution calculator shows how finely an N-bit converter divides its input range. The LSB, the smallest voltage step, equals the reference voltage divided by two to the power N. Ideal SNR is 6.02 times N plus 1.76 dB for a full-scale sine wave, and ENOB is found from a measured SINAD. It models an ideal unipolar converter only.",
+    "aiSummary": "Computes step size, code count, ideal SNR and effective number of bits for an N-bit converter, plus the output code for a chosen input. Method: reference voltage divided by two to the power N, with SNR from the six-dB-per-bit rule. Limitation: ideal, unipolar converters only; real offset, gain and noise errors are not modelled.",
+    "shortKeyword": "adc resolution calculator",
+    "longKeywords": [
+      "calculate lsb step size voltage",
+      "enob from measured sinad value",
+      "adc code for an input voltage"
+    ],
+    "exampleInputs": {
+      "bits": "10",
+      "vref": "5",
+      "vin": "2"
+    },
+    "sections": [
+      {
+        "heading": "How do I calculate LSB step size voltage?",
+        "text": "The least significant bit, or LSB, is the smallest change in input voltage that moves the output code by one step. The tool finds it by dividing the reference voltage by two raised to the power of N, where N is the resolution in bits, because the converter splits the full range from zero to the reference into that many codes. Use the LSB as a yardstick: a change smaller than one LSB is lost in quantisation, and the step gets smaller as resolution rises."
+      },
+      {
+        "heading": "How to read the ADC code for an input voltage?",
+        "text": "The output code is the input voltage divided by the LSB, rounded down and kept between zero and the largest code. The quantisation error shows how far the input sits above the code step, which is the part of the voltage the converter cannot represent. Read a small error as the input sitting just above a code step, not as a fault in the converter. Compare the measured SINAD against the ideal SNR: a gap between them, expressed as ENOB, indicates how many useful bits the real converter delivers."
+      },
+      {
+        "heading": "What mistakes should I avoid with this ADC estimate?",
+        "text": "Do not treat the ideal SNR as the performance you will measure. Real converters add offset, gain error, nonlinearity and clock jitter, which this model leaves out, so the measured SINAD is usually lower. Bipolar and differential input ranges are not covered either, so check the datasheet before mapping a signal onto this unipolar model. Also, the 1.76 dB term assumes a sine wave; other waveforms have a different crest factor and need their own calculation."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I get ENOB from measured SINAD value?",
+        "Yes. Enter the SINAD your test reports in decibels and the tool applies the standard relation, subtracting 1.76 and dividing by 6.02, to give effective bits. That figure is the resolution a real converter behaves like at that input, so a 12-bit part with a poor SINAD may deliver far fewer useful bits."
+      ],
+      [
+        "What happens if the input voltage is above the reference?",
+        "The code is clamped to the largest value the converter can output, so the result shows the top code rather than a higher number. Check that your signal stays inside zero to the reference voltage, because a real converter also saturates, but its exact behaviour depends on the part."
+      ],
+      [
+        "Why does a larger bit count reduce the LSB?",
+        "The range from zero to the reference is split into two to the power N codes, so each extra bit doubles the number of codes and halves the step. Moving from 8 bits to 9 bits, for example, halves the LSB at the same reference voltage. Adding a bit does not add real accuracy if noise already dominates."
+      ]
+    ]
+  },
+  "ieee-754-converter": {
+    "answer": "An IEEE 754 converter turns a decimal number into its sign, exponent and mantissa bits, and back again. It reads the decimal exactly, rounds to the nearest representable value with ties to even, and shows the hex word for half, bfloat16, single or double precision. Use it to check how 0.1 is actually stored.",
+    "aiSummary": "Converts decimal numbers to IEEE 754 bit fields and hex for four floating-point formats, and converts hex back to its exact decimal value. Method: round the decimal to the nearest representable value, then pack sign, biased exponent and fraction. Limitation: encoding writes only the default quiet NaN, so NaN payloads are not kept.",
+    "shortKeyword": "ieee 754 converter",
+    "longKeywords": [
+      "convert decimal to ieee 754 bits",
+      "decode a hex word to decimal",
+      "check rounding error of a float value"
+    ],
+    "exampleInputs": {
+      "mode": "encode",
+      "format": "bfloat16",
+      "value": "3"
+    },
+    "sections": [
+      {
+        "heading": "How do I convert decimal to IEEE 754 bits?",
+        "text": "Pick a format, enter a decimal and choose encode. The tool first reads your text exactly as a fraction rather than through a binary double, then rounds it to the nearest value the format can hold, with ties going to even. It then splits the result into sign, exponent and mantissa fields. Half precision and bfloat16 use fewer bits, so they round more coarsely, while double precision stores the most detail. Compare the hex word with the bit fields to see how each part is laid out."
+      },
+      {
+        "heading": "How do I decode a hex word to decimal?",
+        "text": "Set the mode to hex to decimal and paste the bits. Choose the format that matches where the word came from, because the same hex digits mean different numbers under single and double precision. The result is the exact decimal value that word stores, which can be much longer than the number you started with. To check it by hand, read the sign bit, then the exponent against its bias, then the fraction."
+      },
+      {
+        "heading": "What mistakes should I avoid with float conversions?",
+        "text": "Do not expect a decimal such as 0.1 to be stored exactly; the gap is the rounding error, and the tool reports it so you can see the size. Watch the format as well, because bfloat16 keeps the exponent range of single precision but has far less fraction precision, so a value can fit in one format and round badly in another. Also note that NaN payloads are not preserved when encoding, so any custom payload bits are lost."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use it to check rounding error of a float value?",
+        "Yes. Enter the decimal you need, encode it, and read the difference between the stored value and what you typed. That gap is the rounding error for the chosen format, and it shrinks as the format gets wider. Use the result to decide whether a format is precise enough before writing firmware or test code."
+      ],
+      [
+        "Which format suits machine learning weights?",
+        "The tool does not recommend a format, but its fields show what each keeps. Bfloat16 keeps single precision's exponent range with fewer fraction bits, which is why it is common for training. Half precision has more fraction bits but a smaller range, so large values can overflow."
+      ],
+      [
+        "Does decoding need the same format as encoding?",
+        "Yes. Both directions use the format you select, so a word written as binary32 must be decoded as binary32 to give the original value. Decoding it as binary64 reads the same bits with a different layout and gives a different number. Check the format of the source before trusting the output."
+      ]
+    ]
+  },
+  "pcb-trace-width-calculator": {
+    "answer": "A trace width calculator estimates the narrowest copper track that carries a set current while staying within your allowed temperature rise. It uses the empirical IPC-2221 relation, which links current, temperature rise and cross-sectional area, then converts the area to width using copper weight. The result is an estimate for planning, not a design sign-off.",
+    "aiSummary": "Computes the minimum width of a copper trace for a given current, allowed temperature rise, copper weight and layer, with approximate DC resistance and voltage drop over a length. Method: the empirical IPC-2221 power law for cross-section, converted to width. Limitation: ignores planes, neighbouring traces and airflow.",
+    "shortKeyword": "trace width calculator",
+    "longKeywords": [
+      "find minimum trace width for current",
+      "size trace width for copper weight",
+      "estimate pcb trace resistance from length"
+    ],
+    "exampleInputs": {
+      "current": "3",
+      "rise": "10",
+      "oz": "2",
+      "layer": "internal"
+    },
+    "sections": [
+      {
+        "heading": "How do I find minimum trace width for current?",
+        "text": "Enter the current you expect the trace to carry and the temperature rise you can accept above ambient. The tool solves the IPC-2221 relation for the cross-sectional area, which grows as current rises and as allowed rise falls, then divides by the copper thickness to get a width in mil and millimetres. Treat the figure as a minimum. Round up to the next standard width in your layout tool, since a wider track only lowers resistance and temperature."
+      },
+      {
+        "heading": "How do I size trace width for copper weight?",
+        "text": "Copper weight is the thickness in ounces per square foot, and the tool converts each option to a thickness in mil. Heavier copper gives a thicker track, so the same current needs a narrower width, which saves board space. Keep the layer setting honest as well: internal traces run hotter because they lose heat less easily, so the same current calls for a wider internal track. Check the number against the layer and copper you actually order."
+      },
+      {
+        "heading": "What mistakes should I avoid with trace width results?",
+        "text": "The curves are conservative and cover only a limited range, roughly up to 35 A and 10-100 °C, so treat results outside that range with caution. Do not assume the estimate accounts for planes, neighbouring traces or airflow, which it ignores. Remember that IPC-2152 is a different method and is not implemented here. Finally, a width that passes a current check does not prove a safety-critical board is safe, so verify with your fabricator and test."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I estimate PCB trace resistance from length?",
+        "Yes, when you enter a trace length. The tool uses resistance equals resistivity times length divided by cross-sectional area, with copper resistivity near 20 °C. The result is approximate because it ignores the warming that current causes. For a 50 mm run, the drop is then current times that resistance."
+      ],
+      [
+        "What does the layer setting change in the result?",
+        "Choosing internal switches the constant from 0.048 to 0.024, which halves the current capability of a given cross-section and so raises the width the tool reports. Resistance uses the computed cross-section, so it also changes with the layer."
+      ],
+      [
+        "Does the tool work above 35 A?",
+        "The IPC-2221 curves are described as covering roughly up to 35 A, so results above that range are less reliable. The formula still computes a number, but treat it as a rough starting point. For heavy currents, consider wider traces or copper pours and confirm the design with a thermal test or your fabricator's guidance."
+      ]
+    ]
+  },
+  "crc-calculator": {
+    "answer": "A CRC calculator computes a cyclic redundancy check, a short checksum that detects corrupted data on serial links. It divides the message bits by a fixed polynomial over GF(2), using the parameters of the chosen standard. Paste ASCII text or hex bytes, pick CRC-8, CRC-16/CCITT-FALSE, CRC-16/MODBUS or CRC-32, and read the result in hex and decimal.",
+    "aiSummary": "Computes CRC-8, CRC-16/CCITT-FALSE, CRC-16/MODBUS or CRC-32 for ASCII text or hex bytes, shown in hex and decimal, with Modbus wire order. Method: bitwise polynomial division over GF(2) using each standard's width, initial value and reflection settings. Limitation: custom polynomials and lookup-table code generation are not included.",
+    "shortKeyword": "crc calculator",
+    "longKeywords": [
+      "verify a checksum on a serial frame",
+      "CRC-32 checksum of hex bytes",
+      "calculate Modbus RTU frame CRC"
+    ],
+    "exampleInputs": {
+      "algo": "modbus",
+      "mode": "hex",
+      "data": "01 03 00 00 00 0A"
+    },
+    "sections": [
+      {
+        "heading": "How do I verify a checksum on a serial frame?",
+        "text": "Compute the CRC over the data bytes your device sends, then compare the result with the two check bytes appended to the frame. For Modbus, the checksum is sent low byte first, so the tool shows the wire order next to the hex and decimal values. If the receiver computes the same value over the same bytes, the frame is consistent. A mismatch means the data or the check bytes changed in transit or were calculated with different settings."
+      },
+      {
+        "heading": "How do I read the CRC-32 checksum of hex bytes?",
+        "text": "Choose hex bytes as the input mode when your data comes from a register dump or a packet capture, and type the bytes in pairs. The tool reports the checksum in hex and decimal, so you can match it against a datasheet value or another program. Check the algorithm first, because each choice uses a different width, initial value and reflection, and the same bytes give a different result under each. Use the standard check string to confirm your setup before trusting your own data."
+      },
+      {
+        "heading": "What limits should I keep in mind with CRC checks?",
+        "text": "A CRC detects accidental corruption, not tampering. Anyone can compute the same value for altered data, so it cannot prove that a message is authentic. It covers only the bytes you feed it. In Modbus RTU the address byte is part of the checked frame, so include it in the input when you check a full frame. Other CRC variants, custom polynomials and generated lookup-table code are not part of this tool, so use a dedicated library for those."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I calculate Modbus RTU frame CRC here?",
+        "Yes. Choose CRC-16/MODBUS, paste the frame bytes in hex, and the tool returns the CRC with its two bytes in transmission order, low byte first. The output also shows the frame with the CRC already appended."
+      ],
+      [
+        "Which input format should I use for binary data?",
+        "Choose hex bytes. ASCII mode encodes your typed characters as UTF-8 first, so it cannot express arbitrary byte values such as a raw zero byte. Hex mode lets you enter exact byte values, which is what a protocol frame or memory dump gives you."
+      ],
+      [
+        "Does the choice of algorithm change the CRC for the same data?",
+        "Yes. Each algorithm uses its own width, polynomial, initial value and reflection rules, so the same input gives a different checksum under each. The standard check string 123456789 is useful for confirming your setup, because every algorithm has a published value for it. If your device disagrees with the tool, compare the settings before suspecting the data."
+      ]
+    ]
+  },
+  "i2c-pull-up-resistor-calculator": {
+    "answer": "An I2C pull-up resistor sets the rise time on SDA and SCL. The minimum value keeps the sink current within the limit of a device pulling the line low, and the maximum keeps the rising edge fast enough for the speed mode. This calculator returns both limits for a single pull-up per line and suggests a standard value between them.",
+    "aiSummary": "Gives the minimum and maximum pull-up resistance for an I2C line from supply voltage, low-level output voltage, sink current, bus capacitance and speed mode, plus a nearby E24 value. Method: minimum from sink current, maximum from the rise-time RC limit. Limitation: one pull-up per line, ignoring leakage and resistor tolerance.",
+    "shortKeyword": "i2c pull-up resistor",
+    "longKeywords": [
+      "choose pull-up resistor value for i2c bus",
+      "check rise time with bus capacitance",
+      "how to pick a standard resistor value"
+    ],
+    "exampleInputs": {
+      "vcc": "3.3",
+      "iol": "3",
+      "cb": "100",
+      "mode": "fast"
+    },
+    "sections": [
+      {
+        "heading": "How do I choose pull-up resistor value for I2C bus?",
+        "text": "Start from your supply voltage, the low-level output voltage the driver guarantees, and the sink current it can take. Those set the lowest resistor that keeps the line from drawing too much current when it is pulled low. Then pick the speed mode and total bus capacitance, which set the highest resistor that still gives a fast enough rising edge. The tool suggests a standard value between those two limits, ideally near the middle on a log scale."
+      },
+      {
+        "heading": "How do I check rise time with bus capacitance?",
+        "text": "The rise-time limit scales with bus capacitance, so adding sensors, cable or long traces pushes the maximum resistance down. Enter the total capacitance of the line, not one device. Speed mode also changes the limit: Standard mode allows a much slower edge than Fast-mode Plus. If the tool reports that the minimum is above the maximum, the bus cannot meet that speed with a single pull-up, and you should reduce capacitance or choose a slower mode."
+      },
+      {
+        "heading": "What mistakes should I avoid with pull-up sizing?",
+        "text": "Do not size only from the minimum. A value at the lower limit draws the most current from every device on the line, which can exceed power budgets. Do not forget that resistor tolerance, input leakage and very low supplies change the answer, and this tool does not model them. Also avoid choosing a value above the maximum just to save power, because the edges will then be too slow to meet the speed mode."
+      }
+    ],
+    "faqs": [
+      [
+        "How to pick a standard resistor value when no E24 fits?",
+        "When no E24 value falls inside the window, the tool shows the geometric mean of the two limits instead, which is not a standard part. Try the E96 series next, and check that your choice still keeps sink current and rise time within limits."
+      ],
+      [
+        "Does the speed mode change the minimum resistance?",
+        "No. The minimum depends only on supply voltage, the low-level output voltage and the sink current, so it stays the same in every speed mode. Only the maximum changes, because the allowed rise time is shorter in faster modes. That is why Fast-mode Plus usually leaves the narrowest window."
+      ],
+      [
+        "What changes with more than one pull-up on a line?",
+        "Parallel pull-ups lower the effective resistance, so the sink current rises when the line is pulled low. This estimate assumes one pull-up per line, so recalculate with the equivalent value and check both limits if you add another."
+      ]
+    ]
+  },
+  "timer-prescaler-calculator": {
+    "answer": "A timer prescaler calculator finds the divider and reload values that give a target update frequency from a known timer clock. The timer divides its clock by the prescaler plus one and then counts to the auto-reload value plus one, so both registers are one less than the divisors. The tool searches every prescaler value and keeps the closest match.",
+    "aiSummary": "Finds the PSC prescaler and ARR auto-reload register values that produce a chosen update frequency from a timer clock, reporting the frequency error in ppm and the period. Method: search every prescaler and pick the reload closest to the target. Limitation: assumes an up-counting timer with no repetition counter.",
+    "shortKeyword": "timer prescaler calculator",
+    "longKeywords": [
+      "calculate PSC and ARR for timer frequency",
+      "timer interrupt period from frequency",
+      "choose 16-bit or 32-bit counter width"
+    ],
+    "exampleInputs": {
+      "fclk": "72000000",
+      "ftarget": "1000",
+      "width": "16"
+    },
+    "sections": [
+      {
+        "heading": "How do I calculate PSC and ARR for timer frequency?",
+        "text": "Enter the timer clock in hertz and the frequency you want the timer to update at. The tool loops over every prescaler value from zero upward, works out the reload value that would give the target at that divider, and keeps the pair with the smallest error that fits the chosen counter width. The result is shown as register values, ready to write. Check the clock settings in your configuration, because the timer clock is often not the same as the CPU clock."
+      },
+      {
+        "heading": "How do I read the timer interrupt period from frequency?",
+        "text": "The period is the inverse of the achieved update frequency, not the target, so a small error will shift it slightly. Check the reported error in ppm: a value of zero means the timer hits your target exactly with those dividers. When two pairs tie, the tool prefers the larger reload value, which gives finer PWM duty steps. Use the period when setting interrupt handlers, and remember that the register values are one less than the divisors you actually get."
+      },
+      {
+        "heading": "What mistakes should I avoid with timer dividers?",
+        "text": "Do not copy the register values into a timer that has a different clock. The pair is only valid for the clock you entered, so a change in the system clock setup changes every result. Watch out for a timer with different hardware limits, because the tool assumes a 16-bit prescaler and your part may differ. Finally, choosing a 32-bit counter widens the range of reload values, but it does not change the 16-bit prescaler limit."
+      }
+    ],
+    "faqs": [
+      [
+        "Should I choose 16-bit or 32-bit counter width?",
+        "Choose the width that matches your timer's ARR register. A 16-bit counter has a limited reload range, while a 32-bit counter allows far longer periods and finer steps at low frequency. The tool returns a valid pair for either width whenever one exists."
+      ],
+      [
+        "Why does the frequency error sometimes not reach zero?",
+        "Integer dividers only reach certain frequencies. The timer clock divided by a whole number of steps rarely lands exactly on your target, so the tool keeps the closest pair and shows the leftover error in ppm. A small leftover is usually acceptable for timing, but a precise baud rate may need a different clock."
+      ],
+      [
+        "How do I apply the register values in code?",
+        "Write the PSC value to the prescaler register and the ARR value to the auto-reload register, then enable the counter. Remember that the hardware adds one to each, so the values you write are the divisors minus one. Check your reference manual for the exact register names and any preload or update-event settings on your timer."
+      ]
+    ]
+  },
+  "op-amp-gain-calculator": {
+    "answer": "An op amp gain calculator sets the feedback ratio of a non-inverting or inverting stage. A non-inverting gain equals one plus Rf over Rg, and an inverting gain equals minus Rf over Rin. Real resistors come in standard series, so the tool finds the E24 or E96 value that lands closest to your target and reports the achieved gain.",
+    "aiSummary": "Chooses the standard E24 or E96 feedback resistor closest to a target op-amp gain from a fixed resistor, reporting the achieved gain, percentage error and approximate closed-loop bandwidth from gain-bandwidth product. Method: ratio of standard values, ranked by error. Limitation: bandwidth is a first-order estimate and tolerance is ignored.",
+    "shortKeyword": "op amp gain",
+    "longKeywords": [
+      "find nearest standard resistor for gain",
+      "estimate closed-loop bandwidth from GBW",
+      "choose between E24 and E96 series"
+    ],
+    "exampleInputs": {
+      "mode": "inv",
+      "gain": "5",
+      "rfixed": "10000",
+      "series": "e96"
+    },
+    "sections": [
+      {
+        "heading": "How do I find nearest standard resistor for gain?",
+        "text": "Pick the configuration, enter the target gain magnitude and the fixed resistor you already have, which is Rg for non-inverting or Rin for inverting. The tool computes the ideal feedback resistor, then checks every E24 or E96 value between 10 ohms and 10 megohms to find the closest result. Read the achieved gain and percentage error, and compare the runner-up, which is often a useful alternative when the first choice has a poor gain error."
+      },
+      {
+        "heading": "How can I estimate closed-loop bandwidth from GBW?",
+        "text": "Enter the op-amp gain-bandwidth product in megahertz. The tool divides it by the noise gain, which is one plus Rf over R, to estimate the closed-loop bandwidth. Higher gain therefore means lower bandwidth, so a stage set for gain of five will be slower than one set for gain of two with the same op amp. The figure is a first-order approximation, so it ignores slew rate and output swing, and it should be checked on the bench."
+      },
+      {
+        "heading": "What mistakes should I avoid with op-amp gain?",
+        "text": "Do not expect the achieved gain to match the target exactly, because standard series are coarse and the nearest value may be a few percent off. Resistor tolerance is not modelled, so a 1% part and a 5% part can both shift the result. Also remember that the bandwidth figure ignores slew rate and output swing, which limit large signals. Finally, verify the final circuit on the bench, because this estimate does not model every real op-amp limit."
+      }
+    ],
+    "faqs": [
+      [
+        "Should I choose between E24 and E96 series for my design?",
+        "E24 suits 5 percent and 1 percent parts but gives a coarser match. E96 has finer steps, so it usually gets closer to the target, and its values are listed as 1 percent parts. Pick E96 when the gain must sit close to a specification."
+      ],
+      [
+        "Why does the tool show a runner-up value?",
+        "The runner-up is the next closest standard value by gain error. Showing it lets you compare two practical options quickly, for example when one of them is easier to source. Check both before you commit to a resistor."
+      ],
+      [
+        "Can I use this for an inverting amplifier?",
+        "Yes. Select inverting, and the tool treats the target as the magnitude and applies gain equals minus Rf over Rin. The fixed resistor you enter is Rin, which sets the input impedance. Use the magnitude of the result to match your target."
+      ]
+    ]
+  },
+  "ntc-thermistor-calculator": {
+    "answer": "An NTC thermistor calculator converts the resistance of a negative temperature coefficient sensor into temperature, and the reverse. It uses either the Beta model, which assumes a single parameter, or the Steinhart-Hart equation with three coefficients. A voltage divider reading is first converted to resistance using the fixed resistor value and reference voltage.",
+    "aiSummary": "Converts an NTC thermistor's resistance, divider voltage or temperature using the Beta equation or Steinhart-Hart, with reference resistance and voltage inputs. Method: exponential Beta relation or inverted Steinhart-Hart polynomial. Limitation: Beta is an approximation away from its reference point, and self-heating is not modelled.",
+    "shortKeyword": "ntc thermistor calculator",
+    "longKeywords": [
+      "convert thermistor resistance to temperature",
+      "read temperature from voltage divider output",
+      "choose a beta value for your thermistor"
+    ],
+    "exampleInputs": {
+      "mode": "div",
+      "vout": "1.65",
+      "vref": "3.3",
+      "place": "low"
+    },
+    "sections": [
+      {
+        "heading": "How to convert thermistor resistance to temperature?",
+        "text": "Choose resistance to temperature, select the model, and enter the resistance you measured. With Beta, the tool uses the reference resistance R0 at T0, usually 25 °C, and the Beta from the datasheet. With Steinhart-Hart, it uses the A, B and C coefficients instead and solves the equation in kelvin. The result is a temperature you can compare against your operating range. Results are most reliable near the reference point, so measure close to T0 when you can."
+      },
+      {
+        "heading": "How do I read temperature from voltage divider output?",
+        "text": "Choose divider voltage to temperature and enter the measured voltage, the reference voltage, and the fixed resistor value. Placement matters: with the NTC to ground, the fixed resistor sits on top, and the tool derives resistance from the voltage ratio accordingly. With the NTC to the reference, the mirror formula applies. Get the position right first, because swapping it gives a plausible-looking but wrong temperature. Then the usual Beta or Steinhart-Hart conversion runs on the derived resistance."
+      },
+      {
+        "heading": "What mistakes should I avoid with thermistor readings?",
+        "text": "Do not treat the Beta value on a datasheet as exact across the whole range, because the model is an approximation that drifts away from its reference point. Self-heating from the measurement current warms the sensor and is not included here, and neither are ADC errors or the tolerance of the fixed resistor. Also avoid mixing units: resistance in ohms, temperature in degrees, and kelvin only inside the equation. For a safety-critical reading, verify against a calibrated reference."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I choose a Beta value for your thermistor?",
+        "Use the Beta given in your thermistor's datasheet, and note the temperature range it is specified for. Beta is usually quoted between two reference temperatures, so check that the reference matches the R0 and T0 you enter here. If the datasheet gives Steinhart-Hart coefficients instead, use those with the Steinhart-Hart model."
+      ],
+      [
+        "Why is my reading far from the expected temperature?",
+        "A common cause is a mismatch between the NTC position and the divider setting, or a wrong fixed resistor value. Check which side of the divider the thermistor sits on, then confirm that R0 and T0 match the part you measured."
+      ],
+      [
+        "What happens far from the reference temperature?",
+        "Beta is an approximation, so its error grows as you move away from T0, the reference temperature. Within the datasheet range the error is usually small, but outside it the calculated temperature can be noticeably off. For a wider range, use Steinhart-Hart coefficients fitted to your sensor."
+      ]
+    ]
+  },
+  "ble-battery-life-calculator": {
+    "answer": "A battery life calculator estimates how long a cell lasts when a device sleeps most of the time and wakes briefly to transmit. It averages the sleep and active currents over one repeat interval, then divides the usable capacity by that average. Self-discharge is added as a small constant drain, and the result is shown in hours, days and years.",
+    "aiSummary": "Estimates runtime of a battery-powered device from its sleep current, active current, active time per event, event interval, nominal capacity, derating and self-discharge. Method: time-weighted average current, then usable capacity divided by it. Limitation: single active state, and real cells lose capacity at high pulse current and low temperature.",
+    "shortKeyword": "battery life calculator",
+    "longKeywords": [
+      "estimate battery life from sleep current",
+      "average current of a duty cycle",
+      "how long will a battery last"
+    ],
+    "exampleInputs": {
+      "sleep": "5",
+      "interval": "60",
+      "active": "8",
+      "cap": "220"
+    },
+    "sections": [
+      {
+        "heading": "How do I estimate battery life from sleep current?",
+        "text": "Enter the sleep current in microamps, the interval between events in seconds, and the active current and its duration per event. The tool first works out the average load over one interval, since the device spends nearly all of that time asleep. Sleep current usually dominates the result for long intervals, so small savings in sleep current can matter more than shorter transmit time. Enter the nominal capacity and derating to get the usable charge."
+      },
+      {
+        "heading": "How do I read the average current of a duty cycle?",
+        "text": "The average current, in microamps, is the number to compare with your power budget. When the duty cycle is small, the sleep current accounts for nearly all of it and the active burst adds only a little. Doubling the wake rate roughly doubles the active share, so check how much of the average comes from each part before changing firmware. Treat the years figure with care, because it also depends on the self-discharge input."
+      },
+      {
+        "heading": "What mistakes should I avoid when estimating battery life?",
+        "text": "Do not treat the ideal figure as a guarantee. The model applies one derating factor and a single steady load between events, but real cells lose capacity at higher pulse currents, at low temperature and as voltage drops toward cut-off. A device with several radio phases, such as scanning then connecting, also needs more than one active state, which this single-state model does not capture. Measure the actual current profile with a power analyser and use the estimate only to compare designs."
+      }
+    ],
+    "faqs": [
+      [
+        "How long will a battery last in practice?",
+        "Expect the figure to be optimistic. Real runtime is shorter when pulse currents are high, the temperature is low, or the cell sags near its cut-off voltage. Adjust the derating percentage to reflect your cell's datasheet and test a prototype, because a bench measurement is the most reliable check."
+      ],
+      [
+        "Does sleep current matter more than wake time?",
+        "It depends on the duty cycle. At long intervals the sleep current usually sets most of the average, so lowering it has the biggest effect. At short intervals or with long active bursts, the active current takes a larger share and reducing transmit time pays off more."
+      ],
+      [
+        "Which capacity should I enter for a coin cell?",
+        "Enter the nominal capacity printed on the datasheet at the discharge current closest to your average load, because capacity falls as the load rises. Then choose a derating percentage that reflects the temperature and cut-off voltage you expect."
+      ]
+    ]
+  },
+  "cctv-storage-calculator": {
+    "answer": "A CCTV storage calculator estimates how much hard drive space a camera recorder needs. It takes each camera's bitrate in Mbps, converts it to bytes per second, multiplies by seconds recorded per day, then by the number of cameras and the retention days. The total is shown in decimal terabytes, the unit drive makers use. Variable-bitrate footage makes real use fluctuate, so treat the figure as an estimate.",
+    "aiSummary": "Estimates the hard-drive space a camera system needs. Bitrate per camera for retention days is multiplied out with recording share and camera count, with bits converted to bytes, giving decimal terabytes. Main limit: variable-bitrate footage and a drive's usable capacity make real results differ.",
+    "shortKeyword": "cctv storage calculator",
+    "longKeywords": [
+      "how much hard drive space for cameras",
+      "estimate storage for security camera retention",
+      "bitrate per camera for retention days"
+    ],
+    "exampleInputs": {
+      "cameras": "4",
+      "mbps": "4",
+      "rec": "60",
+      "days": "14"
+    },
+    "sections": [
+      {
+        "heading": "How much hard drive space for cameras do I need?",
+        "text": "Use this tool when you are choosing or checking a recorder's disk for a home or business camera system. Enter how many cameras you run, the bitrate each one records at, how much of the day they record and how many days of footage you want to keep. The output is a planning figure in decimal terabytes, so you can compare it with the labelled capacity of a drive or a set of drives in a recorder. Re-run it whenever you add cameras or change recording settings."
+      },
+      {
+        "heading": "How should I read the terabyte result?",
+        "text": "The result is the total footage the system writes over the retention period, expressed in decimal terabytes, where one terabyte is one trillion bytes. Drive labels use this same decimal convention, but operating systems often show space in binary units, so the same drive can look smaller on your computer. Leave some headroom beyond the figure, because a drive's usable capacity is a little lower than its label and recorders may reserve space for their own files."
+      },
+      {
+        "heading": "What mistakes make the storage estimate wrong?",
+        "text": "A common mistake is using the peak bitrate from a camera's settings page instead of a typical average, which overstates the need. The reverse happens when you assume a low bitrate and then point cameras at busy scenes with motion and changing light. Variable-bitrate cameras fluctuate, so check a sample of real recordings over several days. Recording share matters too, because continuous recording and motion-only recording use very different amounts of space."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I estimate storage for security camera retention?",
+        "Start from the bitrate each camera reports, then set recording share to the share of time it actually records. Multiply the daily total by the retention days you need and by the number of cameras. Add a small overhead percentage if you want a safety margin for file metadata and bitrate spikes."
+      ],
+      [
+        "Does a higher frame rate need more storage?",
+        "Usually yes, because a higher frame rate normally means a higher bitrate for the same resolution and codec. This tool does not set the bitrate for you, so change the bitrate input to match your camera's frame rate and quality settings, and the result will follow."
+      ],
+      [
+        "Can I just buy a drive that matches the total?",
+        "Pick a drive or set of drives with at least the calculated capacity plus some headroom. Confirm in your recorder's manual how it handles several drives before you buy hardware."
+      ]
+    ]
+  },
+  "3d-printing-filament-cost-calculator": {
+    "answer": "A 3d print cost calculator adds up what one print costs to make and suggests a selling price. Material is the grams used times the spool price per gram. Electricity is printer watts times hours times the price per kWh. A failure allowance and machine wear are added, then the markup percentage sets the price you charge. Results are planning estimates in any currency.",
+    "aiSummary": "Estimates the production cost and selling price of one 3d print. It adds filament material, electricity from printer power and print time, a failure allowance, machine wear and labour, then applies markup. Main limit: electricity cost of a long print depends on real power draw and slicer weights, so the figures are planning estimates.",
+    "shortKeyword": "3d print cost calculator",
+    "longKeywords": [
+      "how much to charge for 3d printing",
+      "calculate filament cost per gram",
+      "electricity cost of a long print"
+    ],
+    "exampleInputs": {
+      "grams": "120",
+      "spoolGrams": "1000",
+      "spoolPrice": "25",
+      "hours": "8"
+    },
+    "sections": [
+      {
+        "heading": "How much to charge for 3d printing once costs are known?",
+        "text": "This tool is useful when you quote prints for customers or price your own parts. It splits the cost into material, electricity, a failure allowance, machine wear and optional labour, then applies a markup you choose. Keeping each part visible shows where the price comes from, so you can change one input, such as spool price or print time, without guessing at the whole total. Revisit the figures whenever your filament or power costs change."
+      },
+      {
+        "heading": "How should I read the selling price and per-gram figures?",
+        "text": "The production cost is what the print costs you before any profit. The selling price is that cost plus your markup percentage, so a higher markup raises the price proportionally. Dividing the selling price by the grams used gives a per-gram figure, which helps when customers compare prints of different sizes. If you enter the grams left on a spool, the tool also shows how much filament remains after the print. Compare the result with your own time rates before you publish any price."
+      },
+      {
+        "heading": "What mistakes make a print quote too low?",
+        "text": "The most frequent mistake is leaving out machine wear, which adds up quietly over many hours of printing. Using slicer weights with no waste margin is another, because supports and failed starts consume filament that the slicer may not count. Ignoring post-processing labour also understates the price for prints that need sanding, painting or assembly. Finally, a single average power figure may not match a printer that runs its heater hard at the start of each job."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I calculate filament cost per gram for a print?",
+        "Divide the spool price by the spool's net grams to get the cost per gram, then multiply by the grams the print uses. Weigh the spool before and after a test print if your slicer estimate looks unreliable. The tool does this arithmetic for you when you enter the spool price and net weight."
+      ],
+      [
+        "Should I include my own time in the price?",
+        "The calculator has a labour field for post-processing and handling, so you can add the time you spend. Enter the amount per print as a flat number, or convert your hourly rate into the share of time each print takes. The figure is only as good as the inputs you choose."
+      ],
+      [
+        "Does the estimate account for failed prints?",
+        "Yes, through the failure allowance percentage. It applies to material and electricity costs, so a failed print still uses filament and power. Raise the percentage for experimental or fragile parts and keep it lower for well-tested designs."
+      ]
+    ]
+  },
+  "dmarc-record-generator": {
+    "answer": "A DMARC record generator builds the DNS TXT value that states your DMARC policy for a domain. Choose a policy (none, quarantine or reject), a report mailbox and alignment modes. The tool adds only tags that differ from the defaults and shows the host name, _dmarc with your domain. It checks syntax only, so you still need to publish DMARC policy in DNS yourself.",
+    "aiSummary": "Creates a DMARC TXT record from a chosen policy, reporting mailbox and alignment settings, and gives the host name to publish it at. It writes only non-default tags. Main limit: it validates syntax alone and does not check your SPF or DKIM setup or confirm mail delivery.",
+    "shortKeyword": "dmarc record generator",
+    "longKeywords": [
+      "which dmarc policy should I start with",
+      "dmarc txt record for my domain",
+      "publish dmarc policy in dns"
+    ],
+    "exampleInputs": {
+      "domain": "example.com",
+      "policy": "quarantine",
+      "adkim": "s",
+      "aspf": "r"
+    },
+    "sections": [
+      {
+        "heading": "Which DMARC policy should I start with for a new domain?",
+        "text": "Starting with none is the usual approach when you are new to DMARC, because it asks receivers to report on mail without changing delivery. Use the aggregate reports for a few weeks to find legitimate senders that fail alignment. Once they are fixed, move to quarantine and later to reject. Choose the policy from what the reports show rather than from a guess, and keep the report mailbox in place throughout the change."
+      },
+      {
+        "heading": "What do the alignment and percentage settings change?",
+        "text": "Alignment settings decide how closely the sending domain in the authentication results must match the domain in the From address. Relaxed mode allows subdomains to match, while strict mode requires an exact match. The percentage tag limits the policy to a share of failing mail, which is useful during a gradual rollout. The tool writes these tags only when they differ from the defaults, so a relaxed setup produces a shorter record."
+      },
+      {
+        "heading": "What mistakes break a DMARC rollout?",
+        "text": "A common mistake is jumping straight to reject before reading any reports, which can block legitimate mail from services you forgot about, such as invoicing or newsletter tools. Another is publishing a record with a typo in the host name or the mailto address, so reports never arrive. Remember too that the record only helps when SPF or DKIM pass with alignment, so check those separately with your mail provider."
+      }
+    ],
+    "faqs": [
+      [
+        "Where do I publish the DMARC TXT record for my domain?",
+        "Create the record as a TXT entry at the host name the tool shows, which is the _dmarc label under your domain. The exact steps depend on your DNS provider, so look for a TXT record type in its control panel. Paste the value exactly as generated and let your provider handle any quoting."
+      ],
+      [
+        "What do I do with the failure report address?",
+        "The ruf tag requests failure reports, which contain details of individual messages. Leave it blank unless you need those details and have a mailbox that can handle that sensitive data. The aggregate report address is the one most setups need first."
+      ],
+      [
+        "Is a TXT record enough to protect my domain?",
+        "No. The record is one part of the setup. Mail is handled by policy only when SPF or DKIM pass with alignment, so set those up as well. Reports show whether senders match your settings, which tells you when the record needs changing."
+      ]
+    ]
+  },
+  "sla-downtime-calculator": {
+    "answer": "An SLA uptime calculator converts an availability target into the downtime it allows over a day, week, month, quarter or year. Allowed downtime equals the period in seconds times one minus the availability fraction. Services in series multiply their availabilities together. Measured downtime can also be turned into achieved availability and the share of error budget used.",
+    "aiSummary": "Converts an uptime target into allowed downtime for a chosen period, multiplies availabilities for serial services, and reports achieved uptime from measured minutes in a 30-day month. Core method is simple multiplication of seconds and fractions. Main limit: contracts define measurement windows and exclusions differently, so check the wording.",
+    "shortKeyword": "sla uptime calculator",
+    "longKeywords": [
+      "downtime per month does a target allow",
+      "composite availability of serial services",
+      "share of error budget used"
+    ],
+    "exampleInputs": {
+      "mode": "allowed",
+      "sla": "99.5",
+      "period": "month30",
+      "services": "2"
+    },
+    "sections": [
+      {
+        "heading": "How many minutes of downtime per month does a target allow?",
+        "text": "This is the main job of the tool. Pick an availability target, choose a period and read off the allowed downtime. A monthly view helps operations teams plan maintenance windows, while a yearly figure helps leaders compare vendor promises. Because the period can be a day, week, month or year, the same target gives different minute budgets. Choose the period that matches how your service is reported and reviewed in your own status meetings."
+      },
+      {
+        "heading": "How should I read the composite result for serial services?",
+        "text": "When several services must all be up for a request to succeed, their availabilities multiply, so the combined figure is lower than any single one. Adding a dependency reduces the total even when each part is reliable. Enter the number of services in series to see the composite availability and the downtime it implies. Redundant paths work differently, so do not enter them as serial services, because the tool does not model parallel systems."
+      },
+      {
+        "heading": "What mistakes make an uptime figure misleading?",
+        "text": "Comparing a monthly figure with an annual one without converting is a common error, as is mixing a 30-day month with an average month. Ignoring how a contract defines downtime, such as planned maintenance or partial outages, changes the answer. Measured downtime also depends on your monitoring interval, so short outages can be missed entirely. Treat the output as arithmetic on the inputs, not as proof of how a service performed."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I calculate composite availability of serial services?",
+        "Multiply each service's availability as a fraction. For three services at the same target, the product is lower than any one of them. Enter the count in the services field and the tool applies the same multiplication, then converts the result into downtime for the period you select."
+      ],
+      [
+        "How do I compare a target with the downtime I measured?",
+        "Choose measured mode, enter the minutes of downtime you recorded in a 30-day month, and read the achieved availability. Compare it with your target and check the share of error budget you used. The result is only as complete as the monitoring data behind it."
+      ],
+      [
+        "Can I use this for a service that has planned maintenance?",
+        "Only if your contract excludes that time. The calculator counts every second in the period and cannot know which windows an agreement excludes. Subtract agreed exclusions from the measured figure yourself, then enter the adjusted minutes."
+      ]
+    ]
+  },
+  "css-fluid-typography-clamp-calculator": {
+    "answer": "A CSS clamp generator writes a CSS clamp() declaration that scales a font size linearly between a minimum and maximum viewport width. It uses the slope between the two sizes and viewports, adds an intercept, and expresses the middle part in vw. The output is clamp(min, preferred, max) in rem with up to four decimals.",
+    "aiSummary": "Builds a CSS clamp() value that grows a font size linearly from a minimum to a maximum viewport width. It converts a slope and intercept into rem and vw units. Helpful for smooth font size growth on screens. Main limit: the formula sets size only, so readability and zoom still need checking.",
+    "shortKeyword": "css clamp generator",
+    "longKeywords": [
+      "scale font size between two viewports",
+      "convert pixel font sizes to rem",
+      "smooth font size growth on screens"
+    ],
+    "exampleInputs": {
+      "minPx": "14",
+      "maxPx": "20",
+      "minVw": "360",
+      "maxVw": "1440",
+      "root": "16",
+      "at": "900"
+    },
+    "sections": [
+      {
+        "heading": "How do I scale font size between two viewports?",
+        "text": "Set the smallest size you want on a narrow phone and the largest on a wide desktop, then choose the minimum and maximum viewport widths where that change should happen. The tool derives a straight line between those points, so the size grows steadily rather than jumping at breakpoints. The same approach works for spacing, padding or any other length. Preview at a width in the middle of the range to confirm the size looks right there too."
+      },
+      {
+        "heading": "How should I read the rem and vw parts of the output?",
+        "text": "The rem parts are the minimum, the maximum and the intercept, so they scale when a visitor changes the browser text size. The vw part is the slope, which depends on the viewport width. Read the output as three values inside clamp(): the floor, the fluid expression and the ceiling. The preview width shows the computed size at one viewport, which helps you check a single point on the line before you ship."
+      },
+      {
+        "heading": "What common mistakes make a clamp value misbehave?",
+        "text": "Swapping the minimum and maximum produces a line that shrinks as the screen grows, which is rarely what you want. Using a root font size that differs from the one in your stylesheet shifts every rem value. A very wide size range can make text look too small or too large at intermediate widths. Remember that a formula does not guarantee contrast or comfortable line length, so check those separately in your own design."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I convert pixel font sizes to rem in clamp?",
+        "Divide each pixel size by the root font size, then express the result in rem. Enter your root size in the tool so the rem values match your stylesheet. The generator does this division for you, so you only type pixels."
+      ],
+      [
+        "Is there a fallback when clamp is not supported?",
+        "Declare a plain font-size value before the clamp line, so older browsers use it and newer ones take the fluid value. Choose a fallback close to the middle of your range. The tool produces only the clamp declaration, so add the fallback yourself."
+      ],
+      [
+        "Can I use the result for line height or spacing?",
+        "Yes. The same slope method works for any length that should grow with the viewport, such as margins or gaps. Enter the sizes in pixels as before. Check the result in context, because a value that suits a heading may be too large for a button or an input."
+      ]
+    ]
+  },
+  "video-bitrate-file-size-calculator": {
+    "answer": "A video file size calculator estimates how big a clip will be from its bitrates and duration. It applies the kbps to megabytes conversion: add video and audio kbps, multiply by 1,000, divide by eight for bytes per second, then multiply by seconds. The same method works in reverse for a target size. Results are constant-bitrate estimates, so variable-rate encodes land near the figure, not exactly on it.",
+    "aiSummary": "Estimates video file size from total bitrate and duration, and works backwards to the video bitrate that fits a target size. Core method: kilobits per second times seconds, converted to bytes. Main limit: the figure assumes constant bitrate, so variable-rate encodes and container overhead can shift the result.",
+    "shortKeyword": "video file size calculator",
+    "longKeywords": [
+      "bitrate needed for a target file size",
+      "file size of a long video",
+      "kbps to megabytes conversion"
+    ],
+    "exampleInputs": {
+      "video_kbps": "6000",
+      "audio_kbps": "128",
+      "minutes": "20"
+    },
+    "sections": [
+      {
+        "heading": "How do I find the bitrate needed for a target file size?",
+        "text": "Start with the size limit that an upload site or storage plan enforces, then enter the duration and audio bitrate. The tool subtracts the audio share from the total it can afford and returns the video bitrate that should land near your target. Container overhead matters more at small sizes, so add a percentage if your format adds padding. Run the calculation again when you change the length, since a shorter clip allows a higher video bitrate for the same size."
+      },
+      {
+        "heading": "How should I read MB and MiB results?",
+        "text": "Decimal results use one megabyte equal to one million bytes, the convention most storage and upload limits use. Binary results use mebibytes at 1,048,576 bytes each, which operating systems sometimes show instead. Compare the number on your screen with the unit on the limit you need to meet, because the same file can look larger or smaller depending on the unit. Checking the unit first avoids surprises when an upload is rejected just over a limit."
+      },
+      {
+        "heading": "What limits make a bitrate estimate too optimistic?",
+        "text": "Constant-bitrate math assumes every second costs the same, but scenes with motion, grain or fast cuts need more data. Variable-bitrate and two-pass encodes therefore land near the figure rather than on it. Container overhead, metadata and chapter markers add bytes as well. Use the result to plan, then encode a short test clip and measure its real size before committing to a full export. Compare the measured size with the estimate and adjust the target you entered."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I estimate the file size of a long video?",
+        "Add the video and audio bitrates together, multiply by the duration in seconds, then divide by eight to convert bits to bytes. Enter hours, minutes and seconds in their own fields so the length is exact. The tool handles this conversion, and you can add an overhead percentage for the container."
+      ],
+      [
+        "What if my target is smaller than the audio alone?",
+        "If the audio bitrate alone uses most of the target, there is little room left for video. Lower the audio bitrate, shorten the clip, or raise the target size and recalculate. Keep the target above the audio share, otherwise the video bitrate figure will not be meaningful."
+      ],
+      [
+        "Which encoder settings change the final size?",
+        "Settings such as variable-rate mode, two-pass encoding and keyframe spacing all change how many bits each second receives. The calculator only sees the average bitrate you give it. Test a short clip with your exact encoder settings and measure its size to calibrate the estimate."
+      ]
+    ]
+  },
+  "bpm-delay-time-calculator": {
+    "answer": "A BPM to ms calculator converts a song tempo into millisecond delay times for each note value. One quarter-note beat lasts 60,000 divided by BPM milliseconds, and other notes scale from that. Dotted notes are one and a half times the straight length, and triplets are two thirds. The tool also gives Hz rates and 1/32 and 1/64 lengths as reverb pre delay starting points.",
+    "aiSummary": "Converts BPM into delay times for straight, dotted and triplet notes in milliseconds, plus matching Hz values. Core method: one beat is sixty thousand divided by tempo, and note lengths scale from it. Main limit: it assumes steady tempo with no swing, so real timing choices still depend on the music.",
+    "shortKeyword": "bpm to ms calculator",
+    "longKeywords": [
+      "dotted eighth delay time at a tempo",
+      "tempo synced lfo rate in hz",
+      "reverb pre delay starting points"
+    ],
+    "exampleInputs": {
+      "bpm": "96"
+    },
+    "sections": [
+      {
+        "heading": "What is a dotted eighth delay time at a tempo?",
+        "text": "A dotted eighth is one and a half times the length of an eighth note, a popular choice for delays because it sits off the straight grid and creates a rhythmic echo. Find the quarter-note length first, halve it for an eighth, then multiply by one and a half. The tool lists this value next to the straight and triplet options so you can compare them quickly. Confirm the choice by ear against the actual track before settling on it."
+      },
+      {
+        "heading": "How should I use the Hz values for modulation?",
+        "text": "The Hz value is one cycle per note, so a given note setting at a given tempo produces a rate you can enter on a low-frequency oscillator. Slower rates suit broad, slow movement, while faster rates suit quick pulsing effects. Because the tool computes from the tempo you enter, it does not follow a tempo change within your session. Set the oscillator to the note value you want and confirm that the rate matches the figure shown."
+      },
+      {
+        "heading": "What mistakes come from using these delay values?",
+        "text": "A common mistake is treating a pre-delay starting point as a rule, when the right value depends on the source and the room. Another is ignoring swing, because the straight values assume perfectly even timing. Changing tempo partway through a song also breaks the calculation, since every value depends on one BPM figure. Check each setting by ear and fine-tune it for the material. Keeping a short list of the values you use most saves time in later sessions."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I set a tempo synced LFO rate in Hz?",
+        "Use the frequency that matches the note length you want, which the tool gives as one cycle per note. For a rate that repeats once per quarter note, use the quarter-note Hz value. Enter that number into your modulation device, then listen to confirm the pulse lands where you expect."
+      ],
+      [
+        "Why does my delay drift away from the groove?",
+        "Delay times in milliseconds are fixed, so if the tempo of your track changes or the project was built at a slightly different BPM, the echoes fall off the beat. Recalculate with the exact tempo and check the timing against a metronome. Small differences from rounding are normal."
+      ],
+      [
+        "How precise do the millisecond values need to be?",
+        "Triplet values repeat a fraction, so keep the decimals when your plugin accepts them. A rounded value is usually close enough for a delay, but check it on fast passages where small timing errors are easier to hear."
+      ]
+    ]
+  },
+  "smpte-timecode-calculator": {
+    "answer": "A timecode calculator converts hours, minutes, seconds and frames into a frame count, turns a frame count back into timecode, or adds two timecodes. Timecode counts frames at the nominal rate, while NTSC-style rates run slightly slower. Drop-frame numbering skips frame labels to stay near the clock, and the tool reports the real elapsed time from frames at the chosen rate.",
+    "aiSummary": "Converts timecode to a frame count and back, or adds two timecodes, at common frame rates. Core method: nominal rate times total seconds, plus frames, with drop-frame labels skipped on most minutes. Main limit: non-drop NTSC-style timecode drifts from the clock, and hours are not wrapped at 24.",
+    "shortKeyword": "timecode calculator",
+    "longKeywords": [
+      "convert timecode to frame count",
+      "drop frame timecode at 29.97",
+      "real elapsed time from frames"
+    ],
+    "exampleInputs": {
+      "mode": "f2tc",
+      "rate": "25",
+      "frames": "90000"
+    },
+    "sections": [
+      {
+        "heading": "How do I convert timecode to frame count?",
+        "text": "Enter the timecode and the frame rate it was recorded at, then read the total frames. The tool multiplies the hours, minutes and seconds by the nominal rate, adds the frame field, and applies a drop correction when you choose drop-frame. Going the other way takes a frame count and returns the matching label. Use the same rate on both sides, because a frame count only means something at a stated rate."
+      },
+      {
+        "heading": "How should I read the real duration result?",
+        "text": "The real duration is the frame count divided by the true frame rate, which for NTSC-style rates is slightly below the nominal figure. A drop-frame label stays close to the wall clock, while non-drop drifts a little over long runs. Compare the duration against the clock before you trust a runtime for delivery. Short clips barely show the difference, but long programs can. Note the frame rate beside any duration you share, so others can reproduce it."
+      },
+      {
+        "heading": "What mistakes come from mixing frame rates?",
+        "text": "The most frequent error is mixing a 29.97 drop-frame timecode with a 30 fps non-drop one, which produces totals that are off by a few frames. Another is adding timecodes recorded at different rates, because the sum only means something when both sides share a rate. Check the rate setting on the project before doing any arithmetic, and note the rate on every delivery file. These mistakes are easy to miss because the numbers still look plausible. A quick check of the rate field before each calculation prevents most of them."
+      }
+    ],
+    "faqs": [
+      [
+        "What does drop frame timecode at 29.97 mean?",
+        "Drop-frame numbering skips two frame labels at the start of most minutes, except every tenth minute, so the labels stay close to real time. No picture frames are removed. Use it for 29.97 material that must match the clock, such as broadcast runtimes."
+      ],
+      [
+        "Can I add timecodes to get a total runtime?",
+        "Yes. Choose the add mode and enter two timecodes at the same rate. The result is the sum in timecode form, which is handy for joining clips. Check the frame rate first, because adding values from different rates gives a misleading total."
+      ],
+      [
+        "Why do frames and timecode sometimes disagree after editing?",
+        "Edits can shift the frame count in ways you did not expect, especially when a clip starts partway through a minute on a drop-frame timeline. Recalculate with the same rate your editor uses and confirm the starting timecode. The calculator gives the arithmetic, while the editor remains the source of truth for your project."
+      ]
+    ]
+  },
+  "camera-crop-factor-calculator": {
+    "answer": "A lens crop factor calculator finds how much a sensor is smaller than 35mm full frame and converts a lens to its full-frame equivalent focal length and aperture. Crop factor is the full-frame diagonal divided by your sensor diagonal. Multiply focal length by it for field of view. It also gives the equivalent ISO for noise matching on full frame.",
+    "aiSummary": "Gives the crop factor of a sensor relative to 35mm full frame, plus equivalent focal length, aperture and ISO for a lens. Core method: diagonal ratio, then multiplication for focal length and aperture and a squared factor for ISO. Main limit: these are equivalence approximations, not a change to the lens's actual exposure.",
+    "shortKeyword": "lens crop factor calculator",
+    "longKeywords": [
+      "full frame equivalent focal length",
+      "equivalent aperture for depth of field",
+      "equivalent ISO for noise matching"
+    ],
+    "exampleInputs": {
+      "sensor": "mft",
+      "focal": "25",
+      "aperture": "1.8",
+      "iso": "200"
+    },
+    "sections": [
+      {
+        "heading": "How do I find the full frame equivalent focal length?",
+        "text": "Pick your sensor size from the list, or type its width and height in millimetres if your camera is not listed. The tool works out the crop factor, then multiplies your lens focal length by it. A standard lens on a crop sensor frames the same view as a longer lens on full frame, which helps when you compare camera kits. Use this figure for framing decisions rather than as a claim about optical quality."
+      },
+      {
+        "heading": "What do the aperture and ISO results actually mean?",
+        "text": "The equivalent aperture describes depth of field and total light gathered for the same framing, not the real brightness of your exposure. The lens still opens to its marked f-number, so the exposure you meter does not change. Equivalent ISO describes noise: the same total light on full frame would need that ISO for a similar result. Read these as comparisons between systems rather than as settings to dial in on the camera."
+      },
+      {
+        "heading": "What mistakes come from comparing sensor specifications?",
+        "text": "Sensor dimensions are nominal, so two cameras with the same sensor label can differ slightly. Using a custom size with rounded numbers introduces small errors that grow when you multiply them. Another mistake is treating crop factor as a measure of image quality, when sensor technology and lens design also matter. Treat the equivalent values as a comparison tool, not as exact camera specifications. Confirm any figure you need for a purchase against the manufacturer's own published specification."
+      }
+    ],
+    "faqs": [
+      [
+        "How does equivalent aperture for depth of field work?",
+        "Multiply the f-number by the crop factor to get the aperture that gives similar depth of field on full frame at the same framing. The lens itself still has the same marked aperture and light gathering. Use the result to compare systems, not to change your exposure."
+      ],
+      [
+        "Is the custom sensor option worth using?",
+        "Use it when your camera model is not in the list and you know the sensor width and height from its specification sheet. Enter the values in millimetres, because the tool calculates the diagonal from them. Small errors in those numbers shift the crop factor slightly."
+      ],
+      [
+        "Does the focal length change when I switch sensors?",
+        "No. The physical focal length of the lens stays the same, and only the field of view on a given sensor changes. The equivalent focal length is a way of describing that field of view in full-frame terms."
+      ]
+    ]
+  },
+  "timelapse-calculator": {
+    "answer": "A timelapse calculator works out how many frames a shoot produces, how long the finished clip runs and how much storage it needs. Frames equal the event seconds divided by the shooting interval, rounded down. Clip length is frames divided by playback frame rate. It also reports the speed-up factor of a timelapse so you can judge the motion.",
+    "aiSummary": "Calculates frames, clip length, speed-up and storage from event duration and shooting interval, or the interval for a target clip length. Core method: event seconds divided by interval gives frames, then frames divided by fps gives seconds. Main limit: the figures ignore battery and card limits and assume equal frame sizes.",
+    "shortKeyword": "timelapse calculator",
+    "longKeywords": [
+      "event duration to clip length",
+      "timelapse shooting interval for a clip",
+      "speed-up factor of a timelapse"
+    ],
+    "exampleInputs": {
+      "ev_hours": "3",
+      "ev_min": "30",
+      "interval": "10",
+      "fps": "25"
+    },
+    "sections": [
+      {
+        "heading": "How do I convert event duration to clip length?",
+        "text": "Enter how long the event lasts, the interval between shots and the playback frame rate. The tool counts how many frames the interval produces, then divides by the frame rate to give the clip length. The speed-up figure compares real time with clip time, which tells you how fast things will appear to move. This is the core planning loop: choose a clip length you like, then adjust the interval until the numbers fit."
+      },
+      {
+        "heading": "How should I pick the interval and shutter setting?",
+        "text": "Shorter intervals give smoother motion but produce more frames and more storage, so match the interval to how fast the scene changes. Clouds may need a few seconds between shots, while a slow sunset can use longer gaps. The 180-degree rule of thumb sets the exposure to half the interval, which many shooters use for natural-looking blur. Treat it as a starting point and test a few frames before the full shoot."
+      },
+      {
+        "heading": "What mistakes make a timelapse clip shorter than planned?",
+        "text": "The most common cause is a camera that stops early because of a dead battery or a full card, so fewer frames exist than the plan assumed. Rounding down also matters, since a final partial interval produces no frame. Changing the playback rate after planning shifts the clip length too, so recalculate whenever the fps changes. Check that storage covers the frames before you start, because a full card ends the shoot early."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I choose a timelapse shooting interval for a clip?",
+        "Start with the clip length you want, then use the target mode to get the interval. Divide the event length by the frame count the clip needs. Check that the result suits the motion in the scene, and adjust it if the footage looks too choppy or too slow."
+      ],
+      [
+        "Why are frames rounded down in the count?",
+        "Frames are whole numbers, and a final partial interval cannot produce one. So the tool rounds down, and the clip can end up a fraction shorter than a perfect division would give. For storage planning, use the rounded count, since it is the figure the camera will actually record."
+      ],
+      [
+        "Should I add a margin to the storage estimate?",
+        "Yes. Frame sizes vary with scene detail, file formats and camera settings, so an average can be off. Add a margin of spare space, then check the first few minutes of footage to measure the real frame sizes."
+      ]
+    ]
+  },
+  "youtube-revenue-estimator": {
+    "answer": "A YouTube revenue estimator projects ad revenue from views and an RPM you enter. Revenue equals views divided by 1,000, multiplied by RPM, and monthly growth compounds the view count over the months you choose. RPM is revenue per 1,000 views after YouTube's platform share, so it varies by niche, audience location and format. Treat the result as a projection, not a payout.",
+    "aiSummary": "Estimates monthly and multi-month YouTube ad revenue from views and an RPM you enter, compounding a monthly growth rate. It multiplies total revenue by 0.5 and 1.5 to show low and high YouTube RPM scenarios. The main limitation is that RPM is an input you supply, not a fixed rate.",
+    "shortKeyword": "youtube revenue estimator",
+    "longKeywords": [
+      "how to estimate youtube ad revenue",
+      "project youtube revenue with monthly growth",
+      "low and high youtube rpm scenarios"
+    ],
+    "exampleInputs": {
+      "views": "100000",
+      "rpm": "1.5",
+      "growth": "5",
+      "months": "12"
+    },
+    "sections": [
+      {
+        "heading": "How to estimate YouTube ad revenue from views?",
+        "text": "Use this tool when you want a planning figure for ad income from a video or channel. Enter your monthly views and the RPM you see in your own analytics. The tool divides views by 1,000 and multiplies by RPM, so each thousand views earns the RPM you entered. Because the platform share is already removed from RPM, you should not subtract it again. Set the number of months to project if you are planning a longer period. The output is revenue in the same currency as the RPM, which helps you compare a few plausible channel scenarios side by side without committing to any one figure."
+      },
+      {
+        "heading": "How should you project YouTube revenue with monthly growth?",
+        "text": "Monthly growth compounds the starting views, so month two uses the first month's views multiplied by one plus the growth rate, and later months keep compounding. A 5 percent rate means views rise by that share each month. Totals are the sum across all months you choose. Read the total as a sum of monthly estimates, not a single number to plan around. The 0.5 and 1.5 scenarios multiply the total revenue, so they show sensitivity to RPM rather than real benchmarks. Treat growth as the least predictable input and vary it by running the tool again with a lower and higher figure."
+      },
+      {
+        "heading": "What are the common mistakes with this revenue estimate?",
+        "text": "Common mistakes include using a generic RPM copied from a forum instead of your own analytics, and forgetting that RPM already excludes the platform share. Another mistake is treating the low and high scenarios as ranges of likely outcomes. They are only multipliers of the total. The tool also leaves out Partner Program rules, taxes and sponsorship income, so the figure is not your take-home pay. Format matters too, because short and long videos can earn different RPM values."
+      }
+    ],
+    "faqs": [
+      [
+        "How are the low and high YouTube RPM scenarios calculated?",
+        "Each scenario multiplies the total projected revenue by a fixed factor: 0.5 for the low case and 1.5 for the high case. The factors show how sensitive your result is to RPM. They are not benchmarks for any niche or country, so replace them with RPM figures from your own analytics when you have them."
+      ],
+      [
+        "Does the estimate include tax or sponsorship income?",
+        "No. The tool does not model taxes, Partner Program rules or sponsorship income. Your RPM already reflects the platform share, so add any extra items yourself if they matter for your plan. Check your own tax position with a qualified adviser. This is an educational estimate, not professional advice."
+      ],
+      [
+        "How often should I update the views and RPM inputs?",
+        "Update the inputs whenever you have fresh analytics, such as after a month closes or a new upload changes your audience mix. Comparing the projection with your actual monthly revenue shows whether your growth and RPM assumptions were reasonable. Adjust the inputs and run the tool again rather than relying on the first estimate."
+      ]
+    ]
+  },
+  "cod-vs-prepaid-rto-breakeven-calculator": {
+    "answer": "An RTO calculator ecommerce tool estimates expected profit for one order sold as cash on delivery and as prepaid. Return-to-origin orders lose forward shipping, return shipping and unrecovered product cost, so their rate matters. The tool weights each channel by its RTO rate and finds the COD RTO rate at which both channels earn the same expected profit.",
+    "aiSummary": "The tool estimates expected profit from COD orders with returns, and the same for prepaid orders with a discount. It subtracts return shipping and unrecovered product cost on each returned order. Its main limitation is that carrier and gateway terms vary, so the output is an estimate, not a forecast.",
+    "shortKeyword": "rto calculator ecommerce",
+    "longKeywords": [
+      "how to compare cod and prepaid profit",
+      "find the break-even cod rto rate",
+      "expected profit from cod orders with returns"
+    ],
+    "exampleInputs": {
+      "price": "999",
+      "cost": "350",
+      "codRto": "30",
+      "prepaidRto": "5"
+    },
+    "sections": [
+      {
+        "heading": "How to compare COD and prepaid profit per order?",
+        "text": "This calculator is for choosing between offering cash on delivery and prepaid checkout on the same product. Enter the selling price, product cost, shipping both ways and the COD fee. Then add your RTO rate for each channel and the prepaid discount. The result shows expected profit per order for each option and the difference between them, so you can see which channel earns more after returns. It works per order, so scale the result by your monthly order count when you plan."
+      },
+      {
+        "heading": "How do you find the break-even COD RTO rate?",
+        "text": "The break-even rate is the COD return rate at which expected COD profit equals expected prepaid profit. Above it, prepaid is ahead; below it, cash on delivery earns more. The tool solves this directly from the other inputs rather than by trial and error. Read the number as a threshold for your own operations: if your real COD return rate sits well above it, the prepaid discount is doing useful work. A break-even figure below zero or above one hundred percent means no COD return rate can make the two channels equal."
+      },
+      {
+        "heading": "Which inputs cause the most errors here?",
+        "text": "A common mistake is entering a return rate from a different seller, category or city and treating it as your own. Another is forgetting that the COD fee and gateway fee apply only to delivered orders in this model. Prepaid returns are assumed fully refunded, and product cost is recovered only at the percentage you set. The model holds rates constant, so it does not capture seasonal spikes in refusals or changes in carrier terms. Use your own order history to set the rates, and rerun the calculation whenever they change."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does a higher COD RTO rate hurt profit so much?",
+        "A returned order loses both shipping legs and any product cost you do not recover, and it earns no revenue. Because the expected profit weights that loss by the RTO rate, each extra point of returns reduces average profit per order. The effect grows with higher shipping and product costs."
+      ],
+      [
+        "Does this calculator work for every marketplace?",
+        "Yes, in the sense that it is marketplace-neutral: it takes the prices, fees and rates you enter and does not look up any platform's terms. You need to supply each platform's actual fees and return rates yourself. Results are estimates, because carrier and gateway terms differ from one seller account to another."
+      ],
+      [
+        "Should I set the prepaid discount to zero for a test?",
+        "Setting the discount to zero shows how the two channels compare at full price, which is useful if you are deciding whether a discount is needed at all. Enter the same return rates you would expect, and compare the expected profit per order in each channel. The break-even rate will shift, so read it after changing the discount."
+      ]
+    ]
+  },
+  "volumetric-weight-calculator": {
+    "answer": "A volumetric weight calculator converts carton length, width and height into a weight using a carrier divisor, such as cubic centimetres divided by 5000 for kilograms. The billed weight is the larger of this volumetric figure and the actual weight. The tool also converts each carton to cubic metres (CBM) for container planning and multiplies by carton count.",
+    "aiSummary": "Converts carton dimensions into volumetric weight with a divisor you choose, then bills the larger of that and actual weight per carton. It also reports total chargeable weight, carton volume in cubic metres and freight cost at a rate per kilogram. The main limitation is that carriers may round weights or measure consignments differently.",
+    "shortKeyword": "volumetric weight calculator",
+    "longKeywords": [
+      "how to calculate chargeable weight for cartons",
+      "convert carton size to cubic metres",
+      "pick a divisor for courier shipments"
+    ],
+    "exampleInputs": {
+      "unit": "cm",
+      "l": "50",
+      "w": "40",
+      "h": "30"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate chargeable weight for cartons?",
+        "text": "Use this to estimate what a carrier will bill for a box that is light but bulky. Enter the carton size in your chosen unit, the actual weight in kilograms, the divisor from your carrier, and the number of cartons. The tool converts inches to centimetres at 2.54 per inch, computes volumetric weight for each carton, and keeps the larger of that and the actual weight. Multiply the result by the carton count for the total chargeable weight, then by your freight rate for a cost estimate."
+      },
+      {
+        "heading": "How do I convert carton size to cubic metres?",
+        "text": "The CBM figure is the carton volume in cubic metres, which is length times width times height in centimetres divided by one million. Use it for planning how many cartons fit in a container or pallet load, because it measures space rather than weight. A carton can have a small CBM and still be charged by weight, or a large CBM and be charged by volume. Compare the two figures before choosing a shipping mode, and check which one your carrier uses to bill."
+      },
+      {
+        "heading": "What mistakes should I avoid with the divisor?",
+        "text": "A frequent mistake is using the 5000 default without checking your carrier, since the divisor differs by carrier and service, and common values run from 4000 to 6000. Another is mixing units, for example entering inches while the unit selector is still on centimetres. Carriers may round chargeable weight or measure whole consignments differently, which this estimate does not model. The tool also ignores dead weight from pallets, surcharges and minimum charges. Treat the output as a planning figure and confirm it against a real invoice."
+      }
+    ],
+    "faqs": [
+      [
+        "What should I check before I pick a divisor for courier shipments?",
+        "Check the divisor in your carrier's current rate terms for the exact service you use, because it varies between carriers and service levels. The 5000 default is only a starting point. Enter the same divisor the carrier applies when it weighs your cartons, and recheck the setting if you change service."
+      ],
+      [
+        "Does a larger carton always cost more to ship?",
+        "Not necessarily. A large carton that weighs little may be billed at its volumetric weight, so its size matters, but a small dense carton can be billed on its actual weight and cost less in total. Compare the chargeable weight for each carton type before choosing packaging."
+      ],
+      [
+        "Can I use it for sea freight pricing?",
+        "Yes for planning, since the CBM output gives the carton volume, which is the figure used to estimate container space. The chargeable weight and freight rate are per kilogram, so check whether your ocean or air quote uses weight or volume before you rely on the total. Local terms and minimum charges will change the final cost."
+      ]
+    ]
+  },
+  "ecommerce-mer-break-even-roas-calculator": {
+    "answer": "A breakeven ROAS calculator finds the return on ad spend at which advertising neither makes nor loses money after product and order costs. It divides average order value by contribution margin per order, which is order value times gross margin minus other variable costs. MER, meaning total revenue divided by total ad spend, is a blended figure you can compare against it.",
+    "aiSummary": "Works out break-even ROAS, maximum CPA, blended MER and net profit after ads. It also gives a target CPA from order value and margin for a chosen profit goal. The main limitation is that fixed costs are excluded and MER is not platform-attributed.",
+    "shortKeyword": "breakeven roas calculator",
+    "longKeywords": [
+      "how to find breakeven roas for ads",
+      "what cpa can i afford per order",
+      "target cpa from order value and margin"
+    ],
+    "exampleInputs": {
+      "revenue": "50000",
+      "adSpend": "12000",
+      "orders": "500",
+      "gm": "60"
+    },
+    "sections": [
+      {
+        "heading": "How to find breakeven ROAS for ads?",
+        "text": "Use this tool when you need to know how much return your ads must generate before they stop losing money. Enter total revenue and the number of orders, which gives average order value, then add gross margin on the product price and any other variable cost per order such as shipping or fees. Then enter total ad spend. The breakeven figure appears as a ratio, so a result of two means each unit of spend must bring back two units of revenue."
+      },
+      {
+        "heading": "What CPA can I afford per order at my margin?",
+        "text": "Break-even CPA equals contribution margin per order, so it is the most you can pay to acquire one order before ads push you into a loss. Target CPA is lower: it subtracts the profit margin you want after ads, expressed as a share of order value. Net profit after ads is orders times contribution margin, minus total ad spend. Compare the actual CPA, which is ad spend divided by orders, with the target. That tells you whether the campaign is above or below the profit goal you set."
+      },
+      {
+        "heading": "What common mistakes should I avoid with MER and ROAS?",
+        "text": "MER is a blended ratio across all channels and includes revenue you would have earned anyway, so it does not show what a single campaign returned. Platform-reported ROAS uses attribution windows and can differ from MER, so comparing the two directly is misleading. Breakeven figures also ignore fixed costs such as salaries and software. If contribution margin is zero or negative, no ROAS can break even, and the tool will say so. Use the output to set a floor for campaigns, not as a precise forecast."
+      }
+    ],
+    "faqs": [
+      [
+        "Why would a campaign with high ROAS still lose money?",
+        "A ROAS figure ignores costs other than the ad itself. If order value is small, or shipping, fees and returns take a large share of each sale, the margin left to cover ads can be thin or negative. Compare contribution margin per order with your actual CPA rather than trusting the ratio alone."
+      ],
+      [
+        "How do I set a target profit margin for ads?",
+        "Enter the profit you want to keep after ad costs as a percentage of order value. The tool subtracts that share of order value from contribution margin to give a target CPA. A higher goal lowers the CPA you can pay, so the ads must be more efficient to hit it."
+      ],
+      [
+        "Does this tool count fixed costs like rent?",
+        "No. It uses only the revenue, orders, gross margin, other variable cost per order and ad spend you enter, so salaries, software and rent are left out. Subtract your monthly fixed costs from net profit after ads to see the result that reflects the whole business. This is an educational estimate, not professional financial advice."
+      ]
+    ]
+  },
+  "ab-test-significance-calculator": {
+    "answer": "An AB test significance calculator compares conversion rates for two variants using a pooled two-proportion z-test. It reports each rate, the absolute and relative lift, a z statistic and a two-sided p-value. The result counts as significant when the p-value is below one minus your chosen confidence level, and a confidence interval shows the plausible range of the difference.",
+    "aiSummary": "Tests whether two variants differ in conversion rate, using a two-sided pooled z-test on visitors and conversions. It is useful to compare conversion rates of two variants once the sample size is fixed in advance. Stopping early or testing many variants raises the false-positive rate.",
+    "shortKeyword": "ab test significance calculator",
+    "longKeywords": [
+      "check if conversion test result is significant",
+      "confidence interval for conversion rate difference",
+      "compare conversion rates of two variants"
+    ],
+    "exampleInputs": {
+      "nA": "10000",
+      "xA": "500",
+      "nB": "10000",
+      "xB": "570",
+      "confidence": "95"
+    },
+    "sections": [
+      {
+        "heading": "How do I check if conversion test result is significant?",
+        "text": "Enter visitors and conversions for the control and the variant, then pick the confidence level you agreed before the test started. The calculator gives both conversion rates and the lift in percentage points and in relative terms. Significance comes from the p-value: if it is below one minus your confidence level, a difference this large would be unlikely if the variants truly converted alike. Keep the decision rule fixed in advance, and treat a significant result as evidence, not proof, that the variant is better in the future."
+      },
+      {
+        "heading": "What does the confidence interval for conversion rate difference show?",
+        "text": "The interval gives a range of plausible values for B minus A in percentage points. It is computed with the unpooled standard error, using the normal critical value for your confidence level. If the interval excludes zero, the test is significant at that level, and the interval also tells you how small or large the lift might be. A wide interval means the test has too few conversions to pin down the effect, even when the point estimate looks positive."
+      },
+      {
+        "heading": "What common mistakes or limits should I watch for?",
+        "text": "The most common mistake is checking the result every day and stopping when the p-value first dips under the threshold. That inflates false positives, because repeated looks give chance many chances to look significant. Another is testing many variants or metrics and reporting only the winner. The normal approximation is weaker with few conversions, so aim for at least about ten conversions and ten non-conversions per variant. Finally, a significant result does not show why the variant worked."
+      }
+    ],
+    "faqs": [
+      [
+        "What sample size do I need before starting?",
+        "The tool does not calculate sample size, so decide it before the test begins. Use a standard sample-size calculator with your current baseline rate and the smallest lift that would matter to you. Then run the test until you reach that size, and avoid stopping early when the result looks convincing."
+      ],
+      [
+        "Does a one-sided test give a different answer?",
+        "This calculator runs a two-sided test, so it checks for a difference in either direction. A one-sided test would put the whole error rate in one tail and can reach significance with less evidence, but only if you chose that direction before seeing the data. Pick the test type before you start."
+      ],
+      [
+        "What if my conversion counts are very small?",
+        "The z-test relies on a normal approximation, which is most reliable with at least about ten conversions and ten non-conversions per variant. With fewer events, the p-value and interval can be unreliable. Collect more traffic or run the test for longer before reading the result as significant or not."
+      ]
+    ]
+  },
+  "reorder-point-eoq-calculator": {
+    "answer": "A reorder point calculator tells you the stock level at which to place a new order, and how much to order each time. It combines the economic order quantity (EOQ), which balances ordering and holding costs, with safety stock sized from demand variability and your chosen service level. Reorder point equals average daily demand times lead time, plus safety stock.",
+    "aiSummary": "Computes economic order quantity, safety stock and reorder point from annual demand, daily demand variation, lead time and service level. It also gives safety stock for lead time demand and yearly cost. The main limitation is that lead-time variability is not modelled and demand is assumed normal.",
+    "shortKeyword": "reorder point calculator",
+    "longKeywords": [
+      "how much stock to reorder and when",
+      "economic order quantity for steady demand",
+      "safety stock for lead time demand"
+    ],
+    "exampleInputs": {
+      "annualDemand": "12000",
+      "sdDaily": "12",
+      "leadTime": "7",
+      "service": "95"
+    },
+    "sections": [
+      {
+        "heading": "How much stock to reorder and when do I order?",
+        "text": "This tool answers two questions for one product: how many units to buy in each order, and at what stock level to place the next order. Enter annual demand, the daily demand standard deviation, supplier lead time in days, the service level you want, and your ordering and holding cost. Optionally add unit cost to see total yearly spend. The reorder point is the level of stock that triggers the next purchase, so that stock does not run out during the lead time."
+      },
+      {
+        "heading": "How should I read economic order quantity for steady demand?",
+        "text": "EOQ is the order size that balances the yearly cost of placing orders against the yearly cost of holding stock. Bigger orders mean fewer orders and higher holding cost, smaller orders mean the reverse, and EOQ sits where the two curves cross. Read the reorder point as the trigger and the safety stock as the buffer against demand swings during the lead time. Higher service levels increase the buffer, so they raise average stock and holding cost. Treat the EOQ as a starting point to test against your supplier minimums."
+      },
+      {
+        "heading": "What common mistakes or limits should I watch for?",
+        "text": "A common mistake is using annual demand from a peak season as if it were constant, which inflates the order size. Another is entering a daily standard deviation that does not match the demand period you used for the average. The model assumes a fixed lead time, so a supplier who is often late needs a larger buffer than this shows. Quantity discounts, minimum order sizes and perishability are not modelled. Use the outputs as a first draft and review them against real stock-outs."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I convert a yearly demand figure to daily?",
+        "Divide annual demand by 365 to get average daily demand. The tool uses that figure to compute demand over the lead time, which is average daily demand multiplied by lead time in days. Use the same time basis for the standard deviation, so daily variation is paired with daily demand."
+      ],
+      [
+        "Should I use EOQ if my orders have a minimum quantity?",
+        "Check it first. EOQ assumes you can order any quantity and that discounts do not apply, so a supplier minimum can force an order larger than the calculated figure. Round the EOQ to the nearest allowed pack or minimum, then recalculate the yearly cost to see the difference."
+      ],
+      [
+        "Why is my reorder point higher than average demand?",
+        "Because the reorder point adds safety stock to the demand that arrives during the lead time. The buffer is larger when demand varies more, when lead time is longer, or when you pick a higher service level. Average demand alone could run out during any unusually busy period."
+      ]
+    ]
+  },
+  "bogo-discount-breakeven-calculator": {
+    "answer": "A discount breakeven calculator shows how many extra units a promotion must sell to earn the same profit as the normal price. It compares baseline profit with profit per unit under a buy one get one free, buy X get Y free, or percent-off offer. If profit per unit under the offer is zero or negative, no extra volume can make up the difference.",
+    "aiSummary": "Finds the volume needed to offset a discount, so a promotion matches baseline profit at the normal price. It covers BOGO, buy X get Y free and percent-off offers, and reports the uplift in units and percent. The main limitation is that it assumes complete sets and flat unit costs.",
+    "shortKeyword": "discount breakeven calculator",
+    "longKeywords": [
+      "how many extra units a promotion needs",
+      "compare bogo and percent off margins",
+      "volume needed to offset a discount"
+    ],
+    "exampleInputs": {
+      "price": "40",
+      "cost": "12",
+      "offer": "bogo",
+      "units": "500"
+    },
+    "sections": [
+      {
+        "heading": "How many extra units a promotion needs to break even?",
+        "text": "Use this when you are deciding whether a discount or buy-more offer is worth running. Enter the normal price, the unit cost, the offer type and your usual baseline units for the period. The calculator works out baseline profit, which is the profit per unit times units sold at full price. It then finds how many units the offer must sell to make the same total profit, and shows the extra volume as units and as a percentage of the baseline. That gap is the minimum uplift you need to justify the promotion."
+      },
+      {
+        "heading": "How do I compare BOGO and percent off margins?",
+        "text": "Each offer has a different effective discount and therefore a different profit per unit. For buy X get Y free, the effective discount is Y divided by X plus Y, which is why buy one get one free equals half off on paper. Percent off reduces every unit's price directly. Compare the profit per unit under each offer, not just the sticker discount, and then the units needed to match baseline. Two offers that look similar can need very different volumes once the cost of the free units is counted."
+      },
+      {
+        "heading": "Which assumptions can make this estimate wrong?",
+        "text": "The model assumes customers buy complete sets, which may not hold: a shopper might take one free unit without buying the paid units. It also assumes unit costs stay flat, so bulk discounts from suppliers are not included. Extra fixed costs such as staff time are ignored, and so are returns and repeat purchases that a promotion might bring. If the profit per unit under the offer is zero or negative, the calculator says no volume can compensate. Use it to screen offers before testing them on real customers."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I enter a custom buy and free quantity?",
+        "Yes. Choose the custom option, then set X as the number customers buy and Y as the number they get free. The effective discount is Y divided by X plus Y, and the same profit logic applies as for the standard offers, so compare the result with the baseline units you entered."
+      ],
+      [
+        "How do I set the baseline units?",
+        "Use units sold per period at the normal price, such as the same month last year or a typical week, so the comparison is fair. If sales vary a lot, use an average. The baseline sets the profit target the promotion must reach, so an unrealistic figure will give a misleading uplift."
+      ],
+      [
+        "Should I test an offer before running it everywhere?",
+        "Yes, where possible. A calculator can show the volume you need, but it cannot predict how customers respond. Run the offer on a limited set of products or a short window, compare results with your baseline, and roll it out only if the real volume beats the target."
+      ]
+    ]
+  },
+  "price-elasticity-calculator": {
+    "answer": "A price elasticity of demand calculator measures how much quantity changes when price changes, using the midpoint formula on two observations. An absolute value above one means demand is elastic, below one inelastic. The tool also shows the revenue change between the two points and, if you enter unit cost, a constant-elasticity price that maximises profit.",
+    "aiSummary": "Uses the midpoint method for two price points to measure price sensitivity from two price and quantity observations. It reports whether demand is elastic or inelastic, the revenue change, and an optional profit-maximising price. Its main limitation is that two points cannot describe a whole demand curve.",
+    "shortKeyword": "price elasticity of demand calculator",
+    "longKeywords": [
+      "how to tell elastic from inelastic demand",
+      "estimate revenue change after a price rise",
+      "midpoint method for two price points"
+    ],
+    "exampleInputs": {
+      "p1": "10",
+      "q1": "1000",
+      "p2": "12",
+      "q2": "700",
+      "cost": "6"
+    },
+    "sections": [
+      {
+        "heading": "How to tell elastic from inelastic demand?",
+        "text": "Elasticity tells you how strongly buyers respond to a price change. A value with absolute size above one means quantity falls proportionally more than price rises, so revenue drops when you raise price. A value below one means buyers are less sensitive, so a price rise tends to lift revenue even as units fall. A value of exactly one means revenue stays flat. Read the sign as well: for normal goods the value is negative because higher price means lower quantity."
+      },
+      {
+        "heading": "Why use the midpoint method for two price points?",
+        "text": "The midpoint formula divides the change by the average of the old and new values, for both price and quantity. That makes the answer the same whichever point you call the start, which a simple percentage change does not. Enter the original and new price and quantity, and the tool does this for you. The result is a single estimate from two observations, so it describes movement between those two points rather than the whole demand curve. Use the revenue figures alongside it to see whether the change pays off."
+      },
+      {
+        "heading": "What common mistakes should I avoid with elasticity?",
+        "text": "A frequent mistake is treating one price change as a reliable elasticity for every price level, because demand curves are rarely constant-elasticity over a wide range. Another is changing price and something else at once, such as a promotion or a season, so the quantity change is not caused by price alone. Small price changes can be swamped by noise in the sales data, which makes the estimate unstable. Also remember that the profit-maximising price needs unit cost and a constant-elasticity assumption, so treat it as a starting point for testing rather than a final answer."
+      }
+    ],
+    "faqs": [
+      [
+        "How do I estimate revenue change after a price rise?",
+        "Multiply each price by its quantity to get revenue at both points, then compare the two totals. If units fall by more than the price rises in percentage terms, revenue drops; if they fall by less, revenue rises. The calculator shows the percentage change in revenue directly."
+      ],
+      [
+        "What is a constant-elasticity price estimate?",
+        "It assumes the same elasticity holds across all prices, so the profit-maximising price follows from unit cost and that elasticity. The tool uses the formula cost times elasticity divided by one plus elasticity, and only when elasticity is below minus one. Treat it as an illustration, because real demand is rarely constant."
+      ],
+      [
+        "Can the elasticity be positive?",
+        "Normally no for a standard demand curve, since higher prices reduce quantity and the sign is negative. A positive result usually points to a data problem, such as a supply shift or a change in demand at the same time as price. Check the inputs and the timing before drawing conclusions."
+      ]
+    ]
+  },
+  "ev-home-charging-time-cost-calculator": {
+    "answer": "An EV charging time calculator estimates how long a home charge takes from battery size, starting and target charge, and the slower of the wallbox and onboard charger limits. It adjusts for charging efficiency, then converts the energy into grid kWh and cost at your electricity price. Taper at high charge levels is not modelled, so long top-ups often run longer than estimated.",
+    "aiSummary": "Calculates charging time, grid energy and the cost of charging an EV at home, using the slower of charger and onboard limits plus efficiency loss. The main limitation is constant charge power, so slowdown at high charge and cold weather are not captured.",
+    "shortKeyword": "ev charging time calculator",
+    "longKeywords": [
+      "how long does a home ev charge take",
+      "work out wallbox charging time",
+      "the cost of charging an ev at home"
+    ],
+    "exampleInputs": {
+      "battery": "60",
+      "start": "20",
+      "target": "80",
+      "chargerKw": "7.4"
+    },
+    "sections": [
+      {
+        "heading": "How long does a home EV charge take in hours?",
+        "text": "Use this tool to plan overnight charging or to compare wallbox sizes before buying. Enter the usable battery capacity, the starting and target percentages, your charger's power, and the car's onboard AC limit, which is often the real cap. The calculator works out the energy needed for the range you choose, then divides by effective power and efficiency to give hours. Compare the result with the hours you have overnight to see if a full top-up fits."
+      },
+      {
+        "heading": "How do I work out wallbox charging time for my car?",
+        "text": "Work from the effective power, which is the lower of the charger rating and the car's AC limit, not the larger one. A 7.4 kW wallbox into an 11 kW car still charges at 7.4 kW before losses. Efficiency then reduces what reaches the battery, so the grid draws more energy than the battery stores. Cost follows the grid energy at your price per kWh, and range added comes from consumption per 100 km. Those four outputs together tell you the time, the energy, the money and the distance you gain."
+      },
+      {
+        "heading": "What common mistakes or limits affect this estimate?",
+        "text": "The biggest limit is constant power. Real sessions slow down as the battery fills and in cold weather, so times above about 80 percent are often longer than shown. A common mistake is entering the charger's rated power while the car's onboard charger is smaller, which overstates speed. Another is forgetting that the grid bill includes losses, so entering battery kWh alone understates cost. Public DC fast charging uses different rates and is not what this tool models. Treat the result as a home estimate and check your actual meter reading after one session."
+      }
+    ],
+    "faqs": [
+      [
+        "What does the efficiency setting change?",
+        "Efficiency is the share of grid energy that reaches the battery, so the rest is lost as heat in the charger and cable. Lowering it increases the grid energy and cost for the same battery gain, and it also lengthens the charge time. The default is only a starting point, and your own meter readings are a good check."
+      ],
+      [
+        "How do I find the usable battery capacity?",
+        "Use usable capacity from the manufacturer's specification or your car's app, not the gross figure printed on a marketing page, since usable capacity is what you can actually charge into. Results are only as reliable as this input, so check it first when your estimate looks off."
+      ],
+      [
+        "Can I charge to full every night?",
+        "The calculator will estimate that time, but charging to the top every night is a battery-care question rather than a calculation one. A lower daily target is one option, and it also shortens the session. Check your car's guidance on daily limits before changing the target."
+      ]
+    ]
+  },
+  "ac-btu-room-size-calculator": {
+    "answer": "An AC tonnage calculator estimates the cooling capacity a room air conditioner needs, in BTU per hour and in tons. It starts from a floor-area chart and adjusts for sun exposure, extra people and kitchen heat. One ton equals 12,000 BTU per hour, so the result converts directly. Ceiling height, insulation and climate are not part of the estimate.",
+    "aiSummary": "Estimates room air conditioner capacity in BTU per hour and tons from floor area, with adjustments for sun, occupants and kitchens. It helps answer how big an AC for a room should be. The main limitation is that it assumes a typical ceiling height and ignores insulation and climate.",
+    "shortKeyword": "ac tonnage calculator",
+    "longKeywords": [
+      "choose a room ac by floor area",
+      "convert btu per hour to tons",
+      "how big an ac for a room"
+    ],
+    "exampleInputs": {
+      "area": "300",
+      "unit": "sqft",
+      "sun": "sunny",
+      "people": "4"
+    },
+    "sections": [
+      {
+        "heading": "How do I choose a room AC by floor area?",
+        "text": "Start with the floor area of the room you want to cool, in square feet or square metres. The calculator reads that area against a sizing chart and returns a base capacity in BTU per hour. Then it adjusts the figure for very sunny or heavily shaded rooms, for each person beyond two in the room, and for a kitchen. Use the result to shortlist units, but compare the nearest rated sizes on a manufacturer label before buying."
+      },
+      {
+        "heading": "How do I convert BTU per hour to tons?",
+        "text": "Cooling capacity is quoted in two common units. Divide BTU per hour by 12,000 to get tons of refrigeration, which is the figure shown beside the BTU result. Some manufacturers and shops also quote kilowatts, a different unit, so check the label before comparing. Rounding up to the next available size is common, but a unit that is much too large can cycle on and off and struggle to remove humidity in hot weather."
+      },
+      {
+        "heading": "What mistakes or limits should I know about sizing?",
+        "text": "A common mistake is sizing by floor area alone and ignoring a very sunny room or heavy daily use by many people. Another is forgetting that the base figure assumes a typical ceiling height, so tall rooms may need more capacity. Large windows, insulation and local climate also change the real load. The calculator refuses areas below 100 or above 2,500 sq ft because the chart does not cover them. Confirm the final choice with an installer before buying."
+      }
+    ],
+    "faqs": [
+      [
+        "How much does each extra person add to the estimate?",
+        "Each person beyond two adds 600 BTU per hour, because people give off body heat. Two people or fewer add nothing, so a studio with one occupant uses only the chart and sun adjustments. A kitchen adds a separate fixed amount on top."
+      ],
+      [
+        "Should I use square metres or square feet?",
+        "Either works, as long as the unit selector matches the number you type. Square metres are converted at 1 square metre equals 10.7639 square feet before the chart lookup, so the result is the same for the same room. Double check the unit before you read the output."
+      ],
+      [
+        "What should I do if my room is outside the chart range?",
+        "The calculator will not give a figure for areas below 100 or above 2,500 sq ft, because the chart does not cover them. For a very small space, a compact unit is usually the practical choice. For a very large space, ask an installer to size a system with a proper load calculation."
+      ]
+    ]
+  },
+  "tv-viewing-distance-calculator": {
+    "answer": "The TV viewing distance calculator estimates how far you should sit from a screen for a chosen horizontal field of view. Enter the diagonal size and aspect ratio and it works out the screen width, then finds the distance with a tangent. Pick 30 degrees, 40 degrees or a custom angle, or enter your seating distance to find the angle you get.",
+    "aiSummary": "Computes the seating distance from a TV for a given horizontal field of view. It helps you work out screen width from a diagonal and aspect ratio, then uses half the width and half the angle to solve for distance. Runs in the browser. Limitation: only width is used, so mounting height is ignored.",
+    "shortKeyword": "tv viewing distance calculator",
+    "longKeywords": [
+      "how far to sit from a TV",
+      "seating distance for a chosen viewing angle",
+      "work out screen width from a diagonal"
+    ],
+    "exampleInputs": {
+      "diag": "65",
+      "aspect": "16:9",
+      "unit": "in",
+      "dist": "100"
+    },
+    "sections": [
+      {
+        "heading": "How far to sit from a TV?",
+        "text": "People use this to plan a living room before buying or mounting a set. Pick the diagonal and aspect ratio, then choose a horizontal field of view. The result is the distance at which the screen spans that angle. A larger angle means a bigger picture filling more of your vision and a shorter seat. Use it to compare a few screen sizes against the sofa you already have, rather than guessing from the box."
+      },
+      {
+        "heading": "What do the 30 and 40 degree results tell you?",
+        "text": "The 30 degree figure is often cited from SMPTE guidance and the 40 degree figure from THX guidance. Both are widely quoted starting points, not rules. Treat the shorter distance as a closer, more immersive seat and the longer one as a more relaxed view that shows the whole screen. The custom angle lets you test any value in between. If you enter a seating distance instead, the tool reports the angle that distance produces, so you can check whether an existing room already suits you."
+      },
+      {
+        "heading": "What limits should you keep in mind?",
+        "text": "The calculation uses screen width only, so the height of the screen above the floor is not included. That matters when you plan eye level and wall mount height, so check that separately. Personal comfort, room layout and the kind of content you watch all change what feels right. Treat the numbers as a starting range, then sit at a few distances and check what looks comfortable before you settle on a spot."
+      }
+    ],
+    "faqs": [
+      [
+        "Which seating distance for a chosen viewing angle suits you?",
+        "No single distance suits everyone. The calculator shows the distance for each angle so you can compare. Pick the angle that feels comfortable for your room and content, then use the distance it gives as your starting seat. Moving closer makes the picture feel larger; moving back gives a wider view of the whole screen."
+      ],
+      [
+        "Can I check the angle my current seat gives?",
+        "Yes. Enter the screen size, aspect ratio and the distance from your seat to the screen, and the calculator returns the horizontal field of view you get there. Measure from the screen to your eyes in the seat, using the same unit as the diagonal. The result is an estimate that uses width only."
+      ],
+      [
+        "Why do the three distances differ so much?",
+        "Each angle is a different share of your field of vision, so the distance changes with it. A smaller angle means you sit farther back, since the same screen spans less of your view. Larger angles bring you closer. Only the angle changes in the formula, so the spread follows directly from it."
+      ]
+    ]
+  },
+  "coffee-brew-ratio-calculator": {
+    "answer": "The coffee to water ratio calculator works out how much water to pour for a given coffee dose, measured by weight. Ratios are written as grams of water per gram of coffee, so 16 means 1:16. Start from a dose or a target volume, then the tool multiplies the dose by the ratio. It can estimate extraction yield from a TDS reading and the amount in your cup.",
+    "aiSummary": "Converts a coffee dose into brew water using a weight ratio, or works back from a target volume. It estimates extraction yield from the TDS of a brew, and calculates how much water dilutes a concentrate to a target ratio. Ratios are only starting points, and brewed liquid is less than water poured.",
+    "shortKeyword": "coffee to water ratio calculator",
+    "longKeywords": [
+      "how much water for a coffee dose",
+      "extraction yield from a TDS reading",
+      "plan cold brew concentrate dilution water"
+    ],
+    "exampleInputs": {
+      "mode": "dose",
+      "dose": "20",
+      "ratio": "16",
+      "tds": "1.4",
+      "bevG": "290"
+    },
+    "sections": [
+      {
+        "heading": "How much water for a coffee dose?",
+        "text": "Start with the dose in grams, since weighing coffee is more repeatable than scooping it. Multiply that dose by the ratio to get the brew water in grams. Stronger coffee uses a lower number of grams of water per gram of coffee, while a higher ratio gives a lighter cup. Weigh the water too, because a scale keeps the proportions consistent from one brew to the next. Use the ratio as a starting point and adjust it after tasting."
+      },
+      {
+        "heading": "How should you read the yield and TDS numbers?",
+        "text": "Extraction yield estimates how much of the coffee ends up dissolved in the cup. It is calculated from the brew strength (TDS) and the beverage weight, divided by the dose. Yield is a diagnostic rather than a score. A low figure often means the coffee was under-extracted, and a high one can point to over-extraction, but taste is the final check. Compare changes between brews, changing one variable at a time."
+      },
+      {
+        "heading": "What mistakes or limits should you watch for?",
+        "text": "The most common mistake is mixing units, such as entering a cup size in ounces while the ratio expects grams. Remember that brewed coffee holds less liquid than the water you poured, because grounds absorb some of it. Also, the calculator does not know your beans, grind or equipment, so a ratio that suits one coffee may taste thin or harsh with another. Keep the TDS reading honest by measuring with a refractometer, and note your settings so you can repeat a good brew."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I check extraction yield from a TDS reading?",
+        "Yes. Enter your brew TDS as a percentage, then the weight of the beverage in the cup. The tool multiplies TDS by that beverage weight and divides by the coffee dose, giving the extraction yield as a percentage. Use the result to compare brews against each other rather than as a pass or fail mark."
+      ],
+      [
+        "Can I use it to plan cold brew concentrate dilution water?",
+        "Yes. Set the concentrate ratio to how many grams of concentrate you make per gram of coffee, then set the target ratio you want after dilution. The tool gives the water to add as the dose multiplied by the difference between those two ratios. Taste the result, since concentrate strength is a matter of preference."
+      ],
+      [
+        "How do I start from a target volume instead?",
+        "Switch the calculate-from setting to target volume, then enter the number of cups and the size of each cup in millilitres. The tool treats that total as the brew water and divides it by the ratio to find the dose. Because grounds hold some water, the cup will hold less than the water you poured."
+      ]
+    ]
+  },
+  "sourdough-bakers-percentage-calculator": {
+    "answer": "The bakers percentage calculator expresses every ingredient as a share of total flour, which is the base and always counts as the full amount. Enter the total dough weight, hydration, salt and starter, and it solves for the grams of flour, water, salt and starter. Starter flour and water are counted toward the totals, so only the remaining amounts are added.",
+    "aiSummary": "Turns baker's percentages into ingredient weights for a total dough weight, hydration, salt level and starter share. It works out how starter flour and water are counted, then subtracts them from the totals to give the amounts to add. Limitation: it sets weights only and does not model fermentation time or temperature.",
+    "shortKeyword": "bakers percentage calculator",
+    "longKeywords": [
+      "how to scale a sourdough recipe",
+      "how many grams of flour per dough ball",
+      "how starter flour and water are counted"
+    ],
+    "exampleInputs": {
+      "total": "1000",
+      "hydration": "70",
+      "starterPct": "20",
+      "balls": "4"
+    },
+    "sections": [
+      {
+        "heading": "How to scale a sourdough recipe by weight?",
+        "text": "Scaling a recipe by weight is simpler when you work from percentages. Flour is always the base, so every other ingredient is a fixed share of it. Choose the total dough weight you want, and the calculator sets the proportions for you. Doubling a batch means doubling the total while keeping the same hydration, salt and starter percentages, so the flavour and texture stay consistent. Write the result down as a formula you can reuse next time."
+      },
+      {
+        "heading": "What do the starter percentages change?",
+        "text": "The starter is a mix of flour and water that already contains fermenting culture. Its percentage sets how much of the total flour is held in the starter, so a larger starter share reduces the flour you add later. Starter hydration matters because a stiff starter and a loose starter hold different amounts of water per gram of flour. The calculator splits the starter into its flour and water first, then subtracts those from the totals so the dough still reaches the hydration you set."
+      },
+      {
+        "heading": "What mistakes or limits should you avoid?",
+        "text": "A common mistake is entering the total dough weight in the wrong unit. Remember that the total includes salt, water and starter, not only flour. If the starter needs more water or flour than the recipe contains, the calculator shows an error rather than guessing. The tool also does not account for flour absorption differences, so expect to adjust water by feel. Check the sum of all ingredients shown as a check against your target."
+      }
+    ],
+    "faqs": [
+      [
+        "How many grams of flour per dough ball?",
+        "Divide the dough into equal parts by the number of balls. The calculator gives you the total dough weight, so each ball is that figure divided by your ball count. To find the flour in one ball, multiply that ball weight by the flour share of the dough, which you can read from the flour and total figures."
+      ],
+      [
+        "What if the starter needs more water than I have?",
+        "The calculator checks the starter split against your recipe totals. If the starter needs more water or flour than the recipe contains, it shows an error instead of producing unreliable weights. Reduce the starter share or raise the total hydration, then calculate again to get a valid set of amounts."
+      ],
+      [
+        "Can I use it for a dough with no starter?",
+        "Yes. Set the starter percentage to zero and the calculator treats all the flour and water as added directly. Hydration, salt and total weight still work the same way, so you can use it for a plain yeasted dough. It has no yeast field, so note yeast separately in your own recipe."
+      ]
+    ]
+  },
+  "caffeine-half-life-calculator": {
+    "answer": "The caffeine half life calculator estimates how much caffeine remains in your body after a given time, using exponential decay. Each half-life, the amount falls by half. Enter the dose, hours since it was taken and your chosen half-life, and the tool returns what is left. It is an educational model, not medical advice, and the half-life you enter drives every result.",
+    "aiSummary": "Estimates caffeine left in the body from one or two doses, using exponential decay with a half-life you supply. It also reports the time to a threshold. The core formula is dose times one half raised to hours divided by half-life. Limitation: a simplified model that ignores absorption time and individual differences.",
+    "shortKeyword": "caffeine half life calculator",
+    "longKeywords": [
+      "how much caffeine is left after a drink",
+      "how long until caffeine drops below a threshold",
+      "adding a second dose to the total"
+    ],
+    "exampleInputs": {
+      "dose": "200",
+      "hours": "5",
+      "halfLife": "5",
+      "threshold": "50"
+    },
+    "sections": [
+      {
+        "heading": "How much caffeine is left after a drink?",
+        "text": "The tool starts from the dose you enter and the time since you had it. Each half-life that passes cuts the remaining amount in half, so the curve falls quickly at first and then more slowly in absolute terms. With a 200 mg dose, 5 hours and a 5 hour half-life, about half the dose remains. Change the half-life to see how much the answer depends on it, since individuals differ."
+      },
+      {
+        "heading": "How long until caffeine drops below a threshold?",
+        "text": "The threshold is a level you choose, such as a level you want to stay under. The tool uses the fact that all doses decay at the same rate, so the time to fall below the threshold is the half-life multiplied by the base-two logarithm of the current total divided by the threshold. A larger gap between the current amount and the threshold means more time. The threshold is only a number you pick, not a medical limit."
+      },
+      {
+        "heading": "Where does this model fall short?",
+        "text": "The model is simple: one half-life applies to every dose, and absorption is ignored, so the peak after a drink may come later than the decay curve suggests. Half-life varies widely from person to person and is affected by pregnancy, some medications, liver function and other factors. The tool does not know how much caffeine a drink contains, so look up that figure separately. Use the result as a rough guide and not as advice about what you should consume."
+      }
+    ],
+    "faqs": [
+      [
+        "Why does the threshold matter?",
+        "The threshold gives the tool a level to measure against. Without one, you see the remaining amount only. With one, you also see how many more hours it takes to drop below that number. Pick a value that reflects what you want to know, and keep in mind it is an estimate rather than a clinical figure."
+      ],
+      [
+        "Can I use the tool for tea or energy drinks?",
+        "Yes, as long as you enter the caffeine content yourself in milligrams. The tool treats any source the same, so tea, coffee and energy drinks all work once you know their total caffeine. The result is only as accurate as the figure you type in, so check the label or a reliable reference."
+      ],
+      [
+        "How does adding a second dose to the total work?",
+        "Adding a second dose to the total works this way: each dose decays on its own timeline, so the tool calculates what remains from each one and adds the results. Enter the second dose with its own hours-since value. Set it to zero if you had only one drink."
+      ]
+    ]
+  },
+  "vdot-race-equivalency-calculator": {
+    "answer": "The running pace calculator turns a recent race result into a VDOT score, based on the Daniels and Gilbert equations. From that score it gives your average pace per kilometre and mile, plus predicted finish times at 5K, 10K, half marathon and marathon distances. Results are model predictions, so real races depend on training, weather and pacing.",
+    "aiSummary": "Converts one race time into a VDOT value using Daniels-style equations, then estimates equivalent finish times for half marathon and other standard distances. It also reports average pace per kilometre and mile for the race. The method is a published physiological model, so predictions are approximate. Training paces are not included.",
+    "shortKeyword": "running pace calculator",
+    "longKeywords": [
+      "convert race time to pace per kilometre",
+      "predict my marathon time from a 5K",
+      "equivalent finish times for half marathon"
+    ],
+    "exampleInputs": {
+      "distance": "5000",
+      "h": "0",
+      "m": "20",
+      "s": "0"
+    },
+    "sections": [
+      {
+        "heading": "Can I convert race time to pace per kilometre?",
+        "text": "Yes. Enter the distance you raced and your finish time in hours, minutes and seconds. The calculator divides the distance by the time to get your average speed, then shows the pace for each kilometre and each mile. Average pace is useful for planning splits, but you will still pace the first kilometres more gently than the last if the race is hard. Use the per-mile figure if your race signage uses miles."
+      },
+      {
+        "heading": "What does the VDOT number actually mean?",
+        "text": "VDOT is a score that tries to describe your running ability from one race result, combining how fast you ran with how long you could hold that pace. A higher figure means a faster predicted race at every distance. Compare VDOT values from similar races, since a short race done flat out and a longer race at steady effort can produce different scores. Treat VDOT as a relative guide to your current fitness, not as a fixed rating that will remain the same."
+      },
+      {
+        "heading": "Where do these predictions go wrong?",
+        "text": "Predictions assume that the race was run with a sensible pace and that your training matches the event. Hills, heat, wind, a poor taper or a bad day all move the real result away from the estimate. A single fast 5K does not guarantee a strong marathon, because the longer distance depends on endurance that a short race does not test. The tool also does not give training paces, so use a separate plan for those sessions. Treat the output as an educational estimate, not professional coaching advice."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I predict my marathon time from a 5K?",
+        "You can enter a 5K result and read the equivalent marathon time the tool produces. Equivalent times are estimates that assume similar training and pacing across distances. Longer races are harder to predict, so treat the marathon figure as a rough target."
+      ],
+      [
+        "Does the result work for trail or treadmill runs?",
+        "The equations assume a race run at a steady, measured effort on a course that allows an honest pace. Trail courses, hills, heat and treadmill sessions can change the speed you achieved, so the VDOT may not reflect your fitness well. Use the result with care, and prefer flat, recent road races when you have the choice."
+      ],
+      [
+        "What if my race length is not in the menu?",
+        "Choose the listed distance that matches your race exactly. The tool only accepts the distances in its menu, so a race of another length cannot be entered as it stands. Check the hours, minutes and seconds carefully, because a typing slip changes the score as much as a wrong distance would."
+      ]
+    ]
+  },
+  "rupee-number-to-words-converter": {
+    "answer": "The rupee words converter writes an Indian rupee amount in words using crore, lakh, thousand and hundred, with paise spelled out as well. It also shows the Indian comma format, such as the grouping of lakh and crore, and a cheque-style line ending in Only. It is a formatting aid, so check the wording against your bank or organisation before you rely on it.",
+    "aiSummary": "Converts a rupee amount into Indian-English words, using crore, lakh, thousand and hundred blocks, and rounds paise to two places. It also produces the Indian digit-grouping format and a cheque-style line. Runs in the browser. Limitation: the wording is a formatting aid and up to 12 digits before the decimal point are handled.",
+    "shortKeyword": "rupee words converter",
+    "longKeywords": [
+      "number to words in lakhs and crores",
+      "cheque amount in words for a bank",
+      "indian comma format for invoices"
+    ],
+    "exampleInputs": {
+      "amount": "1234567.89"
+    },
+    "sections": [
+      {
+        "heading": "Can I write a number to words in lakhs and crores?",
+        "text": "The Indian system groups digits differently from the western thousands system. After the last three digits, the groups are of two, so the next block is thousands, then lakhs of hundred thousands, then crores of ten million. The converter splits the whole rupee part into these blocks and spells out each one. Each block of digits is read as its own phrase. Read the words from the largest block down to the smallest for the amount to make sense."
+      },
+      {
+        "heading": "How is the Indian comma format for invoices built?",
+        "text": "The comma format puts the last three digits in one group, then groups the rest in pairs moving left. A value of one lakh twenty three thousand is written with commas after the hundreds and then every two digits. Use the same grouping on invoices so totals match what your readers expect. Keep the decimal point with the paise, which are rounded half up to two places before grouping. Check the result against a printed example before you send it."
+      },
+      {
+        "heading": "Where could the wording go wrong?",
+        "text": "Zero and single-rupee amounts need special handling, since a one rupee amount uses the singular form. Very large values beyond the supported digit limit are not converted, so keep the amount within that limit. The tool does not follow any single bank's rules, and some banks prefer particular wording or spacing on cheques. Check the final line against your bank or organisation before you sign or send a document, rather than assuming it will be accepted."
+      }
+    ],
+    "faqs": [
+      [
+        "Should a cheque amount in words for a bank follow a set format?",
+        "The tool produces a standard Indian-English line ending in Only, which is the usual style on cheques and vouchers. Some banks have their own rules for capitalisation, punctuation or spacing. Compare the output with a cheque from your bank or ask them directly, and adjust the line by hand if they require something different."
+      ],
+      [
+        "Can I get the Indian comma format as well?",
+        "Yes. The same amount is shown in the Indian comma format, grouping the last three digits and then pairs of digits, with the rupee sign in front. This lets you check the number you typed against the words. If the two do not match, look for a typing slip in the amount field before you copy the result."
+      ],
+      [
+        "Is there a limit on how large the amount can be?",
+        "Yes. The converter handles up to 12 digits before the decimal point, which covers very large sums but not unlimited values. Amounts with more digits than that will not be converted correctly. For anything beyond that size, write the amount in a standard format by hand and have it checked."
+      ]
+    ]
+  },
+  "exam-negative-marking-calculator": {
+    "answer": "The negative marking calculator works out your net exam score when correct answers earn marks and wrong answers lose marks. It also gives accuracy, the share of attempts you got right, and attempt rate. Break-even accuracy shows the level at which a guess has zero expected gain. You enter the marking scheme yourself, since rules vary between exams.",
+    "aiSummary": "Calculates exam score from correct and wrong answers, using marks per correct answer and a penalty per wrong one that you supply. It reports accuracy, the attempt rate for an exam section, marks lost to penalties and break-even accuracy. Limitation: it applies your inputs and does not know any exam's official rules.",
+    "shortKeyword": "negative marking calculator",
+    "longKeywords": [
+      "how to calculate break-even guessing accuracy",
+      "should I guess on negative marking exams",
+      "attempt rate for an exam section"
+    ],
+    "exampleInputs": {
+      "correct": "120",
+      "wrong": "40",
+      "mpos": "4",
+      "mneg": "1"
+    },
+    "sections": [
+      {
+        "heading": "How to calculate break-even guessing accuracy?",
+        "text": "Break-even accuracy balances the gain of a correct guess against the loss of a wrong one. If a right answer earns m marks and a wrong answer costs n, the expected gain is zero when your chance of being right equals n divided by m plus n. With +4 and −1 it is one fifth. Above it, guessing adds value on average, and below it, guessing tends to lower your score. Use the figure to decide how much to guess."
+      },
+      {
+        "heading": "What do accuracy and attempt rate tell you?",
+        "text": "Accuracy looks only at the questions you answered, dividing correct answers by the sum of correct and wrong answers. Attempt rate looks at the whole paper, showing how much of it you tried. A student can have high accuracy and a low attempt rate, which means they were careful but left many questions blank. Reading the two together shows whether a score is limited by knowledge, by time or by a cautious approach to guessing."
+      },
+      {
+        "heading": "What can the calculator not tell you?",
+        "text": "The calculator applies the marking scheme you type in, so a wrong scheme gives a wrong score. It does not know the official rules for any exam, which change between years and sections. It also cannot predict your rank, because rank depends on how other candidates perform. The break-even figure assumes every guess has the same chance of being right, which may not hold for every question."
+      }
+    ],
+    "faqs": [
+      [
+        "Should I guess on negative marking exams?",
+        "Guess only when you can eliminate some options or have a real reason to prefer one answer. Compare your accuracy on attempted questions with the break-even figure from the calculator. If your accuracy is above that level, guessing adds value on average, and if it is below, leaving questions blank protects your score."
+      ],
+      [
+        "What if I leave questions blank?",
+        "Blank questions earn nothing and lose nothing, so they do not appear in the wrong count. The attempt rate drops as you skip more questions, while accuracy is measured only on the ones you answered. A blank is therefore the safe choice when you cannot narrow the options."
+      ],
+      [
+        "Is the maximum marks field needed?",
+        "No. The maximum marks field is optional, and the net score, accuracy, attempt rate and break-even figure are worked out from the other inputs. Enter it only if your exam reports a total you want to compare against. The score itself does not depend on it."
+      ]
+    ]
+  },
+  "attendance-percentage-calculator": {
+    "answer": "This 75 percent attendance calculator divides the classes you attended by the total held so far, then shows how many you can miss or must attend in a row to reach your required percentage. It works for any target you enter, not only 75. Institutions and courses set their own rules, so confirm yours before planning around the result.",
+    "aiSummary": "Computes attendance as classes attended divided by classes held, then works out how many classes can be missed, or how many must be attended in a row, to meet a required percentage. An optional end-of-term projection assumes all remaining classes count. Limitation: the required percentage must match your institution's own rule.",
+    "shortKeyword": "75 percent attendance calculator",
+    "longKeywords": [
+      "classes you can miss this term",
+      "classes to attend in a row",
+      "projected attendance at the end of term"
+    ],
+    "exampleInputs": {
+      "attended": "60",
+      "total": "90",
+      "required": "75",
+      "remaining": "30"
+    },
+    "sections": [
+      {
+        "heading": "Can you check the classes you can miss this term?",
+        "text": "Start with the classes attended and the total held so far. The calculator turns those into a percentage, then compares it with the required figure you enter. If you are above the requirement, it shows how many more classes you could miss before dropping below. Keep track of this number each week, because a few missed sessions can change it more than you expect. Recheck the numbers after each class so the answer stays current."
+      },
+      {
+        "heading": "How many classes to attend in a row when you are short?",
+        "text": "When your attendance is below the required figure, missing more classes will not help. Each class you attend adds to both the attended count and the total held, so the calculator works out the smallest run of attended classes that lifts the percentage to your target. That figure assumes you attend every one of them with no misses in between, and that every new class is counted. Compare it with the classes left in the term to judge whether recovery is realistic."
+      },
+      {
+        "heading": "What does projected attendance at the end of term show?",
+        "text": "The projection assumes every remaining class is counted and shows the percentage you would finish with under a chosen pattern. Two extremes are useful: attending all remaining classes and missing all of them. Seeing both lets you judge how much room you have. The projection does not account for holidays, exemptions, late marks or institutional rules, so check those separately before relying on any final figure."
+      }
+    ],
+    "faqs": [
+      [
+        "Can I use it for a required percentage other than 75?",
+        "Yes. Replace the required figure with the percentage your course uses, and the calculator updates the miss and attend results to match. The formulas work for any sensible percentage, so enter the rule exactly as your institution states it."
+      ],
+      [
+        "What if I have already missed too many classes?",
+        "Once attendance falls below the required figure, the tool switches to the calculation for classes to attend in a row. Missing further classes makes the required run longer, so the sooner you attend, the smaller it is. If the run needed is larger than the classes left in term, the target cannot be met through this method."
+      ],
+      [
+        "How do I read projected attendance at the end of term?",
+        "Look at the figure assuming you attend every remaining class, then the figure assuming you miss them all. Anything in between depends on how many you actually attend. Use the two as a range, and recheck it as the term moves on, since the total held changes each week."
+      ]
+    ]
+  },
 };

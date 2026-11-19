@@ -87,3 +87,23 @@ New categories (with their own hub pages, icons, navigation, social images and k
 3. Sprint 3: pick 5–8 rule-based tools (UK PAYE/NI, UK SDLT, India regime comparison) and build each with an official-source table, effective date, tests against published HMRC/CBDT worked examples, and a yearly-update checklist.
 4. New widgets for tier W (subtitle shifter, image presets, code generators) as separate, reviewed work.
 5. Replace model-suggested long-tail phrases with real Search Console queries after a few weeks.
+
+## 7. Applied result (verified with the Netlify build command)
+
+`npm run check && npm run build && npm run audit:export` → exit 0.
+
+| Measure | Before | After |
+| --- | ---: | ---: |
+| Tools in the catalog | 343 | **391** (+48) |
+| Static pages | 385 | **437** |
+| Sitemap URLs | 348 | **400** (4 category hubs + 48 tools; 35 under the new categories) |
+| Internal links/assets checked | 33,489 | 41,520 |
+| Tests | 395 frontend | **593** frontend + 5 backend |
+
+SEO treatment of the 48 tools (same gate as the earlier 300): reviewed title (≤60 characters) and description (120–158), a short target keyword that appears in the title, description and opening answer, three long-tail phrases placed in headings/FAQs/answer, an AI summary shown in the "at a glance" block, a computed worked example, FAQ JSON-LD equal to the visible FAQs, and entries in the sitemap. On-page keyword coverage for these tools is 100% in title, description and opening answer (`npm run report:keywords`).
+
+Defects found and fixed during integration (kept here so the process is auditable):
+- A mislabelled application-note link (TI SLVA689 vs SLVA704) was removed; unverifiable URLs were not kept.
+- The YouTube revenue tool was first titled "YouTube Shorts money calculator" although it does not model Shorts separately; it is now "YouTube Revenue Estimator".
+- Six keyword/test mismatches (registry keyword vs title, a banned word "best" in a statistical note, two long-tail phrases not placed verbatim) were corrected rather than the checks being relaxed.
+- Worked examples no longer lowercase acronyms ("GPU memory").

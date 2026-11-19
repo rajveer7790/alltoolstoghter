@@ -5,6 +5,8 @@ import { processing } from './meta';
 export interface SampleTable { caption: string; headers: string[]; rows: string[][] }
 
 const numberFields = (tool: ToolDef) => (tool.fields || []).filter(f => f.type === 'number');
+/** Lower-case the first letter for use mid-sentence, but keep acronyms such as "GPU memory" intact. */
+const lowerFirst = (label: string) => (label.length > 1 && /[A-Z]/.test(label[0]) && label[1] === label[1].toLowerCase() ? label[0].toLowerCase() + label.slice(1) : label);
 const unitLabel = (f: Field) => f.unit ? ` (${f.unit})` : '';
 const nice = (n: number) => {
   if (!Number.isFinite(n)) return NaN;
@@ -60,7 +62,7 @@ export function sampleTables(tool: ToolDef): SampleTable[] {
     if (redundant) rows.forEach(r => r.pop());
     if (rows.length >= 3) {
       tables.push({
-        caption: `${tool.name}: how the result changes with ${field.label.toLowerCase()} (other inputs at their defaults)`,
+        caption: `${tool.name}: how the result changes with ${lowerFirst(field.label)} (other inputs at their defaults)`,
         headers: [field.label, base[main].label, ...(extra >= 0 && !redundant ? [base[extra].label] : [])],
         rows,
       });
@@ -119,14 +121,14 @@ export function workedExample(tool: ToolDef, inputs: Record<string, string> | un
     if (field.type === 'number') {
       const n = Number(value);
       if (!Number.isFinite(n) || (field.min !== undefined && n < field.min) || (field.max !== undefined && n > field.max)) return null;
-      described.push(`${field.label.toLowerCase()} ${show(field, n)}`);
+      described.push(`${lowerFirst(field.label)} ${show(field, n)}`);
     } else if (field.type === 'select') {
       const option = field.options?.find(o => o.value === value);
       if (!option) return null;
-      described.push(`${field.label.toLowerCase()} “${option.label}”`);
+      described.push(`${lowerFirst(field.label)} “${option.label}”`);
     } else if (field.type === 'text' || (field.type as string) === 'textarea') {
       if (!value || value.length > 120) return null;
-      described.push(`${field.label.toLowerCase()} ${value}`);
+      described.push(`${lowerFirst(field.label)} ${value}`);
     } else return null;
     defaults[key] = value;
   }

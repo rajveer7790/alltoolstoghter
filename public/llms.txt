@@ -2,7 +2,7 @@
 
 Updated: 2026-11-17 (maintained content revision)
 
-> 307 free tools across 19 categories. Tools marked local process on the device; advanced document conversion, writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
+> 355 free tools across 23 categories. Tools marked local process on the device; advanced document conversion, writing services and URL shortening use a backend when available. Currency conversion fetches external rates. No professional review or guaranteed accuracy is implied.
 
 ## Main pages
 
@@ -128,6 +128,7 @@ Updated: 2026-11-17 (maintained content revision)
 - [Recipe Scaling Calculator](https://alltoolstogether.com/cooking/recipe-scaling-calculator): Scale any recipe ingredient up or down to a new serving count.
 - [Cooking Unit Converter](https://alltoolstogether.com/cooking/cooking-unit-converter): Convert between teaspoons, tablespoons, cups, fluid ounces, and millilitres.
 - [Calories Burned Calculator](https://alltoolstogether.com/cooking/calories-burned-calculator): Calories burned during exercise by activity, weight, and duration.
+- [Coffee to Water Ratio Calculator](https://alltoolstogether.com/cooking/coffee-brew-ratio-calculator): Coffee dose and water by weight for a brew ratio, plus extraction yield and concentrate dilution.
 
 ## Science & Engineering
 
@@ -182,6 +183,42 @@ Updated: 2026-11-17 (maintained content revision)
 - [Property Tax Calculator](https://alltoolstogether.com/real-estate/property-tax-calculator): Estimate annual and monthly property tax from home value and mill rate.
 - [Closing Costs Calculator](https://alltoolstogether.com/real-estate/closing-costs-calculator): Estimate buyer or seller closing costs as a percentage of the home price.
 - [Rental Yield Calculator](https://alltoolstogether.com/real-estate/rental-yield-calculator): Gross yield, net yield, cap rate, and payback period for a rental property.
+
+## AI & LLM Engineering
+
+- [Category](https://alltoolstogether.com/ai-engineering)
+- [LLM VRAM Calculator](https://alltoolstogether.com/ai-engineering/llm-vram-calculator): Estimate GPU memory for LLM weights plus KV cache at a given quantization, context and batch.
+- [RAG Chunking and Vector Storage Calculator](https://alltoolstogether.com/ai-engineering/rag-chunking-vector-storage-calculator): Chunk count, vector index size and embedding tokens for a document set with overlap.
+- [Prompt Caching Savings Calculator](https://alltoolstogether.com/ai-engineering/prompt-caching-savings-calculator): Estimate LLM input cost with and without prompt caching, using your own prices and hit rate.
+- [AI Agent Loop Token Cost Calculator](https://alltoolstogether.com/ai-engineering/agent-loop-token-cost-calculator): Estimate token and dollar cost of a multi-turn agent that re-sends its growing context every turn.
+- [Local LLM vs Cloud API Cost Calculator](https://alltoolstogether.com/ai-engineering/local-llm-vs-cloud-api-breakeven-calculator): Compare local hardware plus electricity cost per 1M tokens with a cloud API price and find break-even.
+
+## Electronics & Embedded
+
+- [Category](https://alltoolstogether.com/electronics)
+- [ADC Resolution, LSB, ENOB & SNR Calculator](https://alltoolstogether.com/electronics/adc-resolution-calculator): LSB voltage, codes, ideal SNR and ENOB for an N-bit unipolar ADC, plus code and error for an input.
+- [IEEE 754 Floating-Point Converter (FP16, BF16, FP32, FP64)](https://alltoolstogether.com/electronics/ieee-754-converter): Convert decimal to IEEE 754 bits and hex, or hex to the exact decimal, for half, bfloat16, single and double.
+- [PCB Trace Width Calculator (IPC-2221)](https://alltoolstogether.com/electronics/pcb-trace-width-calculator): Minimum PCB trace width for a current and temperature rise using the IPC-2221 formula, with DC resistance.
+- [CRC Calculator (CRC-8, CRC-16 Modbus, CRC-32)](https://alltoolstogether.com/electronics/crc-calculator): CRC-8, CRC-16/CCITT-FALSE, CRC-16/MODBUS and CRC-32 of ASCII text or hex bytes, with Modbus byte order.
+- [I2C Pull-Up Resistor Calculator](https://alltoolstogether.com/electronics/i2c-pull-up-resistor-calculator): Minimum and maximum I2C pull-up resistance from supply, sink current, bus capacitance and speed mode.
+
+## Creator & Video
+
+- [Category](https://alltoolstogether.com/creator)
+- [Video File Size & Bitrate Calculator](https://alltoolstogether.com/creator/video-bitrate-file-size-calculator): Estimate video file size from bitrate and duration, or the bitrate needed to hit a target size.
+- [BPM to Delay Time (ms) Calculator](https://alltoolstogether.com/creator/bpm-delay-time-calculator): Convert tempo in BPM to straight, dotted and triplet note lengths in ms, with Hz and pre-delay values.
+- [SMPTE Timecode Calculator (Drop-Frame & Non-Drop)](https://alltoolstogether.com/creator/smpte-timecode-calculator): Convert SMPTE timecode to frames and back, or add two timecodes, at common frame rates including drop-frame.
+- [Lens Crop Factor & Equivalent Focal Length Calculator](https://alltoolstogether.com/creator/camera-crop-factor-calculator): Crop factor from sensor size, with 35mm-equivalent focal length, aperture and ISO.
+- [Timelapse Interval & Clip Length Calculator](https://alltoolstogether.com/creator/timelapse-calculator): Frames, clip length, speed-up and storage from event duration and interval, or the interval for a target clip.
+
+## E-commerce & Logistics
+
+- [Category](https://alltoolstogether.com/ecommerce)
+- [COD vs Prepaid RTO Breakeven Calculator](https://alltoolstogether.com/ecommerce/cod-vs-prepaid-rto-breakeven-calculator): Expected profit per order for cash on delivery vs prepaid, given return-to-origin (RTO) rates.
+- [Volumetric Weight & CBM Calculator](https://alltoolstogether.com/ecommerce/volumetric-weight-calculator): Volumetric vs actual weight, chargeable weight and carton CBM from box size and a carrier divisor.
+- [MER, Break-Even ROAS & Target CPA Calculator](https://alltoolstogether.com/ecommerce/ecommerce-mer-break-even-roas-calculator): Break-even ROAS, max CPA, MER and net profit after ads from order value, margin and ad spend.
+- [A/B Test Significance Calculator](https://alltoolstogether.com/ecommerce/ab-test-significance-calculator): Two-proportion z-test: p-value, lift and confidence interval for an A/B conversion test.
+- [Reorder Point, Safety Stock & EOQ Calculator](https://alltoolstogether.com/ecommerce/reorder-point-eoq-calculator): Economic order quantity, safety stock and reorder point from demand, lead time and service level.
 
 ## Writing Tools
 

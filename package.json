@@ -10,13 +10,16 @@
     "typecheck": "next typegen && tsc --noEmit",
     "check": "npm run test && npm run test:backend && npm run typecheck",
     "audit:export": "node --import tsx scripts/audit-export.ts",
-    "prebuild": "node --import tsx scripts/generate-discovery.ts && node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\"",
+    "prebuild": "node --import tsx scripts/generate-discovery.ts && node scripts/prepare-pdf-editor.mjs && node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\"",
     "test:backend": "node --test backend/tests/*.test.js",
-    "postbuild": "node scripts/install-pdf-editor.mjs",
     "test:documents": "python -m unittest discover -s backend/documents/tests -v",
-    "report:keywords": "node --import tsx scripts/keyword-report.ts"
+    "report:keywords": "node --import tsx scripts/keyword-report.ts",
+    "predev": "node scripts/prepare-pdf-editor.mjs",
+    "pretest": "node scripts/prepare-pdf-editor.mjs"
   },
   "dependencies": {
+    "@embedpdf/pdfium": "2.15.1",
+    "@pdf-lib/fontkit": "1.1.1",
     "css-tree": "^3.2.1",
     "heic2any": "^0.0.4",
     "jsbarcode": "^3.12.3",

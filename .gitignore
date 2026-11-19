@@ -12,4 +12,5 @@ backend/data
 *.pyc
 mobile-audit/
 document-audit/
+public/pdf-editor-assets/
 .benchmark-venv/

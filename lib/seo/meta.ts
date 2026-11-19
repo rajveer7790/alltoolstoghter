@@ -19,6 +19,7 @@ export function processing(tool: ToolDef): Processing {
   if (BACKEND_REQUIRED.has(tool.slug)) return 'server';
   if (tool.widget === 'document') {
     const mode = documentMode.get(tool.dataset || tool.slug);
+    if (tool.slug === 'pdf-editor') return 'local'; // Our editor processes the PDF in this browser.
     if (mode === 'server') return 'server';
     if (mode === 'workspace') return 'workspace';
   }

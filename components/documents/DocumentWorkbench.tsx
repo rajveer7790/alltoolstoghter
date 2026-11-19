@@ -1,8 +1,10 @@
 'use client';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { DOCUMENT_API, PDF_EDITOR_URL, defaultsFor, type DocumentTool } from '@/lib/documents/catalog';
 import { FileDrop, formatBytes } from '@/components/widgets/pdfShared';
+const PdfEditor = dynamic(() => import('@/components/pdf-editor/PdfEditor'), { ssr: false, loading: () => <p role="status">Loading the PDF editor…</p> });
 
 export function PdfThumbnail({ file }: { file?: Blob }) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -102,13 +104,7 @@ export default function DocumentWorkbench({ tool, ready, unavailableReason }: { 
       if (current === serial.current) setError(error instanceof Error && error.name !== 'AbortError' ? error.message : 'Processing was cancelled or exceeded the time limit.');
     } finally { clearTimeout(timeout); if (current === serial.current) setBusy(false); }
   };
-  if (tool.mode === 'workspace') return <section className="ds-workbench ds-editor-callout">
-    <span className="ds-badge">ON YOUR DEVICE</span><h2>The complete PDF workspace</h2>
-    <p>Read and search PDFs, annotate pages, organize documents, work with forms and recognize text in scans. Your document stays in the browser.</p>
-    <div className="ds-feature-list"><span>Annotations &amp; comments</span><span>Forms &amp; page tools</span><span>Local OCR</span><span>Download your edits</span></div>
-    <Link className="btn btn-primary" href={PDF_EDITOR_URL} prefetch={false}>Open full PDF editor ↗</Link>
-    <p className="ds-note">{tool.note} Large scans work best on a desktop.</p>
-  </section>;
+  if (tool.mode === 'workspace') return <PdfEditor embedded />;
   return <section className="ds-workbench" aria-labelledby="document-operation-heading">
     <div className="ds-workbench-heading"><div><span className={'ds-badge' + (!isLocal ? ' ds-server' : '')}>{isLocal ? 'ON YOUR DEVICE' : 'SERVER PROCESSING'}</span><h2 id="document-operation-heading">{tool.name}</h2></div><span className="ds-engine">{tool.engine}</span></div>
     <p>{tool.description}</p>

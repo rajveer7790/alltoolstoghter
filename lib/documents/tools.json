@@ -1,15 +1,15 @@
 [
   {
     "id": "pdf-editor",
-    "name": "PDF Editor & Viewer",
+    "name": "PDF Editor",
     "group": "Edit",
-    "description": "Open the complete PdfCraft PDF workspace: view, annotate, organize, fill forms and recognize scanned text locally.",
+    "description": "Edit PDF text, add text and images, highlight pages, fill forms and organize your document locally.",
     "mode": "workspace",
-    "engine": "pdfcraft",
+    "engine": "pdfium",
     "accept": ".pdf",
     "multiple": false,
     "fields": [],
-    "note": "The full editor loads separately. OCR is memory intensive; use a desktop for large scans. Powered by PdfCraft, with its upstream notices retained.",
+    "note": "Our editor runs in your browser. Scans, outlined lettering and grouped text cannot always be edited as original text; Add text remains available. Font changes can affect spacing. Existing signatures may become invalid.",
     "page": true
   },
   {

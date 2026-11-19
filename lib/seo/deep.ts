@@ -5457,44 +5457,44 @@ export const DEEP: Record<string, DeepContent> = {
     ]
   },
   "pdf-editor": {
-    "answer": "A PDF editor is software for opening, reading and changing PDF documents. This PDF editor workspace lets you view pages, add annotations, organize pages, fill form fields and recognize text in scanned pages. It is hosted separately from this site and opens when you use it. Choose your file, use the tools you need, then save the result as a separate copy and keep the original.",
-    "aiSummary": "This page describes an online PDF editor that lets you view, annotate, organize pages, fill out PDF forms online and recognize text in scanned pages. The workspace is hosted separately and loads when opened. Its main limitation is that processing depends on that separate workspace, so keep a copy of your original file.",
+    "answer": "A PDF editor lets you change an existing document without converting every page to an image. This PDF editor can replace directly editable text objects, add text or images, highlight areas, fill standard form fields and rotate or remove pages. Apply each text change before downloading. Scans, outlined lettering and grouped artwork may not contain directly editable text; Add text remains available. Your PDF stays in this browser and the original file is unchanged.",
+    "aiSummary": "All Tools Together provides its own browser PDF editor, using PDFium as an engine helper. It supports direct text-object replacement, added text/images, highlights, standard forms, page rotation/deletion and undo/redo. It does not embed a third-party editor interface or perform OCR automatically.",
     "shortKeyword": "pdf editor",
     "longKeywords": [
-      "how to annotate a PDF file",
-      "fill out PDF forms online",
-      "recognize text in scanned pages"
+        "edit PDF text online",
+        "add text to a scanned PDF",
+        "fill out PDF forms online"
     ],
     "exampleInputs": {},
     "sections": [
-      {
-        "heading": "What tasks does this PDF editor cover?",
-        "text": "Use this workspace when a PDF needs more than a viewer. Typical tasks include reading a long document, marking up a contract with notes, rearranging pages before sending a file, and completing a form that someone else created. The same workspace also includes optical text recognition for scanned pages, which helps when a document is an image and text cannot be selected. Because the workspace is a separate tool, check its own menus for the exact operation you need before you start."
-      },
-      {
-        "heading": "How to annotate a PDF file?",
-        "text": "Open the file in the workspace, select the annotation or markup tool, and place notes, highlights or drawings on the page you want to mark. Review each mark at normal zoom before you save, because small notes can be hard to see when a page is printed. Keep the original unchanged by saving the annotated version under a new name. If several people will review the file, agree on a naming rule first so that the latest copy is easy to find."
-      },
-      {
-        "heading": "What limits should you check before relying on it?",
-        "text": "Check that the workspace opens your file type and that the operation you need is available there. Scanned text recognition depends on image quality, so verify important names, numbers and dates against the page. Form filling works only where the form fields are present and readable. Also confirm that a saved copy contains your changes before you delete anything, and do not treat an annotated file as a secure redaction, since marks placed on top of content do not remove it."
-      }
+        {
+            "heading": "How do I edit PDF text online?",
+            "text": "Open a PDF and choose Edit text. Click a blue outline around an editable text object, type its replacement in Text content and choose Apply text. The editor removes that original text object and writes the replacement into the PDF, rather than covering the old words with a white box. Inter is embedded by default for new characters; Source font is available for characters already found in that font. Font changes can affect spacing, so inspect the saved file."
+        },
+        {
+            "heading": "Can I add text to a scanned PDF?",
+            "text": "A scanned page is a picture, outlined lettering is vector artwork, and grouped objects may not expose directly editable text. The editor explains these cases and keeps Add text available. Choose Add text, click a page position, type and apply the note. Adding text does not remove words printed in a scan. OCR is a separate tool and its server availability is shown before upload."
+        },
+        {
+            "heading": "How can I fill out PDF forms online?",
+            "text": "Use Fill forms to enter values into standard fillable fields, then save the form values. Add a PNG or JPG for an image or existing signature mark. Drag to highlight or draw a rectangle, and use the page controls to rotate or remove the current page. Undo and redo work on applied changes. Download PDF saves the current applied version; unapplied text drafts are excluded. Keep the original file and inspect the exported copy."
+        }
     ],
     "faqs": [
-      [
-        "Can I fill out PDF forms online?",
-        "Yes, if the form has fillable fields that the workspace can read. Open the form in the editor, select the field you want to complete, type your entry and save a copy. Forms that are flat scans or use unsupported form technology may need a different approach, such as typing text as an annotation."
-      ],
-      [
-        "Could editing here overwrite my source PDF?",
-        "Not unless you save over it. Work on a copy when you can, and save changes under a new file name so the source document stays intact. Keep the original until you have checked the saved version in another viewer."
-      ],
-      [
-        "What should I check after scanned text is recognized?",
-        "Compare the recognized text with the page, especially names, amounts, dates and codes. Recognition quality falls with blurry, skewed or low-resolution scans, so correct errors before the text is used for search, copying or records. Keep the scanned image as the reference copy."
-      ]
+        [
+            "Can I edit PDF text online without uploading my file?",
+            "Yes. Open a PDF, choose Edit text and click a blue outline. Type the replacement, choose Apply text and download the changed copy. Text, images, form values and document processing stay in this browser. The original file stays unchanged."
+        ],
+        [
+            "Can I add text to a scanned PDF?",
+            "Yes. Choose Add text, click a position, type and apply the note. A scan is a picture, so adding text does not remove words printed in the image. Outlined/grouped text, font coverage and complex writing systems also have explicit editing limits."
+        ],
+        [
+            "Can I fill out PDF forms online and save the result?",
+            "Use Fill forms for standard fillable fields, save the form values and download PDF. Unapplied text drafts are excluded from downloads. Highlights and deleted text are not certified secure redaction, and a signature image is a visual mark rather than a cryptographic signature."
+        ]
     ]
-  },
+},
   "reverse-pdf-pages": {
     "answer": "Reverse PDF pages means changing the order so the last page becomes the first and the first becomes the last, while the content of each page stays the same. This reverse PDF pages tool does that without rasterizing the document, which means the pages are not turned into images. Choose a supported file, process it and download the result. Keep and review the original.",
     "aiSummary": "Explains a browser-based tool that reverses the page order of a PDF so the last page comes first. The method rewrites page sequence without rasterizing, so content stays as-is. Main limitation: it changes only order, so check that the reversed file still reads correctly before sharing it.",

@@ -20,10 +20,10 @@
 /pdf-editor/*
   X-Robots-Tag: noindex
 
-/pdf-editor/*.wasm
+/pdf-editor-assets/*.wasm
   Content-Type: application/wasm
 
-/pdf-editor-version.json
+/pdf-editor-assets/*
   X-Robots-Tag: noindex
 
 /pdf.worker.min.mjs

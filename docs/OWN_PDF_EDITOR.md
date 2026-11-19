@@ -1,6 +1,6 @@
 # Our PDF editor — 19 November 2026
 
-The direct PdfCraft/ArtCraft app and its WebGL-gated launcher were removed. Our original React interface is used at /pdf-editor/, /pdf/pdf-editor and in Document Studio. PDFium is an MIT-licensed engine helper, not an embedded editor UI. pdf-lib handles images and standard forms. This editor needs no backend or external API key and does not upload documents.
+The direct PdfCraft/ArtCraft app and its WebGL-gated launcher were removed. Our original React interface is used at /pdf-editor and in Document Studio. The legacy /pdf/pdf-editor route permanently redirects to /pdf-editor. The working primary page is indexable, self-canonical and included in the sitemap; only its internal .txt payload and helper assets are excluded from indexing. PDFium is an MIT-licensed engine helper, not an embedded editor UI. pdf-lib handles images and standard forms. This editor needs no backend or external API key and does not upload documents.
 
 ## Editing and saving
 

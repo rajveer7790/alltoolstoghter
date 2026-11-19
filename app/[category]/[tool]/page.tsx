@@ -5,6 +5,7 @@ import { CONTENT_UPDATED, AUTHOR } from '@/lib/contentDates';
 import { guideLinksForTool } from '@/lib/guides';
 import { topicContext } from '@/lib/topicContext';
 import { canonicalToolPath, isIndexableTool } from '@/lib/toolPolicy';
+import { STANDALONE_TOOL_PATHS } from '@/lib/toolPaths';
 import { backendGuides } from '@/lib/backendGuides';
 import { toolSeo } from '@/lib/seo/meta';
 import { sampleTables, generatedFaqs, workedExample } from '@/lib/seo/content';
@@ -47,7 +48,7 @@ const CATEGORY_MAP: Record<string, string> = {
 };
 
 export function generateStaticParams() {
-  return ALL_TOOLS.map(t => ({ category: t.category, tool: t.slug }));
+  return ALL_TOOLS.filter(t => !STANDALONE_TOOL_PATHS[t.slug]).map(t => ({ category: t.category, tool: t.slug }));
 }
 
 export async function generateMetadata({ params: pendingParams }: { params: Promise<{ category: string; tool: string }> }): Promise<Metadata> {

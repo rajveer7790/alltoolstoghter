@@ -11,3 +11,4 @@
 
 /pdf-editor/app /pdf-editor/ 301
 /pdf-editor/app/* /pdf-editor/ 301
+/pdf/pdf-editor /pdf-editor 301

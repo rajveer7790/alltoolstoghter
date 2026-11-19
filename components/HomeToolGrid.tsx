@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import CatIcon from './CatIcon';
+import { canonicalToolPath } from '@/lib/toolPaths';
 
 export type GridTool = { slug: string; name: string; short: string; category: string; kw: string };
 export type GridCat = { key: string; name: string; accent: string; count?: number };
@@ -90,7 +91,7 @@ export default function HomeToolGrid({ tools: initialTools, cats, fullCatalog = 
         {(fullCatalog || expanded || q || active !== 'all' ? shown : shown.slice(0, 36)).map(t => {
           const c = catMap[t.category];
           return (
-            <Link prefetch={false} key={t.slug} href={`/${t.category}/${t.slug}`} className="ilp-card">
+            <Link prefetch={false} key={t.slug} href={canonicalToolPath(t)} className="ilp-card">
               <div className="ilp-card-head">
                 <CatIcon cat={t.category} color={c?.accent ?? '#0B5FFF'} />
                 <span className="ilp-card-cat" style={{ color: c?.accent }}>{c?.name}</span>

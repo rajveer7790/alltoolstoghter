@@ -5,6 +5,15 @@ import { canonicalToolPath, isIndexableTool, TOOL_ALIASES } from '../lib/toolPol
 import { getToolLinks, getDiscoveryTools } from '../lib/linking';
 import { EDITORIAL } from '../lib/toolEditorial';
 
+test('the working PDF editor has one indexable standalone canonical URL', () => {
+  const editor = bySlug.get('pdf-editor')!;
+  assert.equal(isIndexableTool(editor), true);
+  assert.equal(canonicalToolPath(editor), '/pdf-editor');
+  const paths = INDEXABLE_TOOLS.map(canonicalToolPath);
+  assert.equal(paths.filter(path => path === '/pdf-editor').length, 1);
+  assert.ok(!paths.includes('/pdf/pdf-editor'));
+});
+
 test('every canonical tool receives category-peer links, without relying on popularity or JavaScript', () => {
   const incoming = new Map(INDEXABLE_TOOLS.map(tool => [tool.slug, new Set<string>()]));
   for (const tool of INDEXABLE_TOOLS) {

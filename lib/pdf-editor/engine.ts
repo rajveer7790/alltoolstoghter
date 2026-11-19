@@ -39,7 +39,9 @@ class Session {
   allocations: number[] = []; fonts: number[] = [];
   constructor(readonly api: Engine, bytes: Uint8Array, pageIndex: number) {
     try {
-      assert(bytes.byteLength && bytes.byteLength <= 20 * 1024 * 1024, 'Choose a nonempty PDF smaller than 20 MB.');
+      // Initial uploads are capped at 20 MB by the UI; generated edits may grow
+      // after embedding fonts/images and must remain reopenable in the session.
+      assert(bytes.byteLength && bytes.byteLength <= 64 * 1024 * 1024, 'This edited PDF exceeds the 64 MB session limit.');
       this.input = this.alloc(bytes.byteLength); api.pdfium.HEAPU8.set(bytes, this.input);
       this.doc = api.FPDF_LoadMemDocument(this.input, bytes.length, '');
       if (!this.doc) throw new Error(api.FPDF_GetLastError() === 4 ? 'This PDF needs a password. Unlock an authorized copy first, then open it here.' : 'This PDF is damaged or unsupported. Try a different file.');

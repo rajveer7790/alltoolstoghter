@@ -29,3 +29,7 @@ Generated assets are gitignored and prepared before dev/test/build. Fetch or che
 The real WASM unit tests cover text replacement/reopening, colored background preservation, source-font refusal, rotated/cropped/scaled coordinates, scan Add Text, images/highlights, page controls, grouped artwork, forms and bounded undo.
 
 The Chromium document workflow disables WebGL and uses production CSP. It types continuously without disabling the text input, applies/reopens text, undoes/redoes, fills a form, downloads/reopens the PDF, checks scan Add Text, and measures loaded layouts at 320–1280px. It checks that no upstream editor canvas or iframe is present.
+
+A deployed preview was also exercised through the browser: a disposable two-page QA PDF was opened, its source heading was replaced, and the resulting PDF was downloaded. Re-reading the actual downloaded bytes with PDFium found the replacement, no original heading object, and the unchanged second page.
+
+![Our interface after a real source-text replacement](assets/own-editor-reviewed.jpg)

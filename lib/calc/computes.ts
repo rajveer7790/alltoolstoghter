@@ -14,7 +14,18 @@ import * as STAT from './statistics';
 import * as BIZ from './business';
 import * as INV from './investing';
 import * as TX from './tax';
+import { COMPUTES_AI1 } from './viral/ai1';
+import { COMPUTES_AI2 } from './viral/ai2';
+import { COMPUTES_ELEC1 } from './viral/elec1';
+import { COMPUTES_ELEC2 } from './viral/elec2';
+import { COMPUTES_MIXED } from './viral/mixed';
+import { COMPUTES_CREATOR } from './viral/creator';
+import { COMPUTES_ECOM1 } from './viral/ecom1';
+import { COMPUTES_ECOM2 } from './viral/ecom2';
+import { COMPUTES_LIFE } from './viral/life';
+import { COMPUTES_INDIA } from './viral/india';
 export const COMPUTES: Record<string, (v: Record<string, any>) => CalcResult[]> = {
+  ...COMPUTES_AI1, ...COMPUTES_AI2, ...COMPUTES_ELEC1, ...COMPUTES_ELEC2, ...COMPUTES_MIXED, ...COMPUTES_CREATOR, ...COMPUTES_ECOM1, ...COMPUTES_ECOM2, ...COMPUTES_LIFE, ...COMPUTES_INDIA,
   'emi-calculator': INDIA.emi,
   'sip-calculator': INDIA.sip,
   'india-gst-calculator': INDIA.indiaGst,

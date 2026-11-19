@@ -1,0 +1,161 @@
+import { ToolDef } from '../types';
+const $ = (k: string, l: string, d: number, u?: string, extra: Record<string, any> = {}): any => ({ key: k, label: l, type: 'number', def: d, unit: u, ...extra });
+const TXT = (k: string, l: string, d: string, help?: string): any => ({ key: k, label: l, type: 'text', def: d, help });
+const SEL = (k: string, l: string, d: string, options: [string, string][], help?: string): any => ({ key: k, label: l, type: 'select', def: d, options: options.map(([value, label]) => ({ value, label })), help });
+const CAT = 'creator' as any;
+
+export const VIRAL_CREATOR: ToolDef[] = [
+{
+  slug: 'video-bitrate-file-size-calculator', name: 'Video File Size & Bitrate Calculator', prio: 'P2', category: CAT, widget: 'calc',
+  short: 'Estimate video file size from bitrate and duration, or the bitrate needed to hit a target size.',
+  metaDescription: 'Video file size calculator: enter video and audio bitrate plus duration to get MB, GB, MiB and GiB, or set a target size to find the bitrate.',
+  keywords: ['video file size calculator', 'video bitrate calculator', 'bitrate to file size', 'target file size bitrate'],
+  fields: [
+    $('video_kbps', 'Video bitrate', 8000, 'kbps', { min: 0 }),
+    $('audio_kbps', 'Audio bitrate', 192, 'kbps', { min: 0 }),
+    $('hours', 'Duration: hours', 0, 'h', { min: 0 }),
+    $('minutes', 'Duration: minutes', 10, 'min', { min: 0 }),
+    $('seconds', 'Duration: seconds', 0, 's', { min: 0 }),
+    $('overhead', 'Container overhead (optional)', 0, '%', { min: 0, max: 100 }),
+    $('target_mb', 'Target size (optional, 0 = off)', 0, 'MB', { min: 0, help: 'If above 0, the tool solves for the video bitrate that fills this size (decimal MB).' }),
+  ],
+  content: {
+    intro: 'Work out how big a video file will be from its bitrate and length, or work backwards from a size limit to the video bitrate you can afford. Useful for planning exports, uploads, streaming and storage. The result is an estimate: real files vary with variable bitrate and container overhead.',
+    how: 'Size in bytes = (video kbps + audio kbps) x 1,000 / 8 x duration in seconds x (1 + overhead%). Bitrates use decimal kilobits (1 kbps = 1,000 bits per second), the convention used for video and audio bitrates. Decimal results use 1 MB = 1,000,000 bytes and 1 GB = 1,000,000,000 bytes; binary results use MiB (1,048,576 bytes) and GiB (1,073,741,824 bytes). With a target size, total kbps = target bytes x 8 / duration / 1,000 / (1 + overhead%), and video kbps = total minus audio. Constant-bitrate math only: variable-bitrate or two-pass encodes will land near, not exactly on, the figure.',
+    howSteps: ['Enter the video and audio bitrates in kbps (1 Mbps = 1,000 kbps).', 'Enter the duration as hours, minutes and seconds.', 'Read the size, or enter a target size in MB to get the video bitrate that fits.'],
+    example: 'A 10-minute clip at 8,000 kbps video plus 192 kbps audio is 8,192 kbps in total. 8,192 x 1,000 / 8 = 1,024,000 bytes per second, times 600 s = 614.4 MB (0.614 GB), which is 585.94 MiB (0.572 GiB).',
+    faqs: [
+      ['Why do MB and MiB differ?', 'MB is decimal (1,000,000 bytes) and MiB is binary (1,048,576 bytes). Drive makers and many upload limits use decimal; many operating systems show binary sizes, so the same file can look about 5% smaller in MiB.'],
+      ['Is the result exact?', 'No. It assumes a constant bitrate. Variable-bitrate encodes, keyframe spikes, subtitles, metadata and container structure change the final size, so treat it as an estimate and add overhead if you need margin.'],
+      ['How does the target-size mode work?', 'Enter a target in decimal MB and it solves for the total bitrate that would fill that size over the duration, then subtracts your audio bitrate to give the video bitrate. If the result is not positive, the target is too small for the audio and length.'],
+      ['Does this account for the codec?', 'No. The codec (for example H.264 or HEVC) decides how good the picture looks at a given bitrate, not how many bytes a bitrate produces. Only the bitrate and duration set the size here.'],
+    ],
+  },
+  related: ['download-time-calculator', 'data-storage-converter', 'time-duration-calculator', 'timelapse-calculator'],
+},
+{
+  slug: 'bpm-delay-time-calculator', name: 'BPM to Delay Time (ms) Calculator', prio: 'P2', category: CAT, widget: 'calc',
+  short: 'Convert tempo in BPM to straight, dotted and triplet note lengths in ms, with Hz and pre-delay values.',
+  metaDescription: 'BPM to ms calculator: get delay times for 1/1 to 1/32 notes, dotted and triplet, plus tempo-synced Hz and 1/32 and 1/64 pre-delay values.',
+  keywords: ['bpm to ms calculator', 'delay time calculator', 'dotted eighth triplet delay ms', 'tempo synced lfo hz'],
+  fields: [$('bpm', 'Tempo', 120, 'BPM', { min: 1, max: 999, step: 0.1 })],
+  content: {
+    intro: 'Turn a song tempo into millisecond delay times for each note value, including dotted and triplet timings, and the matching frequency in Hz for tempo-synced modulation. It also lists 1/32 and 1/64 note lengths that are sometimes used as reverb pre-delay starting points.',
+    how: 'One quarter-note beat lasts 60,000 / BPM milliseconds. A 1/n note lasts the quarter note x 4 / n. A dotted note is 1.5 times the straight length and a triplet note is 2/3 of it. Frequency in Hz is 1,000 / milliseconds, which is the rate of one cycle per note. The pre-delay values are just note lengths; the right pre-delay depends on the source and your ears, so treat them as starting points.',
+    howSteps: ['Enter the tempo in BPM.', 'Read the straight, dotted and triplet time for each note value.', 'Type the milliseconds into your delay or pre-delay, or use the Hz for a tempo-synced LFO.'],
+    example: 'At 120 BPM a quarter note is 60,000 / 120 = 500 ms. A 1/8 note is 250 ms, dotted 1/8 is 375 ms, triplet 1/8 is 166.67 ms, and one cycle per 1/8 note is 4 Hz. The 1/64 note is 31.25 ms and the 1/32 note is 62.5 ms.',
+    faqs: [
+      ['What is a dotted eighth delay?', 'It is 1.5 times the length of an eighth note. At 120 BPM an eighth note is 250 ms, so the dotted eighth is 375 ms, a common rhythmic delay setting.'],
+      ['How do I convert BPM to Hz?', 'Divide 1,000 by the note length in milliseconds. A 1/4 note at 120 BPM is 500 ms, which is 2 Hz (120 beats per minute divided by 60).'],
+      ['Which pre-delay should I use?', 'There is no single correct value. Short values keep the reverb close to the dry sound, longer ones separate them; the 1/32 and 1/64 lengths shown are only common starting points to audition.'],
+      ['Does this handle tempo changes or swing?', 'No. It assumes a constant tempo, a quarter-note beat and straight timing. Swing and tempo maps need your DAW.'],
+    ],
+  },
+  related: ['time-duration-calculator', 'smpte-timecode-calculator', 'video-bitrate-file-size-calculator', 'timelapse-calculator'],
+},
+{
+  slug: 'smpte-timecode-calculator', name: 'SMPTE Timecode Calculator (Drop-Frame & Non-Drop)', prio: 'P2', category: CAT, widget: 'calc',
+  short: 'Convert SMPTE timecode to frames and back, or add two timecodes, at common frame rates including drop-frame.',
+  metaDescription: 'Timecode calculator: convert SMPTE timecode to frames and frames to timecode, add timecodes, with 29.97 and 59.94 drop-frame support. Runs in your browser.',
+  keywords: ['timecode calculator', 'smpte timecode calculator', 'frames to timecode converter', 'drop frame timecode calculator'],
+  fields: [
+    SEL('mode', 'Mode', 'tc2f', [['tc2f', 'Timecode to frames'], ['f2tc', 'Frames to timecode'], ['add', 'Add timecodes (A + B)']]),
+    SEL('rate', 'Frame rate', '29.97df', [['23.976', '23.976 fps'], ['24', '24 fps'], ['25', '25 fps'], ['29.97ndf', '29.97 fps non-drop'], ['29.97df', '29.97 fps drop-frame'], ['30', '30 fps'], ['50', '50 fps'], ['59.94df', '59.94 fps drop-frame'], ['60', '60 fps']]),
+    TXT('tc1', 'Timecode A (HH:MM:SS:FF)', '01:00:00;00', 'Used by "Timecode to frames" and "Add". Any of : ; . separates the fields.'),
+    TXT('tc2', 'Timecode B (HH:MM:SS:FF)', '00:00:30;00', 'Used only by "Add".'),
+    $('frames', 'Frame count', 1800, 'frames', { min: 0, help: 'Used only by "Frames to timecode".' }),
+  ],
+  content: {
+    intro: 'Convert SMPTE timecode to a frame count, turn a frame count back into timecode, or add two timecodes together. It supports 23.976, 24, 25, 29.97 (drop-frame and non-drop), 30, 50, 59.94 drop-frame and 60 fps, and reports the real elapsed time.',
+    how: 'Timecode counts frames at the nominal rate (24, 25, 30, 50 or 60 per second). NTSC-style rates actually run at 1000/1001 of nominal (for example 30000/1001 = 29.97003 fps), so non-drop timecode slowly falls behind the wall clock. Drop-frame timecode skips frame numbers 0 and 1 at the start of each minute except every tenth minute (59.94 skips 0 to 3); no picture frames are removed. Timecode to frames = nominal x (3600 h + 60 m + s) + f - drop x (total minutes - floor(total minutes / 10)). Frames to timecode uses the standard drop-frame renumbering with 17,982 frames per ten minutes at 29.97. Real duration = frames / actual fps. Hours are not wrapped at 24.',
+    howSteps: ['Choose the mode and the frame rate.', 'Enter a timecode (A, and B when adding) or a frame count.', 'Read the frames or timecode, the real duration and the clock difference.'],
+    example: 'At 29.97 fps drop-frame, 01:00:00;00 is 30 x 3,600 - 2 x (60 - 6) = 107,892 frames. At 30,000/1,001 fps that is 107,892 / 29.97003 = 3,599.996 s of real time, 0.004 s less than the timecode label, which is why drop-frame timecode stays within milliseconds of the clock. Frame 1,800 is 00:01:00;02 and frame 17,982 is 00:10:00;00.',
+    faqs: [
+      ['What does drop-frame mean?', 'It is a way of numbering frames, not removing them. At 29.97 fps, frame numbers ;00 and ;01 are skipped at the start of every minute except minutes 00, 10, 20, 30, 40 and 50, so the timecode tracks real time closely.'],
+      ['Why is non-drop 29.97 off from the clock?', 'It counts 30 frames per timecode second but the video runs at 29.97 fps, so each timecode hour is about 3.6 seconds (108 frames) longer in real time.'],
+      ['Are drop-frame timecodes ever invalid?', 'Yes. 00:01:00;00 and 00:01:00;01 do not exist at 29.97 drop-frame, and the tool reports them as invalid.'],
+      ['Which rates support drop-frame?', 'Only 29.97 and 59.94 here, matching the usual practice. Drop-frame does not apply to 23.976, 24, 25, 30, 50 or 60 fps in this calculator.'],
+    ],
+  },
+  related: ['time-duration-calculator', 'bpm-delay-time-calculator', 'video-bitrate-file-size-calculator', 'timelapse-calculator'],
+},
+{
+  slug: 'camera-crop-factor-calculator', name: 'Lens Crop Factor & Equivalent Focal Length Calculator', prio: 'P2', category: CAT, widget: 'calc',
+  short: 'Crop factor from sensor size, with 35mm-equivalent focal length, aperture and ISO.',
+  metaDescription: 'Lens crop factor calculator: pick a sensor size or enter width and height to get crop factor and the full-frame equivalent focal length, aperture and ISO.',
+  keywords: ['lens crop factor calculator', 'full frame equivalent focal length', 'aps-c micro four thirds equivalent', 'equivalent aperture calculator'],
+  fields: [
+    SEL('sensor', 'Sensor size', 'apsc_sony', [['ff', 'Full frame 36 x 24 mm'], ['apsc_sony', 'APS-C (Sony/Nikon/Fuji) 23.5 x 15.6 mm'], ['apsc_canon', 'APS-C (Canon) 22.3 x 14.9 mm'], ['mft', 'Micro Four Thirds 17.3 x 13 mm'], ['inch1', '1-inch type 13.2 x 8.8 mm'], ['custom', 'Custom (use width and height below)']]),
+    $('width', 'Custom sensor width', 23.5, 'mm', { min: 0, step: 0.1, help: 'Used only when Sensor size is Custom.' }),
+    $('height', 'Custom sensor height', 15.6, 'mm', { min: 0, step: 0.1, help: 'Used only when Sensor size is Custom.' }),
+    $('focal', 'Lens focal length', 50, 'mm', { min: 1 }),
+    $('aperture', 'Lens aperture (f-number)', 1.8, 'f/', { min: 0.5, step: 0.1 }),
+    $('iso', 'ISO', 100, undefined, { min: 1 }),
+  ],
+  content: {
+    intro: 'Find the crop factor of a sensor relative to 35mm full frame and convert a lens to its full-frame equivalent focal length, aperture and ISO. Choose a common sensor size or enter your own width and height. These are equivalence approximations for comparing cameras.',
+    how: 'Crop factor = diagonal of a full-frame sensor (36 x 24 mm, 43.267 mm) divided by the diagonal of your sensor. Equivalent focal length = focal length x crop factor (same field of view). Equivalent aperture = f-number x crop factor (same depth of field and total light gathered for the same framing). Equivalent ISO = ISO x crop factor squared (same noise for the same total light). Sensor dimensions are nominal values and vary a little between camera models; the lens itself still behaves as its marked focal length and f-number, and the actual exposure does not change.',
+    howSteps: ['Pick a sensor size, or choose Custom and enter its width and height in mm.', 'Enter the lens focal length, f-number and ISO.', 'Read the crop factor and the full-frame equivalents.'],
+    example: 'An APS-C sensor of 23.5 x 15.6 mm has a diagonal of 28.21 mm, so the crop factor is 43.267 / 28.21 = 1.53. A 50 mm f/1.8 lens at ISO 100 on it frames like 76.7 mm, has depth of field like f/2.8, and the same noise as ISO 235 on full frame.',
+    faqs: [
+      ['Does a crop sensor change my lens?', 'No. The lens keeps its marked focal length and f-number. The smaller sensor just sees a narrower part of the image, so the framing matches a longer lens on full frame.'],
+      ['Why is aperture multiplied by the crop factor?', 'To compare depth of field and background blur at the same framing and subject distance. It is an equivalence, not a change in how much light reaches the sensor at a given exposure.'],
+      ['Why does Canon APS-C differ from other APS-C?', 'Canon APS-C sensors are slightly smaller (about 22.3 x 14.9 mm) than most others (about 23.5 x 15.6 mm), giving roughly 1.6x instead of 1.5x.'],
+      ['How accurate is it?', 'Sensor sizes are nominal and aspect ratios differ, so treat results as approximations. Use Custom if you know your sensor dimensions.'],
+    ],
+  },
+  related: ['aspect-ratio-calculator', 'timelapse-calculator', 'video-bitrate-file-size-calculator', 'smpte-timecode-calculator'],
+},
+{
+  slug: 'timelapse-calculator', name: 'Timelapse Interval & Clip Length Calculator', prio: 'P2', category: CAT, widget: 'calc',
+  short: 'Frames, clip length, speed-up and storage from event duration and interval, or the interval for a target clip.',
+  metaDescription: 'Timelapse calculator: enter event length, shooting interval and playback fps to get frames, clip length and storage, or solve for the interval you need.',
+  keywords: ['timelapse calculator', 'timelapse interval calculator', 'event duration to clip length', 'timelapse storage calculator'],
+  fields: [
+    $('ev_hours', 'Event duration: hours', 2, 'h', { min: 0 }),
+    $('ev_min', 'Event duration: minutes', 0, 'min', { min: 0 }),
+    $('interval', 'Shooting interval', 5, 's', { min: 0, step: 0.1 }),
+    $('fps', 'Playback frame rate', 24, 'fps', { min: 1 }),
+    $('clip_target', 'Target clip length (optional, 0 = off)', 0, 's', { min: 0, help: 'If above 0, the tool solves for the interval needed and ignores the interval field.' }),
+    $('file_mb', 'File size per frame', 25, 'MB', { min: 0 }),
+  ],
+  content: {
+    intro: 'Plan a timelapse by working out how many frames you will shoot, how long the finished clip will run and how much storage it needs. You can also give the clip length you want and get the interval to set on the camera. The results are straight arithmetic from your inputs.',
+    how: 'Frames shot = floor(event seconds / interval). Clip length = frames / playback fps. Speed-up factor = event seconds / clip seconds. Storage = frames x file size per frame (decimal: 1,000 MB = 1 GB). In target mode, frames = target seconds x fps and interval = event seconds / frames. The 180-degree exposure shown (interval / 2) is a common rule of thumb for natural-looking motion blur, not a requirement; the first frame at time zero is not counted extra.',
+    howSteps: ['Enter the real event duration, the shooting interval and your playback frame rate.', 'Optionally enter a target clip length to solve for the interval instead.', 'Check frames, clip length, speed-up and storage against your card and battery.'],
+    example: 'A 2-hour event (7,200 s) shot every 5 s gives floor(7,200 / 5) = 1,440 frames. At 24 fps that is a 60 s clip, a 120x speed-up, and at 25 MB per frame 36 GB of storage.',
+    faqs: [
+      ['How do I choose an interval?', 'Faster subjects (traffic, clouds) need short intervals; slow ones (sunsets, plant growth) allow longer ones. Enter the clip length you want and the tool shows the interval that produces it.'],
+      ['What is the 180-degree shutter rule here?', 'It is a rule of thumb that sets the exposure to about half the interval so motion looks smooth. It is a guide, and your exposure may be limited by light and ND filters.'],
+      ['Does the calculation include battery and card limits?', 'No. It only reports frames and storage; check your camera battery life and card capacity separately.'],
+      ['Why is the clip shorter than expected?', 'Frames are counted as whole numbers by rounding down, so a partial last interval produces no extra frame.'],
+    ],
+  },
+  related: ['video-bitrate-file-size-calculator', 'smpte-timecode-calculator', 'camera-crop-factor-calculator', 'time-duration-calculator'],
+},
+{
+  slug: 'youtube-revenue-estimator', name: 'YouTube Revenue Estimator (RPM x Views)', prio: 'P2', category: CAT, widget: 'calc',
+  short: 'Estimate monthly and multi-month ad revenue from views and your own RPM, with growth and RPM scenarios.',
+  metaDescription: 'YouTube shorts money calculator: enter monthly views, your RPM and growth to estimate revenue over time, with low and high RPM scenarios. Estimate only.',
+  keywords: ['youtube shorts money calculator', 'youtube rpm calculator', 'youtube revenue estimator', 'adsense revenue per 1000 views'],
+  fields: [
+    $('views', 'Monthly views', 100000, 'views', { min: 0 }),
+    $('rpm', 'RPM (revenue per 1,000 views)', 2, undefined, { min: 0, step: 0.01, help: 'Use the RPM from your own analytics. It varies widely by niche, country, format and season; the default is only a placeholder.' }),
+    $('growth', 'Monthly view growth', 5, '%', { min: -90, max: 100, step: 0.5 }),
+    $('months', 'Months to project', 12, 'months', { min: 1, max: 60 }),
+  ],
+  content: {
+    intro: 'Estimate creator revenue from views and an RPM you enter. RPM is revenue per 1,000 views after YouTube takes its share, so it is not a promise of earnings: it differs by niche, audience location, video format and season. The tool compounds a monthly growth rate and shows low and high scenarios.',
+    how: 'Revenue = views / 1,000 x RPM. With growth g per month, month k views = starting views x (1 + g)^(k - 1), and totals are the sum over the months you choose. The scenarios simply multiply total revenue by 0.5 and 1.5 to show sensitivity; they are not benchmarks. Use your own RPM from YouTube analytics, which is already net of the platform share. Results are in the currency of the RPM you enter. This is an estimate only and does not model the Partner Program rules, taxes or sponsorship income.',
+    howSteps: ['Enter your current monthly views and your own RPM.', 'Set a monthly growth rate (0 for flat) and the number of months.', 'Read the totals and compare the 0.5x and 1.5x RPM scenarios.'],
+    example: 'With 100,000 views a month and an RPM of 2, month 1 earns 100,000 / 1,000 x 2 = 200. With 5% monthly growth over 12 months, total views are 1,591,713 and total revenue is 3,183.43; the 0.5x and 1.5x RPM scenarios give 1,591.71 and 4,775.14.',
+    faqs: [
+      ['What is RPM?', 'RPM is revenue per 1,000 views, after YouTube takes its share. It is different from CPM, which is the advertiser price before the share and counts only monetised plays.'],
+      ['Is the default RPM realistic?', 'It is a neutral placeholder. Real RPM depends on niche, country, format (Shorts versus long-form) and season, so replace it with your own analytics figure.'],
+      ['Do Shorts and long-form pay the same?', 'Not necessarily. They are monetised differently and often show different RPMs, so enter the RPM for the format you are modelling.'],
+      ['Can I rely on the projection?', 'No. Growth is rarely steady and the scenarios are simple multiples, not benchmarks. Treat the output as a rough estimate, not a forecast.'],
+    ],
+  },
+  related: ['time-duration-calculator', 'video-bitrate-file-size-calculator', 'timelapse-calculator', 'download-time-calculator'],
+},
+];

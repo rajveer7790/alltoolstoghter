@@ -25,6 +25,16 @@ import { TAX } from './tax';
 import { EXTRA } from './extra';
 import { PRACTICAL } from './practical';
 import { NORTH_AMERICA } from './northAmerica';
+import { VIRAL_AI1 } from './viralAi1';
+import { VIRAL_AI2 } from './viralAi2';
+import { VIRAL_ELEC1 } from './viralElec1';
+import { VIRAL_ELEC2 } from './viralElec2';
+import { VIRAL_MIXED } from './viralMixed';
+import { VIRAL_CREATOR } from './viralCreator';
+import { VIRAL_ECOM1 } from './viralEcom1';
+import { VIRAL_ECOM2 } from './viralEcom2';
+import { VIRAL_LIFE } from './viralLife';
+import { VIRAL_INDIA } from './viralIndia';
 
 export const CATEGORIES: Category[] = [
   { key: 'finance', name: 'Finance & Money', tagline: 'Loans, savings, salaries — the numbers behind big decisions.', accent: '#9A6700' },
@@ -52,7 +62,7 @@ export const CATEGORIES: Category[] = [
   { key: 'writing', name: 'Writing Tools', tagline: 'Grammar, paraphrasing, and plagiarism checks — online services with availability shown on each page.', accent: '#0891B2' },
 ];
 
-export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA, ...PRACTICAL, ...NORTH_AMERICA, ...INDIA, ...UTILITIES, ...DOCUMENTS];
+export const ALL_TOOLS: ToolDef[] = [...FINANCE, ...HEALTH, ...MATH, ...DATETIME, ...UNITS, ...TEXT, ...DEV, ...SEO, ...PDF, ...IMAGE, ...WRITING, ...REALESTATE, ...CONSTRUCTION, ...COOKING, ...SCIENCE, ...STATISTICS, ...BUSINESS, ...INVESTING, ...TAX, ...EXTRA, ...PRACTICAL, ...NORTH_AMERICA, ...INDIA, ...UTILITIES, ...DOCUMENTS, ...VIRAL_AI1, ...VIRAL_AI2, ...VIRAL_ELEC1, ...VIRAL_ELEC2, ...VIRAL_MIXED, ...VIRAL_CREATOR, ...VIRAL_ECOM1, ...VIRAL_ECOM2, ...VIRAL_LIFE, ...VIRAL_INDIA];
 
 export const INDEXABLE_TOOLS = ALL_TOOLS.filter(isIndexableTool);
 export const TOOL_COUNT = INDEXABLE_TOOLS.length;

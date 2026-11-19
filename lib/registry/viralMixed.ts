@@ -1,0 +1,156 @@
+import { ToolDef } from '../types';
+const $ = (k: string, l: string, d: number, u?: string, help?: string): any => ({ key: k, label: l, type: 'number', def: d, unit: u, help });
+const X = (k: string, l: string, d: string, help?: string): any => ({ key: k, label: l, type: 'text', def: d, help });
+const S = (k: string, l: string, d: string, options: { value: string; label: string }[], help?: string): any => ({ key: k, label: l, type: 'select', def: d, options, help });
+const POL = [{ value: 'none', label: 'none (monitor only)' }, { value: 'quarantine', label: 'quarantine' }, { value: 'reject', label: 'reject' }];
+const RS = [{ value: 'r', label: 'r (relaxed, default)' }, { value: 's', label: 's (strict)' }];
+const cat: any = 'electronics';
+
+export const VIRAL_MIXED: ToolDef[] = [
+{
+  slug: 'cctv-storage-calculator', name: 'CCTV Storage Calculator', category: cat, prio: 'P2', widget: 'calc',
+  short: 'Estimate NVR disk space in TB from camera count, bitrate, recording share and retention days.',
+  keywords: ['cctv storage calculator', 'nvr hard drive size calculator', 'security camera storage calculator', 'surveillance storage per day'],
+  metaDescription: 'CCTV storage calculator: enter cameras, bitrate in Mbps, recording % and days to estimate the NVR disk space in TB and GB. Runs in your browser.',
+  fields: [
+    $('cameras', 'Number of cameras', 8),
+    $('mbps', 'Bitrate per camera', 2, 'Mbps', 'Use the average bitrate from your camera or NVR settings; it depends on codec, resolution, frame rate and scene.'),
+    $('rec', 'Share of time recording', 100, '%', '100 for continuous recording; use a lower value for motion-only recording.'),
+    $('days', 'Retention', 30, 'days'),
+    $('overhead', 'Extra overhead', 0, '%', 'Optional margin for audio, metadata or filesystem overhead.'),
+  ],
+  content: {
+    intro: 'Work out how much hard-drive space a CCTV or IP camera system needs. Enter the number of cameras, the average bitrate each one records at, how much of the day it actually records and how many days of footage you want to keep. The result is an estimate in decimal terabytes, the unit drive makers use.',
+    how: 'Each camera writes bitrate / 8 bytes per second. Per camera per day = bitrate (Mbps) x 1,000,000 / 8 x 86,400 s x recording share, divided by 10^9 for GB. Total = per-camera daily GB x days x cameras x (1 + overhead %). TB = GB / 1,000; TiB = bytes / 2^40. The bitrate is your input: this tool makes no assumption about codec or resolution. Variable-bitrate cameras fluctuate with motion, so real use can differ; the figure is an estimate and a drive\'s usable capacity is also slightly lower than its label.',
+    howSteps: ['Enter the number of cameras and the average bitrate of one camera in Mbps.', 'Set the share of time recording (100 for continuous) and the retention in days.', 'Read the total in TB, then pick a drive with some spare capacity.'],
+    example: '8 cameras at 2 Mbps recording continuously for 30 days: each camera stores 21.6 GB per day (648 GB over 30 days). The total is 5,184 GB, about 5.18 TB (4.71 TiB).',
+    faqs: [
+      ['Where do I find the bitrate of my camera?', 'In the camera or NVR stream settings, or from a sample recording: file size divided by its duration. Main and sub streams usually have different bitrates.'],
+      ['What does motion-only recording change?', 'It lowers the share of time recording. If a camera records 25% of the day, enter 25. Busy scenes can push this share well above your expectation.'],
+      ['Why is my drive smaller than the result in TB?', 'Drive labels use decimal TB (10^12 bytes) while operating systems often show binary TiB, and formatting uses some space. The TiB row shows the binary equivalent.'],
+      ['Is the result exact?', 'No. It is an estimate based on a constant average bitrate. Variable bitrate, overwriting behaviour and NVR overhead all affect real consumption.'],
+    ],
+  },
+  sources: [],
+  related: ['data-storage-converter', 'unit-converter', 'percentage-calculator', 'resistor-color-code-calculator'],
+},
+{
+  slug: '3d-printing-filament-cost-calculator', name: '3D Print Cost Calculator', category: cat, prio: 'P2', widget: 'calc',
+  short: 'Cost and selling price of a 3D print from filament, electricity, failure allowance, wear and markup.',
+  keywords: ['3d print cost calculator', '3d printing filament cost', 'how much to charge for 3d printing', 'filament spool remaining'],
+  metaDescription: '3D print cost calculator: combine filament, electricity, failure allowance, machine wear, labour and markup into a production cost and selling price.',
+  fields: [
+    $('grams', 'Filament used', 50, 'g'),
+    $('spoolGrams', 'Spool net weight', 1000, 'g'),
+    $('spoolPrice', 'Spool price', 20, undefined, 'In your own currency.'),
+    $('hours', 'Print time', 5, 'hours'),
+    $('watts', 'Average printer power', 200, 'W', 'Average draw over the print, not the peak rating.'),
+    $('kwhPrice', 'Electricity price per kWh', 0.15, undefined, 'Use your own tariff.'),
+    $('failPct', 'Failure allowance', 5, '%', 'Applied to material plus electricity to cover failed prints and waste.'),
+    $('wearPerHour', 'Machine wear per hour', 0.5, undefined, 'Nozzles, belts, depreciation; your own figure.'),
+    $('labour', 'Labour / post-processing', 0),
+    $('markupPct', 'Markup', 30, '%'),
+    $('remaining', 'Spool weight left before print (optional)', 400, 'g', 'Leave 0 to skip.'),
+  ],
+  content: {
+    intro: 'Estimate what a 3D print costs to make and what to charge for it. Enter the filament weight, the spool price, print time, printer power draw and your own allowances for failures, machine wear, labour and markup. Prices and rates are inputs you set, so the result works in any currency.',
+    how: 'Material = grams used / spool net grams x spool price. Electricity = watts / 1,000 x hours x price per kWh. Failure allowance = (material + electricity) x failure %. Machine wear = wear per hour x hours. Production cost = material + electricity + failure allowance + wear + labour. Selling price = production cost x (1 + markup %). If you enter the grams left on the spool, the tool subtracts the print weight. These are planning estimates; slicer weights and real power draw vary.',
+    howSteps: ['Enter the filament grams from your slicer and the spool weight and price.', 'Add print time, average power, electricity price, wear, labour and your allowances.', 'Read the production cost, selling price and price per gram.'],
+    example: '50 g from a 1,000 g spool costing 20 gives material 1.00. A 5 h print at 200 W and 0.15 per kWh gives electricity 0.15. A 5% failure allowance adds 0.06, wear at 0.5 per hour adds 2.50. Production cost is 3.71; with 30% markup the selling price is 4.82 (0.096 per gram). A 400 g spool would have 350 g left.',
+    faqs: [
+      ['Where do I get the grams used?', 'Your slicer reports the filament weight for the sliced model, usually including supports. Add a little for purge and skirt if you want to be careful.'],
+      ['How should I set the failure allowance?', 'Use your own history of failed prints and waste. The tool applies it only to material and electricity, not to wear or labour.'],
+      ['Does it include tax or shipping?', 'No. Add them separately; this tool covers production cost and a markup only.'],
+      ['Are the results exact?', 'No. They are estimates that depend entirely on the rates and allowances you enter.'],
+    ],
+  },
+  sources: [],
+  related: ['fuel-cost-calculator', 'percentage-calculator', 'unit-converter', 'cctv-storage-calculator'],
+},
+{
+  slug: 'dmarc-record-generator', name: 'DMARC Record Generator', category: 'developer', prio: 'P2', widget: 'calc',
+  short: 'Build a DMARC TXT record and host name from policy, report addresses and alignment choices.',
+  keywords: ['dmarc record generator', 'dmarc txt record', 'dmarc p=none rua', 'create dmarc record'],
+  metaDescription: 'DMARC record generator: choose policy, report mailbox and alignment to get the _dmarc TXT host and value, with syntax checks and notes. Runs in your browser.',
+  fields: [
+    X('domain', 'Domain', 'example.com', 'The domain in the From address, without www.'),
+    S('policy', 'Policy (p)', 'none', POL),
+    S('sp', 'Subdomain policy (sp)', 'inherit', [{ value: 'inherit', label: 'inherit (same as p)' }, ...POL]),
+    $('pct', 'Percentage of mail the policy applies to (pct)', 100, '%'),
+    X('rua', 'Aggregate report address (rua)', 'dmarc-reports@example.com', 'One or more addresses, separated by commas. Optional.'),
+    X('ruf', 'Failure report address (ruf)', '', 'Optional. Few receivers send failure reports.'),
+    S('adkim', 'DKIM alignment (adkim)', 'r', RS),
+    S('aspf', 'SPF alignment (aspf)', 'r', RS),
+    $('ri', 'Report interval (ri)', 86400, 'seconds'),
+  ],
+  content: {
+    intro: 'Generate the DNS TXT record that publishes your DMARC policy. Pick a policy, add the mailbox that should receive aggregate reports and choose alignment modes. The tool validates the domain and addresses, shows the host name to create and lists the points to check. Nothing is looked up in DNS.',
+    how: 'DMARC is defined in RFC 7489. The record is published as a TXT record at _dmarc.<domain> and starts with v=DMARC1 followed by p=. This tool then adds only tags that differ from the RFC defaults: sp (default: same as p), pct (100), rua, ruf, adkim (r), aspf (r) and ri (86400 seconds). rua and ruf are written as mailto: URIs. The tool checks syntax only; it does not query DNS, test your SPF or DKIM or confirm delivery.',
+    howSteps: ['Enter your domain and choose a policy; start with none while you collect reports.', 'Add a report mailbox and any non-default options.', 'Create a TXT record at the shown host name with the generated value.'],
+    example: 'For example.com with policy none, report address dmarc-reports@example.com and default alignment, the host is _dmarc.example.com and the value is v=DMARC1; p=none; rua=mailto:dmarc-reports@example.com (54 characters).',
+    faqs: [
+      ['Which policy should I start with?', 'p=none is monitor-only, so mail is not affected while you read the reports. Move to quarantine or reject only after legitimate senders pass SPF or DKIM with alignment.'],
+      ['What does alignment mean?', 'DMARC passes when SPF or DKIM passes and the domain it authenticated matches the visible From domain: exactly for strict, same organizational domain for relaxed.'],
+      ['Can I send reports to another domain?', 'Yes, but the receiving domain must publish an authorisation TXT record (RFC 7489 section 7.1), otherwise many receivers will not send reports.'],
+      ['Does this tool check my SPF or DKIM?', 'No. It only builds and validates the DMARC record syntax. Publishing it also does not guarantee inbox placement.'],
+    ],
+  },
+  sources: [{ label: 'RFC 7489: Domain-based Message Authentication, Reporting, and Conformance (DMARC)', url: 'https://www.rfc-editor.org/rfc/rfc7489' }],
+  related: ['password-generator', 'hash-generator', 'sla-downtime-calculator', 'css-specificity-calculator'],
+},
+{
+  slug: 'sla-downtime-calculator', name: 'SLA Uptime & Downtime Calculator', category: 'developer', prio: 'P2', widget: 'calc',
+  short: 'Convert an availability percentage to allowed downtime, serial services and measured uptime.',
+  keywords: ['sla uptime calculator', 'uptime downtime calculator', 'composite sla serial services', 'error budget calculator'],
+  metaDescription: 'SLA uptime calculator: turn 99.9% or 99.99% into allowed downtime per day, month or year, combine serial services, or find achieved availability.',
+  fields: [
+    S('mode', 'Mode', 'allowed', [{ value: 'allowed', label: 'Availability to allowed downtime' }, { value: 'achieved', label: 'Measured downtime to achieved availability (30-day month)' }]),
+    $('sla', 'Availability target', 99.9, '%'),
+    S('period', 'Period (allowed-downtime mode)', 'month30', Object.entries({ day: 'Day (24 h)', week: 'Week (7 d)', month30: '30-day month (2,592,000 s)', month: 'Average month (365.2425 d / 12)', quarter: 'Quarter (365.25 d / 4)', year365: 'Year (365 d)', year: 'Year (365.2425 d)' }).map(([value, label]) => ({ value, label }))),
+    $('services', 'Services in series (allowed-downtime mode)', 1, undefined, 'N dependent services each at the target availability combine to target^N.'),
+    $('measured', 'Measured downtime (achieved mode)', 30, 'minutes', 'Total downtime in one 30-day month.'),
+  ],
+  content: {
+    intro: 'Translate an availability percentage into the downtime it allows over a day, week, month, quarter or year. You can also chain several dependent services in series to see the composite availability, or enter the downtime you actually measured in a 30-day month to get the availability achieved and the share of the error budget used.',
+    how: 'Allowed downtime = period seconds x (1 - availability / 100). For N services in series, each needing to be up, availability = (A/100)^N. Achieved availability = 1 - downtime seconds / 2,592,000 for a 30-day month. Period conventions: day 86,400 s; week 604,800 s; 30-day month 2,592,000 s; average month 2,629,746 s; quarter 7,889,400 s (365.25 d / 4); year 365 d = 31,536,000 s or 365.2425 d = 31,556,952 s. Contracts may define measurement windows and exclusions differently, so check the actual SLA wording.',
+    howSteps: ['Enter the availability target and pick the period.', 'Set the number of dependent services in series if there is more than one.', 'Read the allowed downtime, or switch mode and enter measured downtime.'],
+    example: 'A 99.9% target over a 30-day month allows 2,592 seconds, which is 43 m 12 s. Over an average year (365.2425 days) it allows 8 h 45 m 57 s. Three such services in series give 99.7003% and about 2 h 9 m 28 s per 30 days.',
+    faqs: [
+      ['Why do the allowed minutes differ between sources?', 'Sources use different month and year lengths (30 days, 365 days, 365.2425 days). This tool states the convention for every period.'],
+      ['How do serial dependencies affect availability?', 'If a request needs all N services, the availabilities multiply, so the composite is lower than any single service.'],
+      ['What about redundant (parallel) systems?', 'This tool does not model them. Parallel availability depends on failure independence and failover behaviour, which a simple formula overstates.'],
+      ['Does this replace the contract definition?', 'No. Providers may exclude maintenance or measure per minute or per request; this is a planning calculation only.'],
+    ],
+  },
+  sources: [],
+  related: ['percentage-calculator', 'unit-converter', 'dmarc-record-generator', 'css-fluid-typography-clamp-calculator'],
+},
+{
+  slug: 'css-fluid-typography-clamp-calculator', name: 'CSS Clamp Fluid Typography Generator', category: 'developer', prio: 'P2', widget: 'calc',
+  short: 'Generate a CSS clamp() value that scales a font size linearly between two viewport widths.',
+  keywords: ['css clamp generator', 'fluid typography calculator', 'clamp font size min max viewport', 'px to rem clamp'],
+  metaDescription: 'CSS clamp generator: enter min and max font size and viewport widths to get a fluid clamp(rem, rem + vw, rem) value and the size at any viewport.',
+  fields: [
+    $('minPx', 'Minimum size', 16, 'px'),
+    $('maxPx', 'Maximum size', 24, 'px'),
+    $('minVw', 'Minimum viewport width', 320, 'px'),
+    $('maxVw', 'Maximum viewport width', 1280, 'px'),
+    $('root', 'Root font size', 16, 'px', 'Browser default is 16 px.'),
+    $('at', 'Preview viewport width', 800, 'px'),
+  ],
+  content: {
+    intro: 'Create a CSS clamp() declaration that makes a font size, spacing or other length grow smoothly between a minimum and a maximum viewport width. Enter the sizes in pixels and the root font size; the tool returns the value in rem plus a vw slope, and shows the resulting size at a viewport width you choose.',
+    how: 'slope = (max size - min size) / (max viewport - min viewport), with sizes and viewports in px. intercept = min size - slope x min viewport. The preferred value is intercept (in rem, divided by the root font size) + slope x 100 vw. The output is clamp(min rem, intercept rem + slope vw, max rem), with up to 4 decimals. Because the middle term mixes rem and vw, text zoom still scales the rem part. Check readability and zoom behaviour in your own design; accessibility depends on more than this formula.',
+    howSteps: ['Enter the minimum and maximum size in px and the two viewport widths.', 'Keep the root font size at 16 unless your page changes it.', 'Copy the clamp() value and check the preview size.'],
+    example: 'Scaling from 16 px at a 320 px viewport to 24 px at 1280 px with a 16 px root: slope 0.008333, vw part 0.8333vw, intercept 13.3333 px = 0.8333rem. Result: clamp(1rem, 0.8333rem + 0.8333vw, 1.5rem), which gives 20 px at an 800 px viewport.',
+    faqs: [
+      ['Why use rem in the minimum and maximum?', 'rem follows the user\'s root font size, so people who enlarge default text keep that preference at the clamp limits.'],
+      ['What if the maximum is smaller than the minimum?', 'The tool rejects it; a shrinking scale is possible in CSS but not supported here.'],
+      ['Does the value work in every browser?', 'clamp() is part of CSS Values and Units Level 4 and is supported by current major browsers; check your own support targets.'],
+      ['Is a fluid size always accessible?', 'Not automatically. Viewport units do not respond to zoom the way rem does, so test with browser zoom and text-size settings.'],
+    ],
+  },
+  sources: [{ label: 'W3C CSS Values and Units Module Level 4: min(), max() and clamp()', url: 'https://www.w3.org/TR/css-values-4/#comp-func' }],
+  related: ['css-gradient-generator', 'css-specificity-calculator', 'color-converter', 'unit-converter'],
+},
+];

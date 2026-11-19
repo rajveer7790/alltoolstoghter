@@ -17,7 +17,7 @@
 /internal-link-audit.json
   X-Robots-Tag: noindex
 
-/pdf-editor/*
+/pdf-editor.txt
   X-Robots-Tag: noindex
 
 /pdf-editor-assets/*.wasm

@@ -1,6 +1,7 @@
 import { isIndexableTool } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { canonicalToolPath } from '@/lib/toolPaths';
 import { ALL_TOOLS, CATEGORIES, SITE } from '@/lib/registry';
 import { GUIDES } from '@/lib/guides';
 import { STATIC_PATHS } from '@/lib/contentDates';
@@ -66,7 +67,7 @@ export default function HtmlSitemapPage() {
           <ul>
             {c.tools.map(t => (
               <li key={t.slug}>
-                <Link href={`/${t.category}/${t.slug}`}>{t.name}</Link>
+                <Link href={canonicalToolPath(t)}>{t.name}</Link>
               </li>
             ))}
           </ul>

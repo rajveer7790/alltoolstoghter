@@ -12,7 +12,7 @@ This is a separate, working Python document API. Netlify serves the Next.js stat
 - Filee and GenOffice: installed-CLI worker adapters. Their document converters are usable headlessly; the whole desktop GUI is not copied into Next.js. Format support is determined by the actual installed CLI. GenOffice cloud/AI commands are excluded.
 - ONLYOFFICE Community Edition: optional one-hour editor sessions with generated internal JWT signing, bounded uploads, signed callbacks and constrained save URLs.
 - BentoPDF: optional independent, unmodified self-hosted workspace. All 114 reviewed tool IDs remain in `lib/documents/bento-tools.json`. The Next.js app is not relicensed or presented as a fork of BentoPDF. AGPL/component/model obligations still apply. Paid Hyper Compress/Kura or enterprise rights are not supplied.
-- Our PDF editor: original React interface at `/pdf-editor/`, also embedded in Document Studio and its tool page. PDFium WebAssembly is a helper for actual text-object edits and rendering; pdf-lib handles standard forms/images. No upstream editor app or launcher is shipped. Inter and helper notices are retained. It needs no backend and does not claim automatic scan OCR.
+- Our PDF editor: original React interface at `/pdf-editor/`, also embedded in Document Studio; the old `/pdf/pdf-editor` route redirects to this primary URL. PDFium WebAssembly is a helper for actual text-object edits and rendering; pdf-lib handles standard forms/images. No upstream editor app or launcher is shipped. Inter and helper notices are retained. It needs no backend and does not claim automatic scan OCR.
 
 The complete 15-project source report mapping is at `/open-source` and `docs/OPEN_SOURCE_DOCUMENT_COVERAGE.md`.
 

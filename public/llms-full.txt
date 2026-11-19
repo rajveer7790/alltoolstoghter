@@ -3408,7 +3408,7 @@ Method: The timer starts on the first input. Correctly matched characters divide
 
 ## PDF Editor
 
-URL: https://alltoolstogether.com/pdf/pdf-editor
+URL: https://alltoolstogether.com/pdf-editor
 
 Edit PDF text, add text and images, highlight pages, fill forms and organize your document locally.
 

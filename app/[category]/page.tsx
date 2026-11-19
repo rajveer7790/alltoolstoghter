@@ -1,4 +1,4 @@
-import { isIndexableTool } from '@/lib/toolPolicy';
+import { isIndexableTool, canonicalToolPath } from '@/lib/toolPolicy';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -68,7 +68,7 @@ export default async function CategoryPage({ params: pendingParams }: { params: 
               '@type': 'ListItem',
               position: i + 1,
               name: t.name,
-              url: `${SITE.url}/${t.category}/${t.slug}`,
+              url: SITE.url + canonicalToolPath(t),
             })),
           },
         ],
@@ -83,7 +83,7 @@ export default async function CategoryPage({ params: pendingParams }: { params: 
           Browse {tools.length} tools and guides in {cat.name}. Start with{' '}
           {tools.slice(0, 3).map((tool, index) => (
             <span key={tool.slug}>{index > 0 && (index === 2 ? ' or ' : ', ')}
-              <Link href={`/${tool.category}/${tool.slug}`}>{tool.name}</Link>
+              <Link href={canonicalToolPath(tool)}>{tool.name}</Link>
             </span>
           ))}. Each page explains the inputs and how to interpret the output.
         </p>

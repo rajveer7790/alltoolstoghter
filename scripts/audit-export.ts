@@ -4,7 +4,7 @@ import { readFileSync, existsSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'parse5';
 import { ALL_TOOLS, CATEGORIES, SITE } from '../lib/registry';
-import { STATIC_PATHS, CONTENT_UPDATED } from '../lib/contentDates';
+import { STATIC_PATHS, lastModifiedFor } from '../lib/contentDates';
 import { GUIDES } from '../lib/guides';
 import { canonicalToolPath, isIndexableTool } from '../lib/toolPolicy';
 
@@ -12,12 +12,24 @@ const root = 'out';
 const origin = new URL(SITE.url);
 const exists = (path: string) => [path, `${path}.html`, `${path}/index.html`].some(p => existsSync(join(root, p)));
 const files = (dir: string): string[] => readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? files(join(dir,e.name)) : [join(dir,e.name)]);
-const htmlFiles = files(root).filter(f => f.endsWith('.html') && !f.startsWith(join(root, 'pdf-editor') + '/') && f !== join(root, 'pdf-editor.html'));
+const htmlFiles = files(root).filter(f => f.endsWith('.html') && !f.startsWith(join(root, 'pdf-editor') + '/'));
 const titles = new Map<string,string>();
 const descriptions = new Map<string,string>();
 const pageAudit: { path: string; title: string; description: string; canonical: string; robots: string; inSitemap?: boolean }[] = [];
 const manifest: Record<string,string> = {};
 const renderedLinks = new Map<string, Set<string>>();
+// Check pretty-URL/file variants too: Netlify can apply a directory rule after
+// resolving the URL to an HTML file.
+const headerNoindexRules: string[] = [];
+let headerPath = '';
+for (const line of readFileSync('public/_headers', 'utf8').split('\n')) {
+  if (line.startsWith('/')) headerPath = line.trim();
+  else if (/^\s+X-Robots-Tag:\s*.*\b(noindex|none)\b/i.test(line)) headerNoindexRules.push(headerPath);
+}
+const matchesHeaderPath = (pattern: string, path: string) => {
+  const escaped = pattern.split('*').map(part => [...part].map(char => '\\^$+?.()|{}[]'.includes(char) ? '\\' + char : char).join('')).join('.*');
+  return new RegExp('^' + escaped + '$').test(path);
+};
 let links = 0, schemas = 0;
 for (const file of htmlFiles) {
   const path = '/' + file.slice(root.length+1).replace(/\.html$/, '').replace(/^index$/, '');
@@ -46,12 +58,13 @@ for (const file of htmlFiles) {
     const canonical = nodes.find(n=>n.tagName==='link'&&attrs(n).rel==='canonical');
     assert.ok(canonical,`Missing canonical: ${path}`);
     const url = new URL(attrs(canonical).href);assert.equal(url.origin,origin.origin);assert.ok(exists(url.pathname),`Canonical missing: ${url}`);
-    const tool = ALL_TOOLS.find(t=>`/${t.category}/${t.slug}`===path);
+    const tool = ALL_TOOLS.find(t=>'/' + t.category + '/' + t.slug===path) || ALL_TOOLS.find(t=>isIndexableTool(t) && canonicalToolPath(t)===path);
     if (!tool || isIndexableTool(tool)) {
       assert.ok(!titles.has(title), `Duplicate indexable title: ${path} and ${titles.get(title)}`);
       titles.set(title,path);
       assert.ok(!descriptions.has(description), `Duplicate indexable description: ${path} and ${descriptions.get(description)}`);
       descriptions.set(description, path);
+      assert.ok(!headerNoindexRules.some(rule => [path, path + '/', path + '.html', path + '/index.html'].some(candidate => matchesHeaderPath(rule, candidate))), 'Indexable page has an HTTP noindex rule: ' + path);
       assert.doesNotMatch(robots, /\bnoindex\b/i, `Indexable page is blocked: ${path}`);
       assert.equal(url.pathname, path, `Indexable page must be self-canonical: ${path}`);
     }
@@ -77,7 +90,11 @@ for (const file of htmlFiles) {
 const xml=readFileSync('out/sitemap.xml','utf8');
 const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 assert.equal([...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].length, urls.length, 'Every sitemap entry needs a maintained modification date');
-assert.ok([...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].every(m=>m[1].startsWith(CONTENT_UPDATED)));
+for (const entry of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+  const location = entry[1].match(/<loc>([^<]+)<\/loc>/)![1];
+  const modified = entry[1].match(/<lastmod>([^<]+)<\/lastmod>/)![1];
+  assert.ok(modified.startsWith(lastModifiedFor(new URL(location).pathname)), 'Sitemap date must match the maintained page revision: ' + location);
+}
 assert.equal(new Set(urls).size,urls.length,'Duplicate sitemap URLs');
 assert.equal(urls.length,1+STATIC_PATHS.length+GUIDES.length+CATEGORIES.length+ALL_TOOLS.filter(isIndexableTool).length);
 for(const url of urls){const u=new URL(url);assert.equal(u.origin,origin.origin);assert.ok(exists(u.pathname));}
@@ -120,7 +137,7 @@ writeFileSync('out/internal-link-audit.json', JSON.stringify({ scope: 'Rendered 
 console.log(JSON.stringify({ canonicalToolsWithVerifiedLinks: linkCoverage.length, maximumToolDepth: Math.max(...linkCoverage.map(row => row.depth!)), minimumPeerReferrers: Math.min(...linkCoverage.map(row => row.peerIncomingPages)) }, null, 2));
 
 if (process.env.SEO_AUDIT_REPORT) writeFileSync(process.env.SEO_AUDIT_REPORT, JSON.stringify(pageAudit, null, 2) + '\n');
-for(const t of ALL_TOOLS) assert.equal(urls.includes(SITE.url+`/${t.category}/${t.slug}`),isIndexableTool(t),`Sitemap policy mismatch: ${t.slug}`);
+for(const t of ALL_TOOLS) assert.equal(urls.includes(SITE.url + (isIndexableTool(t) ? canonicalToolPath(t) : '/' + t.category + '/' + t.slug)),isIndexableTool(t),`Sitemap policy mismatch: ${t.slug}`);
 assert.ok(exists('/opengraph-image.png'));assert.match(readFileSync('out/robots.txt','utf8'),/Sitemap: https:\/\/alltoolstogether.com\/sitemap.xml/);
 console.log(JSON.stringify({pages:htmlFiles.length,internalLinksAndAssets:links,jsonLdBlocks:schemas,sitemapUrls:urls.length,tools:ALL_TOOLS.length},null,2));
 

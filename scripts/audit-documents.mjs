@@ -103,7 +103,7 @@ try {
   await page.setViewportSize({width:390,height:844});await page.goto(origin+'/document-studio',{waitUntil:'networkidle'});await page.screenshot({path:resolve(artifacts,'document-studio-mobile.png'),fullPage:true});
   await page.setViewportSize({width:1280,height:900});
   await page.goto(origin+'/pdf-editor/',{waitUntil:'networkidle'});
-  await page.getByRole('heading',{name:'PDF editor',exact:false}).waitFor();
+  await page.getByRole('heading',{name:'PDF editor',level:1}).waitFor();
   assert.equal(await page.locator('#pdfcraft,iframe').count(),0,'No upstream editor app or embedded UI');
   // A file opens directly in our interface; the text input must remain usable while typing.
   await page.locator('input[type=file]').first().setInputFiles(fixture);

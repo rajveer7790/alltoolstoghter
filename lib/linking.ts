@@ -37,6 +37,10 @@ export const RELATED_CATEGORIES: Record<CatKey, CatKey[]> = {
   'business': ['finance', 'investing', 'math'],
   'investing': ['finance', 'business', 'math'],
   'tax': ['finance', 'real-estate', 'business'],
+  'ai-engineering': ['developer', 'statistics', 'electronics'],
+  'electronics': ['science', 'developer', 'ai-engineering'],
+  'creator': ['image', 'seo', 'unit-converters'],
+  'ecommerce': ['business', 'finance', 'statistics'],
 };
 
 export function getRelatedCategories(key: CatKey) {

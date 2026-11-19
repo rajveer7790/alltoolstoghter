@@ -6,7 +6,8 @@ const GROUPS: { label: string; keys: string[] }[] = [
   { label: 'Health & Food', keys: ['health', 'cooking'] },
   { label: 'Learn', keys: ['math', 'science', 'statistics'] },
   { label: 'Everyday', keys: ['unit-converters', 'date-time', 'construction'] },
-  { label: 'Web & Dev', keys: ['developer', 'seo', 'text', 'writing'] },
+  { label: 'Web & Dev', keys: ['developer', 'ai-engineering', 'electronics', 'seo', 'text', 'writing'] },
+  { label: 'Creators & Sellers', keys: ['creator', 'ecommerce'] },
   { label: 'Files', keys: ['pdf', 'image'] },
 ];
 

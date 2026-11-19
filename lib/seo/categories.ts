@@ -19,5 +19,9 @@ export const CATEGORY_SEO: Record<string, [title: string, description: string]> 
   investing: ['Free Investing Calculators — Returns, DCA & Dividend Yield', 'Free investing calculators for returns, dollar-cost averaging, dividend yield and P/E ratios. Educational tools, not investment advice.'],
   tax: ['Free Tax & Paycheck Calculators — Take-Home Pay, VAT & GST', 'Free tax calculators for take-home pay, VAT, GST, self-employment tax and India income tax estimates. Educational, not tax advice.'],
   'real-estate': ['Free Real Estate Calculators — Rent vs Buy & Affordability', 'Free real estate calculators for rent vs buy, home affordability, property tax and closing costs, with assumptions stated.'],
+  'ai-engineering': ['AI & LLM Engineering Calculators — VRAM, Tokens & RAG', 'Free calculators for LLM VRAM and KV cache, token costs, RAG chunk storage, LoRA size and evaluation metrics. Inputs are yours; runs in your browser.'],
+  electronics: ['Electronics Calculators — ADC, PCB Trace, I²C & CRC', 'Free electronics and embedded calculators for ADC resolution, PCB trace width, I²C pull-ups, timers, CRC and IEEE 754. Check results against datasheets.'],
+  creator: ['Creator & Video Calculators — Bitrate, Timecode & BPM', 'Free calculators for video bitrate and file size, SMPTE timecode, BPM delay times, camera crop factor and timelapse planning. Runs in your browser.'],
+  ecommerce: ['E-commerce Calculators — Breakeven, EOQ & A/B Tests', 'Free seller calculators for COD vs prepaid breakeven, volumetric weight, break-even ROAS, reorder points and A/B test significance. You enter the rates.'],
   writing: ['Writing Tools — Grammar Checker, Paraphraser & Plagiarism', 'Online writing tools for grammar checks, paraphrasing and plagiarism detection. These need a server; availability is shown on each page.'],
 };

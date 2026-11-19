@@ -45,6 +45,10 @@ export const CATEGORIES: Category[] = [
   { key: 'investing', name: 'Investing & Crypto', tagline: 'Stock returns, DCA, dividend yield, P/E ratios, and more.', accent: '#B45309' },
   { key: 'tax', name: 'Tax & Payroll', tagline: 'Take-home pay, VAT, and self-employment tax — calculated clearly.', accent: '#6B21A8' },
   { key: 'real-estate', name: 'Real Estate', tagline: 'Rent vs buy, affordability, property tax — smarter home decisions.', accent: '#B45309' },
+  { key: 'ai-engineering', name: 'AI & LLM Engineering', tagline: 'VRAM, token costs, RAG sizing and evaluation metrics for people building with language models.', accent: '#1D4ED8' },
+  { key: 'electronics', name: 'Electronics & Embedded', tagline: 'ADC, PCB, I²C, timers, CRC and floating-point tools for engineers and makers.', accent: '#047857' },
+  { key: 'creator', name: 'Creator & Video', tagline: 'Bitrate, timecode, tempo delay, crop factor and revenue math for video and audio creators.', accent: '#A21CAF' },
+  { key: 'ecommerce', name: 'E-commerce & Logistics', tagline: 'Breakeven, reorder points, shipping weight and A/B test math for online sellers.', accent: '#B45309' },
   { key: 'writing', name: 'Writing Tools', tagline: 'Grammar, paraphrasing, and plagiarism checks — online services with availability shown on each page.', accent: '#0891B2' },
 ];
 

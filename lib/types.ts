@@ -1,4 +1,4 @@
-export type CatKey = 'finance' | 'health' | 'math' | 'date-time' | 'unit-converters' | 'text' | 'developer' | 'seo' | 'pdf' | 'image' | 'writing' | 'real-estate' | 'construction' | 'cooking' | 'science' | 'statistics' | 'business' | 'investing' | 'tax';
+export type CatKey = 'finance' | 'health' | 'math' | 'date-time' | 'unit-converters' | 'text' | 'developer' | 'seo' | 'pdf' | 'image' | 'writing' | 'real-estate' | 'construction' | 'cooking' | 'science' | 'statistics' | 'business' | 'investing' | 'tax' | 'ai-engineering' | 'electronics' | 'creator' | 'ecommerce';
 
 export interface Category { key: CatKey; name: string; tagline: string; accent: string; }
 
